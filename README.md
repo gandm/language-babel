@@ -47,11 +47,11 @@ By using the ATOM settings panel for language-babel you can control many of the 
 ### Babel Source Path, Babel Transpile Path and Babel Maps Path
   These a directories based on the project root. ATOM now supports more than one project root folder, so these paths are based on each project root folder.
 
-  Only files found under the `project/babelsourcepath` will be candidates for transpilation. If multiple root folders exist then 'babelsourcepath' may exist in any or all folders.
+  Only files found under the `project/babelsourcepath` will be candidates for transpilation. If multiple root folders exist then `babelsourcepath` may exist in any or all folders.
 
   The Transpile and Maps paths allow different target directories to be specified. The same rules as above exist.
 
-  e.g. Two project root folders exist `/proj1` and `/proj2`. Source Path is set to `/babelSource`, Transpile Path is set to `/babelTranspile`  and Maps Path is set to '/babelMaps`
+  e.g. Two project root folders exist `/proj1` and `/proj2`. Source Path is set to `/babelSource`, Transpile Path is set to `/babelTranspile`  and Maps Path is set to ``/babelMaps`
 
   `/proj1/babelSource/foo.es6` ->`/proj1/babelTranspile/foo.js`,`/proj1/babelMaps/foo.js.map`
 
