@@ -1,7 +1,7 @@
 {
   "name": "language-babel",
   "main": "./lib/babel-transpiler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Support for Babel EcmaScript 6 transpiler + React.jsx",
   "activationCommands": [],
   "repository": "https://github.com/gandm/language-babel",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "babel-core": "^5.1.10",
-    "path-is-inside" :"*",
+    "path-is-inside": "*",
     "mkdirp": "*"
   }
 }
