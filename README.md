@@ -29,7 +29,7 @@ This shows language babel using the default atom-dark color scheme.
 
 ##Advanced Useage
 
-By using trhe ATOM settings panel for language-babel you can control many of the operations of the transpiler.
+By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler.
 
 
 ###Transpile On Save
@@ -39,10 +39,10 @@ By using trhe ATOM settings panel for language-babel you can control many of the
   If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
 
 ###Create Map
-  A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avod any possible XSSI issues the map file is prefixed with `)]}`
+  A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
 
 ###Babel Maps Add Url
-  If a source map is created this allows a Url reference `//# sourceURL=orginalBabelSourcefile` to be appended to the generated Javascript file.  
+  If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated Javascript file.  
 
 ### Babel Source Path, Babel Transpile Path and Babel Maps Path
   These a directories based on the project root. ATOM now supports more than one project root folder, so these paths are based on each project root folder.
