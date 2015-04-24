@@ -3,7 +3,7 @@
 Language grammar for ES6 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
 [Babel](http://babeljs.io/) ( previously known as 6to5 ) support is baked in. Options in the
-labguage-babel settings allow for compilation on the fly, plus full transpiler control.
+language-babel settings allow for compilation on the fly, plus full transpiler control.
 
 ##Installation
 
@@ -21,6 +21,12 @@ It is most likely many users of Babel will use a workflow ( Grunt, Gulp, etc ) a
 
 This shows language babel using the default atom-dark color scheme.
 
+![ScreenShot](/screen-images/Babel.gif)
+
+![ScreenShot](/screen-images/BabelSettings.gif)
+
+
+
 ##Advanced Useage
 
 By using trhe ATOM settings panel for language-babel you can control many of the operations of the transpiler.
@@ -30,7 +36,7 @@ By using trhe ATOM settings panel for language-babel you can control many of the
   On any file save of a language-babel enabled file the Babel transpiler  is called. Any errors and/or successful indications are notified by a ATOM pop-up.
 
 ###Create Transpiled Code
-  If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. Checks are made to ensure that origin and target filenames are not the same. You can use `.js` files as Babel ES6 files and transpile to a different target directory. See below for more information.
+  If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
 
 ###Create Map
   A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avod any possible XSSI issues the map file is prefixed with `)]}`
