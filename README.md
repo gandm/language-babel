@@ -65,3 +65,5 @@ By using the ATOM settings panel for language-babel you can control many of the 
 ###About
 
 The grammar for this package is based upon [Babel-Sublime](https://github.com/babel/babel-sublime). The JSX component has been reworked.
+
+One anomaly is how the grammar handles JSX element names and attribute names. The JSX spec allows for `namespaces` in the form `namespace:name` React JSX deviates from the spec but it used by other Facebook components. I've decided to leave this in place and let the Babel compiler complain on save. For more information see the spec at [Facebook JSX Draft Spec](http://facebook.github.io/jsx/) and comments on the deviation [here](https://github.com/facebook/jsx/issues/13).
