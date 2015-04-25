@@ -59,7 +59,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 ###Create Target Directories
   When enabled (default) any target directories that do not exist will be created prior to a transpilation.
 
-####....Other options
+###....Other options
   Please refer to [Babel options](http://babeljs.io/docs/usage/options/) for further information.
 
 ###About
