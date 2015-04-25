@@ -1,4 +1,4 @@
-# language-babel
+#language-babel
 
 Language grammar for ES6 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
@@ -9,7 +9,7 @@ language-babel settings allow for compilation on the fly, plus full transpiler c
 
 Install via ATOM `File->settings->packages`, or by using `apm install language-babel`
 
-##Useage
+##Usage
 
 By default the language-babel package will detect filetypes `.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way.
 
@@ -26,8 +26,7 @@ This shows language babel using the default atom-dark color scheme.
 ![ScreenShot](/screen-images/BabelSettings.gif)
 
 
-
-##Advanced Useage
+##Advanced Usage
 
 By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler.
 
@@ -51,7 +50,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
   The Transpile and Maps paths allow different target directories to be specified. The same rules as above exist.
 
-  e.g. Two project root folders exist `/proj1` and `/proj2`. Source Path is set to `/babelSource`, Transpile Path is set to `/babelTranspile`  and Maps Path is set to ``/babelMaps`
+  e.g. Two project root folders exist `/proj1` and `/proj2`. Source Path is set to `/babelSource`, Transpile Path is set to `/babelTranspile`  and Maps Path is set to `/babelMaps`
 
   `/proj1/babelSource/foo.es6` ->`/proj1/babelTranspile/foo.js`,`/proj1/babelMaps/foo.js.map`
 
