@@ -21,9 +21,11 @@ It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) a
 
 This shows language babel using the default atom-dark color scheme.
 
-![ScreenShot](/screen-images/Babel.gif)
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/CCg0Msq.gif)
 
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/RpGdKxf.gif)
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/bMXR0i1.gif)
+
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/TAi2cAk.gif)
 
 ##Advanced Usage
 
