@@ -3,6 +3,11 @@
   "main": "./lib/babel-transpiler",
   "version": "0.3.2",
   "description": "Support for Babel EcmaScript 6 transpiler + React.jsx",
+  "keywords": [
+    "babel",
+    "es6",
+    "language"
+  ],
   "activationCommands": [],
   "repository": "https://github.com/gandm/language-babel",
   "license": "MIT",
