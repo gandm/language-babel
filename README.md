@@ -15,7 +15,7 @@ By default the language-babel package will detect file types `.babel`,`.jsx` and
 
 By default the package also supports the [Babel](http://babeljs.io/) transpiler. Out of the box any file saved will be transpiled and any errors and/or successful completions notified in the ATOM workspace.
 
-It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, and the setting of most Babel options. See Advanced Useage below for more information.
+It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, and the setting of most Babel options. See Advanced Usage below for more information.
 
 ##Screen Images
 
