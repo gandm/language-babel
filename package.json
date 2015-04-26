@@ -2,11 +2,12 @@
   "name": "language-babel",
   "main": "./lib/babel-transpiler",
   "version": "0.3.3",
-  "description": "Support for Babel EcmaScript 6 transpiler + React.jsx",
+  "description": "Babel/JSX syntax & transpiler",
   "keywords": [
     "babel",
     "es6",
     "jsx",
+    "react",
     "language"
   ],
   "activationCommands": [],
