@@ -1276,7 +1276,7 @@
           "comment": "as well as terminating a <JSXElementName /> form",
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
-          "begin": "(<)([$_\\p{L}\\p{Nl}][$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+[:]?+[$_\\p{L}\\p{Nl}]?+(?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?=[ />\t\n])(?![:])(?<!\\.|:)",
+          "begin": "(<)([$_\\p{L}\\p{Nl}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?=[ />\\t\\n])(?<!\\.)",
           "end": "</(\\2)>|(/>)",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
@@ -1293,9 +1293,12 @@
           ]
         },
         {
+          "comment": "failing begin & end matches fall through to here",
           "comment": "traps invalid element names",
-          "name": "invalid.illegal.element.name.jsx",
-          "match": "</*[^ />]*"
+          "match": "</?([^ />\\t]*)",
+          "captures": {
+            "1": { "name": "invalid.illegal.element.name.jsx"}
+          }
         }
       ]
     },
@@ -1347,7 +1350,7 @@
       "patterns": [
         {
           "comment": "look for attribute name",
-          "match": "(?<!\\S)([$_\\p{L}\\p{Nl}][$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+[:]?+[$_\\p{L}\\p{Nl}]?+(?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?![:])(?<!\\.|:)",
+          "match": "(?<!\\S)([$_\\p{L}\\p{Nl}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?<!\\.)",
           "captures": {
             "0": { "name": "entity.other.attribute-name.jsx" }
           }
