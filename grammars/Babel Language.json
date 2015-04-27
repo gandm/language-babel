@@ -1,5 +1,6 @@
 {
   "name": "Babel ES6 Javascript",
+  "comment": "27Apr15",
   "scopeName": "source.babel",
   "foldingStartMarker": "(/\\*|\\{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
