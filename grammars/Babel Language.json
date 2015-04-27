@@ -1354,7 +1354,7 @@
       "patterns": [
         {
           "comment": "look for attribute name",
-          "name": "keyword.control.assignment.jsx",
+          "name": "keyword.operator.assignment.jsx",
           "match": "=(?=\\s*(?:'|\"|{|/\\*|<|//|\\n))"
         }
       ]
