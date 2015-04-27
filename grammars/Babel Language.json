@@ -1277,11 +1277,11 @@
           "comment": "as well as terminating a <JSXElementName /> form",
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
-          "begin": "(<)([$_\\p{L}\\p{Nl}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?=[ />\\t\\n])(?<!\\.)",
+          "begin": "(<)([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-](?<!\\.\\.))*+)(?=[ />\\t\\n])(?<!\\.)",
           "end": "</(\\2)>|(/>)",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
-            "2":{ "name": "entity.name.tag.open.jsx" }
+            "2": { "name": "entity.name.tag.open.jsx" }
           },
           "endCaptures": {
             "0": { "name": "punctuation.definition.tag.jsx" },
@@ -1308,6 +1308,7 @@
           },
           "patterns": [
             { "include": "#jsx-evaluated-code" },
+            { "include": "#jsx-entities" },
             { "include": "#jsx-tag-element-name"}
           ]
         }
@@ -1343,7 +1344,7 @@
       "patterns": [
         {
           "comment": "look for attribute name",
-          "match": "(?<!\\S)([$_\\p{L}\\p{Nl}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)(?<!\\.)",
+          "match": "(?<!\\S)([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-](?<!\\.\\.))*+)(?<!\\.)",
           "captures": {
             "0": { "name": "entity.other.attribute-name.jsx" }
           }
@@ -1353,7 +1354,7 @@
     "jsx-assignment": {
       "patterns": [
         {
-          "comment": "look for attribute name",
+          "comment": "look for attribute assignment",
           "name": "keyword.operator.assignment.jsx",
           "match": "=(?=\\s*(?:'|\"|{|/\\*|<|//|\\n))"
         }
@@ -1368,7 +1369,10 @@
       },
       "endCaptures": {
         "0": { "name": "punctuation.definition.string.end.js" }
-      }
+      },
+      "patterns": [
+        { "include": "#jsx-entities" }
+      ]
     },
     "jsx-string-single-quoted": {
       "name": "string.quoted.single.js",
@@ -1379,7 +1383,10 @@
       },
       "endCaptures": {
         "0": { "name": "punctuation.definition.string.end.js" }
-      }
+      },
+      "patterns": [
+        { "include": "#jsx-entities" }
+      ]
     },
     "jsx-evaluated-code": {
       "name": "meta.brace.curly.js",
@@ -1392,7 +1399,22 @@
         "0": { "name": "punctuation.definition.brace.curly.end.js" }
       },
       "patterns": [
+        { "include": "#jsx-string-double-quoted" },
+        { "include": "#jsx-string-single-quoted" },
         { "include": "#expression" }
+      ]
+    },
+    "jsx-entities": {
+      "patterns" : [
+        {
+          "comment": "Embeded HTML entities &blah",
+          "match": "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
+          "captures": {
+            "0": { "name": "constant.character.entity.jsx" },
+            "1": { "name": "punctuation.definition.entity.jsx"},
+            "3": { "name": "punctuation.definition.entity.jsx"}
+          }
+        }
       ]
     }
   }
