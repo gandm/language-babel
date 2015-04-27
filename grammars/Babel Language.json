@@ -1295,6 +1295,7 @@
         },
         {
           "comment": "failing begin & end matches fall through to here",
+          "disabled": "1",
           "comment": "traps invalid element names",
           "match": "</?([^ />\\t]*)",
           "captures": {
