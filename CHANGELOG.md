@@ -7,3 +7,6 @@
 ### 0.3.4
 * Grammar Changes
   - Disabled invalid JSX invalid element name highlight. Firing on < operator erroneously.
+
+### 0.3.5
+  - Permanent removal of invalid element name highligting

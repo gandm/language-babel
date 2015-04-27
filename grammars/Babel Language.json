@@ -1292,15 +1292,6 @@
             { "include": "#jsx-tag-termination" },
             { "include": "#jsx-tag-attributes"}
           ]
-        },
-        {
-          "comment": "failing begin & end matches fall through to here",
-          "disabled": "1",
-          "comment": "traps invalid element names",
-          "match": "</?([^ />\\t]*)",
-          "captures": {
-            "1": { "name": "invalid.illegal.element.name.jsx"}
-          }
         }
       ]
     },
