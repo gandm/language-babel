@@ -1316,7 +1316,6 @@
     },
     "jsx-tag-attributes": {
       "patterns": [
-        { "include": "#jsx-spread-attribute"},
         { "include": "#jsx-attribute-name" },
         { "include": "#jsx-assignment" },
         { "include": "#jsx-string-double-quoted" },
@@ -1328,16 +1327,12 @@
       ]
     },
     "jsx-spread-attribute": {
-      "comment": "Spread attribute { ... AssignmentExpression }",
-      "name": "meta.brace.curly.jsx",
-      "begin": "{",
-      "end": "}",
       "patterns": [
         {
+          "comment": "Spread attribute { ... AssignmentExpression }",
           "match": "(?<!\\.)\\.\\.\\.",
           "name": "keyword.operator.spread.jsx"
-        },
-        { "include": "#expression" }
+        }
       ]
     },
     "jsx-attribute-name": {
@@ -1365,10 +1360,10 @@
       "begin": "\"",
       "end": "\"(?<!\\\\\")",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.string.begin.js" }
+        "0": { "name": "punctuation.definition.string.begin.jsx" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.string.end.js" }
+        "0": { "name": "punctuation.definition.string.end.jsx" }
       },
       "patterns": [
         { "include": "#jsx-entities" }
@@ -1379,10 +1374,10 @@
       "begin": "'",
       "end": "'(?<!\\\\')",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.string.begin.js" }
+        "0": { "name": "punctuation.definition.string.begin.jsx" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.string.end.js" }
+        "0": { "name": "punctuation.definition.string.end.jsx" }
       },
       "patterns": [
         { "include": "#jsx-entities" }
@@ -1393,14 +1388,15 @@
       "begin": "{",
       "end": "}",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.brace.curly.start.js" }
+        "0": { "name": "punctuation.definition.brace.curly.start.jsx" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.brace.curly.end.js" }
+        "0": { "name": "punctuation.definition.brace.curly.end.jsx" }
       },
       "patterns": [
         { "include": "#jsx-string-double-quoted" },
         { "include": "#jsx-string-single-quoted" },
+        { "include": "#jsx-spread-attribute"},
         { "include": "#expression" }
       ]
     },
@@ -1414,6 +1410,11 @@
             "1": { "name": "punctuation.definition.entity.jsx"},
             "3": { "name": "punctuation.definition.entity.jsx"}
           }
+        },
+        {
+          "comment": "Entity with & and invalid name",
+          "match": "&",
+          "name": "invalid.illegal.bad-ampersand.jsx"
         }
       ]
     }
