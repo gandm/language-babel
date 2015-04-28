@@ -1413,7 +1413,7 @@
         },
         {
           "comment": "Entity with & and invalid name",
-          "match": "&",
+          "match": "&\\S*;",
           "name": "invalid.illegal.bad-ampersand.jsx"
         }
       ]
