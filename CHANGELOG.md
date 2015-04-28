@@ -19,3 +19,7 @@
   - Modified JSX spread attribute handling
   - Added trap for bad entity name
   - Added style for JSX attribute names to be italic
+
+### 0.3.8
+  - constant numeric not scoping. error moving babel-sublime regex to language-babel
+  - forms Sound.play = arg => { } not scoping. error moving babel-sublime regex to language-babel
