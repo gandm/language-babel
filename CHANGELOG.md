@@ -14,3 +14,8 @@
 ### 0.3.6
   - closes https://github.com/gandm/language-babel/issues/2
   - closes https://github.com/gandm/language-babel/issues/3
+
+### 0.3.7
+  - Modified JSX spread attribute handling
+  - Added trap for bad entity name
+  - Added style for JSX attribute names to be italic
