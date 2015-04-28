@@ -2,10 +2,49 @@
 
 @import "ui-variables";
 
+// Config -----------------------------------
+@syntax-hue:          220;
+@syntax-saturation:   24%;
+@syntax-brightness:   20%;
+
+// Base colors -----------------------------------
+@syntax-base-accent-color:      hsl(@syntax-hue, 100%, 66% );
+@syntax-base-background-color:  hsv(@syntax-hue, @syntax-saturation, @syntax-brightness);
+@syntax-base-text-color:        @light-gray;
+@syntax-base-guide-color:       fade(@syntax-base-text-color, 15%);
+
+
+// Colors: Mix Base16 Tomorrow with Theme hue -----------------------------------
+@syntax-mix-base:       hsl(@syntax-hue, 100%, 66%);
+@syntax-mix-grey:       12%;
+@syntax-mix-color:      0%;
+
+@very-light-gray: mix( @syntax-mix-base, hsl(0,0%,84%), @syntax-mix-grey);
+@light-gray:      mix( @syntax-mix-base, hsl(0,0%,72%), @syntax-mix-grey);
+@gray:            mix( @syntax-mix-base, hsl(0,0%,54%), @syntax-mix-grey);
+@dark-gray:       mix( @syntax-mix-base, hsl(0,0%,36%), @syntax-mix-grey);
+@very-dark-gray:  mix( @syntax-mix-base, hsl(0,0%,18%), @syntax-mix-grey);
+
+@cyan:            mix( @syntax-mix-base, #57B6C2, @syntax-mix-color);
+@blue:            mix( @syntax-mix-base, #61AEEF, @syntax-mix-color);
+@purple:          mix( @syntax-mix-base, #C679DD, @syntax-mix-color);
+@green:           mix( @syntax-mix-base, #97C378, @syntax-mix-color);
+@red:             mix( @syntax-mix-base, #DF6A73, @syntax-mix-color);
+@dark-red:        mix( @syntax-mix-base, #BE4F44, @syntax-mix-color);
+@orange:          mix( @syntax-mix-base, #D29B67, @syntax-mix-color);
+@light-orange:    mix( @syntax-mix-base, #E5C17C, @syntax-mix-color);
+@bright-orange:   mix( @syntax-mix-base, #FF8000, @syntax-mix-color);
+
 atom-text-editor::shadow {
   .source.babel {
-    .entity.other.attribute-name.jsx {
-    //   color: red; // e.g. uncomment to make jsx attribute names
+    .jsx {
+      .entity {
+        &.other {
+          &.attribute-name {
+             color: @cyan;
+          }
+        }
+      }
     }
   }
 }
