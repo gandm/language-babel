@@ -23,3 +23,6 @@
 ### 0.3.8
   - constant numeric not scoping. error moving babel-sublime regex to language-babel
   - forms Sound.play = arg => { } not scoping. error moving babel-sublime regex to language-babel
+
+### 0.3.9
+  - added settings file to auto indent and outdent
