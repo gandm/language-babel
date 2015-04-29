@@ -1239,7 +1239,7 @@
       "patterns": [
         {
           "comment": "stage 0 proposal: https://gist.github.com/jeffmo/054df782c05639da2adb",
-          "match": "(?x)\\b(static)?\\s*\\b([_$a-zA-Z][$\\w]*)\\s*(=)",
+          "match": "\\b(static)?\\s*\\b([_$a-zA-Z][$\\w]*)\\s*(=)",
           "captures": {
             "1": {"name": "storage.type.js"},
             "2": {"name": "variable.other.property.js"},
@@ -1253,7 +1253,7 @@
         {
           "comment": "https://github.com/wycats/javascript-decorators",
           "name"  : "tag.decorator.js",
-          "match": "(?x)(@)([_$a-zA-Z][$\\w]*)\b",
+          "match": "(@)([_$a-zA-Z][$\\w]*)\\b",
           "captures": {
             "1": {"name": "punctuation.definition.tag.js"},
             "2": {"name": "entity.name.tag.js"}
