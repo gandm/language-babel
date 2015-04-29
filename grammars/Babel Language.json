@@ -664,7 +664,7 @@
       "patterns": [
         {
           "name": "support.class.builtin.js",
-          "match": "\\b(Array|Boolean|Date|Function|Map|Math|Number|Object|Promise|Proxy|RegExp|Set|String|WeakMap)\\b"
+          "match": "\\b(Array|ArrayBuffer|Boolean|DataView|Date|Float(32|64)Array|Int(8|16|32)Array|Function|GeneratorFunction|Map|Math|Number|Object|Promise|Proxy|RegExp|Set|String|Uint(8|16|32)Array|Uint8ClampedArray|WeakMap|WeakSet)\\b"
         },
         {
           "name": "support.function.js",
