@@ -1,7 +1,7 @@
 {
   "name": "language-babel",
   "main": "./lib/babel-transpiler",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Babel/JSX syntax & transpiler",
   "keywords": [
     "babel",
