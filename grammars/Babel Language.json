@@ -6,6 +6,7 @@
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
   "fileTypes": [
+    "js",
     "es6",
     "babel",
     "jsx"

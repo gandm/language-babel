@@ -26,3 +26,7 @@
 
 ### 0.3.9
   - added settings file to auto indent and outdent
+
+### 0.4.0
+  - stable enough to add .js as supported file types.
+  - added new screen shots of source.

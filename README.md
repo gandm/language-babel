@@ -11,7 +11,7 @@ Install via ATOM `File -> settings-> + install`, or by using `apm install langua
 
 ##Usage
 
-By default the language-babel package will detect file types `.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way.
+By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way.
 
 By default the package also supports the [Babel](http://babeljs.io/) transpiler. Out of the box any file saved will be transpiled and any errors and/or successful completions notified in the ATOM workspace.
 
@@ -21,7 +21,7 @@ It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) a
 
 This shows language babel using the default atom-dark color scheme.
 
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/SlIzGwE.gif)
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/OPZwVv8.gif)
 
 ![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/bMXR0i1.gif)
 
