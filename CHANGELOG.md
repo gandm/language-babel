@@ -30,3 +30,6 @@
 ### 0.4.0
   - stable enough to add .js as supported file types.
   - added new screen shots of source.
+
+### 0.4.1
+  - patched minor grammar, add package keywords
