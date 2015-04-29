@@ -2,7 +2,7 @@
   "name": "language-babel",
   "main": "./lib/babel-transpiler",
   "version": "0.4.2",
-  "description": "Babel/ES6/JSX Syntax/Transpiler",
+  "description": "Babel/Javascript ES6/JSX Syntax/Transpiler",
   "keywords": [
     "babel",
     "es6",
