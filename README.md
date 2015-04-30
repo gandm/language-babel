@@ -11,11 +11,28 @@ Install via ATOM `File -> settings-> + install`, or by using `apm install langua
 
 ##Usage
 
-By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way.
+By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator too determine the language a file being edited.
 
 By default the package also supports the [Babel](http://babeljs.io/) transpiler. Out of the box any file saved will be transpiled and any errors and/or successful completions notified in the ATOM workspace.
 
-It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, and the setting of most Babel options. See Advanced Usage below for more information.
+It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, and the setting of most Babel options.
+
+See the section *"Use Cases"* and *"Settings"* for more information on Babel configuration options.
+
+##Use Cases
+* ####Pure JavaScript with no EcmaScript 6 requirements.
+  Just use the Grammar to color code the scripts and turn off the package setting `Transpile On Save`.
+
+* ####Pure Babel EcmaScript 6 environment.
+  If you wish to check your code compiles correctly on each save turn on the package settings `Transpile On Save`. This setting runs the Babel compiler to do a syntax check but produces no output. Only files within the `Babel Source Path` tree of a project directory are considered candidates. As this is empty by default all source files in the any subdirectory of a project folder will be candidates.
+
+  If you use another workflow to transpile code then turn off `Create Transpiled Code`,`Create Map`. These suppress any transpiler output.
+
+  If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
+
+* ####Mixed Javascript and Babel EcmaScript 6 environment.
+   Keep pure `.js`  files in a separate directory tree from your Babel ES6 files. Configure `Babel Source Paths` to point to the ES6 file directory tree and the other `paths` to where output should be generated. Turn off `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
+
 
 ##Screen Images
 
@@ -27,7 +44,7 @@ This shows language babel using the default atom-dark color scheme.
 
 ![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/TAi2cAk.gif)
 
-##Advanced Usage
+##Package Settings
 
 By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler.
 
@@ -55,6 +72,9 @@ By using the ATOM settings panel for language-babel you can control many of the 
   `/proj1/babelSource/foo.es6` ->`/proj1/babelTranspile/foo.js`,`/proj1/babelMaps/foo.js.map`
 
   `/proj2/babelSource/dirBar/foo.es6` -> `/proj2/babelTranspile/dirBar/foo.js`,`/proj2/babelMaps/dirBar/foo.js.map`
+
+* ####Supress Source Path Messages
+  By default when a file is saved that is outside the `Babel Source Path` directory a message is generated. Enabling this disables these messages. This is particularly useful when you have mixed ES6 and ES3-5 environment. ES6 files can be placed inside a `Babel Source Path` where they will be transpiled and other files will not pop up annoying messages when being saved.
 
 * ####Create Target Directories
   When enabled any target directories that do not exist will be created prior to a transpilation.
