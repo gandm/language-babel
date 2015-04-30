@@ -43,3 +43,6 @@
 ### 0.5.0
   - New suppress source message option.
   - Use Cases added to readme.
+
+### 0.5.1
+  - Correct readme
