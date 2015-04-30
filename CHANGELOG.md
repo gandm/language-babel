@@ -33,3 +33,6 @@
 
 ### 0.4.2
   - patched minor grammar, add package keywords
+
+### 0.4.3
+  - patched JSX detecting attribute names with trailing invalid chars
