@@ -31,7 +31,7 @@ See the section *"Use Cases"* and *"Settings"* for more information on Babel con
   If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
 
 * ####Mixed Javascript and Babel EcmaScript 6 environment.
-   Keep pure `.js`  files in a separate directory tree from your Babel ES6 files. Configure `Babel Source Paths` to point to the ES6 file directory tree and the other `paths` to where output should be generated. Turn off `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
+   Keep pure `.js`  files in a separate directory tree from your Babel ES6 files. Configure `Babel Source Paths` to point to the ES6 file directory tree and the other `paths` to where output should be generated. Turn on `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
 
 
 ##Screen Images
