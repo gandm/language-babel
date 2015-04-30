@@ -36,3 +36,6 @@
 
 ### 0.4.3
   - patched JSX detecting attribute names with trailing invalid chars
+
+### 0.4.4
+  - patch not detecting </ in jsx terminating children
