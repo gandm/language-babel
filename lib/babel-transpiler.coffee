@@ -27,6 +27,11 @@ module.exports = BabelTranspile =
       type: 'string'
       default: ''
       order: 50
+    supressSourcePathMessages:
+      description: 'Supress messages about file not inside Babel Source Path'
+      type: 'boolean'
+      default: false
+      order: 55
     babelTranspilePath:
       description: 'Babel Transpile Root based on Project root'
       type: 'string'
@@ -110,6 +115,13 @@ module.exports = BabelTranspile =
 
     fqName = BabelTranspile.enumPaths(sourceFile, config)
 
+    if not pathIsInside(fqName.sourceFile,fqName.sourceRoot)
+      if not config.supressSourcePathMessages
+        atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
+          { dismissable: false, detail: "No transpiled code output for file \n#{fqName.sourceFile}
+                                        \nTo supress these 'invalid source path' messages use language-babel package settings" }
+      return
+
     # set transpiler options
     babelOptions =
       code: true
@@ -134,10 +146,6 @@ module.exports = BabelTranspile =
 
         if not config.createTranspiledCode
           atom.notifications.addInfo 'No transpiled output configured'
-          return
-        if not pathIsInside(fqName.sourceFile,fqName.sourceRoot)
-          atom.notifications.addWarning 'Babel file is not inside the source root directory. No transpiled code output',
-            { dismissable: true, detail: fqName.sourceFile}
           return
         if fqName.sourceFile is fqName.transpiledFile
           atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
