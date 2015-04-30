@@ -39,3 +39,7 @@
 
 ### 0.4.4
   - patch not detecting </ in jsx terminating children
+
+### 0.5.0
+  - New suppress source message option.
+  - Use Cases added to readme.
