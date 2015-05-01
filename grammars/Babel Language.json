@@ -73,7 +73,7 @@
           ]
         },
         {
-          "comment": "e.g. play: function(arg1, arg2) {  }",
+          "comment": "e.g. 'play': function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
           "begin": "(?:((')((?:[^']|\\\\')*)('))|((\")((?:[^\"]|\\\\\")*)(\")))\\s*(:)\\s*(?:(async)\\s+)?\\s*(function)(?:\\s*(\\*)|(?=\\s|[(]))\\s*([_$a-zA-Z][$\\w]*)?\\s*",
           "end": "(?<=\\))",
