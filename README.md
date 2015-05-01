@@ -17,7 +17,17 @@ By default the package also supports the [Babel](http://babeljs.io/) transpiler.
 
 It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, and the setting of most Babel options.
 
-See the section *"Use Cases"* and *"Settings"* for more information on Babel configuration options.
+See the section *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
+
+##Screen Images
+
+This shows language babel using the default atom-dark color scheme.
+
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/OPZwVv8.gif)
+
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/bMXR0i1.gif)
+
+![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/TAi2cAk.gif)
 
 ##Use Cases
 * ####Pure JavaScript with no EcmaScript 6 requirements.
@@ -32,17 +42,6 @@ See the section *"Use Cases"* and *"Settings"* for more information on Babel con
 
 * ####Mixed Javascript and Babel EcmaScript 6 environment.
    Keep pure `.js`  files in a separate directory tree from your Babel ES6 files. Configure `Babel Source Paths` to point to the ES6 file directory tree and the other `paths` to where output should be generated. Turn on `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
-
-
-##Screen Images
-
-This shows language babel using the default atom-dark color scheme.
-
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/OPZwVv8.gif)
-
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/bMXR0i1.gif)
-
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/TAi2cAk.gif)
 
 ##Package Settings
 
