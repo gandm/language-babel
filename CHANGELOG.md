@@ -49,3 +49,6 @@
 
 ### 0.5.2
   - Fixes Issue 4. Symbol view not working.
+
+### 0.5.3
+  - Fix linter-eslint not working.

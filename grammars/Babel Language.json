@@ -1,7 +1,7 @@
 {
   "name": "Babel ES6 Javascript",
   "comment": "27Apr15",
-  "scopeName": "source.jsx",
+  "scopeName": "source.js.jsx",
   "foldingStartMarker": "(/\\*|\\{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
