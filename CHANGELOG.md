@@ -46,3 +46,6 @@
 
 ### 0.5.1
   - Correct readme
+
+### 0.5.2
+  - Fixes Issue 4. Symbol view not working.
