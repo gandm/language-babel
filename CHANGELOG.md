@@ -52,3 +52,6 @@
 
 ### 0.5.3
   - Fix linter-eslint not working.
+
+### 0.5.4
+  - Fix scope styling
