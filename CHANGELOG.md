@@ -55,3 +55,7 @@
 
 ### 0.5.4
   - Fix scope styling
+
+### 0.5.5
+  = Fix scope Indent
+  
