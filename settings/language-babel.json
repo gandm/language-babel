@@ -1,5 +1,5 @@
 {
-  ".source.babel": {
+  ".source.js.jsx": {
     "editor": {
       "commentStart": "// ",
       "foldEndPattern": "^\\s*\\}|^\\s*\\]|^\\s*\\)",
