@@ -137,7 +137,7 @@ module.exports = BabelTranspile =
       babelOptions.whitelist = config.whitelistTransformers
 
     # babel-core seems to add a lot of time to atom loading so delay until needed
-    @babel ?= require('babel-core')
+    @babel ?= require('../node_modules/babel-core')
     @babel.transformFile fqName.sourceFile, babelOptions, (err,result) ->
       if err
         atom.notifications.addError 'Babel Transpiler Error', { dismissable: true, detail: err.message}
