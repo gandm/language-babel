@@ -132,17 +132,18 @@ module.exports = BabelTranspile =
       modules: config.moduleLoader
       externalHelpers: config.externalHelpers
       stage: config.babelStage
-    # babel seems to treat an empty arrat of whitelists as don't apply any transforms
+    # babel seems to treat an empty array of whitelists as don't apply any transforms
     if config.whitelistTransformers.length > 0
       babelOptions.whitelist = config.whitelistTransformers
 
     # babel-core seems to add a lot of time to atom loading so delay until needed
     @babel ?= require('../node_modules/babel-core')
+    babelVersion = @babel.version
     @babel.transformFile fqName.sourceFile, babelOptions, (err,result) ->
       if err
-        atom.notifications.addError 'Babel Transpiler Error', { dismissable: true, detail: err.message}
+        atom.notifications.addError "Babel V#{babelVersion} Transpiler Error", { dismissable: true, detail: err.message}
       else
-        atom.notifications.addInfo 'Babel Transpiler Success', { detail: fqName.sourceFile }
+        atom.notifications.addInfo "Babel V#{babelVersion} Transpiler Success", { detail: fqName.sourceFile }
 
         if not config.createTranspiledCode
           atom.notifications.addInfo 'No transpiled output configured'

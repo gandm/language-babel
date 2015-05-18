@@ -1,11 +1,12 @@
-### 0.1.0 - Intital Releases
+### 0.1.0
+  - Intital Releases
 
 ### 0.3.3
-* Grammar Changes
+  - Grammar Changes
   - Removed pure JSX syntax checking to remove options for namespaced names as per React JSX
 
 ### 0.3.4
-* Grammar Changes
+  - Grammar Changes
   - Disabled invalid JSX invalid element name highlight. Firing on < operator erroneously.
 
 ### 0.3.5
@@ -57,5 +58,8 @@
   - Fix scope styling
 
 ### 0.5.5
-  = Fix scope Indent
+  - Fix scope Indent
   
+### 0.5.6
+  - Applied pull request
+  - Added babel-core version used in notification dialogs
