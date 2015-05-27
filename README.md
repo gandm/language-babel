@@ -3,7 +3,7 @@
 Language grammar for ES6 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
 [Babel](http://babeljs.io/) ( previously known as 6to5 ) support is baked in. Options in the
-language-babel settings allow for compilation on the fly, plus full transpiler control and output.
+language-babel settings allow for compilation on the fly, plus full transpiler control and output. language-babel has always supported .babelrc files but Release 0.6.0 adds additional support for `.babelrc` files.
 
 ##Installation
 
@@ -36,9 +36,11 @@ This shows language babel using the default atom-dark color scheme.
 * ####Pure Babel EcmaScript 6 environment.
   If you wish to check your code compiles correctly on each save turn on the package settings `Transpile On Save`. This setting runs the Babel compiler to do a syntax check but produces no output. Only files within the `Babel Source Path` tree of a project directory are considered candidates. As this is empty by default all source files in the any subdirectory of a project folder will be candidates.
 
-  If you use another workflow to transpile code then turn off `Create Transpiled Code`,`Create Map`. These suppress any transpiler output.
+  If you use another workflow to transpile code then turn off `Create Transpiled Code` and `Create Map`. These suppress any transpiler output.
 
   If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
+
+  Please also read the section on *"Using .babelrc Files"*
 
 * ####Mixed Javascript and Babel EcmaScript 6 environment.
    Keep pure `.js`  files in a separate directory tree from your Babel ES6 files. Configure `Babel Source Paths` to point to the ES6 file directory tree and the other `paths` to where output should be generated. Turn on `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
@@ -49,6 +51,12 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
 * ####Transpile On Save
   On any file save of a language-babel enabled file the Babel transpiler  is called. Any errors and/or successful indications are notified by a ATOM pop-up.
+
+* ####Use Internal Scanner
+  This option allows language-babel to read `.babelrc` files rather than using the one babel-core provides. Please refer to the section below *"Using babelrc Files"*
+
+* ####Stop at Project directory
+  By default babel-core reads all directories from the source file to the root of the filesystem looking for `.babelrc` files. This flag overrides this behaviour to stop the traversal at the project root folder.
 
 * ####Create Transpiled Code
   If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
@@ -82,14 +90,29 @@ By using the ATOM settings panel for language-babel you can control many of the 
   The ECMA standards stage to enforce. The default is 2. See [Babel Stages](http://babeljs.io/docs/usage/experimental/) for more information.
 
 * #### External Helpers
-  When enabled transpiled output will not include babel helper code.   Please refer to [Babel External Helpers](http://babeljs.io/docs/usage/external-helpers/) for further information.
+  When enabled transpiled output will not include babel helper code.   Please refer to [Babel External Helpers](http://babeljs.io/docs/advanced/external-helpers/) for further information.
 
 * ####Module Loader
   The module loader format to use. Either `common` to use CommonJS, `amd` to use Asynchronous Module Definition or `umd` to use Universal Module Definition   Please refer to [Babel Modules](http://babeljs.io/docs/usage/modules/) for further information.
 
 * ####Transformer Options
   The remaining transformer options may contain comma seperated lists of transformer names.
-  Please refer to [Babel Transformers](http://babeljs.io/docs/usage/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
+  Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
+
+###Using .babelrc Files
+  babelrc files are described on the babel website [here](http://babeljs.io/docs/usage/babelrc/) Unless the `Internal Scanner` option described above is enabled babel-core will read all `.babelrc` files staring from the directory holding the project source file and continuing through all directories up to the root of the file system. The contents of these files are merged by babel-core. If a file containing
+  ```
+{
+  "breakConfig": true
+}
+  ```
+  is found the traversal stops. This is the standard babel behaviour but from the babel-core api viewpoint it is not possible to know what options were used and if the traversal was stopped by a `breakConfig`. Because language-babel cannot merge its options after the process described above, it must pass any transpilation options into the babel-core before the `.babelrc` files are read. Thus, when using babelrc files it is advisable to not use any transpilation options within language-babel unless you are happy for these to be appled. Also, it is advisable to clear the `Create Map` option mappping option as language-babel cannot know what mapping options were set in `.babelrc` files. Another problem is that babel-core caches the existance of .babelrc files. This works well for a quick compilation but isn't good within an editor session that may last hours.
+
+  To avoid these issues a `Use Internal Scanner` option can be enabled that effectively replaces the babel-core scanner with language-babels one. language-babel tries to mimic the process that babel uses. When a source file that is a candidate for transpilation is saved a `.babelrc` file is looked for in the same directory as the source file. If found, it's configuration is read. Language-babel then proceeds to traverse the directories above this one looking for further `.babelrc` files and merging their contents until either the root of the file system is found or the project root is found (this last option is a deviation from the norm and must be enabled with the `Stop At Project Directory` flag). The merged contents are then further merged with the language-babel package configuration contents BUT only if no `breakConfig` was found.
+
+  Like babel-core, language-babel's scanner supports `.babelrc` features such as using comments inside the JSON file contents. i.e. you can use // and /\* \*/ comments inside the files contrary to normal JSON practices. It also supports the use of environment variables `BABEL_ENV` and `NODE_ENV`
+
+  Thus the language-babel configuration options may be considered as global defaults, with `.babelrc` files applying changes down the directory tree.
 
 ###About
 
