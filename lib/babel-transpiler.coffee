@@ -14,7 +14,7 @@ module.exports = BabelTranspile =
       order: 10
     useInternalScanner:
       type: 'boolean'
-      default: true
+      default: false
       description: 'Use internal scanner for .babelrc files'
       order: 14
     stopAtProjectDirectory:
