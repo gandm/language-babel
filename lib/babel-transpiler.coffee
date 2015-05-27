@@ -3,6 +3,8 @@ fs = require 'fs'
 path = require 'path'
 pathIsInside = require 'path-is-inside'
 mkdirp = require 'mkdirp'
+merge = require 'lodash/object/merge'
+stripJsonComments = require 'strip-json-comments'
 
 module.exports = BabelTranspile =
   config:
@@ -10,6 +12,16 @@ module.exports = BabelTranspile =
       type: 'boolean'
       default: true
       order: 10
+    useInternalScanner:
+      type: 'boolean'
+      default: false
+      description: 'Use internal scanner for .babelrc files'
+      order: 14
+    stopAtProjectDirectory:
+      description: 'Stop .babelrc recursion at Project Root. Needs Internal Scanner'
+      type: 'boolean'
+      default: false
+      order: 16
     createTranspiledCode:
       type: 'boolean'
       default: false
@@ -103,28 +115,88 @@ module.exports = BabelTranspile =
       @disposable.add textEditor.onDidSave (event) =>
         grammar = textEditor.getGrammar()
         return if grammar.packageName isnt 'language-babel'
-        BabelTranspile.transpile(event.path)
+        @transpile(event.path)
 
   deactivate: ->
     if @disposable?
       @disposable.dispose()
 
   transpile: (sourceFile) ->
-    config = BabelTranspile.getConfig()
+    config = @getConfig()
     return if config.transpileOnSave isnt true
 
-    fqName = BabelTranspile.enumPaths(sourceFile, config)
+    pathsTo = @getPaths(sourceFile, config)
 
-    if not pathIsInside(fqName.sourceFile,fqName.sourceRoot)
+    if not pathIsInside(pathsTo.sourceFile,pathsTo.sourceRoot)
       if not config.supressSourcePathMessages
         atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
-          { dismissable: false, detail: "No transpiled code output for file \n#{fqName.sourceFile}
+          { dismissable: false, detail: "No transpiled code output for file \n#{pathsTo.sourceFile}
                                         \nTo supress these 'invalid source path' messages use language-babel package settings" }
       return
 
-    # set transpiler options
+    babelOptions = @getBabelOptions(config,pathsTo)
+
+    babelOptions.code = true
+    babelOptions.filename = pathsTo.sourceFile
+    # babel-core seems to add a lot of time to atom loading so delay until needed
+    @babel ?= require('../node_modules/babel-core')
+    @babel.transformFile pathsTo.sourceFile, babelOptions, (err,result) =>
+      if err
+        atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
+          { dismissable: true, detail: err.message}
+      else
+        atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
+          { detail: pathsTo.sourceFile }
+
+        if not config.createTranspiledCode
+          atom.notifications.addInfo 'No transpiled output configured'
+          return
+        if pathsTo.sourceFile is pathsTo.transpiledFile
+          atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
+            { dismissable: true, detail: pathsTo.sourceFile}
+          return
+
+        # write code and maps
+        if config.createTargetDirectories
+          mkdirp.sync( path.parse( pathsTo.transpiledFile).dir)
+
+        # add source map url if not inline and file isn't ignored
+        if config.babelMapsAddUrl and
+        babelOptions.sourceMaps not in ['inline','both'] and
+        babelOptions.sourceMaps and
+        not result.ignored
+          result.code = result.code + '\n' + '//# sourceMappingURL='+pathsTo.mapFile
+
+        fs.writeFileSync(pathsTo.transpiledFile, result.code)
+
+        # is this file matched by an ignore option flag don't save any maps
+        if result.ignored
+          return
+
+        # write source map if not inline
+        if config.createMap and
+        babelOptions.sourceMaps not in ['inline','both'] and
+        babelOptions.sourceMaps
+          if config.createTargetDirectories
+            mkdirp.sync( path.parse( pathsTo.mapFile).dir )
+          mapJson =
+            version: result.map.version
+            sources:  pathsTo.sourceFile
+            file: pathsTo.transpiledFile
+            sourceRoot: ''
+            names: result.map.names
+            mappings: result.map.mappings
+          xssiProtection = ')]}\n'
+          fs.writeFileSync(pathsTo.mapFile, xssiProtection + JSON.stringify( mapJson, null, ' ' ) )
+
+  # get configuration for language-babel
+  getConfig: -> atom.config.get('language-babel')
+
+  # calculate babel options based upon package config, babelrc files and
+  # whether internalScanner is used.
+  getBabelOptions: ( config, pathsTo )->
+    # set transpiler options from package configuration.
     babelOptions =
-      code: true
       sourceMaps: config.createMap
       blacklist: config.blacklistTransformers
       loose: config.looseTransformers
@@ -135,52 +207,65 @@ module.exports = BabelTranspile =
     # babel seems to treat an empty array of whitelists as don't apply any transforms
     if config.whitelistTransformers.length > 0
       babelOptions.whitelist = config.whitelistTransformers
-
-    # babel-core seems to add a lot of time to atom loading so delay until needed
-    @babel ?= require('../node_modules/babel-core')
-    babelVersion = @babel.version
-    @babel.transformFile fqName.sourceFile, babelOptions, (err,result) ->
-      if err
-        atom.notifications.addError "Babel V#{babelVersion} Transpiler Error", { dismissable: true, detail: err.message}
+    # get babelrc configurations if required
+    if config.useInternalScanner
+      # determine where to stop .babelrc traversal
+      if config.stopAtProjectDirectory
+        stopDir = pathsTo.projectPath
       else
-        atom.notifications.addInfo "Babel V#{babelVersion} Transpiler Success", { detail: fqName.sourceFile }
+        stopDir = path.parse( pathsTo.projectPath).root
+      babelrcOpts = {}
+      babelrcOpts = @getBabelrc(pathsTo.sourceFileDir, stopDir, babelrcOpts)
+      # if a babelrc file had breakConfig then don't merge package config
+      # The intent is to localise all options
+      if babelrcOpts.breakConfig
+        babelOptions = babelrcOpts
+      else
+        babelrcOpts.breakConfig = true     # set to stop the use of babel's .babelrc scanner
+        babelOptions = @mergeBabelrc( babelOptions, babelrcOpts )
+    return babelOptions
 
-        if not config.createTranspiledCode
-          atom.notifications.addInfo 'No transpiled output configured'
-          return
-        if fqName.sourceFile is fqName.transpiledFile
-          atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
-            { dismissable: true, detail: fqName.sourceFile}
-          return
+  # get & merge babelrc options from the source files directory upto the source root
+  # if a breakConfig: true option is found end recursion and pass back merged opts
+  # this is modeled on babels own resolve-rc.js
+  getBabelrc: (fromDir, toDir, opts ) ->
+    # enviromnents used in babelrc
+    babelrc = '.babelrc'
+    babelEnv = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
+    babelrcFile = path.join(fromDir, babelrc)
+    opts.babelrc ?= []
+    if fs.existsSync babelrcFile
+      babelrcContent = fs.readFileSync(babelrcFile, 'utf8')
+      try
+        babelrcContent = JSON.parse(stripJsonComments(babelrcContent))
+      catch err
+        err.message = "#{babelrcFile}\n"+err.message
+        atom.notifications.addError "Error in .babelrc file", { dismissable: true, detail: err.message}
+      opts.babelrc.push(babelrcFile)
+      if babelrcContent.env?[babelEnv]
+        babelrcContent = babelrcContent.env[babelEnv]
+      opts = @mergeBabelrc(opts,babelrcContent) # we even merge breakConfigs
+      if opts.breakConfig
+        return opts
+    if fromDir isnt toDir
+      @getBabelrc( path.dirname(fromDir), toDir, opts)
+    return opts
 
-        # write code and maps
-        if config.createTargetDirectories
-          mkdirp.sync( path.parse( fqName.transpiledFile).dir)
-
-        if config.babelMapsAddUrl
-          result.code = result.code + '\n' + '//# sourceMappingURL='+fqName.mapFile
-        fs.writeFileSync(fqName.transpiledFile, result.code)
-
-        if config.createMap
-          if config.createTargetDirectories
-            mkdirp.sync( path.parse( fqName.mapFile).dir )
-          mapJson =
-            version: result.map.version
-            sources:  fqName.sourceFile
-            file: fqName.transpiledFile
-            sourceRoot: ''
-            names: result.map.names
-            mappings: result.map.mappings
-          xssiProtection = ')]}\n'
-          fs.writeFileSync(fqName.mapFile, xssiProtection + JSON.stringify( mapJson, null, ' ' ) )
-
-  # get configuration for language-babel
-  getConfig: -> atom.config.get('language-babel')
+  # merge babelrc options as per babel code in
+  # https://github.com/babel/babel/blob/master/src/babel/helpers/merge.js
+  mergeBabelrc: ( dest, src ) ->
+    merge dest, src, (a,b) =>
+      if (Array.isArray(a))
+        c = a.slice(0)
+        for k, v of b
+          if (a.indexOf(v) < 0)
+            c.push(v)
+        return c
 
   # calculate absoulte paths of babel source, target js and maps files
   # based upon the project directory containing the source
   # and the roots of source, transpile path and maps paths defined in config
-  enumPaths:  (sourceFile, config) ->
+  getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath(sourceFile)
     absProjectPath = path.normalize(projectContainingSource[0])
 
@@ -198,6 +283,8 @@ module.exports = BabelTranspile =
     absMapFile = path.join( absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map' )
 
     sourceFile: sourceFile
+    sourceFileDir: parsedSourceFile.dir
     mapFile: absMapFile
     transpiledFile: absTranspiledFile
     sourceRoot: absSourceRoot
+    projectPath: absProjectPath
