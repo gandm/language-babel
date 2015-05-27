@@ -156,20 +156,22 @@ module.exports = BabelTranspile =
             { dismissable: true, detail: pathsTo.sourceFile}
           return
 
-        # is this file matched by an ignore option flag don't save any maps
-        if result.ignored
-          return
         # write code and maps
         if config.createTargetDirectories
           mkdirp.sync( path.parse( pathsTo.transpiledFile).dir)
 
-        # add source map url if not inline
+        # add source map url if not inline and file isn't ignored
         if config.babelMapsAddUrl and
         babelOptions.sourceMaps not in ['inline','both'] and
-        babelOptions.sourceMaps
+        babelOptions.sourceMaps and
+        not result.ignored
           result.code = result.code + '\n' + '//# sourceMappingURL='+pathsTo.mapFile
 
         fs.writeFileSync(pathsTo.transpiledFile, result.code)
+
+        # is this file matched by an ignore option flag don't save any maps
+        if result.ignored
+          return
 
         # write source map if not inline
         if config.createMap and
