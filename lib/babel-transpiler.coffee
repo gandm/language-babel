@@ -194,7 +194,7 @@ module.exports = BabelTranspile =
 
   # calculate babel options based upon package config, babelrc files and
   # whether internalScanner is used.
-  getBabelOptions: ( config, pathsTo )->
+  getBabelOptions: (config, pathsTo)->
     # set transpiler options from package configuration.
     babelOptions =
       sourceMaps: config.createMap
@@ -213,22 +213,22 @@ module.exports = BabelTranspile =
       if config.stopAtProjectDirectory
         stopDir = pathsTo.projectPath
       else
-        stopDir = path.parse( pathsTo.projectPath).root
+        stopDir = path.parse(pathsTo.projectPath).root
       babelrcOpts = {}
-      babelrcOpts = @getBabelrc(pathsTo.sourceFileDir, stopDir, babelrcOpts)
+      @getBabelrc(pathsTo.sourceFileDir, stopDir, babelrcOpts)
       # if a babelrc file had breakConfig then don't merge package config
       # The intent is to localise all options
       if babelrcOpts.breakConfig
         babelOptions = babelrcOpts
       else
         babelrcOpts.breakConfig = true     # set to stop the use of babel's .babelrc scanner
-        babelOptions = @mergeBabelrc( babelOptions, babelrcOpts )
+        @mergeBabelrc(babelOptions, babelrcOpts)
     return babelOptions
 
   # get & merge babelrc options from the source files directory upto the source root
   # if a breakConfig: true option is found end recursion and pass back merged opts
   # this is modeled on babels own resolve-rc.js
-  getBabelrc: (fromDir, toDir, opts ) ->
+  getBabelrc: (fromDir, toDir, opts) ->
     # enviromnents used in babelrc
     babelrc = '.babelrc'
     babelEnv = process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
@@ -244,7 +244,7 @@ module.exports = BabelTranspile =
       opts.babelrc.push(babelrcFile)
       if babelrcContent.env?[babelEnv]
         babelrcContent = babelrcContent.env[babelEnv]
-      opts = @mergeBabelrc(opts,babelrcContent) # we even merge breakConfigs
+      @mergeBabelrc(opts, babelrcContent) # we even merge breakConfigs
       if opts.breakConfig
         return opts
     if fromDir isnt toDir
@@ -253,7 +253,7 @@ module.exports = BabelTranspile =
 
   # merge babelrc options as per babel code in
   # https://github.com/babel/babel/blob/master/src/babel/helpers/merge.js
-  mergeBabelrc: ( dest, src ) ->
+  mergeBabelrc: (dest, src) ->
     merge dest, src, (a,b) =>
       if (Array.isArray(a))
         c = a.slice(0)
@@ -273,14 +273,14 @@ module.exports = BabelTranspile =
     relTranspilePath = path.normalize(config.babelTranspilePath)
     relMapsPath = path.normalize(config.babelMapsPath)
 
-    absSourceRoot = path.join( absProjectPath , relSourcePath )
-    absTranspileRoot = path.join( absProjectPath , relTranspilePath )
-    absMapsRoot = path.join( absProjectPath , relMapsPath )
+    absSourceRoot = path.join( absProjectPath , relSourcePath)
+    absTranspileRoot = path.join( absProjectPath , relTranspilePath)
+    absMapsRoot = path.join( absProjectPath , relMapsPath)
 
     parsedSourceFile = path.parse( sourceFile)
     relSourceRootToSourceFile = path.relative( absSourceRoot, parsedSourceFile.dir)
-    absTranspiledFile = path.join( absTranspileRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js' )
-    absMapFile = path.join( absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map' )
+    absTranspiledFile = path.join( absTranspileRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js')
+    absMapFile = path.join( absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map')
 
     sourceFile: sourceFile
     sourceFileDir: parsedSourceFile.dir

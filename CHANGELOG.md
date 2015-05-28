@@ -1,3 +1,8 @@
+### 0.6.1
+  - Changes to readme
+  - Cosmetic changes to transpiler
+  - Added back case and default indentation as per issue 7
+
 ### 0.6.0
   - Changes to augment handling of `.babelrc` files
 
