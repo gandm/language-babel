@@ -3,7 +3,7 @@
     "editor": {
       "commentStart": "// ",
       "foldEndPattern": "^\\s*\\}|^\\s*\\]|^\\s*\\)",
-      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$|case[\\s\\S]*:$|default:$",
+      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$",
       "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]"
     }
   }

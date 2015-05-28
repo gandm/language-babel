@@ -1,3 +1,6 @@
+### 0.6.2
+  - Reverted change as per issue 7
+  
 ### 0.6.1
   - Changes to readme
   - Cosmetic changes to transpiler
