@@ -1,8 +1,7 @@
 {CompositeDisposable} = require 'atom'
-fs = require 'fs'
+fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require 'path-is-inside'
-mkdirp = require 'mkdirp'
 merge = require 'lodash/object/merge'
 stripJsonComments = require 'strip-json-comments'
 
@@ -127,14 +126,14 @@ module.exports = BabelTranspile =
 
     pathsTo = @getPaths(sourceFile, config)
 
-    if not pathIsInside(pathsTo.sourceFile,pathsTo.sourceRoot)
+    if not pathIsInside(pathsTo.sourceFile, pathsTo.sourceRoot)
       if not config.supressSourcePathMessages
         atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
           { dismissable: false, detail: "No transpiled code output for file \n#{pathsTo.sourceFile}
-                                        \nTo supress these 'invalid source path' messages use language-babel package settings" }
+                                        \n\nTo supress these 'invalid source path' messages use language-babel package settings" }
       return
 
-    babelOptions = @getBabelOptions(config,pathsTo)
+    babelOptions = @getBabelOptions(config, pathsTo)
 
     babelOptions.code = true
     babelOptions.filename = pathsTo.sourceFile
@@ -158,7 +157,7 @@ module.exports = BabelTranspile =
 
         # write code and maps
         if config.createTargetDirectories
-          mkdirp.sync( path.parse( pathsTo.transpiledFile).dir)
+          fs.makeTreeSync( path.parse( pathsTo.transpiledFile).dir)
 
         # add source map url if not inline and file isn't ignored
         if config.babelMapsAddUrl and
@@ -178,7 +177,7 @@ module.exports = BabelTranspile =
         babelOptions.sourceMaps not in ['inline','both'] and
         babelOptions.sourceMaps
           if config.createTargetDirectories
-            mkdirp.sync( path.parse( pathsTo.mapFile).dir )
+            fs.makeTreeSync( path.parse( pathsTo.mapFile).dir )
           mapJson =
             version: result.map.version
             sources:  pathsTo.sourceFile
@@ -268,19 +267,18 @@ module.exports = BabelTranspile =
   getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath(sourceFile)
     absProjectPath = path.normalize(projectContainingSource[0])
-
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)
     relMapsPath = path.normalize(config.babelMapsPath)
 
-    absSourceRoot = path.join( absProjectPath , relSourcePath)
-    absTranspileRoot = path.join( absProjectPath , relTranspilePath)
-    absMapsRoot = path.join( absProjectPath , relMapsPath)
+    absSourceRoot = path.join(absProjectPath , relSourcePath)
+    absTranspileRoot = path.join(absProjectPath , relTranspilePath)
+    absMapsRoot = path.join(absProjectPath , relMapsPath)
 
-    parsedSourceFile = path.parse( sourceFile)
-    relSourceRootToSourceFile = path.relative( absSourceRoot, parsedSourceFile.dir)
-    absTranspiledFile = path.join( absTranspileRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js')
-    absMapFile = path.join( absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map')
+    parsedSourceFile = path.parse(sourceFile)
+    relSourceRootToSourceFile = path.relative(absSourceRoot, parsedSourceFile.dir)
+    absTranspiledFile = path.join(absTranspileRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js')
+    absMapFile = path.join(absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map')
 
     sourceFile: sourceFile
     sourceFileDir: parsedSourceFile.dir

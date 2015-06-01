@@ -1,6 +1,11 @@
+### TDB
+  - Added specs
+  - Use Atom's fs-plus as replacement for nodes fs  
+  - Removed dependency on mkdirp as fs-plus uses it anyway
+
 ### 0.6.2
   - Reverted change as per issue 7
-  
+
 ### 0.6.1
   - Changes to readme
   - Cosmetic changes to transpiler
