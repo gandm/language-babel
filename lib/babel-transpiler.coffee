@@ -114,13 +114,14 @@ module.exports = BabelTranspile =
       @disposable.add textEditor.onDidSave (event) =>
         grammar = textEditor.getGrammar()
         return if grammar.packageName isnt 'language-babel'
-        @transpile(event.path)
+        @transpile(event.path, textEditor)
 
   deactivate: ->
     if @disposable?
       @disposable.dispose()
 
-  transpile: (sourceFile) ->
+  # transpile sourceFile edited by the optional textEditor
+  transpile: (sourceFile, textEditor) ->
     config = @getConfig()
     return if config.transpileOnSave isnt true
 

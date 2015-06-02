@@ -1,4 +1,4 @@
-module.exports = CONFIG_KEYS = {
+module.exports = 
   babelMapsAddUrl: true
   babelMapsPath: ''
   babelSourcePath: ''
@@ -17,4 +17,3 @@ module.exports = CONFIG_KEYS = {
   transpileOnSave: true
   useInternalScanner: false
   whitelistTransformers: []
-}
