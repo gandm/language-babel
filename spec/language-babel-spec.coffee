@@ -141,9 +141,9 @@ describe 'language-babel', ->
       notificationSpy = sinon.spy()
       disposable = atom.notifications.onDidAddNotification notificationSpy
       atom.project.setPaths([__dirname])
-      config.babelSourcePath = path.resolve(__dirname, 'fixtures')
-      config.babelTranspilePath = path.resolve(__dirname, 'fixtures')
-      config.babelMapsPath = path.resolve(__dirname, 'fixtures')
+      config.babelSourcePath = 'fixtures'
+      config.babelTranspilePath = 'fixtures'
+      config.babelMapsPath = 'fixtures'
       lb = atom.packages.getActivePackage(LB).mainModule
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
       lb.transpile('/fake.js')
