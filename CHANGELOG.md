@@ -1,4 +1,5 @@
 ### TDB
+  - Added option to supress transpile success messages
   - Added specs
   - Use Atom's fs-plus as replacement for nodes fs  
   - Removed dependency on mkdirp as fs-plus uses it anyway
