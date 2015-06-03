@@ -267,6 +267,8 @@ module.exports = BabelTranspile =
   # and the roots of source, transpile path and maps paths defined in config
   getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath(sourceFile)
+    projPaths = atom.project.getPaths()
+    projDirs  = atom.project.getDirectories()
     absProjectPath = path.normalize(projectContainingSource[0])
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)

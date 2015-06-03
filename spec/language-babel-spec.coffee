@@ -1,5 +1,3 @@
-# use chai expect assertions
-# use sinon for stubs with sinon-chai as a plugin
 chai = require '../node_modules/chai'
 expect = chai.expect
 sinon = require '../node_modules/sinon'
@@ -9,82 +7,85 @@ _ = require '../node_modules/lodash'
 defaultConfig = require './default-config'
 
 LB = 'language-babel'
+# atom setPaths checks if directories exist so we need some faux names
+PU = '/dir199a99231'  # unlikely directory name UNIX
+PW = 'C:\\dir199a99231' # unlikely directory name windows
 
 describe 'language-babel', ->
+  lb = null
   config =  {}
   beforeEach ->
     waitsForPromise ->
       atom.packages.activatePackage(LB)
     config = _.clone defaultConfig
+
+    runs ->
+      lb = atom.packages.getActivePackage(LB).mainModule
   # ----------------------------------------------------------------------------
   describe 'Reading real config', ->
     it 'should read all possible configuration keys', ->
-      lb = atom.packages.getActivePackage(LB).mainModule
       realConfig = lb.getConfig()
       expect(realConfig).to.contain.all.keys key for key, value of config
-#   # ----------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------
   describe ':getPaths', ->
 
     if not process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
-        atom.project.setPaths(['/root/Project1', '/root/Project2'])
-        lb = atom.packages.getActivePackage(LB).mainModule
-        ret = lb.getPaths('/root/Project1/source/dira/fauxfile.js',config)
+        atom.project.setPaths([PU+'/Project1', PU+'/Project2'])
 
-        expect(ret.sourceFile).to.equal('/root/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceFileDir).to.equal('/root/Project1/source/dira')
-        expect(ret.mapFile).to.equal('/root/Project1/source/dira/fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal('/root/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceRoot).to.equal('/root/Project1')
-        expect(ret.projectPath).to.equal('/root/Project1')
+        ret = lb.getPaths(PU+'/Project1/source/dira/fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(PU+'/Project1/source/dira')
+        expect(ret.mapFile).to.equal(PU+'/Project1/source/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal(PU+'/Project1')
+        expect(ret.projectPath).to.equal(PU+'/Project1')
 
       it 'returns paths config with target & source paths set', ->
-        atom.project.setPaths(['/root/Project1', '/root/Project2'])
+        atom.project.setPaths([PU+'/Project1', PU+'/Project2'])
         config.babelSourcePath = '/source' # with dir prefix
         config.babelMapsPath ='mapspath' # and without
         config.babelTranspilePath = '/transpath'
-        lb = atom.packages.getActivePackage(LB).mainModule
-        ret = lb.getPaths('/root/Project1/source/dira/fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal('/root/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceFileDir).to.equal('/root/Project1/source/dira')
-        expect(ret.mapFile).to.equal('/root/Project1/mapspath/dira/fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal('/root/Project1/transpath/dira/fauxfile.js')
-        expect(ret.sourceRoot).to.equal('/root/Project1/source')
-        expect(ret.projectPath).to.equal('/root/Project1')
+        ret = lb.getPaths(PU+'/Project1/source/dira/fauxfile.js',config)
 
-        atom.project.removePath('/root/Project1')
-        atom.project.removePath('/root/Project2')
+        expect(ret.sourceFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(PU+'/Project1/source/dira')
+        expect(ret.mapFile).to.equal(PU+'/Project1/mapspath/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(PU+'/Project1/transpath/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal(PU+'/Project1/source')
+        expect(ret.projectPath).to.equal(PU+'/Project1')
 
     if process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
-        atom.project.setPaths(['c:\\root\\Project1', 'c:\\root\\Project2'])
+        atom.project.setPaths([PW+'\\Project1', PW+'\\Project2'])
 
-        lb = atom.packages.getActivePackage(LB).mainModule
-        ret = lb.getPaths('c:\\root\\Project1\\source\\dira\\fauxfile.js',config)
-        expect(ret.sourceFile).to.equal('c:\\root\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceFileDir).to.equal('c:\\root\\Project1\\source\\dira')
-        expect(ret.mapFile).to.equal('c:\\root\\Project1\\source\\dira\\fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal('c:\\root\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceRoot).to.equal('c:\\root\\Project1')
-        expect(ret.projectPath).to.equal('c:\\root\\Project1')
+        ret = lb.getPaths(PW+'\\Project1\\source\\dira\\fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(PW+'\\Project1\\source\\dira')
+        expect(ret.mapFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal(PW+'\\Project1')
+        expect(ret.projectPath).to.equal(PW+'\\Project1')
 
       it 'returns paths config with target & source paths set', ->
-        atom.project.setPaths(['c:\\root\\Project1', 'c:\\root\\Project2'])
+        atom.project.setPaths([PW+'\\Project1', PW+'\\Project2'])
         config.babelSourcePath = '\\source' # with dir prefix
         config.babelMapsPath ='mapspath' # and without
         config.babelTranspilePath = '\\transpath'
-        lb = atom.packages.getActivePackage(LB).mainModule
-        ret = lb.getPaths('c:\\root\\Project1\\source\\dira\\fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal('c:\\root\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceFileDir).to.equal('c:\\root\\Project1\\source\\dira')
-        expect(ret.mapFile).to.equal('c:\\root\\Project1\\mapspath\\dira\\fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal('c:\\root\\Project1\\transpath\\dira\\fauxfile.js')
-        expect(ret.sourceRoot).to.equal('c:\\root\\Project1\\source')
-        expect(ret.projectPath).to.equal('c:\\root\\Project1')
+        ret = lb.getPaths(PW+'\\Project1\\source\\dira\\fauxfile.js',config)
 
-#   # ----------------------------------------------------------------------------
+        expect(ret.sourceFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(PW+'\\Project1\\source\\dira')
+        expect(ret.mapFile).to.equal(PW+'\\Project1\\mapspath\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(PW+'\\Project1\\transpath\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal(PW+'\\Project1\\source')
+        expect(ret.projectPath).to.equal(PW+'\\Project1')
+
+  # ----------------------------------------------------------------------------
   describe ':getBabelOpts', ->
     it 'reads all babel options from babelrc files using internal scanner', ->
       fromDir = path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2')
@@ -95,33 +96,33 @@ describe 'language-babel', ->
       config.babelTranspilePath = toDir
       config.useInternalScanner = true
       atom.project.setPaths([__dirname])
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       # get paths to projects etc
       pathsTo = lb.getPaths(sourceFile, config)
       opts = lb.getBabelOptions(config, pathsTo)
       expect(opts.stage).to.equal(0)
-#
-#   # ----------------------------------------------------------------------------
+
+  # ----------------------------------------------------------------------------
   describe ':getBabelrc', ->
     toDir = path.resolve(__dirname, 'fixtures')
     fromDir = path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2')
     opts = {}
 
     it 'reads all babelrc files in chosen directories', ->
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       lb.getBabelrc(fromDir, toDir, opts)
       expect(opts.babelrc.length).to.equal(3)
 
     it 'merges babelrc files together', ->
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       lb.getBabelrc(fromDir, toDir, opts)
       expect(opts.stage).to.equal(0)
 
     it 'stops traversing at a breakConfig option', ->
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       lb.getBabelrc(fromDir, path.resolve('/'), opts )
       expect(opts.breakConfig).to.be.true
-#   # ----------------------------------------------------------------------------
+  # ----------------------------------------------------------------------------
   describe ':transpile', ->
     stubGetConfig = null
 
@@ -132,7 +133,7 @@ describe 'language-babel', ->
       notificationSpy = sinon.spy()
       disposable = atom.notifications.onDidAddNotification notificationSpy
       config.transpileOnSave = false
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
       lb.transpile('somefilename')
       expect(notificationSpy.spyCallCount).to.be.undefined
@@ -144,9 +145,9 @@ describe 'language-babel', ->
       config.babelSourcePath = 'fixtures'
       config.babelTranspilePath = 'fixtures'
       config.babelMapsPath = 'fixtures'
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile('/fake.js')
+      lb.transpile(__dirname+'/fake.js')
       expect(notificationSpy.callCount).to.equal(1)
       msg = notificationSpy.args[0][0].message # first call, first arg
       type = notificationSpy.args[0][0].type
@@ -160,12 +161,12 @@ describe 'language-babel', ->
       config.babelTranspilePath = 'fixtures'
       config.babelMapsPath = 'fixtures'
       config.stopAtProjectDirectory = true # avoid the breakConfig
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
       lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/bad.js'))
       #may take a while for the transpiler to run and call home
-      waitForNotify = () -> notificationSpy.called
-      waitsFor waitForNotify, ' ', 3000
+      waitsFor ->
+        notificationSpy.called
       runs ->
         expect(notificationSpy.callCount).to.equal(1)
         msg = notificationSpy.args[0][0].message # first call, first arg
@@ -180,12 +181,12 @@ describe 'language-babel', ->
       config.babelMapsPath = 'fixtures'
       config.stopAtProjectDirectory = true # avoid the breakConfig
       config.createTranspiledCode = false
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
       lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
       #may take a while for the transpiler to run and call home
-      waitForNotify = () -> notificationSpy.called
-      waitsFor waitForNotify, ' ', 3000
+      waitsFor ->
+        notificationSpy.called
       runs ->
         expect(notificationSpy.callCount).to.equal(2)
         msg = notificationSpy.args[0][0].message # first call, first arg
@@ -201,12 +202,12 @@ describe 'language-babel', ->
       config.babelTranspilePath = 'fixtures'
       config.babelMapsPath = 'fixtures'
       config.stopAtProjectDirectory = true # avoid the breakConfig
-      lb = atom.packages.getActivePackage(LB).mainModule
+
       stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
       lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/good.js'))
       #may take a while for the transpiler to run and call home
-      waitForNotify = () -> notificationSpy.called
-      waitsFor waitForNotify, ' ', 3000
+      waitsFor ->
+        notificationSpy.called
       runs ->
         expect(notificationSpy.callCount).to.equal(2)
         msg = notificationSpy.args[0][0].message # first call, first arg
