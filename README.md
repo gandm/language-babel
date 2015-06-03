@@ -1,7 +1,5 @@
 #language-babel
 
-[![BuildStatus](https://travis-ci.org/gandm/language-babel.svg?branch=master)]
-
 Language grammar for ES6 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
 [Babel](http://babeljs.io/) ( previously known as 6to5 ) support is baked in. Options in the
