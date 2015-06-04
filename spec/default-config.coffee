@@ -1,4 +1,4 @@
-module.exports = 
+module.exports =
   babelMapsAddUrl: true
   babelMapsPath: ''
   babelSourcePath: ''
@@ -14,6 +14,7 @@ module.exports =
   optionalTransformers: []
   stopAtProjectDirectory: false
   supressSourcePathMessages: false
+  supressTranspileOnSaveMessages: false
   transpileOnSave: true
   useInternalScanner: false
   whitelistTransformers: []

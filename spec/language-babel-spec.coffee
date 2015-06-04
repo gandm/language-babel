@@ -1,13 +1,17 @@
 chai = require '../node_modules/chai'
 expect = chai.expect
-sinon = require '../node_modules/sinon'
 fs = require 'fs-plus'
 path = require 'path'
 _ = require '../node_modules/lodash'
 defaultConfig = require './default-config'
 
 LB = 'language-babel'
-# atom setPaths checks if directories exist so we need some faux names
+# we use atom setPaths in this spec. setPaths checks if directories exist
+# thus:- setPaths(['/root/Project1']) may find /root but not /root/Project1
+# and sets the proj dir as /root rather than /root/Project1. If /root/Project1
+# were no found, atom sets the directory to the full name.
+# We need some prefix directory faux names for posix and windows to ensure
+# we always get a project name we set
 PU = '/dir199a99231'  # unlikely directory name UNIX
 PW = 'C:\\dir199a99231' # unlikely directory name windows
 
@@ -124,93 +128,164 @@ describe 'language-babel', ->
       expect(opts.breakConfig).to.be.true
   # ----------------------------------------------------------------------------
   describe ':transpile', ->
-    stubGetConfig = null
+    notificationSpy = null
+    notification = null
+    writeFileStub = null
 
+    beforeEach ->
+      notificationSpy = jasmine.createSpy 'notificationSpy'
+      notification = atom.notifications.onDidAddNotification notificationSpy
+      writeFileStub = spyOn(fs,'writeFileSync').andCallFake -> undefined
     afterEach ->
-      stubGetConfig?.restore()
+      notification.dispose()
 
-    it 'does nothing when not transpileOnSave', ->
-      notificationSpy = sinon.spy()
-      disposable = atom.notifications.onDidAddNotification notificationSpy
-      config.transpileOnSave = false
+    describe 'when transpileOnSave is false', ->
+      it 'does nothing', ->
+        config.transpileOnSave = false
 
-      stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile('somefilename')
-      expect(notificationSpy.spyCallCount).to.be.undefined
+        spyOn(lb, 'getConfig').andCallFake -> config
+        lb.transpile('somefilename')
+        expect(notificationSpy.callCount).to.equal(0)
+        expect(writeFileStub.callCount).to.equal(0)
 
-    it 'traps js files outside of the "babelSourcePath"', ->
-      notificationSpy = sinon.spy()
-      disposable = atom.notifications.onDidAddNotification notificationSpy
-      atom.project.setPaths([__dirname])
-      config.babelSourcePath = 'fixtures'
-      config.babelTranspilePath = 'fixtures'
-      config.babelMapsPath = 'fixtures'
+    describe 'When a source file is outside the "babelSourcePath" & supress msgs false', ->
+      it 'notifies sourcefile is not inside sourcepath', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
 
-      stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile(__dirname+'/fake.js')
-      expect(notificationSpy.callCount).to.equal(1)
-      msg = notificationSpy.args[0][0].message # first call, first arg
-      type = notificationSpy.args[0][0].type
-      expect(msg).to.match(/^Babel file is not inside/)
-
-    it 'calls the transpiler but gets an transpile error', ->
-      notificationSpy = sinon.spy()
-      disposable = atom.notifications.onDidAddNotification notificationSpy
-      atom.project.setPaths([__dirname])
-      config.babelSourcePath = 'fixtures'
-      config.babelTranspilePath = 'fixtures'
-      config.babelMapsPath = 'fixtures'
-      config.stopAtProjectDirectory = true # avoid the breakConfig
-
-      stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/bad.js'))
-      #may take a while for the transpiler to run and call home
-      waitsFor ->
-        notificationSpy.called
-      runs ->
+        spyOn(lb, 'getConfig').andCallFake -> config
+        lb.transpile(__dirname+'/fake.js')
         expect(notificationSpy.callCount).to.equal(1)
-        msg = notificationSpy.args[0][0].message # first call, first arg
-        expect(msg).to.match(/^Babel.*Transpiler Error/)
+        msg = notificationSpy.calls[0].args[0].message # first call, first arg
+        type = notificationSpy.calls[0].args[0].type
+        expect(msg).to.match(/^Babel file is not inside/)
+        expect(writeFileStub.callCount).to.equal(0)
 
-    it 'calls the transpiler and transpiles OK with no output configured', ->
-      notificationSpy = sinon.spy()
-      disposable = atom.notifications.onDidAddNotification notificationSpy
-      atom.project.setPaths([__dirname])
-      config.babelSourcePath = 'fixtures'
-      config.babelTranspilePath = 'fixtures'
-      config.babelMapsPath = 'fixtures'
-      config.stopAtProjectDirectory = true # avoid the breakConfig
-      config.createTranspiledCode = false
+    describe 'When a source file is outside the "babelSourcePath" & supress msgs true', ->
+      it 'exects no notifications', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.supressSourcePathMessages = true
 
-      stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
-      #may take a while for the transpiler to run and call home
-      waitsFor ->
-        notificationSpy.called
-      runs ->
-        expect(notificationSpy.callCount).to.equal(2)
-        msg = notificationSpy.args[0][0].message # first call, first arg
-        expect(msg).to.match(/^Babel.*Transpiler Success/)
-        msg = notificationSpy.args[1][0].message
-        expect(msg).to.match(/^No transpiled output configured/)
+        spyOn(lb, 'getConfig').andCallFake -> config
+        lb.transpile(__dirname+'/fake.js')
+        expect(notificationSpy.callCount).to.equal(0)
+        expect(writeFileStub.callCount).to.equal(0)
 
-    it 'calls the transpiler and transpiles OK but would overwrite itself', ->
-      notificationSpy = sinon.spy()
-      disposable = atom.notifications.onDidAddNotification notificationSpy
-      atom.project.setPaths([__dirname])
-      config.babelSourcePath = 'fixtures'
-      config.babelTranspilePath = 'fixtures'
-      config.babelMapsPath = 'fixtures'
-      config.stopAtProjectDirectory = true # avoid the breakConfig
+    describe 'When a js files is transpiled and gets an error', ->
+      it 'it issues a notification error message', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.stopAtProjectDirectory = true # avoid the breakConfig
 
-      stubGetConfig = sinon.stub(lb, 'getConfig').returns(config)
-      lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/good.js'))
-      #may take a while for the transpiler to run and call home
-      waitsFor ->
-        notificationSpy.called
-      runs ->
-        expect(notificationSpy.callCount).to.equal(2)
-        msg = notificationSpy.args[0][0].message # first call, first arg
-        expect(msg).to.match(/^Babel.*Transpiler Success/)
-        msg = notificationSpy.args[1][0].message
-        expect(msg).to.match(/^Transpiled file would overwrite source file/)
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/bad.js'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          notificationSpy.callCount
+        runs ->
+          expect(notificationSpy.callCount).to.equal(1)
+          msg = notificationSpy.calls[0].args[0].message
+          expect(msg).to.match(/^Babel.*Transpiler Error/)
+          expect(writeFileStub.callCount).to.equal(0)
+
+    describe 'When a js file saved but no output is set', ->
+      it 'calls the transpiler but doesnt save output', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.stopAtProjectDirectory = true # avoid the breakConfig
+        config.createTranspiledCode = false
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          notificationSpy.callCount
+        runs ->
+          expect(notificationSpy.callCount).to.equal(2)
+          msg = notificationSpy.calls[0].args[0].message
+          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          msg = notificationSpy.calls[1].args[0].message
+          expect(msg).to.match(/^No transpiled output configured/)
+          expect(writeFileStub.callCount).to.equal(0)
+
+
+    describe 'When a js file saved but no transpile path is set', ->
+      it 'calls the transpiler and transpiles OK but doesnt save and issues msg', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.stopAtProjectDirectory = true # avoid the breakConfig
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/good.js'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          notificationSpy.callCount > 1
+        runs ->
+          expect(notificationSpy.callCount).to.equal(2)
+          msg = notificationSpy.calls[0].args[0].message # first call, first arg
+          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          msg = notificationSpy.calls[1].args[0].message
+          expect(msg).to.match(/^Transpiled file would overwrite source file/)
+          expect(writeFileStub.callCount).to.equal(0)
+
+    describe 'When a jsx file saved,transpile path is set, source maps enabled', ->
+      it 'calls the transpiler and transpiles OK, saves as .js and issues msg', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures-transpiled'
+        config.babelMapsPath = 'fixtures-maps'
+        config.createMap = true
+        config.stopAtProjectDirectory = true # avoid the breakConfig
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          writeFileStub.callCount
+        runs ->
+          expect(notificationSpy.callCount).to.equal(1)
+          msg = notificationSpy.calls[0].args[0].message # first call, first arg
+          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          expect(writeFileStub.callCount).to.equal(2)
+          savedFilename = writeFileStub.calls[0].args[0]
+          expectedFileName = path.resolve(__dirname, 'fixtures-transpiled/dira/dira.1/dira.2/react.js')
+          expect(savedFilename).to.equal(expectedFileName)
+          savedFilename = writeFileStub.calls[1].args[0]
+          expectedFileName = path.resolve(__dirname, 'fixtures-maps/dira/dira.1/dira.2/react.js.map')
+          expect(savedFilename).to.equal(expectedFileName)
+
+    describe 'When a jsx file saved,transpile path is set, source maps enabled, success supressed', ->
+      it 'calls the transpiler and transpiles OK, saves as .js and issues msg', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures-transpiled'
+        config.babelMapsPath = 'fixtures-maps'
+        config.createMap = true
+        config.supressTranspileOnSaveMessages = true
+        config.stopAtProjectDirectory = true # avoid the breakConfig
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          writeFileStub.callCount
+        runs ->
+          expect(notificationSpy.callCount).to.equal(0)
+          expect(writeFileStub.callCount).to.equal(2)
+          savedFilename = writeFileStub.calls[0].args[0]
+          expectedFileName = path.resolve(__dirname, 'fixtures-transpiled/dira/dira.1/dira.2/react.js')
+          expect(savedFilename).to.equal(expectedFileName)
+          savedFilename = writeFileStub.calls[1].args[0]
+          expectedFileName = path.resolve(__dirname, 'fixtures-maps/dira/dira.1/dira.2/react.js.map')
+          expect(savedFilename).to.equal(expectedFileName)
