@@ -1,4 +1,7 @@
-### TDB
+### 7.0.0
+  - Errors that reutrn row,column cause editor to jump to that position
+  - Added option button to see babel options. Use internal Scanner for most benefit.
+  - Added option to suppress transpile success messages
   - Added specs
   - Use Atom's fs-plus as replacement for nodes fs  
   - Removed dependency on mkdirp as fs-plus uses it anyway

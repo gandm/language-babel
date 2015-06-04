@@ -11,6 +11,11 @@ module.exports = BabelTranspile =
       type: 'boolean'
       default: true
       order: 10
+    supressTranspileOnSaveMessages:
+      description: 'Supress notification messages on each save'
+      type: 'boolean'
+      default: false
+      order: 12
     useInternalScanner:
       type: 'boolean'
       default: false
@@ -130,8 +135,9 @@ module.exports = BabelTranspile =
     if not pathIsInside(pathsTo.sourceFile, pathsTo.sourceRoot)
       if not config.supressSourcePathMessages
         atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
-          { dismissable: false, detail: "No transpiled code output for file \n#{pathsTo.sourceFile}
-                                        \n\nTo supress these 'invalid source path' messages use language-babel package settings" }
+          dismissable: false
+          detail: "No transpiled code output for file \n#{pathsTo.sourceFile}
+            \n\nTo supress these 'invalid source path' messages use language-babel package settings"
       return
 
     babelOptions = @getBabelOptions(config, pathsTo)
@@ -142,18 +148,34 @@ module.exports = BabelTranspile =
     @babel ?= require('../node_modules/babel-core')
     @babel.transformFile pathsTo.sourceFile, babelOptions, (err,result) =>
       if err
-        atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
-          { dismissable: true, detail: err.message}
+        notification = atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
+          dismissable: true
+          detail: err.message
+          buttons: [{
+            text: 'View Transpiler Options',
+            onDidClick: =>
+              @displayTranspilerOptions(babelOptions, config)
+            }]
+        # if we have a line/col syntax error jump to the position
+        if err.loc? and textEditor? then textEditor.setCursorBufferPosition [err.loc.line-1, err.loc.column-1]
       else
-        atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
-          { detail: pathsTo.sourceFile }
+        if not config.supressTranspileOnSaveMessages
+          notification = atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
+            detail: pathsTo.sourceFile
+            buttons: [{
+              text: 'View Transpiler Options',
+              onDidClick: =>
+                @displayTranspilerOptions(babelOptions, config)
+                notification.dismiss()
+              }]
 
         if not config.createTranspiledCode
           atom.notifications.addInfo 'No transpiled output configured'
           return
         if pathsTo.sourceFile is pathsTo.transpiledFile
           atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
-            { dismissable: true, detail: pathsTo.sourceFile}
+            dismissable: true
+            detail: pathsTo.sourceFile
           return
 
         # write code and maps
@@ -189,8 +211,6 @@ module.exports = BabelTranspile =
           xssiProtection = ')]}\n'
           fs.writeFileSync(pathsTo.mapFile, xssiProtection + JSON.stringify( mapJson, null, ' ' ) )
 
-  # get configuration for language-babel
-  getConfig: -> atom.config.get('language-babel')
 
   # calculate babel options based upon package config, babelrc files and
   # whether internalScanner is used.
@@ -251,24 +271,14 @@ module.exports = BabelTranspile =
       @getBabelrc( path.dirname(fromDir), toDir, opts)
     return opts
 
-  # merge babelrc options as per babel code in
-  # https://github.com/babel/babel/blob/master/src/babel/helpers/merge.js
-  mergeBabelrc: (dest, src) ->
-    merge dest, src, (a,b) =>
-      if (Array.isArray(a))
-        c = a.slice(0)
-        for k, v of b
-          if (a.indexOf(v) < 0)
-            c.push(v)
-        return c
+  # get configuration for language-babel
+  getConfig: -> atom.config.get('language-babel')
 
   # calculate absoulte paths of babel source, target js and maps files
   # based upon the project directory containing the source
   # and the roots of source, transpile path and maps paths defined in config
   getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath(sourceFile)
-    projPaths = atom.project.getPaths()
-    projDirs  = atom.project.getDirectories()
     absProjectPath = path.normalize(projectContainingSource[0])
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)
@@ -289,3 +299,31 @@ module.exports = BabelTranspile =
     transpiledFile: absTranspiledFile
     sourceRoot: absSourceRoot
     projectPath: absProjectPath
+
+  # merge babelrc options as per babel code in
+  # https://github.com/babel/babel/blob/master/src/babel/helpers/merge.js
+  mergeBabelrc: (dest, src) ->
+    merge dest, src, (a,b) =>
+      if (Array.isArray(a))
+        c = a.slice(0)
+        for k, v of b
+          if (a.indexOf(v) < 0)
+            c.push(v)
+        return c
+
+  #verbose notification of transpiler options by using notify
+  displayTranspilerOptions: (options, config) ->
+    if config.useInternalScanner
+      atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Options",
+        dismissable: true
+        detail:
+          'Internal Scanner always show breakConfig as true\n' +
+          JSON.stringify options, null, ' '
+    else
+      atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Options",
+        dismissable: true
+        detail:
+          'If you need to know the .babelrc files read and\n' +
+          'the settings used turn on the internal scanner.\n' +
+          'The package settings are as follows:-\n' +
+          JSON.stringify options, null, ' '
