@@ -61,6 +61,21 @@ describe 'language-babel', ->
         expect(ret.sourceRoot).to.equal(PU+'/Project1/source')
         expect(ret.projectPath).to.equal(PU+'/Project1')
 
+      it 'returns correct paths with project in root directory', ->
+        atom.project.setPaths(['/'])
+        config.babelSourcePath = 'source'
+        config.babelMapsPath ='mapspath'
+        config.babelTranspilePath = 'transpath'
+
+        ret = lb.getPaths('/source/dira/fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal('/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal('/source/dira')
+        expect(ret.mapFile).to.equal('/mapspath/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal('/transpath/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal('/source')
+        expect(ret.projectPath).to.equal('/')
+
     if process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
         atom.project.setPaths([PW+'\\Project1', PW+'\\Project2'])
@@ -88,6 +103,21 @@ describe 'language-babel', ->
         expect(ret.transpiledFile).to.equal(PW+'\\Project1\\transpath\\dira\\fauxfile.js')
         expect(ret.sourceRoot).to.equal(PW+'\\Project1\\source')
         expect(ret.projectPath).to.equal(PW+'\\Project1')
+
+      it 'returns correct paths with project in root directory', ->
+        atom.project.setPaths(['C:\\'])
+        config.babelSourcePath = 'source'
+        config.babelMapsPath ='mapspath'
+        config.babelTranspilePath = 'transpath'
+
+        ret = lb.getPaths('C:\\source\\dira\\fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal('C:\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal('C:\\source\\dira')
+        expect(ret.mapFile).to.equal('C:\\mapspath\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal('C:\\transpath\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal('C:\\source')
+        expect(ret.projectPath).to.equal('C:\\')
 
   # ----------------------------------------------------------------------------
   describe ':getBabelOpts', ->

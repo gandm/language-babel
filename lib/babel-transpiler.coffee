@@ -279,7 +279,11 @@ module.exports = BabelTranspile =
   # and the roots of source, transpile path and maps paths defined in config
   getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath(sourceFile)
-    absProjectPath = path.normalize(projectContainingSource[0])
+    # if a project is in the root directory atom passes back a null for
+    # the project path. We need the real root
+    if projectContainingSource[0] is null
+      absProjectPath = path.parse(sourceFile).root
+    else absProjectPath = path.normalize(projectContainingSource[0])
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)
     relMapsPath = path.normalize(config.babelMapsPath)
