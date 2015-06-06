@@ -1,3 +1,7 @@
+### 0.7.1
+  - Fix bug where project is in root directory
+  - Add new screen Image
+  
 ### 0.7.0
   - Errors that return row,column cause editor to jump to that position
   - Added option button to see babel options. Use internal Scanner for most benefit.

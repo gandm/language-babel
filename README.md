@@ -21,15 +21,11 @@ It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) a
 
 See the section *"Use Cases"*, *"Package Settings"* and *"Using .babelrc Files"* for more information on Babel configuration options.
 
-##Screen Images
+##Screen Image
 
 This shows language babel using the default atom-dark color scheme.
 
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/OPZwVv8.gif)
-
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/bMXR0i1.gif)
-
-![Image inserted by Atom editor package auto-host-markdown-image](http://i.imgur.com/TAi2cAk.gif)
+![Image is in a closed issue](https://cloud.githubusercontent.com/assets/2313237/8019642/47bcc8e0-0c50-11e5-8975-ec067315c662.png)
 
 ##Use Cases
 * ####Pure JavaScript with no EcmaScript 2015 requirements.
