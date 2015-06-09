@@ -1,6 +1,9 @@
+### TBD
+  - Use Chai ^3.0.0
+
 ### 0.7.2
   - Added dependency badge and small changes to readme.
-  
+
 ### 0.7.1
   - Fix bug where project is in root directory
   - Add new screen Image
