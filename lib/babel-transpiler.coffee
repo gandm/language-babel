@@ -307,7 +307,7 @@ module.exports = BabelTranspile =
   # merge babelrc options as per babel code in
   # https://github.com/babel/babel/blob/master/src/babel/helpers/merge.js
   mergeBabelrc: (dest, src) ->
-    merge dest, src, (a,b) =>
+    merge dest, src, (a,b) ->
       if (Array.isArray(a))
         c = a.slice(0)
         for k, v of b
