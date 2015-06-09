@@ -1,7 +1,7 @@
 #language-babel
 
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
-[![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel.svg)
+[![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
 Language grammar for ES2015 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
@@ -115,7 +115,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 For a verbose description continue reading......
 
 #####Default with no Internal Scanner  
-  Unless the `Internal Scanner` option described below is enabled babel-core will read all `.babelrc` files staring from the directory holding the project source file and continuing through all directories up to the root of the file system. The contents of these files are merged by babel-core. If a file containing
+  Unless the `Internal Scanner` option described below is enabled babel-core will read all `.babelrc` files starting from the directory holding the project source file and continuing through all directories up to the root of the file system. The contents of these files are merged by babel-core. If a file containing
   ```
 {
   "breakConfig": true
