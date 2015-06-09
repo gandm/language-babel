@@ -1,6 +1,7 @@
 #language-babel
 
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
+[![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel.svg)
 
 Language grammar for ES2015 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
@@ -103,7 +104,18 @@ By using the ATOM settings panel for language-babel you can control many of the 
   Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
 
 ###Using .babelrc Files
-  babelrc files are described on the babel website [here](http://babeljs.io/docs/usage/babelrc/) Unless the `Internal Scanner` option described below is enabled babel-core will read all `.babelrc` files staring from the directory holding the project source file and continuing through all directories up to the root of the file system. The contents of these files are merged by babel-core. If a file containing
+
+#####TL;DR
+`Internal Scanner Off` Language-babel options are global overrides to `.babelrc` files. Language-Babel doesn't know what options were set in `.babelrc` files.
+
+`Internal Scanner On` Language-babel options are global defaults and are overridden with `.babelrc` files. Language-babel is aware of the eventual options chosen.
+  
+`.babelrc` files are described on the babel website [here](http://babeljs.io/docs/usage/babelrc/)
+
+For a verbose description continue reading......
+
+#####Default with no Internal Scanner  
+  Unless the `Internal Scanner` option described below is enabled babel-core will read all `.babelrc` files staring from the directory holding the project source file and continuing through all directories up to the root of the file system. The contents of these files are merged by babel-core. If a file containing
   ```
 {
   "breakConfig": true
@@ -111,7 +123,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
   ```
   is found the traversal stops. This is the standard babel behaviour but from language-babel's api viewpoint it is not possible to know what options were used and if the traversal was stopped by a `breakConfig`. Because language-babel cannot merge its options after the process described above, it must pass any transpilation options into the babel-core before the `.babelrc` files are read. Thus language-babel options may not be overridden by `.babelrc` files and become global overrides. This is particularly irksome with flags that always have options such as `Babel Stage` and `Module Loader`. Also, it is advisable to clear the `Create Map` option mappping option as language-babel cannot know what mapping options were set in `.babelrc` files. We also unaware whether a file was `ignored` in `.babelrc` or whether `sourceMaps` were set. Because of these multiple problems it is recommended to use the `Use Internal Scanner` option described below.
 
-#####Using the Internal Scanner
+  #####Using the Internal Scanner
 
   To avoid the issues described above a `Use Internal Scanner` option can be enabled that effectively replaces the babel-core scanner with one provided by language-babel. language-babel tries to mimic the process that babel uses. When a source file that is a candidate for transpilation is saved a `.babelrc` file is looked for in the same directory as the source file. If found, it's configuration is read. Language-babel then proceeds to traverse the directories above this one looking for further `.babelrc` files and merging their contents until either the root of the file system is found or the project root is found (this last option is a deviation from the norm and must be enabled with the `Stop At Project Directory` flag). If no `breakConfig` was found the options are then further merged with the language-babel's package configuration. Where the same option is in both the merged `.babelrc` files and language-babels config the `.babrlrc` files option takes precedence. The internal scanner is aware that maps are set to `truthy`, `inline` or `both` and can be saved accordingly. It is also aware that a file is `ignored` and shouldn't have maps saved for it. Thus the language-babel configuration options may be considered as global defaults, with `.babelrc` files applying changes down the directory tree.
 
