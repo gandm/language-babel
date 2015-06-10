@@ -1,5 +1,6 @@
-### TBD
+### 0.7.3
   - Use Chai ^3.0.0
+  - Fixes #10 - jsx tag punctuation incorrect
 
 ### 0.7.2
   - Added dependency badge and small changes to readme.
