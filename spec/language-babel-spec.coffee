@@ -24,7 +24,7 @@ describe 'language-babel', ->
     config = _.clone defaultConfig
 
     runs ->
-      lb = atom.packages.getActivePackage(LB).mainModule
+      lb = atom.packages.getActivePackage(LB).mainModule.transpiler
   # ----------------------------------------------------------------------------
   describe 'Reading real config', ->
     it 'should read all possible configuration keys', ->
