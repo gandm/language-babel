@@ -8,16 +8,6 @@ module.exports =
     type: 'boolean'
     default: false
     order: 12
-  useInternalScanner:
-    type: 'boolean'
-    default: false
-    description: 'Use internal scanner for .babelrc files'
-    order: 14
-  stopAtProjectDirectory:
-    description: 'Stop .babelrc recursion at Project Root. Needs Internal Scanner'
-    type: 'boolean'
-    default: false
-    order: 16
   createTranspiledCode:
     type: 'boolean'
     default: false
