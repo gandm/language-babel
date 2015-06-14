@@ -1,3 +1,6 @@
+### 0.7.4
+  - Future deprecation of internal scanner.
+
 ### 0.7.3
   - Use Chai ^3.0.0
   - Fixes #10 - jsx tag punctuation incorrect

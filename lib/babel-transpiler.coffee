@@ -327,7 +327,5 @@ module.exports = BabelTranspile =
       atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Options",
         dismissable: true
         detail:
-          'If you need to know the .babelrc files read and\n' +
-          'the settings used turn on the internal scanner.\n' +
           'The package settings are as follows:-\n' +
           JSON.stringify options, null, ' '
