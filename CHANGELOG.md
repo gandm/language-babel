@@ -1,3 +1,6 @@
+### 0.8.0
+  - Removed Internal Scanner
+
 ### 0.7.4
   - Future deprecation of internal scanner.
 

@@ -24,7 +24,7 @@ describe 'language-babel', ->
     config = _.clone defaultConfig
 
     runs ->
-      lb = atom.packages.getActivePackage(LB).mainModule
+      lb = atom.packages.getActivePackage(LB).mainModule.transpiler
   # ----------------------------------------------------------------------------
   describe 'Reading real config', ->
     it 'should read all possible configuration keys', ->
@@ -118,44 +118,6 @@ describe 'language-babel', ->
         expect(ret.transpiledFile).to.equal('C:\\transpath\\dira\\fauxfile.js')
         expect(ret.sourceRoot).to.equal('C:\\source')
         expect(ret.projectPath).to.equal('C:\\')
-
-  # ----------------------------------------------------------------------------
-  describe ':getBabelOpts', ->
-    it 'reads all babel options from babelrc files using internal scanner', ->
-      fromDir = path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2')
-      toDir = path.resolve(__dirname, 'fixtures')
-      sourceFile = path.resolve(fromDir, 'faux.js')
-      config.babelSourcePath = toDir
-      config.babelMapsPath = toDir
-      config.babelTranspilePath = toDir
-      config.useInternalScanner = true
-      atom.project.setPaths([__dirname])
-
-      # get paths to projects etc
-      pathsTo = lb.getPaths(sourceFile, config)
-      opts = lb.getBabelOptions(config, pathsTo)
-      expect(opts.stage).to.equal(0)
-
-  # ----------------------------------------------------------------------------
-  describe ':getBabelrc', ->
-    toDir = path.resolve(__dirname, 'fixtures')
-    fromDir = path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2')
-    opts = {}
-
-    it 'reads all babelrc files in chosen directories', ->
-
-      lb.getBabelrc(fromDir, toDir, opts)
-      expect(opts.babelrc.length).to.equal(3)
-
-    it 'merges babelrc files together', ->
-
-      lb.getBabelrc(fromDir, toDir, opts)
-      expect(opts.stage).to.equal(0)
-
-    it 'stops traversing at a breakConfig option', ->
-
-      lb.getBabelrc(fromDir, path.resolve('/'), opts )
-      expect(opts.breakConfig).to.be.true
   # ----------------------------------------------------------------------------
   describe ':transpile', ->
     notificationSpy = null
@@ -276,7 +238,6 @@ describe 'language-babel', ->
         config.babelTranspilePath = 'fixtures-transpiled'
         config.babelMapsPath = 'fixtures-maps'
         config.createMap = true
-        config.stopAtProjectDirectory = true # avoid the breakConfig
 
         spyOn(lb, 'getConfig').andCallFake ->config
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
@@ -303,7 +264,6 @@ describe 'language-babel', ->
         config.babelMapsPath = 'fixtures-maps'
         config.createMap = true
         config.supressTranspileOnSaveMessages = true
-        config.stopAtProjectDirectory = true # avoid the breakConfig
 
         spyOn(lb, 'getConfig').andCallFake ->config
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))

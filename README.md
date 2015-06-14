@@ -5,8 +5,8 @@
 
 Language grammar for ES2015 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
-[Babel](http://babeljs.io/) ( previously known as 6to5 ) support is baked in. Options in the
-language-babel settings allow for compilation on the fly, plus full transpiler control and output.
+[Babel](http://babeljs.io/) transpiler support is baked in. Options in the
+language-babel settings allow for compilation on save, plus full transpiler control and output.
 
 ##Installation
 
@@ -14,19 +14,13 @@ Install via ATOM or by using `apm install language-babel`
 
 ##Usage
 
-By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to highlight text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited.
+By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited.
 
 By default the package also supports the [Babel](http://babeljs.io/) transpiler. Out of the box any file saved will be transpiled and any errors and/or successful completions notified in the ATOM workspace.
 
-It is most likely many users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, .babelrc files and the setting of most Babel options.
+It is likely users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, .babelrc files and the setting of most Babel options.
 
-See the section *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
-
-##Screen Image
-
-This shows language babel using the default atom-dark color scheme.
-
-![Image is in a closed issue](https://cloud.githubusercontent.com/assets/2313237/8019642/47bcc8e0-0c50-11e5-8975-ec067315c662.png)
+See the sections *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
 
 ##Use Cases
 * ####Pure JavaScript with no EcmaScript 2015 requirements.
@@ -40,7 +34,7 @@ This shows language babel using the default atom-dark color scheme.
   If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
 
 * ####Mixed Javascript and Babel EcmaScript 2015 environment.
-   Keep pure `.js`  files in a separate directory tree from your Babel ES2015 files. Configure `Babel Source Paths` to point to the ES2015 file directory tree and the other `paths` to where output should be generated. Turn on `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
+   Keep pure `.js`  files in a separate directory tree from your Babel ES2015 files and/or use `.babelrc ignore`/`.babelrc only` flags.  Configure `Babel Source Paths` to point to the ES2015 file directory tree and the other `paths` to where output should be generated. Turn on `Supress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above.
 
 ##Package Settings
 
@@ -52,17 +46,13 @@ By using the ATOM settings panel for language-babel you can control many of the 
 * ####Supress Transpile On Save Messages
   Suppress all successful save messages. Errors are still notified.
 
-* ####Use Internal Scanner
-  Please do not use. This will be deprecated as the Babel author would prefer to use standard API's
-
-* ####Stop at Project directory
-  By default babel-core reads all directories from the source file to the root of the filesystem looking for `.babelrc` files. This flag overrides this behaviour to stop the traversal at the project root folder. This requires the `Internal Scanner` option be enabled. This will be deprecated.
-
 * ####Create Transpiled Code
   If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
 
 * ####Create Map
   A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
+
+  If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then either turn this option off.
 
 * ####Babel Maps Add Url
   If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated Javascript file.  
@@ -87,7 +77,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
   When enabled any target directories that do not exist will be created prior to a transpilation.
 
 * ####Babel Stage
-  The ECMA standards stage to enforce. The default is 2. See [Babel Stages](http://babeljs.io/docs/usage/experimental/) for more information.
+  The ECMA standards stage to enforce. See [Babel Stages](http://babeljs.io/docs/usage/experimental/) for more information.
 
 * #### External Helpers
   When enabled transpiled output will not include babel helper code.   Please refer to [Babel External Helpers](http://babeljs.io/docs/advanced/external-helpers/) for further information.
@@ -98,7 +88,6 @@ By using the ATOM settings panel for language-babel you can control many of the 
 * ####Transformer Options
   The remaining transformer options may contain comma seperated lists of transformer names.
   Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
-
 
 ###About
 
