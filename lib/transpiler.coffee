@@ -52,23 +52,14 @@ class Transpiler
         if config.createTargetDirectories
           fs.makeTreeSync( path.parse( pathTo.transpiledFile).dir)
 
-        # add source map url if not inline and file isn't ignored
-        if config.babelMapsAddUrl and
-        babelOptions.sourceMaps not in ['inline','both'] and
-        babelOptions.sourceMaps and
-        not result.ignored
+        # add source map url to code if file isn't ignored
+        if config.babelMapsAddUrl and not result.ignored
           result.code = result.code + '\n' + '//# sourceMappingURL='+pathTo.mapFile
 
         fs.writeFileSync pathTo.transpiledFile, result.code
 
-        # is this file matched by an ignore option flag don't save any maps
-        if result.ignored
-          return
-
-        # write source map if not inline
-        if config.createMap and
-        babelOptions.sourceMaps not in ['inline','both'] and
-        babelOptions.sourceMaps
+        # write source map asked to and not ignored
+        if config.createMap and not result.ignored
           if config.createTargetDirectories
             fs.makeTreeSync(path.parse(pathTo.mapFile).dir)
           mapJson =
