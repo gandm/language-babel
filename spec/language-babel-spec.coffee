@@ -2,7 +2,6 @@ chai = require '../node_modules/chai'
 expect = chai.expect
 fs = require 'fs-plus'
 path = require 'path'
-_ = require '../node_modules/lodash'
 defaultConfig = require './default-config'
 
 LB = 'language-babel'
@@ -21,7 +20,7 @@ describe 'language-babel', ->
   beforeEach ->
     waitsForPromise ->
       atom.packages.activatePackage(LB)
-    config = _.clone defaultConfig
+    config = JSON.parse JSON.stringify defaultConfig
 
     runs ->
       lb = atom.packages.getActivePackage(LB).mainModule.transpiler
