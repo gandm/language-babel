@@ -1,3 +1,6 @@
+### 0.8.1
+  - extend suppress message flag to include no output config'd messages
+  
 ### 0.8.0
   - Removed Internal Scanner
 

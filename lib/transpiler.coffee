@@ -40,7 +40,8 @@ class Transpiler
             detail: pathTo.sourceFile
 
         if not config.createTranspiledCode
-          atom.notifications.addInfo 'No transpiled output configured'
+          if not config.supressTranspileOnSaveMessages
+            atom.notifications.addInfo 'No transpiled output configured'
           return
         if pathTo.sourceFile is pathTo.transpiledFile
           atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
