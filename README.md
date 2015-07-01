@@ -52,7 +52,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 * ####Create Map
   A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
 
-  If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then either turn this option off.
+  If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then turn this option off.
 
 * ####Babel Maps Add Url
   If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated Javascript file.  
