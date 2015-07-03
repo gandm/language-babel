@@ -80,10 +80,12 @@ class Transpiler
 
   # modifies config options for changed or deprecated configs
   deprecateConfig: ->
-    atom.config.set 'language-babel.suppressTranspileOnSaveMessages',
-      atom.config.get('language-babel.supressTranspileOnSaveMessages')
-    atom.config.set 'language-babel.suppressSourcePathMessages',
-      atom.config.get('language-babel.supressSourcePathMessages')
+    if atom.config.get('language-babel.supressTranspileOnSaveMessages')?
+      atom.config.set 'language-babel.suppressTranspileOnSaveMessages',
+        atom.config.get('language-babel.supressTranspileOnSaveMessages')
+    if atom.config.get('language-babel.supressSourcePathMessages')?
+      atom.config.set 'language-babel.suppressSourcePathMessages',
+        atom.config.get('language-babel.supressSourcePathMessages')
     atom.config.unset('language-babel.supressTranspileOnSaveMessages')
     atom.config.unset('language-babel.supressSourcePathMessages')
     atom.config.unset('language-babel.useInternalScanner')

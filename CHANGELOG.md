@@ -1,3 +1,6 @@
+### 0.9.1
+  - Bad deprecation code looses config settings
+
 ### 0.9.0
   - Added new flag `disableWhenNoBabelrcFileInPath` to stop transpiles in absence of `.babelrc` fixes #15
   - Corrected misspelling of suppress - about time!
