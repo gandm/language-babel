@@ -139,7 +139,7 @@ describe 'language-babel', ->
         expect(notificationSpy.callCount).to.equal(0)
         expect(writeFileStub.callCount).to.equal(0)
 
-    describe 'When a source file is outside the "babelSourcePath" & supress msgs false', ->
+    describe 'When a source file is outside the "babelSourcePath" & suppress msgs false', ->
       it 'notifies sourcefile is not inside sourcepath', ->
         atom.project.setPaths([__dirname])
         config.babelSourcePath = 'fixtures'
@@ -154,13 +154,13 @@ describe 'language-babel', ->
         expect(msg).to.match(/^Babel file is not inside/)
         expect(writeFileStub.callCount).to.equal(0)
 
-    describe 'When a source file is outside the "babelSourcePath" & supress msgs true', ->
+    describe 'When a source file is outside the "babelSourcePath" & suppress msgs true', ->
       it 'exects no notifications', ->
         atom.project.setPaths([__dirname])
         config.babelSourcePath = 'fixtures'
         config.babelTranspilePath = 'fixtures'
         config.babelMapsPath = 'fixtures'
-        config.supressSourcePathMessages = true
+        config.suppressSourcePathMessages = true
 
         spyOn(lb, 'getConfig').andCallFake -> config
         lb.transpile(__dirname+'/fake.js')
@@ -173,7 +173,6 @@ describe 'language-babel', ->
         config.babelSourcePath = 'fixtures'
         config.babelTranspilePath = 'fixtures'
         config.babelMapsPath = 'fixtures'
-        config.stopAtProjectDirectory = true # avoid the breakConfig
 
         spyOn(lb, 'getConfig').andCallFake ->config
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/bad.js'))
@@ -192,7 +191,6 @@ describe 'language-babel', ->
         config.babelSourcePath = 'fixtures'
         config.babelTranspilePath = 'fixtures'
         config.babelMapsPath = 'fixtures'
-        config.stopAtProjectDirectory = true # avoid the breakConfig
         config.createTranspiledCode = false
 
         spyOn(lb, 'getConfig').andCallFake ->config
@@ -215,7 +213,6 @@ describe 'language-babel', ->
         config.babelSourcePath = 'fixtures'
         config.babelTranspilePath = 'fixtures'
         config.babelMapsPath = 'fixtures'
-        config.stopAtProjectDirectory = true # avoid the breakConfig
 
         spyOn(lb, 'getConfig').andCallFake ->config
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/good.js'))
@@ -255,14 +252,14 @@ describe 'language-babel', ->
           expectedFileName = path.resolve(__dirname, 'fixtures-maps/dira/dira.1/dira.2/react.js.map')
           expect(savedFilename).to.equal(expectedFileName)
 
-    describe 'When a jsx file saved,transpile path is set, source maps enabled, success supressed', ->
+    describe 'When a jsx file saved,transpile path is set, source maps enabled, success suppressed', ->
       it 'calls the transpiler and transpiles OK, saves as .js and issues msg', ->
         atom.project.setPaths([__dirname])
         config.babelSourcePath = 'fixtures'
         config.babelTranspilePath = 'fixtures-transpiled'
         config.babelMapsPath = 'fixtures-maps'
         config.createMap = true
-        config.supressTranspileOnSaveMessages = true
+        config.suppressTranspileOnSaveMessages = true
 
         spyOn(lb, 'getConfig').andCallFake ->config
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
@@ -278,3 +275,39 @@ describe 'language-babel', ->
           savedFilename = writeFileStub.calls[1].args[0]
           expectedFileName = path.resolve(__dirname, 'fixtures-maps/dira/dira.1/dira.2/react.js.map')
           expect(savedFilename).to.equal(expectedFileName)
+
+    describe 'When a js file saved , babelrc in path and flag disableWhenNoBabelrcFileInPath is set', ->
+      it 'calls the transpiler', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.createTranspiledCode = false
+        config.disableWhenNoBabelrcFileInPath = true
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/good.js'))
+        #may take a while for the transpiler to run and call home
+        waitsFor ->
+          notificationSpy.callCount
+        runs ->
+          expect(notificationSpy.callCount).to.equal(2)
+          msg = notificationSpy.calls[0].args[0].message
+          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          msg = notificationSpy.calls[1].args[0].message
+          expect(msg).to.match(/^No transpiled output configured/)
+          expect(writeFileStub.callCount).to.equal(0)
+
+    describe 'When a js file saved , babelrc in not in path and flag disableWhenNoBabelrcFileInPath is set', ->
+      it 'does nothing', ->
+        atom.project.setPaths([__dirname])
+        config.babelSourcePath = 'fixtures'
+        config.babelTranspilePath = 'fixtures'
+        config.babelMapsPath = 'fixtures'
+        config.createTranspiledCode = false
+        config.disableWhenNoBabelrcFileInPath = true
+
+        spyOn(lb, 'getConfig').andCallFake ->config
+        lb.transpile(path.resolve(__dirname, 'fixtures/dirb/good.js'))
+        expect(notificationSpy.callCount).to.equal(0)
+        expect(writeFileStub.callCount).to.equal(0)
