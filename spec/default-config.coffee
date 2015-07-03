@@ -9,8 +9,9 @@ module.exports =
   createMap: false
   createTargetDirectories: false
   createTranspiledCode: true
-  supressSourcePathMessages: false
-  supressTranspileOnSaveMessages: false
+  disableWhenNoBabelrcFileInPath: false
+  suppressSourcePathMessages: false
+  suppressTranspileOnSaveMessages: false
   transpileOnSave: true
   # babel options in package settings
   blacklistTransformers: []

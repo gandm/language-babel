@@ -3,8 +3,13 @@ module.exports =
     type: 'boolean'
     default: true
     order: 10
-  supressTranspileOnSaveMessages:
-    description: 'Supress notification messages on each save'
+  disableWhenNoBabelrcFileInPath:
+    description: 'Suppress transpile when no .babelrc file is in source file path'
+    type: 'boolean'
+    default: false
+    order: 11
+  suppressTranspileOnSaveMessages:
+    description: 'Suppress notification messages on each save'
     type: 'boolean'
     default: false
     order: 12
@@ -25,8 +30,8 @@ module.exports =
     type: 'string'
     default: ''
     order: 50
-  supressSourcePathMessages:
-    description: 'Supress messages about file not inside Babel Source Path'
+  suppressSourcePathMessages:
+    description: 'Suppress messages about file not inside Babel Source Path'
     type: 'boolean'
     default: false
     order: 55

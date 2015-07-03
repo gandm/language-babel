@@ -13,12 +13,16 @@ class Transpiler
 
     pathTo = @getPaths(sourceFile, config)
 
+    if config.disableWhenNoBabelrcFileInPath
+      if not @isBabelrcInPath pathTo.sourceFileDir, path.parse(pathTo.sourceFileDir).root
+        return
+
     if not pathIsInside(pathTo.sourceFile, pathTo.sourceRoot)
-      if not config.supressSourcePathMessages
+      if not config.suppressSourcePathMessages
         atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
           dismissable: false
           detail: "No transpiled code output for file \n#{pathTo.sourceFile}
-            \n\nTo supress these 'invalid source path'
+            \n\nTo suppress these 'invalid source path'
             messages use language-babel package settings"
       return
 
@@ -35,12 +39,12 @@ class Transpiler
         if err.loc? and textEditor?
           textEditor.setCursorBufferPosition [err.loc.line-1, err.loc.column-1]
       else
-        if not config.supressTranspileOnSaveMessages
+        if not config.suppressTranspileOnSaveMessages
           notification = atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
             detail: pathTo.sourceFile
 
         if not config.createTranspiledCode
-          if not config.supressTranspileOnSaveMessages
+          if not config.suppressTranspileOnSaveMessages
             atom.notifications.addInfo 'No transpiled output configured'
           return
         if pathTo.sourceFile is pathTo.transpiledFile
@@ -76,6 +80,12 @@ class Transpiler
 
   # modifies config options for changed or deprecated configs
   deprecateConfig: ->
+    atom.config.set 'language-babel.suppressTranspileOnSaveMessages',
+      atom.config.get('language-babel.supressTranspileOnSaveMessages')
+    atom.config.set 'language-babel.suppressSourcePathMessages',
+      atom.config.get('language-babel.supressSourcePathMessages')
+    atom.config.unset('language-babel.supressTranspileOnSaveMessages')
+    atom.config.unset('language-babel.supressSourcePathMessages')
     atom.config.unset('language-babel.useInternalScanner')
     atom.config.unset('language-babel.stopAtProjectDirectory')
 
@@ -96,6 +106,17 @@ class Transpiler
     if config.whitelistTransformers.length > 0
       babelOptions.whitelist = config.whitelistTransformers
     return babelOptions
+
+# check for prescence of a .babelrc file path fromDir toDir
+  isBabelrcInPath: (fromDir, toDir) ->
+    # enviromnents used in babelrc
+    babelrc = '.babelrc'
+    babelrcFile = path.join fromDir, babelrc
+    if fs.existsSync babelrcFile
+      return true
+    if fromDir isnt toDir
+      return @isBabelrcInPath path.dirname(fromDir), toDir
+    else return false
 
   # get configuration for language-babel
   getConfig: -> atom.config.get('language-babel')
