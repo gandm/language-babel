@@ -1,3 +1,6 @@
+### 0.10.0
+  - Clear transpile error messages automatically on next save. closes #16
+  
 ### 0.9.1
   - Bad deprecation code looses config settings
 

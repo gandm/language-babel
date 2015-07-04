@@ -4,6 +4,7 @@ pathIsInside = require 'path-is-inside'
 
 class Transpiler
   constructor: ->
+    @transpileErrorNotifications = {}
     @deprecateConfig()
 
   # transpile sourceFile edited by the optional textEditor
@@ -28,19 +29,24 @@ class Transpiler
 
     babelOptions = @getBabelOptions(config, pathTo)
 
+    # remove previous transpile error notifications for this source file
+    if @transpileErrorNotifications[pathTo.sourceFile]?
+      @transpileErrorNotifications[pathTo.sourceFile].dismiss()
+      delete @transpileErrorNotifications[pathTo.sourceFile]
     # babel-core seems to add a lot of time to atom loading so delay until needed
     @babel ?= require('../node_modules/babel-core')
     @babel.transformFile pathTo.sourceFile, babelOptions, (err,result) =>
       if err
-        notification = atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
+        notification =atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
           dismissable: true
           detail: err.message
+        @transpileErrorNotifications[pathTo.sourceFile] = notification
         # if we have a line/col syntax error jump to the position
         if err.loc? and textEditor?
           textEditor.setCursorBufferPosition [err.loc.line-1, err.loc.column-1]
       else
         if not config.suppressTranspileOnSaveMessages
-          notification = atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
+          atom.notifications.addInfo "Babel v#{@babel.version} Transpiler Success",
             detail: pathTo.sourceFile
 
         if not config.createTranspiledCode
