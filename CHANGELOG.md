@@ -1,6 +1,9 @@
+### 0.10.1
+  - Not checking for result.ignored flag correctly. fixes #21
+  
 ### 0.10.0
   - Clear transpile error messages automatically on next save. closes #16
-  
+
 ### 0.9.1
   - Bad deprecation code looses config settings
 

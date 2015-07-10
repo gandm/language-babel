@@ -36,6 +36,8 @@ class Transpiler
     # babel-core seems to add a lot of time to atom loading so delay until needed
     @babel ?= require('../node_modules/babel-core')
     @babel.transformFile pathTo.sourceFile, babelOptions, (err,result) =>
+      # result.ignored is returned when .babelrc ignore/only flags are used
+      if result?.ignored? and result.ignored is true then return
       if err
         notification =atom.notifications.addError "Babel v#{@babel.version} Transpiler Error",
           dismissable: true
@@ -64,13 +66,13 @@ class Transpiler
           fs.makeTreeSync( path.parse( pathTo.transpiledFile).dir)
 
         # add source map url to code if file isn't ignored
-        if config.babelMapsAddUrl and not result.ignored
+        if config.babelMapsAddUrl
           result.code = result.code + '\n' + '//# sourceMappingURL='+pathTo.mapFile
 
         fs.writeFileSync pathTo.transpiledFile, result.code
 
         # write source map asked to and not ignored
-        if config.createMap and not result.ignored
+        if config.createMap
           if config.createTargetDirectories
             fs.makeTreeSync(path.parse(pathTo.mapFile).dir)
           mapJson =
