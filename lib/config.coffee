@@ -65,10 +65,10 @@ module.exports =
     default: false
     order: 100
   moduleLoader:
-    description: 'common, amd or umd'
+    description: 'Module system used in output. The non-strict variants support a legacy CommonJS pattern but will not always work with standard ES6 modules'
     type: 'string'
     default: 'common'
-    enum: ['common', 'amd', 'umd']
+    enum: ['amd', 'amdStrict', 'common', 'commonStrict', 'ignore', 'system', 'umd', 'umdStrict']
     order: 120
   blacklistTransformers:
     description: 'Comma seperated list of excluded transformers'
