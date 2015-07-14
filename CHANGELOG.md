@@ -1,6 +1,10 @@
+### 0.10.2
+  - PR to add additional module options for Babel #22
+  - PR Removed label scope from "constant.other.object.key.js" grammar. #20
+  
 ### 0.10.1
   - Not checking for result.ignored flag correctly. fixes #21
-  
+
 ### 0.10.0
   - Clear transpile error messages automatically on next save. closes #16
 
