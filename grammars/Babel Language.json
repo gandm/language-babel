@@ -770,6 +770,7 @@
             {
               "begin": "{",
               "end": "(?=})",
+              "contentName": "meta.class.body.js",
               "beginCaptures": {
                 "0": { "name": "meta.brace.curly.js" }
               },
