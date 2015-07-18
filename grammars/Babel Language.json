@@ -1159,7 +1159,7 @@
     "literal-module": {
       "patterns": [
         {
-          "name": "keyword.operator.module.js",
+          "name": "keyword.control.module.js",
           "match": "(?<!\\.)\\b(import|export|default|from|as)\\b"
         }
       ]
