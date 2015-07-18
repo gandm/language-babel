@@ -753,7 +753,7 @@
             "2": { "name": "entity.name.class.js" }
           },
           "endCaptures": {
-            "0": { "name": "meta.brace.curly.js" }
+            "0": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
             {
@@ -772,7 +772,7 @@
               "end": "(?=})",
               "contentName": "meta.class.body.js",
               "beginCaptures": {
-                "0": { "name": "meta.brace.curly.js" }
+                "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
                 { "include": "#brackets" },
