@@ -1074,14 +1074,14 @@
       "patterns": [
         {
           "comment": " e.g. play(arg1, arg2) {  }",
-          "name": "meta.method.js",
+          "name": "meta.function.method.js",
           "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=\\([^())]*\\)(?:\\s|/\\*.*\\*/)*\\{)",
           "end": "(?<=\\))",
           "beginCaptures": {
             "1": { "name": "storage.type.js" },
             "2": { "name": "storage.type.js" },
             "3": { "name": "keyword.generator.asterisk.js" },
-            "4": { "name": "entity.name.method.js" }
+            "4": { "name": "entity.name.function.method.js" }
           },
           "patterns": [
             { "include": "#function-declaration-parameters" }
