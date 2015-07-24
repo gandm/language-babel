@@ -1302,7 +1302,6 @@
         {
           "comment": "this matches the end > of an opening tag when in the form <tag> </tag>",
           "comment": "uses non consuming search for </ in </tag>",
-          "contentName": "markup.raw.jsx",
           "begin": ">",
           "end": "(?=</)",
           "beginCaptures": {
