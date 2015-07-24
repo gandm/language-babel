@@ -3,8 +3,8 @@
     "editor": {
       "commentStart": "// ",
       "foldEndPattern": "^\\s*\\}|^\\s*\\]|^\\s*\\)",
-      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$",
-      "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]"
+      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$|<[^/]([^>]|{[^}]*})*>\\s*$",
+      "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*([}\\])]|</[^>]*>)"
     }
   }
 }
