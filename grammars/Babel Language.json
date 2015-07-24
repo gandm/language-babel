@@ -1385,15 +1385,16 @@
       ]
     },
     "jsx-evaluated-code": {
-      "name": "meta.brace.curly.js",
+      "name": "meta.embedded.expression.js",
       "begin": "{",
       "end": "}",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.brace.curly.start.jsx" }
+        "0": { "name": "punctuation.section.embedded.begin.jsx" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.brace.curly.end.jsx" }
+        "0": { "name": "punctuation.section.embedded.end.jsx" }
       },
+      "contentName": "source.js.jsx",
       "patterns": [
         { "include": "#jsx-string-double-quoted" },
         { "include": "#jsx-string-single-quoted" },
