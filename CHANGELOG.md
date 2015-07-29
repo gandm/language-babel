@@ -1,7 +1,11 @@
+### 0.10.4
+  - Fixes #27 scope on ArrowFunctions
+  - Checks for no map returned
+  
 ### 0.10.3
   - Fix various grammar issues reported/PR's
   - bump babel-core version in dependencies.
-  
+
 ### 0.10.2
   - PR to add additional module options for Babel #22
   - PR Removed label scope from "constant.other.object.key.js" grammar. #20
