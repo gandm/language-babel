@@ -71,8 +71,8 @@ class Transpiler
 
         fs.writeFileSync pathTo.transpiledFile, result.code
 
-        # write source map asked to and not ignored
-        if config.createMap
+        # write source map if returned and if asked
+        if config.createMap and result.map?.version
           if config.createTargetDirectories
             fs.makeTreeSync(path.parse(pathTo.mapFile).dir)
           mapJson =
