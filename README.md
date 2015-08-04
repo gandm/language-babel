@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES2015 Javascript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
+Language grammar for ES2015 JavaScript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
 
 [Babel](http://babeljs.io/) transpiler support is baked in. Options in the
 language-babel settings allow for compilation on save, plus full transpiler control and output.
@@ -33,7 +33,7 @@ See the sections *"Use Cases"* and *"Package Settings"* for more information on 
 
   If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
 
-* ####Mixed Javascript and Babel EcmaScript 2015 environment.
+* ####Mixed JavaScript and Babel EcmaScript 2015 environment.
    Keep pure `.js`  files in a separate directory tree from your Babel ES2015 files and/or use `.babelrc ignore`/`.babelrc only` flags.  Configure `Babel Source Paths` to point to the ES2015 file directory tree and the other `paths` to where output should be generated. Turn on `Suppress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above. Optionally, you can turn on the `Disable When No Babelrc File In Path` option, which disables transpiles if no `.babelrc` files are found in the source file path.
 
 ##Package Settings
@@ -42,7 +42,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
 * ####Transpile On Save
   On any file save of a language-babel enabled file the Babel transpiler  is called. Any errors and/or successful indications are notified by a ATOM pop-up.
-  
+
 * ####Disable When No Babelrc File In Path
   Disables transpiler if no `.babelrc` files are found in the source file path.
 
@@ -50,7 +50,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
   Suppress all successful save messages. Errors are still notified.
 
 * ####Create Transpiled Code
-  If enabled the transpile phase will output Javascript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
+  If enabled the transpile phase will output JavaScript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
 
 * ####Create Map
   A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
@@ -58,7 +58,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
   If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then turn this option off.
 
 * ####Babel Maps Add Url
-  If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated Javascript file.  
+  If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated JavaScript file.  
 
 * ####Babel Source Path, Babel Transpile Path and Babel Maps Path
   These a directories based on the project root. ATOM now supports more than one project root folder, so these paths are based on each project root folder.
