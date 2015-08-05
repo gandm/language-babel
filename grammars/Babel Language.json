@@ -394,8 +394,9 @@
         },
         {
           "name": "comment.line.double-slash.js",
-          "match": "(//).*$\\n?",
-          "captures": {
+          "begin": "(//)",
+          "end": "$",
+          "beginCaptures": {
             "1": { "name": "punctuation.definition.comment.js" }
           }
         },
