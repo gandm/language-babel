@@ -1,7 +1,11 @@
+### 0.10.5
+  - Fixes #36 - Clarify grammar name to match standard and atom-preview package.
+  - Fixes #37 Comment not calling TODO injectioin grammar
+
 ### 0.10.4
   - Fixes #27 scope on ArrowFunctions
   - Checks for no map returned
-  
+
 ### 0.10.3
   - Fix various grammar issues reported/PR's
   - bump babel-core version in dependencies.
