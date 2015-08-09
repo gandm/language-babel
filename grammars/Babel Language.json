@@ -954,7 +954,7 @@
         {
           "comment": "# e.g. play = (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(\\b[_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=\\(.*\\).*=>)",
+          "begin": "(\\b[_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*=>\\s*(\\{|;|\\n))",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -990,7 +990,7 @@
         {
           "comment": "Sound.prototype.play = (args) => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=\\(.*\\).*=>)",
+          "begin": "(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*=>\\s*(\\{|;|\\n))",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1031,7 +1031,7 @@
         {
           "comment": "e.g. Sound.play = (args) => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=\\(.*\\).*=>)",
+          "begin": "(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*=\\s*(\\basync\\b)?\\s*(?=(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*=>\\s*(\\{|;|\\n))",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1072,7 +1072,7 @@
         {
           "comment": " e.g. play(arg1, arg2) {  }",
           "name": "meta.function.method.js",
-          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=\\([^())]*\\)(?:\\s|/\\*.*\\*/)*\\{)",
+          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*\\{)",
           "end": "(?={)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
