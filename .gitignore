@@ -4,3 +4,4 @@ node_modules
 babel-source
 babel-target
 thumbs.db
+/testJs/
