@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES2015 JavaScript and Facebook React JSX syntax. The color of syntax is determined by the theme in use.
+Language grammar for ES2015 JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The color of syntax is determined by the theme in use.
 
 [Babel](http://babeljs.io/) transpiler support is baked in. Options in the
 language-babel settings allow for compilation on save, plus full transpiler control and output.
@@ -91,7 +91,3 @@ By using the ATOM settings panel for language-babel you can control many of the 
 * ####Transformer Options
   The remaining transformer options may contain comma seperated lists of transformer names.
   Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
-
-###About
-
-The grammar for this package is based upon [Babel-Sublime](https://github.com/babel/babel-sublime). The JSX grammar has been reworked to allow for checking of balanced equal tag names plus other small changes.
