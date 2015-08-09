@@ -926,7 +926,7 @@
         {
           "comment": "e.g. (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(\\basync\\b)?\\s*(?=\\(.*\\).*=>)",
+          "begin": "(\\basync\\b)?\\s*(?=(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*=>\\s*(\\{|;|\\n))",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
