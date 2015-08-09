@@ -7,7 +7,7 @@
     "babel",
     "es2015",
     "jsx",
-    "react",
+    "flow",
     "javascript"
   ],
   "activationCommands": [],
