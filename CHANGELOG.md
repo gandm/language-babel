@@ -1,6 +1,9 @@
+### 0.11.1
+  - fix arrow functions
+  
 ### 0.11.0
   - Initial support for Facebook flow.
-  
+
 ### 0.10.5
   - Fixes #36 - Clarify grammar name to match standard and atom-preview package.
   - Fixes #37 Comment not calling TODO injectioin grammar
