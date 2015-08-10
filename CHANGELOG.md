@@ -1,6 +1,9 @@
+### 0.11.2
+  - fix scopes for quoted literal-arrow-function-labels
+  
 ### 0.11.1
   - fix arrow functions
-  
+
 ### 0.11.0
   - Initial support for Facebook flow.
 
