@@ -61,7 +61,7 @@
         {
           "comment": " e.g. play: function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -78,7 +78,7 @@
         {
           "comment": "e.g. 'play': function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
-          "begin": "\\s*(?:((')((?:[^']|\\\\')*)('))|((\")((?:[^\"]|\\\\\")*)(\")))\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)",
+          "begin": "\\s*(?:((')((?:[^']|\\\\')*)('))|((\")((?:[^\"]|\\\\\")*)(\")))\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
