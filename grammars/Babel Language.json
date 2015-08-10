@@ -144,7 +144,7 @@
         {
           "comment": "# e.g. 'play': (args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(\\k<c1>)\\s*(?<c3>:)\\s*(?<c4>\\basync\\b)?\\s*(?<c5>\\*?)\\s*(?=(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "(?<=\\))\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
@@ -153,9 +153,10 @@
           "beginCaptures": {
             "1": { "name": "punctuation.definition.string.begin.js" },
             "2": { "name": "entity.name.function.js" },
-            "3": { "name": "punctuation.separator.key-value.js" },
-            "4": { "name": "storage.type.js" },
-            "5": { "name": "keyword.generator.asterisk.js" }
+            "3": { "name": "punctuation.definition.string.begin.js" },
+            "4": { "name": "punctuation.separator.key-value.js" },
+            "5": { "name": "storage.type.js" },
+            "6": { "name": "keyword.generator.asterisk.js" }
           },
           "patterns": [
             { "include": "#flowtype" }
@@ -164,15 +165,16 @@
         {
           "comment": "# e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(\\k<c1>)\\s*(?<c3>:)\\s*(?<c4>\\basync\\b)?\\s*(?<c5>\\*?)\\s*(?=([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.string.begin.js" },
             "2": { "name": "entity.name.function.js" },
-            "3": { "name": "punctuation.separator.key-value.js" },
-            "4": { "name": "storage.type.js" },
-            "5": { "name": "keyword.generator.asterisk.js" }
+            "3": { "name": "punctuation.definition.string.begin.js" },
+            "4": { "name": "punctuation.separator.key-value.js" },
+            "5": { "name": "storage.type.js" },
+            "6": { "name": "keyword.generator.asterisk.js" }
           },
           "endCaptures": {
             "1": { "name": "storage.type.function.arrow.js" }
