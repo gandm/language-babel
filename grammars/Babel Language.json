@@ -1606,6 +1606,7 @@
       ]
     },
     "flowtype-polymorphs": {
+      "comment": "Support Bounded Polymorphism http://flowtype.org/blog/2015/03/12/Bounded-Polymorphism.html",
       "patterns": [
         {
           "comment": "Built-in Class Types with elements of type <T>",
@@ -1619,12 +1620,7 @@
             "1": { "name": "punctuation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-parse-types" },
-            {
-              "comment": "types with , as in <K, V>",
-              "name": "punctuation.serperator.flowtype",
-              "match": "\\s*,"
-            }
+            { "include": "#flowtype-arguments" }
           ]
         },
         {
@@ -1638,12 +1634,7 @@
             "1": { "name": "punctutation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-parse-types" },
-            {
-              "comment": "types with , as in <K, V>",
-              "name": "punctuation.seperator.flowtype",
-              "match": "\\s*,"
-            }
+            { "include": "#flowtype-arguments" }
           ]
         }
       ]
