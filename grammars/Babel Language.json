@@ -1749,7 +1749,7 @@
           },
           "patterns": [
             { "include": "#flowtype"},
-            { "include": "#flowtype-function-name"},
+            { "include": "#flowtype-interface-name"},
             {
               "begin": "{",
               "end": "(?=})",
@@ -1779,6 +1779,11 @@
       "comment": "look for classes names but dont assume uppercase start char",
       "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
       "name": "entity.name.class.js"
+    },
+    "flowtype-interface-name": {
+      "comment": "look for interface names but dont assume uppercase start char",
+      "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+      "name": "support.type.interface.js"
     },
     "flowtype-declare": {
       "patterns": [
