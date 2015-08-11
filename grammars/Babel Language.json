@@ -751,28 +751,25 @@
       "patterns": [
         {
           "comment": "Classes",
-          "name": "meta.class.js",
           "begin": "(?<!\\.)\\b(class)\\s+",
           "end": "\\s*(})",
           "beginCaptures": {
+            "0": { "name": "meta.class.js" },
             "1": { "name": "storage.type.class.js" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
+            { "include": "#flowtype-polymorphs" },
             {
-              "name": "meta.class.extends.js",
-              "begin": "\\s*\\b(extends)\\b\\s*",
-              "end": "(?={)",
-              "beginCaptures": {
+              "match": "\\s*\\b(extends)\\b\\s*",
+              "captures": {
+                "0": { "name": "meta.class.extends.js" },
                 "1": { "name": "storage.type.extends.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-polymorphs"}
-              ]
+              }
             },
-            { "include": "#flowtype-polymorphs"},
+            { "include": "#flowtype-class-name" },
             {
               "begin": "{",
               "end": "(?=})",
@@ -1525,36 +1522,41 @@
         }
       ]
     },
+    "flowtype-basic-types": {
+      "patterns": [
+        {
+          "comment": "primitive flowtypes",
+          "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
+          "captures": {
+            "1": { "name": "punctuation.flowtype"},
+            "2": { "name": "support.type.primitve.flowtype" }
+          }
+        },
+        {
+          "comment": "Built-in Class Types",
+          "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
+          "captures": {
+            "1": { "name": "punctuation.flowtype"},
+            "2": { "name": "support.type.builtin.flowtype" }
+          }
+        },
+        {
+          "comment": "custom Types e.g. abc ",
+          "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
+          "captures": {
+            "1": { "name": "punctuation.flowtype"},
+            "2": { "name": "support.type.class.flowtype" }
+          }
+        }
+      ]
+    },
     "flowtype-parse-types": {
         "patterns": [
           {
             "name": "keyword.operator.flowtype",
             "match": "\\s*\\btypeof\\b\\s*"
           },
-          {
-            "comment": "primitive flowtypes",
-            "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
-            "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.primitve.flowtype" }
-            }
-          },
-          {
-            "comment": "Built-in Class Types",
-            "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
-            "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.builtin.flowtype" }
-            }
-          },
-          {
-            "comment": "custom Types e.g. abc ",
-            "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
-            "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.class.flowtype" }
-            }
-          },
+          { "include": "#flowtype-basic-types"},
           {
             "comment": "Type Unions |",
             "name": "kewyword.operator.union.flowtype",
@@ -1620,7 +1622,14 @@
             "1": { "name": "punctuation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-polymorphs" },
+            { "include": "#flowtype-basic-types"},
+            { "match": "\\s*,",
+              "name": "punctuation.type.separator.flowtype"
+            },
+            { "match": "\\s*:",
+              "name": "punctuation.type.separator.flowtype"
+            }
           ]
         },
         {
@@ -1634,7 +1643,14 @@
             "1": { "name": "punctutation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-polymorphs" },
+            { "include": "#flowtype-basic-types"},
+            { "match": "\\s*,",
+              "name": "punctuation.type.separator.flowtype"
+            },
+            { "match": "\\s*:",
+              "name": "punctuation.type.separator.flowtype"
+            } 
           ]
         }
       ]
