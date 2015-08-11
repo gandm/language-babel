@@ -35,6 +35,8 @@
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
         { "include": "#support" },
+        { "include": "#literal-function-labels" },
+        { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-function" },
         { "include": "#literal-arrow-function" },
         { "include": "#literal-prototype" , "comment": " after literal-function, which includes some prototype strings"},
@@ -106,7 +108,7 @@
         {
           "comment": "# e.g. play: async <T>(args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -125,7 +127,7 @@
         {
           "comment": "# e.g. play: arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -145,7 +147,7 @@
         {
           "comment": "# e.g. 'play': (args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "(?<=\\))\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
@@ -166,7 +168,7 @@
         {
           "comment": "# e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1650,7 +1652,7 @@
             },
             { "match": "\\s*:",
               "name": "punctuation.type.separator.flowtype"
-            } 
+            }
           ]
         }
       ]
