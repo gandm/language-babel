@@ -548,7 +548,7 @@
         {
           "name": "string.quasi.js",
           "begin": "([a-zA-Z$_][\\w$_]*)?(`)",
-          "end": "`",
+          "end": "(?<!\\\\)`",
           "beginCaptures": {
             "1": { "name": "entity.quasi.tag.name.js" },
             "2": { "name": "punctuation.definition.quasi.begin.js" }
@@ -559,7 +559,7 @@
           "patterns": [
             {
               "name": "entity.quasi.element.js",
-              "begin": "\\${",
+              "begin": "(?<!\\\\)\\${",
               "end": "}",
               "beginCaptures": {
                 "0": { "name": "punctuation.quasi.element.begin.js" }
