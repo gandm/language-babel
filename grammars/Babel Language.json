@@ -1686,7 +1686,6 @@
           "comment": "handle other types",
           "begin": "\\s*\\b(type)\\b",
           "end": "\\s*;|\\n",
-          "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.type.flowtype" }
           },
@@ -1708,6 +1707,7 @@
               "patterns": [
                 { "include": "#flowtype" },
                 { "include": "#flowtype-arguments"},
+                { "include": "#comments"},
                 { "include": "#flowtype-function-name"}
               ]
             },
