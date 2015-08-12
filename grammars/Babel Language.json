@@ -63,7 +63,7 @@
         {
           "comment": " e.g. play: function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?=\\(|<)",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?:(\\*)\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -80,22 +80,18 @@
         {
           "comment": "e.g. 'play': function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
-          "begin": "\\s*(?:((')((?:[^']|\\\\')*)('))|((\")((?:[^\"]|\\\\\")*)(\")))\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?=\\(|<)",
+          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*((?<c6>async)\\s+)?\\s*(?<c7>\\bfunction\\b)\\s*(?<c8>(\\*)\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
-            "1": { "name": "string.quoted.single.js" },
+            "1": { "name": "string.quoted.js" },
             "2": { "name": "punctuation.definition.string.begin.js" },
             "3": { "name": "entity.name.function.js" },
             "4": { "name": "punctuation.definition.string.end.js" },
-            "5": { "name": "string.quoted.double.js" },
-            "6": { "name": "punctuation.definition.string.begin.js" },
-            "7": { "name": "entity.name.function.js" },
-            "8": { "name": "punctuation.definition.string.end.js" },
-            "9": { "name": "punctuation.separator.key-value.js" },
-            "10": { "name": "storage.type.js" },
-            "11": { "name": "storage.type.function.js" },
-            "12": { "name": "keyword.generator.asterisk.js" }
+            "5": { "name": "punctuation.separator.key-value.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "storage.type.function.js" },
+            "8": { "name": "keyword.generator.asterisk.js" }
           },
           "patterns": [
             { "include": "#flowtype" }
@@ -108,7 +104,7 @@
         {
           "comment": "# e.g. play: async <T>(args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -127,7 +123,7 @@
         {
           "comment": "# e.g. play: arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -147,19 +143,20 @@
         {
           "comment": "# e.g. 'play': (args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "(?<=\\))\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
             "1": { "name": "storage.type.function.arrow.js" }
           },
           "beginCaptures": {
-            "1": { "name": "punctuation.definition.string.begin.js" },
-            "2": { "name": "entity.name.function.js" },
+            "1": { "name": "string.quoted.js" },
             "3": { "name": "punctuation.definition.string.begin.js" },
-            "4": { "name": "punctuation.separator.key-value.js" },
-            "5": { "name": "storage.type.js" },
-            "6": { "name": "keyword.generator.asterisk.js" }
+            "3": { "name": "entity.name.function.js" },
+            "4": { "name": "punctuation.definition.string.end.js" },
+            "5": { "name": "punctuation.separator.key-value.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "keyword.generator.asterisk.js" }
           },
           "patterns": [
             { "include": "#flowtype" }
@@ -168,16 +165,17 @@
         {
           "comment": "# e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\'|\\\")(?<c2>\\b[_$a-zA-Z][$\\w]*)(?<c3>\\k<c1>)\\s*(?<c4>:)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
-            "1": { "name": "punctuation.definition.string.begin.js" },
-            "2": { "name": "entity.name.function.js" },
-            "3": { "name": "punctuation.definition.string.begin.js" },
-            "4": { "name": "punctuation.separator.key-value.js" },
-            "5": { "name": "storage.type.js" },
-            "6": { "name": "keyword.generator.asterisk.js" }
+            "1": { "name": "string.quoted.js" },
+            "2": { "name": "punctuation.definition.string.begin.js" },
+            "3": { "name": "entity.name.function.js" },
+            "4": { "name": "punctuation.definition.string.end.js" },
+            "5": { "name": "punctuation.separator.key-value.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "keyword.generator.asterisk.js" }
           },
           "endCaptures": {
             "1": { "name": "storage.type.function.arrow.js" }
@@ -473,7 +471,7 @@
         {
           "comment": "e.g. function play<T>(arg1, arg2) {  }",
           "name": "meta.function.js",
-          "begin": "(?:\\b(async)\\b\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
+          "begin": "\\s*(?:\\b(async)\\b\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -921,7 +919,7 @@
         {
           "comment": "e.g. (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
@@ -939,7 +937,7 @@
         {
           "comment": "# e.g. arg => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -957,7 +955,7 @@
         {
           "comment": "# e.g. play = (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -977,7 +975,7 @@
         {
           "comment": "# e.g. play = arg => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -997,7 +995,7 @@
         {
           "comment": "Sound.prototype.play = (args) => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1020,7 +1018,7 @@
         {
           "comment": "# e.g. Sound.prototype.play = arg => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1041,7 +1039,7 @@
         {
           "comment": "e.g. Sound.play = (args) => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1063,7 +1061,7 @@
         {
           "comment": "# e.g. Sound.play = arg => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
