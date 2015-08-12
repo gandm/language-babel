@@ -1084,9 +1084,9 @@
     "literal-method": {
       "patterns": [
         {
-          "comment": " e.g. play(arg1, arg2) {  }",
+          "comment": " e.g. play<T,T>(arg1, arg2): Type<T> {  }",
           "name": "meta.function.method.js",
-          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*({|:\\s*[$_a-zA-Z0-9]+\\s*{|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))\\s*{|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})\\s*{))",
+          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*{)",
           "end": "(?={)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1524,41 +1524,36 @@
         }
       ]
     },
-    "flowtype-basic-types": {
-      "patterns": [
-        {
-          "comment": "primitive flowtypes",
-          "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
-          "captures": {
-            "1": { "name": "punctuation.flowtype"},
-            "2": { "name": "support.type.primitve.flowtype" }
-          }
-        },
-        {
-          "comment": "Built-in Class Types",
-          "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
-          "captures": {
-            "1": { "name": "punctuation.flowtype"},
-            "2": { "name": "support.type.builtin.flowtype" }
-          }
-        },
-        {
-          "comment": "custom Types e.g. abc ",
-          "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
-          "captures": {
-            "1": { "name": "punctuation.flowtype"},
-            "2": { "name": "support.type.class.flowtype" }
-          }
-        }
-      ]
-    },
     "flowtype-parse-types": {
         "patterns": [
           {
             "name": "keyword.operator.flowtype",
             "match": "\\s*\\btypeof\\b\\s*"
           },
-          { "include": "#flowtype-basic-types"},
+          {
+            "comment": "primitive flowtypes",
+            "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
+            "captures": {
+              "1": { "name": "punctuation.flowtype"},
+              "2": { "name": "support.type.primitve.flowtype" }
+            }
+          },
+          {
+            "comment": "Built-in Class Types",
+            "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
+            "captures": {
+              "1": { "name": "punctuation.flowtype"},
+              "2": { "name": "support.type.builtin.flowtype" }
+            }
+          },
+          {
+            "comment": "custom Types e.g. abc ",
+            "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
+            "captures": {
+              "1": { "name": "punctuation.flowtype"},
+              "2": { "name": "support.type.class.flowtype" }
+            }
+          },
           {
             "comment": "Type Unions |",
             "name": "kewyword.operator.union.flowtype",
@@ -1580,7 +1575,7 @@
             ]
           },
           {
-            "name": "kewyword.operator.existential.flowtype",
+            "name": "kewyword.operator.existential.flowtype as per React declares in flowtype github",
             "match": "\\s*\\*"
           },
           { "include": "#flowtype-polymorphs"},
@@ -1624,14 +1619,13 @@
             "1": { "name": "punctuation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-polymorphs" },
-            { "include": "#flowtype-basic-types"},
             { "match": "\\s*,",
               "name": "punctuation.type.separator.flowtype"
             },
             { "match": "\\s*:",
               "name": "punctuation.type.separator.flowtype"
-            }
+            },
+            { "include": "#flowtype-parse-types"}
           ]
         },
         {
@@ -1645,14 +1639,13 @@
             "1": { "name": "punctutation.flowtype"}
           },
           "patterns": [
-            { "include": "#flowtype-polymorphs" },
-            { "include": "#flowtype-basic-types"},
             { "match": "\\s*,",
               "name": "punctuation.type.separator.flowtype"
             },
             { "match": "\\s*:",
               "name": "punctuation.type.separator.flowtype"
-            }
+            },
+            { "include": "#flowtype-parse-types"}
           ]
         }
       ]
