@@ -1,6 +1,12 @@
+### 0.11.4
+  - README fix to Issue #42
+  - Various changes to flow type support.
+  - Fix embedded escape back quote in Quasi Literal.
+  - Change some scopes to effect colours.
+  
 ### 0.11.3
   - fixed polymorphs for functions.
-  
+
 ### 0.11.2
   - fix scopes for quoted literal-arrow-function-labels
 
