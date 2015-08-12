@@ -1,9 +1,12 @@
+### 0.11.5
+  - Improvements to polymorphic type function & arrow function parsing.
+  
 ### 0.11.4
   - README fix to Issue #42
   - Various changes to flow type support.
   - Fix embedded escape back quote in Quasi Literal.
   - Change some scopes to affect colours.
-  
+
 ### 0.11.3
   - fixed polymorphs for functions.
 
