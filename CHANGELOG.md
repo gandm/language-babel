@@ -1,6 +1,10 @@
+### 0.11.6
+  - Fixes #45 obj literal with key of type inferred as flow type keyword.
+  - Revert to V10 scope name for function arg parens.
+
 ### 0.11.5
   - Improvements to polymorphic type function & arrow function parsing.
-  
+
 ### 0.11.4
   - README fix to Issue #42
   - Various changes to flow type support.
