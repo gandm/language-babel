@@ -1591,10 +1591,10 @@
           "begin": "\\s*(\\()",
           "end": "\\s*(\\))",
           "beginCaptures": {
-            "1": { "name": "meta.brace.round.open.flowtype" }
+            "1": { "name": "punctuation.definition.parameters.begin.js" }
           },
           "endCaptures": {
-            "1": { "name": "meta.brace.round.close.flowtype" }
+            "1": { "name": "punctuation.definition.parameters.begin.js" }
           },
           "patterns": [
             { "include": "#flowtype-arguments"}
