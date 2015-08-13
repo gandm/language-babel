@@ -1693,7 +1693,7 @@
       "patterns": [
         {
           "comment": "handle other types",
-          "begin": "\\s*\\b(type)\\b",
+          "begin": "\\s*\\b(type)\\s+",
           "end": "\\s*;|\\n",
           "beginCaptures": {
             "1": { "name": "storage.type.flowtype" }
@@ -1779,7 +1779,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "begin": "\\s*\\b(declare)\\b",
+          "begin": "\\s*\\b(declare)\\s+",
           "end": "(?=.)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1794,13 +1794,13 @@
       ]
     },
     "flowtype-declare-modules": {
-      "match": "\\s\\bmodule\\b",
+      "match": "\\s*\\bmodule\\s+",
       "name": "support.type.object.module.js"
     },
     "flowtype-declare-classes": {
       "patterns": [
         {
-          "begin": "\\s*\\b(class)\\b",
+          "begin": "\\s*\\b(class)\\s+",
           "end": "}",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1841,7 +1841,7 @@
     "flowtype-declare-function": {
       "patterns": [
         {
-          "begin": "\\s*\\b(function)\\b",
+          "begin": "\\s*\\b(function)\\s+",
           "end": "(;)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1857,7 +1857,7 @@
     "flowtype-declare-vars": {
       "patterns": [
         {
-          "begin": "\\s*\\b(var)\\b",
+          "begin": "\\s*\\b(var)\\s+",
           "end": "(;)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
