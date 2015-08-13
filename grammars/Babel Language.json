@@ -80,7 +80,7 @@
         {
           "comment": "e.g. 'play': function(arg1, arg2) {  }",
           "name": "meta.function.json.js",
-          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*((?<c6>async)\\s+)?\\s*(?<c7>\\bfunction\\b)\\s*(?<c8>(\\*)\\s*)?\\s*(?=\\(|<)",
+          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>async)?\\s+(?<c7>\\bfunction\\b)\\s*(?<c8>\\*\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
