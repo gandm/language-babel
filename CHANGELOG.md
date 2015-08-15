@@ -1,5 +1,5 @@
 ### 0.11.8
-  -Fix & being treated as expression termination.
+  - Fix & symbol being treated as expression termination.
 
 ### 0.11.7
   - Various Fixes
