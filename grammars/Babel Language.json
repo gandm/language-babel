@@ -104,7 +104,7 @@
         {
           "comment": "# e.g. play: async <T>(args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -123,7 +123,7 @@
         {
           "comment": "# e.g. play: arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>:)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -143,8 +143,8 @@
         {
           "comment": "# e.g. 'play': (args) => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
-          "end": "(?<=\\))\\s*(=>)",
+          "begin": "\\s*(?<c1>(?<c2>'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
+          "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
             "1": { "name": "storage.type.function.arrow.js" }
@@ -165,7 +165,7 @@
         {
           "comment": "# e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "\\s*(?<c1>(?<c2>\\'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "\\s*(?<c1>(?<c2>'|\\\")(?<c3>\\b[_$a-zA-Z][$\\w]*)(?<c4>\\k<c2>))\\s*(?<c5>:)\\s*(?<c6>\\basync\\b)?\\s*(?<c7>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -877,19 +877,19 @@
       "patterns": [
         {
           "name": "invalid.illegal.numeric.hex.js",
-          "match": "(?i)(?:\\B[-+]|\\b)0x[0-9a-f]*\\.(\\B|\\b[0-9]+)"
+          "match": "\\s*(?i)(?:\\B[-+]|\\b)0x[0-9a-f]*\\.(\\B|\\b[0-9]+)"
         },
         {
           "name": "invalid.illegal.numeric.octal.js",
-          "match": "(?:\\B[-+]|\\b)0[0-9]+\\.(\\B|\\b[0-9]+)"
+          "match": "\\s*(?:\\B[-+]|\\b)0[0-9]+\\.(\\B|\\b[0-9]+)"
         },
         {
           "name": "constant.numeric.js",
-          "match": "(?:\\B[-+])?(?:\\b0b[0-1]*|\\b0o[0-7]*|\\b0x[0-9a-f]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)(e[-+]?[0-9]+)?)"
+          "match": "(?i)\\s*(?:\\B[-+])?(?:\\b0b[0-1]*|\\b0o[0-7]*|\\b0x[0-9a-f]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)(e[-+]?[0-9]+)?)"
         },
         {
           "name": "constant.language.infinity.js",
-          "match": "(?:\\B[-+]|\\b)(Infinity)\\b"
+          "match": "\\s*(?:\\B[-+]|\\b)(Infinity)\\b"
         }
       ]
     },
@@ -919,7 +919,7 @@
         {
           "comment": "e.g. (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "endCaptures": {
@@ -937,7 +937,7 @@
         {
           "comment": "# e.g. arg => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\basync\\b)?\\s*(?<c2>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -955,7 +955,7 @@
         {
           "comment": "# e.g. play = (args) => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c4>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -975,7 +975,7 @@
         {
           "comment": "# e.g. play = arg => { }",
           "name": "meta.function.arrow.js",
-          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[_$a-zA-Z][$\\w]*)\\s*(?<c2>=)\\s*(?<c3>\\basync\\b)?\\s*(?<c3>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -995,7 +995,7 @@
         {
           "comment": "Sound.prototype.play = (args) => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "(?<c1>\\b[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1018,7 +1018,7 @@
         {
           "comment": "# e.g. Sound.prototype.play = arg => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>prototype)(?<c4>\\.)(?<c5>[_$a-zA-Z][$\\w]*)\\s*(?<c6>=)\\s*(?<c7>\\basync\\b)?\\s*(?<c8>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1039,7 +1039,7 @@
         {
           "comment": "e.g. Sound.play = (args) => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1061,7 +1061,7 @@
         {
           "comment": "# e.g. Sound.play = arg => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*=>)",
+          "begin": "(?<c1>\\b_?[A-Z][$\\w]*)?(?<c2>\\.)(?<c3>[_$a-zA-Z][$\\w]*)\\s*(?<c4>=)\\s*(?<c5>\\basync\\b)?\\s*(?<c6>\\*?)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1084,7 +1084,7 @@
         {
           "comment": " e.g. play<T,T>(arg1, arg2): Type<T> {  }",
           "name": "meta.function.method.js",
-          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*|:\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|:\\s*(?<bp>\\((?:(?>[^()]+)|\\g<bp>)*\\))|:\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\}))\\s*{)",
+          "begin": "(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(?<ab><(?:(?>[^<>]+)|\\g<ab>)*>)?(?<bpa>\\((?:(?>[^()]+)|\\g<bpa>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(?<ab1><(?:(?>[^<>]+)|\\g<ab1>)*>)?|\\s*(?<bcb>\\{(?:(?>[^{}]+)|\\g<bcb>)*\\})|\\s*(\\s*(?<qt>[\"']).*?\\k<qt>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s{)",
           "end": "(?={)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1137,7 +1137,7 @@
       "patterns": [
         {
           "name": "string.quoted.single.js",
-          "begin": "'",
+          "begin": "\\s*'",
           "end": "(')|(\\n)",
           "beginCaptures": {
             "0": { "name": "punctuation.definition.string.begin.js" }
@@ -1152,7 +1152,7 @@
         },
         {
           "name": "string.quoted.double.js",
-          "begin": "\"",
+          "begin": "\\s*\"",
           "end": "(\")|(\\n)",
           "beginCaptures": {
             "0": { "name": "punctuation.definition.string.begin.js" }
@@ -1502,7 +1502,7 @@
         {
           "comment": "call back with a form  ) => type",
           "name": "storage.type.function.arrow.js",
-          "begin": "(?<=\\))\\s*=>\\s",
+          "begin": "(?<=\\))\\s*=>",
           "end": "(?=.)",
           "applyEndPatternLast": "1",
           "patterns": [
@@ -1555,27 +1555,19 @@
           {
             "comment": "Type Unions |",
             "name": "kewyword.operator.union.flowtype",
-            "begin": "\\s*\\|",
-            "end": "(?=.)",
-            "applyEndPatternLast": "1",
-            "patterns": [
-              { "include": "#flowtype-parse-types"}
-            ]
+            "match": "\\s*\\|"
           },
           {
             "comment": "intersection of types &",
             "name": "kewyword.operator.intersection.flowtype",
-            "begin": "\\s*\\&",
-            "end": "(?=.)",
-            "applyEndPatternLast": "1",
-            "patterns": [
-              { "include": "#flowtype-parse-types"}
-            ]
+            "match": "\\s*\\&"
           },
           {
             "name": "kewyword.operator.existential.flowtype as per React declares in flowtype github",
             "match": "\\s*\\*"
           },
+          { "include": "#literal-string" },
+          { "include": "#literal-number" },
           { "include": "#flowtype-polymorphs"},
           { "include": "#flowtype-bracketed-parameters" },
           { "include": "#flowtype-parse-objects" },
@@ -1693,7 +1685,7 @@
       "patterns": [
         {
           "comment": "handle other types",
-          "begin": "\\s*\\b(type)\\s+",
+          "begin": "\\s*\\b(type)\\s+(?=[$_\\p{L}])",
           "end": "\\s*;|\\n",
           "beginCaptures": {
             "1": { "name": "storage.type.flowtype" }
@@ -1732,7 +1724,7 @@
       "patterns": [
         {
           "comment": "find declare module and declare class defs",
-          "begin": "\\s*\\b(interface)\\b",
+          "begin": "\\s*\\b(interface)\\s+(?=[$_\\p{L}])",
           "end": "\\s*;|\\n",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1779,7 +1771,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "begin": "\\s*\\b(declare)\\s+",
+          "begin": "\\s*\\b(declare)\\s+(?=(class|function|module|var))\\b",
           "end": "(?=.)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
