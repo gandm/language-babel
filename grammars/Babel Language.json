@@ -463,7 +463,7 @@
         {
           "comment": "flowtype vars with a : to indicate type",
           "comment": "these statements must end in a ; ",
-          "begin": "(?<!.)\\b(const|let|var)\\b\\s+(?=[$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*+\\s*:))",
+          "begin": "(?<!\\.)\\b(const|let|var)\\b\\s+(?=[$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*+\\s*:))",
           "end": "\\;",
           "beginCaptures": {
             "1": { "name": "storage.type.js"}
