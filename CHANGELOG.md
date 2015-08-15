@@ -1,3 +1,6 @@
+### 0.11.8
+  -Fix & being treated as expression termination.
+
 ### 0.11.7
   - Various Fixes
   - Adds flow type support for let, var and const. Read [limitations](https://github.com/gandm/language-babel/issues/46)
