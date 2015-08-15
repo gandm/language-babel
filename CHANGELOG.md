@@ -1,3 +1,7 @@
+### 0.11.7
+  - Various Fixes
+  - Adds flow type support for let, var and const. Read [limitations](https://github.com/gandm/language-babel/issues/46)
+
 ### 0.11.6
   - Fixes #45 obj literal with key of type inferred as flow type keyword.
   - Revert to V10 scope name for function arg parens.
