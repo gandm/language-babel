@@ -461,6 +461,22 @@
     "literal-keyword-storage": {
       "patterns": [
         {
+          "comment": "flowtype vars with a : to indicate type",
+          "comment": "these statements must end in a ; ",
+          "begin": "(?<!.)\\b(const|let|var)\\b\\s+(?=[$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*+\\s*:))",
+          "end": "\\;",
+          "beginCaptures": {
+            "1": { "name": "storage.type.js"}
+          },
+          "endCaptures": {
+            "0": { "name": "punctuationterminator.statement.js"}
+          },
+          "patterns": [
+            { "include": "#flowtype-arguments"}
+          ]
+        },
+        {
+          "comment": "var statements that done start with a flow indicator",
           "name": "storage.type.js",
           "match": "(?<!\\.)\\b(const|let|var)\\b"
         }
