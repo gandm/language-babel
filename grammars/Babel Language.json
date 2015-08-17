@@ -137,7 +137,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         },
         {
@@ -182,7 +182,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         }
       ]
@@ -472,7 +472,7 @@
             "0": { "name": "punctuationterminator.statement.js"}
           },
           "patterns": [
-            { "include": "#flowtype-arguments"}
+            { "include": "#flowtype-variable"}
           ]
         },
         {
@@ -965,7 +965,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         },
         {
@@ -1005,7 +1005,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         },
         {
@@ -1049,7 +1049,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         },
         {
@@ -1090,7 +1090,7 @@
           },
           "patterns": [
             { "include": "#flowtype-polymorphs"},
-            { "include": "#flowtype-arguments" }
+            { "include": "#flowtype-variable" }
           ]
         }
       ]
@@ -1472,7 +1472,7 @@
         }
       ]
     },
-    "flowtype-arguments": {
+    "flowtype-variable": {
       "patterns": [
         {
           "comment": "name of variable spread var or optional ? var with flowtype :",
@@ -1501,7 +1501,7 @@
           "end": "(?=.)",
           "applyEndPatternLast": "1",
           "patterns": [
-            { "include": "#flowtype-arguments"}
+            { "include": "#flowtype-variable"}
           ]
         },
         {
@@ -1605,7 +1605,7 @@
             "1": { "name": "punctuation.definition.parameters.begin.js" }
           },
           "patterns": [
-            { "include": "#flowtype-arguments"}
+            { "include": "#flowtype-variable"}
           ]
         }
       ]
@@ -1668,7 +1668,7 @@
         "1": { "name": "meta.brace.round.close.flowtype" }
       },
       "patterns": [
-        { "include": "#flowtype-arguments"}
+        { "include": "#flowtype-variable"}
       ]
     },
     "flowtype-parse-array": {
@@ -1682,7 +1682,7 @@
         "1": { "name": "meta.brace.square.end.flowtype" }
       },
       "patterns": [
-        { "include": "#flowtype-arguments"}
+        { "include": "#flowtype-variable"}
       ]
     },
     "flowtype-class-fields": {
@@ -1723,7 +1723,7 @@
               },
               "patterns": [
                 { "include": "#flowtype" },
-                { "include": "#flowtype-arguments"},
+                { "include": "#flowtype-variable"},
                 { "include": "#comments"},
                 { "include": "#flowtype-function-name"}
               ]
@@ -1872,7 +1872,7 @@
             "1": { "name": "storage.type.var.js" }
           },
           "patterns": [
-            { "include": "#flowtype-arguments"}
+            { "include": "#flowtype-variable"}
           ]
         }
       ]
