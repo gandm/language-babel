@@ -1483,6 +1483,23 @@
             "3": { "name": "puntuation.optional.parameter.flowtype" }
           }
         },
+        { "include": "#flowtype-vars-and-props" }
+      ]
+    },
+    "flowtype-object-property": {
+      "patterns": [
+        {
+          "comment": "name of property which can be a string",
+          "match": "\\s*((?<c2>'|\\\").*?(\\k<c2>(?<!\\\\.)))|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+          "captures": {
+            "0": { "name": "storage.type.variable.property.flowtype" }
+          }
+        },
+        { "include": "#flowtype-vars-and-props" }
+      ]
+    },
+    "flowtype-vars-and-props": {
+      "patterns": [
         {
           "comment": "typed entity :",
           "begin": "\\s*(:)",
@@ -1668,7 +1685,7 @@
         "1": { "name": "meta.brace.round.close.flowtype" }
       },
       "patterns": [
-        { "include": "#flowtype-variable"}
+        { "include": "#flowtype-object-property"}
       ]
     },
     "flowtype-parse-array": {
