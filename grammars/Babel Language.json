@@ -1596,7 +1596,7 @@
             "match": "\\s*\\&"
           },
           {
-            "comment": "as per React declares in flowtype github",            
+            "comment": "as per React declares in flowtype github",
             "name": "kewyword.operator.existential.flowtype",
             "match": "\\s*\\*"
           },
@@ -1717,6 +1717,11 @@
     },
     "flowtype-type-aliases": {
       "patterns": [
+        {
+          "comment": "import for types",
+          "name": "keyword.control.module.js",
+          "match": "(?<!\\.)\\b(import)\\b\\s*(type)\\b"
+        },
         {
           "comment": "handle other types",
           "begin": "\\s*\\b(type)\\s+(?=[$_\\p{L}])",
