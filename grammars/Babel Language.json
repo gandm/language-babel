@@ -1596,7 +1596,8 @@
             "match": "\\s*\\&"
           },
           {
-            "name": "kewyword.operator.existential.flowtype as per React declares in flowtype github",
+            "comment": "as per React declares in flowtype github",            
+            "name": "kewyword.operator.existential.flowtype",
             "match": "\\s*\\*"
           },
           { "include": "#literal-string" },
