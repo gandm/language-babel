@@ -1818,6 +1818,7 @@
           },
           "patterns": [
             { "include": "#flowtype-declare-classes"},
+            { "include": "#flowtype-declare-modules"},
             { "include": "#flowtype-declare-function"},
             { "include": "#flowtype-declare-vars"}
           ]
@@ -1825,7 +1826,7 @@
       ]
     },
     "flowtype-declare-modules": {
-      "match": "\\s*\\bmodule\\s+",
+      "match": "\\s*\\bmodule\\b\\s+",
       "name": "support.type.object.module.js"
     },
     "flowtype-declare-classes": {
