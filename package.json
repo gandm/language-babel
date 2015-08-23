@@ -1,7 +1,7 @@
 {
   "name": "language-babel",
   "main": "./lib/babel-transpiler",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "description": "Babel JavaScript ES2015, React JSX & Flow Grammar & Transpiler",
   "keywords": [
     "babel",
