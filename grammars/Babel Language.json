@@ -829,7 +829,9 @@
                 { "include": "#comments" },
                 { "include": "#es7-class-properties" },
                 { "include": "#literal-method"},
-                { "include": "#flowtype-class-fields" }
+                { "include": "#flowtype-class-fields" },
+                { "include": "#expression"}
+
               ]
             }
           ]
