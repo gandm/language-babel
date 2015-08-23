@@ -1,3 +1,6 @@
+### 0.11.9
+  - Various Fixes.
+  
 ### 0.11.8
   - Fix & symbol being treated as expression termination.
 
