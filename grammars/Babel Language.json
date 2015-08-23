@@ -476,6 +476,36 @@
           ]
         },
         {
+          "comment": "flowtype objects {a,b,{z}} with a : to indicate type",
+          "comment": "these statements must end in a ; ",
+          "begin": "(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})\\s*:)",
+          "end": "\\;",
+          "beginCaptures": {
+            "1": { "name": "storage.type.js"}
+          },
+          "endCaptures": {
+            "0": { "name": "punctuationterminator.statement.js"}
+          },
+          "patterns": [
+            { "include": "#flowtype-destruct-lhs"}
+          ]
+        },
+        {
+          "comment": "flowtype arrays [a,[b,c]] with a : to indicate type",
+          "comment": "these statements must end in a ; ",
+          "begin": "(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*:)",
+          "end": "\\;",
+          "beginCaptures": {
+            "1": { "name": "storage.type.js"}
+          },
+          "endCaptures": {
+            "0": { "name": "punctuationterminator.statement.js"}
+          },
+          "patterns": [
+            { "include": "#flowtype-destruct-lhs"}
+          ]
+        },
+        {
           "comment": "var statements that done start with a flow indicator",
           "name": "storage.type.js",
           "match": "(?<!\\.)\\b(const|let|var)\\b"
@@ -1486,6 +1516,45 @@
         { "include": "#flowtype-vars-and-props" }
       ]
     },
+    "flowtype-destruct-lhs": {
+      "comment": "lhs destructs such as {a: z, [b,c] }",
+      "comment": "use this pattern to colour code the variable part correctly",
+      "patterns": [
+        {
+          "begin": "\\s*{",
+          "end": "\\s*}",
+          "patterns": [
+            {
+              "comment": "string as destructor target",
+              "match": "\\s*((['\\\"]).*?\\k<-1>(?<!\\\\.))\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
+              "captures": {
+                "1": { "name": "string.quoted.js" },
+                "3": { "name": "punctuation"},
+                "4": { "name": "storage.type.variable.property.js"}
+              }
+            },
+            {
+              "comment": "var name as destructor target",
+              "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
+              "captures": {
+                "1": { "name": "string.quoted.js" },
+                "2": { "name": "punctuation"},
+                "3": { "name": "storage.type.variable.property.js"}
+              }
+            },
+            { "include": "#flowtype-destruct-lhs"}
+          ]
+        },
+        {
+          "begin": "\\s*\\[",
+          "end": "\\s*\\]",
+          "patterns": [
+            { "include": "#flowtype-destruct-lhs"}
+          ]
+        },
+        { "include": "#flowtype-variable"}
+      ]
+    },
     "flowtype-object-property": {
       "patterns": [
         {
@@ -1700,7 +1769,7 @@
         "1": { "name": "meta.brace.square.end.flowtype" }
       },
       "patterns": [
-        { "include": "#flowtype-variable"}
+        { "include": "#flowtype-parse-types"}
       ]
     },
     "flowtype-class-fields": {
