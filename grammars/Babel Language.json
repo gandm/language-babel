@@ -1526,24 +1526,6 @@
           "begin": "\\s*{",
           "end": "\\s*}",
           "patterns": [
-            {
-              "comment": "string as destructor target",
-              "match": "\\s*((['\\\"]).*?\\k<-1>(?<!\\\\.))\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
-              "captures": {
-                "1": { "name": "string.quoted.js" },
-                "3": { "name": "punctuation"},
-                "4": { "name": "storage.type.variable.property.js"}
-              }
-            },
-            {
-              "comment": "var name as destructor target",
-              "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
-              "captures": {
-                "1": { "name": "string.quoted.js" },
-                "2": { "name": "punctuation"},
-                "3": { "name": "storage.type.variable.property.js"}
-              }
-            },
             { "include": "#flowtype-destruct-lhs"}
           ]
         },
@@ -1554,7 +1536,34 @@
             { "include": "#flowtype-destruct-lhs"}
           ]
         },
-        { "include": "#flowtype-variable"}
+        {
+          "comment": "string as destructor target",
+          "match": "\\s*((['\\\"]).*?\\k<-1>(?<!\\\\.))\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
+          "captures": {
+            "1": { "name": "string.quoted.js" },
+            "3": { "name": "punctuation"},
+            "4": { "name": "storage.type.variable.property.js"}
+          }
+        },
+        {
+          "comment": "prop name : var name as destructor target",
+          "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(:)\\s*(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
+          "captures": {
+            "1": { "name": "string.unquoted.js" },
+            "2": { "name": "punctuation"},
+            "3": { "name": "storage.type.variable.property.js"}
+          }
+        },
+        {
+          "comment": "var name as destructor target",
+          "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+          "captures": {
+            "1": { "name": "keyword.operator.spread.js" },
+            "2": { "name": "storage.type.variable.js" }
+          }
+        },
+        { "match": ","},
+        { "include": "#flowtype-vars-and-props"}
       ]
     },
     "flowtype-object-property": {
