@@ -325,7 +325,7 @@
             "0": { "name": "meta.brace.round.js" }
           },
           "patterns": [
-            { "include": "#flowtype-typecast" },              
+            { "include": "#flowtype-typecast" },
             { "include": "#expression" }
           ]
         }
@@ -916,9 +916,14 @@
           "name": "constant.character.escape.newline.js",
           "match": "\\\\\\s*\\n"
         },
-        {
-          "name": "constant.character.escape.js",
-          "match": "\\\\(x[\\da-fA-F]{2}|u[\\da-fA-F]{4}|.)"
+        { "name": "constant.character.escape",
+          "match": "\\\\\\\\|\\\\'|\\\\b|\\\\f|\\\\n|\\\\r|\\\\t|\\\\v|\\\\\"|\\0"
+        },
+        { "name": "constant.character.escape",
+          "match": "\\\\u((\\{[0-9a-fA-F]+\\})|[0-9a-fA-F]{4})"
+        },
+        { "name": "constant.character.escape",
+          "match": "\\\\x[0-9a-fA-F]{2}"
         }
       ]
     },

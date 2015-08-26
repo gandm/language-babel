@@ -1,3 +1,6 @@
+### 0.11.11
+  - Fixes #49 incorrect handling of escapes within strings.
+  
 ### 0.11.10
   - Add flow typecast support as per [flowtype blog](http://flowtype.org/blog/2015/02/18/Typecasts.html)
 
