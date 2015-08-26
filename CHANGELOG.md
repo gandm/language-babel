@@ -1,6 +1,9 @@
+### 0.11.10
+  - Add flow typecast support as per [flowtype blog](http://flowtype.org/blog/2015/02/18/Typecasts.html)
+
 ### 0.11.9
   - Various Fixes.
-  
+
 ### 0.11.8
   - Fix & symbol being treated as expression termination.
 
