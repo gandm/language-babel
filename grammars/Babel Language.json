@@ -325,6 +325,7 @@
             "0": { "name": "meta.brace.round.js" }
           },
           "patterns": [
+            { "include": "#flowtype-typecast" },              
             { "include": "#expression" }
           ]
         }
@@ -1977,6 +1978,17 @@
           },
           "patterns": [
             { "include": "#flowtype-variable"}
+          ]
+        }
+      ]
+    },
+    "flowtype-typecast": {
+      "patterns": [
+        {
+          "begin": "\\s*:",
+          "end": "(?=\\s*\\))",
+          "patterns": [
+            { "include": "#flowtype-parse-types"}
           ]
         }
       ]
