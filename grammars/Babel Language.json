@@ -367,6 +367,14 @@
         }
       ]
     },
+    "jsdoc": {
+      "patterns": [
+        {
+          "match": "(?<!\\w)@(abstract|access|alias|also|arg|arguments|augments|author|borrows|callback|class|classdesc|constant|const|constructor|constructs|copyright|default|defaultvalue|deprecated|desc|description|emits|enum|event|example|exception|exports|extends|external|file|fileoverview|fires|function|func|global|host|ignore|implements|inheritdoc|inner|instance|interface|kind|lends|license|listens|member|memberof|method|mixes|mixin|module|name|namsepace|overview|param|private|prop|property|protected|public|readonly|requires|return|returns|see|since|static|summary|this|todo|throws|tutorial|type|typedef|undocumented|var|variation|version|virtual)\\b",
+          "name": "storage.type.class.jsdoc"
+        }
+      ]
+    },
     "comments": {
       "patterns": [
         { "include": "#special-comments-conditional-compilation" },
@@ -376,7 +384,10 @@
           "end": "\\*/",
           "captures": {
             "0": { "name": "punctuation.definition.comment.js" }
-          }
+          },
+          "patterns": [
+              { "include": "#jsdoc" }
+          ]
         },
         {
           "name": "comment.block.js",
