@@ -151,7 +151,7 @@
           },
           "beginCaptures": {
             "1": { "name": "string.quoted.js" },
-            "3": { "name": "punctuation.definition.string.begin.js" },
+            "2": { "name": "punctuation.definition.string.begin.js" },
             "3": { "name": "entity.name.function.js" },
             "4": { "name": "punctuation.definition.string.end.js" },
             "5": { "name": "punctuation.separator.key-value.js" },
@@ -1631,10 +1631,12 @@
       "patterns": [
         {
           "comment": "call back with a form  ) => type",
-          "name": "storage.type.function.arrow.js",
           "begin": "(?<=\\))\\s*=>",
           "end": "(?=.)",
           "applyEndPatternLast": "1",
+          "beginCaptures": {
+            "0": { "name": "storage.type.function.arrow.js" }
+          },
           "patterns": [
             { "include": "#flowtype-parse-types" }
           ]
@@ -1663,7 +1665,7 @@
             "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
             "captures": {
               "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.primitve.flowtype" }
+              "2": { "name": "support.type.builtin.primitve.flowtype" }
             }
           },
           {
@@ -1671,15 +1673,23 @@
             "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
             "captures": {
               "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.builtin.flowtype" }
+              "2": { "name": "support.type.builtin.class.flowtype" }
             }
           },
           {
-            "comment": "custom Types e.g. abc ",
-            "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
+            "comment": "custom Class Types e.g. Abc ",
+            "match": "\\s*(?:(\\?)?)\\s*([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
             "captures": {
               "1": { "name": "punctuation.flowtype"},
               "2": { "name": "support.type.class.flowtype" }
+            }
+          },
+          {
+            "comment": "custom primitive/var Types e.g. abc ",
+            "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*)",
+            "captures": {
+              "1": { "name": "punctuation.flowtype"},
+              "2": { "name": "support.type.primitive.flowtype" }
             }
           },
           {
