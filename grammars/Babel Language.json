@@ -370,7 +370,7 @@
     "jsdoc": {
       "patterns": [
         {
-          "match": "(?<!\\w)@(abstract|access|alias|also|arg|arguments|augments|author|borrows|callback|class|classdesc|constant|const|constructor|constructs|copyright|default|defaultvalue|deprecated|desc|description|emits|enum|event|example|exception|exports|extends|external|file|fileoverview|fires|function|func|global|host|ignore|implements|inheritdoc|inner|instance|interface|kind|lends|license|listens|member|memberof|method|mixes|mixin|module|name|namsepace|overview|param|private|prop|property|protected|public|readonly|requires|return|returns|see|since|static|summary|this|todo|throws|tutorial|type|typedef|undocumented|var|variation|version|virtual)\\b",
+          "match": "(?<!\\w)@(abstract|access|accessor|alias|also|alternateClassName|arg|arguments|aside|augments|author|borrows|callback|cfg|chainable|class|classdesc|const|constant|constructor|constructs|copyright|default|defaultvalue|deprecated|desc|description|docauthor|emits|enum|event|evented|example|exception|experimental|exports|extends|external|file|fileoverview|fires|ftype|func|function|global|hide|host|ignore|implements|inheritable|inheritdoc|inner|instance|interface|kind|lends|license|listens|localdoc|markdown|member|memberof|method|mixes|mixin|mixins|module|name|namsepace|new|override|overview|param|preventable|private|prop|property|protected|ptype|public|readonly|removed|requires|return|returns|scss|see|since|singleton|static|summary|template|this|throws|todo|tutorial|type|typedef|undocumented|uses|var|variation|version|virtual|xtype)\\b",
           "name": "storage.type.class.jsdoc"
         }
       ]
