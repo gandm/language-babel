@@ -385,8 +385,19 @@
     "jsdoc": {
       "patterns": [
         {
-          "match": "(?<!\\w)@(abstract|access|alias|also|arg|arguments|augments|author|borrows|callback|class|classdesc|constant|const|constructor|constructs|copyright|default|defaultvalue|deprecated|desc|description|emits|enum|event|example|exception|exports|extends|external|file|fileoverview|fires|function|func|global|host|ignore|implements|inheritdoc|inner|instance|interface|kind|lends|license|listens|member|memberof|method|mixes|mixin|module|name|namsepace|overview|param|private|prop|property|protected|public|readonly|requires|return|returns|see|since|static|summary|this|todo|throws|tutorial|type|typedef|undocumented|var|variation|version|virtual)\\b",
+          "comment": "common doc @ keywords",
+          "match": "(?<!\\w)@(abstract|alias|author|class|constructor|deprecated|enum|event|example|extends|fires|ignore|inheritdoc|member|method|param|private|property|protected|readonly|requires|return|since|static|throws|type|var)\\b",
+          "name": "storage.type.class.doc"
+        },
+        {
+          "comment": "additional jsdoc keywords",
+          "match": "(?<!\\w)@(access|also|arg|arguments|augments|borrows|callback|classdesc|constant|const|constructs|copyright|default|defaultvalue|desc|description|emits|exception|exports|external|file|fileoverview|function|func|global|host|implements|inner|instance|interface|kind|lends|license|listens|memberof|mixes|mixin|module|name|namsepace|overview|prop|public|returns|see|summary|this|todo|tutorial|typedef|undocumented|variation|version|virtual)\\b",
           "name": "storage.type.class.jsdoc"
+        },
+        {
+          "comment": "additional jsduck keywords",
+          "match": "(?<!\\w)@(accessor|alternateClassName|aside|cfg|chainable|docauthor|evented|experimental|ftype|hide|inheritable|localdoc|markdown|mixins|new|override|preventable|ptype|removed|scss mixin|singleton|template|uses|xtype)\\b",
+          "name": "storage.type.class.jsduck"
         }
       ]
     },
