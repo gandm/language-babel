@@ -1,7 +1,11 @@
+### 0.13.0
+  - Add jsduck documentation keywords.
+  - Fixes #53 ternary operator being parsed as flow type.
+
 ### 0.12.0
   - PR #50 Add simple JSDoc grammar.
   - Scope fixes.
-  
+
 ### 0.11.11
   - Fixes #49 incorrect handling of escapes within strings.
 
