@@ -315,6 +315,22 @@
     "round-brackets": {
       "patterns": [
         {
+          "comment": "I assume flow typecasts start with a newline( or a :( or a ;(",
+          "name": "meta.group.braces.round",
+          "begin": "(^|:|;|(?<=:|;))\\s*(\\()",
+          "end": "\\)",
+          "beginCaptures": {
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "endCaptures": {
+            "0": { "name": "meta.brace.round.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-typecast" },
+            { "include": "#expression" }
+          ]
+        },
+        {
           "name": "meta.group.braces.round",
           "begin": "\\(",
           "end": "\\)",
@@ -325,7 +341,6 @@
             "0": { "name": "meta.brace.round.js" }
           },
           "patterns": [
-            { "include": "#flowtype-typecast" },
             { "include": "#expression" }
           ]
         }
