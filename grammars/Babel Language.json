@@ -1389,7 +1389,8 @@
           "endCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
             "2": { "name": "entity.name.tag.close.jsx" },
-            "3": { "name": "punctuation.definition.tag.jsx" }
+            "3": { "name": "punctuation.definition.tag.jsx" },
+            "4": { "name": "punctuation.definition.tag.jsx" }
           },
           "patterns": [
             { "include": "#jsx-tag-termination" },
