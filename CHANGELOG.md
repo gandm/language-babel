@@ -1,6 +1,9 @@
+### 0.13.2
+  - Fixes #57. Highlighting breaks down.
+  
 ### 0.13.1
   - Fixes #55 missing scope on JSX self closing tags.
-  
+
 ### 0.13.0
   - Add jsduck documentation keywords.
   - Fixes #53 ternary operator being parsed as flow type.
