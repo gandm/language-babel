@@ -710,19 +710,15 @@
     "literal-function-call": {
       "patterns": [
         {
-          "name": "meta.function-call.without-arguments.js",
-          "match": "([_$a-zA-Z][$\\w]*)\\s*(\\(\\s*\\))",
-          "captures": {
-            "1": { "name": "entity.name.function.js" },
-            "2": { "name": "meta.group.braces.round.function.arguments.js" }
-          }
-        },
-        {
-          "name": "meta.function-call.with-arguments.js",
-          "match": "([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
-          "captures": {
+          "begin": "([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
+          "end": "(?=.)",
+          "applyEndPatternLast": "1",
+          "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#flowtype" }
+          ]
         }
       ]
     },
