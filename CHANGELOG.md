@@ -1,6 +1,8 @@
 ### 0.13.2
   - Fixes #57. Highlighting breaks down.
-  
+  - Remove generators from arrow functions
+  - Ternary/Typecast detection
+
 ### 0.13.1
   - Fixes #55 missing scope on JSX self closing tags.
 
