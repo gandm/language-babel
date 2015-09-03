@@ -309,9 +309,10 @@
     "round-brackets": {
       "patterns": [
         {
-          "comment": "I assume flow typecasts start with a newline( or a :( or a ;(",
+          "comment": "Assume flow typecasts start with a newline( or a :( or a ;(",
+          "comment": "try to avoid ternary operators",
           "name": "meta.group.braces.round",
-          "begin": "(^|:|;|(?<=:|;))\\s*(\\()",
+          "begin": "\\s*(^|:|;|(?<=:|;))\\s*(\\()(?=(('|\\\\\\\")(\\\\b[_$a-zA-Z][$\\\\w]*)(\\\\k<2>))|[^:?]*+(:|$))",
           "end": "\\)",
           "beginCaptures": {
             "2": { "name": "meta.brace.round.js" }
