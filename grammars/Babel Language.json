@@ -884,7 +884,7 @@
           "match": "(?:(?<=\\.)|\\b)([A-Z][$\\w]*)\\s*(\\.)([_$a-zA-Z][$\\w]*)\\s*(\\(\\s*\\))",
           "captures": {
             "1": { "name": "variable.other.class.js" },
-            "2": { "name": "keywo     rd.operator.accessor.js" },
+            "2": { "name": "keyword.operator.accessor.js" },
             "3": { "name": "entity.name.function.js" },
             "4": { "name": "meta.group.braces.round.function.arguments.js" }
           }
