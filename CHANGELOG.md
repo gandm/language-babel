@@ -1,6 +1,7 @@
 ### 0.13.3
   - Fix issues with parens/braces not terminating scope.
   - Fix optional flowtype params and maybe type handling.
+  - Change scope when 'constructor' and 'self' used as method names.
 
 ### 0.13.2
   - Fixes #57. Highlighting breaks down.
