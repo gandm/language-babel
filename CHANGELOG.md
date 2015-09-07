@@ -1,5 +1,6 @@
 ### 0.13.3
-  - Fix issues with parens/braces not terminating scope. 
+  - Fix issues with parens/braces not terminating scope.
+  - Fix optional flowtype params and maybe type handling.
 
 ### 0.13.2
   - Fixes #57. Highlighting breaks down.
