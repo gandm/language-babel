@@ -839,7 +839,7 @@
       "patterns": [
         {
           "comment": "Classes",
-          "begin": "(?<!\\.)\\b(class)\\s+",
+          "begin": "\\s*(?<!\\.)\\b(class)\\s+",
           "end": "\\s*(})",
           "beginCaptures": {
             "0": { "name": "meta.class.js" },
