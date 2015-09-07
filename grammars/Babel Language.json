@@ -927,7 +927,7 @@
         },
         {
           "name": "variable.language.super.js",
-          "match": "\\s*(?<!(?<!\\.\\.)\\.)\\b(super)\\b"
+          "match": "\\s*(?<!(?<!\\.\\.)\\.)\\b(super)\\b\\s*(?!\\()"
         },
         {
           "name": "variable.language.this.js",
