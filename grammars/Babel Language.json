@@ -1548,11 +1548,11 @@
       "patterns": [
         {
           "comment": "name of variable spread var with flowtype :",
-          "comment": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(?!\\(|\\[)",
-          "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(?=:|=>)",
+          "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(\\??)(?=:|=>)",
           "captures": {
             "1": { "name": "keyword.operator.spread.js" },
-            "2": { "name": "storage.type.variable.js" }
+            "2": { "name": "storage.type.variable.js" },
+            "3": { "name": "keyword.operator.optional.parameter.flowtype" }
           }
         },
         { "include": "#flowtype-vars-and-props" }
@@ -1696,39 +1696,40 @@
     "flowtype-parse-types": {
         "patterns": [
           {
+            "comment": "Maybe types",
+            "name": "punctuation.maybe.flowtype",
+            "match": "\\s*\\?"
+          },
+          {
             "name": "keyword.operator.flowtype",
             "match": "\\s*\\btypeof\\b\\s*"
           },
           {
             "comment": "primitive flowtypes",
-            "match": "\\s*(?:(\\?)?)\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
+            "match": "\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
             "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.builtin.primitve.flowtype" }
+              "1": { "name": "support.type.builtin.primitve.flowtype" }
             }
           },
           {
             "comment": "Built-in Class Types",
-            "match": "\\s*(?:(\\?)?)\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
+            "match": "\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
             "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.builtin.class.flowtype" }
+              "1": { "name": "support.type.builtin.class.flowtype" }
             }
           },
           {
             "comment": "custom Class Types e.g. Abc avoid Abc(",
-            "match": "\\s*(?:(\\?)?)\\s*([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*\\()",
+            "match": "\\s*([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*\\()",
             "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.class.flowtype" }
+              "1": { "name": "support.type.class.flowtype" }
             }
           },
           {
             "comment": "custom primitive/var Types e.g. abc avoid abc(",
-            "match": "\\s*(?:(\\?)?)\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*\\()",
+            "match": "\\s*([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*\\()",
             "captures": {
-              "1": { "name": "punctuation.flowtype"},
-              "2": { "name": "support.type.primitive.flowtype" }
+              "1": { "name": "support.type.primitive.flowtype" }
             }
           },
           {
@@ -1866,7 +1867,7 @@
         {
           "comment": "import for types",
           "name": "keyword.control.module.js",
-          "match": "(?<!\\.)\\b(import)\\b\\s*(type)\\b"
+          "match": "\\s*(?<!\\.)\\b(import)\\b\\s*(type)\\b"
         },
         {
           "comment": "handle other types",
@@ -1979,7 +1980,7 @@
       "patterns": [
         {
           "begin": "\\s*\\b(class)\\s+",
-          "end": "}",
+          "end": "\\s*}",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "support.type.class.flowtype" }
@@ -1987,7 +1988,7 @@
           "patterns": [
             {
               "begin": "\\s*\\b(extends)\\b\\s*",
-              "end": "(?={)",
+              "end": "\\s*(?={)",
               "beginCaptures": {
                 "1": { "name": "storage.type.extends.js" }
               },
@@ -1998,7 +1999,7 @@
             },
             {
               "begin": "{",
-              "end": "(?=})",
+              "end": "\\s*(?=})",
               "contentName": "meta.class.body.js",
               "beginCaptures": {
                 "0": { "name": "punctuation.section.class.begin.js" }
@@ -2020,7 +2021,7 @@
       "patterns": [
         {
           "begin": "\\s*\\b(function)\\s+",
-          "end": "(;)",
+          "end": "\\s*(;)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.type.function.js" }
@@ -2036,7 +2037,7 @@
       "patterns": [
         {
           "begin": "\\s*\\b(var)\\s+",
-          "end": "(;)",
+          "end": "\\s*(;)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.type.var.js" }
