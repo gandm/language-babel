@@ -935,7 +935,7 @@
         },
         {
           "name": "variable.language.self.js",
-          "match": "\\s*(?<!(?<!\\.\\.)\\.)\\b(self)\\b"
+          "match": "\\s*(?<!(?<!\\.\\.)\\.)\\b(self)\\b\\s*(?!\\()"
         },
         {
           "name": "variable.language.proto.js",
@@ -943,7 +943,7 @@
         },
         {
           "name": "variable.language.constructor.js",
-          "match": "\\s*(?<=\\.)\\b(constructor)\\b"
+          "match": "\\s*(?<=\\.)\\b(constructor)\\b\\s*(?!\\()"
         },
         {
           "name": "variable.language.prototype.js",
