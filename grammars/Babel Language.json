@@ -195,7 +195,7 @@
         },
         {
           "name": "constant.other.object.key.js",
-          "match": "(?<!\\.|\\?|\\?\\s)([_$a-zA-Z][$\\w]*)\\s*(:)",
+          "match": "(?<!\\.|\\?|\\?\\s)\\s*([_$a-zA-Z][$\\w]*)\\s*(:)",
           "captures": {
             "1": { "name": "string.unquoted.js" },
             "2": { "name": "punctuation.separator.key-value.js" }
