@@ -55,7 +55,6 @@
         { "include": "#comments" },
         { "include": "#brackets" },
         { "include": "#literal-operators" },
-
         { "include": "#literal-variable" }
       ]
     },
