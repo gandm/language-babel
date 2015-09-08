@@ -1548,7 +1548,7 @@
       "patterns": [
         {
           "comment": "name of variable spread var with flowtype :",
-          "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(\\??)(?=:|=>)",
+          "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(\\??)\\s*(?=:|=>)",
           "captures": {
             "1": { "name": "keyword.operator.spread.js" },
             "2": { "name": "storage.type.variable.js" },
