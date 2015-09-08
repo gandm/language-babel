@@ -1606,18 +1606,6 @@
         { "include": "#flowtype-vars-and-props"}
       ]
     },
-    "flowtype-object-property": {
-      "patterns": [
-        {
-          "comment": "name of property which can be a string",
-          "match": "\\s*(('|\\\").*?(\\k<2>(?<!\\\\.)))|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
-          "captures": {
-            "0": { "name": "storage.type.variable.property.flowtype" }
-          }
-        },
-        { "include": "#flowtype-vars-and-props" }
-      ]
-    },
     "flowtype-vars-and-props": {
       "patterns": [
         {
@@ -1834,6 +1822,18 @@
       },
       "patterns": [
         { "include": "#flowtype-object-property"}
+      ]
+    },
+    "flowtype-object-property": {
+      "patterns": [
+        {
+          "comment": "name of property which can be a string",
+          "match": "\\s*(('|\\\").*?(\\k<2>(?<!\\\\.)))|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+          "captures": {
+            "0": { "name": "storage.type.variable.property.flowtype" }
+          }
+        },
+        { "include": "#flowtype-vars-and-props" }
       ]
     },
     "flowtype-parse-array": {
