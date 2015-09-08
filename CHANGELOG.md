@@ -1,3 +1,6 @@
+### 0.13.4
+  - Fixes #61 Regression - Class not in first column no scoped. 
+
 ### 0.13.3
   - Fix issues with parens/braces not terminating scope.
   - Fix optional flowtype params and maybe type handling.
