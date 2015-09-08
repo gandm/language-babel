@@ -1828,9 +1828,10 @@
       "patterns": [
         {
           "comment": "name of property which can be a string",
-          "match": "\\s*(('|\\\").*?(\\k<2>(?<!\\\\.)))|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+          "match": "\\s*(((\"|').*?(?<=[^\\\\])\\k<-1>)|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))\\s*(\\??)\\s*(?=:)",
           "captures": {
-            "0": { "name": "storage.type.variable.property.flowtype" }
+            "1": { "name": "storage.type.variable.property.flowtype" },
+            "5": { "name": "keyword.operator.optional.parameter.flowtype" }
           }
         },
         { "include": "#flowtype-vars-and-props" }
