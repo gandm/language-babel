@@ -1,5 +1,8 @@
+### 0.13.5
+  - Changed scopenames for vars in func defs and calls to use variable...
+
 ### 0.13.4
-  - Fixes #61 Regression - Class not in first column no scoped. 
+  - Fixes #61 Regression - Class not in first column no scoped.
 
 ### 0.13.3
   - Fix issues with parens/braces not terminating scope.
