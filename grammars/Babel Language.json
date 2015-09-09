@@ -895,7 +895,7 @@
         },
         {
           "name": "meta.function-call.static.with-arguments.js",
-          "match": "\\s*(?:(?<=\\.)|\\b)([A-Z][$\\w]*)\\s*(\\.)([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
+          "match": "\\s*(?:(?<=\\.)|\\b)\\s*([A-Z][$\\w]*)\\s*(\\.)([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
           "captures": {
             "1": { "name": "variable.other.class.js" },
             "2": { "name": "keyword.operator.accessor.js" },
@@ -904,7 +904,7 @@
         },
         {
           "name": "meta.function-call.method.without-arguments.js",
-          "match": "\\s*(?<=\\.)([_$a-zA-Z][$\\w]*)\\s*(\\(\\s*\\))",
+          "match": "\\s*(?<=\\.)\\s*([_$a-zA-Z][$\\w]*)\\s*(\\(\\s*\\))",
           "captures": {
             "1": { "name": "entity.name.function.js" },
             "2": { "name": "meta.group.braces.round.function.arguments.js" }
@@ -1551,7 +1551,7 @@
           "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*(\\??)\\s*(?=:|=>)",
           "captures": {
             "1": { "name": "keyword.operator.spread.js" },
-            "2": { "name": "storage.type.variable.js" },
+            "2": { "name": "variable.other.readwrite.js" },
             "3": { "name": "keyword.operator.optional.parameter.flowtype" }
           }
         },
@@ -1582,7 +1582,7 @@
           "captures": {
             "1": { "name": "string.quoted.js" },
             "3": { "name": "punctuation"},
-            "4": { "name": "storage.type.variable.property.js"}
+            "4": { "name": "variable.other.property.js"}
           }
         },
         {
@@ -1591,7 +1591,7 @@
           "captures": {
             "1": { "name": "string.unquoted.js" },
             "2": { "name": "punctuation"},
-            "3": { "name": "storage.type.variable.property.js"}
+            "3": { "name": "variable.other.property.js"}
           }
         },
         {
@@ -1599,7 +1599,7 @@
           "match": "\\s*((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
           "captures": {
             "1": { "name": "keyword.operator.spread.js" },
-            "2": { "name": "storage.type.variable.js" }
+            "2": { "name": "variable.other.property.js" }
           }
         },
         { "match": ","},
@@ -1830,7 +1830,7 @@
           "comment": "name of property which can be a string",
           "match": "\\s*(((\"|').*?(?<=[^\\\\])\\k<-1>)|([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))\\s*(\\??)\\s*(?=:)",
           "captures": {
-            "1": { "name": "storage.type.variable.property.flowtype" },
+            "1": { "name": "variable.other.property.flowtype" },
             "5": { "name": "keyword.operator.optional.parameter.flowtype" }
           }
         },
@@ -1856,7 +1856,7 @@
       "match": "\\s*(\\bstatic\\b)?\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\b\\s*\\??\\s*(:[^;]*)(;|$)",
       "captures": {
         "1": { "name": "storage.modifier.static.js" },
-        "2": { "name": "storage.type.variable.flowtype" },
+        "2": { "name": "variable.other.readwrite.js" },
         "3": { "patterns": [
               { "include": "#flowtype-parse-types" }
             ]
