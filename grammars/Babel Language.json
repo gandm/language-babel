@@ -1697,7 +1697,7 @@
         },
         {
           "comment": "some form of default assignment for func args",
-          "begin": "\\s*=(?!>)",
+          "begin": "\\s*=(?!>|=|==)",
           "end": "\\s*(?=,|;|\\))",
           "beginCaptures": {
             "0": { "name": "keyword.operator.assignment.js" }
