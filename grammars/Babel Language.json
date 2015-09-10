@@ -689,8 +689,13 @@
           "match": "\\s*(--|\\+\\+|/[^/]|%|\\*|\\+|-)"
         },
         {
-          "name": "keyword.operator.ternary.js",
-          "match": "\\s*(\\?|:)"
+          "comment": "ternary operator - make sure end : is consumed to avoid mistake as flow type",
+          "begin": "\\s*(?=\\?)",
+          "end": "\\s*(?=.)",
+          "applyEndPatternLast": "1",
+          "patterns": [
+            { "include": "#flowtype-variable"}
+          ]
         },
         {
           "name": "keyword.operator.spread.js",
@@ -1625,6 +1630,28 @@
             "0": { "name": "keyword.operator.ternary.js" }
           },
           "patterns": [
+            {
+              "name": "meta.function-call.without-arguments.js",
+              "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*\\(\\s*(?=\\))",
+              "end": "\\s*\\)",
+              "beginCaptures": {
+                "1": { "name": "entity.name.function.js" }
+              },
+              "patterns": [
+                { "include": "#flowtype-variable" }
+              ]
+            },
+            {
+              "name": "meta.function-call.with-arguments.js",
+              "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*\\(",
+              "end": "\\s*\\)",
+              "beginCaptures": {
+                "1": { "name": "entity.name.function.js" }
+              },
+              "patterns": [
+                { "include": "#flowtype-variable" }
+              ]
+            },
             { "include": "#flowtype-variable"}
           ]
         },
