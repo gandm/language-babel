@@ -1995,7 +1995,8 @@
             { "include": "#flowtype-declare-classes"},
             { "include": "#flowtype-declare-modules"},
             { "include": "#flowtype-declare-function"},
-            { "include": "#flowtype-declare-vars"}
+            { "include": "#flowtype-declare-vars"},
+            { "include": "#flowtype-declare-declare"}
           ]
         }
       ]
@@ -2065,7 +2066,7 @@
       "patterns": [
         {
           "begin": "\\s*\\b(var)\\s+",
-          "end": "\\s*(;)",
+          "end": "\\s*(?=.)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.type.var.js" }
