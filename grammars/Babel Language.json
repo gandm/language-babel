@@ -854,7 +854,6 @@
             "1": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
-            { "include": "#flowtype-polymorphs" },
             {
               "match": "\\s*\\b(extends)\\b\\s*",
               "captures": {
@@ -862,7 +861,8 @@
                 "1": { "name": "storage.type.extends.js" }
               }
             },
-            { "include": "#flowtype-class-name" },
+            { "include": "#flowtype-class-name"},
+            { "include": "#flowtype-polymorphs"},
             {
               "begin": "\\s*{",
               "end": "\\s*(?=})",
@@ -880,7 +880,8 @@
                 { "include": "#expression"}
 
               ]
-            }
+            },
+            { "include": "#expression"}
           ]
         }
       ]
@@ -1974,7 +1975,7 @@
     },
     "flowtype-class-name": {
       "comment": "look for classes names but dont assume uppercase start char",
-      "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+      "match": "(?<!\\.)\\s*([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
       "name": "entity.name.class.js"
     },
     "flowtype-interface-name": {
@@ -1995,8 +1996,7 @@
             { "include": "#flowtype-declare-classes"},
             { "include": "#flowtype-declare-modules"},
             { "include": "#flowtype-declare-function"},
-            { "include": "#flowtype-declare-vars"},
-            { "include": "#flowtype-declare-declare"}
+            { "include": "#flowtype-declare-vars"}
           ]
         }
       ]
