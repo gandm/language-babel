@@ -1,3 +1,7 @@
+### 0.13.6
+  - Small fixes in ternary handling
+  - Fixes #63
+  
 ### 0.13.5
   - Changed scopenames for vars in func defs and calls to use variable...
 
