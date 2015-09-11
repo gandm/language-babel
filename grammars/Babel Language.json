@@ -1943,7 +1943,7 @@
           "end": "\\s*;|\\n",
           "applyEndPatternLast": "1",
           "beginCaptures": {
-            "1": { "name": "storage.type.function.js" }
+            "1": { "name": "support.type.interface.flowtype" }
           },
           "patterns": [
             { "include": "#flowtype"},
@@ -1980,8 +1980,8 @@
     },
     "flowtype-interface-name": {
       "comment": "look for interface names but dont assume uppercase start char",
-      "match": "\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
-      "name": "support.type.interface.js"
+      "match": "(?<!\\.)\\s*([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+      "name": "support.type.class.interface.js"
     },
     "flowtype-declare": {
       "patterns": [
