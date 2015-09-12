@@ -16,9 +16,7 @@ Install via ATOM or by using `apm install language-babel`
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
-By default the package also supports the [Babel](http://babeljs.io/) transpiler. Out of the box any file saved will be transpiled and any errors and/or successful completions notified in the ATOM workspace.
-
-It is likely users of Babel will use a workflow ( grunt, gulp, etc ) and will not want transpiled output saved. However, language-babel fully supports transpiled output, maps, .babelrc files and the setting of most Babel options.
+The package also supports the [Babel](http://babeljs.io/) transpiler. It is likely users of Babel will use a workflow ( grunt, gulp, Nuclide etc ) and will not want transpiled output saved. language-babel fully supports transpiled output, maps, .babelrc files and the setting of most Babel options. It is also possible to do a quick Babel transpile check on each save.
 
 See the sections *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
 
@@ -116,7 +114,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
 ## .languagebabel Configuration
 
-`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged stating in the source files directory up towards the project root directory. `.languagebabel` properties defined closest the source file take precedence.
+`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged stating in the source files directory up to the project root directory. `.languagebabel` properties defined closest the source file take precedence.
 
 A `.languagebabel` file may contain one or more of the following properties.
 
