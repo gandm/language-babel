@@ -1,18 +1,44 @@
 fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require 'path-is-inside'
+merge = require('lodash/object/merge')
 
 class Transpiler
   constructor: ->
     @transpileErrorNotifications = {}
+    # setup JSON Schema to parse .languagebabel configs
+    @jsonSchema = (require 'jjv')() # use jjv as it runs without CSP issues
+    @jsonSchema.addSchema('localConfig', {
+      type: 'object',
+      properties: {
+        babelMapsPath:                    { type: 'string' },
+        babelMapsAddUrl:                  { type: 'boolean' },
+        babelSourcePath:                  { type: 'string' },
+        babelTranspilePath:               { type: 'string' },
+        createMap:                        { type: 'boolean' },
+        createTargetDirectories:          { type: 'boolean' },
+        createTranspiledCode:             { type: 'boolean' },
+        disableWhenNoBabelrcFileInPath:   { type: 'boolean' },
+        suppressSourcePathMessages:       { type: 'boolean' },
+        suppressTranspileOnSaveMessages:  { type: 'boolean' },
+        transpileOnSave:                  { type: 'boolean' }
+      },
+      additionalProperties: false
+    })
     @deprecateConfig()
 
   # transpile sourceFile edited by the optional textEditor
   transpile: (sourceFile, textEditor) ->
     config = @getConfig()
-    return if config.transpileOnSave isnt true
+    pathTo = @getPaths sourceFile, config
 
-    pathTo = @getPaths(sourceFile, config)
+    localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
+    # merge local configs with global. local wins
+    merge config, localConfig
+    # recalc paths
+    pathTo = @getPaths sourceFile, config
+
+    return if config.transpileOnSave isnt true
 
     if config.disableWhenNoBabelrcFileInPath
       if not @isBabelrcInPath pathTo.sourceFileDir, path.parse(pathTo.sourceFileDir).root
@@ -117,25 +143,42 @@ class Transpiler
       babelOptions.whitelist = config.whitelistTransformers
     return babelOptions
 
-# check for prescence of a .babelrc file path fromDir toDir
-  isBabelrcInPath: (fromDir, toDir) ->
-    # enviromnents used in babelrc
-    babelrc = '.babelrc'
-    babelrcFile = path.join fromDir, babelrc
-    if fs.existsSync babelrcFile
-      return true
-    if fromDir isnt toDir
-      return @isBabelrcInPath path.dirname(fromDir), toDir
-    else return false
-
-  # get configuration for language-babel
+  # get global configuration for language-babel
   getConfig: -> atom.config.get('language-babel')
+
+# check for prescence of a .languagebabel file path fromDir toDir
+# read, validate and overwrite config as required
+  getLocalConfig: (fromDir, toDir, localConfig) ->
+    # get local path overides
+    localConfigFile = '.languagebabel'
+    languageBabelCfgFile = path.join fromDir, localConfigFile
+    if fs.existsSync languageBabelCfgFile
+      fileContent= fs.readFileSync languageBabelCfgFile, 'utf8'
+      try
+        jsonContent = JSON.parse fileContent
+      catch err
+        atom.notifications.addError "#{localConfigFile} #{err.message}",
+          dismissable: true
+          detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
+        return
+      schemaErrors = @jsonSchema.validate 'localConfig', jsonContent
+      if schemaErrors
+        atom.notifications.addError "#{localConfigFile} Schema Error",
+          dismissable: true
+          detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
+      else
+        # merge local config. config closest sourceFile wins
+        merge  jsonContent, localConfig
+        localConfig = jsonContent
+    if fromDir isnt toDir
+      return @getLocalConfig path.dirname(fromDir), toDir, localConfig
+    else return localConfig
 
   # calculate absoulte paths of babel source, target js and maps files
   # based upon the project directory containing the source
   # and the roots of source, transpile path and maps paths defined in config
   getPaths:  (sourceFile, config) ->
-    projectContainingSource = atom.project.relativizePath(sourceFile)
+    projectContainingSource = atom.project.relativizePath sourceFile
     # if a project is in the root directory atom passes back a null for
     # the project path. We need the real root
     if projectContainingSource[0] is null
@@ -160,5 +203,16 @@ class Transpiler
     transpiledFile: absTranspiledFile
     sourceRoot: absSourceRoot
     projectPath: absProjectPath
+
+# check for prescence of a .babelrc file path fromDir toDir
+  isBabelrcInPath: (fromDir, toDir) ->
+    # enviromnents used in babelrc
+    babelrc = '.babelrc'
+    babelrcFile = path.join fromDir, babelrc
+    if fs.existsSync babelrcFile
+      return true
+    if fromDir isnt toDir
+      return @isBabelrcInPath path.dirname(fromDir), toDir
+    else return false
 
 exports.Transpiler = Transpiler
