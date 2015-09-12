@@ -1,7 +1,7 @@
 module.exports =
   transpileOnSave:
     type: 'boolean'
-    default: true
+    default: false
     order: 10
   disableWhenNoBabelrcFileInPath:
     description: 'Suppress transpile when no .babelrc file is in source file path'
