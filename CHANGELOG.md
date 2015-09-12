@@ -1,7 +1,11 @@
+### 0.14.0
+  - BREAKING: `Transpile On Save` is now disabled by default. Please re-enable if required. [Issue 64](https://github.com/gandm/language-babel/issues/64)
+  - Local configuration of language-babel options via JSON config is not supported. [Issue 51](https://github.com/gandm/language-babel/issues/51)
+  
 ### 0.13.6
   - Small fixes in ternary handling
   - Fixes #63
-  
+
 ### 0.13.5
   - Changed scopenames for vars in func defs and calls to use variable...
 
