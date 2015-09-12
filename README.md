@@ -111,12 +111,12 @@ By using the ATOM settings panel for language-babel you can control many of the 
   The module loader format to use. Either `common` to use CommonJS, `amd` to use Asynchronous Module Definition or `umd` to use Universal Module Definition   Please refer to [Babel Modules](http://babeljs.io/docs/usage/modules/) for further information.
 
 * #### Transformer Options
-  The remaining transformer options may contain comma seperated lists of transformer names.
+  The remaining transformer options may contain comma separated lists of transformer names.
   Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
 
 ## .languagebabel Configuration
 
-`.languagebabel` JSON configuration files can exist in any directory that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged stating in the source files directory up towards the project root directory. `.languagebabel` properties defined closest the source file take precedence.
+`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged stating in the source files directory up towards the project root directory. `.languagebabel` properties defined closest the source file take precedence.
 
 A `.languagebabel` file may contain one or more of the following properties.
 
