@@ -1868,7 +1868,7 @@
     },
     "flowtype-parse-array": {
       "comment": "arrays such as [name: string, dob: Date]",
-      "begin": "\\s*(\\[)(?#here)",
+      "begin": "\\s*(\\[)",
       "end": "\\s*(\\])",
       "beginCaptures": {
         "1": { "name": "meta.brace.square.open.flowtype" }
@@ -1904,7 +1904,6 @@
         },
         {
           "comment": "import for types",
-          "name": "keyword.control.module.js",
           "match": "\\s*(?<!\\.)\\b(import)\\b\\s*(type)\\b",
           "captures": {
             "1": { "name":  "keyword.control.module.js" },
