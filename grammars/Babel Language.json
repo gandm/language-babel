@@ -1714,7 +1714,7 @@
         "patterns": [
           {
             "comment": "Maybe types",
-            "name": "punctuation.maybe.flowtype",
+            "name": "keyword.operator.maybe.flowtype",
             "match": "\\s*\\?"
           },
           {
