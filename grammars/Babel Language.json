@@ -1679,6 +1679,7 @@
         },
         { "include": "#flowtype-bracketed-parameters"},
         { "include": "#flowtype-parse-operators"},
+        { "include": "#flowtype-parse-array"},
         { "include": "#expression" }
       ]
     },
@@ -1838,8 +1839,8 @@
       ]
     },
     "flowtype-parse-objects": {
-      "comment": "object literal flowtype  preceded by either  : | & symbols",
-      "begin": "(?<=:|\\||&)\\s*(\\{)",
+      "comment": "object literal flowtype  preceded by either  : | & ? symbols",
+      "begin": "(?<=:|\\||&|\\?)\\s*(\\{)",
       "end": "\\s*(\\})",
       "applyEndPatternLast": "1",
       "beginCaptures": {
@@ -1867,7 +1868,7 @@
     },
     "flowtype-parse-array": {
       "comment": "arrays such as [name: string, dob: Date]",
-      "begin": "\\s*(\\[)",
+      "begin": "\\s*(\\[)(?#here)",
       "end": "\\s*(\\])",
       "beginCaptures": {
         "1": { "name": "meta.brace.square.open.flowtype" }
@@ -1876,7 +1877,7 @@
         "1": { "name": "meta.brace.square.end.flowtype" }
       },
       "patterns": [
-        { "include": "#flowtype-parse-types"}
+        { "include": "#flowtype-variable"}
       ]
     },
     "flowtype-class-fields": {
