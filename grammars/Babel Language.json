@@ -1895,14 +1895,6 @@
     "flowtype-type-aliases": {
       "patterns": [
         {
-          "comment": "'type instanceof ' or 'type in ' not type aliases",
-          "match": "\\s*\\b(type)\\s+(instanceof|in)\\s+",
-          "captures": {
-            "1": { "name": "variable.other.readwrite.js" },
-            "2": { "name": "keyword.operator.js"}
-          }
-        },
-        {
           "comment": "import for types",
           "match": "\\s*(?<!\\.)\\b(import)\\b\\s*(type)\\b",
           "captures": {
@@ -1911,8 +1903,8 @@
           }
         },
         {
-          "comment": "type aliases",
-          "begin": "\\s*\\b(type)\\s+(?=[$_\\p{L}])",
+          "comment": "type aliases for export but avoid type instaceof or type in operators",
+          "begin": "\\s*\\b(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_\\p{L}])",
           "end": "\\s*;|\\n",
           "beginCaptures": {
             "1": { "name": "support.type.type.flowtype" }
