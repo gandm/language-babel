@@ -1895,16 +1895,28 @@
     "flowtype-type-aliases": {
       "patterns": [
         {
-          "comment": "import for types",
-          "name": "keyword.control.module.js",
-          "match": "\\s*(?<!\\.)\\b(import)\\b\\s*(type)\\b"
+          "comment": "'type instanceof ' or 'type in ' not type aliases",
+          "match": "\\s*\\b(type)\\s+(instanceof|in)\\s+",
+          "captures": {
+            "1": { "name": "variable.other.readwrite.js" },
+            "2": { "name": "keyword.operator.js"}
+          }
         },
         {
-          "comment": "handle other types",
+          "comment": "import for types",
+          "name": "keyword.control.module.js",
+          "match": "\\s*(?<!\\.)\\b(import)\\b\\s*(type)\\b",
+          "captures": {
+            "1": { "name":  "keyword.control.module.js" },
+            "2": { "name":  "support.type.type.flowtype"}
+          }
+        },
+        {
+          "comment": "type aliases",
           "begin": "\\s*\\b(type)\\s+(?=[$_\\p{L}])",
           "end": "\\s*;|\\n",
           "beginCaptures": {
-            "1": { "name": "storage.type.flowtype" }
+            "1": { "name": "support.type.type.flowtype" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.object.end.flowtype"}
