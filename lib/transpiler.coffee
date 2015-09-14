@@ -53,7 +53,7 @@ class Transpiler
             messages use language-babel package settings"
       return
 
-    babelOptions = @getBabelOptions(config, pathTo)
+    babelOptions = @getBabelOptions config
 
     # remove previous transpile error notifications for this source file
     if @transpileErrorNotifications[pathTo.sourceFile]?
@@ -127,7 +127,7 @@ class Transpiler
 
   # calculate babel options based upon package config, babelrc files and
   # whether internalScanner is used.
-  getBabelOptions: (config, pathTo)->
+  getBabelOptions: (config)->
     # set transpiler options from package configuration.
     babelOptions =
       sourceMaps: config.createMap
