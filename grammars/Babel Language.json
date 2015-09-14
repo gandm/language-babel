@@ -1881,13 +1881,13 @@
       ]
     },
     "flowtype-class-fields": {
-      "comment": "flow supports field names in classe bodies, such as  namevar: string",
-      "match": "\\s*(\\bstatic\\b)?\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\b\\s*\\??\\s*(:[^;]*)(;|$)",
+      "comment": "flow supports field names in classe bodies, such as  namevar?: string",
+      "match": "\\s*(\\bstatic\\b)?\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\b\\s*(\\??\\s*:[^;]*)(;|$)",
       "captures": {
         "1": { "name": "storage.modifier.static.js" },
         "2": { "name": "variable.other.readwrite.js" },
         "3": { "patterns": [
-              { "include": "#flowtype-parse-types" }
+              { "include": "#flowtype-variable" }
             ]
         }
       }
@@ -1953,15 +1953,15 @@
             { "include": "#flowtype"},
             { "include": "#flowtype-interface-name"},
             {
-              "begin": "{",
-              "end": "(?=})",
+              "begin": "\\s*{",
+              "end": "\\s*}",
               "contentName": "meta.class.body.js",
               "beginCaptures": {
                 "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
                 { "include": "#flowtype"},
-                { "include": "#flowtype-class-fields"},
+                { "include": "#flowtype-variable" },
                 { "include": "#comments"},
                 { "include": "#flowtype-function-name"}
               ]
