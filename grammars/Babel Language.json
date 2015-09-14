@@ -1674,8 +1674,8 @@
           "match": "\\s*,"
         },
         {
-          "comment": "A decorator",
-          "match": "@"
+          "comment": "An Iterator prefix?",
+          "match": "@@"
         },
         { "include": "#flowtype-bracketed-parameters"},
         { "include": "#flowtype-parse-operators"},
