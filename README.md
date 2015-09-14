@@ -114,7 +114,7 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
 ## .languagebabel Configuration
 
-`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged stating in the source files directory up to the project root directory. `.languagebabel` properties defined closest the source file take precedence.
+`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged starting in the source files directory up to the project root directory. `.languagebabel` properties defined closest the source file take precedence.
 
 A `.languagebabel` file may contain one or more of the following properties.
 
