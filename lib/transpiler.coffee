@@ -32,11 +32,12 @@ class Transpiler
     config = @getConfig()
     pathTo = @getPaths sourceFile, config
 
-    localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
-    # merge local configs with global. local wins
-    merge config, localConfig
-    # recalc paths
-    pathTo = @getPaths sourceFile, config
+    if config.allowLocalOverride
+      localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
+      # merge local configs with global. local wins
+      merge config, localConfig
+      # recalc paths
+      pathTo = @getPaths sourceFile, config
 
     return if config.transpileOnSave isnt true
 
@@ -171,6 +172,8 @@ class Transpiler
         merge  jsonContent, localConfig
         localConfig = jsonContent
     if fromDir isnt toDir
+      # stop infinite recursion https://github.com/gandm/language-babel/issues/66
+      if fromDir == path.dirname(fromDir) then return localConfig
       return @getLocalConfig path.dirname(fromDir), toDir, localConfig
     else return localConfig
 
@@ -212,6 +215,8 @@ class Transpiler
     if fs.existsSync babelrcFile
       return true
     if fromDir isnt toDir
+      # stop infinite recursion https://github.com/gandm/language-babel/issues/66
+      if fromDir == path.dirname(fromDir) then return false
       return @isBabelrcInPath path.dirname(fromDir), toDir
     else return false
 
