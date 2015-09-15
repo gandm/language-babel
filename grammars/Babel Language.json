@@ -690,11 +690,17 @@
         },
         {
           "comment": "ternary operator - make sure end : is consumed to avoid mistake as flow type",
-          "begin": "\\s*(?=\\?)",
-          "end": "\\s*(?=.)",
-          "applyEndPatternLast": "1",
+          "begin": "\\s*(\\?)",
+          "end": "\\s*(:)",
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.ternary.js"}
+          },
+          "endCaptures": {
+            "1": { "name": "keyword.operator.ternary.js"}
+          },
           "patterns": [
-            { "include": "#flowtype-variable"}
+            { "include": "#ternary-function-call"},
+            { "include": "#expression"}
           ]
         },
         {
@@ -704,6 +710,35 @@
         {
           "name": "keyword.operator.accessor.js",
           "match": "\\."
+        }
+      ]
+    },
+    "ternary-function-call": {
+      "comment": "special pattern of function calls that doesn't call",
+      "comment": "#flowtype as this assumes the : following a ) : is a return type",
+      "patterns": [
+        {
+          "name": "meta.function-call.without-arguments.js",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\(\\s*\\))",
+          "end": "\\s*(?<=\\))",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-bracketed-parameters" }
+          ]
+        },
+        {
+          "name": "meta.function-call.with-arguments.js",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
+          "end": "\\s*(?<=\\))",
+          "applyEndPatternLast": "1",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-bracketed-parameters" }
+          ]
         }
       ]
     },
@@ -1178,7 +1213,7 @@
         {
           "comment": " e.g. play<T,T>(arg1, arg2): Type<T> {  }",
           "name": "meta.function.method.js",
-          "begin": "\\s*(\\bstatic\\b)?\\s*(\\basync\\b)?\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
+          "begin": "\\s*(\\bstatic\\b)?\\s*(\\basync\\b)?\\s*(\\*?)\\s*(?<!\\.)([_$a-zA-Z][$\\w]*)\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
           "end": "\\s*(?=.)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
@@ -1608,44 +1643,6 @@
           "match": "\\?(?=\\s*:)"
         },
         {
-          "comment": "avoid treating ternary : as a flowtype indicator",
-          "comment": "args in flow can be optional e.g. protocol? : string so we need to be aware of this",
-          "begin": "\\s*\\?(?=\\s*[^:])",
-          "end": "\\s*:",
-          "beginCaptures": {
-            "0": { "name": "keyword.operator.ternary.js" }
-          },
-          "endCaptures": {
-            "0": { "name": "keyword.operator.ternary.js" }
-          },
-          "patterns": [
-            {
-              "name": "meta.function-call.without-arguments.js",
-              "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*\\(\\s*(?=\\))",
-              "end": "\\s*\\)",
-              "beginCaptures": {
-                "1": { "name": "entity.name.function.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-variable" }
-              ]
-            },
-            {
-              "name": "meta.function-call.with-arguments.js",
-              "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*\\(",
-              "end": "\\s*\\)",
-              "beginCaptures": {
-                "1": { "name": "entity.name.function.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-variable" }
-              ]
-            },
-            { "include": "#flowtype-variable"}
-          ]
-        },
-
-        {
           "comment": "typed entity :",
           "begin": "\\s*(:)",
           "end": "(?=.)",
@@ -1807,7 +1804,7 @@
         {
           "comment": "just the polymorph bit like this <K,V>(arg,arg)",
           "begin": "\\s*(<)(?!<)",
-          "end": "\\s*(>)(?!>)",
+          "end": "\\s*(>)",
           "beginCaptures": {
             "1": { "name": "punctutation.flowtype"}
           },
@@ -2016,7 +2013,7 @@
               "patterns": [
                 { "match":"\\s*\\b(?<!\\.)static\\b(?!\\.)",
                   "name": "storage.modifier.js"
-                },                
+                },
                 { "include": "#literal-method"},
                 { "include": "#flowtype"},
                 { "include": "#flowtype-variable"},
