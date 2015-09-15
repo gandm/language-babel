@@ -17,12 +17,12 @@
   "repository": {
     "core": {
       "patterns": [
+        { "include": "#flowtype-declare"},
+        { "include": "#flowtype-type-aliases"},
+        { "include": "#flowtype-interface"},
         { "include": "#literal-function-labels" },
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-labels" },
-        { "include": "#flowtype-type-aliases"},
-        { "include": "#flowtype-interface"},
-        { "include": "#flowtype-declare"},
         { "include": "#literal-keywords" },
         { "include": "#literal-for" },
         { "include": "#literal-switch" },
@@ -46,7 +46,7 @@
         { "include": "#literal-string" },
         { "include": "#literal-language-constant" },
         { "include": "#literal-language-variable" },
-        { "include": "#literal-method" },
+        { "include": "#literal-method"},
         { "include": "#literal-module" },
         { "include": "#literal-class" },
         { "include": "#literal-constructor" },
@@ -874,10 +874,8 @@
                 { "include": "#brackets" },
                 { "include": "#es7-decorators" },
                 { "include": "#comments" },
-                { "include": "#es7-class-properties" },
                 { "include": "#literal-method"},
-                { "include": "#flowtype-class-fields" },
-                { "include": "#expression"}
+                { "include": "#flowtype-variable" }
 
               ]
             },
@@ -1177,8 +1175,8 @@
         {
           "comment": " e.g. play<T,T>(arg1, arg2): Type<T> {  }",
           "name": "meta.function.method.js",
-          "begin": "\\s*(?:\\b(static)\\s+)?(?:\\b(async)\\s+)?(?:(\\*)\\s*)?([_$a-zA-Z][$\\w]*)\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*(\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s{)",
-          "end": "\\s*(?={)",
+          "begin": "\\s*(\\bstatic\\b)?\\s*(\\basync\\b)?\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
+          "end": "\\s*(?=.)",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.modifier.js" },
@@ -1335,19 +1333,6 @@
             "1": { "name": "entity.name.class.js" },
             "2": { "name": "keyword.operator.accessor.js" },
             "3": { "name": "variable.language.prototype.js" }
-          }
-        }
-      ]
-    },
-    "es7-class-properties": {
-      "patterns": [
-        {
-          "comment": "stage 0 proposal: https://gist.github.com/jeffmo/054df782c05639da2adb",
-          "match": "\\s*\\b(static)?\\s*\\b([_$a-zA-Z][$\\w]*)\\s*(=)",
-          "captures": {
-            "1": {"name": "storage.modifier.static.js"},
-            "2": {"name": "variable.other.property.js"},
-            "3": {"name": "storage.type.js"}
           }
         }
       ]
@@ -1608,7 +1593,7 @@
             "2": { "name": "variable.other.property.js" }
           }
         },
-        { "match": ","},
+        { "match": "\\s*,"},
         { "include": "#flowtype-vars-and-props"}
       ]
     },
@@ -1675,7 +1660,7 @@
         },
         {
           "comment": "An Iterator prefix?",
-          "match": "@@"
+          "match": "\\s*@@"
         },
         { "include": "#flowtype-bracketed-parameters"},
         { "include": "#flowtype-parse-operators"},
@@ -1818,8 +1803,8 @@
         },
         {
           "comment": "just the polymorph bit like this <K,V>(arg,arg)",
-          "begin": "\\s*(<)",
-          "end": "\\s*(>)",
+          "begin": "\\s*(<)(?!<)",
+          "end": "\\s*(>)(?!>)",
           "beginCaptures": {
             "1": { "name": "punctutation.flowtype"}
           },
@@ -1879,18 +1864,6 @@
       "patterns": [
         { "include": "#flowtype-variable"}
       ]
-    },
-    "flowtype-class-fields": {
-      "comment": "flow supports field names in classe bodies, such as  namevar?: string",
-      "match": "\\s*(\\bstatic\\b)?\\s*([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\b\\s*(\\??\\s*:[^;]*)(;|$)",
-      "captures": {
-        "1": { "name": "storage.modifier.static.js" },
-        "2": { "name": "variable.other.readwrite.js" },
-        "3": { "patterns": [
-              { "include": "#flowtype-variable" }
-            ]
-        }
-      }
     },
     "flowtype-type-aliases": {
       "patterns": [
@@ -2038,8 +2011,9 @@
                 "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
+                { "include": "#literal-method"},
                 { "include": "#flowtype"},
-                { "include": "#flowtype-class-fields"},
+                { "include": "#flowtype-variable"},
                 { "include": "#comments"},
                 { "include": "#flowtype-function-name"}
               ]
