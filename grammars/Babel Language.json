@@ -871,6 +871,9 @@
                 "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
+                { "match":"\\s*\\b(?<!\\.)static\\b(?!\\.)",
+                  "name": "storage.modifier.js"
+                },
                 { "include": "#brackets" },
                 { "include": "#es7-decorators" },
                 { "include": "#comments" },
@@ -2011,6 +2014,9 @@
                 "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
+                { "match":"\\s*\\b(?<!\\.)static\\b(?!\\.)",
+                  "name": "storage.modifier.js"
+                },                
                 { "include": "#literal-method"},
                 { "include": "#flowtype"},
                 { "include": "#flowtype-variable"},
