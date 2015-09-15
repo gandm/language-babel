@@ -3,16 +3,21 @@ module.exports =
     type: 'boolean'
     default: false
     order: 10
+  allowLocalOverride:
+    description: 'Allow .languagebabel files to overide these settings'
+    type: 'boolean'
+    default: false
+    order: 12   
   disableWhenNoBabelrcFileInPath:
     description: 'Suppress transpile when no .babelrc file is in source file path'
     type: 'boolean'
     default: false
-    order: 11
+    order: 14
   suppressTranspileOnSaveMessages:
     description: 'Suppress notification messages on each save'
     type: 'boolean'
     default: false
-    order: 12
+    order: 16
   createTranspiledCode:
     type: 'boolean'
     default: false

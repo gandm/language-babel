@@ -1,6 +1,7 @@
 # these are defaults for the spec tests not necessarily the package defaults
 module.exports =
   # package control settings
+  allowLocalOverride: false
   babelMapsAddUrl: true
   babelMapsPath: ''
   babelSourcePath: ''
