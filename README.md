@@ -43,6 +43,9 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
   `.languagebabel property` `{"transpileOnSave": true|false}`
 
+* #### Allow Local Override
+  If set this allows `.languagebabel` file properties to be override the global package settings.
+
 * #### Disable When No Babelrc File In Path
   Disables transpiler if no `.babelrc` files are found in the source file path.
 
@@ -115,6 +118,8 @@ By using the ATOM settings panel for language-babel you can control many of the 
 ## .languagebabel Configuration
 
 `.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the Package Settings above. `.languagebabel` files if present are read and merged starting in the source files directory up to the project root directory. `.languagebabel` properties defined closest the source file take precedence.
+
+To use this option please enable the `Allow Local Override` package setting.
 
 A `.languagebabel` file may contain one or more of the following properties.
 

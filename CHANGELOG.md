@@ -1,3 +1,8 @@
+### 0.15.0
+  - Added a new option `Allow Local Override` to enable the `.languagebabel` option.
+  - Various other fixes in grammar.
+  - Workaround to fix issues on Nuclide Remote Filesystems causing endless loop.
+
 ### 0.14.0
   - BREAKING: `Transpile On Save` is now disabled by default. Please re-enable if required. [See Issue 64](https://github.com/gandm/language-babel/issues/64)
   - Local configuration of language-babel options via JSON configuration files - `.languagebabel` is now supported. Please [README](https://github.com/gandm/language-babel/blob/master/README.md) [See Issue 51](https://github.com/gandm/language-babel/issues/51)
