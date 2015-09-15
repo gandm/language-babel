@@ -38,7 +38,6 @@ class Transpiler
     # recalc paths
     pathTo = @getPaths sourceFile, config
 
-    return if config.transpileOnSave isnt true
 
     if config.disableWhenNoBabelrcFileInPath
       if not @isBabelrcInPath pathTo.sourceFileDir, path.parse(pathTo.sourceFileDir).root
