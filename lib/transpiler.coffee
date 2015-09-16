@@ -30,6 +30,20 @@ class Transpiler
   # transpile sourceFile edited by the optional textEditor
   transpile: (sourceFile, textEditor) ->
     config = @getConfig()
+    # In general, settings in a .languagebabel file can override that of
+    # the user's preferences, but if transpileOnSave is set, then no
+    # .languagebabel file will be considered.
+    #
+    # This is an oblique way of fixing
+    # https://github.com/gandm/language-babel/issues/66 because it avoids the
+    # later logic in this method that looks up the file tree for the presence
+    # of a .languagebabel file while assuming textEditor.getPath() is a local
+    # file.
+    #
+    # The reason why this is problematic is explained in more detail in
+    # https://github.com/atom/atom/issues/8791.
+    return if config.transpileOnSave isnt true
+
     pathTo = @getPaths sourceFile, config
 
     if config.allowLocalOverride
@@ -38,8 +52,6 @@ class Transpiler
       merge config, localConfig
       # recalc paths
       pathTo = @getPaths sourceFile, config
-
-    return if config.transpileOnSave isnt true
 
     if config.disableWhenNoBabelrcFileInPath
       if not @isBabelrcInPath pathTo.sourceFileDir, path.parse(pathTo.sourceFileDir).root
