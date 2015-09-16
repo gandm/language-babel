@@ -1989,19 +1989,14 @@
           "end": "\\s*}",
           "applyEndPatternLast": "1",
           "beginCaptures": {
-            "1": { "name": "support.type.class.flowtype" }
+            "1": { "name": "storage.type.class.flowtype" }
           },
           "patterns": [
             {
-              "begin": "\\s*\\b(extends)\\b\\s*",
-              "end": "\\s*(?={)",
-              "beginCaptures": {
-                "1": { "name": "storage.type.extends.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-class-name"},
-                { "include": "#flowtype-polymorphs"}
-              ]
+              "match": "\\s*\\b(extends|mixins)\\b\\s*",
+              "captures": {
+                "1": { "name": "storage.type.extends.flowtype" }
+              }
             },
             {
               "begin": "{",
