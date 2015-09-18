@@ -200,10 +200,6 @@ class Transpiler
     absTranspiledFile = path.join(absTranspileRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js')
     absMapFile = path.join(absMapsRoot, relSourceRootToSourceFile , parsedSourceFile.name  + '.js.map')
 
-    # Code to assist when potential path traversal issues may arise
-    if sourceFile.indexOf absProjectPath != 0
-      console.log "LANGUAGE-BABEL\nProject Dir is %s\nSource File is %s", absProjectPath, sourceFile
-      
     sourceFile: sourceFile
     sourceFileDir: parsedSourceFile.dir
     mapFile: absMapFile
