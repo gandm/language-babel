@@ -1886,7 +1886,7 @@
             "1": { "name": "punctuation.object.end.flowtype"}
           },
           "patterns": [
-            { "match": "\\s=" },
+            { "match": "\\s*=" },
             {
               "begin": "\\s*{",
               "end": "\\s*}",
