@@ -42,7 +42,7 @@ class Transpiler
     return if config.transpileOnSave isnt true
 
     if config.disableWhenNoBabelrcFileInPath
-      if not @isBabelrcInPath pathTo.sourceFileDir, path.parse(pathTo.sourceFileDir).root
+      if not @isBabelrcInPath pathTo.sourceFileDir
         return
 
     if not pathIsInside(pathTo.sourceFile, pathTo.sourceRoot)
@@ -207,17 +207,15 @@ class Transpiler
     sourceRoot: absSourceRoot
     projectPath: absProjectPath
 
-# check for prescence of a .babelrc file path fromDir toDir
-  isBabelrcInPath: (fromDir, toDir) ->
+# check for prescence of a .babelrc file path fromDir to root
+  isBabelrcInPath: (fromDir) ->
     # enviromnents used in babelrc
     babelrc = '.babelrc'
     babelrcFile = path.join fromDir, babelrc
     if fs.existsSync babelrcFile
       return true
-    if fromDir isnt toDir
-      # stop infinite recursion https://github.com/gandm/language-babel/issues/66
-      if fromDir == path.dirname(fromDir) then return false
-      return @isBabelrcInPath path.dirname(fromDir), toDir
+    if fromDir != path.dirname(fromDir)
+      return @isBabelrcInPath path.dirname(fromDir)
     else return false
 
 exports.Transpiler = Transpiler
