@@ -1917,22 +1917,32 @@
         {
           "comment": "find declare module and declare class defs",
           "begin": "\\s*\\b(interface)\\s+(?=[$_\\p{L}])",
-          "end": "\\s*;|\\n",
+          "end": "\\s*(;|\\n|})",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "support.type.interface.flowtype" }
           },
           "patterns": [
+            { "include": "#comments"},
+            {
+              "match": "\\s*\\b(extends)\\b\\s*",
+              "captures": {
+                "1": { "name": "storage.type.extends.flowtype" }
+              }
+            },
             { "include": "#flowtype"},
             { "include": "#flowtype-interface-name"},
             {
               "begin": "\\s*{",
-              "end": "\\s*}",
+              "end": "\\s*(?=})",
               "contentName": "meta.class.body.js",
               "beginCaptures": {
                 "0": { "name": "punctuation.section.class.begin.js" }
               },
               "patterns": [
+                { "match":"\\s*\\b(?<!\\.)static\\b(?!\\.)",
+                  "name": "storage.modifier.js"
+                },
                 { "include": "#flowtype"},
                 { "include": "#flowtype-variable" },
                 { "include": "#comments"},
