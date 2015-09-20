@@ -310,9 +310,9 @@
       "patterns": [
         {
           "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
-          "comment": "try to avoid ternary operators which have a ? before the :",
+          "comment": "try to avoid ternary operators which have a '? some chars :'",
           "name": "meta.group.braces.round",
-          "begin": "(^|:|;|=|(?<=:|;|=))\\s*(\\((?=((\"|').*?(?<=[^\\\\])\\k<-1>|[^?:])*:))",
+          "begin": "(^|:|;|=|(?<=:|;|=))\\s*(\\((?=((\"|').*?(?<=[^\\\\])\\k<-1>|[^?:])*(:|\\?\\s*:)))",
           "end": "\\s*\\)",
           "beginCaptures": {
             "2": { "name": "meta.brace.round.js" }
