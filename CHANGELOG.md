@@ -1,3 +1,7 @@
+### 0.15.1
+  - Support flowtype class mixins and multiple inheritance via interface extends
+  - Various fixes.
+
 ### 0.15.0
   - Added a new option `Allow Local Override` to enable the `.languagebabel` option.
   - Various other fixes in grammar.
