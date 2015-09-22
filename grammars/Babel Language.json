@@ -1769,7 +1769,7 @@
             "1": { "name": "punctuation.definition.parameters.begin.js" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.parameters.begin.js" }
+            "1": { "name": "punctuation.definition.parameters.end.js" }
           },
           "patterns": [
             { "include": "#flowtype-variable"}
