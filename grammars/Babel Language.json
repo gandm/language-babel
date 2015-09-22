@@ -1450,7 +1450,6 @@
         { "include": "#jsx-string-single-quoted" },
         { "include": "#jsx-evaluated-code" },
         { "include": "#jsx-tag-element-name"},
-        { "include": "#jsx-tag-attributes"},
         { "include": "#comments"}
       ]
     },
