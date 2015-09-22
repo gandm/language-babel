@@ -1,4 +1,4 @@
-fs = require 'fs-plus'
+fs = require '../node_modules/fs-plus'
 path = require 'path'
 pathIsInside = require '../node_modules/path-is-inside'
 merge = require('../node_modules/lodash/object/merge')
