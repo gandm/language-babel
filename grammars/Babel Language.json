@@ -1003,7 +1003,7 @@
           "match": "\\\\\\s*\\n"
         },
         { "name": "constant.character.escape",
-          "match": "\\\\\\\\|\\\\'|\\\\b|\\\\f|\\\\n|\\\\r|\\\\t|\\\\v|\\\\\"|\\0"
+          "match": "\\\\['|\"|\\\\|n|r|t|b|f|0]"
         },
         { "name": "constant.character.escape",
           "match": "\\\\u((\\{[0-9a-fA-F]+\\})|[0-9a-fA-F]{4})"
