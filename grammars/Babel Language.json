@@ -1772,7 +1772,7 @@
             "1": { "name": "punctuation.definition.parameters.begin.js" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.parameters.begin.js" }
+            "1": { "name": "punctuation.definition.parameters.end.js" }
           },
           "patterns": [
             { "include": "#flowtype-variable"}
@@ -1920,10 +1920,14 @@
         {
           "comment": "find declare module and declare class defs",
           "begin": "\\s*\\b(interface)\\s+(?=[$_\\p{L}])",
-          "end": "\\s*(;|\\n|})",
+          "end": "\\s*(?:(;)|\\n|(}))",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "support.type.interface.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.terminator.statement.js" },
+            "2": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
             { "include": "#comments"},
@@ -1999,10 +2003,13 @@
       "patterns": [
         {
           "begin": "\\s*\\b(class)\\s+",
-          "end": "\\s*}",
+          "end": "\\s*(})",
           "applyEndPatternLast": "1",
           "beginCaptures": {
             "1": { "name": "storage.type.class.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
             {
