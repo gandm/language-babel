@@ -39,7 +39,7 @@
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-function" },
         { "include": "#literal-arrow-function" },
-        { "include": "#literal-prototype" , "comment": " after literal-function, which includes some prototype strings"},
+        { "include": "#literal-prototype" , "comment": "after literal-function, which includes some prototype strings"},
         { "include": "#literal-regexp" , "comment": "before operators to avoid abiguities"},
         { "include": "#literal-number" },
         { "include": "#literal-quasi" },
@@ -61,7 +61,7 @@
     "literal-function-labels": {
       "patterns": [
         {
-          "comment": " e.g. play: function(arg1, arg2) {  }",
+          "comment": "e.g. play: function(arg1, arg2) { }",
           "name": "meta.function.json.js",
           "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(:)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(?:(\\*)\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
@@ -78,7 +78,7 @@
           ]
         },
         {
-          "comment": "e.g. 'play': function(arg1, arg2) {  }",
+          "comment": "e.g. 'play': function(arg1, arg2) { }",
           "name": "meta.function.json.js",
           "begin": "\\s*(('|\\\")(\\b[_$a-zA-Z][$\\w]*)(\\k<2>))\\s*(:)\\s*(async)?\\s+(\\bfunction\\b)\\s*(\\*\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
@@ -102,7 +102,7 @@
     "literal-arrow-function-labels": {
       "patterns": [
         {
-          "comment": "# e.g. play: async <T>(args) => { }",
+          "comment": "e.g. play: async <T>(args) => { }",
           "name": "meta.function.json.arrow.js",
           "begin": "\\s*(\\b[_$a-zA-Z][$\\w]*)\\s*(:)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -120,7 +120,7 @@
           ]
         },
         {
-          "comment": "# e.g. play: arg => { }",
+          "comment": "e.g. play: arg => { }",
           "name": "meta.function.json.arrow.js",
           "begin": "\\s*(\\b[_$a-zA-Z][$\\w]*)\\s*(:)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -138,7 +138,7 @@
           ]
         },
         {
-          "comment": "# e.g. 'play': (args) => { }",
+          "comment": "e.g. 'play': (args) => { }",
           "name": "meta.function.json.arrow.js",
           "begin": "\\s*(('|\\\")(\\b[_$a-zA-Z][$\\w]*)(\\k<2>))\\s*(:)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -159,7 +159,7 @@
           ]
         },
         {
-          "comment": "# e.g. 'play': arg => { }",
+          "comment": "e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
           "begin": "\\s*(('|\\\")(\\b[_$a-zA-Z][$\\w]*)(\\k<2>))\\s*(:)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -495,7 +495,7 @@
       "patterns": [
         {
           "comment": "flowtype vars with a : to indicate type",
-          "comment": "these statements must end in a ; ",
+          "comment": "these statements must end in a ;",
           "begin": "\\s*(?<!\\.)\\b(const|let|var)\\b\\s+(?=[$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*+\\s*:))",
           "end": "\\s*\\;",
           "beginCaptures": {
@@ -510,7 +510,7 @@
         },
         {
           "comment": "flowtype objects {a,b,{z}} with a : to indicate type",
-          "comment": "these statements must end in a ; ",
+          "comment": "these statements must end in a ;",
           "begin": "\\s*(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})\\s*:)",
           "end": "\\s*\\;",
           "beginCaptures": {
@@ -525,7 +525,7 @@
         },
         {
           "comment": "flowtype arrays [a,[b,c]] with a : to indicate type",
-          "comment": "these statements must end in a ; ",
+          "comment": "these statements must end in a ;",
           "begin": "\\s*(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*:)",
           "end": "\\s*\\;",
           "beginCaptures": {
@@ -548,7 +548,7 @@
     "literal-function": {
       "patterns": [
         {
-          "comment": "e.g. function play<T>(arg1, arg2) {  }",
+          "comment": "e.g. function play<T>(arg1, arg2) { }",
           "name": "meta.function.js",
           "begin": "\\s*(?:\\b(async)\\b\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
           "end": "(?=\\s*\\{)",
@@ -564,7 +564,7 @@
           ]
         },
         {
-          "comment": "e.g. play = function(arg1, arg2) {  }",
+          "comment": "e.g. play = function(arg1, arg2) { }",
           "name": "meta.function.js",
           "begin": "\\s*(\\b[_$a-zA-Z][$\\w]*)\\s*(=)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
           "end": "(?=\\s*\\{)",
@@ -582,7 +582,7 @@
           ]
         },
         {
-          "comment": "e.g. Sound.prototype.play = function(arg1, arg2) {  }",
+          "comment": "e.g. Sound.prototype.play = function(arg1, arg2) { }",
           "name": "meta.prototype.function.js",
           "begin": "\\s*(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*(=)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
           "end": "(?=\\s*\\{)",
@@ -604,7 +604,7 @@
           ]
         },
         {
-          "comment": "e.g. Sound.play = function(arg1, arg2) {  }",
+          "comment": "e.g. Sound.play = function(arg1, arg2) { }",
           "name": "meta.function.static.js",
           "begin": "\\s*(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*(=)\\s*(?:(async)\\s+)?\\s*(\\bfunction\\b)\\s*(\\*?)\\s*([_$a-zA-Z][$\\w]*)?\\s*(?=\\(|<)",
           "end": "(?=\\s*\\{)",
@@ -717,8 +717,8 @@
       ]
     },
     "ternary-function-call": {
-      "comment": "special pattern of function calls that doesn't call",
-      "comment": "#flowtype as this assumes the : following a ) : is a return type",
+      "comment": "special pattern of function calls that doesn't call #flowtype",
+      "comment": "as this assumes the : following a ) : is a return type",
       "patterns": [
         {
           "name": "meta.function-call.without-arguments.js",
@@ -1073,7 +1073,7 @@
           ]
         },
         {
-          "comment": "# e.g. arg => { }",
+          "comment": "e.g. arg => { }",
           "name": "meta.function.arrow.js",
           "begin": "\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -1089,7 +1089,7 @@
           ]
         },
         {
-          "comment": "# e.g. play = (args) => { }",
+          "comment": "e.g. play = (args) => { }",
           "name": "meta.function.arrow.js",
           "begin": "\\s*(\\b[_$a-zA-Z][$\\w]*)\\s*(=)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -1107,7 +1107,7 @@
           ]
         },
         {
-          "comment": "# e.g. play = arg => { }",
+          "comment": "e.g. play = arg => { }",
           "name": "meta.function.arrow.js",
           "begin": "\\s*(\\b[_$a-zA-Z][$\\w]*)\\s*(=)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -1147,7 +1147,7 @@
           ]
         },
         {
-          "comment": "# e.g. Sound.prototype.play = arg => { }",
+          "comment": "e.g. Sound.prototype.play = arg => { }",
           "name": "meta.prototype.function.arrow.js",
           "begin": "\\s*(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*(=)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -1190,7 +1190,7 @@
           ]
         },
         {
-          "comment": "# e.g. Sound.play = arg => { }",
+          "comment": "e.g. Sound.play = arg => { }",
           "name": "meta.function.static.arrow.js",
           "begin": "\\s*(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*(=)\\s*(\\basync\\b)?\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*([_$a-zA-Z][$\\w]*)\\s*(?:\\s*(:|\\|)(\\s*[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))*\\s*=>)",
           "end": "\\s*(=>)",
@@ -1214,7 +1214,7 @@
     "literal-method": {
       "patterns": [
         {
-          "comment": " e.g. play<T,T>(arg1, arg2): Type<T> {  }",
+          "comment": "e.g. play<T,T>(arg1, arg2): Type<T> { }",
           "name": "meta.function.method.js",
           "begin": "\\s*(\\bstatic\\b)?\\s*(\\basync\\b)?\\s*(\\*?)\\s*(?<!\\.)([_$a-zA-Z][$\\w]*)\\s*(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
           "end": "\\s*(?=.)",
@@ -1230,7 +1230,7 @@
           ]
         },
         {
-          "comment": " getter/setter ",
+          "comment": "getter/setter",
           "name": "meta.accessor.js",
           "begin": "\\s*\\b(?:(static)\\s+)?(get|set)\\s+([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
           "end": "\\s*(?={)",
