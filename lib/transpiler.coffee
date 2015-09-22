@@ -1,13 +1,13 @@
 fs = require 'fs-plus'
 path = require 'path'
-pathIsInside = require 'path-is-inside'
-merge = require('lodash/object/merge')
+pathIsInside = require '../node_modules/path-is-inside'
+merge = require('../node_modules/lodash/object/merge')
 
 class Transpiler
   constructor: ->
     @transpileErrorNotifications = {}
     # setup JSON Schema to parse .languagebabel configs
-    @jsonSchema = (require 'jjv')() # use jjv as it runs without CSP issues
+    @jsonSchema = (require '../node_modules/jjv')() # use jjv as it runs without CSP issues
     @jsonSchema.addSchema('localConfig', {
       type: 'object',
       properties: {
