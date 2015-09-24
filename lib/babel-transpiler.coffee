@@ -1,13 +1,10 @@
 {CompositeDisposable} = require 'atom'
-defaultConfig = require './config'
-{Transpiler} = require './transpiler'
 
-module.exports = 
-  config: defaultConfig
+module.exports =
+  config: require './config'
 
   activate: (state) ->
-    if not @transpiler?
-      @transpiler = new Transpiler
+    @transpiler ?= new (require './transpiler')
     # track any file save ( buffer save) events and transpile if babel
     @disposable = new CompositeDisposable
     @disposable.add  atom.workspace.observeTextEditors (textEditor) =>
