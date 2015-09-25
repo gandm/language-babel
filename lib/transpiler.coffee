@@ -1,29 +1,28 @@
 fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require 'path-is-inside'
+# setup JSON Schema to parse .languagebabel configs
+languagebabelSchema = {
+  type: 'object',
+  properties: {
+    babelMapsPath:                    { type: 'string' },
+    babelMapsAddUrl:                  { type: 'boolean' },
+    babelSourcePath:                  { type: 'string' },
+    babelTranspilePath:               { type: 'string' },
+    createMap:                        { type: 'boolean' },
+    createTargetDirectories:          { type: 'boolean' },
+    createTranspiledCode:             { type: 'boolean' },
+    disableWhenNoBabelrcFileInPath:   { type: 'boolean' },
+    suppressSourcePathMessages:       { type: 'boolean' },
+    suppressTranspileOnSaveMessages:  { type: 'boolean' },
+    transpileOnSave:                  { type: 'boolean' }
+  },
+  additionalProperties: false
+}
 
 class Transpiler
   constructor: ->
     @transpileErrorNotifications = {}
-    # setup JSON Schema to parse .languagebabel configs
-    @jsonSchema = (require 'jjv')() # use jjv as it runs without CSP issues
-    @jsonSchema.addSchema('localConfig', {
-      type: 'object',
-      properties: {
-        babelMapsPath:                    { type: 'string' },
-        babelMapsAddUrl:                  { type: 'boolean' },
-        babelSourcePath:                  { type: 'string' },
-        babelTranspilePath:               { type: 'string' },
-        createMap:                        { type: 'boolean' },
-        createTargetDirectories:          { type: 'boolean' },
-        createTranspiledCode:             { type: 'boolean' },
-        disableWhenNoBabelrcFileInPath:   { type: 'boolean' },
-        suppressSourcePathMessages:       { type: 'boolean' },
-        suppressTranspileOnSaveMessages:  { type: 'boolean' },
-        transpileOnSave:                  { type: 'boolean' }
-      },
-      additionalProperties: false
-    })
     @deprecateConfig()
 
   # transpile sourceFile edited by the optional textEditor
@@ -32,6 +31,9 @@ class Transpiler
     pathTo = @getPaths sourceFile, config
 
     if config.allowLocalOverride
+      if not @jsonSchema?
+        @jsonSchema = (require 'jjv')() # use jjv as it runs without CSP issues
+        @jsonSchema.addSchema 'localConfig', languagebabelSchema
       localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
       # merge local configs with global. local wins
       @merge config, localConfig
@@ -163,7 +165,7 @@ class Transpiler
         return
       schemaErrors = @jsonSchema.validate 'localConfig', jsonContent
       if schemaErrors
-        atom.notifications.addError "#{localConfigFile} Schema Error",
+        atom.notifications.addError "#{localConfigFile} configuration error",
           dismissable: true
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
       else
