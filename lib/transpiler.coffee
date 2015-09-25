@@ -1,7 +1,6 @@
 fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require 'path-is-inside'
-merge = require('lodash/object/merge')
 
 class Transpiler
   constructor: ->
@@ -35,7 +34,7 @@ class Transpiler
     if config.allowLocalOverride
       localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
       # merge local configs with global. local wins
-      merge config, localConfig
+      @merge config, localConfig
       # recalc paths
       pathTo = @getPaths sourceFile, config
 
@@ -169,7 +168,7 @@ class Transpiler
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
       else
         # merge local config. config closest sourceFile wins
-        merge  jsonContent, localConfig
+        @merge  jsonContent, localConfig
         localConfig = jsonContent
     if fromDir isnt toDir
       # stop infinite recursion https://github.com/gandm/language-babel/issues/66
@@ -217,5 +216,10 @@ class Transpiler
     if fromDir != path.dirname(fromDir)
       return @isBabelrcInPath path.dirname(fromDir)
     else return false
+
+# simple merge of objects
+  merge: (targetObj, sourceObj) ->
+    for prop, val of sourceObj
+      targetObj[prop] = val
 
 module.exports = Transpiler
