@@ -1,6 +1,9 @@
+### 0.15.4
+  - Removed lodash dependency & lazy load jjv.
+
 ### 0.15.3
   - Fixes #86 JSX Attribute names not scoped when terminated by > or />
-  
+
 ### 0.15.2
   - Various non critical PR's
   - Change perceived package load time for language-babel.
