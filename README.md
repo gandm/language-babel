@@ -127,7 +127,7 @@ A `.languagebabel` file may contain one or more of the following properties.
 {
   "babelMapsPath":                    "relPath",
   "babelMapsAddUrl":                  true|false,
-  "babelSourcePath:                   "relPath",
+  "babelSourcePath":                   "relPath",
   "babelTranspilePath":               "relPath",
   "createMap":                        true|false,
   "createTargetDirectories":          true|false,
