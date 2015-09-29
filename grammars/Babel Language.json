@@ -1717,7 +1717,7 @@
           },
           {
             "comment": "Built-in Class Types",
-            "match": "\\s*\\b((?>Boolean|Function|Number|Object|String))\\b",
+            "match": "\\s*\\b((?>Boolean|Function|Number|Object|Promise|String))\\b",
             "captures": {
               "1": { "name": "support.type.builtin.class.flowtype" }
             }
