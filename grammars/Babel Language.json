@@ -1230,6 +1230,25 @@
           ]
         },
         {
+          "comment": "e.g. [var]<T,T>(arg1, arg2): Type<T> { } or 'var'<T,T>(arg1, arg2)",
+          "name": "meta.function.method.js",
+          "begin": "\\s*(\\bstatic\\b)?\\s*(\\basync\\b)?\\s*(\\*?)\\s*(?=((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|(([\\\"']).*?\\k<-1>(?<!\\\\.)))\\s*(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*(\\())",
+          "end": "\\s*(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "storage.modifier.js" },
+            "2": { "name": "storage.type.js" },
+            "3": { "name": "keyword.generator.asterisk.js" },
+            "4": { "name": "entity.name.function.method.js" },
+            "6": { "name": "entity.name.function.method.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-parse-array" },
+            { "include": "#literal-string"},
+            { "include": "#flowtype" }
+          ]
+        },
+        {
           "comment": "getter/setter",
           "name": "meta.accessor.js",
           "begin": "\\s*\\b(?:(static)\\s+)?(get|set)\\s+([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
@@ -1241,6 +1260,23 @@
             "3": { "name": "entity.name.accessor.js" }
           },
           "patterns": [
+            { "include": "#flowtype" }
+          ]
+        },
+        {
+          "comment": "getter/setter set [var]() or get 'name'()",
+          "name": "meta.accessor.js",
+          "begin": "\\s*\\b(?:(static)\\s+)?(get|set)\\s+(?=((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|(([\\\"']).*?\\k<-1>(?<!\\\\.)))\\s*(\\())",
+          "end": "\\s*(?={)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "storage.modifier.static.js" },
+            "2": { "name": "storage.type.accessor.js" },
+            "3": { "name": "entity.name.accessor.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-parse-array" },
+            { "include": "#literal-string"},
             { "include": "#flowtype" }
           ]
         }
