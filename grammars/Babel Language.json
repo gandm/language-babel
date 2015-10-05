@@ -912,10 +912,10 @@
                 { "match": "\\s*\\b(?<!\\.)static\\b(?!\\.)",
                   "name": "storage.modifier.js"
                 },
+                { "include": "#literal-method" },
                 { "include": "#brackets" },
                 { "include": "#es7-decorators" },
                 { "include": "#comments" },
-                { "include": "#literal-method" },
                 { "include": "#flowtype-variable" }
 
               ]
