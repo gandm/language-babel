@@ -1,3 +1,6 @@
+### 0.15.5
+  - Fix methods that have array/string forms.
+  
 ### 0.15.4
   - Removed lodash dependency & lazy load jjv.
 
