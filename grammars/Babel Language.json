@@ -1419,7 +1419,7 @@
         {
           "comment": "https://github.com/wycats/javascript-decorators",
           "name"  : "tag.decorator.js",
-          "match": "\\s*(?!@)(@)([_$a-zA-Z][$\\w]*)\\b",
+          "match": "\\s*(?<!@)(@)([_$a-zA-Z][$\\w]*)\\b",
           "captures": {
             "1": { "name": "punctuation.definition.tag.js" },
             "2": { "name": "entity.name.tag.js" }
