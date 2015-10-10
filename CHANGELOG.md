@@ -1,3 +1,7 @@
+### 0.15.6
+  - Fix for Issue #60.
+  - Fix for ES7 decorators.
+
 ### 0.15.5
   - Fix methods that have array/string forms.
   
