@@ -1,10 +1,13 @@
+### 0.15.7
+  - Fix ternaries as in issue #91
+  
 ### 0.15.6
   - Fix for Issue #60.
   - Fix for ES7 decorators.
 
 ### 0.15.5
   - Fix methods that have array/string forms.
-  
+
 ### 0.15.4
   - Removed lodash dependency & lazy load jjv.
 

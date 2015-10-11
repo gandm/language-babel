@@ -719,27 +719,30 @@
     "ternary-function-call": {
       "comment": "special pattern of function calls that doesn't call #flowtype",
       "comment": "as this assumes the : following a ) : is a return type",
+      "comment": "maybe in array form e.g. foo[bar]()",
       "patterns": [
         {
           "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\(\\s*\\))",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])*\\(\\s*\\))",
           "end": "\\s*(?<=\\))",
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
           },
           "patterns": [
+            { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
           ]
         },
         {
           "name": "meta.function-call.with-arguments.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])*\\()",
           "end": "\\s*(?<=\\))",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
           },
           "patterns": [
+            { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
           ]
         }
