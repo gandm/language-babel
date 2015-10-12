@@ -702,7 +702,7 @@
             "1": { "name": "keyword.operator.ternary.js" }
           },
           "patterns": [
-            { "include": "#ternary-function-call" },
+            { "include": "#literal-function-call"},
             { "include": "#expression" }
           ]
         },
@@ -716,62 +716,48 @@
         }
       ]
     },
-    "ternary-function-call": {
-      "comment": "special pattern of function calls that doesn't call #flowtype",
-      "comment": "as this assumes the : following a ) : is a return type",
+    "literal-function-call": {
       "comment": "maybe in array form e.g. foo[bar]()",
       "patterns": [
         {
           "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])*\\(\\s*\\))",
+          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\(\\s*\\))",
           "end": "\\s*(?<=\\))",
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
           },
           "patterns": [
-            { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
           ]
         },
         {
-          "name": "meta.function-call.with-arguments.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])*\\()",
+          "name": "meta.function-call.without-arguments.js",
+          "begin": "\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*\\(\\s*\\))",
           "end": "\\s*(?<=\\))",
-          "applyEndPatternLast": 1,
-          "beginCaptures": {
-            "1": { "name": "entity.name.function.js" }
-          },
           "patterns": [
             { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
-          ]
-        }
-      ]
-    },
-    "literal-function-call": {
-      "patterns": [
-        {
-          "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\(\\s*\\))",
-          "end": "\\s*(?=.)",
-          "applyEndPatternLast": 1,
-          "beginCaptures": {
-            "1": { "name": "entity.name.function.js" }
-          },
-          "patterns": [
-            { "include": "#flowtype" }
           ]
         },
         {
           "name": "meta.function-call.with-arguments.js",
           "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
-          "end": "\\s*(?=.)",
+          "end": "\\s*(?<=\\))",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
           },
           "patterns": [
-            { "include": "#flowtype" }
+            { "include": "#flowtype-bracketed-parameters" }
+          ]
+        },
+        {
+          "name": "meta.function-call.without-arguments.js",
+          "begin": "\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*\\()",
+          "end": "\\s*(?<=\\))",
+          "patterns": [
+            { "include": "#flowtype-parse-array"},
+            { "include": "#flowtype-bracketed-parameters" }
           ]
         }
       ]
