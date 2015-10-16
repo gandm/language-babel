@@ -652,7 +652,8 @@
               "patterns": [
                 { "include": "#expression" }
               ]
-            }
+            },
+            { "include": "#string-content" }
           ]
         }
       ]
