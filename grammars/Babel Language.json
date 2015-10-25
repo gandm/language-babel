@@ -289,6 +289,8 @@
                     "1": { "name": "keyword.control.switch.js" }
                   },
                   "patterns": [
+                    { "include": "#literal-method-call" },
+                    { "include": "#literal-function-call" },
                     { "include": "#expression" }
                   ]
                 },
