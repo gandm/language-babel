@@ -1,6 +1,10 @@
+### 0.15.8
+  - Add scopes for esc chars in template strings.
+  - Fix for #93.
+
 ### 0.15.7
   - Fix ternaries as in issue #91
-  
+
 ### 0.15.6
   - Fix for Issue #60.
   - Fix for ES7 decorators.
