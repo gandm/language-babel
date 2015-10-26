@@ -1296,30 +1296,34 @@
     "literal-string": {
       "patterns": [
         {
-          "name": "string.quoted.single.js",
-          "begin": "\\s*'",
-          "end": "(')|(\\n)",
+          "contentName": "string.quoted.single.js",
+          "begin": "\\s*(('))",
+          "end": "(('))|(\\n)",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.js" }
+            "1": { "name": "string.quoted.single.js" },
+            "2": { "name": "punctuation.definition.string.begin.js" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.string.end.js" },
-            "2": { "name": "invalid.illegal.newline.js" }
+            "1": { "name": "string.quoted.single.js" },
+            "2": { "name": "punctuation.definition.string.end.js" },
+            "3": { "name": "invalid.illegal.newline.js" }
           },
           "patterns": [
             { "include": "#string-content" }
           ]
         },
         {
-          "name": "string.quoted.double.js",
-          "begin": "\\s*\"",
-          "end": "(\")|(\\n)",
+          "contentName": "string.quoted.double.js",
+          "begin": "\\s*((\"))",
+          "end": "((\"))|(\\n)",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.begin.js" }
+            "1": { "name": "string.quoted.double.js" },
+            "2": { "name": "punctuation.definition.string.begin.js" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.string.end.js" },
-            "2": { "name": "invalid.illegal.newline.js" }
+            "1": { "name": "string.quoted.double.js" },
+            "2": { "name": "punctuation.definition.string.end.js" },
+            "3": { "name": "invalid.illegal.newline.js" }
           },
           "patterns": [
             { "include": "#string-content" }
