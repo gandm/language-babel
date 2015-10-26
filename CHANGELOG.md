@@ -1,3 +1,6 @@
+### 0.15.9
+  - Fixes #95 - toggle-quotes not working.
+
 ### 0.15.8
   - Add scopes for esc chars in template strings.
   - Fix for #93.
