@@ -705,6 +705,7 @@
             "1": { "name": "keyword.operator.ternary.js" }
           },
           "patterns": [
+            { "include": "#literal-method-call"},
             { "include": "#literal-function-call"},
             { "include": "#expression" }
           ]
@@ -1696,8 +1697,13 @@
           "comment": "An Iterator prefix?",
           "match": "\\s*@@"
         },
+        {
+          "match": "\\s*(=>)",
+          "captures": {
+            "1":  { "name": "storage.type.function.arrow.js" }
+          }
+        },
         { "include": "#flowtype-bracketed-parameters" },
-        { "include": "#flowtype-parse-operators" },
         { "include": "#flowtype-parse-array" },
         { "include": "#expression" }
       ]
