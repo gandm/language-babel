@@ -736,7 +736,8 @@
         {
           "name": "meta.function-call.without-arguments.js",
           "begin": "\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*\\(\\s*\\))",
-          "end": "\\s*(?<=\\))",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
           "patterns": [
             { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
@@ -745,7 +746,7 @@
         {
           "name": "meta.function-call.with-arguments.js",
           "begin": "\\s*([_$a-zA-Z][$\\w]*)\\s*(?=\\()",
-          "end": "\\s*(?<=\\))",
+          "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
@@ -757,7 +758,8 @@
         {
           "name": "meta.function-call.without-arguments.js",
           "begin": "\\s*(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*\\()",
-          "end": "\\s*(?<=\\))",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
           "patterns": [
             { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
