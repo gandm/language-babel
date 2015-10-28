@@ -46,7 +46,6 @@
         { "include": "#literal-string" },
         { "include": "#literal-language-constant" },
         { "include": "#literal-language-variable" },
-        { "include": "#literal-method" },
         { "include": "#literal-module" },
         { "include": "#literal-class" },
         { "include": "#literal-constructor" },
