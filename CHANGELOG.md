@@ -1,3 +1,6 @@
+### 0.15.12
+  - Avoid parsing lines over 1000 chars long. No point as it's a performance hit and ATOM has a token limit.
+
 ### 0.15.11
   - Fix function call expressions.
 

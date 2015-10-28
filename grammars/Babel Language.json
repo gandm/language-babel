@@ -1,6 +1,5 @@
 {
   "name": "Babel ES6 JavaScript",
-  "comment": "27Apr15",
   "scopeName": "source.js.jsx",
   "foldingStartMarker": "(/\\*|\\{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
@@ -17,6 +16,7 @@
   "repository": {
     "core": {
       "patterns": [
+        { "include": "#ignore-long-lines" },
         { "include": "#flowtype-declare" },
         { "include": "#flowtype-type-aliases" },
         { "include": "#flowtype-interface" },
@@ -32,6 +32,7 @@
     },
     "expression": {
       "patterns": [
+        { "include": "#ignore-long-lines" },
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
         { "include": "#support" },
@@ -55,6 +56,15 @@
         { "include": "#brackets" },
         { "include": "#literal-operators" },
         { "include": "#literal-variable" }
+      ]
+    },
+    "ignore-long-lines": {
+      "comment": "long lines shouldn't be parsed for performance reasons as regex's are per line",
+      "comment": "so set at arbitary 1000 chars to avoid parsing minified files",
+      "patterns": [
+        {
+          "match": "^(?:).{1000,}"
+        }
       ]
     },
     "literal-function-labels": {
