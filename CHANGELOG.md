@@ -1,6 +1,9 @@
+### 0.15.11
+  - Fix function call expressions.
+
 ### 0.15.10
   - Fixes fat arrows being passed as function arguments.
-  
+
 ### 0.15.9
   - Fixes #95 - toggle-quotes not working.
 
