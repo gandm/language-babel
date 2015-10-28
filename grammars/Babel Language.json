@@ -288,8 +288,6 @@
                     "1": { "name": "keyword.control.switch.js" }
                   },
                   "patterns": [
-                    { "include": "#literal-method-call" },
-                    { "include": "#literal-function-call" },
                     { "include": "#expression" }
                   ]
                 },
@@ -704,8 +702,6 @@
             "1": { "name": "keyword.operator.ternary.js" }
           },
           "patterns": [
-            { "include": "#literal-method-call"},
-            { "include": "#literal-function-call"},
             { "include": "#expression" }
           ]
         },
