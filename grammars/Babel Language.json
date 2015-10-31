@@ -1436,8 +1436,16 @@
       "comment": "and the ECMA6 draft here http://people.mozilla.org/~jorendorff/es6-draft.html",
       "comment": "together with the Unicode Spec http://www.unicode.org/reports/tr31/",
       "comment": "but excludes using unicode esc characters, <ZWNJ> and <ZWJ> as per the draft. Will anyone use these?",
+      "comment": "Avoid < operator expressions as best we can using Zertosh's regex",
       "patterns": [
-        { "include": "#jsx-tag-element-name" }
+        {
+          "begin": "(?<=\\(|\\{|\\[|,|@@|\\|\\||\\?|:|=|=>|\\Wreturn|^return|^)\\s*(?=<[_$a-zA-Z])",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "patterns": [
+            { "include": "#jsx-tag-element-name" }
+          ]
+        }
       ]
     },
     "jsx-tag-element-name": {
