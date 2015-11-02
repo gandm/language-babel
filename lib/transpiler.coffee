@@ -1,6 +1,6 @@
 fs = require 'fs-plus'
 path = require 'path'
-pathIsInside = require 'path-is-inside'
+pathIsInside = require '../node_modules/path-is-inside'
 # setup JSON Schema to parse .languagebabel configs
 languagebabelSchema = {
   type: 'object',
@@ -32,7 +32,7 @@ class Transpiler
 
     if config.allowLocalOverride
       if not @jsonSchema?
-        @jsonSchema = (require 'jjv')() # use jjv as it runs without CSP issues
+        @jsonSchema = (require '../node_modules/jjv')() # use jjv as it runs without CSP issues
         @jsonSchema.addSchema 'localConfig', languagebabelSchema
       localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
       # merge local configs with global. local wins
@@ -126,6 +126,14 @@ class Transpiler
     atom.config.unset('language-babel.supressSourcePathMessages')
     atom.config.unset('language-babel.useInternalScanner')
     atom.config.unset('language-babel.stopAtProjectDirectory')
+    # remove babel V5 options
+    atom.config.unset('language-babel.babelStage')
+    atom.config.unset('language-babel.externalHelpers')
+    atom.config.unset('language-babel.moduleLoader')
+    atom.config.unset('language-babel.blacklistTransformers')
+    atom.config.unset('language-babel.whitelistTransformers')
+    atom.config.unset('language-babel.looseTransformers')
+    atom.config.unset('language-babel.optionalTransformers')
 
   # calculate babel options based upon package config, babelrc files and
   # whether internalScanner is used.
@@ -133,17 +141,10 @@ class Transpiler
     # set transpiler options from package configuration.
     babelOptions =
       sourceMaps: config.createMap
-      blacklist: config.blacklistTransformers
-      loose: config.looseTransformers
-      optional: config.optionalTransformers
-      modules: config.moduleLoader
-      stage: config.babelStage
-      externalHelpers: config.externalHelpers
+      plugins: config.plugins
+      presets: config.presets
       code: true
-    # babel seems to treat an empty array of whitelists as don't apply any transforms
-    if config.whitelistTransformers.length > 0
-      babelOptions.whitelist = config.whitelistTransformers
-    return babelOptions
+
 
   # get global configuration for language-babel
   getConfig: -> atom.config.get('language-babel')

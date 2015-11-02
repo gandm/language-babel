@@ -1,105 +1,77 @@
 module.exports =
-  transpileOnSave:
-    type: 'boolean'
-    default: false
+  plugins:
+    description: "Comma seperated list of Babel plugins. Added to any .babelrc options.
+      Plugins must be installed in your atom path #{process.cwd()}"
+    type: 'array'
+    default: []
     order: 10
-  allowLocalOverride:
-    description: 'Allow .languagebabel files to overide these settings'
-    type: 'boolean'
-    default: false
-    order: 12   
-  disableWhenNoBabelrcFileInPath:
-    description: 'Suppress transpile when no .babelrc file is in source file path'
-    type: 'boolean'
-    default: false
-    order: 14
-  suppressTranspileOnSaveMessages:
-    description: 'Suppress notification messages on each save'
-    type: 'boolean'
-    default: false
-    order: 16
-  createTranspiledCode:
-    type: 'boolean'
-    default: false
+    items:
+      type: 'string'
+  presets:
+    description: "Comma seperated list of Babel presets. Added to any .babelrc options.
+      Presets must be installed in your atom path #{process.cwd()}"
+    type: 'array'
+    default: []
     order: 20
-  createMap:
+    items:
+      type: 'string'
+  allowLocalOverride:
+    description: 'Allow .languagebabel files to overide the settings below. Useful for project based configurations.'
     type: 'boolean'
     default: false
     order: 30
-  babelMapsAddUrl:
+  transpileOnSave:
+    description: 'Check source code validity on file save. Use "Create Transpiled Code" option below to save file.'
     type: 'boolean'
-    default: true
+    default: false
     order: 40
-  babelSourcePath:
-    description: 'Babel Source Root based on Project root'
-    type: 'string'
-    default: ''
-    order: 50
-  suppressSourcePathMessages:
-    description: 'Suppress messages about file not inside Babel Source Path'
+  createTranspiledCode:
+    description: 'Save transpiled code to Babel Transpile Path below.'
     type: 'boolean'
     default: false
-    order: 55
-  babelTranspilePath:
-    description: 'Babel Transpile Root based on Project root'
-    type: 'string'
-    default: ''
-    order: 60
-  babelMapsPath:
-    description: 'Babel Maps Root based on Project root'
-    type: 'string'
-    default: ''
-    order: 70
-  createTargetDirectories:
+    order: 50
+  disableWhenNoBabelrcFileInPath:
+    description: 'Suppress transpile when no .babelrc file is in source file path.'
     type: 'boolean'
     default: true
-    order: 80
-  babelStage:
-    description: 'Stage 0 - Strawman
-                  Stage 1 - Proposal
-                  Stage 2 - Draft
-                  Stage 3 - Candidate
-                  Stage 4 - Finished'
-    type: 'integer'
-    default: 2
-    minimum: 0
-    maximium: 4
-    order: 90
-  externalHelpers:
+    order: 60
+  suppressTranspileOnSaveMessages:
+    description: 'Suppress non-error notification messages on each save.'
+    type: 'boolean'
+    default: true
+    order: 70
+  suppressSourcePathMessages:
+    description: 'Suppress messages about file not being inside Babel Source Path.'
+    type: 'boolean'
+    default: true
+    order: 75
+  createMap:
+    description: 'Create seperate map file.'
     type: 'boolean'
     default: false
-    order: 100
-  moduleLoader:
-    description: 'Module system used in output. The non-strict variants support a legacy CommonJS pattern but will not always work with standard ES6 modules'
+    order: 80
+  babelMapsAddUrl:
+    description: 'Append map file name to transpiled output if "Create seperate map file" is set.'
+    type: 'boolean'
+    default: true
+    order: 90
+  babelSourcePath:
+    description: 'Babel Source Root based on Project root.'
     type: 'string'
-    default: 'common'
-    enum: ['amd', 'amdStrict', 'common', 'commonStrict', 'ignore', 'system', 'umd', 'umdStrict']
+    default: ''
+    order: 100
+  babelTranspilePath:
+    description: 'Babel Transpile Root based on Project root.'
+    type: 'string'
+    default: ''
     order: 120
-  blacklistTransformers:
-    description: 'Comma seperated list of excluded transformers'
-    type: 'array'
-    default: []
+  babelMapsPath:
+    description: 'Babel Maps Root based on Project root.'
+    type: 'string'
+    default: ''
     order: 130
-    items:
-      type: 'string'
-  whitelistTransformers:
-    description: 'Comma seperated list of transformers'
-    type: 'array'
-    default: []
+  createTargetDirectories:
+    description: 'Create transpile output target directories.'
+    type: 'boolean'
+    default: true
     order: 140
-    items:
-      type: 'string'
-  looseTransformers:
-    description: 'Comma seperated list of "loose" transformers - or "all"'
-    type: 'array'
-    default: []
-    order: 150
-    items:
-      type: 'string'
-  optionalTransformers:
-    description: 'Comma seperated list of optional transformers. You can use "runtime" here'
-    type: 'array'
-    default: []
-    order: 160
-    items:
-      type: 'string'

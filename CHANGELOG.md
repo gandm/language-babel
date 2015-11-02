@@ -1,3 +1,8 @@
+### 1.0.0
+  - Babel V6 is now supported with additional options for plugins and presets. See README.
+  - Babel V5 support is removed together with options to configure stages, whitelists, etc.
+  - Minor fixes in grammar.
+
 ### 0.15.13
   - Fix for some < equality operators being seen as JSX.
 

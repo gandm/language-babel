@@ -3,14 +3,21 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES2015 JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The color of syntax is determined by the theme in use.
+Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
 
-[Babel](http://babeljs.io/) transpiler support is baked in. Options in the
-language-babel settings allow for compilation on save, plus full transpiler control and output.
+[Babel](http://babeljs.io/) V6 transpiler support is baked in. Options in the language-babel package settings or in `.languagebabel` JSON files allow for transpile validations to be carried out on a file save. Additional options to output transpiled files and source maps. `.babelrc` file support is implicit as the package uses `babel-core` which reads the files if found in the source file path.
 
 ## Installation
 
-Install via ATOM or by using `apm install language-babel`
+Install via ATOM or by using `apm install language-babel`   Please note `lanugage-babel` >=V1.0.0 supports Babel 6. Babel 6 is not compatible with Babel 5. If you still wish to use Babel 5 you will need to install a older version of `language-babel` via `apm install language-babel@0.15.13`
+
+## Plugins and Presets  
+
+Babel V6 makes extensive use of `presets` and `plugins` which are node packages to enable functionality. Presets are collections of plugins in a convenient packaged form. Either may be installed via `npm install` but for Atom this is not as straight forward as it should be. Babel V6 or more specifically `babel-core` typically `import` these `plugins` and `presets` starting from `nodes` current working directory path or `process.cwd()`. Depending on how Atom is launched ( shell, GUI ) this directory may be different so it is important to try to start Atom in the same way.
+
+To install plugins first determine Atoms current working directory. Look at `language-babel` package settings and you will see the current working directory name in the description above the `plugins` or `presets` option. From a shell prompt change to this directory or one in the same path and install the chosen presets/plugins. e.g. `npm install es2015`. `babel-core` should now be able to find these.
+
+As Atom is moving towards using ES2015+ over Coffee script the handling of plugins is in a state of flux.
 
 ## Usage
 
@@ -20,31 +27,28 @@ The package also supports the [Babel](http://babeljs.io/) transpiler. It is like
 
 See the sections *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
 
-## Use Cases
-* #### Pure JavaScript with no EcmaScript 2015 requirements.
-  Just use the Grammar to color code the scripts and turn off the package setting `Transpile On Save`.
-
-* #### Pure Babel EcmaScript 2015 environment.
-  If you wish to check your code compiles correctly on each save turn on the package settings `Transpile On Save`. This setting runs the Babel compiler to do a syntax check but produces no output. Only files within the `Babel Source Path` tree of a project directory are considered candidates. As this is empty by default all source files in the any subdirectory of a project folder will be candidates.
-
-  If you use another workflow to transpile code then turn off `Create Transpiled Code` and `Create Map`. These suppress any transpiler output.
-
-  If you wish to use language-babel to generate output code and no `path` options are set then transpiled/maps output will be directed to the same directory within the project. If you are using `.js` names for your source Babel files you will need to configure your `paths` to point to your source file directory tree are as well as the directory tree for the transpiled and maps output. If you do not do this then the transpiler output will attempt to overwrite the source file. This eventuality is trapped by language-babel to save embarrassment. See other settings to configure output options.
-
-* #### Mixed JavaScript and Babel EcmaScript 2015 environment.
-   Keep pure `.js`  files in a separate directory tree from your Babel ES2015 files and/or use `.babelrc ignore`/`.babelrc only` flags.  Configure `Babel Source Paths` to point to the ES2015 file directory tree and the other `paths` to where output should be generated. Turn on `Suppress Source Path Messages` and then configure other settings as described in the Pure EcmaScript environment above. Optionally, you can turn on the `Disable When No Babelrc File In Path` option, which disables transpiles if no `.babelrc` files are found in the source file path.
-
 ## Package Settings
 
-By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler. The package settings provide global settings for all language-babel projects edited in Atom. From V0.14.0 many options can be controlled by providing `.languagebabel` JSON configuration file whose properties will overide the global settings. See *".languagebabel Configuration"*
+By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler. The package settings provide global settings for all language-babel projects edited in Atom. Additionally, `.babelrc` and `.languagebabel` JSON configuration files can provide project based configuration settings.
+
+* #### plugins
+  A comma separated list of plugins used by Babel to transpile the source files. Used to augment any `plugins` found in `.babelrc` files.
+
+* #### presets
+  A comma separated list of presets used by Babel to transpile the source files. Used to augment any `presets` found in `.babelrc` files.
+
+* #### Allow Local Override
+  If set this allows `.languagebabel` file properties to be override the global package settings. See *".languagebabel Configuration"* below for more information.
 
 * #### Transpile On Save
-  On any file save of a language-babel enabled file the Babel transpiler  is called. Any errors and/or successful indications are notified by a ATOM pop-up.
+  On any file save of a language-babel enabled file the Babel transpiler  is called. No actual transpiled file is saved but any Babel errors and/or successful indicators are notified by an ATOM pop-up. Not all files are candidates for transpilation as other settings can affect this - See `Disable When No Babelrc File In Path` and `Babel Source Path` below.
 
   `.languagebabel property` `{"transpileOnSave": true|false}`
 
-* #### Allow Local Override
-  If set this allows `.languagebabel` file properties to be override the global package settings.
+* #### Create Transpiled Code
+  If enabled together with `Transpile On Save` this will output JavaScript code to a `.js` file with the same prefix as the original. By using the  `Babel Transpile Path` option below it is possible to transpile to a different target directory.
+
+  `.languagebabel property` `{"createTranspiledCode": true|false}`
 
 * #### Disable When No Babelrc File In Path
   Disables transpiler if no `.babelrc` files are found in the source file path.
@@ -56,25 +60,25 @@ By using the ATOM settings panel for language-babel you can control many of the 
 
   `.languagebabel property` `{"suppressTranspileOnSaveMessages": true|false}`
 
-* #### Create Transpiled Code
-  If enabled the transpile phase will output JavaScript code to a `.js` file with the same prefix as the original. By using the `path` options below it is possible to transpile to a different target directory.
+* #### Suppress Source Path Messages
+  This is set by default so that when a file is saved that is outside the `Babel Source Path` directory no message is generated. This is particularly useful when you have mixed ES2015 and ES3-5 environment. ES2015 files can be placed inside a `Babel Source Path` where they will be transpiled and other files will not pop up annoying messages when being saved.
 
-  `.languagebabel property` `{"createTranspiledCode": true|false}`
+  `.languagebabel property` `{"suppressSourcePathMessages": true|false}`
 
 * #### Create Map
-  A source map can be generated as required. The source file name will be used with a new suffix of `.js.map`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
+  If transpiled output is being saved a separate source map can be also be saved. The source file name will be used with a new suffix of `.js.map` and sent to a directory specified in `Babel Maps Path`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
 
-  If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then turn this option off.
+  If `.babelrc` files use `sourceMaps: inline` or `sourceMaps both` options then turn this option off as the map data is stored as part of the source file.
 
   `.languagebabel property` `{"createMap": true|false}`
 
 * #### Babel Maps Add Url
-  If a source map is created this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated JavaScript file.  
+  If a source map is created using the `Create Map` option this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated transpiled JavaScript file.  
 
   `.languagebabel property` `{"babelMapsAddUrl": true|false}`
 
 * #### Babel Source Path, Babel Transpile Path and Babel Maps Path
-  These a directories based on the project root. ATOM now supports more than one project root folder, so these paths are based on each project root folder.
+  These a directories based on the project root. ATOM supports more than one project root folder, so these paths are relative to each project root folder.
 
   Only files found under the `project/babelsourcepath` will be candidates for transpilation. If multiple project root folders exist then `babelsourcepath` may exist in any or all folders.
 
@@ -92,28 +96,10 @@ By using the ATOM settings panel for language-babel you can control many of the 
     "babelTranspilePath": "relPath",
     "babelMapsPath": "relPath" }`
 
-* #### Suppress Source Path Messages
-  By default when a file is saved that is outside the `Babel Source Path` directory a message is generated. Enabling this disables these messages. This is particularly useful when you have mixed ES2015 and ES3-5 environment. ES2015 files can be placed inside a `Babel Source Path` where they will be transpiled and other files will not pop up annoying messages when being saved.
-
-  `.languagebabel property` `{"suppressSourcePathMessages": true|false}`
-
 * #### Create Target Directories
   When enabled any target directories that do not exist will be created prior to a transpilation.
 
   `.languagebabel property` `{"createTargetDirectories": true|false}`
-
-* #### Babel Stage
-  The ECMA standards stage to enforce. See [Babel Stages](http://babeljs.io/docs/usage/experimental/) for more information.
-
-* #### External Helpers
-  When enabled transpiled output will not include babel helper code.   Please refer to [Babel External Helpers](http://babeljs.io/docs/advanced/external-helpers/) for further information.
-
-* #### Module Loader
-  The module loader format to use. Either `common` to use CommonJS, `amd` to use Asynchronous Module Definition or `umd` to use Universal Module Definition   Please refer to [Babel Modules](http://babeljs.io/docs/usage/modules/) for further information.
-
-* #### Transformer Options
-  The remaining transformer options may contain comma separated lists of transformer names.
-  Please refer to [Babel Transformers](http://babeljs.io/docs/advanced/transformers/) and [Babel Runtime](http://babeljs.io/docs/usage/runtime/) for further information.
 
 ## .languagebabel Configuration
 
@@ -127,7 +113,7 @@ A `.languagebabel` file may contain one or more of the following properties.
 {
   "babelMapsPath":                    "relPath",
   "babelMapsAddUrl":                  true|false,
-  "babelSourcePath":                   "relPath",
+  "babelSourcePath":                  "relPath",
   "babelTranspilePath":               "relPath",
   "createMap":                        true|false,
   "createTargetDirectories":          true|false,
