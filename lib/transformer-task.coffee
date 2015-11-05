@@ -1,4 +1,5 @@
 module.exports = (projectPath) ->
+  #util = require 'util'
   path = require 'path'
   callback = @async() #async task
   process.chdir(projectPath)
@@ -15,6 +16,7 @@ module.exports = (projectPath) ->
 
   process.on 'message', (mObj) ->
     if mObj.command is 'transpile'
+      #console.log(util.inspect(process.memoryUsage()));
       babel.transformFile mObj.pathTo.sourceFile, mObj.babelOptions, (err,result) =>
         # fiddly formating a return
         msgRet = {}
@@ -32,6 +34,6 @@ module.exports = (projectPath) ->
             msgRet.ignored = false
         msgRet.babelVersion = babel.version
         msgRet.babelCoreUsed = babelCoreUsed
-        emit mObj.msgId, msgRet
+        emit 'language-babel:transpile', msgRet
     #stop issued
     if mObj.command is 'stop' then callback()

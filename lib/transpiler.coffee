@@ -86,14 +86,14 @@ class Transpiler
       # transpile in task
       @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
       # get result from task
-      @babelTranspilerTasks[pathTo.projectPath].on msgId, (msgRet) =>
+      @babelTranspilerTasks[pathTo.projectPath].on 'language-babel:transpile', (msgRet) =>
         # .ignored is returned when .babelrc ignore/only flags are used
         if msgRet.ignored then return
         if msgRet.err
-          notification =atom.notifications.addError "Babel v#{msgRet.babelVersion} Transpiler Error",
-            dismissable: true
-            detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
-          @transpileErrorNotifications[pathTo.sourceFile] = notification
+          @transpileErrorNotifications[pathTo.sourceFile] =
+            atom.notifications.addError "Babel v#{msgRet.babelVersion} Transpiler Error",
+              dismissable: true
+              detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
           # if we have a line/col syntax error jump to the position
           if msgRet.err.loc? and textEditor?
             textEditor.setCursorBufferPosition [msgRet.err.loc.line-1, msgRet.err.loc.column-1]
@@ -136,6 +136,7 @@ class Transpiler
             xssiProtection = ')]}\n'
             fs.writeFileSync pathTo.mapFile,
               xssiProtection + JSON.stringify mapJson, null, ' '
+        msgRet = null;
 
   # modifies config options for changed or deprecated configs
   deprecateConfig: ->
