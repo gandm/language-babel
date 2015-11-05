@@ -17,12 +17,10 @@
     "atom": "^1.0.0"
   },
   "dependencies": {
+    "babel-core": "^6.0.20",
+    "chai": "^3.0.0",
     "fs-plus": "^2.8.0",
     "jjv": "^1.0.2",
     "path-is-inside": "^1.0.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.0.20",
-    "chai": "^3.0.0"
   }
 }

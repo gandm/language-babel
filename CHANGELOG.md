@@ -1,3 +1,6 @@
+### 2.0.2
+  - babel-core and chai as dependencies not Dev.
+  
 ### 2.0.1
   - Whoops!!! Missing files.
 
