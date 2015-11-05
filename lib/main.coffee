@@ -16,3 +16,4 @@ module.exports =
   deactivate: ->
     if @disposable?
       @disposable.dispose()
+    @transpiler.stopAllTranspilerTask()

@@ -1,20 +1,4 @@
 module.exports =
-  plugins:
-    description: "Comma seperated list of Babel plugins. Added to any .babelrc options.
-      Plugins must be installed in your atom path #{process.cwd()}"
-    type: 'array'
-    default: []
-    order: 10
-    items:
-      type: 'string'
-  presets:
-    description: "Comma seperated list of Babel presets. Added to any .babelrc options.
-      Presets must be installed in your atom path #{process.cwd()}"
-    type: 'array'
-    default: []
-    order: 20
-    items:
-      type: 'string'
   allowLocalOverride:
     description: 'Allow .languagebabel files to overide the settings below. Useful for project based configurations.'
     type: 'boolean'

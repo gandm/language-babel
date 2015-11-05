@@ -5,48 +5,40 @@
 
 Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
 
-[Babel](http://babeljs.io/) V6 transpiler support is baked in. Options in the language-babel package settings or in `.languagebabel` JSON files allow for transpile validations to be carried out on a file save. Additional options to output transpiled files and source maps. `.babelrc` file support is implicit as the package uses `babel-core` which reads the files if found in the source file path.
+By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
+
+language-babel also provides [Babel](http://babeljs.io/) V6 transpiler support. If you only require grammar/syntax highlighting ensure that the package settings `Transpile On Save` and `Allow Local Override` are both off.
 
 ## Installation
 
 Install via ATOM or by using `apm install language-babel`   Please note `lanugage-babel` >=V1.0.0 supports Babel 6. Babel 6 is not compatible with Babel 5. If you still wish to use Babel 5 you will need to install a older version of `language-babel` via `apm install language-babel@0.15.13`
 
-## Plugins and Presets  
+If you only need to use the provided grammar read no further!
 
-Babel V6 makes extensive use of `presets` and `plugins` which are node packages to enable functionality. Presets are collections of plugins in a convenient packaged form. Either may be installed via `npm install` but for Atom this is not as straight forward as it should be. Babel V6 or more specifically `babel-core` typically `import` these `plugins` and `presets` starting from `nodes` current working directory path or `process.cwd()`. Depending on how Atom is launched ( shell, GUI ) this directory may be different so it is important to try to start Atom in the same way.
+## Interface to Babel V6
 
-To install plugins first determine Atoms current working directory. Look at `language-babel` package settings and you will see the current working directory name in the description above the `plugins` or `presets` option. From a shell prompt change to this directory or one in the same path and install the chosen presets/plugins. e.g. `npm install es2015`. `babel-core` should now be able to find these.
+Options in the language-babel package settings or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves. Even if using gulp, webpack, etc, this can be very useful. Options allow the output from Babel to be output to other directories.
 
-As Atom is moving towards using ES2015+ over Coffee script the handling of plugins is in a state of flux.
+This package works by using Atom's concept of a  Project Folder which we assume will contain a typical Babel package. e.g. We expect to see one or more `.babelrc` files, a `node_modules` folder at the root of the project containing `babel-core` and other babel plugins as determined by the Project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project.
 
-## Usage
+Multiple projects may be open at any time inside Atom and `language-babel` must allow the use of differing `babel-core` versions and associated plugins when transpiling. It does this by using background tasks - one per Babel project. When a `language-babel` grammar enabled file is saved the package settings and optionally any `.languagebabel` configuration files are read to determine if the file should be transpiled and what to do with the output. These settings and `.languagebabel` options are described below.
 
-By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
-
-The package also supports the [Babel](http://babeljs.io/) transpiler. It is likely users of Babel will use a workflow ( grunt, gulp, Nuclide etc ) and will not want transpiled output saved. language-babel fully supports transpiled output, maps, .babelrc files and the setting of most Babel options. It is also possible to do a quick Babel transpile check on each save.
-
-See the sections *"Use Cases"* and *"Package Settings"* for more information on Babel configuration options.
+Files edited that are not contained by an open Atom project folder will not be processed by this package.
 
 ## Package Settings
 
-By using the ATOM settings panel for language-babel you can control many of the operations of the transpiler. The package settings provide global settings for all language-babel projects edited in Atom. Additionally, `.babelrc` and `.languagebabel` JSON configuration files can provide project based configuration settings.
-
-* #### plugins
-  A comma separated list of plugins used by Babel to transpile the source files. Used to augment any `plugins` found in `.babelrc` files.
-
-* #### presets
-  A comma separated list of presets used by Babel to transpile the source files. Used to augment any `presets` found in `.babelrc` files.
+For most projects it is better to configure `language-babel` via project based `.languagebabel` file properties which will override the package settings below. See *".langeuagebabel Configuration"* for more information on this behaviour.
 
 * #### Allow Local Override
   If set this allows `.languagebabel` file properties to be override the global package settings. See *".languagebabel Configuration"* below for more information.
 
 * #### Transpile On Save
-  On any file save of a language-babel enabled file the Babel transpiler  is called. No actual transpiled file is saved but any Babel errors and/or successful indicators are notified by an ATOM pop-up. Not all files are candidates for transpilation as other settings can affect this - See `Disable When No Babelrc File In Path` and `Babel Source Path` below.
+  On any file save of a `language-babel` grammar enabled file the Babel transpiler is called. No actual transpiled file is saved but any Babel errors and/or successful indicators are notified by an ATOM pop-up. Not all files are candidates for transpilation as other settings can affect this. For example see `Disable When No Babelrc File In Path` and `Babel Source Path` below.
 
   `.languagebabel property` `{"transpileOnSave": true|false}`
 
 * #### Create Transpiled Code
-  If enabled together with `Transpile On Save` this will output JavaScript code to a `.js` file with the same prefix as the original. By using the  `Babel Transpile Path` option below it is possible to transpile to a different target directory.
+  If enabled together with `Transpile On Save` this will output JavaScript code to a `.js` file with the same prefix as the original. By using the  `Babel Transpile Path` options it is possible to transpile to a different target directory. Not all files are candidates for transpilation as other settings can affect this.
 
   `.languagebabel property` `{"createTranspiledCode": true|false}`
 

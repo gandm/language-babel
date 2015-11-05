@@ -2,10 +2,10 @@
   "name": "language-babel",
   "main": "./lib/main",
   "version": "1.0.0",
-  "description": "Babel JavaScript ES2015, React JSX & Flow Grammar & Transpiler",
+  "description": "Babel JavaScript ES201x, React JSX & Flow Grammar & Transpiler",
   "keywords": [
     "babel",
-    "es2015",
+    "es201x",
     "jsx",
     "flow",
     "javascript"
@@ -14,13 +14,15 @@
   "repository": "https://github.com/gandm/language-babel",
   "license": "MIT",
   "engines": {
-    "atom": ">=0.174.0 < 2.0.0"
+    "atom": "^1.0.0"
   },
   "dependencies": {
-    "babel-core": "^6.0.14",
-    "chai": "^3.0.0",
     "fs-plus": "^2.8.0",
     "jjv": "^1.0.2",
     "path-is-inside": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.20",
+    "chai": "^3.0.0"
   }
 }

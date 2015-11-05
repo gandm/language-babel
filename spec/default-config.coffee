@@ -13,6 +13,3 @@ module.exports =
   suppressSourcePathMessages: false
   suppressTranspileOnSaveMessages: false
   transpileOnSave: true
-  # babel options in package settings
-  plugins: []
-  presets: []

@@ -1,3 +1,6 @@
+### 2.0.0
+  - Babel V6 support is now provided for Project based development.
+  
 ### 1.0.0
   - Babel V6 is now supported with additional options for plugins and presets. See README.
   - Babel V5 support is removed together with options to configure stages, whitelists, etc.
