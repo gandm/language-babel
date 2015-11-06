@@ -23,7 +23,7 @@ languagebabelSchema = {
 
 class Transpiler
   constructor: ->
-    @msgId = 0
+    @reqId = 0
     @babelTranspilerTasks = {}
     @babelTransformerPath = require.resolve './transformer-task'
     @transpileErrorNotifications = {}
@@ -56,7 +56,7 @@ class Transpiler
 
     if not pathIsInside(pathTo.sourceFile, pathTo.sourceRoot)
       if not config.suppressSourcePathMessages
-        atom.notifications.addWarning 'Babel file is not inside the "Babel Source Path" directory.',
+        atom.notifications.addWarning 'LB: Babel file is not inside the "Babel Source Path" directory.',
           dismissable: false
           detail: "No transpiled code output for file \n#{pathTo.sourceFile}
             \n\nTo suppress these 'invalid source path'
@@ -65,33 +65,31 @@ class Transpiler
 
     babelOptions = @getBabelOptions config
 
-    # remove previous transpile error notifications for this source file
-    if @transpileErrorNotifications[pathTo.sourceFile]?
-      @transpileErrorNotifications[pathTo.sourceFile].dismiss()
-      delete @transpileErrorNotifications[pathTo.sourceFile]
+    @cleanNotifications(pathTo)
 
-    # babel transformer tasks - one per project as needed
+    # create babel transformer tasks - one per project as needed
     @babelTranspilerTasks[pathTo.projectPath] ?=
       Task.once @babelTransformerPath, pathTo.projectPath, =>
         # task ended
         delete @babelTranspilerTasks[pathTo.projectPath]
 
+    # ok now transpile in the task and wait on the result
     if @babelTranspilerTasks[pathTo.projectPath]?
-      msgId = @msgId++
+      reqId = @reqId++
       msgObject =
-        msgId: msgId
+        reqId: reqId
         command: 'transpile'
         pathTo: pathTo
         babelOptions: babelOptions
       # transpile in task
       @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
-      # get result from task
-      @babelTranspilerTasks[pathTo.projectPath].on 'language-babel:transpile', (msgRet) =>
+      # get result from task for this reqId
+      @babelTranspilerTasks[pathTo.projectPath].once "transpile:#{reqId}", (msgRet) =>
         # .ignored is returned when .babelrc ignore/only flags are used
         if msgRet.ignored then return
         if msgRet.err
           @transpileErrorNotifications[pathTo.sourceFile] =
-            atom.notifications.addError "Babel v#{msgRet.babelVersion} Transpiler Error",
+            atom.notifications.addError "LB: Babel v#{msgRet.babelVersion} Transpiler Error",
               dismissable: true
               detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
           # if we have a line/col syntax error jump to the position
@@ -99,15 +97,15 @@ class Transpiler
             textEditor.setCursorBufferPosition [msgRet.err.loc.line-1, msgRet.err.loc.column-1]
         else
           if not config.suppressTranspileOnSaveMessages
-            atom.notifications.addInfo "Babel v#{msgRet.babelVersion} Transpiler Success",
+            atom.notifications.addInfo "LB: Babel v#{msgRet.babelVersion} Transpiler Success",
               detail: pathTo.sourceFile
 
           if not config.createTranspiledCode
             if not config.suppressTranspileOnSaveMessages
-              atom.notifications.addInfo 'No transpiled output configured'
+              atom.notifications.addInfo 'LB: No transpiled output configured'
             return
           if pathTo.sourceFile is pathTo.transpiledFile
-            atom.notifications.addWarning 'Transpiled file would overwrite source file. Aborted!',
+            atom.notifications.addWarning 'LB: Transpiled file would overwrite source file. Aborted!',
               dismissable: true
               detail: pathTo.sourceFile
             return
@@ -136,7 +134,27 @@ class Transpiler
             xssiProtection = ')]}\n'
             fs.writeFileSync pathTo.mapFile,
               xssiProtection + JSON.stringify mapJson, null, ' '
-        msgRet = null;
+
+  # clean notification messages
+  cleanNotifications: (pathTo) ->
+    # auto dismiss previous transpile error notifications for this source file
+    if @transpileErrorNotifications[pathTo.sourceFile]?
+      @transpileErrorNotifications[pathTo.sourceFile].dismiss()
+      delete @transpileErrorNotifications[pathTo.sourceFile]
+    # remove any user dismissed notification object references
+    for sf, n of @transpileErrorNotifications
+      if n.dismissed
+        delete @transpileErrorNotifications[sf]
+    # FIX for atom notifications. dismissed noftifications via whatever means
+    # are never actually removed from memory. I consider this a memory leak
+    # See https://github.com/atom/atom/issues/8614 so remove any dismissed
+    # notification objects prefixed with a message prefix of LB: from memory
+    i = atom.notifications.notifications.length - 1
+    while i >= 0
+      if atom.notifications.notifications[i].dismissed and
+      atom.notifications.notifications[i].message.substring(0,3) is "LB:"
+        atom.notifications.notifications.splice i, 1
+      i--
 
   # modifies config options for changed or deprecated configs
   deprecateConfig: ->
@@ -186,13 +204,13 @@ class Transpiler
       try
         jsonContent = JSON.parse fileContent
       catch err
-        atom.notifications.addError "#{localConfigFile} #{err.message}",
+        atom.notifications.addError "LB: #{localConfigFile} #{err.message}",
           dismissable: true
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
         return
       schemaErrors = @jsonSchema.validate 'localConfig', jsonContent
       if schemaErrors
-        atom.notifications.addError "#{localConfigFile} configuration error",
+        atom.notifications.addError "LB: #{localConfigFile} configuration error",
           dismissable: true
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
       else

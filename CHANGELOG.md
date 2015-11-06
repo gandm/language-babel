@@ -1,6 +1,11 @@
+### 2.1.0
+  - Fix memory leak issues
+  - Fix for growing listener pool
+  - Fix for Atom issue never deleting memory for dismissed notifications
+
 ### 2.0.2
   - babel-core and chai as dependencies not Dev.
-  
+
 ### 2.0.1
   - Whoops!!! Missing files.
 

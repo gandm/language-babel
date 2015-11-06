@@ -1,3 +1,5 @@
+# language-babel transpiles run here.
+# This runs as a seperate task so that transpiles can hae there own environment.
 module.exports = (projectPath) ->
   #util = require 'util'
   path = require 'path'
@@ -20,6 +22,7 @@ module.exports = (projectPath) ->
       babel.transformFile mObj.pathTo.sourceFile, mObj.babelOptions, (err,result) =>
         # fiddly formating a return
         msgRet = {}
+        msgRet.reqId = mObj.reqId # send back to reqId
         if err
           msgRet.err = {}
           if err.loc then msgRet.err.loc = err.loc
@@ -34,6 +37,6 @@ module.exports = (projectPath) ->
             msgRet.ignored = false
         msgRet.babelVersion = babel.version
         msgRet.babelCoreUsed = babelCoreUsed
-        emit 'language-babel:transpile', msgRet
+        emit "transpile:#{mObj.reqId}", msgRet
     #stop issued
     if mObj.command is 'stop' then callback()

@@ -151,7 +151,7 @@ describe 'language-babel', ->
         expect(notificationSpy.callCount).to.equal(1)
         msg = notificationSpy.calls[0].args[0].message # first call, first arg
         type = notificationSpy.calls[0].args[0].type
-        expect(msg).to.match(/^Babel file is not inside/)
+        expect(msg).to.match(/^LB: Babel file is not inside/)
         expect(writeFileStub.callCount).to.equal(0)
 
     describe 'When a source file is outside the "babelSourcePath" & suppress msgs true', ->
@@ -182,7 +182,7 @@ describe 'language-babel', ->
         runs ->
           expect(notificationSpy.callCount).to.equal(1)
           msg = notificationSpy.calls[0].args[0].message
-          expect(msg).to.match(/^Babel.*Transpiler Error/)
+          expect(msg).to.match(/^LB: Babel.*Transpiler Error/)
           expect(writeFileStub.callCount).to.equal(0)
 
     describe 'When a js file saved but no output is set', ->
@@ -201,9 +201,9 @@ describe 'language-babel', ->
         runs ->
           expect(notificationSpy.callCount).to.equal(2)
           msg = notificationSpy.calls[0].args[0].message
-          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          expect(msg).to.match(/^LB: Babel.*Transpiler Success/)
           msg = notificationSpy.calls[1].args[0].message
-          expect(msg).to.match(/^No transpiled output configured/)
+          expect(msg).to.match(/^LB: No transpiled output configured/)
           expect(writeFileStub.callCount).to.equal(0)
 
 
@@ -222,9 +222,9 @@ describe 'language-babel', ->
         runs ->
           expect(notificationSpy.callCount).to.equal(2)
           msg = notificationSpy.calls[0].args[0].message # first call, first arg
-          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          expect(msg).to.match(/^LB: Babel.*Transpiler Success/)
           msg = notificationSpy.calls[1].args[0].message
-          expect(msg).to.match(/^Transpiled file would overwrite source file/)
+          expect(msg).to.match(/^LB: Transpiled file would overwrite source file/)
           expect(writeFileStub.callCount).to.equal(0)
 
     describe 'When a jsx file saved,transpile path is set, source maps enabled', ->
@@ -243,7 +243,7 @@ describe 'language-babel', ->
         runs ->
           expect(notificationSpy.callCount).to.equal(1)
           msg = notificationSpy.calls[0].args[0].message # first call, first arg
-          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          expect(msg).to.match(/^LB: Babel.*Transpiler Success/)
           expect(writeFileStub.callCount).to.equal(2)
           savedFilename = writeFileStub.calls[0].args[0]
           expectedFileName = path.resolve(__dirname, 'fixtures-transpiled/dira/dira.1/dira.2/react.js')
@@ -293,9 +293,9 @@ describe 'language-babel', ->
         runs ->
           expect(notificationSpy.callCount).to.equal(2)
           msg = notificationSpy.calls[0].args[0].message
-          expect(msg).to.match(/^Babel.*Transpiler Success/)
+          expect(msg).to.match(/^LB: Babel.*Transpiler Success/)
           msg = notificationSpy.calls[1].args[0].message
-          expect(msg).to.match(/^No transpiled output configured/)
+          expect(msg).to.match(/^LB: No transpiled output configured/)
           expect(writeFileStub.callCount).to.equal(0)
 
     describe 'When a js file saved , babelrc in not in path and flag disableWhenNoBabelrcFileInPath is set', ->
