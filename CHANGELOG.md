@@ -1,3 +1,6 @@
+### 2.2.0
+  - The package now supports mixed Babel V5 & Babel V6 projects.
+
 ### 2.1.0
   - Fix memory leak issues
   - Fix for growing listener pool

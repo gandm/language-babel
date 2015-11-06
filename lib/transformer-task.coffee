@@ -1,5 +1,5 @@
 # language-babel transpiles run here.
-# This runs as a seperate task so that transpiles can hae there own environment.
+# This runs as a seperate task so that transpiles can have their own environment.
 module.exports = (projectPath) ->
   #util = require 'util'
   path = require 'path'
@@ -10,7 +10,7 @@ module.exports = (projectPath) ->
   try
     babel = require projectBabelCore
   catch
-    # babel core version not found
+    # babel core version not found revert to the global
     projectBabelCore = 'babel-core'
     babel = require projectBabelCore
 

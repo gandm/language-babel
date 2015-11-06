@@ -7,19 +7,17 @@ Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.git
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
-language-babel also provides [Babel](http://babeljs.io/) V6 transpiler support. If you only require grammar/syntax highlighting ensure that the package settings `Transpile On Save` and `Allow Local Override` are both off.
+language-babel provides [Babel](http://babeljs.io/) V6 & V5 transpiler support. If you only require grammar/syntax highlighting ensure that the package settings `Transpile On Save` and `Allow Local Override` are both off.
 
 ## Installation
 
-Install via ATOM or by using `apm install language-babel`   Please note `lanugage-babel` >=V1.0.0 supports Babel 6. Babel 6 is not compatible with Babel 5. If you still wish to use Babel 5 you will need to install a older version of `language-babel` via `apm install language-babel@0.15.13`
+Install via ATOM or by using `apm install language-babel`. If you only need to use the provided grammar read no further!
 
-If you only need to use the provided grammar read no further!
+## Interface to Babel V6 & V5
 
-## Interface to Babel V6
+Options in the language-babel package settings or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves. Even if using gulp, webpack, etc, this can be very useful. Options allow the output from Babel to be output to other directories. You need to use `.babelrc` files to configure Babel options.
 
-Options in the language-babel package settings or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves. Even if using gulp, webpack, etc, this can be very useful. Options allow the output from Babel to be output to other directories.
-
-This package works by using Atom's concept of a  Project Folder which we assume will contain a typical Babel package. e.g. We expect to see one or more `.babelrc` files, a `node_modules` folder at the root of the project containing `babel-core` and other babel plugins as determined by the Project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project.
+This package works by using Atom's concept of a  Project Folder which we assume will contain a typical Babel package. e.g. We expect to see one or more `.babelrc` files, a `node_modules` folder at the root of the project containing `babel-core` and other babel plugins as determined by the Project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project. If no `babel-core` is found in the project then a version will be provided by the package but this will be a Babel Version 6 instance.
 
 Multiple projects may be open at any time inside Atom and `language-babel` must allow the use of differing `babel-core` versions and associated plugins when transpiling. It does this by using background tasks - one per Babel project. When a `language-babel` grammar enabled file is saved the package settings and optionally any `.languagebabel` configuration files are read to determine if the file should be transpiled and what to do with the output. These settings and `.languagebabel` options are described below.
 

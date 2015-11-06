@@ -17,7 +17,7 @@
     "atom": "^1.0.0"
   },
   "dependencies": {
-    "babel-core": "^6.0.20",
+    "babel-core": "^6.1.2",
     "chai": "^3.0.0",
     "fs-plus": "^2.8.0",
     "jjv": "^1.0.2",
