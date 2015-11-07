@@ -31,9 +31,6 @@ class Transpiler
 
   # transpile sourceFile edited by the optional textEditor
   transpile: (sourceFile, textEditor) ->
-    # Remove unused tasks
-    @stopUnusedTasks()
-
     config = @getConfig()
     pathTo = @getPaths sourceFile, config
     if pathTo.sourceFileInProject isnt true then return;
@@ -279,7 +276,7 @@ class Transpiler
       command: 'stop'
     @babelTranspilerTasks[projectPath].send(msgObject)
 
-# stop transpiler task
+# stop all transpiler tasks
   stopAllTranspilerTask: () ->
     for projectPath, v of @babelTranspilerTasks
       @stopTranspilerTask(projectPath)

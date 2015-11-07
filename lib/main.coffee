@@ -7,6 +7,8 @@ module.exports =
     @transpiler ?= new (require './transpiler')
     # track any file save ( buffer save) events and transpile if babel
     @disposable = new CompositeDisposable
+    @disposable.add atom.project.onDidChangePaths =>
+      @transpiler.stopUnusedTasks()
     @disposable.add  atom.workspace.observeTextEditors (textEditor) =>
       @disposable.add textEditor.onDidSave (event) =>
         grammar = textEditor.getGrammar()

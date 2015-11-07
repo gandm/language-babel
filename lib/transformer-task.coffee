@@ -39,4 +39,5 @@ module.exports = (projectPath) ->
         msgRet.babelCoreUsed = babelCoreUsed
         emit "transpile:#{mObj.reqId}", msgRet
     #stop issued
-    if mObj.command is 'stop' then callback()
+    if mObj.command is 'stop' 
+      callback()
