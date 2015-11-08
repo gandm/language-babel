@@ -19,6 +19,8 @@ Options in the language-babel package settings or in `.languagebabel` project ba
 
 This package works by using Atom's concept of a  Project Folder which we assume will contain a typical Babel package. e.g. We expect to see one or more `.babelrc` files, a `node_modules` folder at the root of the project containing `babel-core` and other babel plugins as determined by the Project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project. If no `babel-core` is found in the project then a version will be provided by the package but this will be a Babel Version 6 instance.
 
+A trivial example project that shows examples of using `.languagebabel` and `.babelrc` files may be found [here](https://github.com/gandm/example-language-babel).
+
 Multiple projects may be open at any time inside Atom and `language-babel` must allow the use of differing `babel-core` versions and associated plugins when transpiling. It does this by using background tasks - one per Babel project. When a `language-babel` grammar enabled file is saved the package settings and optionally any `.languagebabel` configuration files are read to determine if the file should be transpiled and what to do with the output. These settings and `.languagebabel` options are described below.
 
 Files edited that are not contained by an open Atom project folder will not be processed by this package.
