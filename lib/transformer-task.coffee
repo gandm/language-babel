@@ -33,11 +33,9 @@ module.exports = (projectPath) ->
         if result
           msgRet.result = result
           msgRet.result.ast = null; # ast seems to create a JSON circular ref on emit
-          if result.ignored?
-            msgRet.ignored = false
         msgRet.babelVersion = babel.version
         msgRet.babelCoreUsed = babelCoreUsed
         emit "transpile:#{mObj.reqId}", msgRet
     #stop issued
-    if mObj.command is 'stop' 
+    if mObj.command is 'stop'
       callback()
