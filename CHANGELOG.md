@@ -1,3 +1,8 @@
+### 2.3.0
+  - Modified how sub tasks are closed.
+  - Fixed issue for handling babel's ignored property.
+  - Added info about the example project which shows some `.languagebabel` configs.
+
 ### 2.2.0
   - The package now supports mixed Babel V5 & Babel V6 projects.
 
