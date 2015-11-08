@@ -83,7 +83,7 @@ class Transpiler
       # get result from task for this reqId
       @babelTranspilerTasks[pathTo.projectPath].once "transpile:#{reqId}", (msgRet) =>
         # .ignored is returned when .babelrc ignore/only flags are used
-        if msgRet.result.ignored then return
+        if msgRet.result?.ignored then return
         if msgRet.err
           @transpileErrorNotifications[pathTo.sourceFile] =
             atom.notifications.addError "LB: Babel v#{msgRet.babelVersion} Transpiler Error",
