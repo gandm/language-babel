@@ -1,3 +1,6 @@
+### 2.3.1
+  - Fixes #106 - prefixed whitespace before number scoped as part of it.
+
 ### 2.3.0
   - Modified how sub tasks are closed.
   - Fixed issue for handling babel's ignored property.
