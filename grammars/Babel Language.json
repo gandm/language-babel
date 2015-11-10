@@ -1016,20 +1016,28 @@
     "literal-number": {
       "patterns": [
         {
-          "name": "invalid.illegal.numeric.hex.js",
-          "match": "\\s*(?i)(?:\\B[-+]|\\b)0x[0-9a-f]*\\.(\\B|\\b[0-9]+)"
+          "match": "\\s*((?i)(?:\\B[-+]|\\b)0x[0-9a-f]*\\.(\\B|\\b[0-9]+))",
+          "captures": {
+            "1": { "name": "invalid.illegal.numeric.hex.js" }
+          }
         },
         {
-          "name": "invalid.illegal.numeric.octal.js",
-          "match": "\\s*(?:\\B[-+]|\\b)0[0-9]+\\.(\\B|\\b[0-9]+)"
+          "match": "\\s*((?:\\B[-+]|\\b)0[0-9]+\\.(\\B|\\b[0-9]+))",
+          "captures": {
+            "1": { "name": "invalid.illegal.numeric.octal.js" }
+          }
         },
         {
-          "name": "constant.numeric.js",
-          "match": "\\s*(?:\\B[-+])?(?:\\b0b[0-1]*|\\b0o[0-7]*|\\b0x[0-9a-f]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)(e[-+]?[0-9]+)?)"
+          "match": "\\s*((?:\\B[-+])?(?:\\b0b[0-1]*|\\b0o[0-7]*|\\b0x[0-9a-f]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)(e[-+]?[0-9]+)?))",
+          "captures": {
+            "1": { "name": "constant.numeric.js" }
+          }
         },
         {
-          "name": "constant.language.infinity.js",
-          "match": "\\s*(?:\\B[-+]|\\b)(Infinity)\\b"
+          "match": "\\s*((?:\\B[-+]|\\b)(Infinity)\\b)",
+          "captures": {
+            "1": { "name": "constant.language.infinity.js" }
+          }
         }
       ]
     },
