@@ -1,3 +1,6 @@
+### 2.4.0
+  - Add new property `projectRoot` to ``.languagebabel` to allow for nested projects.
+
 ### 2.3.1
   - Fixes #106 - prefixed whitespace before number scoped as part of it.
 
