@@ -36,7 +36,6 @@ module.exports = (projectPath) ->
         emit "transpile:#{mObj.reqId}", msgRet
         # if this file transpilation isn't in a Atom project folder then term this task
         # as this is normally an Ad-hoc file transpile.
-        console.log "call back "+mObj.pathTo.sourceFileInProject
         if not mObj.pathTo.sourceFileInProject
           callback()
     #stop issued stop process
