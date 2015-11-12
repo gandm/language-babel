@@ -122,11 +122,14 @@ describe 'language-babel', ->
     notificationSpy = null
     notification = null
     writeFileStub = null
+    writeFileName = null
 
     beforeEach ->
       notificationSpy = jasmine.createSpy 'notificationSpy'
       notification = atom.notifications.onDidAddNotification notificationSpy
-      writeFileStub = spyOn(fs,'writeFileSync').andCallFake -> undefined
+      writeFileName = null
+      writeFileStub = spyOn(fs,'writeFileSync').andCallFake (path)->
+        writeFileName = path
     afterEach ->
       notification.dispose()
 
@@ -311,3 +314,17 @@ describe 'language-babel', ->
         lb.transpile(path.resolve(__dirname, 'fixtures/dirb/good.js'))
         expect(notificationSpy.callCount).to.equal(0)
         expect(writeFileStub.callCount).to.equal(0)
+
+    describe 'When a js file saved in a nested project', ->
+      it 'creates a file in the correct location based upon .languagebabel', ->
+        atom.project.setPaths([__dirname])
+        config.allowLocalOverride = true
+
+        spyOn(lb, 'getConfig').andCallFake ->config;
+        sourceFile = path.resolve(__dirname, 'fixtures/projectRoot/src/test.js')
+        targetFile =  path.resolve(__dirname, 'fixtures/projectRoot/test.js')
+        lb.transpile(sourceFile)
+        waitsFor ->
+          writeFileStub.callCount
+        runs ->
+          expect(writeFileName).to.equal(targetFile)

@@ -14,6 +14,7 @@ languagebabelSchema = {
     createTargetDirectories:          { type: 'boolean' },
     createTranspiledCode:             { type: 'boolean' },
     disableWhenNoBabelrcFileInPath:   { type: 'boolean' },
+    projectRoot:                      { type: 'boolean' },
     suppressSourcePathMessages:       { type: 'boolean' },
     suppressTranspileOnSaveMessages:  { type: 'boolean' },
     transpileOnSave:                  { type: 'boolean' }
@@ -25,7 +26,7 @@ class Transpiler
   constructor: ->
     @reqId = 0
     @babelTranspilerTasks = {}
-    @babelTransformerPath = require.resolve './transformer-task'
+    @babelTransformerPath = require.resolve './transpiler-task'
     @transpileErrorNotifications = {}
     @deprecateConfig()
 
@@ -33,7 +34,6 @@ class Transpiler
   transpile: (sourceFile, textEditor) ->
     config = @getConfig()
     pathTo = @getPaths sourceFile, config
-    if pathTo.sourceFileInProject isnt true then return;
 
     if config.allowLocalOverride
       if not @jsonSchema?
@@ -182,16 +182,15 @@ class Transpiler
     # set transpiler options from package configuration.
     babelOptions =
       sourceMaps: config.createMap
-      plugins: config.plugins
-      presets: config.presets
       code: true
-
 
   # get global configuration for language-babel
   getConfig: -> atom.config.get('language-babel')
 
 # check for prescence of a .languagebabel file path fromDir toDir
 # read, validate and overwrite config as required
+# toDir is normally the implicit Atom project folders root but we
+# will stop of a projectRoot true is found as well
   getLocalConfig: (fromDir, toDir, localConfig) ->
     # get local path overides
     localConfigFile = '.languagebabel'
@@ -205,6 +204,7 @@ class Transpiler
           dismissable: true
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
         return
+
       schemaErrors = @jsonSchema.validate 'localConfig', jsonContent
       if schemaErrors
         atom.notifications.addError "LB: #{localConfigFile} configuration error",
@@ -212,11 +212,16 @@ class Transpiler
           detail: "File = #{languageBabelCfgFile}\n\n#{fileContent}"
       else
         # merge local config. config closest sourceFile wins
+        # apart from projectRoot which wins on true
+        isProjectRoot = jsonContent.projectRoot
         @merge  jsonContent, localConfig
+        if isProjectRoot then jsonContent.projectRootDir = fromDir
         localConfig = jsonContent
     if fromDir isnt toDir
       # stop infinite recursion https://github.com/gandm/language-babel/issues/66
       if fromDir == path.dirname(fromDir) then return localConfig
+      # check projectRoot property and end recursion if true
+      if isProjectRoot then return localConfig
       return @getLocalConfig path.dirname(fromDir), toDir, localConfig
     else return localConfig
 
@@ -225,14 +230,20 @@ class Transpiler
   # and the roots of source, transpile path and maps paths defined in config
   getPaths:  (sourceFile, config) ->
     projectContainingSource = atom.project.relativizePath sourceFile
-    # if a project is in the root directory atom passes back a null for
-    # the project path. We need the real root
+    # Is the sourceFile located inside an Atom project folder?
     if projectContainingSource[0] is null
-      absProjectPath = path.parse(sourceFile).root
       sourceFileInProject = false
+    else sourceFileInProject = true
+    # determines the project root dir from .languagebabel or from Atom
+    # if a project is in the root directory of atom passes back a null for
+    # the project path if the file isn't in a project folder
+    # so make the root dir that source file the project
+    if config.projectRootDir?
+      absProjectPath = path.normalize(config.projectRootDir)
+    else if projectContainingSource[0] is null
+      absProjectPath = path.parse(sourceFile).root
     else
       absProjectPath = path.normalize(projectContainingSource[0])
-      sourceFileInProject = true
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)
     relMapsPath = path.normalize(config.babelMapsPath)
@@ -281,11 +292,16 @@ class Transpiler
     for projectPath, v of @babelTranspilerTasks
       @stopTranspilerTask(projectPath)
 
-# stop unsued transpiler tasks
+# stop unsued transpiler tasks if its path isn't present in a current
+# Atom project folder
   stopUnusedTasks: () ->
-    for projectPath,v of @babelTranspilerTasks
-      projectLoaded = (atom.project.relativizePath(projectPath))[0]
-      if not projectLoaded? then @stopTranspilerTask(projectPath)
-
+    atomProjectPaths = atom.project.getPaths()
+    for projectTaskPath,v of @babelTranspilerTasks
+      isTaskInCurrentProject = false
+      for atomProjectPath in atomProjectPaths
+        if pathIsInside(projectTaskPath, atomProjectPath)
+          isTaskInCurrentProject = true
+          break
+      if not isTaskInCurrentProject then @stopTranspilerTask(projectTaskPath)
 
 module.exports = Transpiler

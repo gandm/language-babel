@@ -1,7 +1,6 @@
 # language-babel transpiles run here.
 # This runs as a seperate task so that transpiles can have their own environment.
 module.exports = (projectPath) ->
-  #util = require 'util'
   path = require 'path'
   callback = @async() #async task
   process.chdir(projectPath)
@@ -18,7 +17,6 @@ module.exports = (projectPath) ->
 
   process.on 'message', (mObj) ->
     if mObj.command is 'transpile'
-      #console.log(util.inspect(process.memoryUsage()));
       babel.transformFile mObj.pathTo.sourceFile, mObj.babelOptions, (err,result) =>
         # fiddly formating a return
         msgRet = {}
@@ -36,6 +34,11 @@ module.exports = (projectPath) ->
         msgRet.babelVersion = babel.version
         msgRet.babelCoreUsed = babelCoreUsed
         emit "transpile:#{mObj.reqId}", msgRet
-    #stop issued
+        # if this file transpilation isn't in a Atom project folder then term this task
+        # as this is normally an Ad-hoc file transpile.
+        console.log "call back "+mObj.pathTo.sourceFileInProject
+        if not mObj.pathTo.sourceFileInProject
+          callback()
+    #stop issued stop process
     if mObj.command is 'stop'
       callback()
