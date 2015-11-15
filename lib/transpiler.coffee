@@ -85,17 +85,23 @@ class Transpiler
         # .ignored is returned when .babelrc ignore/only flags are used
         if msgRet.result?.ignored then return
         if msgRet.err
-          @transpileErrorNotifications[pathTo.sourceFile] =
-            atom.notifications.addError "LB: Babel v#{msgRet.babelVersion} Transpiler Error",
-              dismissable: true
-              detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
-          # if we have a line/col syntax error jump to the position
-          if msgRet.err.loc? and textEditor?
-            textEditor.setCursorBufferPosition [msgRet.err.loc.line-1, msgRet.err.loc.column-1]
+          if msgRet.err.stack
+            @transpileErrorNotifications[pathTo.sourceFile] =
+              atom.notifications.addError "LB: Babel Transpiler Error",
+                dismissable: true
+                detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.stack}"
+          else
+            @transpileErrorNotifications[pathTo.sourceFile] =
+              atom.notifications.addError "LB: Babel v#{msgRet.babelVersion} Transpiler Error",
+                dismissable: true
+                detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
+            # if we have a line/col syntax error jump to the position
+            if msgRet.err.loc? and textEditor?
+              textEditor.setCursorBufferPosition [msgRet.err.loc.line-1, msgRet.err.loc.column-1]
         else
           if not config.suppressTranspileOnSaveMessages
             atom.notifications.addInfo "LB: Babel v#{msgRet.babelVersion} Transpiler Success",
-              detail: pathTo.sourceFile
+              detail: "#{pathTo.sourceFile}\n \n#{msgRet.babelCoreUsed}"
 
           if not config.createTranspiledCode
             if not config.suppressTranspileOnSaveMessages
