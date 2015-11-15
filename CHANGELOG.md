@@ -1,6 +1,9 @@
+### 2.5.0
+  - Trap transpiler task stack traces.
+  
 ### 2.4.1
   - Remove console.log!
-  
+
 ### 2.4.0
   - Add new property `projectRoot` to ``.languagebabel` to allow for nested projects.
 
