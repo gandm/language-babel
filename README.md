@@ -36,8 +36,8 @@ For most projects it is better to configure `language-babel` via project based `
   On any file save of a `language-babel` grammar enabled file the Babel transpiler is called. No actual transpiled file is saved but any Babel errors and/or successful indicators are notified by an ATOM pop-up. Not all files are candidates for transpilation as other settings can affect this. For example see `Disable When No Babelrc File In Path` and `Babel Source Path` below.
 
   ```json
-  {"transpileOnSav": true} or
-  {"transpileOnSav": false}
+  {"transpileOnSave": true} or
+  {"transpileOnSave": false}
   ```
 
 * #### Create Transpiled Code
@@ -59,7 +59,6 @@ For most projects it is better to configure `language-babel` via project based `
 * #### Suppress Transpile On Save Messages
   Suppress all successful save messages. Errors are still notified.
 
- true|false}`
   ```json
   {"suppressTranspileOnSaveMessages": true} or
   {"suppressTranspileOnSaveMessages": false}
