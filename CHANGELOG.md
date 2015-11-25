@@ -1,6 +1,9 @@
+### 2.5.1
+  - Check that Babel returns a valid line/column for an error.
+
 ### 2.5.0
   - Trap transpiler task stack traces.
-  
+
 ### 2.4.1
   - Remove console.log!
 
