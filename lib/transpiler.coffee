@@ -65,21 +65,26 @@ class Transpiler
     @cleanNotifications(pathTo)
 
     # create babel transformer tasks - one per project as needed
-    @babelTranspilerTasks[pathTo.projectPath] ?=
-      Task.once @babelTransformerPath, pathTo.projectPath, =>
-        # task ended
-        delete @babelTranspilerTasks[pathTo.projectPath]
+    @createTask pathTo.projectPath
 
     # ok now transpile in the task and wait on the result
-    if @babelTranspilerTasks[pathTo.projectPath]?
+    if @babelTranspilerTasks[pathTo.projectPath]
       reqId = @reqId++
       msgObject =
         reqId: reqId
         command: 'transpile'
         pathTo: pathTo
         babelOptions: babelOptions
+        
       # transpile in task
-      @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
+      try
+       @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
+      catch err
+        console.log "Error sending to transpile task - https://github.com/atom/atom/issues/9663. Restarting task. #{err}"
+        delete @babelTranspilerTasks[pathTo.projectPath]
+        @createTask pathTo.projectPath
+        @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
+
       # get result from task for this reqId
       @babelTranspilerTasks[pathTo.projectPath].once "transpile:#{reqId}", (msgRet) =>
         # .ignored is returned when .babelrc ignore/only flags are used
@@ -158,6 +163,13 @@ class Transpiler
       atom.notifications.notifications[i].message.substring(0,3) is "LB:"
         atom.notifications.notifications.splice i, 1
       i--
+
+  # create babel transformer tasks - one per project as needed
+  createTask: (projectPath) ->
+    @babelTranspilerTasks[projectPath] ?=
+      Task.once @babelTransformerPath, projectPath, =>
+        # task ended
+        delete @babelTranspilerTasks[projectPath]
 
   # modifies config options for changed or deprecated configs
   deprecateConfig: ->
