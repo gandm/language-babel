@@ -1,3 +1,6 @@
+### 2.5.3
+  - Added PID info when task goes missing for no recorded reason!
+
 ### 2.5.2
   - Transpiler task goes missing so recover it. Issue #110 Maybe related to https://github.com/atom/atom/issues/9663
 

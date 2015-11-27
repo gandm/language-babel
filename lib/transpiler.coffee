@@ -75,14 +75,15 @@ class Transpiler
         command: 'transpile'
         pathTo: pathTo
         babelOptions: babelOptions
-        
+
       # transpile in task
       try
        @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
       catch err
-        console.log "Error sending to transpile task - https://github.com/atom/atom/issues/9663. Restarting task. #{err}"
+        console.log "Error #{err} sending to transpile task with PID #{@babelTranspilerTasks[pathTo.projectPath].childProcess.pid}"
         delete @babelTranspilerTasks[pathTo.projectPath]
         @createTask pathTo.projectPath
+        console.log "Restarted transpile task with PID #{@babelTranspilerTasks[pathTo.projectPath].childProcess.pid}"
         @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
 
       # get result from task for this reqId
