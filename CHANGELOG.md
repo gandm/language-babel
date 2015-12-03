@@ -1,3 +1,6 @@
+### 2.5.4
+  - Fix babel error column position row indexed from 1 but column indexed from 0
+  
 ### 2.5.3
   - Added PID info when task goes missing for no recorded reason!
 
