@@ -1,6 +1,9 @@
+### 2.6.1
+  - Fix issues when same file is displayed (split) into two or more panes.
+
 ### 2.6.0
   - Add `.flow` as a supported file type. See http://flowtype.org/blog/2015/12/01/Version-0.19.0.html#declaration-files
-  
+
 ### 2.5.4
   - Fix babel error column position row indexed from 1 but column indexed from 0
 
