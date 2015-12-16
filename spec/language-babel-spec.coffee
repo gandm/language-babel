@@ -14,6 +14,8 @@ LB = 'language-babel'
 PU = '/dir199a99231'  # unlikely directory name UNIX
 PW = 'C:\\dir199a99231' # unlikely directory name windows
 
+jasmine.getEnv().defaultTimeoutInterval = 15000
+
 describe 'language-babel', ->
   lb = null
   config =  {}
