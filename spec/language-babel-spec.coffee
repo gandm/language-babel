@@ -202,7 +202,7 @@ describe 'language-babel', ->
         lb.transpile(path.resolve(__dirname, 'fixtures/dira/dira.1/dira.2/react.jsx'))
         #may take a while for the transpiler to run and call home
         waitsFor ->
-          notificationSpy.callCount
+          notificationSpy.callCount > 1
         runs ->
           expect(notificationSpy.callCount).to.equal(2)
           msg = notificationSpy.calls[0].args[0].message
