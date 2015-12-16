@@ -1,3 +1,6 @@
+### 2.6.2
+  - Fixes 2.6.1 precedence!
+  
 ### 2.6.1
   - Fix issues when same file is displayed (split) into two or more panes.
 

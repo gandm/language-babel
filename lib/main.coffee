@@ -20,9 +20,9 @@ module.exports =
       @textEditors[textEditor.id].add textEditor.onDidSave (event) =>
         if textEditor.getGrammar().packageName is 'language-babel'
           filePath = textEditor.getPath()
-          lastSaveTime = @fileSaveTimes[filePath]
+          lastSaveTime = @fileSaveTimes[filePath] ? 0
           @fileSaveTimes[filePath] = Date.now()
-          if not lastSaveTime? + INTERFILESAVETIME < @fileSaveTimes[filePath]
+          if  (lastSaveTime < (@fileSaveTimes[filePath] - INTERFILESAVETIME))
             @transpiler.transpile(filePath, textEditor)
       @textEditors[textEditor.id].add textEditor.onDidDestroy () =>
         filePath = textEditor.getPath()
@@ -34,6 +34,4 @@ module.exports =
     @disposable.dispose()
     for id, disposeable of @textEditors
       disposeable.dispose()
-    for filePath, val of @fileSaveTimes
-      delete@fileSaveTimes[filePath]
     @transpiler.stopAllTranspilerTask()
