@@ -1774,7 +1774,7 @@
             "comment": "primitive flowtypes",
             "match": "\\s*\\b((?>any|boolean|mixed|number|string|void))\\b",
             "captures": {
-              "1": { "name": "support.type.builtin.primitve.flowtype" }
+              "1": { "name": "support.type.builtin.primitive.flowtype" }
             }
           },
           {
