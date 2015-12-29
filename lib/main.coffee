@@ -26,7 +26,7 @@ module.exports =
             @transpiler.transpile(filePath, textEditor)
       @textEditors[textEditor.id].add textEditor.onDidDestroy () =>
         filePath = textEditor.getPath()
-        if @fileSaveTimes[filePath]? then delete@fileSaveTimes[filePath]
+        if @fileSaveTimes[filePath]? then delete @fileSaveTimes[filePath]
         @textEditors[textEditor.id].dispose()
         delete @textEditors[textEditor.id]
 
