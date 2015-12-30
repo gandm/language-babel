@@ -1466,16 +1466,16 @@
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
           "begin": "\\s*(<)([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-](?<!\\.\\.))*+)(?=[ />\\t\\n])(?<!\\.)",
-          "end": "\\s*(</)(\\2)(>)|(/>)",
+          "end": "\\s*(?<=</)(\\2)(>)|(/>)|((?<=</)[\\S ]*?)>",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
             "2": { "name": "entity.name.tag.open.jsx" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.tag.jsx" },
-            "2": { "name": "entity.name.tag.close.jsx" },
+            "1": { "name": "entity.name.tag.close.jsx" },
+            "2": { "name": "punctuation.definition.tag.jsx" },
             "3": { "name": "punctuation.definition.tag.jsx" },
-            "4": { "name": "punctuation.definition.tag.jsx" }
+            "4": { "name": "invalid.illegal.termination.jsx"}
           },
           "patterns": [
             { "include": "#jsx-tag-termination" },
@@ -1489,10 +1489,15 @@
         {
           "comment": "this matches the end > of an opening tag when in the form <tag> </tag>",
           "comment": "uses non consuming search for </ in </tag>",
-          "begin": ">",
-          "end": "(?=</)",
+          "begin": "(>)",
+          "end": "(</)",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.tag.jsx" }
+            "0": { "name": "punctuation.definition.tag.jsx" },
+            "1": { "name": "JSXStartTagEnd" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.tag.jsx" },
+            "1": { "name": "JSXEndTagStart" }
           },
           "patterns": [
             { "include": "#jsx-evaluated-code" },

@@ -1,4 +1,5 @@
 {CompositeDisposable} = require 'atom'
+autocompleteJSX = require './autocomplete-jsx'
 
 INTERFILESAVETIME = 1000
 
@@ -35,3 +36,6 @@ module.exports =
     for id, disposeable of @textEditors
       disposeable.dispose()
     @transpiler.stopAllTranspilerTask()
+
+  JSXCompleteProvider: ->
+    autocompleteJSX

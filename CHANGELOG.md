@@ -1,3 +1,6 @@
+### 2.7.0
+  - Added auto completion of React JSX start/end tags + HTML tag names & attributes
+  
 ### 2.6.3
   - Added more flow builtin types.
   - Fixes #118. Typo in scopename.

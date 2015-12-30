@@ -16,10 +16,18 @@
   "engines": {
     "atom": "^1.0.0"
   },
+  "providedServices": {
+  "autocomplete.provider": {
+    "versions": {
+      "2.0.0": "JSXCompleteProvider"
+    }
+  }
+},
   "dependencies": {
     "babel-core": "^6.1.2",
     "chai": "^3.0.0",
     "fs-plus": "^2.8.0",
+    "fuzzaldrin": "^2.1.0",
     "jjv": "^1.0.2",
     "path-is-inside": "^1.0.1"
   }
