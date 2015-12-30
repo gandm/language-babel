@@ -1779,11 +1779,12 @@
           },
           {
             "comment": "Built-in Class Types",
-            "match": "\\s*\\b((?>Boolean|Function|Number|Object|Promise|String))\\b",
+            "match": "\\s*\\b((?>ArrayBuffer|ArrayBufferView|Boolean|Date|DataView|Error|EvalError|Float32Array|Float64Array|Function|Int8Array|Int16Array|Int32Array|JSON|Math|Number|Object|RangeError|ReferenceError|RegExp|String|Symbol|TypeError|Uint8Array|Uint16Array|Uint32Array|Uint8ClampedArray))\\b",
             "captures": {
               "1": { "name": "support.type.builtin.class.flowtype" }
             }
           },
+          { "include": "#flowtype-polymorphs" },
           {
             "comment": "custom Class Types e.g. Abc avoid Abc(",
             "match": "\\s*([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*\\()",
@@ -1815,7 +1816,6 @@
           },
           { "include": "#literal-string" },
           { "include": "#literal-number" },
-          { "include": "#flowtype-polymorphs" },
           { "include": "#flowtype-bracketed-parameters" },
           { "include": "#flowtype-parse-objects" },
           { "include": "#flowtype-parse-operators" },
@@ -1846,10 +1846,10 @@
       "patterns": [
         {
           "comment": "Built-in Class Types with elements of type <T>",
-          "begin": "\\s*\\b((?>Array|Class))\\s*(<)",
+          "begin": "\\s*\\b((?>Array|Class|Map|Promise|Set|WeakMap|WealSet))\\s*(<)",
           "end": "\\s*(>)",
           "beginCaptures": {
-            "1": { "name": "support.type.builtin.flowtype" },
+            "1": { "name": "support.type.builtin.class.flowtype" },
             "2": { "name": "punctuation.flowtype" }
           },
           "endCaptures"     : {
