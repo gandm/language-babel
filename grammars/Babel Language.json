@@ -1846,7 +1846,7 @@
       "patterns": [
         {
           "comment": "Built-in Class Types with elements of type <T>",
-          "begin": "\\s*\\b((?>Array|Class|Map|Promise|Set|WeakMap|WealSet))\\s*(<)",
+          "begin": "\\s*\\b((?>Array|Class|Map|Promise|Set|WeakMap|WeakSet))\\s*(<)",
           "end": "\\s*(>)",
           "beginCaptures": {
             "1": { "name": "support.type.builtin.class.flowtype" },
