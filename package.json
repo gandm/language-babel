@@ -1,7 +1,7 @@
 {
   "name": "language-babel",
   "main": "./lib/main",
-  "version": "2.6.3",
+  "version": "2.7.0",
   "description": "Babel JavaScript ES201x, React JSX & Flow Grammar & Transpiler",
   "keywords": [
     "babel",
@@ -17,12 +17,12 @@
     "atom": "^1.0.0"
   },
   "providedServices": {
-  "autocomplete.provider": {
-    "versions": {
-      "2.0.0": "JSXCompleteProvider"
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "JSXCompleteProvider"
+      }
     }
-  }
-},
+  },
   "dependencies": {
     "babel-core": "^6.1.2",
     "chai": "^3.0.0",
