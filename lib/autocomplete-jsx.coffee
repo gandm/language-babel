@@ -31,25 +31,23 @@ module.exports =
     if jsxTag is JSXSTARTTAGEND
       startOfJSX = @getStartOfJSX editor, bufferPosition
       jsxRange = new Range(startOfJSX, bufferPosition)
-      tagNameStack = @buildAttrStack(editor, jsxRange)
+      tagNameStack = @buildTagStack(editor, jsxRange)
       while ( tagName = tagNameStack.pop())?
         suggestions.push
             snippet: "$1</#{tagName}>$2"
             type: "tag"
-            leftLabel: "lb"
-            description: "Facebook React supported elements"
+            description: "language-babel JSX supported elements"
             descriptionMoreURL: REACTURL
 
     else if  jsxTag is JSXENDTAGSTART
       startOfJSX = @getStartOfJSX editor, bufferPosition
       jsxRange = new Range(startOfJSX, bufferPosition)
-      tagNameStack = @buildAttrStack(editor, jsxRange)
+      tagNameStack = @buildTagStack(editor, jsxRange)
       while ( tagName = tagNameStack.pop())?
         suggestions.push
             text: "#{tagName}>"
             type: "tag"
-            leftLabel: "lb"
-            description: "Facebook React supported elements"
+            description: "language-babel JSX supported elements"
             descriptionMoreURL: REACTURL
 
     else if jsxTag is JSXTAG
@@ -60,8 +58,7 @@ module.exports =
         suggestions.push
           text: htmlElement.name
           type: "tag"
-          leftLabel: "lb"
-          description: "Facebook React supported elements"
+          description: "language-babel JSX supported elements"
           descriptionMoreURL: REACTURL
 
     else if jsxTag is JSXATTRIBUTE
@@ -77,9 +74,8 @@ module.exports =
         suggestions.push
           text: attribute.name
           type: "attribute"
-          leftLabel: "lb"
           rightLabel: "<#{tagName}>"
-          description: "Facebook React supported attributes/events"
+          description: "language-babel JSXsupported attributes/events"
           descriptionMoreURL: REACTURL
 
     else return
@@ -137,7 +133,7 @@ module.exports =
     new Point(row, column)
 
   # build stack of tagnames opened but not closed in Range
-  buildAttrStack: (editor, range) ->
+  buildTagStack: (editor, range) ->
     tagNameStack = []
     row = range.start.row
     while row <= range.end.row
