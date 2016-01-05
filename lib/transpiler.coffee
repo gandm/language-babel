@@ -78,7 +78,7 @@ class Transpiler
 
       # transpile in task
       try
-       @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
+        @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
       catch err
         console.log "Error #{err} sending to transpile task with PID #{@babelTranspilerTasks[pathTo.projectPath].childProcess.pid}"
         delete @babelTranspilerTasks[pathTo.projectPath]

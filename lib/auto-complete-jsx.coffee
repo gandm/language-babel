@@ -147,12 +147,11 @@ module.exports =
           #check capture groups
           if match[1]? # tags starting <tag
             tagNameStack.push match[3]
-          if match[2]? # tags ending </tag
+          else if match[2]? # tags ending </tag
             closedtag = tagNameStack.pop()
             if closedtag isnt match[3]
               tagNameStack.push closedtag
-              console.log "attr not terminated"
-          if match[4]? # tags ending />
+          else if match[4]? # tags ending />
             tagNameStack.pop()
       row++
     tagNameStack

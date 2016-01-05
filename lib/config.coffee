@@ -59,3 +59,9 @@ module.exports =
     type: 'boolean'
     default: true
     order: 140
+  formatJSX:
+    title: 'Format JSX'
+    description: 'Format JSX using default or eslinerc rules'
+    type: 'boolean'
+    default: true
+    order: 160
