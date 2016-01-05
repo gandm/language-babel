@@ -36,8 +36,7 @@ module.exports =
         suggestions.push
             snippet: "$1</#{tagName}>$2"
             type: "tag"
-            description: "language-babel JSX supported elements"
-            descriptionMoreURL: REACTURL
+            description: "language-babel tag closer"
 
     else if  jsxTag is JSXENDTAGSTART
       startOfJSX = @getStartOfJSX editor, bufferPosition
@@ -45,10 +44,9 @@ module.exports =
       tagNameStack = @buildTagStack(editor, jsxRange)
       while ( tagName = tagNameStack.pop())?
         suggestions.push
-            text: "#{tagName}>"
+            snippet: "#{tagName}>"
             type: "tag"
-            description: "language-babel JSX supported elements"
-            descriptionMoreURL: REACTURL
+            description: "language-babel tag closer"
 
     else if jsxTag is JSXTAG
       return if not /^[a-z]/g.exec(prefix)
@@ -56,7 +54,7 @@ module.exports =
       for htmlElement in htmlElements
         if score(htmlElement.name, prefix) < 0.07 then continue
         suggestions.push
-          text: htmlElement.name
+          snippet: htmlElement.name
           type: "tag"
           description: "language-babel JSX supported elements"
           descriptionMoreURL: REACTURL
@@ -72,7 +70,7 @@ module.exports =
       for attribute in filteredAttributes
         if score(attribute.name, prefix) < 0.07 then continue
         suggestions.push
-          text: attribute.name
+          snippet: attribute.name
           type: "attribute"
           rightLabel: "<#{tagName}>"
           description: "language-babel JSXsupported attributes/events"
