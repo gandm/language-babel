@@ -56,7 +56,8 @@
         { "include": "#comments" },
         { "include": "#brackets" },
         { "include": "#literal-operators" },
-        { "include": "#literal-variable" }
+        { "include": "#literal-variable" },
+        { "include": "#literal-comma" }
       ]
     },
     "ignore-long-lines": {
@@ -491,15 +492,25 @@
     },
     "literal-punctuation": {
       "patterns": [
+        { "include": "literal-semi-colon"} ,
+        { "include": "literal-comma" }
+      ]
+    },
+    "literal-semi-colon": {
+      "patterns": [
         {
           "name": "punctuation.terminator.statement.js",
           "match": "\\s*\\;"
-        },
+        }
+      ]
+    },
+    "literal-comma": {
+      "patterns": [
         {
           "name": "meta.delimiter.comma.js",
           "match": "\\s*,"
         }
-      ]
+    ]
     },
     "literal-keyword-storage": {
       "patterns": [
@@ -1695,7 +1706,9 @@
             "2": { "name": "variable.other.property.js" }
           }
         },
-        { "match": "\\s*," },
+        {
+          "include": "#literal-comma"
+        },
         { "include": "#flowtype-vars-and-props" }
       ]
     },
@@ -1719,8 +1732,7 @@
           ]
         },
         {
-          "comment": "commas",
-          "match": "\\s*,"
+          "include": "#literal-coma"
         },
         {
           "comment": "An Iterator prefix?",
