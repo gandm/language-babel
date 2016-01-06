@@ -492,8 +492,8 @@
     },
     "literal-punctuation": {
       "patterns": [
-        { "include": "literal-semi-colon"} ,
-        { "include": "literal-comma" }
+        { "include": "#literal-semi-colon"} ,
+        { "include": "#literal-comma" }
       ]
     },
     "literal-semi-colon": {
@@ -1732,7 +1732,7 @@
           ]
         },
         {
-          "include": "#literal-coma"
+          "include": "#literal-comma"
         },
         {
           "comment": "An Iterator prefix?",
