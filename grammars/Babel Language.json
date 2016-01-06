@@ -56,8 +56,13 @@
         { "include": "#comments" },
         { "include": "#brackets" },
         { "include": "#literal-operators" },
-        { "include": "#literal-variable" }
+        { "include": "#literal-variable" },
+        { "include": "#delimiters" }
       ]
+    },
+    "delimiters": {
+      "match": ",",
+      "name": "meta.delimiter.comma.js"
     },
     "ignore-long-lines": {
       "comment": "long lines shouldn't be parsed for performance reasons as regex's are per line",
@@ -496,8 +501,7 @@
           "match": "\\s*\\;"
         },
         {
-          "name": "meta.delimiter.comma.js",
-          "match": "\\s*,"
+          "include": "#delimiters"
         }
       ]
     },
@@ -1719,8 +1723,7 @@
           ]
         },
         {
-          "comment": "commas",
-          "match": "\\s*,"
+          "include": "#delimiters"
         },
         {
           "comment": "An Iterator prefix?",
