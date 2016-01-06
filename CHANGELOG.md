@@ -1,6 +1,10 @@
+### 2.7.1
+  - Add scope to commas - Fixes 119
+  - Minor changes to JSX Autocomplete
+  
 ### 2.7.0
   - Added auto completion of React JSX start/end tags + HTML tag names & attributes
-  
+
 ### 2.6.3
   - Added more flow builtin types.
   - Fixes #118. Typo in scopename.
