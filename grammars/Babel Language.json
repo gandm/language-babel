@@ -1377,9 +1377,9 @@
         {
           "comment": "e.g. dollar vars",
           "name": "variable.other.dollar.js",
-          "match": "\\s*(\\$)[$\\w]+",
+          "match": "\\s*(\\$)([$\\w]+)?",
           "captures": {
-            "0": { "name": "punctuation.dollar.js" }
+            "1": { "name": "punctuation.dollar.js" }
           }
         },
         {
