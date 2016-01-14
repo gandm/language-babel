@@ -1,3 +1,6 @@
+### 2.7.4
+  - Small fixes to grammar as per issues #123 and #125
+
 ### 2.7.3
   - Fix Scope on $ variables - PR #121
 
