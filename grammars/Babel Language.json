@@ -1075,6 +1075,7 @@
     "literal-constructor": {
       "patterns": [
         {
+          "disabled": 1,
           "name": "meta.instance.constructor",
           "begin": "\\s*(new)\\s+(?=[_$a-zA-Z][$\\w.]*)",
           "end": "(?![_$a-zA-Z][$\\w.]*)",
