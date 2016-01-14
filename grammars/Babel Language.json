@@ -198,7 +198,7 @@
           "comment": "string as a property name",
           "match": "\\s*(?<!\\.|\\?|\\?\\s|\\?\\s\\s)(((\\\")(\\\\.|[^\\\\\"])*(\\\"))|((')(\\\\.|[^\\\\'])*(')))\\s*(:)",
           "captures": {
-            "1": { "name": "blah.constant.other.object.key.js" },
+            "1": { "name": "constant.other.object.key.js" },
             "2": { "name": "string.quoted.double.js" },
             "3": { "name": "punctuation.definition.string.begin.js" },
             "5": { "name": "punctuation.definition.string.end.js" },
@@ -209,7 +209,7 @@
           }
         },
         {
-          "comment": "newline [something] : as  property name",
+          "comment": "[something] : as  property name",
           "begin": "\\s*(?<!\\.|\\?|\\?\\s|\\?\\s\\s)(\\[)(?=(?:[^\\[]+)*?\\]\\s*(:)(?=\\s*\\S))",
           "end": "\\s*(\\])\\s*(:)",
           "beginCaptures": {
