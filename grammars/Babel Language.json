@@ -195,18 +195,37 @@
     "literal-labels": {
       "patterns": [
         {
-          "begin": "(?<!\\?)(?<!\\?\\s)(?=(((')((?:[^']|\\\\')*)('))|((\")((?:[^\"]|\\\\\")*)(\")))\\s*:)",
-          "end": ":",
+          "comment": "string as a property name",
+          "match": "\\s*(?<!\\.|\\?|\\?\\s|\\?\\s\\s)(((\\\")(\\\\.|[^\\\\\"])*(\\\"))|((')(\\\\.|[^\\\\'])*(')))\\s*(:)",
+          "captures": {
+            "1": { "name": "blah.constant.other.object.key.js" },
+            "2": { "name": "string.quoted.double.js" },
+            "3": { "name": "punctuation.definition.string.begin.js" },
+            "5": { "name": "punctuation.definition.string.end.js" },
+            "6": { "name": "string.quoted.single.js" },
+            "7": { "name": "punctuation.definition.string.begin.js" },
+            "9": { "name": "punctuation.definition.string.end.js" },
+            "10": { "name": "punctuation.separator.key-value.js" }
+          }
+        },
+        {
+          "comment": "newline [something] : as  property name",
+          "begin": "\\s*(?<!\\.|\\?|\\?\\s|\\?\\s\\s)(\\[)(?=(?:[^\\[]+)*?\\]\\s*(:)(?=\\s*\\S))",
+          "end": "\\s*(\\])\\s*(:)",
+          "beginCaptures": {
+            "1": { "name": "meta.brace.square.js" }
+          },
           "endCaptures": {
-            "0": { "name": "punctuation.separator.key-value.js" }
+            "1": { "name": "meta.brace.square.js" },
+            "2": { "name": "punctuation.separator.key-value.js" }
           },
           "patterns": [
-            { "include": "#literal-string" }
+            { "include": "#expression"}
           ]
         },
         {
           "name": "constant.other.object.key.js",
-          "match": "(?<!\\.|\\?|\\?\\s)\\s*([_$a-zA-Z][$\\w]*)\\s*(:)",
+          "match": "\\s*(?<!\\.|\\?|\\?\\s|\\?\\s\\s)\\s*([_$a-zA-Z][$\\w]*)\\s*(:)",
           "captures": {
             "1": { "name": "string.unquoted.js" },
             "2": { "name": "punctuation.separator.key-value.js" }
@@ -523,7 +542,7 @@
             "1": { "name": "storage.type.js" }
           },
           "endCaptures": {
-            "0": { "name": "punctuationterminator.statement.js" }
+            "0": { "name": "punctuation.terminator.statement.js" }
           },
           "patterns": [
             { "include": "#flowtype-variable" }
@@ -538,7 +557,7 @@
             "1": { "name": "storage.type.js" }
           },
           "endCaptures": {
-            "0": { "name": "punctuationterminator.statement.js" }
+            "0": { "name": "punctuation.terminator.statement.js" }
           },
           "patterns": [
             { "include": "#flowtype-destruct-lhs" }
@@ -553,7 +572,7 @@
             "1": { "name": "storage.type.js" }
           },
           "endCaptures": {
-            "0": { "name": "punctuationterminator.statement.js" }
+            "0": { "name": "punctuation.terminator.statement.js" }
           },
           "patterns": [
             { "include": "#flowtype-destruct-lhs" }
