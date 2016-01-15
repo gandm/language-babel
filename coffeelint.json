@@ -46,7 +46,7 @@
   },
   "max_line_length": {
     "value": 120,
-    "level": "error",
+    "level": "warn",
     "limitComments": true
   },
   "missing_fat_arrows": {
@@ -106,7 +106,7 @@
     "level": "error"
   },
   "no_trailing_whitespace": {
-    "level": "error",
+    "level": "ignore",
     "allowed_in_comments": false,
     "allowed_in_empty_lines": true
   },
