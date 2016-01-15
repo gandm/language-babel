@@ -1,6 +1,9 @@
+### 2.8.3
+  - incorrect filename reference when notifying a user about invalid JSON in .eslintrc
+  
 ### 2.8.2
   - Minor change
-  
+
 ### 2.8.1
   - Minor change
 

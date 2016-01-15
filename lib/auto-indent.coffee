@@ -301,7 +301,7 @@ class AutoIndent
       try
         eslintRules = (JSON.parse fileContent).rules
       catch err
-        atom.notifications.addError "LB: Error reading .eslintrc at #{esLintrcFile}",
+        atom.notifications.addError "LB: Error reading .eslintrc at #{eslintrcFile}",
           dismissable: true
           detail: "#{err.message}"
         return
