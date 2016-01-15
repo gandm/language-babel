@@ -73,6 +73,7 @@ class AutoIndent
     cursorPos = @editor.getCursorBufferPosition()
     if cursorPos.column is 0
       @editor.moveToEndOfLine()
+    indent
 
   # command option to format line from a cursor position upwards to JSX start
   formatJsxCommand: () ->

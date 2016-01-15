@@ -1,3 +1,6 @@
+### 2.8.2
+  - Minor change
+  
 ### 2.8.1
   - Minor change
 
