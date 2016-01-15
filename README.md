@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion of React JSX tags and optional Babel transpilation on file saves.
+Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional Babel transpilation on file saves.
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `.flow` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -13,7 +13,30 @@ language-babel provides [Babel](http://babeljs.io/) V6 & V5 transpiler support. 
 
 Install via ATOM or by using `apm install language-babel`. If you only need to use the provided grammar read no further!
 
+## Auto Completion of JSX tags
+
+![autoclose](https://cloud.githubusercontent.com/assets/2313237/12352348/218348b6-bb7d-11e5-9245-bd0d1467d71d.gif)
+
+## Automatic Formating of JSX
+
+language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintr` is found then the suitable defaults are used. See [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) for more information.
+
+```json
+{
+  "rules": {
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-indent-props": 1,
+    "react/jsx-indent": 1,
+  }
+}
+```
+When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be reformatted on the curent and preceding rows. This can be mapped as a short cut.
+
+![reformat](https://cloud.githubusercontent.com/assets/2313237/12352494/63f034b0-bb7e-11e5-8317-84b1db470148.gif)
+
 ## Interface to Babel V6 & V5
+
+![example](https://cloud.githubusercontent.com/assets/2313237/11145720/18bf0f52-8a00-11e5-82f0-3f474aeefcb7.gif)
 
 Options in the language-babel package settings and/or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves using `.babelrc` options. Even if using a workflow such as gulp, webpack, etc, this can be very useful. Additional options allow the output from Babel (transpiled code and maps ) to be output to other directories.
 
@@ -136,6 +159,8 @@ For most projects it is better to configure `language-babel` via project based `
   {"createTargetDirectories": true} or
   {"createTargetDirectories": false}
   ```
+* #### Format JSX
+  Disables formatting options for JSX
 
 ## .languagebabel Configuration
 

@@ -1,3 +1,6 @@
+### 2.8.0
+  - Initial release of JSX auto formatting.
+  
 ### 2.7.4
   - Small fixes to grammar as per issues #123 and #125
 
