@@ -19,7 +19,7 @@ Install via ATOM or by using `apm install language-babel`. If you only need to u
 
 ## Automatic Formating of JSX
 
-language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintr` is found then the suitable defaults are used. See [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) for more information.
+language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules, which are part of the [EDLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintrrc` file is found then the suitable defaults are used based upon the tab/spacing setup of the Atom editor. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) for more information.
 
 ```json
 {
@@ -30,7 +30,9 @@ language-babel will read the `.eslintrc` file associated with an edited file's p
   }
 }
 ```
-When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be reformatted on the curent and preceding rows. This can be mapped as a short cut.
+When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be reformatted on the current and preceding rows. Line following the cursor are not formatted. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut as required.
+
+There is also a command - `language-babel:toggle-auto-jsx` that toggles automatic JSX formatting on/off for individual files.
 
 ![reformat](https://cloud.githubusercontent.com/assets/2313237/12352494/63f034b0-bb7e-11e5-8317-84b1db470148.gif)
 
@@ -161,7 +163,7 @@ For most projects it is better to configure `language-babel` via project based `
   ```
 
 * #### Format JSX
-  Disables formatting options for JSX
+  Disables formatting options for JSX.
 
 ## .languagebabel Configuration
 
