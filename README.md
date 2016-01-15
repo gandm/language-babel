@@ -159,6 +159,7 @@ For most projects it is better to configure `language-babel` via project based `
   {"createTargetDirectories": true} or
   {"createTargetDirectories": false}
   ```
+
 * #### Format JSX
   Disables formatting options for JSX
 

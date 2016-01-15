@@ -101,6 +101,7 @@ class AutoIndent
     tagStack = []
     idxOfTags = 0
     stackOfTagsStillOpen = [] # length equivalent to tag depth
+    indent = previousLineIndent = 0
 
     for row in [range.start.row..range.end.row]
       isFirstTagOfLine = true
