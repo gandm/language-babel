@@ -1,6 +1,9 @@
+### 2.9.2
+  - Fixes #130 .eslintrc has no rules property.
+
 ### 2.9.1
   - Fixes #126.
-  
+
 ### 2.9.0
   - Use JSON5 to parse .eslintrc
 

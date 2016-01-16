@@ -306,6 +306,7 @@ class AutoIndent
           dismissable: true
           detail: "#{err.message}"
         return
+      return if not eslintRules?
       if rule = eslintRules['react/jsx-indent']
         if rule[0]
           if typeof rule[1] is 'number'
