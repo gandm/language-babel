@@ -93,7 +93,7 @@ class AutoIndent
       scopes = @editor.scopeDescriptorForBufferPosition([bufferRow-1, 0]).getScopesArray()
       # are we at the end of a jsx nest
       if 'meta.tag.jsx' not in scopes
-        false
+        return false
     true
 
   # build stack array of JSX opening & closing objects in Range.
