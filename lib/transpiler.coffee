@@ -2,6 +2,7 @@
 fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require '../node_modules/path-is-inside'
+JSON5 = require 'json5'
 # setup JSON Schema to parse .languagebabel configs
 languagebabelSchema = {
   type: 'object',
@@ -142,7 +143,7 @@ class Transpiler
               mappings: msgRet.result.map.mappings
             xssiProtection = ')]}\n'
             fs.writeFileSync pathTo.mapFile,
-              xssiProtection + JSON.stringify mapJson, null, ' '
+              xssiProtection + JSON5.stringify mapJson, null, ' '
 
   # clean notification messages
   cleanNotifications: (pathTo) ->
@@ -217,7 +218,7 @@ class Transpiler
     if fs.existsSync languageBabelCfgFile
       fileContent= fs.readFileSync languageBabelCfgFile, 'utf8'
       try
-        jsonContent = JSON.parse fileContent
+        jsonContent = JSON5.parse fileContent
       catch err
         atom.notifications.addError "LB: #{localConfigFile} #{err.message}",
           dismissable: true

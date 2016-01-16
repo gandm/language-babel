@@ -2,6 +2,7 @@
 fs = require 'fs-plus'
 path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
+JSON5 = require 'json5'
 # regex to search for tag open/close tag and close tag
 JSXREGEXP = /(<)([$_A-Za-z](?:[$.\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$.\-A-Za-z0-9])*)(>)|(>)/g
 
@@ -299,7 +300,7 @@ class AutoIndent
     if fs.existsSync eslintrcFile
       fileContent= fs.readFileSync eslintrcFile, 'utf8'
       try
-        eslintRules = (JSON.parse fileContent).rules
+        eslintRules = (JSON5.parse fileContent).rules
       catch err
         atom.notifications.addError "LB: Error reading .eslintrc at #{eslintrcFile}",
           dismissable: true
