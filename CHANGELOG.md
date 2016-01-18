@@ -1,3 +1,6 @@
+### 2.9.3
+  - Improve .eslintrc parsing
+
 ### 2.9.2
   - Fixes #130 .eslintrc has no rules property.
 

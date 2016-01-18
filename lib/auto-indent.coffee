@@ -306,33 +306,45 @@ class AutoIndent
           dismissable: true
           detail: "#{err.message}"
         return
+
       return if not eslintRules?
-      if rule = eslintRules['react/jsx-indent']
-        if rule[0]
-          if typeof rule[1] is 'number'
-            @eslintIndentOptions.jsxIndent[1] = rule[1] / @atomTabLength
-        else @eslintIndentOptions.jsxIndent[0] = 1 # 'tab'
 
-      if rule = eslintRules['react/jsx-indent-props']
-        if rule[0]
-          if typeof rule[1] is 'number'
-            @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @atomTabLength
-        else @eslintIndentOptions.jsxIndentProps[0] = 1 # 'tab'
+      rule = eslintRules['react/jsx-indent']
+      if typeof rule is 'number'
+        @eslintIndentOptions.jsxIndent[0] = rule
+        @eslintIndentOptions.jsxIndent[1] = 4 / @atomTabLength
+      else if typeof rule is 'object'
+        @eslintIndentOptions.jsxIndent[0] = rule[0]
+        if typeof rule[1] is 'number'
+          @eslintIndentOptions.jsxIndent[1] = rule[1] / @atomTabLength
+        else @eslintIndentOptions.jsxIndent[1] = 1
 
-      if rule = eslintRules['react/jsx-closing-bracket-location']
-        if typeof rule is 'number'
-          @eslintIndentOptions.jsxClosingBracketLocation[0] = rule
-        else # must be array!
-          @eslintIndentOptions.jsxClosingBracketLocation[0] = rule[0]
-          if typeof rule[1] is 'string'
-            @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing =
-              @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty =
-                rule[1]
-          else
-            if rule[1].selfClosing?
-              @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = rule[1].selfClosing
-            if rule[1].nonEmpty?
-              @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = rule[1].nonEmpty
+      rule = eslintRules['react/jsx-indent-props']
+      if typeof rule is 'number'
+        @eslintIndentOptions.jsxIndentProps[0] = rule
+        @eslintIndentOptions.jsxIndentProps[1] = 4 / @atomTabLength
+      else if typeof rule is 'object'
+        @eslintIndentOptions.jsxIndentProps[0] = rule[0]
+        if typeof rule[1] is 'number'
+          @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @atomTabLength
+        else @eslintIndentOptions.jsxIndentProps[1] = 1
+
+      rule = eslintRules['react/jsx-closing-bracket-location']
+      @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = TAGALIGNED
+      @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = TAGALIGNED
+      if typeof rule is 'number'
+        @eslintIndentOptions.jsxClosingBracketLocation[0] = rule
+      else if typeof rule is 'object' # array
+        @eslintIndentOptions.jsxClosingBracketLocation[0] = rule[0]
+        if typeof rule[1] is 'string'
+          @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing =
+            @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty =
+              rule[1]
+        else
+          if rule[1].selfClosing?
+            @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = rule[1].selfClosing
+          if rule[1].nonEmpty?
+            @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = rule[1].nonEmpty
 
   # indent a row by the addition of one or more indents
   # jsxBlockIndent is the indent to the start of this logical jsx block
