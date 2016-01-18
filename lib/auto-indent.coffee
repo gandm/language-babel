@@ -200,9 +200,13 @@ class AutoIndent
                 for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
                   @indentRow  propertyRow,
                     tagStack[parentTagIdx].firstTagInLineIndentation,0,1
-              @indentForClosingBracket  row,
-                tagStack[parentTagIdx],
-                @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing
+              if firstTagInLineIndentation is firstCharIndentation
+                @indentForClosingBracket  row,
+                  tagStack[parentTagIdx],
+                  @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing
+              else
+                @indentRow  propertyRow,
+                  tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
               indentRecalc = false
@@ -233,9 +237,13 @@ class AutoIndent
                 for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
                   @indentRow  propertyRow,
                     tagStack[parentTagIdx].firstTagInLineIndentation,0,1
-              @indentForClosingBracket  row,
-                tagStack[parentTagIdx],
-                @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
+              if firstTagInLineIndentation is firstCharIndentation
+                @indentForClosingBracket  row,
+                  tagStack[parentTagIdx],
+                  @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
+              else
+                @indentRow  propertyRow,
+                  tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
               indentRecalc = false

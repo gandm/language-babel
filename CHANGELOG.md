@@ -1,3 +1,6 @@
+### 2.9.4
+  - Fixes #132
+  
 ### 2.9.3
   - Improve .eslintrc parsing
 
