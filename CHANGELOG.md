@@ -1,3 +1,6 @@
+### 2.9.5
+  - Improved indenting
+
 ### 2.9.4
   - Fixes #132
   
