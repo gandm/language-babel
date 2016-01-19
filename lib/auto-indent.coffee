@@ -196,17 +196,12 @@ class AutoIndent
           else if match[3]? # tags ending />
             if isFirstTagOfLine and indentRecalc
               stackOfTagsStillOpen.push parentTagIdx = stackOfTagsStillOpen.pop()
-              # work backwards on property rows
-              if tagStack[parentTagIdx].row+1 <= ( row-1 )
-                for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
-                  @indentRow  propertyRow,
-                    tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               if firstTagInLineIndentation is firstCharIndentation
                 @indentForClosingBracket  row,
                   tagStack[parentTagIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing
               else
-                @indentRow  propertyRow,
+                @indentRow  row,
                   tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
@@ -233,17 +228,12 @@ class AutoIndent
           else if match[7]? # tags ending >
             if isFirstTagOfLine and indentRecalc
               stackOfTagsStillOpen.push parentTagIdx = stackOfTagsStillOpen.pop()
-              # work backwards on property rows if any exist
-              if tagStack[parentTagIdx].row+1 <= ( row-1 )
-                for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
-                  @indentRow  propertyRow,
-                    tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               if firstTagInLineIndentation is firstCharIndentation
                 @indentForClosingBracket  row,
                   tagStack[parentTagIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
               else
-                @indentRow  propertyRow,
+                @indentRow  row,
                   tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
@@ -268,9 +258,13 @@ class AutoIndent
           tagStack[idxOfTags-1].type is JSXTAG_CLOSE or
           tagStack[idxOfTags-1].type is JSXTAG_SELFCLOSE_END
             @indentRow  row, previousLineIndent
+        if tagStack[idxOfTags-1].type is JSXTAG_OPEN
+            @indentRow  row,
+              tagStack[idxOfTags-1].firstTagInLineIndentation,0,1
+
       previousLineIndent = @editor.indentationForBufferRow row
       if row is range.end.row - 1 # the row that was inserted
-        indent =  @editor.indentationForBufferRow row - 1 # will be returned
+        indent =  @editor.indentationForBufferRow row # will be returned
     indent
 
 
