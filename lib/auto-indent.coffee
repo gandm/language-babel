@@ -70,10 +70,6 @@ class AutoIndent
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
     endPointOfLine = new Point bufferRow+1, 0
     indent = @indentJSX new Range(startOfJSX, endPointOfLine)
-    @editor.setIndentationForBufferRow bufferRow, indent, { preserveLeadingWhitespace: false}
-    cursorPos = @editor.getCursorBufferPosition()
-    if cursorPos.column is 0
-      @editor.moveToEndOfLine()
     indent
 
   # command option to format line from a cursor position upwards to JSX start
