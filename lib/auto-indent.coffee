@@ -83,7 +83,8 @@ class AutoIndent
     return if not @jsxInScope(bufferRow)
     endPointOfLine = new Point bufferRow, @editor.lineTextForBufferRow(bufferRow).length
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
-    @indentJSX new Range(startOfJSX, endPointOfLine)
+    @editor.transact 300, =>
+      @indentJSX new Range(startOfJSX, endPointOfLine)
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
