@@ -1383,7 +1383,11 @@
       "patterns": [
         {
           "name": "keyword.control.module.js",
-          "match": "\\s*(?<!\\.)\\b(import|export|default|from|as)\\b"
+          "match": "\\s*(?<!\\.)\\b(import|export|default)\\b"
+        },
+        {
+          "name": "keyword.control.module.reference.js",
+          "match": "\\s*(?<!\\.)\\b(from|as)\\b"
         }
       ]
     },
