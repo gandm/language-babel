@@ -13,13 +13,15 @@ language-babel provides [Babel](http://babeljs.io/) V6 & V5 transpiler support. 
 
 Install via ATOM or by using `apm install language-babel`. If you only need to use the provided grammar read no further!
 
-## Auto Completion of JSX tags
+## Auto Completion of JSX tags, elements and attributes
+
+JSX tag closures are provided as auto complete options. In addition common HTML elements and their associated properties are displayed as auto complete lists. Those supported by language-babel are described [here](http://facebook.github.io/react/docs/tags-and-attributes.html)
 
 ![autoclose](https://cloud.githubusercontent.com/assets/2313237/12352348/218348b6-bb7d-11e5-9245-bd0d1467d71d.gif)
 
-## Automatic Formating of JSX
+## Automatic Indenting of JSX
 
-language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules, which are part of the [EDLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintrrc` file is found then the suitable defaults are used based upon the tab/spacing setup of the Atom editor. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) for more information.
+language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintrrc` file is found then the suitable defaults are used based upon the tab/spacing setup of the Atom editor. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
 
 ```json
 {
@@ -30,7 +32,7 @@ language-babel will read the `.eslintrc` file associated with an edited file's p
   }
 }
 ```
-When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be reformatted on the current and preceding rows. Line following the cursor are not formatted. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut as required.
+When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be automatically indented on the current and preceding rows. Line following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut if required.
 
 There is also a command - `language-babel:toggle-auto-jsx` that toggles automatic JSX formatting on/off for individual files.
 
