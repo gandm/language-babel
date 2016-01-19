@@ -840,7 +840,7 @@
         },
         {
           "name": "support.function.mutator.js",
-          "match": "\\.(shift|sort|splice|unshift|pop|push|reverse)\\b"
+          "match": "(?<=\\.)(shift|sort|splice|unshift|pop|push|reverse)\\b"
         },
         {
           "name": "support.class.error.js",
