@@ -69,7 +69,7 @@ class AutoIndent
     endPointOfLine = new Point bufferRow-1, @editor.lineTextForBufferRow(bufferRow-1).length
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
     endPointOfLine = new Point bufferRow+1, 0
-    indent = @formatJSX new Range(startOfJSX, endPointOfLine)
+    indent = @indentJSX new Range(startOfJSX, endPointOfLine)
     @editor.setIndentationForBufferRow bufferRow, indent, { preserveLeadingWhitespace: false}
     cursorPos = @editor.getCursorBufferPosition()
     if cursorPos.column is 0
@@ -83,7 +83,7 @@ class AutoIndent
     return if not @jsxInScope(bufferRow)
     endPointOfLine = new Point bufferRow, @editor.lineTextForBufferRow(bufferRow).length
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
-    @formatJSX new Range(startOfJSX, endPointOfLine)
+    @indentJSX new Range(startOfJSX, endPointOfLine)
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
@@ -99,7 +99,7 @@ class AutoIndent
   # build stack array of JSX opening & closing objects in Range.
   # open and closed tags are backward linked via index pointers
   # indents to the buffer are applied on the fly
-  formatJSX: (range) ->
+  indentJSX: (range) ->
     tagStack = []
     idxOfTags = 0
     stackOfTagsStillOpen = [] # length equivalent to tag depth
