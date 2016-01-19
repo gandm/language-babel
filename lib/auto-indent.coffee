@@ -44,9 +44,9 @@ class AutoIndent
     @autoJsx = true
     @disposables = new CompositeDisposable()
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:format-react-jsx': (event) => @formatJsxCommand()
+      'language-babel:auto-indent-react-jsx': (event) => @autoIndentJsxCommand()
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:toggle-auto-jsx': (event) =>  @autoJsx = not @autoJsx
+      'language-babel:toggle-auto-indent-jsx': (event) =>  @autoJsx = not @autoJsx
 
     @atomTabLength = @editor.getTabLength()
 
@@ -69,7 +69,7 @@ class AutoIndent
     endPointOfLine = new Point bufferRow-1, @editor.lineTextForBufferRow(bufferRow-1).length
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
     endPointOfLine = new Point bufferRow+1, 0
-    indent = @formatJSX new Range(startOfJSX, endPointOfLine)
+    indent = @indentJSX new Range(startOfJSX, endPointOfLine)
     @editor.setIndentationForBufferRow bufferRow, indent, { preserveLeadingWhitespace: false}
     cursorPos = @editor.getCursorBufferPosition()
     if cursorPos.column is 0
@@ -77,13 +77,14 @@ class AutoIndent
     indent
 
   # command option to format line from a cursor position upwards to JSX start
-  formatJsxCommand: () ->
+  autoIndentJsxCommand: () ->
     return if atom.workspace.getActiveTextEditor().id isnt @editor.id
     bufferRow = @editor.getCursorBufferPosition().row
     return if not @jsxInScope(bufferRow)
     endPointOfLine = new Point bufferRow, @editor.lineTextForBufferRow(bufferRow).length
     startOfJSX =  autoCompleteJSX.getStartOfJSX @editor, endPointOfLine
-    @formatJSX new Range(startOfJSX, endPointOfLine)
+    @editor.transact 300, =>
+      @indentJSX new Range(startOfJSX, endPointOfLine)
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
@@ -99,7 +100,7 @@ class AutoIndent
   # build stack array of JSX opening & closing objects in Range.
   # open and closed tags are backward linked via index pointers
   # indents to the buffer are applied on the fly
-  formatJSX: (range) ->
+  indentJSX: (range) ->
     tagStack = []
     idxOfTags = 0
     stackOfTagsStillOpen = [] # length equivalent to tag depth
@@ -195,17 +196,12 @@ class AutoIndent
           else if match[3]? # tags ending />
             if isFirstTagOfLine and indentRecalc
               stackOfTagsStillOpen.push parentTagIdx = stackOfTagsStillOpen.pop()
-              # work backwards on property rows
-              if tagStack[parentTagIdx].row+1 <= ( row-1 )
-                for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
-                  @indentRow  propertyRow,
-                    tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               if firstTagInLineIndentation is firstCharIndentation
                 @indentForClosingBracket  row,
                   tagStack[parentTagIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing
               else
-                @indentRow  propertyRow,
+                @indentRow  row,
                   tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
@@ -232,17 +228,12 @@ class AutoIndent
           else if match[7]? # tags ending >
             if isFirstTagOfLine and indentRecalc
               stackOfTagsStillOpen.push parentTagIdx = stackOfTagsStillOpen.pop()
-              # work backwards on property rows if any exist
-              if tagStack[parentTagIdx].row+1 <= ( row-1 )
-                for propertyRow in [tagStack[parentTagIdx].row+1..row-1]
-                  @indentRow  propertyRow,
-                    tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               if firstTagInLineIndentation is firstCharIndentation
                 @indentForClosingBracket  row,
                   tagStack[parentTagIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
               else
-                @indentRow  propertyRow,
+                @indentRow  row,
                   tagStack[parentTagIdx].firstTagInLineIndentation,0,1
               line = @editor.lineTextForBufferRow row
               JSXREGEXP.test('') #force regex to start again
@@ -267,9 +258,13 @@ class AutoIndent
           tagStack[idxOfTags-1].type is JSXTAG_CLOSE or
           tagStack[idxOfTags-1].type is JSXTAG_SELFCLOSE_END
             @indentRow  row, previousLineIndent
+        if tagStack[idxOfTags-1].type is JSXTAG_OPEN
+            @indentRow  row,
+              tagStack[idxOfTags-1].firstTagInLineIndentation,0,1
+
       previousLineIndent = @editor.indentationForBufferRow row
       if row is range.end.row - 1 # the row that was inserted
-        indent =  @editor.indentationForBufferRow row - 1 # will be returned
+        indent =  @editor.indentationForBufferRow row # will be returned
     indent
 
 

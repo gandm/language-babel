@@ -60,8 +60,8 @@ module.exports =
     default: true
     order: 140
   formatJSX:
-    title: 'Format JSX'
-    description: 'Format JSX using default or eslinerc rules'
+    title: 'Auto Indent JSX'
+    description: 'Auto Indent JSX using default or eslintrc rules'
     type: 'boolean'
     default: true
     order: 160
