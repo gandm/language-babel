@@ -529,7 +529,7 @@
           "name": "meta.delimiter.comma.js",
           "match": "\\s*,"
         }
-    ]
+      ]
     },
     "literal-keyword-storage": {
       "patterns": [
