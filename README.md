@@ -32,9 +32,11 @@ language-babel will read the `.eslintrc` file associated with an edited file's p
   }
 }
 ```
-When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:format-react-jsx` allows text to be automatically indented on the current and preceding rows. Line following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut if required.
+When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:auto-indent-react-jsx` allows text to be automatically indented on the current and preceding rows. Line following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut if required.
 
-There is also a command - `language-babel:toggle-auto-jsx` that toggles automatic JSX formatting on/off for individual files.
+There is also a command - `language-babel:toggle-auto-indent-jsx` that toggles automatic JSX formatting on/off for individual files.
+
+You may also turn off automatic indenting for files by setting the package option `Auto Indent JSX`
 
 ![reformat](https://cloud.githubusercontent.com/assets/2313237/12352494/63f034b0-bb7e-11e5-8317-84b1db470148.gif)
 
@@ -164,7 +166,7 @@ For most projects it is better to configure `language-babel` via project based `
   {"createTargetDirectories": false}
   ```
 
-* #### Format JSX
+* #### Auto Indent JSX
   Disables formatting options for JSX.
 
 ## .languagebabel Configuration

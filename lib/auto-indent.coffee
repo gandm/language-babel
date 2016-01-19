@@ -44,9 +44,9 @@ class AutoIndent
     @autoJsx = true
     @disposables = new CompositeDisposable()
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:format-react-jsx': (event) => @formatJsxCommand()
+      'language-babel:auto-indent-react-jsx': (event) => @autoIndentJsxCommand()
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:toggle-auto-jsx': (event) =>  @autoJsx = not @autoJsx
+      'language-babel:toggle-auto-indent-jsx': (event) =>  @autoJsx = not @autoJsx
 
     @atomTabLength = @editor.getTabLength()
 
@@ -77,7 +77,7 @@ class AutoIndent
     indent
 
   # command option to format line from a cursor position upwards to JSX start
-  formatJsxCommand: () ->
+  autoIndentJsxCommand: () ->
     return if atom.workspace.getActiveTextEditor().id isnt @editor.id
     bufferRow = @editor.getCursorBufferPosition().row
     return if not @jsxInScope(bufferRow)
