@@ -1,6 +1,9 @@
+### 2.11.1
+  - Inadvertently removed JSON5!
+
 ### 2.11.0
   - Support .eslintrc YAML files
-  
+
 ### 2.10.0
   - Change Atom's toggle comments to use `{/*  */}` when inside JSX blocks.
 
