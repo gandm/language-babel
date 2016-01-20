@@ -6,5 +6,11 @@
       "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$",
       "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]"
     }
+  },
+  ".meta.tag.jsx": {
+    "editor": {
+      "commentStart": "{/*",
+      "commentEnd": "*/}"
+    }
   }
 }

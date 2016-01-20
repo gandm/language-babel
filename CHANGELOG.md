@@ -1,9 +1,12 @@
+### 2.10.0
+  - Change Atom's toggle comments to use `{/*  */}` when inside JSX blocks.
+
 ### 2.9.5
   - Improved indenting
 
 ### 2.9.4
   - Fixes #132
-  
+
 ### 2.9.3
   - Improve .eslintrc parsing
 
