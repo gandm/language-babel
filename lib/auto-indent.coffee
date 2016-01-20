@@ -2,7 +2,8 @@
 fs = require 'fs-plus'
 path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
-JSON5 = require 'json5'
+stripJsonComments = require 'strip-json-comments'
+YAML = require 'js-yaml'
 # regex to search for tag open/close tag and close tag
 JSXREGEXP = /(<)([$_A-Za-z](?:[$.\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$.\-A-Za-z0-9])*)(>)|(>)/g
 
@@ -297,9 +298,9 @@ class AutoIndent
   getEslintrcOptions: (eslintrcFile) ->
     # get local path overides
     if fs.existsSync eslintrcFile
-      fileContent= fs.readFileSync eslintrcFile, 'utf8'
+      fileContent = stripJsonComments(fs.readFileSync(eslintrcFile, 'utf8'))
       try
-        eslintRules = (JSON5.parse fileContent).rules
+        eslintRules = (YAML.safeLoad fileContent).rules
       catch err
         atom.notifications.addError "LB: Error reading .eslintrc at #{eslintrcFile}",
           dismissable: true
