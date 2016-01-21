@@ -29,7 +29,6 @@
     "fs-plus": "^2.8.0",
     "fuzzaldrin": "^2.1.0",
     "jjv": "^1.0.2",
-    "json5": "^0.4.0",
     "js-yaml": "^3.5.2",
     "path-is-inside": "^1.0.1",
     "strip-json-comments": "^2.0.0"
