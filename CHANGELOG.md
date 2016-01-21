@@ -1,5 +1,8 @@
+#### 2.12.1
+  - Fixes #137 Division with no spaces incorrectly scoped. e.g. var x = 1/123
+  
 #### 2.12.0
-  - Babel transpiled code can be viewed in real-time in the editor. Requires the [source-preview](https://atom.io/packages/source-preview) package ^v.4.0. 
+  - Babel transpiled code can be viewed in real-time in the editor. Requires the [source-preview](https://atom.io/packages/source-preview) package ^v.4.0.
 
 #### 2.11.3
   - Improve Fix for 2.11.2
