@@ -58,3 +58,6 @@ module.exports =
 
   JSXCompleteProvider: ->
     autoCompleteJSX
+
+  provide:->
+    @transpiler

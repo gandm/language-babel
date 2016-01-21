@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional Babel transpilation on file saves.
+Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional Babel transpilation output on file saves. As a convenience it also provides a transpiled code preview option by linking to the package [source-preview](https://atom.io/packages/source-preview).
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `.flow` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -42,7 +42,11 @@ You may also turn off automatic indenting for files by setting the package optio
 
 ## Interface to Babel V6 & V5
 
+#### Transpiling
 ![example](https://cloud.githubusercontent.com/assets/2313237/11145720/18bf0f52-8a00-11e5-82f0-3f474aeefcb7.gif)
+
+#### Previewing
+![example](https://cloud.githubusercontent.com/assets/2313237/12490818/7535fc50-c06f-11e5-8752-ec0878c5205c.gif)
 
 Options in the language-babel package settings and/or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves using `.babelrc` options. Even if using a workflow such as gulp, webpack, etc, this can be very useful. Additional options allow the output from Babel (transpiled code and maps ) to be output to other directories.
 

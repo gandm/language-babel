@@ -49,6 +49,29 @@ module.exports = (projectPath) ->
         emit "transpile:#{mObj.reqId}", msgRet
         callback()
 
+    # used for preview
+    if mObj.command is 'transpileCode'
+      try
+        msgRet = babel.transform mObj.code, mObj.babelOptions
+        # fiddly formating a return
+        msgRet.babelVersion = babel.version
+        msgRet.babelCoreUsed = babelCoreUsed
+        emit "transpile:#{mObj.reqId}", msgRet
+        # if this file transpilation isn't in a Atom project folder then term this task
+        # as this is normally an Ad-hoc file transpile.
+        if not mObj.pathTo.sourceFileInProject
+          callback()
+      catch err
+        msgRet = {}
+        msgRet.reqId = mObj.reqId # send back to reqId
+        msgRet.err = {}
+        msgRet.err.message = err.message
+        msgRet.err.stack = err.stack
+        msgRet.babelVersion = babel.version
+        msgRet.babelCoreUsed = babelCoreUsed
+        emit "transpile:#{mObj.reqId}", msgRet
+        callback()
+
     #stop issued stop process
     if mObj.command is 'stop'
       callback()

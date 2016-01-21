@@ -24,12 +24,52 @@ languagebabelSchema = {
 }
 
 class Transpiler
+
+  fromGrammarName: 'Babel ES6 JavaScript'
+  fromScopeName: 'source.js.jsx'
+  toScopeName: 'source.js.jsx'
+
   constructor: ->
     @reqId = 0
     @babelTranspilerTasks = {}
     @babelTransformerPath = require.resolve './transpiler-task'
     @transpileErrorNotifications = {}
     @deprecateConfig()
+
+  # method used by source-preview to see transpiled code
+  transform: (code, {filePath, sourceMap}) ->
+    config = @getConfig()
+    pathTo = @getPaths filePath, config
+    # create babel transformer tasks - one per project as needed
+    @createTask pathTo.projectPath
+    babelOptions =
+      filename: filePath
+      sourceMaps: sourceMap ? false
+      ast: false
+    # ok now transpile in the task and wait on the result
+    if @babelTranspilerTasks[pathTo.projectPath]
+      reqId = @reqId++
+      msgObject =
+        reqId: reqId
+        command: 'transpileCode'
+        pathTo: pathTo
+        code: code
+        babelOptions: babelOptions
+
+    new Promise (resolve, reject ) =>
+      # transpile in task
+      try
+        @babelTranspilerTasks[pathTo.projectPath].send(msgObject)
+      catch err
+        delete @babelTranspilerTasks[pathTo.projectPath]
+        reject("Error #{err} sending to transpile task with PID #{@babelTranspilerTasks[pathTo.projectPath].childProcess.pid}")
+      # get result from task for this reqId
+      @babelTranspilerTasks[pathTo.projectPath].once "transpile:#{reqId}", (msgRet) =>
+        if msgRet.err?
+          reject("Babel v#{msgRet.babelVersion}\n#{msgRet.err.message}\n#{msgRet.babelCoreUsed}")
+        else
+          msgRet.sourceMap = msgRet.map
+          resolve(msgRet)
 
   # transpile sourceFile edited by the optional textEditor
   transpile: (sourceFile, textEditor) ->

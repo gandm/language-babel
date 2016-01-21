@@ -1,7 +1,10 @@
+#### 2.12.0
+  - Babel transpiled code can be viewed in real-time in the editor. Requires the [source-preview](https://atom.io/packages/source-preview) package ^v.4.0. 
+
 #### 2.11.3
   - Improve Fix for 2.11.2
   - Improve cursor positioning after JSX new line insertion.
-  
+
 #### 2.11.2
   - Fix Non JSX trailing JSX insertion point was being indented. Fixes #136
   - Remove JSON5 dependency.

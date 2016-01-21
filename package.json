@@ -21,6 +21,11 @@
       "versions": {
         "2.0.0": "JSXCompleteProvider"
       }
+    },
+    "preview.provider": {
+      "versions": {
+        "0.1.0": "provide"
+      }
     }
   },
   "dependencies": {
