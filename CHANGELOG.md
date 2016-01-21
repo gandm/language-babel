@@ -1,3 +1,7 @@
+#### 2.11.3
+  - Improve Fix for 2.11.2
+  - Improve cursor positioning after JSX new line insertion.
+  
 #### 2.11.2
   - Fix Non JSX trailing JSX insertion point was being indented. Fixes #136
   - Remove JSON5 dependency.
