@@ -109,7 +109,6 @@ class AutoIndent
       indentRecalc = true
       tagOnThisLine = false
 
-
       while (( match = JSXREGEXP.exec(line)) isnt null )
         tagOnThisLine = true
         matchColumn = match.index
@@ -250,7 +249,9 @@ class AutoIndent
             if parentTagIdx >= 0 then tagStack[parentTagIdx].termsThisTagsAttributesIdx = idxOfTags
             idxOfTags++
 
-      if idxOfTags > 0 and not tagOnThisLine
+      scopes = @editor.scopeDescriptorForBufferPosition([row, 0]).getScopesArray()
+
+      if idxOfTags > 0 and not tagOnThisLine and 'meta.tag.jsx' in scopes
         if tagStack[idxOfTags-1].type is JSXTAG_CLOSE_ATTRS or
           tagStack[idxOfTags-1].type is JSXTAG_CLOSE or
           tagStack[idxOfTags-1].type is JSXTAG_SELFCLOSE_END
