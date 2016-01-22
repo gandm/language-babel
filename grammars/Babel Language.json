@@ -947,8 +947,8 @@
                 { "include": "#brackets" },
                 { "include": "#es7-decorators" },
                 { "include": "#comments" },
-                { "include": "#flowtype-variable" }
-
+                { "include": "#flowtype-variable" },
+                { "include": "#literal-semi-colon"}
               ]
             },
             { "include": "#expression" }
