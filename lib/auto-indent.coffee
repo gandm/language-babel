@@ -5,7 +5,7 @@ autoCompleteJSX = require './auto-complete-jsx'
 stripJsonComments = require 'strip-json-comments'
 YAML = require 'js-yaml'
 # regex to search for tag open/close tag and close tag
-JSXREGEXP = /(<)([$_A-Za-z](?:[$.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$.:\-A-Za-z0-9])*)(>)|(>)/g
+JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)/g
 
 JSXTAG_SELFCLOSE_START  = 0       # the <tag in <tag />
 JSXTAG_SELFCLOSE_END    = 1       # the /> in <tag />
