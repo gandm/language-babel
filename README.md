@@ -28,7 +28,7 @@ language-babel will read the `.eslintrc` file associated with an edited file's p
   "rules": {
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-indent-props": 1,
-    "react/jsx-indent": 1,
+    "react/jsx-indent": 1
   }
 }
 ```
