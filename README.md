@@ -19,6 +19,12 @@ JSX tag closures are provided as auto complete options. In addition common HTML 
 
 ![autoclose](https://cloud.githubusercontent.com/assets/2313237/12352348/218348b6-bb7d-11e5-9245-bd0d1467d71d.gif)
 
+## Commenting out JSX elements
+
+JSX elements cannot be commented out by using standard `//` or `/* */` commenting. Normally `{/* */}` is used instead. language-babel changes the Atom toggle comments behaviour when inside a JSX block to support this behaviour.
+
+![autoclose](https://cloud.githubusercontent.com/assets/2313237/12441752/4d672be6-bf42-11e5-8e20-33a96a81db66.gif)
+
 ## Automatic Indenting of JSX
 
 language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintrrc` file is found then the suitable defaults are used based upon the tab/spacing setup of the Atom editor. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
