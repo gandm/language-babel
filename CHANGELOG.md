@@ -1,3 +1,7 @@
+#### 2.13.0
+  - Support namespaced JSX components.
+  - Add readme information about the toggle comments feature inside JSX blocks.
+
 #### 2.12.2
   - Fixes #138 Adds scope to semi-colon class property terminator.
 
