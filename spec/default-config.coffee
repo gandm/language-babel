@@ -13,4 +13,4 @@ module.exports =
   suppressSourcePathMessages: false
   suppressTranspileOnSaveMessages: false
   transpileOnSave: true
-  formatJSX: true
+  autoIndentJSX: true

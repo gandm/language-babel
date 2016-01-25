@@ -1,6 +1,9 @@
+#### 2.14.1
+  - Fix specs
+  
 #### 2.14.0
   - Auto Indent JSX is now turned off by default as it is still experimental.
-  
+
 #### 2.13.0
   - Support namespaced JSX components.
   - Add readme information about the toggle comments feature inside JSX blocks.
