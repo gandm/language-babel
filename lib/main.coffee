@@ -24,7 +24,7 @@ module.exports =
       @textEditors[textEditor.id].add textEditor.observeGrammar (grammar) =>
         # Instantiate indentor for language-babel files
         if textEditor.getGrammar().packageName is LB
-          if atom.config.get(LB).formatJSX
+          if atom.config.get(LB).autoIndentJSX
             @textEditors[textEditor.id].autoIndent = new AutoIndent(textEditor)
         else
           @textEditors[textEditor.id]?.autoIndent?.destroy()

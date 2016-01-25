@@ -235,6 +235,8 @@ class Transpiler
     atom.config.unset('language-babel.optionalTransformers')
     atom.config.unset('language-babel.plugins')
     atom.config.unset('language-babel.presets')
+    # remove old name indent options
+    atom.config.unset('language-babel.formatJSX')
 
   # calculate babel options based upon package config, babelrc files and
   # whether internalScanner is used.
