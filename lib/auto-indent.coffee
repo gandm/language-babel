@@ -97,8 +97,6 @@ class AutoIndent
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @editor.transact 300, =>
       indent = @indentJSX new Range(startPointOfJsx, endPointOfJsx)
-      # columnToMoveTo = /\S|$/.exec(@editor.lineTextForBufferRow(bufferRow)).index
-      # @editor.setCursorBufferPosition [bufferRow, columnToMoveTo]
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
@@ -112,9 +110,9 @@ class AutoIndent
     true
 
   # indent the JSX in the 'range'
-  # This is designed to be a single parse indenter to reduce the package size
-  # as no AST is used. It assumes the grammar has done its job adding scopes to
-  # interesting tokens. Those are JSX <tag, >, </tag, />, emedded expressions
+  # This is designed to be a single parse indenter to reduce the impact on the editor.
+  # It assumes the grammar has done its job adding scopes to interesting tokens.
+  # Those are JSX <tag, >, </tag, />, emedded expressions
   # outside the tag starting { and ending } and javascript braces outside a tag { & }
   # it uses an array to hold tokens and a push/pop stack to hold tokens not closed
   # the very first jsx tag must be corretly indeted by the user as we don't have

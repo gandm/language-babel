@@ -1,6 +1,10 @@
+#### 2.15.0
+  - Improve auto-indenting and formatting of JSX to allow for embedded expressions.
+  - Remove monkey patching as not required.
+
 #### 2.14.1
   - Fix specs
-  
+
 #### 2.14.0
   - Auto Indent JSX is now turned off by default as it is still experimental.
 
