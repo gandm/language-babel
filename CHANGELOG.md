@@ -1,3 +1,6 @@
+#### 2.15.1
+  - Missing a check for the auto indent toggle - Doesn't turn off indenting.
+  
 #### 2.15.0
   - Improve auto-indenting and formatting of JSX to allow for embedded expressions.
   - Remove monkey patching as not required.

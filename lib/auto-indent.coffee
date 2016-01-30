@@ -31,7 +31,7 @@ class AutoIndent
     # N.B. that this is not the same as the eslint rules in that
     # the tab-spaces and 'tab's in eslintrc are converted to tabs based upon
     # the Atom editor tab spacing.
-    # e.g. eslint indent [1,4] with an Atom tab spacing of 2 becomes indent [1,3]
+    # e.g. eslint indent [1,4] with an Atom tab spacing of 2 becomes indent [1,2]
     @eslintIndentOptions  =
       jsxClosingBracketLocation: [
         1,
@@ -84,6 +84,7 @@ class AutoIndent
   changedCursorPosition: (event) =>
     return unless @mouseUp
     return unless event.oldBufferPosition.row isnt event.newBufferPosition.row
+    return unless @autoJsx
     bufferRow = event.newBufferPosition.row
     # handle multiple cursors only trigger indent on one at the highest row
     if @editor.hasMultipleCursors()
