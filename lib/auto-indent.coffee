@@ -44,6 +44,7 @@ class AutoIndent
 
     @autoJsx = true
     @mouseUp = true
+    @multipleCursorTrigger = 1
 
     @disposables = new CompositeDisposable()
     @disposables.add atom.commands.add 'atom-text-editor',
@@ -86,12 +87,18 @@ class AutoIndent
     return unless event.oldBufferPosition.row isnt event.newBufferPosition.row
     return unless @autoJsx
     bufferRow = event.newBufferPosition.row
-    # handle multiple cursors only trigger indent on one at the highest row
+    # handle multiple cursors. only trigger indent on one change event
+    # and then only at the highest row
     if @editor.hasMultipleCursors()
       cursorPositions = @editor.getCursorBufferPositions()
-      bufferRow = 0;
-      for cursorPosition in cursorPositions
-        if cursorPosition.row > bufferRow then bufferRow = cursorPosition.row
+      if cursorPositions.length is @multipleCursorTrigger
+        @multipleCursorTrigger = 1
+        bufferRow = 0;
+        for cursorPosition in cursorPositions
+          if cursorPosition.row > bufferRow then bufferRow = cursorPosition.row
+      else
+        @multipleCursorTrigger++
+        return
     else cursorPosition = event.newBufferPosition
     return if not @jsxInScope bufferRow
     endPointOfJsx = new Point bufferRow+1,0 # next row start
