@@ -93,7 +93,7 @@ class AutoIndent
       cursorPositions = @editor.getCursorBufferPositions()
       if cursorPositions.length is @multipleCursorTrigger
         @multipleCursorTrigger = 1
-        bufferRow = 0;
+        bufferRow = 0
         for cursorPosition in cursorPositions
           if cursorPosition.row > bufferRow then bufferRow = cursorPosition.row
       else
@@ -171,7 +171,7 @@ class AutoIndent
               hardTabsFound
 
           if isFirstTokenOfLine
-              firstTagInLineIndentation =  tagIndentation
+            firstTagInLineIndentation =  tagIndentation
 
           # big switch statement follows for each token. If the line is reformated
           # then we recalculate the new position.
@@ -239,7 +239,7 @@ class AutoIndent
               stackOfTokensStillOpen.push idxOfToken
               idxOfToken++
               isInsideTag = true
-              break;
+              break
 
             # tags ending </tag>
             when JSXTAG_CLOSE
@@ -264,7 +264,7 @@ class AutoIndent
               if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
               idxOfToken++
               isInsideTag = false
-              break;
+              break
 
             # tags ending />
             when JSXTAG_SELFCLOSE_END
@@ -298,7 +298,7 @@ class AutoIndent
                 tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
               idxOfToken++
               isInsideTag = false
-              break;
+              break
 
             # tags ending >
             when JSXTAG_CLOSE_ATTRS
@@ -329,7 +329,7 @@ class AutoIndent
               if parentTokenIdx >= 0 then tokenStack[parentTokenIdx].termsThisTagsAttributesIdx = idxOfToken
               idxOfToken++
               isInsideTag = false
-              break;
+              break
 
             # embeded expression start { but not inside a tag
             when JSXBRACE_OPEN
@@ -361,7 +361,7 @@ class AutoIndent
 
               stackOfTokensStillOpen.push idxOfToken
               idxOfToken++
-              break;
+              break
 
             # embeded expression end } but not inside a tag
             when JSXBRACE_CLOSE
@@ -386,7 +386,7 @@ class AutoIndent
                 parentTokenIdx: parentTokenIdx         # ptr to <tag
               if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
               idxOfToken++
-              break;
+              break
 
             # Javascript brace Start {
             when BRACE_OPEN
@@ -430,7 +430,7 @@ class AutoIndent
 
               stackOfTokensStillOpen.push idxOfToken
               idxOfToken++
-              break;
+              break
 
             # Javascript brace End }
             when BRACE_CLOSE
@@ -456,7 +456,7 @@ class AutoIndent
                   parentTokenIdx: parentTokenIdx         # ptr to <tag
                 if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
                 idxOfToken++
-              break;
+              break
 
       if idxOfToken and not tokenOnThisLine and  row isnt range.end.row
         if not isInsideTag
