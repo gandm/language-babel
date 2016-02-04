@@ -1,3 +1,6 @@
+#### 2.15.3
+  - Fix auto indent when JSX at end of file.
+
 #### 2.15.2
   - Fix JSX auto indenting for multiple cursors.
 
