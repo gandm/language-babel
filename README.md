@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional Babel transpilation output on file saves. As a convenience it also provides a transpiled code preview option by linking to the package [source-preview](https://atom.io/packages/source-preview).
+Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional  [Babel](http://babeljs.io/) transpilation on file saves. As a convenience it also provides a transpiled code preview by linking to the package [source-preview](https://atom.io/packages/source-preview).
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `.flow` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -39,11 +39,11 @@ By default this feature is turned off in the package settings. If enabled, langu
   }
 }
 ```
-When moving around a JSX block  language-babel reformats the preceding JSX lines automatically. Optionally, a command `language-babel:auto-indent-react-jsx` allows text to be automatically indented on the current and preceding rows. Lines following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut if required. The user should correctly position the first JSX element as auto-indenting will not do this.
+When moving around a JSX block  language-babel reformats the preceding JSX lines automatically. Lines following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. Optionally, a command `language-babel:auto-indent-react-jsx` allows text to be automatically indented on the current and preceding rows. This can be mapped as a keyboard shortcut if required. The user should correctly position the first JSX element as auto-indenting will not do this.
 
-There is also a command - `language-babel:toggle-auto-indent-jsx` that toggles automatic JSX formatting on/off for individual files.
+There is also a command - `language-babel:toggle-auto-indent-jsx` that toggles automatic JSX formatting on/off for individual files. This can be mapped to a keyboard shortcut if needed.
 
-You may also turn off automatic indenting for files by setting the package option `Auto Indent JSX`
+You may also turn off automatic indenting for all files by setting the package option `Auto Indent JSX`
 
 ![indent](https://cloud.githubusercontent.com/assets/2313237/12700780/4074271e-c7e8-11e5-91d7-774f7808bc1d.gif)
 
@@ -188,7 +188,7 @@ For most projects it is better to configure `language-babel` via project based `
 
 ## .languagebabel Configuration
 
-`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. `.languagebabel` file properties override the global package settings above. `.languagebabel` files if present are read and merged starting in the source files directory up to the project root directory. `.languagebabel` properties defined closest the source file take precedence.
+`.languagebabel` JSON configuration files can exist in any directory of the path that contains a source file to be compiled. The properties in this file override the global package settings above. If `.languagebabel` files are present, they read and merged starting in the source files directory up to the project root directory. Properties defined closest the source file take precedence.
 
 To use this option please enable the `Allow Local Override` package setting.
 
