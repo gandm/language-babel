@@ -4,8 +4,7 @@ path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
 stripJsonComments = require 'strip-json-comments'
 YAML = require 'js-yaml'
-# regex to search for tag open/close tag and close tag
-JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})/g
+
 
 NO_TOKEN                = 0
 JSXTAG_SELFCLOSE_START  = 1       # the <tag in <tag />
@@ -42,6 +41,8 @@ class AutoIndent
       jsxIndentProps: [1,1]       # 1 = enabled, 1=#tabs
       indent: [1,1]               # 1 = enabled, 1=#tabs
 
+    # regex to search for tag open/close tag and close tag
+    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})/g
     @autoJsx = true
     @mouseUp = true
     @multipleCursorTrigger = 1
@@ -63,7 +64,7 @@ class AutoIndent
       @eslintrcFilename = new File(@eslintrcFilename)
       @getEslintrcOptions(@eslintrcFilename.getPath())
       # watch eslintrc for changes
-      @eslintrcFilename.onDidChange => @getEslintrcOptions(@eslintrcFilename.getPath())
+      @disposables.add @eslintrcFilename.onDidChange => @getEslintrcOptions(@eslintrcFilename.getPath())
 
   destroy: () ->
     @disposables.dispose()
@@ -101,7 +102,7 @@ class AutoIndent
         return
     else cursorPosition = event.newBufferPosition
     return if not @jsxInScope bufferRow
-    endPointOfJsx = new Point bufferRow,0 # next row start
+    endPointOfJsx = new Point bufferRow+1,0 # next row start
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @editor.transact 300, =>
       @indentJSX new Range(startPointOfJsx, endPointOfJsx)
@@ -125,16 +126,16 @@ class AutoIndent
     stackOfTokensStillOpen = [] # length equivalent to token depth
     indent =  0
     isFirstTagOfBlock = true
-    isInsideTag = false
+    @JSXREGEXP.lastIndex = 0
 
     for row in [range.start.row..range.end.row]
       isFirstTokenOfLine = true
       tokenOnThisLine = false
-      indentRecalc = true
+      indentRecalc = false
       line = @editor.lineTextForBufferRow row
 
       # look for tokens in a buffer line
-      while (( match = JSXREGEXP.exec(line)) isnt null )
+      while (( match = @JSXREGEXP.exec(line)) isnt null )
         matchColumn = match.index
         matchPointStart = new Point(row, matchColumn)
         matchPointEnd = new Point(row, matchColumn + match[0].length - 1)
@@ -158,18 +159,19 @@ class AutoIndent
 
         # big switch statement follows for each token. If the line is reformated
         # then we recalculate the new position.
+        # bit horrid but hopefully fast.
         switch (token)
           # tags starting <tag
           when JSXTAG_OPEN
             tokenOnThisLine = true
             # indent only on first token of a line
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               # isFirstTagOfBlock is used to mark the tag that starts the JSX but
               # also the first tag of blocks inside  embedded expressions. e.g.
-              # <tbody> and <objectRow> are first tags
+              # <tbody>, <pComp> and <objectRow> are first tags
               # return (
-              #       <tbody>
+              #       <tbody comp={<pComp property />}>
               #         {objects.map(function(object, i){
               #           return <ObjectRow obj={object} key={i} />;
               #         })}
@@ -185,24 +187,18 @@ class AutoIndent
                     # based upon eslint indent not React/indent
                     tagIndentation = firstCharIndentation =
                       @getEslintIndent() + @getIndentOfPreviousRow row
-                    @indentRow(row, firstCharIndentation)
-                    line = @editor.lineTextForBufferRow row
-                    JSXREGEXP.lastIndex = 0 #force regex to start again
-                    indentRecalc = false
-                    continue
+                    indentRecalc = @indentRow({row: row}, firstCharIndentation)
               else if isFirstTagOfBlock and parentTokenIdx?
                 tagIndentation = firstCharIndentation = @getIndentOfPreviousRow row
-                @indentRow(row, firstCharIndentation, 1)
-                line = @editor.lineTextForBufferRow row
-                JSXREGEXP.lastIndex = 0 #force regex to start again
-                indentRecalc = false
-                continue
+                indentRecalc = @indentRow({row: row}, firstCharIndentation, 1)
               else if parentTokenIdx?
-                @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
-                line = @editor.lineTextForBufferRow row
-                JSXREGEXP.lastIndex = 0 #force regex to start again
-                indentRecalc = false
-                continue
+                indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
+              line = @editor.lineTextForBufferRow row
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
+              continue
 
             isFirstTokenOfLine = false
             isFirstTagOfBlock = false
@@ -221,18 +217,19 @@ class AutoIndent
 
             stackOfTokensStillOpen.push idxOfToken
             idxOfToken++
-            isInsideTag = true
             break
 
           # tags ending </tag>
           when JSXTAG_CLOSE
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
-              @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation )
+              indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
               line = @editor.lineTextForBufferRow row
-              JSXREGEXP.lastIndex = 0 #force regex to start again
-              indentRecalc = false
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
               continue
 
             isFirstTokenOfLine = false
@@ -246,24 +243,25 @@ class AutoIndent
               parentTokenIdx: parentTokenIdx         # ptr to <tag
             if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
-            isInsideTag = false
             break
 
           # tags ending />
           when JSXTAG_SELFCLOSE_END
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if firstTagInLineIndentation is firstCharIndentation
-                @indentForClosingBracket  row,
+                indentRecalc = @indentForClosingBracket  row,
                   tokenStack[parentTokenIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing
               else
-                @indentRow  row,
-                  tokenStack[parentTokenIdx].firstTagInLineIndentation,0,1
+                indentRecalc = @indentRow({row: row}
+                  ,tokenStack[parentTokenIdx].firstTagInLineIndentation,0,1)
+
+            # re-parse line if indent did something to it
+            if indentRecalc
               line = @editor.lineTextForBufferRow row
-              JSXREGEXP.lastIndex = 0 #force regex to start again
-              indentRecalc = false
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
               continue
 
             isFirstTagOfBlock = false
@@ -280,24 +278,25 @@ class AutoIndent
               tokenStack[parentTokenIdx].type = JSXTAG_SELFCLOSE_START
               tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
-            isInsideTag = false
             break
 
           # tags ending >
           when JSXTAG_CLOSE_ATTRS
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if firstTagInLineIndentation is firstCharIndentation
-                @indentForClosingBracket  row,
+                indentRecalc = @indentForClosingBracket  row,
                   tokenStack[parentTokenIdx],
                   @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
               else
-                @indentRow  row,
-                  tokenStack[parentTokenIdx].firstTagInLineIndentation,0,1
+                indentRecalc = @indentRow({row: row}
+                  ,tokenStack[parentTokenIdx].firstTagInLineIndentation,0,1)
+
+            # re-parse line if indent did something to it
+            if indentRecalc
               line = @editor.lineTextForBufferRow row
-              JSXREGEXP.lastIndex = 0 #force regex to start again
-              indentRecalc = false
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
               continue
 
             isFirstTagOfBlock = false
@@ -311,21 +310,21 @@ class AutoIndent
               parentTokenIdx: parentTokenIdx            # ptr to <tag
             if parentTokenIdx >= 0 then tokenStack[parentTokenIdx].termsThisTagsAttributesIdx = idxOfToken
             idxOfToken++
-            isInsideTag = false
             break
 
-          # embeded expression start { but not inside a tag
+          # embeded expression start {
           when JSXBRACE_OPEN
-            break if isInsideTag
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if parentTokenIdx?
-                @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
-                line = @editor.lineTextForBufferRow row
-                JSXREGEXP.lastIndex = 0 #force regex to start again
-                indentRecalc = false
-                continue
+                indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
+              line = @editor.lineTextForBufferRow row
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
+              continue
 
             isFirstTagOfBlock = true  # this may be the start of a new JSX block
             isFirstTokenOfLine = false
@@ -346,16 +345,18 @@ class AutoIndent
             idxOfToken++
             break
 
-          # embeded expression end } but not inside a tag
+          # embeded expression end }
           when JSXBRACE_CLOSE
-            break if isInsideTag
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
-              @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation )
+              indentRecalc = @indentRow({row: row, allowAdditionalIndents: false }
+                ,tokenStack[parentTokenIdx].firstCharIndentation )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
               line = @editor.lineTextForBufferRow row
-              JSXREGEXP.lastIndex = 0 #force regex to start again
-              indentRecalc = false
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
               continue
 
             isFirstTagOfBlock = false
@@ -373,9 +374,8 @@ class AutoIndent
 
           # Javascript brace Start {
           when BRACE_OPEN
-            break if isInsideTag
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if isFirstTagOfBlock and
                   parentTokenIdx? and
@@ -385,17 +385,15 @@ class AutoIndent
                     # based upon eslint indent not React/indent
                     tagIndentation = firstCharIndentation =
                       @getEslintIndent() + @getIndentOfPreviousRow row
-                    @indentRow(row, firstCharIndentation)
-                    line = @editor.lineTextForBufferRow row
-                    JSXREGEXP.lastIndex = 0 #force regex to start again
-                    indentRecalc = false
-                    continue
+                    indentRecalc = @indentRow({row: row}, firstCharIndentation)
               else if parentTokenIdx?
-                @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
-                line = @editor.lineTextForBufferRow row
-                JSXREGEXP.lastIndex = 0 #force regex to start again
-                indentRecalc = false
-                continue
+                indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
+              line = @editor.lineTextForBufferRow row
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
+              continue
 
             isFirstTokenOfLine = false
 
@@ -417,16 +415,18 @@ class AutoIndent
 
           # Javascript brace End }
           when BRACE_CLOSE
-            break if isInsideTag
             tokenOnThisLine = true
-            if isFirstTokenOfLine and indentRecalc
+            if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if parentTokenIdx?
-                @indentRow(row, tokenStack[parentTokenIdx].firstCharIndentation )
-                line = @editor.lineTextForBufferRow row
-                JSXREGEXP.lastIndex = 0 #force regex to start again
-                indentRecalc = false
-                continue
+                indentRecalc = @indentRow({row: row, allowAdditionalIndents: false}
+                  ,tokenStack[parentTokenIdx].firstCharIndentation )
+
+            # re-parse line if indent did something to it
+            if indentRecalc
+              line = @editor.lineTextForBufferRow row
+              @JSXREGEXP.lastIndex = 0 #force regex to start again
+              continue
 
             isFirstTokenOfLine = false
 
@@ -441,19 +441,31 @@ class AutoIndent
               idxOfToken++
             break
 
-      if idxOfToken and not tokenOnThisLine and  row isnt range.end.row
-        if not isInsideTag
-          stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
-          if parentTokenIdx?
-            if tokenStack[parentTokenIdx].type is BRACE_OPEN and
-              tokenStack[parentTokenIdx].row is ( row - 1)
-                # indent based upon preceeding js brace
-                @indentRow  row, tokenStack[parentTokenIdx].firstCharIndentation, @getEslintIndent()
-            else
-              @indentRow  row, @getIndentOfPreviousRow row
-        else
-          # component properties most likely
-          @indentRow  row, tokenStack[idxOfToken-1].firstCharIndentation,0,1
+      # handle lines with no token on them
+      if idxOfToken and not tokenOnThisLine and row isnt range.end.row
+        @indentUntokenisedLine row, tokenStack, stackOfTokensStillOpen
+
+  # indent any lines that haven't any interesting tokens
+  indentUntokenisedLine: (row, tokenStack, stackOfTokensStillOpen ) ->
+    stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
+    token = tokenStack[parentTokenIdx]
+    switch token.type
+      when JSXTAG_SELFCLOSE_START, JSXTAG_OPEN, JSXBRACE_OPEN
+        @indentRow({row: row,allowAdditionalIndents: false}
+          ,token.firstCharIndentation,0,1)
+        break
+      when BRACE_OPEN
+        @indentRow({row: row, allowAdditionalIndents: false}
+          ,token.firstCharIndentation + @getEslintIndent())
+        break
+      when JSXTAG_SELFCLOSE_END, JSXBRACE_CLOSE, JSXTAG_CLOSE_ATTRS
+        @indentRow({row: row,allowAdditionalIndents: false}
+          ,tokenStack[token.parentTokenIdx].firstCharIndentation,0,1)
+        break
+      when BRACE_CLOSE
+        @indentRow({row: row, allowAdditionalIndents: false}
+          ,tokenStack[token.parentTokenIdx].firstCharIndentation + @getEslintIndent())
+        break
 
   # get the token at the given match position or return truthy false
   getToken: (bufferRow, match) ->
@@ -485,26 +497,6 @@ class AutoIndent
       line = @editor.lineTextForBufferRow row
       return @editor.indentationForBufferRow row if  /.*\S/.test line
     return 0
-
-  # allign nonEmpty and selfClosing tags based on eslint rules
-  # row to be indented based upon a parentTags properties and a rule type
-  indentForClosingBracket: ( row, parentTag, closingBracketRule ) ->
-    if @eslintIndentOptions.jsxClosingBracketLocation[0]
-      if closingBracketRule is TAGALIGNED
-        @indentRow row, parentTag.tagIndentation
-      else if closingBracketRule is LINEALIGNED
-        @indentRow row,  parentTag.firstCharIndentation
-      else if closingBracketRule is AFTERPROPS
-        if @eslintIndentOptions.jsxIndentProps[0]
-          @indentRow row, parentTag.tagIndentation,
-            @eslintIndentOptions.jsxIndentProps[1]
-        else
-          @indentRow row, parentTag.tagIndentation
-      else if closingBracketRule is PROPSALIGNED
-        if @eslintIndentOptions.jsxIndentProps[0]
-          @indentRow row, parentTag.firstTagInLineIndentation,0, 1
-        else
-          @indentRow row, parentTag.firstTagInLineIndentation
 
   # return text string of a project based .eslintrc file if one exists
   getEslintrcFilename: () ->
@@ -577,10 +569,42 @@ class AutoIndent
           if rule[1].nonEmpty?
             @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = rule[1].nonEmpty
 
-  # indent a row by the addition of one or more indents
+  # get tab indents from eslint indent
+  getEslintIndent: () ->
+    if @eslintIndentOptions.indent[0] then jsIndent = @eslintIndentOptions.indent[1]
+    else jsIndent = 0
+    jsIndent
+
+  # allign nonEmpty and selfClosing tags based on eslint rules
+  # row to be indented based upon a parentTags properties and a rule type
+  # returns indentRow's return value
+  indentForClosingBracket: ( row, parentTag, closingBracketRule ) ->
+    if @eslintIndentOptions.jsxClosingBracketLocation[0]
+      if closingBracketRule is TAGALIGNED
+        @indentRow({row: row}, parentTag.tagIndentation)
+      else if closingBracketRule is LINEALIGNED
+        @indentRow({row: row},  parentTag.firstCharIndentation)
+      else if closingBracketRule is AFTERPROPS
+        if @eslintIndentOptions.jsxIndentProps[0]
+          @indentRow({row: row}, parentTag.tagIndentation, @eslintIndentOptions.jsxIndentProps[1])
+        else
+          @indentRow({row: row}, parentTag.tagIndentation)
+      else if closingBracketRule is PROPSALIGNED
+        if @eslintIndentOptions.jsxIndentProps[0]
+          @indentRow({row: row}, parentTag.firstTagInLineIndentation,0, 1)
+        else
+          @indentRow({row: row}, parentTag.firstTagInLineIndentation)
+
+  # indent a row by the addition of one or more indents.
+  # returns false if no indent required as it is already correct
+  # return true if indent was required
   # jsxBlockIndent is the indent to the start of this logical jsx block
-  # other indents are the required indent based on eslint and are 0 or 1 or undefined
-  indentRow: (row, jsxBlockIndent, jsxTagIndent, jsxPropsIndent) ->
+  # other indents are the required indent based on eslint conditions for React
+  # option contains row to indent and allowAdditionalIndents flag
+  indentRow: (options, jsxBlockIndent, jsxTagIndent, jsxPropsIndent) ->
+    row = options.row
+    allowAdditionalIndents = options.allowAdditionalIndents ? false
+    # calc overall indent
     jsxIndentTabs = jsxBlockIndent
     if jsxTagIndent
       if @eslintIndentOptions.jsxIndent[0]
@@ -590,10 +614,15 @@ class AutoIndent
       if @eslintIndentOptions.jsxIndentProps[0]
         if @eslintIndentOptions.jsxIndentProps[1]
           jsxIndentTabs += jsxPropsIndent * @eslintIndentOptions.jsxIndentProps[1]
-    @editor.setIndentationForBufferRow row, jsxIndentTabs, { preserveLeadingWhitespace: false }
-
-  # get tab indents from eslint indent
-  getEslintIndent: () ->
-    if @eslintIndentOptions.indent[0] then jsIndent = @eslintIndentOptions.indent[1]
-    else jsIndent = 0
-    jsIndent
+    # allowAdditionalIndents allows indents to be greater than the minimum
+    # used where items are aligned but no eslint rules are applicable
+    # so user has some discretion in adding more indents
+    if allowAdditionalIndents
+      if @editor.indentationForBufferRow(row) < jsxIndentTabs
+        @editor.setIndentationForBufferRow row, jsxIndentTabs, { preserveLeadingWhitespace: false }
+        return true
+    else
+      if @editor.indentationForBufferRow(row) isnt jsxIndentTabs
+        @editor.setIndentationForBufferRow row, jsxIndentTabs, { preserveLeadingWhitespace: false }
+        return true
+    return false

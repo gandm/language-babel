@@ -1,3 +1,7 @@
+#### 2.15.4
+  - Fix #144
+  - Improve Auto indent JSX for embedded components within tags.
+
 #### 2.15.3
   - Fix auto indent when JSX at end of file.
 
