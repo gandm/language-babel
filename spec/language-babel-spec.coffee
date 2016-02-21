@@ -332,5 +332,6 @@ describe 'language-babel', ->
         runs ->
           expect(writeFileName).to.equal(targetFile)
 
-  # Add the grammar test fixture
+  # Add the grammar test fixtures
   grammarTest path.join(__dirname, 'fixtures/grammar/syntax_file_babel_jsx.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/syntax_file_babel_flow.js')
