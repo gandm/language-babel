@@ -3,6 +3,7 @@ expect = chai.expect
 fs = require 'fs-plus'
 path = require 'path'
 defaultConfig = require './default-config'
+grammarTest = require 'atom-grammar-test'
 
 LB = 'language-babel'
 # we use atom setPaths in this spec. setPaths checks if directories exist
@@ -322,7 +323,7 @@ describe 'language-babel', ->
         atom.project.setPaths([__dirname])
         config.allowLocalOverride = true
 
-        spyOn(lb, 'getConfig').andCallFake ->config;
+        spyOn(lb, 'getConfig').andCallFake -> config
         sourceFile = path.resolve(__dirname, 'fixtures/projectRoot/src/test.js')
         targetFile =  path.resolve(__dirname, 'fixtures/projectRoot/test.js')
         lb.transpile(sourceFile)
@@ -330,3 +331,6 @@ describe 'language-babel', ->
           writeFileStub.callCount
         runs ->
           expect(writeFileName).to.equal(targetFile)
+
+  # Add the grammar test fixture
+  grammarTest path.join(__dirname, 'fixtures/grammar/syntax_file_babel_jsx.js')
