@@ -37,5 +37,8 @@
     "js-yaml": "^3.5.2",
     "path-is-inside": "^1.0.1",
     "strip-json-comments": "^2.0.0"
+  },
+  "devDependencies": {
+    "atom-grammar-test": "^0.1.2"
   }
 }
