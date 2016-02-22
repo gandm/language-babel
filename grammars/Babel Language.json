@@ -314,9 +314,12 @@
               "patterns": [
                 {
                   "begin": "\\s*(?<!\\.)\\b(case|default)\\b",
-                  "end": "\\s*(?=:)",
+                  "end": "\\s*(:)",
                   "beginCaptures": {
                     "1": { "name": "keyword.control.switch.js" }
+                  },
+                  "endCaptures": {
+                    "1": { "name": "keyword.operator.js" }
                   },
                   "patterns": [
                     { "include": "#expression" }
