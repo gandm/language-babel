@@ -217,7 +217,6 @@ class AutoIndent
 
             stackOfTokensStillOpen.push idxOfToken
             idxOfToken++
-            break
 
           # tags ending </tag>
           when JSXTAG_CLOSE
@@ -243,7 +242,6 @@ class AutoIndent
               parentTokenIdx: parentTokenIdx         # ptr to <tag
             if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
-            break
 
           # tags ending />
           when JSXTAG_SELFCLOSE_END
@@ -278,7 +276,6 @@ class AutoIndent
               tokenStack[parentTokenIdx].type = JSXTAG_SELFCLOSE_START
               tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
-            break
 
           # tags ending >
           when JSXTAG_CLOSE_ATTRS
@@ -310,7 +307,6 @@ class AutoIndent
               parentTokenIdx: parentTokenIdx            # ptr to <tag
             if parentTokenIdx >= 0 then tokenStack[parentTokenIdx].termsThisTagsAttributesIdx = idxOfToken
             idxOfToken++
-            break
 
           # embeded expression start {
           when JSXBRACE_OPEN
@@ -343,7 +339,6 @@ class AutoIndent
 
             stackOfTokensStillOpen.push idxOfToken
             idxOfToken++
-            break
 
           # embeded expression end }
           when JSXBRACE_CLOSE
@@ -370,7 +365,6 @@ class AutoIndent
               parentTokenIdx: parentTokenIdx         # ptr to <tag
             if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
-            break
 
           # Javascript brace Start {
           when BRACE_OPEN
@@ -411,7 +405,6 @@ class AutoIndent
 
             stackOfTokensStillOpen.push idxOfToken
             idxOfToken++
-            break
 
           # Javascript brace End }
           when BRACE_CLOSE
@@ -439,7 +432,6 @@ class AutoIndent
                 parentTokenIdx: parentTokenIdx         # ptr to <tag
               if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
               idxOfToken++
-            break
 
       # handle lines with no token on them
       if idxOfToken and not tokenOnThisLine and row isnt range.end.row
@@ -453,19 +445,15 @@ class AutoIndent
       when JSXTAG_SELFCLOSE_START, JSXTAG_OPEN, JSXBRACE_OPEN
         @indentRow({row: row,allowAdditionalIndents: false}
           ,token.firstCharIndentation,0,1)
-        break
       when BRACE_OPEN
         @indentRow({row: row, allowAdditionalIndents: false}
           ,token.firstCharIndentation + @getEslintIndent())
-        break
       when JSXTAG_SELFCLOSE_END, JSXBRACE_CLOSE, JSXTAG_CLOSE_ATTRS
         @indentRow({row: row,allowAdditionalIndents: false}
           ,tokenStack[token.parentTokenIdx].firstCharIndentation,0,1)
-        break
       when BRACE_CLOSE
         @indentRow({row: row, allowAdditionalIndents: false}
           ,tokenStack[token.parentTokenIdx].firstCharIndentation + @getEslintIndent())
-        break
 
   # get the token at the given match position or return truthy false
   getToken: (bufferRow, match) ->
