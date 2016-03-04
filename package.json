@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "babel-core": "^6.1.2",
-    "chai": "^3.0.0",
     "fs-plus": "^2.8.0",
     "fuzzaldrin": "^2.1.0",
     "jjv": "^1.0.2",
@@ -39,6 +38,7 @@
     "strip-json-comments": "^2.0.0"
   },
   "devDependencies": {
-    "atom-grammar-test": "<1.0.0"
+    "atom-grammar-test": "<1.0.0",
+    "chai": "^3.0.0"
   }
 }
