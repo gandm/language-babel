@@ -1777,11 +1777,11 @@
       "patterns": [
         {
           "comment": "call back with a form  ) => type",
-          "begin": "(?<=\\))\\s*=>",
+          "begin": "(?<=\\))\\s*(=>)",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "0": { "name": "storage.type.function.arrow.js" }
+            "1": { "name": "storage.type.function.arrow.js" }
           },
           "patterns": [
             { "include": "#flowtype-parse-types" }
