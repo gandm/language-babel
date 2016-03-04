@@ -1,3 +1,8 @@
+#### 2.15.5
+  - Fix colon in case missing scope [Fixes #145](https://github.com/gandm/language-babel/issues/145)
+  - Fix move/paste JSX blocks not auto-indenting. [Fixes #150](https://github.com/gandm/language-babel/issues/150)
+  - Add [atom-grammar-test](https://github.com/kevinastone/atom-grammar-test) package as grammar spec handler.
+
 #### 2.15.4
   - Fix #144
   - Improve Auto indent JSX for embedded components within tags.
