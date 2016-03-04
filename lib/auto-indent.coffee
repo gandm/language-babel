@@ -57,6 +57,7 @@ class AutoIndent
     document.addEventListener 'mouseup', => @mouseUp = true
 
     @disposables.add @editor.onDidChangeCursorPosition (event) => @changedCursorPosition(event)
+    @disposables.add @editor.onDidStopChanging () => @didStopChanging()
 
     @atomTabLength = @editor.getTabLength()
 
@@ -106,6 +107,19 @@ class AutoIndent
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @editor.transact 300, =>
       @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+
+  # Buffer has stopped changing. Indent as required
+  didStopChanging: () ->
+    selectedRange = @editor.getSelectedBufferRange()
+    highestRow = Math.max selectedRange.start.row, selectedRange.end.row
+    if highestRow isnt @highestSelectedRow
+      @highestSelectedRow = highestRow
+      scope = @editor.scopeDescriptorForBufferPosition(highestRow,0).getScopesArray()
+      if 'meta.tag.jsx' in scope
+        endPointOfJsx = new Point highestRow,0
+        startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
+        @editor.transact 300, =>
+          @indentJSX new Range(startPointOfJsx, endPointOfJsx)
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
