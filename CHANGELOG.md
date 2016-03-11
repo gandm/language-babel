@@ -1,3 +1,7 @@
+#### 2.15.6
+  - Remove scopes for nodejs support variables. [Fixes issue #152](https://github.com/gandm/language-babel/issues/152)
+  - Fixed more JSX indenting issues.
+
 #### 2.15.5
   - Fix colon in case missing scope [Fixes #145](https://github.com/gandm/language-babel/issues/145)
   - Fix move/paste JSX blocks not auto-indenting. [Fixes #150](https://github.com/gandm/language-babel/issues/150)
