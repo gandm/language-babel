@@ -74,7 +74,6 @@ class AutoIndent
 
   # command option to format line from a cursor position upwards to JSX start
   autoIndentJsxCommand: () ->
-    #return if atom.workspace.getActiveTextEditor().id isnt @editor.id
     cursorPosition = @editor.getCursorBufferPosition()
     bufferRow = cursorPosition.row
     return if not @jsxInScope(bufferRow)
