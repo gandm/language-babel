@@ -111,6 +111,7 @@ class AutoIndent
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
+    return unless @autoJsx    
     selectedRange = @editor.getSelectedBufferRange()
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
     if highestRow isnt @highestSelectedRow
