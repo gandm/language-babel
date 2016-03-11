@@ -111,12 +111,12 @@ class AutoIndent
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
-    return unless @autoJsx    
+    return unless @autoJsx
     selectedRange = @editor.getSelectedBufferRange()
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
     if highestRow isnt @highestSelectedRow
       @highestSelectedRow = highestRow
-      scope = @editor.scopeDescriptorForBufferPosition(highestRow,0).getScopesArray()
+      scope = @editor.scopeDescriptorForBufferPosition([highestRow,0]).getScopesArray()
       if 'meta.tag.jsx' in scope
         endPointOfJsx = new Point highestRow,0
         startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
