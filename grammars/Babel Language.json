@@ -870,10 +870,6 @@
           }
         },
         {
-          "name": "support.module.node.js",
-          "match": "\\s*(?<!\\.)\\b(natives|buffer|child_process|cluster|crypto|dgram|dns|fs|http|https|net|os|path|punycode|string|string_decoder|readline|repl|tls|tty|util|vm|zlib)\\b"
-        },
-        {
           "match": "\\s*(?<!\\.)\\b(process)(?:(\\.)(stdout|stderr|stdin|argv|execPath|execArgv|env|exitCode|version|versions|config|pid|title|arch|platform|mainModule))?\\b",
           "captures": {
             "1": { "name": "support.type.object.process.js" },
