@@ -107,6 +107,8 @@ class AutoIndent
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @editor.transact 300, =>
       @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+    columnToMoveTo = /\S|$/.exec(@editor.lineTextForBufferRow(bufferRow)).index
+    @editor.setCursorBufferPosition [bufferRow, columnToMoveTo]
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
