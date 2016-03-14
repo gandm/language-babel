@@ -1,7 +1,10 @@
+#### 2.15.8
+  - Fix autoIndentJSX for Ternary expressions and other issues.
+
 #### 2.15.7
   - Fix autoIndentJSX for first tag of embedded expression.
   - Fix positioning on new JSX line.
-  
+
 #### 2.15.6
   - Remove scopes for nodejs support variables. [Fixes issue #152](https://github.com/gandm/language-babel/issues/152)
   - Fixed more JSX indenting issues.
