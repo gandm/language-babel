@@ -201,12 +201,11 @@ class AutoIndent
                   tokenStack[parentTokenIdx].row is ( row - 1)
                     # previous line started with a brace so use different indent rule
                     # based upon eslint indent not React/indent
-                    tagIndentation = firstCharIndentation =
+                    tagIndentation = firstCharIndentation = firstTagInLineIndentation =
                       @getEslintIndent() + @getIndentOfPreviousRow row
-                    indentRecalc = @indentRow({row: row}, firstCharIndentation)
+                    indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, firstCharIndentation)
               else if isFirstTagOfBlock and parentTokenIdx?
-                tagIndentation = firstCharIndentation = @getIndentOfPreviousRow row
-                indentRecalc = @indentRow({row: row}, firstCharIndentation, 1)
+                indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, @getIndentOfPreviousRow row, 1)
               else if parentTokenIdx?
                 indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
 
