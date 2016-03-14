@@ -205,11 +205,11 @@ class AutoIndent
                     # based upon eslint indent not React/indent
                     tagIndentation = firstCharIndentation = firstTagInLineIndentation =
                       @getEslintIndent() + @getIndentOfPreviousRow row
-                    indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, firstCharIndentation)
+                    indentRecalc = @indentRow({row: row }, firstCharIndentation)
               else if isFirstTagOfBlock and parentTokenIdx?
-                indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, @getIndentOfPreviousRow(row), 1)
+                indentRecalc = @indentRow({row: row }, @getIndentOfPreviousRow(row), 1)
               else if parentTokenIdx?
-                indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
+                indentRecalc = @indentRow({row: row }, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
 
             # re-parse line if indent did something to it
             if indentRecalc
