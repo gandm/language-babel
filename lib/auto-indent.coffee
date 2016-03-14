@@ -205,7 +205,7 @@ class AutoIndent
                       @getEslintIndent() + @getIndentOfPreviousRow row
                     indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, firstCharIndentation)
               else if isFirstTagOfBlock and parentTokenIdx?
-                indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, @getIndentOfPreviousRow row, 1)
+                indentRecalc = @indentRow({row: row, allowAdditionalIndents: true }, @getIndentOfPreviousRow(row), 1)
               else if parentTokenIdx?
                 indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
 
