@@ -331,7 +331,10 @@ class AutoIndent
             if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
               if parentTokenIdx?
-                indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
+                if tokenStack[parentTokenIdx].type is JSXTAG_OPEN
+                  indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 0, 1)
+                else
+                  indentRecalc = @indentRow({row: row}, tokenStack[parentTokenIdx].firstCharIndentation, 1 )
 
             # re-parse line if indent did something to it
             if indentRecalc
