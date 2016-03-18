@@ -1,3 +1,6 @@
+#### 2.16.0
+  - Refactor ::indentRow
+  
 #### 2.15.8
   - Fix autoIndentJSX for Ternary expressions and other issues.
 
