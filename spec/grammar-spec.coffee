@@ -19,3 +19,12 @@ describe 'Grammar', ->
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/jsx-features.jsx')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/jsx-full-react-class.jsx')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/jsx-text.jsx')
+
+  # grammar test large files
+  grammarTest path.join(__dirname, 'fixtures/grammar/large files/browser-polyfill.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/large files/jquery-2.1.4.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/large files/bundle.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/large files/jquery-2.1.4.min.js')
+
+  # es2015 check
+  grammarTest path.join(__dirname, 'fixtures/grammar/everythingJs/es2015-module.js')
