@@ -2725,3 +2725,5 @@ yield* genfunc;
 //   ^           keyword.generator.asterisk.js
 //     ^^^^^^^   variable.other.readwrite.js
 //            ^  punctuation.terminator.statement.js
+
+// >> only:source.js.jsx

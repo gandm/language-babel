@@ -2088,3 +2088,5 @@ declare class Promise<R> {
 //                                   ^ ^   punctuation.flowtype
 }
 // <- punctuation.section.class.end.js
+
+// >> only:source.js.jsx

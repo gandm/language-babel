@@ -312,3 +312,5 @@ class Y {}
 //    ^     entity.name.class.js
 //      ^   punctuation.section.class.begin.js
 //       ^  punctuation.section.class.end.js
+
+// >> only:source.js.jsx

@@ -2290,4 +2290,4 @@ class C extends B { "constructor"(){ super(); } }
 //                                          ^      punctuation.terminator.statement.js
 //                                              ^  punctuation.section.class.end.js
 
-// >> source.js.jsx
+// >> only:source.js.jsx

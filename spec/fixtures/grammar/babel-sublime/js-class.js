@@ -134,3 +134,5 @@ class MyClass {
 //                     ^^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
+
+// >> only:source.js.jsx

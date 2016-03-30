@@ -29,3 +29,5 @@ var node = Relay.QL` node(123) {${Relay.QL` User { address { ${fragment},}, }` }
 //                                                                     ^       ^      punctuation.quasi.element.end.js
 //                                                                           ^    ^   punctuation.definition.quasi.end.js
 //                                                                                 ^  punctuation.terminator.statement.js
+
+// >> only:source.js.jsx
