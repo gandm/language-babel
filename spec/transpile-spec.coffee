@@ -15,8 +15,6 @@ LB = 'language-babel'
 PU = '/dir199a99231'  # unlikely directory name UNIX
 PW = 'C:\\dir199a99231' # unlikely directory name windows
 
-jasmine.getEnv().defaultTimeoutInterval = 15000
-
 describe 'language-babel', ->
   lb = null
   config =  {}
@@ -331,7 +329,3 @@ describe 'language-babel', ->
           writeFileStub.callCount
         runs ->
           expect(writeFileName).to.equal(targetFile)
-
-  # Add the grammar test fixtures
-  grammarTest path.join(__dirname, 'fixtures/grammar/syntax_test_babel_jsx.js')
-  grammarTest path.join(__dirname, 'fixtures/grammar/syntax_test_babel_flow.js')
