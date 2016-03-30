@@ -460,9 +460,8 @@
         },
         {
           "name": "comment.line.double-slash.js",
-          "begin": "\\s*(//)",
-          "end": "\\s*$",
-          "beginCaptures": {
+          "match": "\\s*(//).*$\\n?",
+          "captures": {
             "1": { "name": "punctuation.definition.comment.js" }
           }
         },
