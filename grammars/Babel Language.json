@@ -1046,19 +1046,7 @@
     "literal-number": {
       "patterns": [
         {
-          "match": "\\s*+((?i)(?:\\B[-+]|\\b)0x[0-9a-f]*\\.(\\B|\\b[0-9]+))",
-          "captures": {
-            "1": { "name": "invalid.illegal.numeric.hex.js" }
-          }
-        },
-        {
-          "match": "\\s*+((?:\\B[-+]|\\b)0[0-9]+\\.(\\B|\\b[0-9]+))",
-          "captures": {
-            "1": { "name": "invalid.illegal.numeric.octal.js" }
-          }
-        },
-        {
-          "match": "\\s*+((?:\\B[-+])?(?:\\b0b[0-1]*|\\b0o[0-7]*|\\b0x[0-9a-f]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)(e[-+]?[0-9]+)?))",
+          "match": "\\s*+((?:\\B[-+])?(?:\\b0[bB][0-1]*|\\b0[oO][0-7]*|\\b0[xX][0-9a-fA-F]*|(\\B\\.[0-9]+|\\b[0-9]+(\\.[0-9]*)?)([eE][-+]?[0-9]+)?))",
           "captures": {
             "1": { "name": "constant.numeric.js" }
           }

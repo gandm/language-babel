@@ -430,27 +430,23 @@ null; true; false;
 0e0; 0E0; 0.e0; 0.00e+0; .00e-0;
 // <- constant.numeric.js
  // <- constant.numeric.js
-//^  ^    ^^^^  ^^^^^^^  ^^^^^^   constant.numeric.js
+//^  ^^^  ^^^^  ^^^^^^^  ^^^^^^   constant.numeric.js
 // ^    ^     ^        ^       ^  punctuation.terminator.statement.js
-//    ^^                          variable.other.constant.js
 0x0; 0X0; 0x0123456789abcdefABCDEF;
 // <- constant.numeric.js
  // <- constant.numeric.js
-//^  ^    ^^^^^^^^^^^^^^^^^^         constant.numeric.js
+//^  ^^^  ^^^^^^^^^^^^^^^^^^^^^^^^   constant.numeric.js
 // ^    ^                         ^  punctuation.terminator.statement.js
-//    ^^                    ^^^^^^   variable.other.constant.js
 0b0; 0B0; 0b01; 0b10; 0b10101010;
 // <- constant.numeric.js
  // <- constant.numeric.js
-//^  ^    ^^^^  ^^^^  ^^^^^^^^^^   constant.numeric.js
+//^  ^^^  ^^^^  ^^^^  ^^^^^^^^^^   constant.numeric.js
 // ^    ^     ^     ^           ^  punctuation.terminator.statement.js
-//    ^^                           variable.other.constant.js
 0o0; 0O0; 0o01234567;
 // <- constant.numeric.js
  // <- constant.numeric.js
-//^  ^    ^^^^^^^^^^   constant.numeric.js
+//^  ^^^  ^^^^^^^^^^   constant.numeric.js
 // ^    ^           ^  punctuation.terminator.statement.js
-//    ^^               variable.other.constant.js
 2e308;
 // <- constant.numeric.js
  // <- constant.numeric.js
