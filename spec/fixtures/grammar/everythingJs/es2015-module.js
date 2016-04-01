@@ -548,17 +548,15 @@ null; true; false;
 //             ^^             meta.assertion.negative-look-ahead.regexp
 //               ^^^^^^^      meta.group.regexp
 //                ^^          punctuation.definition.group.capture.regexp
-//                   ^        constant.other.character-class.escape.backslash.regexp
 /a.\f\n\r\t\v\0\[\-\/\\\x00\u0000\uD834\uDF06/; /\u{00000001d306}/u; /\d\D\s\S\w\W/;
 // <- string.regexp.js punctuation.definition.string.begin.js
  // <- string.regexp.js
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^   string.regexp.js
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^   string.regexp.js
 //                                              ^                    ^                punctuation.definition.string.begin.js
-//^                                                                   ^^^^^^^^^^^^    constant.other.character-class.escape.backslash.regexp
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    ^^                                   constant.character.escape.backslash.regexp
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^^     ^^^^^^^^^^^^    constant.character.escape.backslash.regexp
 //                                           ^                   ^                ^   punctuation.definition.string.end.js
 //                                            ^                    ^               ^  punctuation.terminator.statement.js
-//                                                                ^                   variable.other.readwrite.js
+//                                                                ^                   keyword.other.js
 /\ca\cb\cc\cd\ce\cf\cg\ch\ci\cj\ck\cl\cm\cn\co\cp\cq\cr\cs\ct\cu\cv\cw\cx\cy\cz/;
 // <- string.regexp.js punctuation.definition.string.begin.js
  // <- string.regexp.js constant.character.escape.backslash.regexp
@@ -580,34 +578,34 @@ null; true; false;
 //        ^           ^           punctuation.definition.string.begin.js
 //^^^^^    ^^^^^^^^    ^^^^^^^    constant.other.character-class.set.regexp
 //    ^    ^      ^    ^     ^    punctuation.definition.character-class.regexp
+//^^^          ^^^                constant.other.character-class.range.regexp
+//^ ^        ^^^ ^       ^^^^     constant.character.escape.backslash.regexp
+//^ ^          ^ ^                constant.character.regexp
+// ^            ^                 punctuation.definition.range.regexp
 //     ^           ^          ^   punctuation.definition.string.end.js
 //      ^           ^          ^  punctuation.terminator.statement.js
 //          ^                     keyword.operator.negation.regexp
-//           ^^^^        ^^^^     constant.character.escape.backslash.regexp
-/./i; /./g; /./m; /./igm;
+/./i; /./g; /./m; /./u; /./y; /./gimyu;
 // <- string.regexp.js punctuation.definition.string.begin.js
- // <- string.regexp.js constant.other.character-class.escape.backslash.regexp
-//^^  ^^^^  ^^^^  ^^^^^^   string.regexp.js
-//    ^     ^     ^        punctuation.definition.string.begin.js
-//     ^     ^     ^       constant.other.character-class.escape.backslash.regexp
-//^     ^     ^     ^      punctuation.definition.string.end.js
-// ^     ^     ^     ^^^   keyword.other.js
-//  ^     ^     ^       ^  punctuation.terminator.statement.js
+ // <- string.regexp.js
+//^^  ^^^^  ^^^^  ^^^^  ^^^^  ^^^^^^^^   string.regexp.js
+//    ^     ^     ^     ^     ^          punctuation.definition.string.begin.js
+//^     ^     ^     ^     ^     ^        punctuation.definition.string.end.js
+// ^     ^     ^     ^     ^     ^^^^^   keyword.other.js
+//  ^     ^     ^     ^     ^         ^  punctuation.terminator.statement.js
 /.*/; /.*?/; /.+/; /.+?/; /.?/; /.??/;
 // <- string.regexp.js punctuation.definition.string.begin.js
- // <- string.regexp.js constant.other.character-class.escape.backslash.regexp
+ // <- string.regexp.js
 //^^  ^^^^^  ^^^^  ^^^^^  ^^^^  ^^^^^   string.regexp.js
 //    ^      ^     ^      ^     ^       punctuation.definition.string.begin.js
-//     ^      ^     ^      ^     ^      constant.other.character-class.escape.backslash.regexp
 //^     ^^     ^     ^^     ^     ^^    keyword.operator.quantifier.regexp
 // ^      ^     ^      ^     ^      ^   punctuation.definition.string.end.js
 //  ^      ^     ^      ^     ^      ^  punctuation.terminator.statement.js
 /.{0}/; /.{0,}/; /.{0,0}/;
 // <- string.regexp.js punctuation.definition.string.begin.js
- // <- string.regexp.js constant.other.character-class.escape.backslash.regexp
+ // <- string.regexp.js
 //^^^^  ^^^^^^^  ^^^^^^^^   string.regexp.js
 //      ^        ^          punctuation.definition.string.begin.js
-//       ^        ^         constant.other.character-class.escape.backslash.regexp
 //^^^     ^^^^     ^^^^^    keyword.operator.quantifier.regexp
 //   ^        ^         ^   punctuation.definition.string.end.js
 //    ^        ^         ^  punctuation.terminator.statement.js
