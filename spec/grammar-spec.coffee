@@ -8,6 +8,9 @@ describe 'Grammar', ->
     waitsForPromise ->
       atom.packages.activatePackage(LB)
 
+  # flow declaration file
+  grammarTest path.join(__dirname, 'fixtures/grammar/flow/react.js')
+
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-class.js')
