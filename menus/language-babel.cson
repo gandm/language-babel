@@ -1,5 +1,0 @@
-'context-menu':
-  '.tree-view .directory > .header > .name': [
-    {label: 'Babel Transpile', command: 'language-babel:transpile-directory'}
-    {'type': 'separator'}
-  ]

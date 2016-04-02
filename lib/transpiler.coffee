@@ -36,7 +36,14 @@ class Transpiler
     @transpileErrorNotifications = {}
     @deprecateConfig()
     @disposables = new CompositeDisposable()
-    @disposables.add atom.commands.add '.tree-view .directory > .header > .name', 'language-babel:transpile-directory', @commandTranspileDirectory
+    if @getConfig().transpileOnSave or @getConfig().allowLocalOverride
+      @disposables.add atom.contextMenu.add {
+        '.tree-view .directory > .header > .name': [
+          {label: 'Babel Transpile', command: 'language-babel:transpile-directory'}
+          {'type': 'separator'}
+        ]
+      }
+      @disposables.add atom.commands.add '.tree-view .directory > .header > .name', 'language-babel:transpile-directory', @commandTranspileDirectory
 
   # method used by source-preview to see transpiled code
   transform: (code, {filePath, sourceMap}) ->

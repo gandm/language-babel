@@ -55,6 +55,7 @@ module.exports =
         delete @textEditors[id].autoIndent
       disposeable.dispose()
     @transpiler.stopAllTranspilerTask()
+    @transpiler.disposables.dispose()
 
   JSXCompleteProvider: ->
     autoCompleteJSX
