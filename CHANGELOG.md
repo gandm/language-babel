@@ -1,6 +1,13 @@
+#### 2.17.0
+  - Add file tree `Babel Transpile` context menu. [Enhancement Request #160](https://github.com/gandm/language-babel/issues/160)
+  - Add `.es` as grammar detected file type.
+  - Grammar support for RegEx `u` flags.
+  - Fix to allow uppercase literals in 0X,0E,0B,0O expressions.
+  - Scope arrow symbol `=>` when unparsed. See [Issue #149](https://github.com/gandm/language-babel/issues/149)
+
 #### 2.16.0
   - Refactor ::indentRow
-  
+
 #### 2.15.8
   - Fix autoIndentJSX for Ternary expressions and other issues.
 
