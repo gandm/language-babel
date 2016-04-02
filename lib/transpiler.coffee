@@ -1,4 +1,4 @@
-{Task} = require 'atom'
+{Task, CompositeDisposable } = require 'atom'
 fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require '../node_modules/path-is-inside'
@@ -35,6 +35,8 @@ class Transpiler
     @babelTransformerPath = require.resolve './transpiler-task'
     @transpileErrorNotifications = {}
     @deprecateConfig()
+    @disposables = new CompositeDisposable()
+    @disposables.add atom.commands.add '.tree-view .directory > .header > .name', 'language-babel:transpile-directory', @commandTranspileDirectory
 
   # method used by source-preview to see transpiled code
   transform: (code, {filePath, sourceMap}) ->
@@ -71,20 +73,26 @@ class Transpiler
           msgRet.sourceMap = msgRet.map
           resolve(msgRet)
 
-  # transpile sourceFile edited by the optional textEditor
-  transpile: (sourceFile, textEditor) ->
-    config = @getConfig()
-    pathTo = @getPaths sourceFile, config
+  # called by command
+  commandTranspileDirectory: ({target}) =>
+    @transpileDirectory target.dataset.path
 
-    if config.allowLocalOverride
-      if not @jsonSchema?
-        @jsonSchema = (require '../node_modules/jjv')() # use jjv as it runs without CSP issues
-        @jsonSchema.addSchema 'localConfig', languagebabelSchema
-      localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
-      # merge local configs with global. local wins
-      @merge config, localConfig
-      # recalc paths
-      pathTo = @getPaths sourceFile, config
+  # transpile all files in a directory
+  transpileDirectory: (directory) ->
+    fs.readdir directory, (err,files) =>
+      if not err?
+        files.map (file) =>
+          return if /\.min\.[a-z]+$/.test file # no minimized files
+          if /\.(js|jsx|es|es6|babel)$/.test file # only js
+            @transpile file, null, @getConfigAndPathTo path.join(directory, file)
+
+  # transpile sourceFile edited by the optional textEditor
+  transpile: (sourceFile, textEditor, configAndPathTo) ->
+    # get config
+    if configAndPathTo?
+      { config, pathTo } = configAndPathTo
+    else
+      {config, pathTo } = @getConfigAndPathTo(sourceFile)
 
     return if config.transpileOnSave isnt true
 
@@ -245,6 +253,22 @@ class Transpiler
     babelOptions =
       sourceMaps: config.createMap
       code: true
+
+  #get configuration and paths
+  getConfigAndPathTo: (sourceFile) ->
+    config = @getConfig()
+    pathTo = @getPaths sourceFile, config
+
+    if config.allowLocalOverride
+      if not @jsonSchema?
+        @jsonSchema = (require '../node_modules/jjv')() # use jjv as it runs without CSP issues
+        @jsonSchema.addSchema 'localConfig', languagebabelSchema
+      localConfig = @getLocalConfig pathTo.sourceFileDir, pathTo.projectPath, {}
+      # merge local configs with global. local wins
+      @merge config, localConfig
+      # recalc paths
+      pathTo = @getPaths sourceFile, config
+    return { config, pathTo }
 
   # get global configuration for language-babel
   getConfig: -> atom.config.get('language-babel')

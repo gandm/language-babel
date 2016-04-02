@@ -329,3 +329,16 @@ describe 'language-babel', ->
           writeFileStub.callCount
         runs ->
           expect(writeFileName).to.equal(targetFile)
+
+    describe 'When a directory is compiled', ->
+      it 'transpiles the js,jsx,es,es6,babel files but ignores minified files', ->
+        atom.project.setPaths([__dirname])
+        config.allowLocalOverride = true
+
+        spyOn(lb, 'getConfig').andCallFake -> config
+        sourceDir = path.resolve(__dirname, 'fixtures/projectRoot/src/')
+        lb.transpileDirectory(sourceDir)
+        waitsFor ->
+          writeFileStub.callCount >= 5
+        runs ->
+          expect(writeFileStub.callCount).to.equal(5)
