@@ -1469,7 +1469,7 @@
       "comment": "Avoid < operator expressions as best we can using Zertosh's regex",
       "patterns": [
         {
-          "begin": "(?<=\\(|\\{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|^)\\s*+(?=<[_$a-zA-Z])",
+          "begin": "(?<=\\(|\\{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|\\Wdefault|^)\\s*+(?=<[_$a-zA-Z])",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "patterns": [

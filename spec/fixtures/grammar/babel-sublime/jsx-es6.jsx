@@ -25,9 +25,16 @@ import { InputsMixin } from './Forms';
 //                                  ^   punctuation.definition.string.end.js
 //                                   ^  punctuation.terminator.statement.js
 
-// TODO fix the line below
-// export default <div><span /></div>
-
+export default <div><span /></div>
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^ ^^^^^^^                      keyword.control.module.js
+//             ^^^^^^^^^^ ^^^^^^^^  meta.tag.jsx
+//             ^   ^^     ^^^^   ^  punctuation.definition.tag.jsx
+//              ^^^  ^^^^           entity.name.tag.open.jsx
+//                 ^                JSXStartTagEnd
+//                          ^^      JSXEndTagStart
+//                            ^^^   entity.name.tag.close.jsx
 
 
 export default React.createClass({
