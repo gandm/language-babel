@@ -421,7 +421,7 @@
         },
         {
           "comment": "additional jsdoc keywords",
-          "match": "(?<!\\w)@(access|also|arg|arguments|augments|borrows|callback|classdesc|constant|const|constructs|copyright|default|defaultvalue|desc|description|emits|exception|exports|external|file|fileoverview|function|func|global|host|implements|inner|instance|interface|kind|lends|license|listens|memberof|mixes|mixin|module|name|namsepace|overview|prop|public|returns|see|summary|this|todo|tutorial|typedef|undocumented|variation|version|virtual)\\b",
+          "match": "(?<!\\w)@(access|also|arg|arguments|augments|borrows|borrowsThis|callback|callbackDocument|classdesc|constant|const|constructs|copyright|default|defaultvalue|desc|description|emits|exception|exports|external|file|fileoverview|function|func|global|host|implements|inner|instance|interface|kind|lends|license|listens|link|linkcode|linkplain|memberof|mixes|mixin|module|name|namespace|overview|prop|public|returns|see|summary|this|todo|tutorial|typedef|undocumented|variation|version|virtual)\\b",
           "name": "storage.type.class.jsdoc"
         },
         {
@@ -462,8 +462,9 @@
         },
         {
           "name": "comment.line.double-slash.js",
-          "match": "\\s*+(//).*$\\n?",
-          "captures": {
+          "begin": "\\s*+(//)",
+          "end": "\\s*$",
+          "beginCaptures": {
             "1": { "name": "punctuation.definition.comment.js" }
           }
         },

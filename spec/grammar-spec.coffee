@@ -1,12 +1,12 @@
 path = require 'path'
 grammarTest = require 'atom-grammar-test'
 
-LB = 'language-babel'
-
 describe 'Grammar', ->
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage(LB)
+      atom.packages.activatePackage('language-babel')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-todo')
 
   # flow declaration file
   grammarTest path.join(__dirname, 'fixtures/grammar/flow/react.js')
@@ -31,3 +31,6 @@ describe 'Grammar', ->
 
   # es2015 check
   grammarTest path.join(__dirname, 'fixtures/grammar/everythingJs/es2015-module.js')
+
+  # todo,jsdoc,...
+  grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
