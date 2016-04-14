@@ -1635,6 +1635,7 @@
     },
     "flowtype": {
       "patterns": [
+        { "include": "#comments" },
         { "include": "#flowtype-polymorphs" },
         { "include": "#flowtype-bracketed-parameters" },
         { "include": "#flowtype-return" }

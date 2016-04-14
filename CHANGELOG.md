@@ -1,7 +1,10 @@
+### 2.17.2
+  - [Fixes #164](https://github.com/gandm/language-babel/issues/164) flow comment syntax breaks highlighting
+
 ### 2.17.1
   - Fix regression: single line comment not including language-todo
   - Fix export default <jsx></jsx> in grammar
-  
+
 #### 2.17.0
   - Add file tree `Babel Transpile` context menu. [Enhancement Request #160](https://github.com/gandm/language-babel/issues/160)
   - Add `.es` as grammar detected file type.
