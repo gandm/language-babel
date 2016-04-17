@@ -19,10 +19,8 @@ for (var i=1; i<table.rows.length; i++) {
 //                    ^^^^ ^^^^^^          meta.property.object.js
 //                    ^^^^ ^^^^^^          variable.other.property.js
 //                                  ^^     keyword.operator.arithmetic.js
-//                                      ^  meta.group.braces.curly
 //                                      ^  meta.brace.curly.js
   var row = table.rows[i]
-//^^^ ^^^ ^ ^^^^^^^^^^^^^  meta.group.braces.curly
 //^^^                      storage.type.js
 //    ^^^              ^   variable.other.readwrite.js
 //        ^                keyword.operator.assignment.js
@@ -30,16 +28,13 @@ for (var i=1; i<table.rows.length; i++) {
 //               ^         keyword.operator.accessor.js
 //                ^^^^     meta.property.object.js
 //                ^^^^     variable.other.property.js
-//                    ^^^  meta.group.braces.square
 //                    ^ ^  meta.brace.square.js
   var data = {}
-//^^^ ^^^^ ^ ^^  meta.group.braces.curly
 //^^^            storage.type.js
 //    ^^^^       variable.other.readwrite.js
 //         ^     keyword.operator.assignment.js
 //           ^^  meta.brace.curly.js
   for (var j=0; j<row.cells.length; j++) {
-//^^^ ^^^^ ^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^ ^  meta.group.braces.curly
 //^^^ ^^^^ ^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^    meta.for.js
 //^^^                                       keyword.control.loop.js
 //    ^                                ^    meta.brace.round.js
@@ -56,9 +51,7 @@ for (var i=1; i<table.rows.length; i++) {
 //                                   ^^     keyword.operator.arithmetic.js
 //                                       ^  meta.brace.curly.js
     data[top[j]] = row.cells[j].innerHTML;
-//  ^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^^^^^^^^^^  meta.group.braces.curly
 //  ^^^^ ^^^       ^^^                      variable.other.object.js
-//      ^^^^^^^^            ^^^             meta.group.braces.square
 //      ^   ^ ^^            ^ ^             meta.brace.square.js
 //           ^               ^              variable.other.readwrite.js
 //               ^                          keyword.operator.assignment.js
@@ -67,22 +60,28 @@ for (var i=1; i<table.rows.length; i++) {
 //                     ^^^^^    ^^^^^^^^^   variable.other.property.js
 //                                       ^  punctuation.terminator.statement.js
   }
-//^  meta.group.braces.curly
 //^  meta.brace.curly.js
   data.push(data)
-//^^^^^^^^^^^^^^^  meta.group.braces.curly
 //^^^^             variable.other.object.js
 //    ^            keyword.operator.accessor.js
 //     ^^^^        support.function.mutator.js
-//         ^^^^^^  meta.group.braces.round
 //         ^    ^  meta.brace.round.js
 //          ^^^^   variable.other.readwrite.js
 }
-// <- meta.group.braces.curly meta.brace.curly.js
+// <- meta.brace.curly.js
 
 // comments between attributes,
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^^^ ^^^^^^^ ^^^^^^^^^^^  comment.line.double-slash.js
 // namespaced components, and
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^^^^^ ^^^^^^^^^^^ ^^^  comment.line.double-slash.js
 // non-alpha chars in tag/attribute names
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^^^^ ^^^^^ ^^ ^^^^^^^^^^^^^ ^^^^^  comment.line.double-slash.js
 
 <div /* comment */ onClick={this.onClick}>
 // <- meta.tag.jsx punctuation.definition.tag.jsx

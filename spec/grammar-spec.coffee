@@ -8,9 +8,6 @@ describe 'Grammar', ->
     waitsForPromise ->
       atom.packages.activatePackage('language-todo')
 
-  # flow declaration file
-  grammarTest path.join(__dirname, 'fixtures/grammar/flow/react.js')
-
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-class.js')
@@ -23,17 +20,20 @@ describe 'Grammar', ->
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/jsx-full-react-class.jsx')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/jsx-text.jsx')
 
-  # grammar test large files
+  # flow declaration file
+  grammarTest path.join(__dirname, 'fixtures/grammar/flow/react.js')
+  
+  # # grammar test large files
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/browser-polyfill.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/jquery-2.1.4.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/bundle.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/jquery-2.1.4.min.js')
-
-  # es2015 check
+  #
+  # # es2015 check
   grammarTest path.join(__dirname, 'fixtures/grammar/everythingJs/es2015-module.js')
-
-  # todo,jsdoc,...
+  #
+  # # todo,jsdoc,...
   grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
-
-  # issues raised
+  #
+  # # issues raised
   grammarTest path.join(__dirname, 'fixtures/grammar/issues.js')

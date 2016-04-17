@@ -1,3 +1,6 @@
+### 2.17.3
+  - [Fixes #166](https://github.com/gandm/language-babel/issues/166) Grammar for `async`, `get` and `set` on shorthand object functions
+
 ### 2.17.2
   - [Fixes #164](https://github.com/gandm/language-babel/issues/164) flow comment syntax breaks highlighting
 

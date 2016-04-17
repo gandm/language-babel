@@ -49,6 +49,7 @@
         { "include": "#literal-string" },
         { "include": "#literal-language-constant" },
         { "include": "#literal-language-variable" },
+        { "include": "#literal-object"},
         { "include": "#literal-module" },
         { "include": "#literal-class" },
         { "include": "#literal-constructor" },
@@ -346,7 +347,6 @@
         {
           "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
           "comment": "try to avoid ternary operators which have a '? some chars :'",
-          "name": "meta.group.braces.round",
           "begin": "(^|:|;|=|(?<=:|;|=))\\s*+(\\((?=((\"|').*?(?<=[^\\\\])\\k<-1>|[^?:])*(:|\\?\\s*+:)))",
           "end": "\\s*\\)",
           "beginCaptures": {
@@ -361,7 +361,6 @@
           ]
         },
         {
-          "name": "meta.group.braces.round",
           "begin": "\\s*+\\(",
           "end": "\\s*\\)",
           "endCaptures": {
@@ -379,7 +378,6 @@
     "square-brackets": {
       "patterns": [
         {
-          "name": "meta.group.braces.square",
           "begin": "\\s*+\\[",
           "end": "\\s*\\]",
           "endCaptures": {
@@ -397,7 +395,6 @@
     "curly-brackets": {
       "patterns": [
         {
-          "name": "meta.group.braces.curly",
           "begin": "\\s*+\\{",
           "end": "\\s*\\}",
           "endCaptures": {
@@ -703,6 +700,31 @@
         }
       ]
     },
+    "literal-object": {
+      "patterns": [
+        { "begin": "\\s*+(?:(=)\\s*|\\b(default)|(return)\\b)\\s*({)",
+          "end": "\\s*+(})",
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.assignment.js" },
+            "2": { "name": "keyword.control.module.js" },
+            "3": { "name": "keyword.control.flow.js" },
+            "4": { "name": "meta.brace.curly.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "meta.brace.curly.js" }
+          },
+          "patterns": [
+            { "include": "#literal-method" },
+            { "include": "#literal-function-labels" },
+            { "include": "#literal-arrow-function-labels" },
+            { "include": "#literal-labels" },
+            { "include": "#literal-keywords" },
+            { "include": "#expression" },
+            { "include": "#literal-punctuation" }
+          ]
+        }
+      ]
+    },
     "literal-operators": {
       "patterns": [
         {
@@ -766,10 +788,11 @@
       "patterns": [
         {
           "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*+([_$a-zA-Z][$\\w]*)\\s*+(?=\\(\\s*+\\))",
+          "begin": "\\s*+((\\bnew\\b)*)\\s*+([_$a-zA-Z][$\\w]*)\\s*+(?=\\(\\s*+\\))",
           "end": "\\s*(?<=\\))",
           "beginCaptures": {
-            "1": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.js" },
+            "3": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#flowtype-bracketed-parameters" }
@@ -777,9 +800,12 @@
         },
         {
           "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+\\(\\s*+\\))",
+          "begin": "\\s*+((\\bnew\\b)*)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+\\(\\s*+\\))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "2": { "name": "keyword.operator.js" }
+          },
           "patterns": [
             { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
@@ -787,11 +813,12 @@
         },
         {
           "name": "meta.function-call.with-arguments.js",
-          "begin": "\\s*+([_$a-zA-Z][$\\w]*)\\s*+(?=\\()",
+          "begin": "\\s*+((\\bnew\\b)*)\\s*+([_$a-zA-Z][$\\w]*)\\s*+(?=\\()",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "1": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.js"},
+            "3": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#flowtype-bracketed-parameters" }
@@ -799,9 +826,12 @@
         },
         {
           "name": "meta.function-call.without-arguments.js",
-          "begin": "\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+\\()",
+          "begin": "\\s*+((\\bnew\\b)*)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+\\()",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "2": { "name": "keyword.operator.js" }
+          },
           "patterns": [
             { "include": "#flowtype-parse-array"},
             { "include": "#flowtype-bracketed-parameters" }
@@ -1774,6 +1804,7 @@
             { "include": "#flowtype-parse-types" }
           ]
         },
+        { "include": "#literal-object" },
         {
           "comment": "some form of default assignment for func args",
           "begin": "\\s*+=(?!>|=|==)",
@@ -1782,6 +1813,7 @@
             "0": { "name": "keyword.operator.assignment.js" }
           },
           "patterns": [
+            { "include": "#literal-labels" },
             { "include": "#expression" }
           ]
         }

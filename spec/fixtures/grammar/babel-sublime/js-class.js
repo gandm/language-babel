@@ -1,4 +1,5 @@
 // SYNTAX TEST "source.js.jsx"
+
 class MyClass {
 // <- meta.class.js storage.type.class.js
  // <- meta.class.js storage.type.class.js
@@ -12,7 +13,6 @@ class MyClass {
 //^^^^^^^^^^^^^       entity.name.function.method.js
 //             ^      punctuation.definition.parameters.begin.js
 //              ^     punctuation.definition.parameters.end.js
-//                ^^  meta.group.braces.curly
 //                ^^  meta.brace.curly.js
   *generatorMethod() {}
 //^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -21,7 +21,6 @@ class MyClass {
 // ^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                ^      punctuation.definition.parameters.begin.js
 //                 ^     punctuation.definition.parameters.end.js
-//                   ^^  meta.group.braces.curly
 //                   ^^  meta.brace.curly.js
   static staticRegularMethod() {}
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -30,7 +29,6 @@ class MyClass {
 //       ^^^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                          ^      punctuation.definition.parameters.begin.js
 //                           ^     punctuation.definition.parameters.end.js
-//                             ^^  meta.group.braces.curly
 //                             ^^  meta.brace.curly.js
   static get staticGetterMethod() {}
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -40,7 +38,6 @@ class MyClass {
 //           ^^^^^^^^^^^^^^^^^^       entity.name.accessor.js
 //                             ^      punctuation.definition.parameters.begin.js
 //                              ^     punctuation.definition.parameters.end.js
-//                                ^^  meta.group.braces.curly
 //                                ^^  meta.brace.curly.js
   static set staticSetterMethod(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -51,7 +48,6 @@ class MyClass {
 //                             ^         punctuation.definition.parameters.begin.js
 //                              ^^^      variable.other.readwrite.js
 //                                 ^     punctuation.definition.parameters.end.js
-//                                   ^^  meta.group.braces.curly
 //                                   ^^  meta.brace.curly.js
   static *staticGeneratorMethod() {}
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -61,7 +57,6 @@ class MyClass {
 //        ^^^^^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                             ^      punctuation.definition.parameters.begin.js
 //                              ^     punctuation.definition.parameters.end.js
-//                                ^^  meta.group.braces.curly
 //                                ^^  meta.brace.curly.js
   static async staticAsyncMethod() {}
 //^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -71,7 +66,6 @@ class MyClass {
 //             ^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                              ^      punctuation.definition.parameters.begin.js
 //                               ^     punctuation.definition.parameters.end.js
-//                                 ^^  meta.group.braces.curly
 //                                 ^^  meta.brace.curly.js
   async asyncMethod() {}
 //^^^^^ ^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -80,7 +74,6 @@ class MyClass {
 //      ^^^^^^^^^^^       entity.name.function.method.js
 //                 ^      punctuation.definition.parameters.begin.js
 //                  ^     punctuation.definition.parameters.end.js
-//                    ^^  meta.group.braces.curly
 //                    ^^  meta.brace.curly.js
   [computedMethod()]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -91,7 +84,6 @@ class MyClass {
 //               ^  ^      punctuation.definition.parameters.begin.js
 //                ^  ^     punctuation.definition.parameters.end.js
 //                 ^       meta.brace.square.end.flowtype
-//                     ^^  meta.group.braces.curly
 //                     ^^  meta.brace.curly.js
   ["computedString"]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -103,7 +95,6 @@ class MyClass {
 //                 ^       meta.brace.square.end.flowtype
 //                  ^      punctuation.definition.parameters.begin.js
 //                   ^     punctuation.definition.parameters.end.js
-//                     ^^  meta.group.braces.curly
 //                     ^^  meta.brace.curly.js
   ["computed" + "String"]() {}
 //^^^^^^^^^^^ ^ ^^^^^^^^^^^ ^^  meta.class.body.js
@@ -116,7 +107,6 @@ class MyClass {
 //                      ^       meta.brace.square.end.flowtype
 //                       ^      punctuation.definition.parameters.begin.js
 //                        ^     punctuation.definition.parameters.end.js
-//                          ^^  meta.group.braces.curly
 //                          ^^  meta.brace.curly.js
   *[Symbol.iterator]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
@@ -130,9 +120,9 @@ class MyClass {
 //                 ^       meta.brace.square.end.flowtype
 //                  ^      punctuation.definition.parameters.begin.js
 //                   ^     punctuation.definition.parameters.end.js
-//                     ^^  meta.group.braces.curly
 //                     ^^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
 
-// >> only:source.js.jsx
+
+// >> only:(source.js.jsx)

@@ -43,7 +43,6 @@ function foo(): any { return 42; }
 //           ^                      punctuation.definition.parameters.end.js
 //            ^                     punctuation.type.flowtype
 //              ^^^                 support.type.builtin.primitive.flowtype
-//                  ^ ^^^^^^ ^^^ ^  meta.group.braces.curly
 //                  ^            ^  meta.brace.curly.js
 //                    ^^^^^^        keyword.control.flow.js
 //                           ^^     constant.numeric.js
@@ -72,7 +71,6 @@ var a: Array<number> = [42];
 //          ^      ^          punctuation.flowtype
 //           ^^^^^^           support.type.builtin.primitive.flowtype
 //                   ^        keyword.operator.assignment.js
-//                     ^^^^   meta.group.braces.square
 //                     ^  ^   meta.brace.square.js
 //                      ^^    constant.numeric.js
 //                         ^  punctuation.terminator.statement.js
@@ -86,7 +84,6 @@ var b: Array<number> = ['some string'];
 //          ^      ^                     punctuation.flowtype
 //           ^^^^^^                      support.type.builtin.primitive.flowtype
 //                   ^                   keyword.operator.assignment.js
-//                     ^^^^^^ ^^^^^^^^   meta.group.braces.square
 //                     ^             ^   meta.brace.square.js
 //                      ^^^^^ ^^^^^^^    string.quoted.single.js
 //                      ^                punctuation.definition.string.begin.js
@@ -102,7 +99,6 @@ var c: Array<number> = [42, 'some string'];
 //          ^      ^                         punctuation.flowtype
 //           ^^^^^^                          support.type.builtin.primitive.flowtype
 //                   ^                       keyword.operator.assignment.js
-//                     ^^^^ ^^^^^ ^^^^^^^^   meta.group.braces.square
 //                     ^                 ^   meta.brace.square.js
 //                      ^^                   constant.numeric.js
 //                        ^                  meta.delimiter.comma.js
@@ -121,7 +117,6 @@ var myNumbers: Array<number> = [42];
 //                  ^      ^          punctuation.flowtype
 //                   ^^^^^^           support.type.builtin.primitive.flowtype
 //                           ^        keyword.operator.assignment.js
-//                             ^^^^   meta.group.braces.square
 //                             ^  ^   meta.brace.square.js
 //                              ^^    constant.numeric.js
 //                                 ^  punctuation.terminator.statement.js
@@ -134,7 +129,6 @@ var d: number = myNumbers[0];
 //     ^^^^^^                  support.type.builtin.primitive.flowtype
 //            ^                keyword.operator.assignment.js
 //              ^^^^^^^^^      variable.other.object.js
-//                       ^^^   meta.group.braces.square
 //                       ^ ^   meta.brace.square.js
 //                        ^    constant.numeric.js
 //                          ^  punctuation.terminator.statement.js
@@ -182,7 +176,6 @@ var a: Function = function() {};
 //                ^^^^^^^^        storage.type.function.js
 //                        ^       punctuation.definition.parameters.begin.js
 //                         ^      punctuation.definition.parameters.end.js
-//                           ^^   meta.group.braces.curly
 //                           ^^   meta.brace.curly.js
 //                             ^  punctuation.terminator.statement.js
 var b: Function = p => p;
@@ -217,10 +210,8 @@ function foo(): Function {
 //           ^              punctuation.definition.parameters.end.js
 //            ^             punctuation.type.flowtype
 //              ^^^^^^^^    support.type.builtin.class.flowtype
-//                       ^  meta.group.braces.curly
 //                       ^  meta.brace.curly.js
   return function(x: number): number { return x; }
-//^^^^^^ ^^^^^^^^^^^ ^^^^^^^^ ^^^^^^ ^ ^^^^^^ ^^ ^  meta.group.braces.curly
 //^^^^^^                               ^^^^^^       keyword.control.flow.js
 //       ^^^^^^^^^^^ ^^^^^^^^ ^^^^^^                meta.function.js
 //       ^^^^^^^^                                   storage.type.function.js
@@ -232,7 +223,7 @@ function foo(): Function {
 //                                   ^           ^  meta.brace.curly.js
 //                                             ^    punctuation.terminator.statement.js
 }
-// <- meta.group.braces.curly meta.brace.curly.js
+// <- meta.brace.curly.js
 
 var d: (str: string) => string = foo();
 // <- storage.type.js
@@ -258,7 +249,6 @@ var d: (str: string) => {str: string} = foo();
 //           ^^^^^^                             support.type.builtin.primitive.flowtype
 //                 ^                        ^   punctuation.definition.parameters.end.js
 //                   ^^                         storage.type.function.arrow.js
-//                      ^^^^^ ^^^^^^^           meta.group.braces.curly
 //                      ^           ^           meta.brace.curly.js
 //                       ^^^^                   constant.other.object.key.js
 //                       ^^^                    string.unquoted.js
@@ -339,7 +329,6 @@ function foo(): mixed { return 42; }
 //           ^                        punctuation.definition.parameters.end.js
 //            ^                       punctuation.type.flowtype
 //              ^^^^^                 support.type.builtin.primitive.flowtype
-//                    ^ ^^^^^^ ^^^ ^  meta.group.braces.curly
 //                    ^            ^  meta.brace.curly.js
 //                      ^^^^^^        keyword.control.flow.js
 //                             ^^     constant.numeric.js
@@ -370,7 +359,6 @@ function foo(a: string, b: number): void { }
 //              ^^^^^^     ^^^^^^   ^^^^      support.type.builtin.primitive.flowtype
 //                    ^                       meta.delimiter.comma.js
 //                               ^            punctuation.definition.parameters.end.js
-//                                       ^ ^  meta.group.braces.curly
 //                                       ^ ^  meta.brace.curly.js
 var x: boolean = someBool;
 // <- storage.type.js
@@ -415,7 +403,6 @@ class Bar {
 //            ^        ^             punctuation.type.flowtype
 //              ^^^^^^   ^^^^^^      support.type.builtin.primitive.flowtype
 //                    ^              punctuation.definition.parameters.end.js
-//                              ^ ^  meta.group.braces.curly
 //                              ^ ^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
@@ -426,7 +413,6 @@ var a = [1, 2, 3];
 //^                 storage.type.js
 //  ^               variable.other.readwrite.js
 //    ^             keyword.operator.assignment.js
-//      ^^^ ^^ ^^   meta.group.braces.square
 //      ^       ^   meta.brace.square.js
 //       ^  ^  ^    constant.numeric.js
 //        ^  ^      meta.delimiter.comma.js
@@ -445,13 +431,11 @@ var b: Array<number> = a.map(function(x) { return x + 1; });
 //                      ^                                     keyword.operator.accessor.js
 //                       ^^^                                  meta.function-call.method.with-arguments.js
 //                       ^^^                                  entity.name.function.js
-//                          ^^^^^^^^^^^^ ^ ^^^^^^ ^ ^ ^^ ^^   meta.group.braces.round
 //                          ^                             ^   meta.brace.round.js
 //                           ^^^^^^^^^^^                      meta.function.js
 //                           ^^^^^^^^                         storage.type.function.js
 //                                   ^                        punctuation.definition.parameters.begin.js
 //                                     ^                      punctuation.definition.parameters.end.js
-//                                       ^ ^^^^^^ ^ ^ ^^ ^    meta.group.braces.curly
 //                                       ^               ^    meta.brace.curly.js
 //                                         ^^^^^^             keyword.control.flow.js
 //                                                  ^         keyword.operator.arithmetic.js
@@ -471,7 +455,6 @@ function c([b: number]) {}
 //             ^^^^^^       support.type.builtin.primitive.flowtype
 //                   ^      meta.brace.square.end.flowtype
 //                    ^     punctuation.definition.parameters.end.js
-//                      ^^  meta.group.braces.curly
 //                      ^^  meta.brace.curly.js
 
 class CA {
@@ -500,7 +483,6 @@ class CA {
 //           ^                    punctuation.definition.parameters.begin.js
 //            ^             ^     variable.other.readwrite.js
 //             ^                  punctuation.definition.parameters.end.js
-//               ^ ^^^^^^ ^ ^^ ^  meta.group.braces.curly
 //               ^             ^  meta.brace.curly.js
 //                 ^^^^           variable.language.this.js
 //                     ^          keyword.operator.accessor.js
@@ -517,7 +499,6 @@ class CA {
 //     ^        ^                       punctuation.type.flowtype
 //       ^^^^^^   ^^^^                  support.type.builtin.primitive.flowtype
 //             ^                        punctuation.definition.parameters.end.js
-//                     ^ ^^^^^^ ^ ^^ ^  meta.group.braces.curly
 //                     ^             ^  meta.brace.curly.js
 //                       ^^^^           variable.language.this.js
 //                           ^          keyword.operator.accessor.js
@@ -531,7 +512,6 @@ class CA {
 //^^^                       entity.name.function.method.js
 //   ^                      punctuation.definition.parameters.begin.js
 //    ^                     punctuation.definition.parameters.end.js
-//      ^ ^^^^^^ ^^^^^^^ ^  meta.group.braces.curly
 //      ^                ^  meta.brace.curly.js
 //        ^^^^^^            keyword.control.flow.js
 //               ^^^^       variable.language.this.js
@@ -547,7 +527,6 @@ class CA {
 //    ^                             punctuation.definition.parameters.end.js
 //     ^                            punctuation.type.flowtype
 //       ^^^^^^                     support.type.builtin.primitive.flowtype
-//              ^ ^^^^^^ ^^^^^^^ ^  meta.group.braces.curly
 //              ^                ^  meta.brace.curly.js
 //                ^^^^^^            keyword.control.flow.js
 //                       ^^^^       variable.language.this.js
@@ -564,11 +543,10 @@ class CA {
 //           ^                   ^     punctuation.definition.parameters.end.js
 //            ^                        punctuation.type.flowtype
 //              ^                      support.type.class.flowtype
-//                ^ ^^^^^^ ^^^ ^^^^ ^  meta.group.braces.curly
 //                ^                 ^  meta.brace.curly.js
 //                  ^^^^^^             keyword.control.flow.js
+//                         ^^^ ^^^     meta.function-call.without-arguments.js
 //                         ^^^         keyword.operator.js
-//                             ^^^     meta.function-call.without-arguments.js
 //                             ^       entity.name.function.js
 //                                ^    punctuation.terminator.statement.js
   [x+y+z]<U>(a, b) { return null; }
@@ -583,7 +561,6 @@ class CA {
 //          ^                        punctuation.definition.parameters.begin.js
 //            ^                      meta.delimiter.comma.js
 //               ^                   punctuation.definition.parameters.end.js
-//                 ^ ^^^^^^ ^^^^^ ^  meta.group.braces.curly
 //                 ^              ^  meta.brace.curly.js
 //                   ^^^^^^          keyword.control.flow.js
 //                          ^^^^     constant.language.null.js
@@ -599,7 +576,6 @@ class CA {
 //        ^   ^         ^              punctuation.type.flowtype
 //               ^     ^               punctuation.definition.parameters.end.js
 //                 ^^                  storage.type.function.arrow.js
-//                                ^ ^  meta.group.braces.curly
 //                                ^ ^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
@@ -628,7 +604,6 @@ class CB<X> {
 //     ^                     punctuation.type.flowtype
 //       ^                   support.type.class.flowtype
 //        ^                  punctuation.definition.parameters.end.js
-//          ^ ^^^^^^ ^ ^^ ^  meta.group.braces.curly
 //          ^             ^  meta.brace.curly.js
 //            ^^^^           variable.language.this.js
 //                ^          keyword.operator.accessor.js
@@ -644,7 +619,6 @@ class CB<X> {
 //    ^                        punctuation.definition.parameters.end.js
 //     ^                       punctuation.type.flowtype
 //       ^                     support.type.class.flowtype
-//         ^ ^^^^^^ ^^^^^^^ ^  meta.group.braces.curly
 //         ^                ^  meta.brace.curly.js
 //           ^^^^^^            keyword.control.flow.js
 //                  ^^^^       variable.language.this.js
@@ -689,11 +663,9 @@ class D extends C<number> {
 //    ^            punctuation.definition.parameters.end.js
 //     ^           punctuation.type.flowtype
 //       ^^^^^^    support.type.builtin.primitive.flowtype
-//              ^  meta.group.braces.curly
 //              ^  meta.brace.curly.js
     this.x = super.bar() + 1;
 //  ^^^^^^ ^ ^^^^^^^^^^^ ^ ^^  meta.class.body.js
-//  ^^^^^^ ^ ^^^^^^^^^^^ ^ ^^  meta.group.braces.curly
 //  ^^^^                       variable.language.this.js
 //      ^         ^            keyword.operator.accessor.js
 //       ^                     meta.property.object.js
@@ -708,7 +680,6 @@ class D extends C<number> {
 //                          ^  punctuation.terminator.statement.js
     return this.x;
 //  ^^^^^^ ^^^^^^^  meta.class.body.js
-//  ^^^^^^ ^^^^^^^  meta.group.braces.curly
 //  ^^^^^^          keyword.control.flow.js
 //         ^^^^     variable.language.this.js
 //             ^    keyword.operator.accessor.js
@@ -717,7 +688,6 @@ class D extends C<number> {
 //               ^  punctuation.terminator.statement.js
   }
 //^  meta.class.body.js
-//^  meta.group.braces.curly
 //^  meta.brace.curly.js
   static qux(): D { return new D(); }
 //^^^^^^ ^^^^^^ ^ ^ ^^^^^^ ^^^ ^^^^ ^  meta.class.body.js
@@ -728,11 +698,10 @@ class D extends C<number> {
 //           ^                   ^     punctuation.definition.parameters.end.js
 //            ^                        punctuation.type.flowtype
 //              ^                      support.type.class.flowtype
-//                ^ ^^^^^^ ^^^ ^^^^ ^  meta.group.braces.curly
 //                ^                 ^  meta.brace.curly.js
 //                  ^^^^^^             keyword.control.flow.js
+//                         ^^^ ^^^     meta.function-call.without-arguments.js
 //                         ^^^         keyword.operator.js
-//                             ^^^     meta.function-call.without-arguments.js
 //                             ^       entity.name.function.js
 //                                ^    punctuation.terminator.statement.js
 }
@@ -750,7 +719,6 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //                                  ^^^                                       support.type.class.flowtype
 //                                     ^                                      meta.brace.round.close.flowtype
 //                                       ^                                    keyword.operator.assignment.js
-//                                         ^^^ ^^^^^ ^^ ^^^^^ ^^ ^^^ ^^^^^^   meta.group.braces.curly
 //                                         ^                              ^   meta.brace.curly.js
 //                                          ^^       ^^       ^^              constant.other.object.key.js
 //                                          ^        ^        ^               string.unquoted.js
@@ -760,8 +728,8 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //                                                      ^^^^                  string.quoted.double.js
 //                                                      ^                     punctuation.definition.string.begin.js
 //                                                         ^                  punctuation.definition.string.end.js
+//                                                               ^^^ ^^^^^    meta.function-call.without-arguments.js
 //                                                               ^^^          keyword.operator.js
-//                                                                   ^^^^^    meta.function-call.without-arguments.js
 //                                                                   ^^^      entity.name.function.js
 //                                                                      ^     punctuation.definition.parameters.begin.js
 //                                                                       ^    punctuation.definition.parameters.end.js
@@ -789,7 +757,6 @@ var obj: { a: string; b?: number } = { a: "hello" };
 //                     ^                              keyword.operator.optional.parameter.flowtype
 //                               ^                    meta.brace.round.close.flowtype
 //                                 ^                  keyword.operator.assignment.js
-//                                   ^ ^^ ^^^^^^^ ^   meta.group.braces.curly
 //                                   ^            ^   meta.brace.curly.js
 //                                     ^^             constant.other.object.key.js
 //                                     ^              string.unquoted.js
@@ -811,7 +778,6 @@ function foo(x, y = false) { }
 //                ^             keyword.operator.assignment.js
 //                  ^^^^^       constant.language.boolean.false.js
 //                       ^      punctuation.definition.parameters.end.js
-//                         ^ ^  meta.group.braces.curly
 //                         ^ ^  meta.brace.curly.js
 function bar(z, ...w) { }
 // <- meta.function.js storage.type.function.js
@@ -826,7 +792,6 @@ function bar(z, ...w) { }
 //                 ^       meta.property.object.js
 //                 ^       variable.other.property.js
 //                  ^      punctuation.definition.parameters.end.js
-//                    ^ ^  meta.group.braces.curly
 //                    ^ ^  meta.brace.curly.js
 
 function foo<X>(x: X): X { return x; }
@@ -841,7 +806,6 @@ function foo<X>(x: X): X { return x; }
 //              ^                 ^     variable.other.readwrite.js
 //               ^   ^                  punctuation.type.flowtype
 //                  ^                   punctuation.definition.parameters.end.js
-//                       ^ ^^^^^^ ^^ ^  meta.group.braces.curly
 //                       ^           ^  meta.brace.curly.js
 //                         ^^^^^^       keyword.control.flow.js
 //                                 ^    punctuation.terminator.statement.js
@@ -866,7 +830,6 @@ class List<T> {
 //        ^   ^         ^              punctuation.type.flowtype
 //               ^     ^               punctuation.definition.parameters.end.js
 //                 ^^                  storage.type.function.arrow.js
-//                                ^ ^  meta.group.braces.curly
 //                                ^ ^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
@@ -919,8 +882,8 @@ var x: A | B | number | C = new C();
 //       ^   ^        ^               kewyword.operator.union.flowtype
 //             ^^^^^^                 support.type.builtin.primitive.flowtype
 //                        ^           keyword.operator.assignment.js
+//                          ^^^ ^^^   meta.function-call.without-arguments.js
 //                          ^^^       keyword.operator.js
-//                              ^^^   meta.function-call.without-arguments.js
 //                              ^     entity.name.function.js
 //                               ^    punctuation.definition.parameters.begin.js
 //                                ^   punctuation.definition.parameters.end.js
@@ -956,7 +919,6 @@ function foo(a: ?string, b: any): Array<number> {}
 //                             ^                    punctuation.definition.parameters.end.js
 //                                ^^^^^             support.type.builtin.class.flowtype
 //                                     ^      ^     punctuation.flowtype
-//                                              ^^  meta.group.braces.curly
 //                                              ^^  meta.brace.curly.js
 
 function fooStillBad(obj: { x: number }): (str: string) => {a: string} {
@@ -974,17 +936,14 @@ function fooStillBad(obj: { x: number }): (str: string) => {a: string} {
 //                                    ^                                   meta.brace.round.close.flowtype
 //                                     ^              ^                   punctuation.definition.parameters.end.js
 //                                                      ^^                storage.type.function.arrow.js
-//                                                         ^^^ ^^^^^^^ ^  meta.group.braces.curly
 //                                                         ^         ^ ^  meta.brace.curly.js
 //                                                          ^^            constant.other.object.key.js
 //                                                          ^             string.unquoted.js
 //                                                           ^            punctuation.separator.key-value.js
   console.log(Math.abs(obj.x));
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.group.braces.curly
 //^^^^^^^                        support.type.object.console.js
 //       ^        ^       ^      keyword.operator.accessor.js
 //        ^^^                    support.function.console.js
-//           ^^^^^^^^^^^^^^^^^   meta.group.braces.round
 //           ^        ^     ^^   meta.brace.round.js
 //            ^^^^               support.class.builtin.js
 //                 ^^^           meta.function-call.method.with-arguments.js
@@ -994,12 +953,11 @@ function fooStillBad(obj: { x: number }): (str: string) => {a: string} {
 //                         ^     variable.other.property.js
 //                            ^  punctuation.terminator.statement.js
   return obj;
-//^^^^^^ ^^^^  meta.group.braces.curly
 //^^^^^^       keyword.control.flow.js
 //       ^^^   variable.other.readwrite.js
 //          ^  punctuation.terminator.statement.js
 }
-// <- meta.group.braces.curly meta.brace.curly.js
+// <- meta.brace.curly.js
 
 
 type T = number;
@@ -1024,7 +982,6 @@ var x: T = [];
 //   ^          punctuation.type.flowtype
 //     ^        support.type.class.flowtype
 //       ^      keyword.operator.assignment.js
-//         ^^   meta.group.braces.square
 //         ^^   meta.brace.square.js
 //           ^  punctuation.terminator.statement.js
 
@@ -1045,7 +1002,6 @@ function foo<X: ?number, Y:x>(f: F<X, Y>, x: X): Y { return f(x); }
 //                             ^           ^   ^                     punctuation.type.flowtype
 //                                      ^                            meta.delimiter.comma.js
 //                                            ^                ^     punctuation.definition.parameters.end.js
-//                                                 ^ ^^^^^^ ^^^^^ ^  meta.group.braces.curly
 //                                                 ^              ^  meta.brace.curly.js
 //                                                   ^^^^^^          keyword.control.flow.js
 //                                                          ^^^^     meta.function-call.with-arguments.js
@@ -1063,7 +1019,6 @@ var b: { f: typeof Foo } = { f : Foo };
 //                 ^^^                   support.type.class.flowtype
 //                     ^                 meta.brace.round.close.flowtype
 //                       ^               keyword.operator.assignment.js
-//                         ^ ^ ^ ^^^ ^   meta.group.braces.curly
 //                         ^         ^   meta.brace.curly.js
 //                           ^ ^         constant.other.object.key.js
 //                           ^           string.unquoted.js
@@ -1082,23 +1037,12 @@ function foo(x: string | number | boolean): string { }
 //              ^^^^^^   ^^^^^^   ^^^^^^^   ^^^^^^      support.type.builtin.primitive.flowtype
 //                     ^        ^                       kewyword.operator.union.flowtype
 //                                       ^              punctuation.definition.parameters.end.js
-//                                                 ^ ^  meta.group.braces.curly
 //                                                 ^ ^  meta.brace.curly.js
 
-declare function something(): void;
-// <- support.type.declare.flowtype
- // <- support.type.declare.flowtype
-//^^^^^                              support.type.declare.flowtype
-//      ^^^^^^^^                     storage.type.function.js
-//               ^^^^^^^^^           entity.name.function.js
-//                        ^          punctuation.definition.parameters.begin.js
-//                         ^         punctuation.definition.parameters.end.js
-//                          ^        punctuation.type.flowtype
-//                            ^^^^   support.type.builtin.primitive.flowtype
-
 function foo(x: { y: ?string }): string { return; }
-// <- storage.type.function.js
- // <- storage.type.function.js
+// <- meta.function.js storage.type.function.js
+ // <- meta.function.js storage.type.function.js
+//^^^^^^ ^^^^^^ ^ ^^ ^^^^^^^ ^^^ ^^^^^^              meta.function.js
 //^^^^^^                                             storage.type.function.js
 //       ^^^                                         entity.name.function.js
 //          ^                                        punctuation.definition.parameters.begin.js
@@ -1110,6 +1054,20 @@ function foo(x: { y: ?string }): string { return; }
 //                    ^^^^^^     ^^^^^^              support.type.builtin.primitive.flowtype
 //                           ^                       meta.brace.round.close.flowtype
 //                            ^                      punctuation.definition.parameters.end.js
+//                                      ^         ^  meta.brace.curly.js
+//                                        ^^^^^^     keyword.control.flow.js
+//                                              ^    punctuation.terminator.statement.js
+
+declare function something(): void;
+// <- support.type.declare.flowtype
+ // <- support.type.declare.flowtype
+//^^^^^                              support.type.declare.flowtype
+//      ^^^^^^^^                     storage.type.function.js
+//               ^^^^^^^^^           entity.name.function.js
+//                        ^          punctuation.definition.parameters.begin.js
+//                         ^         punctuation.definition.parameters.end.js
+//                          ^        punctuation.type.flowtype
+//                            ^^^^   support.type.builtin.primitive.flowtype
 
 declare class CC {
 // <- support.type.declare.flowtype
@@ -1132,10 +1090,8 @@ declare module M {
 //^^^^^             support.type.declare.flowtype
 //      ^^^^^^      support.type.object.module.js
 //             ^    variable.other.constant.js
-//               ^  meta.group.braces.curly
 //               ^  meta.brace.curly.js
   declare function foo(c: C): void;
-//^^^^^^^ ^^^^^^^^ ^^^^^^ ^^^ ^^^^^  meta.group.braces.curly
 //^^^^^^^                            support.type.declare.flowtype
 //        ^^^^^^^^                   storage.type.function.js
 //                 ^^^               entity.name.function.js
@@ -1146,7 +1102,7 @@ declare module M {
 //                         ^         punctuation.definition.parameters.end.js
 //                            ^^^^   support.type.builtin.primitive.flowtype
 }
-// <- meta.group.braces.curly meta.brace.curly.js
+// <- meta.brace.curly.js
 
 function foo(a: ?string, b: any): Array<number> {}
 // <- meta.function.js storage.type.function.js
@@ -1163,7 +1119,6 @@ function foo(a: ?string, b: any): Array<number> {}
 //                             ^                    punctuation.definition.parameters.end.js
 //                                ^^^^^             support.type.builtin.class.flowtype
 //                                     ^      ^     punctuation.flowtype
-//                                              ^^  meta.group.braces.curly
 //                                              ^^  meta.brace.curly.js
 
 import type {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
@@ -1171,7 +1126,6 @@ import type {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
  // <- keyword.control.module.js
 //^^^^                                                             keyword.control.module.js
 //     ^^^^                                                        support.type.type.flowtype
-//          ^^^^^^^^^^^ ^^^^^^^^^^                                 meta.group.braces.curly
 //          ^                    ^                                 meta.brace.curly.js
 //           ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                    ^                                            meta.delimiter.comma.js
@@ -1185,7 +1139,6 @@ import typeof {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
  // <- keyword.control.module.js
 //^^^^                                                               keyword.control.module.js
 //     ^^^^^^                                                        keyword.operator.js
-//            ^^^^^^^^^^^ ^^^^^^^^^^                                 meta.group.braces.curly
 //            ^                    ^                                 meta.brace.curly.js
 //             ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                      ^                                            meta.delimiter.comma.js
@@ -1198,7 +1151,6 @@ import {foo4Inst, foo5Inst} from "./ExportCJSNamed_Class";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^                                                      keyword.control.module.js
-//     ^^^^^^^^^^ ^^^^^^^^^                                 meta.group.braces.curly
 //     ^                  ^                                 meta.brace.curly.js
 //      ^^^^^^^^  ^^^^^^^^                                  variable.other.readwrite.js
 //              ^                                           meta.delimiter.comma.js
@@ -1488,20 +1440,20 @@ declare class Object {
 //                                                                                           ^^^^^      support.type.builtin.class.flowtype
 //                                                                                                ^ ^   punctuation.flowtype
   replace(searchValue: string | RegExp, replaceValue: string | (substring: string, ...args: Array<any>) => string): string;
-//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^^^ ^^ ^^^^^^^^ ^^^^^^^   meta.class.body.js
-//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^^^ ^^ ^^^^^^^^ ^^^^^^    meta.function.method.js
-//^^^^^^^                                                                                                                     entity.name.function.method.js
-//       ^                                                     ^                                                              punctuation.definition.parameters.begin.js
-//        ^^^^^^^^^^^                   ^^^^^^^^^^^^            ^^^^^^^^^             ^^^^                                    variable.other.readwrite.js
-//                   ^                              ^                    ^                ^                       ^           punctuation.type.flowtype
-//                     ^^^^^^                         ^^^^^^               ^^^^^^                 ^^^      ^^^^^^   ^^^^^^    support.type.builtin.primitive.flowtype
-//                            ^                              ^                                                                kewyword.operator.union.flowtype
-//                              ^^^^^^                                                      ^^^^^                             support.type.builtin.class.flowtype
-//                                    ^                                          ^                                            meta.delimiter.comma.js
-//                                                                                 ^^^                                        keyword.operator.spread.js
-//                                                                                               ^   ^                        punctuation.flowtype
-//                                                                                                    ^          ^            punctuation.definition.parameters.end.js
-//                                                                                                      ^^                    storage.type.function.arrow.js
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^^^ ^^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^^^ ^^ ^^^^^^^^ ^^^^^^   meta.function.method.js
+//^^^^^^^                                                                                                                    entity.name.function.method.js
+//       ^                                                     ^                                                             punctuation.definition.parameters.begin.js
+//        ^^^^^^^^^^^                   ^^^^^^^^^^^^            ^^^^^^^^^             ^^^^                                   variable.other.readwrite.js
+//                   ^                              ^                    ^                ^                       ^          punctuation.type.flowtype
+//                     ^^^^^^                         ^^^^^^               ^^^^^^                 ^^^      ^^^^^^   ^^^^^^   support.type.builtin.primitive.flowtype
+//                            ^                              ^                                                               kewyword.operator.union.flowtype
+//                              ^^^^^^                                                      ^^^^^                            support.type.builtin.class.flowtype
+//                                    ^                                          ^                                           meta.delimiter.comma.js
+//                                                                                 ^^^                                       keyword.operator.spread.js
+//                                                                                               ^   ^                       punctuation.flowtype
+//                                                                                                    ^          ^           punctuation.definition.parameters.end.js
+//                                                                                                      ^^                   storage.type.function.arrow.js
   search(regexp: string | RegExp): number;
 //^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
 //^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^ ^^^^^^   meta.function.method.js
@@ -1709,7 +1661,6 @@ var a: number = 123,
 //              ^ ^           meta.delimiter.comma.js
 //                  ^         punctuation.definition.parameters.end.js
 //                    ^^      storage.type.function.arrow.js
-//                       ^^   meta.group.braces.curly
 //                       ^^   meta.brace.curly.js
 //                         ^  punctuation.terminator.statement.js
 
@@ -1730,11 +1681,10 @@ for (var len: number; len < arr.length; i++) {
 //                              ^^^^^^          meta.property.object.js
 //                              ^^^^^^          variable.other.property.js
 //                                       ^^     keyword.operator.arithmetic.js
-//                                           ^  meta.group.braces.curly
 //                                           ^  meta.brace.curly.js
 
 }
-// <- meta.group.braces.curly meta.brace.curly.js
+// <- meta.brace.curly.js
 
 declare class Map<K, V> {
 // <- support.type.declare.flowtype
@@ -2089,4 +2039,5 @@ declare class Promise<R> {
 }
 // <- punctuation.section.class.end.js
 
-// >> only:source.js.jsx
+
+// >> only:(source.js.jsx)
