@@ -670,15 +670,19 @@
     "literal-quasi": {
       "patterns": [
         {
+          "comment": "Use two forms of scopes! fixes some themes",
           "name": "string.quasi.js",
-          "begin": "\\s*+([a-zA-Z$_][\\w$_]*)?(`)",
-          "end": "\\s*(?<!\\\\)`",
+          "contentName": "string.quoted.template.js",
+          "begin": "\\s*+([a-zA-Z$_][\\w$_]*)?((`))",
+          "end": "\\s*(?<!\\\\)((`))",
           "beginCaptures": {
             "1": { "name": "entity.quasi.tag.name.js" },
-            "2": { "name": "punctuation.definition.quasi.begin.js" }
+            "2": { "name": "punctuation.definition.quasi.begin.js" },
+            "3": { "name": "string.quoted.template.js" }
           },
           "endCaptures": {
-            "0": { "name": "punctuation.definition.quasi.end.js" }
+            "1": { "name": "punctuation.definition.quasi.end.js" },
+            "2": { "name": "string.quoted.template.js" }
           },
           "patterns": [
             {

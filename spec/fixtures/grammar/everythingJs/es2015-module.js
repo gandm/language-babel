@@ -615,10 +615,11 @@ null; true; false;
 //    ^        ^         ^  punctuation.terminator.statement.js
 
 `a`; `${0}`; `0${0,1}2`; `0${`1${2}3`}4`;
-// <- string.quasi.js punctuation.definition.quasi.begin.js
- // <- string.quasi.js
+// <- string.quasi.js punctuation.definition.quasi.begin.js string.quoted.template.js
+ // <- string.quasi.js string.quoted.template.js
 //^  ^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^^   string.quasi.js
 //   ^       ^           ^   ^             punctuation.definition.quasi.begin.js
+//^  ^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^^   string.quoted.template.js
 //^       ^           ^             ^  ^   punctuation.definition.quasi.end.js
 // ^       ^           ^                ^  punctuation.terminator.statement.js
 //    ^^^^     ^^^^^^      ^^^^^^^^^^^     entity.quasi.element.js
@@ -627,10 +628,11 @@ null; true; false;
 //       ^          ^             ^  ^     punctuation.quasi.element.end.js
 //                ^                        meta.delimiter.comma.js
 `\``; `a\${b`; `\0\n\x0A\u000A\u{A}`;
-// <- string.quasi.js punctuation.definition.quasi.begin.js
- // <- string.quasi.js
+// <- string.quasi.js punctuation.definition.quasi.begin.js string.quoted.template.js
+ // <- string.quasi.js string.quoted.template.js
 //^^  ^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^   string.quasi.js
 //    ^        ^                       punctuation.definition.quasi.begin.js
+//^^  ^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^   string.quoted.template.js
 // ^        ^                      ^   punctuation.definition.quasi.end.js
 //  ^        ^                      ^  punctuation.terminator.statement.js
 //              ^^^^^^^^^^^^^^^^^^^    constant.character.escape
@@ -951,10 +953,11 @@ x(...[0,1,], ...[], ...function* f(){ return yield 2; });
 //                                                  ^   ^  punctuation.terminator.statement.js
 x`a`; x`0${1}2`;
 // <- string.quasi.js entity.quasi.tag.name.js
- // <- string.quasi.js punctuation.definition.quasi.begin.js
+ // <- string.quasi.js punctuation.definition.quasi.begin.js string.quoted.template.js
 //^^  ^^^^^^^^^   string.quasi.js
 //    ^           entity.quasi.tag.name.js
 //     ^          punctuation.definition.quasi.begin.js
+//^^   ^^^^^^^^   string.quoted.template.js
 // ^          ^   punctuation.definition.quasi.end.js
 //  ^          ^  punctuation.terminator.statement.js
 //       ^^^^     entity.quasi.element.js
@@ -1870,6 +1873,7 @@ class B extends new A {
 //        ^             punctuation.definition.parameters.end.js
 //         ^^^^^^^^^^   string.quasi.js
 //         ^            punctuation.definition.quasi.begin.js
+//         ^^^^^^^^^^   string.quoted.template.js
 //                  ^   punctuation.definition.quasi.end.js
 //                   ^  punctuation.terminator.statement.js
     () => super(this);
@@ -1919,6 +1923,7 @@ class B extends new A {
 //        ^^^^^^^^^^^   string.quasi.js
 //        ^             entity.quasi.tag.name.js
 //         ^            punctuation.definition.quasi.begin.js
+//         ^^^^^^^^^^   string.quoted.template.js
 //                  ^   punctuation.definition.quasi.end.js
 //                   ^  punctuation.terminator.statement.js
     () => super.m(this);

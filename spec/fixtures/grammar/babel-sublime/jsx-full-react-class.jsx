@@ -67,6 +67,7 @@ export default React.createClass({
 //         ^                     ^  meta.brace.round.js
 //          ^^^^^^^^^^^^^^^^^^^^^   string.quasi.js
 //          ^                       punctuation.definition.quasi.begin.js
+//          ^^^^^^^^^^^^^^^^^^^^^   string.quoted.template.js
 //           ^^^^^^^^^^^            entity.quasi.element.js
 //           ^^                     punctuation.quasi.element.begin.js
 //             ^^^^^^^^             variable.other.constant.js
