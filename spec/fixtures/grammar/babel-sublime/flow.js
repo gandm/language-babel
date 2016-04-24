@@ -1614,10 +1614,11 @@ interface Generator<Yield,Return,Next> {
 //                                        ^          punctuation.type.separator.flowtype
   return<R>(value: R): { done: true, value: R };
 //^^^^^^^^^^^^^^^^ ^^^ ^ ^^^^^ ^^^^^ ^^^^^^ ^ ^^  meta.class.body.js
-//^^^^^^    ^^^^^                                 variable.other.readwrite.js
+//^^^^^^                                          keyword.control.flow.js
 //      ^ ^                                       punctutation.flowtype
 //       ^         ^                        ^     support.type.class.flowtype
 //         ^                                      punctuation.definition.parameters.begin.js
+//          ^^^^^                                 variable.other.readwrite.js
 //               ^   ^       ^            ^       punctuation.type.flowtype
 //                  ^                             punctuation.definition.parameters.end.js
 //                     ^                          meta.brace.round.open.flowtype
@@ -1627,8 +1628,7 @@ interface Generator<Yield,Return,Next> {
 //                                            ^   meta.brace.round.close.flowtype
   throw(error?: any): IteratorResult<Yield,Return>;
 //^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
-//^^^^^^^^^^^^^ ^^^^                                 meta.function-call.with-arguments.js
-//^^^^^                                              entity.name.function.js
+//^^^^^                                              keyword.control.trycatch.js
 //     ^                                             punctuation.definition.parameters.begin.js
 //      ^^^^^                                        variable.other.readwrite.js
 //           ^                                       keyword.operator.optional.parameter.flowtype

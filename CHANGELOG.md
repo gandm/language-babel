@@ -1,6 +1,7 @@
-### 2.17.4
+### 2.18.0
+  - Allow flow syntax to be used within files that use ASI. 
   - Use two forms of scoping for interpolated strings. [Fixes](https://github.com/gandm/language-babel/issues/167)
-  
+
 ### 2.17.3
   - [Fixes #166](https://github.com/gandm/language-babel/issues/166) Grammar for `async`, `get` and `set` on shorthand object functions
 

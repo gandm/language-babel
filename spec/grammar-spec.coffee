@@ -7,6 +7,8 @@ describe 'Grammar', ->
       atom.packages.activatePackage('language-babel')
     waitsForPromise ->
       atom.packages.activatePackage('language-todo')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-hyperlink')
 
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')
@@ -22,7 +24,7 @@ describe 'Grammar', ->
 
   # flow declaration file
   grammarTest path.join(__dirname, 'fixtures/grammar/flow/react.js')
-  
+
   # # grammar test large files
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/browser-polyfill.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/large files/jquery-2.1.4.js')
@@ -35,5 +37,8 @@ describe 'Grammar', ->
   # # todo,jsdoc,...
   grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
   #
-  # # issues raised
+  # issues raised
   grammarTest path.join(__dirname, 'fixtures/grammar/issues.js')
+
+  # Tests for files without semi's asi
+  grammarTest path.join(__dirname, 'fixtures/grammar/flow-asi.js')
