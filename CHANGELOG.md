@@ -1,5 +1,8 @@
+### 2.18.1
+  - Incorrect scope for arrow function async keyword inside object literal. [Fixes](https://github.com/gandm/language-babel/issues/168)
+
 ### 2.18.0
-  - Allow flow syntax to be used within files that use ASI. 
+  - Allow flow syntax to be used within files that use ASI.
   - Use two forms of scoping for interpolated strings. [Fixes](https://github.com/gandm/language-babel/issues/167)
 
 ### 2.17.3

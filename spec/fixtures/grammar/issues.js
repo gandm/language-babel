@@ -81,3 +81,20 @@ export default {
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 //^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
 //^                         punctuation.definition.comment.js
+
+// ISSUE: 168
+let obj = { a: () => async () => 1 }
+// <- storage.type.js
+ // <- storage.type.js
+//^                  ^^^^^            storage.type.js
+//  ^^^                               variable.other.readwrite.js
+//      ^                             keyword.operator.assignment.js
+//        ^                        ^  meta.brace.curly.js
+//          ^^ ^^ ^^                  meta.function.json.arrow.js
+//          ^                         entity.name.function.js
+//           ^                        punctuation.separator.key-value.js
+//             ^           ^          punctuation.definition.parameters.begin.js
+//              ^           ^         punctuation.definition.parameters.end.js
+//                ^^          ^^      storage.type.function.arrow.js
+//                   ^^^^^ ^^ ^^      meta.function.arrow.js
+//                               ^    constant.numeric.js

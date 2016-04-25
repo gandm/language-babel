@@ -763,8 +763,8 @@ let Sound = {
 //^    ^                   meta.brace.square.js
 // ^^^^                    variable.other.readwrite.js
 //      ^                  punctuation.separator.key-value.js
-//        ^^^^^ ^^         meta.function.method.js
-//        ^^^^^            entity.name.function.method.js
+//        ^^^^^ ^^ ^^      meta.function.arrow.js
+//        ^^^^^            storage.type.js
 //              ^          punctuation.definition.parameters.begin.js
 //               ^         punctuation.definition.parameters.end.js
 //                 ^^      storage.type.function.arrow.js
@@ -774,8 +774,8 @@ let Sound = {
 //^    ^                      meta.brace.square.js
 // ^^^^          ^^^          variable.other.readwrite.js
 //      ^                     punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^         meta.function.method.js
-//        ^^^^^               entity.name.function.method.js
+//        ^^^^^ ^^^^^ ^^      meta.function.arrow.js
+//        ^^^^^               storage.type.js
 //              ^             punctuation.definition.parameters.begin.js
 //                  ^         punctuation.definition.parameters.end.js
 //                    ^^      storage.type.function.arrow.js
