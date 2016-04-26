@@ -1,3 +1,6 @@
+### 2.18.2
+  - Fix function call td.function() being interpreted as a function definition. [Fixes #169](https://github.com/gandm/language-babel/issues)
+  
 ### 2.18.1
   - Incorrect scope for arrow function async keyword inside object literal. [Fixes](https://github.com/gandm/language-babel/issues/168)
 

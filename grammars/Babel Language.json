@@ -77,7 +77,7 @@
         {
           "comment": "e.g. play: function(arg1, arg2) { }",
           "name": "meta.function.json.js",
-          "begin": "\\s*+([_$a-zA-Z][$\\w]*)\\s*+(:)\\s*+(?:(async)\\s+)?\\s*+(\\bfunction\\b)\\s*+(?:(\\*)\\s*)?\\s*(?=\\(|<)",
+          "begin": "\\s*+([_$a-zA-Z][$\\w]*)\\s*+(:)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(?:(\\*)\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -94,7 +94,7 @@
         {
           "comment": "e.g. 'play': function(arg1, arg2) { }",
           "name": "meta.function.json.js",
-          "begin": "\\s*+(('|\\\")(\\b[_$a-zA-Z][$\\w]*)(\\k<2>))\\s*+(:)\\s*+(async)?\\s*+(\\bfunction\\b)\\s*(\\*\\s*)?\\s*(?=\\(|<)",
+          "begin": "\\s*+(('|\\\")(\\b[_$a-zA-Z][$\\w]*)(\\k<2>))\\s*+(:)\\s*+(async)?\\s*+((?<!\\.)\\bfunction\\b)\\s*(\\*\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -589,7 +589,7 @@
         {
           "comment": "e.g. function play<T>(arg1, arg2) { }",
           "name": "meta.function.js",
-          "begin": "\\s*+(?:\\b(async)\\b\\s+)?\\s*+(\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+(?:\\b(async)\\b\\s+)?\\s*+(?:(?<=\\.\\.\\.)|(?<!\\.))(\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
           "end": "(?=\\s*+\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -605,7 +605,7 @@
         {
           "comment": "e.g. play = function(arg1, arg2) { }",
           "name": "meta.function.js",
-          "begin": "\\s*+(\\b[_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+(\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+(\\b[_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
           "end": "(?=\\s*+\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -623,7 +623,7 @@
         {
           "comment": "e.g. Sound.prototype.play = function(arg1, arg2) { }",
           "name": "meta.prototype.function.js",
-          "begin": "\\s*+(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+(\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+(\\b_?[A-Z][$\\w]*)?(\\.)(prototype)(\\.)([_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
           "end": "(?=\\s*+\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -645,7 +645,7 @@
         {
           "comment": "e.g. Sound.play = function(arg1, arg2) { }",
           "name": "meta.function.static.js",
-          "begin": "\\s*+(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+(\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+(\\b_?[A-Z][$\\w]*)?(\\.)([_$a-zA-Z][$\\w]*)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+([_$a-zA-Z][$\\w]*)?\\s*+(?=\\(|<)",
           "end": "(?=\\s*+\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {

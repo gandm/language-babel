@@ -98,3 +98,110 @@ let obj = { a: () => async () => 1 }
 //                ^^          ^^      storage.type.function.arrow.js
 //                   ^^^^^ ^^ ^^      meta.function.arrow.js
 //                               ^    constant.numeric.js
+
+// ISSUE: 169
+let a: number = td.function()
+// <- storage.type.js
+ // <- storage.type.js
+//^                             storage.type.js
+//  ^                           variable.other.readwrite.js
+//   ^                          punctuation.type.flowtype
+//     ^^^^^^                   support.type.builtin.primitive.flowtype
+//            ^                 keyword.operator.assignment.js
+//              ^^              variable.other.object.js
+//                ^             keyword.operator.accessor.js
+//                 ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//                 ^^^^^^^^     entity.name.function.js
+//                         ^^   meta.group.braces.round.function.arguments.js
+const double = td.function()
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                         storage.type.js
+//    ^^^^^^                  variable.other.readwrite.js
+//           ^                keyword.operator.assignment.js
+//             ^^             variable.other.object.js
+//               ^            keyword.operator.accessor.js
+//                ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//                ^^^^^^^^    entity.name.function.js
+//                        ^^  meta.group.braces.round.function.arguments.js
+let a = {
+// <- storage.type.js
+ // <- storage.type.js
+//^        storage.type.js
+//  ^      variable.other.readwrite.js
+//    ^    keyword.operator.assignment.js
+//      ^  meta.brace.curly.js
+  a: td.function()
+//^^                constant.other.object.key.js
+//^                 string.unquoted.js
+// ^                punctuation.separator.key-value.js
+//   ^^             variable.other.object.js
+//     ^            keyword.operator.accessor.js
+//      ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//      ^^^^^^^^    entity.name.function.js
+//              ^^  meta.group.braces.round.function.arguments.js
+  b: td.function()
+//^^                constant.other.object.key.js
+//^                 string.unquoted.js
+// ^                punctuation.separator.key-value.js
+//   ^^             variable.other.object.js
+//     ^            keyword.operator.accessor.js
+//      ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//      ^^^^^^^^    entity.name.function.js
+//              ^^  meta.group.braces.round.function.arguments.js
+}
+// <- meta.brace.curly.js
+let a: number = td.function();
+// <- storage.type.js
+ // <- storage.type.js
+//^                             storage.type.js
+//  ^                           variable.other.readwrite.js
+//   ^                          punctuation.type.flowtype
+//     ^^^^^^                   support.type.builtin.primitive.flowtype
+//            ^                 keyword.operator.assignment.js
+//              ^^              variable.other.object.js
+//                ^             keyword.operator.accessor.js
+//                 ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//                 ^^^^^^^^     entity.name.function.js
+//                         ^^   meta.group.braces.round.function.arguments.js
+//                           ^  punctuation.terminator.statement.js
+const double = td.function();
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                          storage.type.js
+//    ^^^^^^                   variable.other.readwrite.js
+//           ^                 keyword.operator.assignment.js
+//             ^^              variable.other.object.js
+//               ^             keyword.operator.accessor.js
+//                ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//                ^^^^^^^^     entity.name.function.js
+//                        ^^   meta.group.braces.round.function.arguments.js
+//                          ^  punctuation.terminator.statement.js
+let a = {
+// <- storage.type.js
+ // <- storage.type.js
+//^        storage.type.js
+//  ^      variable.other.readwrite.js
+//    ^    keyword.operator.assignment.js
+//      ^  meta.brace.curly.js
+  a: td.function();
+//^^                 constant.other.object.key.js
+//^                  string.unquoted.js
+// ^                 punctuation.separator.key-value.js
+//   ^^              variable.other.object.js
+//     ^             keyword.operator.accessor.js
+//      ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//      ^^^^^^^^     entity.name.function.js
+//              ^^   meta.group.braces.round.function.arguments.js
+//                ^  punctuation.terminator.statement.js
+  b: td.function();
+//^^                 constant.other.object.key.js
+//^                  string.unquoted.js
+// ^                 punctuation.separator.key-value.js
+//   ^^              variable.other.object.js
+//     ^             keyword.operator.accessor.js
+//      ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//      ^^^^^^^^     entity.name.function.js
+//              ^^   meta.group.braces.round.function.arguments.js
+//                ^  punctuation.terminator.statement.js
+}// <- meta.brace.curly.js
