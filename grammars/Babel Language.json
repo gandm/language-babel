@@ -703,24 +703,26 @@
     },
     "literal-object": {
       "patterns": [
-        { "begin": "\\s*+(?:(=)\\s*|\\b(default)|(return)\\b)\\s*({)",
+        { "comment": "obj lteral ({ or ,{ or [{ or ={ or return { or default {",
+          "begin": "(?:(?<=\\(|\\[)|(?:\\s*(?:(=)|\\b(default)\\b|\\b(return)\\b|(,))))\\s*({)",
           "end": "\\s*+(})",
           "beginCaptures": {
             "1": { "name": "keyword.operator.assignment.js" },
             "2": { "name": "keyword.control.module.js" },
             "3": { "name": "keyword.control.flow.js" },
-            "4": { "name": "meta.brace.curly.js" }
+            "4": { "name": "meta.delimiter.comma.js" },
+            "5": { "name": "meta.brace.curly.js" }
           },
           "endCaptures": {
             "1": { "name": "meta.brace.curly.js" }
           },
           "patterns": [
+            { "include": "#literal-keywords" },
             { "include": "#literal-function-labels" },
             { "include": "#literal-arrow-function-labels" },
             { "include": "#literal-arrow-function" },
             { "include": "#literal-method" },
             { "include": "#literal-labels" },
-            { "include": "#literal-keywords" },
             { "include": "#expression" },
             { "include": "#literal-punctuation" }
           ]
@@ -1775,9 +1777,8 @@
             { "include": "#flowtype-parse-types" }
           ]
         },
-        {
-          "include": "#literal-comma"
-        },
+        { "include": "#literal-object" },
+        { "include": "#literal-comma" },
         {
           "comment": "An Iterator prefix?",
           "match": "\\s*+@@"

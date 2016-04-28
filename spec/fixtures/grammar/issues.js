@@ -205,3 +205,47 @@ let a = {
 //              ^^   meta.group.braces.round.function.arguments.js
 //                ^  punctuation.terminator.statement.js
 }// <- meta.brace.curly.js
+
+// ISSUE: #170
+
+const a = {
+// <- storage.type.js
+ // <- storage.type.js
+//^^^        storage.type.js
+//    ^      variable.other.readwrite.js
+//      ^    keyword.operator.assignment.js
+//        ^  meta.brace.curly.js
+  method({
+//^^^^^^^^  meta.function.method.js
+//^^^^^^    entity.name.function.method.js
+//      ^   punctuation.definition.parameters.begin.js
+//       ^  meta.brace.curly.js
+    method([aaa
+//  ^^^^^^^^^^^  meta.function.method.js
+//  ^^^^^^       entity.name.function.method.js
+//        ^      punctuation.definition.parameters.begin.js
+//         ^     meta.brace.square.open.flowtype
+//          ^^^  variable.other.readwrite.js
+      , bbb
+//    ^ ^^^  meta.function.method.js
+//    ^      meta.delimiter.comma.js
+//      ^^^  variable.other.readwrite.js
+      ,{ method() {} }
+//    ^^ ^^^^^^^^ ^^ ^   meta.function.method.js
+//    ^                  meta.delimiter.comma.js
+//     ^          ^^ ^   meta.brace.curly.js
+//       ^^^^^^          entity.name.function.method.js
+//             ^         punctuation.definition.parameters.begin.js
+//              ^        punctuation.definition.parameters.end.js
+    ]) {}
+//  ^^ ^^  meta.function.method.js
+//  ^      meta.brace.square.end.flowtype
+//   ^     punctuation.definition.parameters.end.js
+//     ^^  meta.brace.curly.js
+  }) {
+//^^      meta.function.method.js
+//^  ^    meta.brace.curly.js
+// ^      punctuation.definition.parameters.end.js
+  }
+//^  meta.brace.curly.js
+}// <- meta.brace.curly.js

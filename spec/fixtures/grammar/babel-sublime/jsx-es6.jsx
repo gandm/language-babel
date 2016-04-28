@@ -56,8 +56,8 @@ export default React.createClass({
 //                     ^  meta.delimiter.comma.js
 
   submit() {
-//^^^^^^^^    meta.function-call.without-arguments.js
-//^^^^^^      entity.name.function.js
+//^^^^^^^^    meta.function.method.js
+//^^^^^^      entity.name.function.method.js
 //      ^     punctuation.definition.parameters.begin.js
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
@@ -129,8 +129,8 @@ export default React.createClass({
 //^                         punctuation.definition.string.begin.js
 //       ^                  punctuation.definition.string.end.js
 //        ^                 punctuation.separator.key-value.js
-//          ^^^^^^^^^^      meta.function.js
-//          ^^^^^^^^        storage.type.function.js
+//          ^^^^^^^^^^      meta.function.method.js
+//          ^^^^^^^^        entity.name.function.method.js
 //                  ^       punctuation.definition.parameters.begin.js
 //                   ^      punctuation.definition.parameters.end.js
 //                     ^^   meta.brace.curly.js
@@ -141,16 +141,16 @@ export default React.createClass({
 //^                            punctuation.definition.string.begin.js
 //          ^                  punctuation.definition.string.end.js
 //           ^                 punctuation.separator.key-value.js
-//             ^^^^^^^^^^      meta.function.js
-//             ^^^^^^^^        storage.type.function.js
+//             ^^^^^^^^^^      meta.function.method.js
+//             ^^^^^^^^        entity.name.function.method.js
 //                     ^       punctuation.definition.parameters.begin.js
 //                      ^      punctuation.definition.parameters.end.js
 //                        ^^   meta.brace.curly.js
 //                          ^  meta.delimiter.comma.js
 
   render() {
-//^^^^^^^^    meta.function-call.without-arguments.js
-//^^^^^^      entity.name.function.js
+//^^^^^^^^    meta.function.method.js
+//^^^^^^      entity.name.function.method.js
 //      ^     punctuation.definition.parameters.begin.js
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
