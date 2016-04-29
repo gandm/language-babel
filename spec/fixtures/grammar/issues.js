@@ -2,66 +2,27 @@
 
 // ISSUE: #170
 
-var objMethods = {
-// <- storage.type.js
- // <- storage.type.js
-//^                 storage.type.js
-//  ^^^^^^^^^^      variable.other.readwrite.js
-//             ^    keyword.operator.assignment.js
-//               ^  meta.brace.curly.js
-  foo() {}
-//^^^^^     meta.function.method.js
-//^^^       entity.name.function.method.js
-//   ^      punctuation.definition.parameters.begin.js
-//    ^     punctuation.definition.parameters.end.js
-//      ^^  meta.brace.curly.js
-  foo( { bar(){} } ) {}
-//^^^^ ^ ^^^^^^^ ^ ^     meta.function.method.js
-//^^^    ^^^             entity.name.function.method.js
-//   ^      ^            punctuation.definition.parameters.begin.js
-//     ^      ^^ ^   ^^  meta.brace.curly.js
-//           ^     ^     punctuation.definition.parameters.end.js
-  key: foo() {}
-//^^^^           constant.other.object.key.js
-//^^^            string.unquoted.js
-//   ^           punctuation.separator.key-value.js
-//     ^^^^^     meta.function.method.js
-//     ^^^       entity.name.function.method.js
-//        ^      punctuation.definition.parameters.begin.js
-//         ^     punctuation.definition.parameters.end.js
-//           ^^  meta.brace.curly.js
-  'key': foo() {}
-//^^^^^            constant.other.object.key.js
-//^^^^^            string.quoted.single.js
-//^                punctuation.definition.string.begin.js
-//    ^            punctuation.definition.string.end.js
-//     ^           punctuation.separator.key-value.js
-//       ^^^^^     meta.function.method.js
-//       ^^^       entity.name.function.method.js
-//          ^      punctuation.definition.parameters.begin.js
-//           ^     punctuation.definition.parameters.end.js
-//             ^^  meta.brace.curly.js
-  key: { foo( { bar(){} } ) {} }
-//^^^^                            constant.other.object.key.js
-//^^^                             string.unquoted.js
-//   ^                            punctuation.separator.key-value.js
-//     ^      ^      ^^ ^   ^^ ^  meta.brace.curly.js
-//       ^^^^ ^ ^^^^^^^ ^ ^       meta.function.method.js
-//       ^^^    ^^^               entity.name.function.method.js
-//          ^      ^              punctuation.definition.parameters.begin.js
-//                  ^     ^       punctuation.definition.parameters.end.js
-  'key': { foo( { bar(){} } ) {} }
-//^^^^^                             constant.other.object.key.js
-//^^^^^                             string.quoted.single.js
-//^                                 punctuation.definition.string.begin.js
-//    ^                             punctuation.definition.string.end.js
-//     ^                            punctuation.separator.key-value.js
-//       ^      ^      ^^ ^   ^^ ^  meta.brace.curly.js
-//         ^^^^ ^ ^^^^^^^ ^ ^       meta.function.method.js
-//         ^^^    ^^^               entity.name.function.method.js
-//            ^      ^              punctuation.definition.parameters.begin.js
-//                    ^     ^       punctuation.definition.parameters.end.js
-}// <- meta.brace.curly.js
+foo({ //
+// <- meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.function-call.with-arguments.js entity.name.function.js
+//^^^ ^^   meta.function-call.with-arguments.js
+//^        entity.name.function.js
+// ^       punctuation.definition.parameters.begin.js
+//  ^      meta.brace.curly.js
+//    ^^   comment.line.double-slash.js
+//    ^^   punctuation.definition.comment.js
+  bar() {} //
+//^^^^^ ^^ ^^   meta.function-call.with-arguments.js
+//^^^^^         meta.function.method.js
+//^^^           entity.name.function.method.js
+//   ^          punctuation.definition.parameters.begin.js
+//    ^         punctuation.definition.parameters.end.js
+//      ^^      meta.brace.curly.js
+//         ^^   comment.line.double-slash.js
+//         ^^   punctuation.definition.comment.js
+})
+// <- meta.function-call.with-arguments.js meta.brace.curly.js
+ // <- meta.function-call.with-arguments.js punctuation.definition.parameters.end.js
 
 // ISSUE: 169
 let a: number = td.function()
