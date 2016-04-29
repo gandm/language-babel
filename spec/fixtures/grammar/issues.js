@@ -1,5 +1,61 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE: #171
+
+function getObject() {
+// <- meta.function.js storage.type.function.js
+ // <- meta.function.js storage.type.function.js
+//^^^^^^ ^^^^^^^^^^^      meta.function.js
+//^^^^^^                  storage.type.function.js
+//       ^^^^^^^^^        entity.name.function.js
+//                ^       punctuation.definition.parameters.begin.js
+//                 ^      punctuation.definition.parameters.end.js
+//                   ^    meta.brace.curly.js
+  return {
+//^^^^^^    keyword.control.flow.js
+//       ^  meta.brace.curly.js
+    async doStuff() {},
+//  ^^^^^ ^^^^^^^^^      meta.function.method.js
+//  ^^^^^                storage.type.js
+//        ^^^^^^^        entity.name.function.method.js
+//               ^       punctuation.definition.parameters.begin.js
+//                ^      punctuation.definition.parameters.end.js
+//                  ^^   meta.brace.curly.js
+//                    ^  meta.delimiter.comma.js
+    doOtherStuff: async doOtherStuff() {},
+//  ^^^^^^^^^^^^^                           constant.other.object.key.js
+//  ^^^^^^^^^^^^                            string.unquoted.js
+//              ^                           punctuation.separator.key-value.js
+//                ^^^^^ ^^^^^^^^^^^^^^      meta.function.method.js
+//                ^^^^^                     storage.type.js
+//                      ^^^^^^^^^^^^        entity.name.function.method.js
+//                                  ^       punctuation.definition.parameters.begin.js
+//                                   ^      punctuation.definition.parameters.end.js
+//                                     ^^   meta.brace.curly.js
+//                                       ^  meta.delimiter.comma.js
+    doDifferent: async function() {}
+//  ^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^     meta.function.json.js
+//  ^^^^^^^^^^^                       entity.name.function.js
+//             ^                      punctuation.separator.key-value.js
+//               ^^^^^                storage.type.js
+//                     ^^^^^^^^       storage.type.function.js
+//                             ^      punctuation.definition.parameters.begin.js
+//                              ^     punctuation.definition.parameters.end.js
+//                                ^^  meta.brace.curly.js
+    doElse: async () => {}
+//  ^^^^^^^ ^^^^^ ^^ ^^     meta.function.json.arrow.js
+//  ^^^^^^                  entity.name.function.js
+//        ^                 punctuation.separator.key-value.js
+//          ^^^^^           storage.type.js
+//                ^         punctuation.definition.parameters.begin.js
+//                 ^        punctuation.definition.parameters.end.js
+//                   ^^     storage.type.function.arrow.js
+//                      ^^  meta.brace.curly.js
+  }
+//^  meta.brace.curly.js
+}
+// <- meta.brace.curly.js
+
 // ISSUE: #170
 
 foo({ //

@@ -1,3 +1,6 @@
+### 2.18.5
+  - Grammar incorrectly parsed a returned object literal. [Fixes #171](https://github.com/gandm/language-babel/issues/171)
+
 ### 2.18.4
   - Make literal-object grammar recursive to fix nested object methods.
 

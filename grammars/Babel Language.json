@@ -25,10 +25,10 @@
         { "include": "#literal-function-labels" },
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-labels" },
-        { "include": "#literal-keywords" },
         { "include": "#literal-for" },
         { "include": "#literal-switch" },
         { "include": "#expression" },
+        { "include": "#literal-keywords" },
         { "include": "#literal-punctuation" }
       ]
     },
