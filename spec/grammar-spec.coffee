@@ -36,7 +36,7 @@ describe 'Grammar', ->
   #
   # # todo,jsdoc,...
   grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
-  #
+  
   # issues raised
   grammarTest path.join(__dirname, 'fixtures/grammar/issues.js')
 

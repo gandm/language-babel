@@ -2609,3 +2609,5 @@ OptionManager.memoisedPlugins = []
 //            ^^^^^^^^^^^^^^^       variable.other.property.static.js
 //                            ^     keyword.operator.assignment.js
 //                              ^^  meta.brace.square.js
+
+// >> only:source.js.jsx

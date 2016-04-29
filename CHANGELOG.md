@@ -1,6 +1,9 @@
+### 2.18.4
+  - Make literal-object grammar recursive to fix nested object methods.
+
 ### 2.18.3
   - Improve detection of object literals. [Fixes #170](https://github.com/gandm/language-babel/issues/170)
-  
+
 ### 2.18.2
   - Fix function call td.function() being interpreted as a function definition. [Fixes #169](https://github.com/gandm/language-babel/issues)
 
