@@ -22,17 +22,6 @@ function getObject() {
 //                ^      punctuation.definition.parameters.end.js
 //                  ^^   meta.brace.curly.js
 //                    ^  meta.delimiter.comma.js
-    doOtherStuff: async doOtherStuff() {},
-//  ^^^^^^^^^^^^^                           constant.other.object.key.js
-//  ^^^^^^^^^^^^                            string.unquoted.js
-//              ^                           punctuation.separator.key-value.js
-//                ^^^^^ ^^^^^^^^^^^^^^      meta.function.method.js
-//                ^^^^^                     storage.type.js
-//                      ^^^^^^^^^^^^        entity.name.function.method.js
-//                                  ^       punctuation.definition.parameters.begin.js
-//                                   ^      punctuation.definition.parameters.end.js
-//                                     ^^   meta.brace.curly.js
-//                                       ^  meta.delimiter.comma.js
     doDifferent: async function() {}
 //  ^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^     meta.function.json.js
 //  ^^^^^^^^^^^                       entity.name.function.js
