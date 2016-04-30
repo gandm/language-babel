@@ -1919,11 +1919,15 @@
             "1": { "name": "punctuation.flowtype" }
           },
           "patterns": [
-            { "match": "\\s*+,",
-              "name": "punctuation.type.separator.flowtype"
+            { "match": "\\s*+(,|:)",
+              "captures"     : {
+                "1": { "name": "punctuation.type.separator.flowtype" }
+              }
             },
-            { "match": "\\s*+:",
-              "name": "punctuation.type.separator.flowtype"
+            { "match": "\\s*+(\\+|-)",
+              "captures"     : {
+                "1": { "name": "support.type.variant.flowtype" }
+              }
             },
             { "include": "#flowtype-parse-types" }
           ]
@@ -1939,11 +1943,15 @@
             "1": { "name": "punctutation.flowtype" }
           },
           "patterns": [
-            { "match": "\\s*+,",
-              "name": "punctuation.type.separator.flowtype"
+            { "match": "\\s*+(,|:)",
+              "captures"     : {
+                "1": { "name": "punctuation.type.separator.flowtype" }
+              }
             },
-            { "match": "\\s*+:",
-              "name": "punctuation.type.separator.flowtype"
+            { "match": "\\s*+(\\+|-)",
+              "captures"     : {
+                "1": { "name": "support.type.variant.flowtype" }
+              }
             },
             { "include": "#flowtype-parse-types" }
           ]
