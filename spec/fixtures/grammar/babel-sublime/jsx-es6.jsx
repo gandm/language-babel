@@ -24,18 +24,6 @@ import { InputsMixin } from './Forms';
 //                                  ^   punctuation.definition.string.end.js
 //                                   ^  punctuation.terminator.statement.js
 
-export default <div><span /></div>
-// <- keyword.control.module.js
- // <- keyword.control.module.js
-//^^^^ ^^^^^^^                      keyword.control.module.js
-//             ^^^^^^^^^^ ^^^^^^^^  meta.tag.jsx
-//             ^   ^^     ^^^^   ^  punctuation.definition.tag.jsx
-//              ^^^  ^^^^           entity.name.tag.open.jsx
-//                 ^                JSXStartTagEnd
-//                          ^^      JSXEndTagStart
-//                            ^^^   entity.name.tag.close.jsx
-
-
 export default React.createClass({
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -164,28 +152,27 @@ export default React.createClass({
 //                     ^^^^^   meta.property.object.js
 //                     ^^^^^   variable.other.property.js
 //                          ^  punctuation.terminator.statement.js
-    var list = this.props.secondary.map(pic => <img src={pic} />)}
-//  ^^^                                                             storage.type.js
-//      ^^^^                            ^^^              ^^^        variable.other.readwrite.js
-//           ^                                                      keyword.operator.assignment.js
-//             ^^^^                                                 variable.language.this.js
-//                 ^     ^         ^                                keyword.operator.accessor.js
-//                  ^^^^^ ^^^^^^^^^                                 meta.property.object.js
-//                  ^^^^^ ^^^^^^^^^                                 variable.other.property.js
-//                                  ^^^                             meta.function-call.method.with-arguments.js
-//                                  ^^^                             entity.name.function.js
-//                                     ^                        ^   meta.brace.round.js
-//                                      ^^^ ^^                      meta.function.arrow.js
-//                                          ^^                      storage.type.function.arrow.js
-//                                             ^^^^ ^^^^^^^^^ ^^    meta.tag.jsx
-//                                             ^              ^^    punctuation.definition.tag.jsx
-//                                              ^^^                 entity.name.tag.open.jsx
-//                                                  ^^^             entity.other.attribute-name.jsx
-//                                                     ^            keyword.operator.assignment.jsx
-//                                                      ^^^^^       meta.embedded.expression.js
-//                                                      ^           punctuation.section.embedded.begin.jsx
-//                                                          ^       punctuation.section.embedded.end.jsx
-//                                                               ^  meta.brace.curly.js
+    var list = this.props.secondary.map(pic => <img src={pic} />)
+//  ^^^                                                            storage.type.js
+//      ^^^^                            ^^^              ^^^       variable.other.readwrite.js
+//           ^                                                     keyword.operator.assignment.js
+//             ^^^^                                                variable.language.this.js
+//                 ^     ^         ^                               keyword.operator.accessor.js
+//                  ^^^^^ ^^^^^^^^^                                meta.property.object.js
+//                  ^^^^^ ^^^^^^^^^                                variable.other.property.js
+//                                  ^^^                            meta.function-call.method.with-arguments.js
+//                                  ^^^                            entity.name.function.js
+//                                     ^                        ^  meta.brace.round.js
+//                                      ^^^ ^^                     meta.function.arrow.js
+//                                          ^^                     storage.type.function.arrow.js
+//                                             ^^^^ ^^^^^^^^^ ^^   meta.tag.jsx
+//                                             ^              ^^   punctuation.definition.tag.jsx
+//                                              ^^^                entity.name.tag.open.jsx
+//                                                  ^^^            entity.other.attribute-name.jsx
+//                                                     ^           keyword.operator.assignment.jsx
+//                                                      ^^^^^      meta.embedded.expression.js
+//                                                      ^          punctuation.section.embedded.begin.jsx
+//                                                          ^      punctuation.section.embedded.end.jsx
     var multilineAttr = <a desc="ab
 //  ^^^                              storage.type.js
 //      ^^^^^^^^^^^^^                variable.other.readwrite.js
@@ -305,7 +292,110 @@ export default React.createClass({
   }
 //^  meta.brace.curly.js
 });
+// <- meta.brace.curly.js
  // <- meta.brace.round.js
 //^  punctuation.terminator.statement.js
+
+class Sound extends Model {
+// <- meta.class.js storage.type.class.js
+ // <- meta.class.js storage.type.class.js
+//^^^                        meta.class.js
+//^^^                        storage.type.class.js
+//    ^^^^^         ^^^^^    entity.name.class.js
+//          ^^^^^^^          meta.class.extends.js
+//          ^^^^^^^          storage.type.extends.js
+//                        ^  punctuation.section.class.begin.js
+  title: string;
+//^^^^^^ ^^^^^^^  meta.class.body.js
+//^^^^^           variable.other.readwrite.js
+//     ^          punctuation.type.flowtype
+//       ^^^^^^   support.type.builtin.primitive.flowtype
+//             ^  punctuation.terminator.statement.js
+  plays: number;
+//^^^^^^ ^^^^^^^  meta.class.body.js
+//^^^^^           variable.other.readwrite.js
+//     ^          punctuation.type.flowtype
+//       ^^^^^^   support.type.builtin.primitive.flowtype
+//             ^  punctuation.terminator.statement.js
+  constructor(id: number) {
+//^^^^^^^^^^^^^^^ ^^^^^^^ ^  meta.class.body.js
+//^^^^^^^^^^^^^^^ ^^^^^^^    meta.function.method.js
+//^^^^^^^^^^^                entity.name.function.method.js
+//           ^               punctuation.definition.parameters.begin.js
+//            ^^             variable.other.readwrite.js
+//              ^            punctuation.type.flowtype
+//                ^^^^^^     support.type.builtin.primitive.flowtype
+//                      ^    punctuation.definition.parameters.end.js
+//                        ^  meta.brace.curly.js
+    super();
+//  ^^^^^^^^  meta.class.body.js
+//  ^^^^^^^   meta.function-call.without-arguments.js
+//  ^^^^^     entity.name.function.js
+//       ^    punctuation.definition.parameters.begin.js
+//        ^   punctuation.definition.parameters.end.js
+//         ^  punctuation.terminator.statement.js
+    this.id = id;
+//  ^^^^^^^ ^ ^^^  meta.class.body.js
+//  ^^^^           variable.language.this.js
+//      ^          keyword.operator.accessor.js
+//       ^^        meta.property.object.js
+//       ^^        variable.other.property.js
+//          ^      keyword.operator.assignment.js
+//            ^^   variable.other.readwrite.js
+//              ^  punctuation.terminator.statement.js
+  }
+//^  meta.class.body.js
+//^  meta.brace.curly.js
+  [Private.getDebugSymbol()](opts: Object) {}
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^     meta.function.method.js
+//^                                            meta.brace.square.open.flowtype
+// ^^^^^^^^^^^^^^^^^^^^^^^^                    meta.function-call.static.without-arguments.js
+// ^^^^^^^                                     variable.other.class.js
+//        ^                                    keyword.operator.accessor.js
+//         ^^^^^^^^^^^^^^                      entity.name.function.js
+//                       ^^                    meta.group.braces.round.function.arguments.js
+//                         ^                   meta.brace.square.end.flowtype
+//                          ^                  punctuation.definition.parameters.begin.js
+//                           ^^^^              variable.other.readwrite.js
+//                               ^             punctuation.type.flowtype
+//                                 ^^^^^^      support.type.builtin.class.flowtype
+//                                       ^     punctuation.definition.parameters.end.js
+//                                         ^^  meta.brace.curly.js
+  play(): void {}
+//^^^^^^^ ^^^^ ^^  meta.class.body.js
+//^^^^^^^ ^^^^     meta.function.method.js
+//^^^^             entity.name.function.method.js
+//    ^            punctuation.definition.parameters.begin.js
+//     ^           punctuation.definition.parameters.end.js
+//      ^          punctuation.type.flowtype
+//        ^^^^     support.type.builtin.primitive.flowtype
+//             ^^  meta.brace.curly.js
+  pause(): void {}
+//^^^^^^^^ ^^^^ ^^  meta.class.body.js
+//^^^^^^^^ ^^^^     meta.function.method.js
+//^^^^^             entity.name.function.method.js
+//     ^            punctuation.definition.parameters.begin.js
+//      ^           punctuation.definition.parameters.end.js
+//       ^          punctuation.type.flowtype
+//         ^^^^     support.type.builtin.primitive.flowtype
+//              ^^  meta.brace.curly.js
+  static async fetch(id: number, retries: ?number): Promise {}
+//^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
+//^^^^^^                                                        storage.modifier.js
+//       ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^     meta.function.method.js
+//       ^^^^^                                                  storage.type.js
+//             ^^^^^                                            entity.name.function.method.js
+//                  ^                                           punctuation.definition.parameters.begin.js
+//                   ^^          ^^^^^^^                        variable.other.readwrite.js
+//                     ^                ^         ^             punctuation.type.flowtype
+//                       ^^^^^^            ^^^^^^               support.type.builtin.primitive.flowtype
+//                             ^                                meta.delimiter.comma.js
+//                                        ^                     keyword.operator.maybe.flowtype
+//                                               ^              punctuation.definition.parameters.end.js
+//                                                  ^^^^^^^     support.type.class.flowtype
+//                                                          ^^  meta.brace.curly.js
+}
+// <- punctuation.section.class.end.js
 
 // >> only:source.js.jsx

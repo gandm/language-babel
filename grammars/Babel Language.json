@@ -717,8 +717,6 @@
             "1": { "name": "meta.brace.curly.js" }
           },
           "patterns": [
-            { "include": "#literal-object" },
-            { "include": "#literal-keywords" },
             { "include": "#literal-function-labels" },
             { "include": "#literal-arrow-function-labels" },
             { "include": "#literal-arrow-function" },

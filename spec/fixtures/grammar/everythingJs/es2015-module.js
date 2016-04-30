@@ -729,20 +729,23 @@ x;
 //                         ^      ^^      ^^      ^^^       constant.numeric.js
 //                          ^^      ^^      ^^       ^^     meta.brace.round.js
   var(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){},
-//^^^                                                                    storage.type.js
-//   ^                                                             ^     meta.brace.round.js
+//^^^^^^ ^ ^ ^^ ^^^^ ^ ^ ^^ ^^^^^^ ^^^ ^^ ^^ ^ ^ ^^ ^^ ^ ^ ^^^ ^^^^^     meta.function.method.js
+//^^^                                                                    entity.name.function.method.js
+//   ^                                                                   punctuation.definition.parameters.begin.js
 //    ^  ^       ^   ^              ^     ^  ^         ^                 variable.other.readwrite.js
 //     ^      ^   ^^      ^      ^   ^     ^      ^          ^        ^  meta.delimiter.comma.js
 //         ^           ^                       ^         ^               keyword.operator.assignment.js
 //           ^           ^                       ^         ^             constant.numeric.js
-//              ^               ^                                        meta.brace.square.js
+//              ^                                                        meta.brace.square.open.flowtype
 //                          ^^^                                ^^^       keyword.operator.spread.js
 //                             ^                                  ^      meta.property.object.js
 //                             ^                                  ^      variable.other.property.js
+//                              ^                                        meta.brace.square.end.flowtype
 //                                 ^                        ^       ^^   meta.brace.curly.js
 //                                     ^^           ^^                   constant.other.object.key.js
 //                                     ^            ^                    string.unquoted.js
 //                                      ^            ^                   punctuation.separator.key-value.js
+//                                                                 ^     punctuation.definition.parameters.end.js
   set in([a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k]){},
 //^^^ ^^^^^^ ^ ^ ^^ ^^^^ ^ ^ ^^ ^^^^^^ ^^^ ^^ ^^ ^ ^ ^^ ^^ ^ ^ ^^^ ^^^^^^     meta.accessor.js
 //^^^                                                                         storage.type.accessor.js
