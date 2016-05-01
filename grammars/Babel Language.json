@@ -241,7 +241,7 @@
         { "include": "#literal-keyword-storage" },
         {
           "name": "keyword.control.flow.js",
-          "match": "\\s*+(?<!\\.)\\b(yield|type|declare)\\b(?:\\s*+(\\*))?",
+          "match": "\\s*+(?<!\\.)\\b(yield)\\b(?:\\s*+(\\*))?",
           "captures": {
               "1": { "name": "keyword.control.flow.js" },
               "2": { "name": "keyword.generator.asterisk.js" }
