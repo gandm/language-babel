@@ -538,7 +538,7 @@
         {
           "comment": "flowtype vars with a : to indicate type",
           "begin": "\\s*+(?<!\\.)\\b(const|let|var)\\b\\s+(?=[$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*+\\s*+:))",
-          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b|^\\s*$|}))",
+          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b|^\\s*$|}))",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
           },
@@ -552,7 +552,7 @@
         {
           "comment": "flowtype objects {a,b,{z}} with a : to indicate type",
           "begin": "\\s*+(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})\\s*+:)",
-          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b|^\\s*$|}))",
+          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b|^\\s*$|}))",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
           },
@@ -566,7 +566,7 @@
         {
           "comment": "flowtype arrays [a,[b,c]] with a : to indicate type",
           "begin": "\\s*+(?<!\\.)\\b(const|let|var)\\b\\s+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+:)",
-          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b|^\\s*$|}))",
+          "end": "\\s*((\\;)|(?=\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b|^\\s*$|}))",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
           },
@@ -1811,7 +1811,7 @@
         {
           "comment": "some form of default assignment for func args",
           "begin": "\\s*+=(?!>|=|==)",
-          "end": "\\s*(?=,|;|\\)|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b)",
+          "end": "\\s*(?=,|;|\\)|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b)",
           "beginCaptures": {
             "0": { "name": "keyword.operator.assignment.js" }
           },
@@ -1857,7 +1857,7 @@
           },
           {
             "comment": "custom primitive/var Types e.g. abc avoid abc(",
-            "match": "(?!^)\\s*+(?!\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
+            "match": "(?!^)\\s*+(?!\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
             "captures": {
               "2": { "name": "support.type.primitive.flowtype" }
             }
@@ -2013,7 +2013,7 @@
         {
           "comment": "type aliases for export but avoid type instaceof or type in operators",
           "begin": "\\s*+\\b(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_\\p{L}])",
-          "end": "\\s*(\\;|\\n|\\b(?=if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|label|yield|type|declare)\\b)",
+          "end": "\\s*(\\;|\\n|\\b(?=if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b)",
           "beginCaptures": {
             "1": { "name": "support.type.type.flowtype" }
           },
