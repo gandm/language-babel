@@ -1,3 +1,7 @@
+### 2.18.6
+  - Fix keys & values named type & declare being highlighted as js keywords. [Fixes #172 ](https://github.com/gandm/language-babel/issues/172)
+  - Scope flow variant polymorph operators <+T,-V>
+
 ### 2.18.5
   - Grammar incorrectly parsed a returned object literal. [Fixes #171](https://github.com/gandm/language-babel/issues/171)
 
