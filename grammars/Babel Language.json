@@ -1811,7 +1811,7 @@
         {
           "comment": "some form of default assignment for func args",
           "begin": "\\s*+=(?!>|=|==)",
-          "end": "\\s*(?=,|;|\\)|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b)",
+          "end": "\\s*(?=,|;|\\)|}|\\]|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare)\\b)",
           "beginCaptures": {
             "0": { "name": "keyword.operator.assignment.js" }
           },
