@@ -1,3 +1,6 @@
+### 2.18.7
+  - Add close brace and close array as let, var and const terminators.
+  
 ### 2.18.6
   - Fix keys & values named type & declare being highlighted as js keywords. [Fixes #172 ](https://github.com/gandm/language-babel/issues/172)
   - Scope flow variant polymorph operators <+T,-V>
