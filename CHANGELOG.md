@@ -1,3 +1,6 @@
+### 2.19.1
+  - Incorrect JSX Start regex
+  
 ### 2.19.0
   - Modified grammar scopes to highlight JSX components as classes. [Enhancement Request #173](https://github.com/gandm/language-babel/issues/173)
 
