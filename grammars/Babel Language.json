@@ -1503,7 +1503,7 @@
       "comment": "Avoid < operator expressions as best we can using Zertosh's regex",
       "patterns": [
         {
-          "begin": "(?<=\\(|\\{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|\\Wdefault|^)\\s*+(?=<[_$a-zA-Z])",
+          "begin": "(?<=\\(|\\{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|\\Wdefault|^)\\s*+(?=<[$_\\p{L}\\p{Nl}])",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "patterns": [
@@ -1520,17 +1520,19 @@
           "comment": "as well as terminating a <JSXElementName /> form",
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
-          "begin": "\\s*+(<)([$_\\p{L}](?:[$.:\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-](?<!\\.\\.))*+)(?=[/>\\s])(?<![\\.:])",
-          "end": "\\s*(?<=</)(\\2)(>)|(/>)|((?<=</)[\\S ]*?)>",
+          "begin": "\\s*+(<)((\\p{Ll}[\\p{Ll}0-9]*)|((?:[$_\\p{L}\\p{Nl}][$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*?:)?+(?:[$_\\p{L}\\p{Nl}](?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)+))(?=[ />\\s])(?![:])(?<!\\.|:)",
+          "end": "\\s*(?<=</)((\\4)|\\2)(>)|(/>)|((?<=</)[\\S ]*?)>",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
-            "2": { "name": "entity.name.tag.open.jsx" }
+            "2": { "name": "entity.name.tag.open.jsx" },
+            "4": { "name": "support.class.component.open.jsx"}
           },
           "endCaptures": {
             "1": { "name": "entity.name.tag.close.jsx" },
-            "2": { "name": "punctuation.definition.tag.jsx" },
+            "2": { "name": "support.class.component.close.jsx"},
             "3": { "name": "punctuation.definition.tag.jsx" },
-            "4": { "name": "invalid.illegal.termination.jsx"}
+            "4": { "name": "punctuation.definition.tag.jsx" },
+            "5": { "name": "invalid.illegal.termination.jsx"}
           },
           "patterns": [
             { "include": "#jsx-tag-termination" },
