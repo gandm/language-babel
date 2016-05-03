@@ -1,5 +1,8 @@
+### 2.19.3
+  - Added more cases as per 2.19.2 for function/arrow labels.
+
 ### 2.19.2
-  - Parsing some ternaries as key/value arrow constants, 
+  - Parsing some ternaries as key/value arrow constants,
 
 ### 2.19.1
   - Incorrect JSX Start regex

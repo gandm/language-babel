@@ -2,6 +2,28 @@
 
 // ISSUE #174
 
+<button onClick={disabled ? false : function () {}}>Click me!</button>
+// <- meta.tag.jsx punctuation.definition.tag.jsx
+ // <- meta.tag.jsx entity.name.tag.open.jsx
+//^^^^^ ^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^ ^^^^^^^^ ^^ ^^^^^^^^^ ^^^^^^^^^^^^  meta.tag.jsx
+//                                                 ^         ^^      ^  punctuation.definition.tag.jsx
+//^^^^^                                                                 entity.name.tag.open.jsx
+//      ^^^^^^^                                                         entity.other.attribute-name.jsx
+//             ^                                                        keyword.operator.assignment.jsx
+//              ^^^^^^^^^ ^ ^^^^^ ^ ^^^^^^^^ ^^ ^^^                     meta.embedded.expression.js
+//              ^                                                       punctuation.section.embedded.begin.jsx
+//               ^^^^^^^^                                               variable.other.readwrite.js
+//                        ^       ^                                     keyword.operator.ternary.js
+//                          ^^^^^                                       constant.language.boolean.false.js
+//                                  ^^^^^^^^ ^^                         meta.function.js
+//                                  ^^^^^^^^                            storage.type.function.js
+//                                           ^                          punctuation.definition.parameters.begin.js
+//                                            ^                         punctuation.definition.parameters.end.js
+//                                              ^^                      meta.brace.curly.js
+//                                                ^                     punctuation.section.embedded.end.jsx
+//                                                 ^                    JSXStartTagEnd
+//                                                           ^^         JSXEndTagStart
+//                                                             ^^^^^^   entity.name.tag.close.jsx
 <button onClick={disabled ? () => null : () => onClick(val)}>Click me!</button>
 // <- meta.tag.jsx punctuation.definition.tag.jsx
  // <- meta.tag.jsx entity.name.tag.open.jsx
