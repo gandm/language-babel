@@ -1,3 +1,6 @@
+### 2.19.4
+  - Regression JSX ignoring '-' chars as being valid in custom element names.
+
 ### 2.19.3
   - Added more cases as per 2.19.2 for function/arrow labels.
 

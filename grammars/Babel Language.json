@@ -1519,7 +1519,7 @@
           "comment": "as well as terminating a <JSXElementName /> form",
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
-          "begin": "\\s*+(<)((\\p{Ll}[\\p{Ll}0-9]*)|((?:[$_\\p{L}\\p{Nl}][$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*?:)?+(?:[$_\\p{L}\\p{Nl}](?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.](?<!\\.\\.))*+)+))(?=[ />\\s])(?![:])(?<!\\.|:)",
+          "begin": "\\s*+(<)((\\p{Ll}[\\p{Ll}0-9]*)|((?:[$_\\p{L}\\p{Nl}][$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*?:)?+(?:[$_\\p{L}\\p{Nl}](?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.-](?<!\\.\\.))*+)+))(?=[ />\\s])(?![:])(?<!\\.|:)",
           "end": "\\s*(?<=</)((\\4)|\\2)(>)|(/>)|((?<=</)[\\S ]*?)>",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.tag.jsx" },
