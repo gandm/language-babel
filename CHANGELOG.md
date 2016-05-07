@@ -1,6 +1,9 @@
+### 2.20.2
+  - Refactored grammar regex reverted in 2.20.1
+
 ### 2.20.1
   - Revert small commit
-  
+
 ### 2.20.0
   - Improve Flow and ASI support.
 

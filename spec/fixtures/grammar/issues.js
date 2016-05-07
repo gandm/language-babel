@@ -1,5 +1,61 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #178
+
+class A {
+// <- meta.class.js storage.type.class.js
+ // <- meta.class.js storage.type.class.js
+//^^^      meta.class.js
+//^^^      storage.type.class.js
+//    ^    entity.name.class.js
+//      ^  punctuation.section.class.begin.js
+  static a: number | string = 1
+//^^^^^^ ^^ ^^^^^^ ^ ^^^^^^ ^ ^  meta.class.body.js
+//^^^^^^                         storage.modifier.js
+//       ^                       variable.other.readwrite.js
+//        ^                      punctuation.type.flowtype
+//          ^^^^^^   ^^^^^^      support.type.builtin.primitive.flowtype
+//                 ^             kewyword.operator.union.flowtype
+//                          ^    keyword.operator.assignment.js
+//                            ^  constant.numeric.js
+  if (a) {} // believe it or not this becomes a method 
+//^^ ^^^ ^^ ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^   meta.class.body.js
+//^^ ^^^                                                 meta.function.method.js
+//^^                                                     entity.name.function.method.js
+//   ^                                                   punctuation.definition.parameters.begin.js
+//    ^                                                  variable.other.readwrite.js
+//     ^                                                 punctuation.definition.parameters.end.js
+//       ^^                                              meta.brace.curly.js
+//          ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^   comment.line.double-slash.js
+//          ^^                                           punctuation.definition.comment.js
+  method<T>(a: string): string { // This is a method
+//^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^ ^ ^^ ^^^^ ^^ ^ ^^^^^^  meta.class.body.js
+//^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^                        meta.function.method.js
+//^^^^^^                                              entity.name.function.method.js
+//      ^ ^                                           punctutation.flowtype
+//       ^                                            support.type.class.flowtype
+//         ^                                          punctuation.definition.parameters.begin.js
+//          ^                                         variable.other.readwrite.js
+//           ^        ^                               punctuation.type.flowtype
+//             ^^^^^^   ^^^^^^                        support.type.builtin.primitive.flowtype
+//                   ^                                punctuation.definition.parameters.end.js
+//                             ^                      meta.brace.curly.js
+//                               ^^ ^^^^ ^^ ^ ^^^^^^  comment.line.double-slash.js
+//                               ^^                   punctuation.definition.comment.js
+    if (a) {} // and this is a conditional keyword
+//  ^^ ^^^ ^^ ^^ ^^^ ^^^^ ^^ ^ ^^^^^^^^^^^ ^^^^^^^  meta.class.body.js
+//  ^^                                              keyword.control.conditional.js
+//     ^ ^                                          meta.brace.round.js
+//      ^                                           variable.other.readwrite.js
+//         ^^                                       meta.brace.curly.js
+//            ^^ ^^^ ^^^^ ^^ ^ ^^^^^^^^^^^ ^^^^^^^  comment.line.double-slash.js
+//            ^^                                    punctuation.definition.comment.js
+  }
+//^  meta.class.body.js
+//^  meta.brace.curly.js
+}
+// <- punctuation.section.class.end.js
+
 // ISSUE #174
 
 <button onClick={disabled ? false : function () {}}>Click me!</button>

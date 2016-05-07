@@ -40,6 +40,7 @@
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-function" },
         { "include": "#literal-arrow-function" },
+        { "include": "#literal-method-alternate" },
         { "include": "#literal-prototype", "comment": "after literal-function, which includes some prototype strings" },
         { "include": "#literal-regexp", "comment": "before operators to avoid abiguities" },
         { "include": "#literal-number" },
@@ -1280,14 +1281,14 @@
         {
           "comment": "e.g. play<T,T>(arg1, arg2): Type<T> { }",
           "name": "meta.function.method.js",
-          "begin": "(?:^|;)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?<!\\.)([_$a-zA-Z][$\\w]*)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(?:\\s*+(:|\\|)(\\s*+[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*+(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(((')((?:[^']|\\\\')*)('))|\\s*+((\")((?:[^\"]|\\\\\")*)(\")))|\\s*+[x0-9A-Fa-f]+))*\\s*+\\{)",
+          "begin": "(?:^|;)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?<!\\.)(?!\\b(break|case|catch|continue|do|else|finally|for|function|if|export|import|package|return|switch|throw|try|while|with)\\b)([_$a-zA-Z][$\\w]*)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(?:\\s*+(:|\\|)(\\s*+[$_a-zA-Z0-9]+(<(?:(?>[^<>]+)|\\g<-1>)*>)?|\\s*+(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(((')((?:[^']|\\\\')*)('))|\\s*+((\")((?:[^\"]|\\\\\")*)(\")))|\\s*+[x0-9A-Fa-f]+))*\\s*+\\{)",
           "end": "\\s*(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "storage.modifier.js" },
             "2": { "name": "storage.type.js" },
             "3": { "name": "keyword.generator.asterisk.js" },
-            "4": { "name": "entity.name.function.method.js" }
+            "5": { "name": "entity.name.function.method.js" }
           },
           "patterns": [
             { "include": "#flowtype" }
