@@ -1,3 +1,6 @@
+### 2.20.0
+  - Improve Flow and ASI support.
+
 ### 2.19.4
   - Regression JSX ignoring '-' chars as being valid in custom element names.
 

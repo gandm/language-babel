@@ -52,13 +52,11 @@ export default React.createClass({
     var {email, question} = this.state;
 //  ^^^                                  storage.type.js
 //      ^               ^                meta.brace.curly.js
-//       ^^^^^  ^^^^^^^^                 variable.other.readwrite.js
+//       ^^^^^  ^^^^^^^^         ^^^^^   variable.other.property.js
 //            ^                          meta.delimiter.comma.js
 //                        ^              keyword.operator.assignment.js
 //                          ^^^^         variable.language.this.js
 //                              ^        keyword.operator.accessor.js
-//                               ^^^^^   meta.property.object.js
-//                               ^^^^^   variable.other.property.js
 //                                    ^  punctuation.terminator.statement.js
     request
 //  ^^^^^^^  variable.other.readwrite.js
@@ -145,12 +143,10 @@ export default React.createClass({
     var {email} = this.state;
 //  ^^^                        storage.type.js
 //      ^     ^                meta.brace.curly.js
-//       ^^^^^                 variable.other.readwrite.js
+//       ^^^^^         ^^^^^   variable.other.property.js
 //              ^              keyword.operator.assignment.js
 //                ^^^^         variable.language.this.js
 //                    ^        keyword.operator.accessor.js
-//                     ^^^^^   meta.property.object.js
-//                     ^^^^^   variable.other.property.js
 //                          ^  punctuation.terminator.statement.js
     var list = this.props.secondary.map(pic => <img src={pic} />)
 //  ^^^                                                            storage.type.js
@@ -331,8 +327,7 @@ class Sound extends Model {
 //  ^^^^^^^^  meta.class.body.js
 //  ^^^^^^^   meta.function-call.without-arguments.js
 //  ^^^^^     entity.name.function.js
-//       ^    punctuation.definition.parameters.begin.js
-//        ^   punctuation.definition.parameters.end.js
+//       ^^   meta.brace.round.js
 //         ^  punctuation.terminator.statement.js
     this.id = id;
 //  ^^^^^^^ ^ ^^^  meta.class.body.js
@@ -349,13 +344,12 @@ class Sound extends Model {
   [Private.getDebugSymbol()](opts: Object) {}
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^     meta.function.method.js
-//^                                            meta.brace.square.open.flowtype
+//^                        ^                   meta.brace.square.js
 // ^^^^^^^^^^^^^^^^^^^^^^^^                    meta.function-call.static.without-arguments.js
 // ^^^^^^^                                     variable.other.class.js
 //        ^                                    keyword.operator.accessor.js
 //         ^^^^^^^^^^^^^^                      entity.name.function.js
 //                       ^^                    meta.group.braces.round.function.arguments.js
-//                         ^                   meta.brace.square.end.flowtype
 //                          ^                  punctuation.definition.parameters.begin.js
 //                           ^^^^              variable.other.readwrite.js
 //                               ^             punctuation.type.flowtype

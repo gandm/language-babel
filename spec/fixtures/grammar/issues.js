@@ -37,28 +37,32 @@
 //               ^^^^^^^^                              ^^^                       variable.other.readwrite.js
 //                        ^            ^                                         keyword.operator.ternary.js
 //                          ^^ ^^        ^^ ^^                                   meta.function.arrow.js
-//                          ^            ^            ^                          punctuation.definition.parameters.begin.js
-//                           ^            ^               ^                      punctuation.definition.parameters.end.js
+//                          ^            ^                                       punctuation.definition.parameters.begin.js
+//                           ^            ^                                      punctuation.definition.parameters.end.js
 //                             ^^           ^^                                   storage.type.function.arrow.js
 //                                ^^^^                                           constant.language.null.js
 //                                             ^^^^^^^^^^^^                      meta.function-call.with-arguments.js
 //                                             ^^^^^^^                           entity.name.function.js
+//                                                    ^   ^                      meta.brace.round.js
 //                                                         ^                     punctuation.section.embedded.end.jsx
 //                                                          ^                    JSXStartTagEnd
 //                                                                    ^^         JSXEndTagStart
 //                                                                      ^^^^^^   entity.name.tag.close.jsx
 
 // ISSUE: #171
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^^  comment.line.double-slash.js
 
 function getObject() {
 // <- meta.function.js storage.type.function.js
  // <- meta.function.js storage.type.function.js
-//^^^^^^ ^^^^^^^^^^^      meta.function.js
-//^^^^^^                  storage.type.function.js
-//       ^^^^^^^^^        entity.name.function.js
-//                ^       punctuation.definition.parameters.begin.js
-//                 ^      punctuation.definition.parameters.end.js
-//                   ^    meta.brace.curly.js
+//^^^^^^ ^^^^^^^^^^^    meta.function.js
+//^^^^^^                storage.type.function.js
+//       ^^^^^^^^^      entity.name.function.js
+//                ^     punctuation.definition.parameters.begin.js
+//                 ^    punctuation.definition.parameters.end.js
+//                   ^  meta.brace.curly.js
   return {
 //^^^^^^    keyword.control.flow.js
 //       ^  meta.brace.curly.js
@@ -94,43 +98,49 @@ function getObject() {
 // <- meta.brace.curly.js
 
 // ISSUE: #170
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^^  comment.line.double-slash.js
 
 foo({ //
 // <- meta.function-call.with-arguments.js entity.name.function.js
  // <- meta.function-call.with-arguments.js entity.name.function.js
-//^^^ ^^   meta.function-call.with-arguments.js
-//^        entity.name.function.js
-// ^       punctuation.definition.parameters.begin.js
-//  ^      meta.brace.curly.js
-//    ^^   comment.line.double-slash.js
-//    ^^   punctuation.definition.comment.js
+//^^^ ^^  meta.function-call.with-arguments.js
+//^       entity.name.function.js
+// ^      meta.brace.round.js
+//  ^     meta.brace.curly.js
+//    ^^  comment.line.double-slash.js
+//    ^^  punctuation.definition.comment.js
   bar() {} //
-//^^^^^ ^^ ^^   meta.function-call.with-arguments.js
-//^^^^^         meta.function.method.js
-//^^^           entity.name.function.method.js
-//   ^          punctuation.definition.parameters.begin.js
-//    ^         punctuation.definition.parameters.end.js
-//      ^^      meta.brace.curly.js
-//         ^^   comment.line.double-slash.js
-//         ^^   punctuation.definition.comment.js
+//^^^^^ ^^ ^^  meta.function-call.with-arguments.js
+//^^^^^        meta.function.method.js
+//^^^          entity.name.function.method.js
+//   ^         punctuation.definition.parameters.begin.js
+//    ^        punctuation.definition.parameters.end.js
+//      ^^     meta.brace.curly.js
+//         ^^  comment.line.double-slash.js
+//         ^^  punctuation.definition.comment.js
 })
 // <- meta.function-call.with-arguments.js meta.brace.curly.js
- // <- meta.function-call.with-arguments.js punctuation.definition.parameters.end.js
+ // <- meta.function-call.with-arguments.js meta.brace.round.js
 
 // ISSUE: 169
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^  comment.line.double-slash.js
 let a: number = td.function()
 // <- storage.type.js
  // <- storage.type.js
-//^                             storage.type.js
-//  ^                           variable.other.readwrite.js
-//   ^                          punctuation.type.flowtype
-//     ^^^^^^                   support.type.builtin.primitive.flowtype
-//            ^                 keyword.operator.assignment.js
-//              ^^              variable.other.object.js
-//                ^             keyword.operator.accessor.js
-//                 ^^^^^^^^^^   meta.function-call.method.without-arguments.js
-//                 ^^^^^^^^     entity.name.function.js
-//                         ^^   meta.group.braces.round.function.arguments.js
+//^                            storage.type.js
+//  ^                          variable.other.readwrite.js
+//   ^                         punctuation.type.flowtype
+//     ^^^^^^                  support.type.builtin.primitive.flowtype
+//            ^                keyword.operator.assignment.js
+//              ^^             variable.other.object.js
+//                ^            keyword.operator.accessor.js
+//                 ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//                 ^^^^^^^^    entity.name.function.js
+//                         ^^  meta.group.braces.round.function.arguments.js
 const double = td.function()
 // <- storage.type.js
  // <- storage.type.js
@@ -223,8 +233,15 @@ let a = {
 //              ^^   meta.group.braces.round.function.arguments.js
 //                ^  punctuation.terminator.statement.js
 }// <- meta.brace.curly.js
+// <- meta.brace.curly.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+//^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
+//^                         punctuation.definition.comment.js
 
 // ISSUE: 168
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^  comment.line.double-slash.js
 let obj = { a: () => async () => 1 }
 // <- storage.type.js
  // <- storage.type.js
@@ -242,6 +259,9 @@ let obj = { a: () => async () => 1 }
 //                               ^    constant.numeric.js
 
 // ISSUE: 166
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^  comment.line.double-slash.js
 export default {
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -291,6 +311,9 @@ export default {
 //^                         punctuation.definition.comment.js
 
 // ISSUE: 164
+// <- comment.line.double-slash.js punctuation.definition.comment.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+// ^^^^^^ ^^^  comment.line.double-slash.js
 const foo = function foo(a /* : string*/) /* {[key: string]: string} */ {
 // <- storage.type.js
  // <- storage.type.js
@@ -322,5 +345,3 @@ module.exports = exports = foo
 //^^^^^^^^^^^^   ^^^^^^^        keyword.operator.accessor.js
 //             ^         ^      keyword.operator.assignment.js
 //                         ^^^  variable.other.readwrite.js
-
-// >> only:source.js.jsx

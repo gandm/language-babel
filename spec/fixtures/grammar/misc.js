@@ -47,6 +47,15 @@
 //                     ^^                      JSXEndTagStart
 //                       ^^^^^^^^^^^^^^^^^^^   entity.name.tag.close.jsx
 //                       ^^^^^^^^^^^^^^^^^^^   support.class.component.close.jsx
+  <custom-element></custom-element>
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//^              ^^^              ^  punctuation.definition.tag.jsx
+// ^^^^^^^^^^^^^^                    entity.name.tag.open.jsx
+// ^^^^^^^^^^^^^^                    support.class.component.open.jsx
+//               ^                   JSXStartTagEnd
+//                ^^                 JSXEndTagStart
+//                  ^^^^^^^^^^^^^^   entity.name.tag.close.jsx
+//                  ^^^^^^^^^^^^^^   support.class.component.close.jsx
 </div>
 // <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart
  // <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart

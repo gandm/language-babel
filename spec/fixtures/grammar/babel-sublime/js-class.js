@@ -78,33 +78,31 @@ class MyClass {
   [computedMethod()]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
-//^                        meta.brace.square.open.flowtype
+//^                ^       meta.brace.square.js
 // ^^^^^^^^^^^^^^^^        meta.function-call.without-arguments.js
 // ^^^^^^^^^^^^^^          entity.name.function.js
-//               ^  ^      punctuation.definition.parameters.begin.js
-//                ^  ^     punctuation.definition.parameters.end.js
-//                 ^       meta.brace.square.end.flowtype
+//               ^^        meta.brace.round.js
+//                  ^      punctuation.definition.parameters.begin.js
+//                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js
   ["computedString"]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
-//^                        meta.brace.square.open.flowtype
+//^                ^       meta.brace.square.js
 // ^^^^^^^^^^^^^^^^        string.quoted.double.js
 // ^                       punctuation.definition.string.begin.js
 //                ^        punctuation.definition.string.end.js
-//                 ^       meta.brace.square.end.flowtype
 //                  ^      punctuation.definition.parameters.begin.js
 //                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js
   ["computed" + "String"]() {}
 //^^^^^^^^^^^ ^ ^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^ ^ ^^^^^^^^^^^     meta.function.method.js
-//^                             meta.brace.square.open.flowtype
+//^                     ^       meta.brace.square.js
 // ^^^^^^^^^^   ^^^^^^^^        string.quoted.double.js
 // ^            ^               punctuation.definition.string.begin.js
 //          ^          ^        punctuation.definition.string.end.js
 //            ^                 keyword.operator.arithmetic.js
-//                      ^       meta.brace.square.end.flowtype
 //                       ^      punctuation.definition.parameters.begin.js
 //                        ^     punctuation.definition.parameters.end.js
 //                          ^^  meta.brace.curly.js
@@ -112,12 +110,11 @@ class MyClass {
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //^                        keyword.generator.asterisk.js
-// ^                       meta.brace.square.open.flowtype
+// ^               ^       meta.brace.square.js
 //  ^^^^^^^^^^^^^^^        meta.property.class.js
 //  ^^^^^^                 variable.other.class.js
 //        ^                keyword.operator.accessor.js
 //         ^^^^^^^^        variable.other.property.static.js
-//                 ^       meta.brace.square.end.flowtype
 //                  ^      punctuation.definition.parameters.begin.js
 //                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js

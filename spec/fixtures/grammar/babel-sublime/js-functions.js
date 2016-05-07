@@ -54,18 +54,14 @@ let Sound = {
 //            ^  meta.delimiter.comma.js
   'play'() {},
 //^^^^^^^^      meta.function.method.js
-//^^^^^^        string.quoted.single.js
-//^             punctuation.definition.string.begin.js
-//     ^        punctuation.definition.string.end.js
+//^^^^^^        entity.name.function.method.js
 //      ^       punctuation.definition.parameters.begin.js
 //       ^      punctuation.definition.parameters.end.js
 //         ^^   meta.brace.curly.js
 //           ^  meta.delimiter.comma.js
   'play'(arg) {},
 //^^^^^^^^^^^      meta.function.method.js
-//^^^^^^           string.quoted.single.js
-//^                punctuation.definition.string.begin.js
-//     ^           punctuation.definition.string.end.js
+//^^^^^^           entity.name.function.method.js
 //      ^          punctuation.definition.parameters.begin.js
 //       ^^^       variable.other.readwrite.js
 //          ^      punctuation.definition.parameters.end.js
@@ -125,9 +121,7 @@ let Sound = {
   *'play'() {},
 //^^^^^^^^^      meta.function.method.js
 //^              keyword.generator.asterisk.js
-// ^^^^^^        string.quoted.single.js
-// ^             punctuation.definition.string.begin.js
-//      ^        punctuation.definition.string.end.js
+// ^^^^^^        entity.name.function.method.js
 //       ^       punctuation.definition.parameters.begin.js
 //        ^      punctuation.definition.parameters.end.js
 //          ^^   meta.brace.curly.js
@@ -135,9 +129,7 @@ let Sound = {
   *'play'(arg) {},
 //^^^^^^^^^^^^      meta.function.method.js
 //^                 keyword.generator.asterisk.js
-// ^^^^^^           string.quoted.single.js
-// ^                punctuation.definition.string.begin.js
-//      ^           punctuation.definition.string.end.js
+// ^^^^^^           entity.name.function.method.js
 //       ^          punctuation.definition.parameters.begin.js
 //        ^^^       variable.other.readwrite.js
 //           ^      punctuation.definition.parameters.end.js
@@ -146,9 +138,7 @@ let Sound = {
   async 'play'() {},
 //^^^^^ ^^^^^^^^      meta.function.method.js
 //^^^^^               storage.type.js
-//      ^^^^^^        string.quoted.single.js
-//      ^             punctuation.definition.string.begin.js
-//           ^        punctuation.definition.string.end.js
+//      ^^^^^^        entity.name.function.method.js
 //            ^       punctuation.definition.parameters.begin.js
 //             ^      punctuation.definition.parameters.end.js
 //               ^^   meta.brace.curly.js
@@ -156,9 +146,7 @@ let Sound = {
   async 'play'(arg) {},
 //^^^^^ ^^^^^^^^^^^      meta.function.method.js
 //^^^^^                  storage.type.js
-//      ^^^^^^           string.quoted.single.js
-//      ^                punctuation.definition.string.begin.js
-//           ^           punctuation.definition.string.end.js
+//      ^^^^^^           entity.name.function.method.js
 //            ^          punctuation.definition.parameters.begin.js
 //             ^^^       variable.other.readwrite.js
 //                ^      punctuation.definition.parameters.end.js
@@ -187,26 +175,24 @@ let Sound = {
 //                  ^  meta.delimiter.comma.js
   [Play.name()]() {},
 //^^^^^^^^^^^^^^^      meta.function.method.js
-//^                    meta.brace.square.open.flowtype
+//^           ^        meta.brace.square.js
 // ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
 // ^^^^                variable.other.class.js
 //     ^               keyword.operator.accessor.js
 //      ^^^^           entity.name.function.js
 //          ^^         meta.group.braces.round.function.arguments.js
-//            ^        meta.brace.square.end.flowtype
 //             ^       punctuation.definition.parameters.begin.js
 //              ^      punctuation.definition.parameters.end.js
 //                ^^   meta.brace.curly.js
 //                  ^  meta.delimiter.comma.js
   [Play.name()[]](arg) {},
 //^^^^^^^^^^^^^^^^^^^^      meta.function.method.js
-//^           ^             meta.brace.square.open.flowtype
+//^           ^^^           meta.brace.square.js
 // ^^^^^^^^^^^              meta.function-call.static.without-arguments.js
 // ^^^^                     variable.other.class.js
 //     ^                    keyword.operator.accessor.js
 //      ^^^^                entity.name.function.js
 //          ^^              meta.group.braces.round.function.arguments.js
-//             ^^           meta.brace.square.end.flowtype
 //               ^          punctuation.definition.parameters.begin.js
 //                ^^^       variable.other.readwrite.js
 //                   ^      punctuation.definition.parameters.end.js
@@ -215,13 +201,12 @@ let Sound = {
   *[Play.name()]() {},
 //^^^^^^^^^^^^^^^^      meta.function.method.js
 //^                     keyword.generator.asterisk.js
-// ^                    meta.brace.square.open.flowtype
+// ^           ^        meta.brace.square.js
 //  ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
 //  ^^^^                variable.other.class.js
 //      ^               keyword.operator.accessor.js
 //       ^^^^           entity.name.function.js
 //           ^^         meta.group.braces.round.function.arguments.js
-//             ^        meta.brace.square.end.flowtype
 //              ^       punctuation.definition.parameters.begin.js
 //               ^      punctuation.definition.parameters.end.js
 //                 ^^   meta.brace.curly.js
@@ -229,13 +214,12 @@ let Sound = {
   *[Play.name()](arg) {},
 //^^^^^^^^^^^^^^^^^^^      meta.function.method.js
 //^                        keyword.generator.asterisk.js
-// ^                       meta.brace.square.open.flowtype
+// ^           ^           meta.brace.square.js
 //  ^^^^^^^^^^^            meta.function-call.static.without-arguments.js
 //  ^^^^                   variable.other.class.js
 //      ^                  keyword.operator.accessor.js
 //       ^^^^              entity.name.function.js
 //           ^^            meta.group.braces.round.function.arguments.js
-//             ^           meta.brace.square.end.flowtype
 //              ^          punctuation.definition.parameters.begin.js
 //               ^^^       variable.other.readwrite.js
 //                  ^      punctuation.definition.parameters.end.js
@@ -244,13 +228,12 @@ let Sound = {
   async [Play.name()]() {},
 //^^^^^ ^^^^^^^^^^^^^^^      meta.function.method.js
 //^^^^^                      storage.type.js
-//      ^                    meta.brace.square.open.flowtype
+//      ^           ^        meta.brace.square.js
 //       ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
 //       ^^^^                variable.other.class.js
 //           ^               keyword.operator.accessor.js
 //            ^^^^           entity.name.function.js
 //                ^^         meta.group.braces.round.function.arguments.js
-//                  ^        meta.brace.square.end.flowtype
 //                   ^       punctuation.definition.parameters.begin.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
@@ -258,13 +241,12 @@ let Sound = {
   async [Play.name()](arg) {},
 //^^^^^ ^^^^^^^^^^^^^^^^^^      meta.function.method.js
 //^^^^^                         storage.type.js
-//      ^                       meta.brace.square.open.flowtype
+//      ^           ^           meta.brace.square.js
 //       ^^^^^^^^^^^            meta.function-call.static.without-arguments.js
 //       ^^^^                   variable.other.class.js
 //           ^                  keyword.operator.accessor.js
 //            ^^^^              entity.name.function.js
 //                ^^            meta.group.braces.round.function.arguments.js
-//                  ^           meta.brace.square.end.flowtype
 //                   ^          punctuation.definition.parameters.begin.js
 //                    ^^^       variable.other.readwrite.js
 //                       ^      punctuation.definition.parameters.end.js
@@ -828,7 +810,7 @@ class Sound<T, T> extends Model<T, T> {
 //    ^^^^^               ^^^^^          entity.name.class.js
 //         ^    ^              ^    ^    punctutation.flowtype
 //          ^  ^                ^  ^     support.type.class.flowtype
-//           ^                   ^       punctuation.type.separator.flowtype
+//           ^                   ^       meta.delimiter.comma.js
 //                ^^^^^^^                meta.class.extends.js
 //                ^^^^^^^                storage.type.extends.js
 //                                    ^  punctuation.section.class.begin.js
@@ -1077,18 +1059,14 @@ class Sound<T, T> extends Model<T, T> {
   'play'() {}
 //^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^     meta.function.method.js
-//^^^^^^       string.quoted.single.js
-//^            punctuation.definition.string.begin.js
-//     ^       punctuation.definition.string.end.js
+//^^^^^^       entity.name.function.method.js
 //      ^      punctuation.definition.parameters.begin.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   'play'(arg) {}
 //^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^     meta.function.method.js
-//^^^^^^          string.quoted.single.js
-//^               punctuation.definition.string.begin.js
-//     ^          punctuation.definition.string.end.js
+//^^^^^^          entity.name.function.method.js
 //      ^         punctuation.definition.parameters.begin.js
 //       ^^^      variable.other.readwrite.js
 //          ^     punctuation.definition.parameters.end.js
@@ -1114,9 +1092,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^     meta.function.method.js
 //^             keyword.generator.asterisk.js
-// ^^^^^^       string.quoted.single.js
-// ^            punctuation.definition.string.begin.js
-//      ^       punctuation.definition.string.end.js
+// ^^^^^^       entity.name.function.method.js
 //       ^      punctuation.definition.parameters.begin.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
@@ -1124,9 +1100,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^     meta.function.method.js
 //^                keyword.generator.asterisk.js
-// ^^^^^^          string.quoted.single.js
-// ^               punctuation.definition.string.begin.js
-//      ^          punctuation.definition.string.end.js
+// ^^^^^^          entity.name.function.method.js
 //       ^         punctuation.definition.parameters.begin.js
 //        ^^^      variable.other.readwrite.js
 //           ^     punctuation.definition.parameters.end.js
@@ -1332,18 +1306,16 @@ class Sound<T, T> extends Model<T, T> {
   [play]() {}
 //^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^     meta.function.method.js
-//^            meta.brace.square.open.flowtype
+//^    ^       meta.brace.square.js
 // ^^^^        variable.other.readwrite.js
-//     ^       meta.brace.square.end.flowtype
 //      ^      punctuation.definition.parameters.begin.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   [play](arg) {}
 //^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^     meta.function.method.js
-//^               meta.brace.square.open.flowtype
+//^    ^          meta.brace.square.js
 // ^^^^  ^^^      variable.other.readwrite.js
-//     ^          meta.brace.square.end.flowtype
 //      ^         punctuation.definition.parameters.begin.js
 //          ^     punctuation.definition.parameters.end.js
 //            ^^  meta.brace.curly.js
@@ -1351,9 +1323,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^     meta.function.method.js
 //^             keyword.generator.asterisk.js
-// ^            meta.brace.square.open.flowtype
+// ^    ^       meta.brace.square.js
 //  ^^^^        variable.other.readwrite.js
-//      ^       meta.brace.square.end.flowtype
 //       ^      punctuation.definition.parameters.begin.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
@@ -1361,9 +1332,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^     meta.function.method.js
 //^                keyword.generator.asterisk.js
-// ^               meta.brace.square.open.flowtype
+// ^    ^          meta.brace.square.js
 //  ^^^^  ^^^      variable.other.readwrite.js
-//      ^          meta.brace.square.end.flowtype
 //       ^         punctuation.definition.parameters.begin.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
@@ -1371,9 +1341,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^ ^^^^^^^^ ^^  meta.class.body.js
 //^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^              storage.type.js
-//      ^            meta.brace.square.open.flowtype
+//      ^    ^       meta.brace.square.js
 //       ^^^^        variable.other.readwrite.js
-//           ^       meta.brace.square.end.flowtype
 //            ^      punctuation.definition.parameters.begin.js
 //             ^     punctuation.definition.parameters.end.js
 //               ^^  meta.brace.curly.js
@@ -1381,9 +1350,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^ ^^^^^^^^^^^     meta.function.method.js
 //^^^^^                 storage.type.js
-//      ^               meta.brace.square.open.flowtype
+//      ^    ^          meta.brace.square.js
 //       ^^^^  ^^^      variable.other.readwrite.js
-//           ^          meta.brace.square.end.flowtype
 //            ^         punctuation.definition.parameters.begin.js
 //                ^     punctuation.definition.parameters.end.js
 //                  ^^  meta.brace.curly.js
@@ -1411,9 +1379,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^              storage.modifier.js
 //       ^^^^^^^^     meta.function.method.js
-//       ^            meta.brace.square.open.flowtype
+//       ^    ^       meta.brace.square.js
 //        ^^^^        variable.other.readwrite.js
-//            ^       meta.brace.square.end.flowtype
 //             ^      punctuation.definition.parameters.begin.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
@@ -1421,9 +1388,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^                 storage.modifier.js
 //       ^^^^^^^^^^^     meta.function.method.js
-//       ^               meta.brace.square.open.flowtype
+//       ^    ^          meta.brace.square.js
 //        ^^^^  ^^^      variable.other.readwrite.js
-//            ^          meta.brace.square.end.flowtype
 //             ^         punctuation.definition.parameters.begin.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
@@ -1432,9 +1398,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^               storage.modifier.js
 //       ^^^^^^^^^     meta.function.method.js
 //       ^             keyword.generator.asterisk.js
-//        ^            meta.brace.square.open.flowtype
+//        ^    ^       meta.brace.square.js
 //         ^^^^        variable.other.readwrite.js
-//             ^       meta.brace.square.end.flowtype
 //              ^      punctuation.definition.parameters.begin.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
@@ -1443,9 +1408,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^                  storage.modifier.js
 //       ^^^^^^^^^^^^     meta.function.method.js
 //       ^                keyword.generator.asterisk.js
-//        ^               meta.brace.square.open.flowtype
+//        ^    ^          meta.brace.square.js
 //         ^^^^  ^^^      variable.other.readwrite.js
-//             ^          meta.brace.square.end.flowtype
 //              ^         punctuation.definition.parameters.begin.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
@@ -1454,9 +1418,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^                    storage.modifier.js
 //       ^^^^^ ^^^^^^^^     meta.function.method.js
 //       ^^^^^              storage.type.js
-//             ^            meta.brace.square.open.flowtype
+//             ^    ^       meta.brace.square.js
 //              ^^^^        variable.other.readwrite.js
-//                  ^       meta.brace.square.end.flowtype
 //                   ^      punctuation.definition.parameters.begin.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
@@ -1465,9 +1428,8 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^                       storage.modifier.js
 //       ^^^^^ ^^^^^^^^^^^     meta.function.method.js
 //       ^^^^^                 storage.type.js
-//             ^               meta.brace.square.open.flowtype
+//             ^    ^          meta.brace.square.js
 //              ^^^^  ^^^      variable.other.readwrite.js
-//                  ^          meta.brace.square.end.flowtype
 //                   ^         punctuation.definition.parameters.begin.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
@@ -1505,8 +1467,7 @@ Sound()
  // <- meta.function-call.without-arguments.js entity.name.function.js
 //^^^^^  meta.function-call.without-arguments.js
 //^^^    entity.name.function.js
-//   ^   punctuation.definition.parameters.begin.js
-//    ^  punctuation.definition.parameters.end.js
+//   ^^  meta.brace.round.js
 Sound = {}
 // <- variable.other.readwrite.js
  // <- variable.other.readwrite.js
@@ -1539,11 +1500,9 @@ Sound[play]()
  // <- variable.other.object.js
 //^^^          variable.other.object.js
 //   ^^^^^^^^  meta.function-call.without-arguments.js
-//   ^         meta.brace.square.open.flowtype
+//   ^    ^    meta.brace.square.js
 //    ^^^^     variable.other.readwrite.js
-//        ^    meta.brace.square.end.flowtype
-//         ^   punctuation.definition.parameters.begin.js
-//          ^  punctuation.definition.parameters.end.js
+//         ^^  meta.brace.round.js
 Sound.play = {}
 // <- meta.property.class.js variable.other.class.js
  // <- meta.property.class.js variable.other.class.js
@@ -1612,11 +1571,9 @@ Sound.prototype[play]()
 //   ^                   keyword.operator.accessor.js
 //    ^^^^^^^^^          variable.language.prototype.js
 //             ^^^^^^^^  meta.function-call.without-arguments.js
-//             ^         meta.brace.square.open.flowtype
+//             ^    ^    meta.brace.square.js
 //              ^^^^     variable.other.readwrite.js
-//                  ^    meta.brace.square.end.flowtype
-//                   ^   punctuation.definition.parameters.begin.js
-//                    ^  punctuation.definition.parameters.end.js
+//                   ^^  meta.brace.round.js
 Sound.prototype.play =
 // <- meta.prototype.access.js entity.name.class.js
  // <- meta.prototype.access.js entity.name.class.js
@@ -2484,6 +2441,3 @@ yield* genfunc;
 //   ^           keyword.generator.asterisk.js
 //     ^^^^^^^   variable.other.readwrite.js
 //            ^  punctuation.terminator.statement.js
-
-
-// >> only:(source.js.jsx)
