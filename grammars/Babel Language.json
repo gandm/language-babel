@@ -39,7 +39,6 @@
         { "include": "#literal-function-labels" },
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-function" },
-        { "include": "#literal-method-alternate" },
         { "include": "#literal-arrow-function" },
         { "include": "#literal-prototype", "comment": "after literal-function, which includes some prototype strings" },
         { "include": "#literal-regexp", "comment": "before operators to avoid abiguities" },

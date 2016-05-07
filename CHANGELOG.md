@@ -1,3 +1,6 @@
+### 2.20.1
+  - Revert small commit
+  
 ### 2.20.0
   - Improve Flow and ASI support.
 
