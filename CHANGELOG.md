@@ -1,3 +1,6 @@
+### 2.20.3
+  - Fix incorrect handling of case statement used as a return flow type [Fixes #179](https://github.com/gandm/language-babel/issues/179)
+
 ### 2.20.2
   - Refactored grammar regex reverted in 2.20.1
 

@@ -1,5 +1,49 @@
 // SYNTAX TEST "source.js.jsx"
 
+
+// ISSUE #179
+
+class A {
+  // These will be converted to methods
+  if () {}; for () {}; switch () {}
+//^^ ^^ ^^^ ^^^ ^^ ^^^ ^^^^^^ ^^ ^^  meta.class.body.js
+//^^ ^^     ^^^ ^^     ^^^^^^ ^^     meta.function.method.js
+//^^        ^^^        ^^^^^^        entity.name.function.method.js
+//   ^          ^             ^      punctuation.definition.parameters.begin.js
+//    ^          ^             ^     punctuation.definition.parameters.end.js
+//      ^^         ^^            ^^  meta.brace.curly.js
+//        ^          ^               punctuation.terminator.statement.js
+}
+
+
+function a(state ) {
+    // These will be converted to conditional/loops...
+    if (a) {}; for (a;;) {}; switch (a) {}
+//  ^^                                      keyword.control.conditional.js
+//     ^ ^         ^   ^            ^ ^     meta.brace.round.js
+//      ^           ^                ^      variable.other.readwrite.js
+//         ^^            ^^             ^^  meta.brace.curly.js
+//           ^       ^^    ^                punctuation.terminator.statement.js
+//             ^^^ ^^^^^                    meta.for.js
+//             ^^^                          keyword.control.loop.js
+//                           ^^^^^^ ^^^ ^^  meta.switch.js
+//                           ^^^^^^         keyword.control.switch.js
+    switch (type) {
+         case a: {
+           for ( let item in payload )
+//         ^^^ ^ ^^^ ^^^^ ^^ ^^^^^^^ ^  meta.switch.js
+//         ^^^ ^ ^^^ ^^^^ ^^ ^^^^^^^ ^  meta.for.js
+//         ^^^                          keyword.control.loop.js
+//             ^                     ^  meta.brace.round.js
+//               ^^^                    storage.type.js
+//                   ^^^^    ^^^^^^^    variable.other.readwrite.js
+//                        ^^            keyword.operator.js
+                state.items = setItem( state.items, resolveRelations({ ...item }) )
+            return state
+        }
+    }
+}
+
 // ISSUE #178
 
 class A {
@@ -18,7 +62,7 @@ class A {
 //                 ^             kewyword.operator.union.flowtype
 //                          ^    keyword.operator.assignment.js
 //                            ^  constant.numeric.js
-  if (a) {} // believe it or not this becomes a method 
+  if (a) {} // believe it or not this becomes a method
 //^^ ^^^ ^^ ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^   meta.class.body.js
 //^^ ^^^                                                 meta.function.method.js
 //^^                                                     entity.name.function.method.js

@@ -40,8 +40,5 @@ describe 'Grammar', ->
   # issues raised
   grammarTest path.join(__dirname, 'fixtures/grammar/issues.js')
 
-  # Tests for files without semi's asi
-  grammarTest path.join(__dirname, 'fixtures/grammar/flow-asi.js')
-
   # misc Tests
   grammarTest path.join(__dirname, 'fixtures/grammar/misc.js')
