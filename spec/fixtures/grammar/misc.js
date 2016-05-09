@@ -1,5 +1,15 @@
 // SYNTAX TEST "source.js.jsx"
 
+// labels with function calls
+const foo = {
+  bar: baz()
+//^^^^         constant.other.object.key.js
+//^^^          string.unquoted.js
+//   ^         punctuation.separator.key-value.js
+//     ^^^^^   meta.function-call.without-arguments.js
+//     ^^^     entity.name.function.js
+//        ^^   meta.brace.round.js
+};
 
 // $JSXIntrinsics is special and magic.
 // This declares the types a `span`

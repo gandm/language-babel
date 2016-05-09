@@ -657,8 +657,8 @@ let Sound = {
 //^    ^                  meta.brace.square.js
 // ^^^^                   variable.other.readwrite.js
 //      ^                 punctuation.separator.key-value.js
-//        ^^^^^^^^^^      meta.function.method.js
-//        ^^^^^^^^        entity.name.function.method.js
+//        ^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^        storage.type.function.js
 //                ^       punctuation.definition.parameters.begin.js
 //                 ^      punctuation.definition.parameters.end.js
 //                   ^^   meta.brace.curly.js
@@ -667,8 +667,8 @@ let Sound = {
 //^    ^                     meta.brace.square.js
 // ^^^^            ^^^       variable.other.readwrite.js
 //      ^                    punctuation.separator.key-value.js
-//        ^^^^^^^^^^^^^      meta.function.method.js
-//        ^^^^^^^^           entity.name.function.method.js
+//        ^^^^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^           storage.type.function.js
 //                ^          punctuation.definition.parameters.begin.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
@@ -699,9 +699,9 @@ let Sound = {
 //^    ^                        meta.brace.square.js
 // ^^^^                         variable.other.readwrite.js
 //      ^                       punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^      meta.function.method.js
+//        ^^^^^ ^^^^^^^^^^      meta.function.js
 //        ^^^^^                 storage.type.js
-//              ^^^^^^^^        entity.name.function.method.js
+//              ^^^^^^^^        storage.type.function.js
 //                      ^       punctuation.definition.parameters.begin.js
 //                       ^      punctuation.definition.parameters.end.js
 //                         ^^   meta.brace.curly.js
@@ -710,9 +710,9 @@ let Sound = {
 //^    ^                           meta.brace.square.js
 // ^^^^                  ^^^       variable.other.readwrite.js
 //      ^                          punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^^^^      meta.function.method.js
+//        ^^^^^ ^^^^^^^^^^^^^      meta.function.js
 //        ^^^^^                    storage.type.js
-//              ^^^^^^^^           entity.name.function.method.js
+//              ^^^^^^^^           storage.type.function.js
 //                      ^          punctuation.definition.parameters.begin.js
 //                          ^      punctuation.definition.parameters.end.js
 //                            ^^   meta.brace.curly.js

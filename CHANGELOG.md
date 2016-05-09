@@ -1,3 +1,6 @@
+### 2.20.6
+  - Object literal prop:func-call mistakenly treated as prop:method-call.
+
 ### 2.20.5
   - Change JSX tag autocomplete snippet to only have a single anchor. [Fixes #180](https://github.com/gandm/language-babel/issues/180)
 
