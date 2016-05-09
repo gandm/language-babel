@@ -2019,7 +2019,7 @@
     },
     "flowtype-parse-objects": {
       "comment": "object literal flowtype  preceded by either => : | & ? symbols",
-      "begin": "(?<=:|\\||&|\\?|=>)\\s*+(\\{)",
+      "begin": "(?<=:|\\||&|\\?|=>|<)\\s*+(\\{)",
       "end": "\\s*(\\})",
       "applyEndPatternLast": 1,
       "beginCaptures": {

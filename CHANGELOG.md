@@ -1,3 +1,6 @@
+### 2.20.4
+  - Fix Flow $JSXIntrinsics properties object being ignored in grammar.
+
 ### 2.20.3
   - Fix incorrect handling of case statement used as a return flow type [Fixes #179](https://github.com/gandm/language-babel/issues/179)
 

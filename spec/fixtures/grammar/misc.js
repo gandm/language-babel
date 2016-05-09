@@ -1,5 +1,23 @@
 // SYNTAX TEST "source.js.jsx"
 
+
+// $JSXIntrinsics is special and magic.
+// This declares the types a `span`
+type $JSXIntrinsics = {
+  span: JSXHelper<{id: string, class: string}> };
+//^^^^                                             variable.other.readwrite.js
+//    ^              ^              ^              punctuation.type.flowtype
+//      ^^^^^^^^^                                  support.type.class.flowtype
+//               ^                           ^     punctutation.flowtype
+//                ^                                meta.brace.round.open.flowtype
+//                 ^^          ^^^^^               variable.other.property.flowtype
+//                     ^^^^^^         ^^^^^^       support.type.builtin.primitive.flowtype
+//                           ^                     meta.delimiter.comma.js
+//                                          ^      meta.brace.round.close.flowtype
+//                                             ^   meta.brace.curly.js
+//                                              ^  punctuation.object.end.flowtype
+
+
 // Some JSX
 
 <div>
