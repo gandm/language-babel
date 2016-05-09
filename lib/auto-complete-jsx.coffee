@@ -34,7 +34,7 @@ module.exports =
       tagNameStack = @buildTagStack(editor, jsxRange)
       while ( tagName = tagNameStack.pop())?
         suggestions.push
-          snippet: "$1</#{tagName}>$2"
+          snippet: "$1</#{tagName}>"
           type: "tag"
           description: "language-babel tag closer"
 

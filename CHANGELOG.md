@@ -1,3 +1,6 @@
+### 2.20.5
+  - Change JSX tag autocomplete snippet to only have a single anchor. [Fixes #180](https://github.com/gandm/language-babel/issues/180)
+
 ### 2.20.4
   - Fix Flow $JSXIntrinsics properties object being ignored in grammar.
 
