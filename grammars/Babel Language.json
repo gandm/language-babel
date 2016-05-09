@@ -541,17 +541,6 @@
           },
           "patterns": [
             {
-              "comment": "variable destructore assignement",
-              "begin": "(?=\\s*+(\\{(?:(?>[^{}]+)|\\g<-1>)*\\})\\s*+)",
-              "end": "\\s*((,)|(?=(\\;)|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
-              "endCaptures": {
-                "2": { "name": "punctuation.terminator.statement.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-variable" }
-              ]
-            },
-            {
               "comment": "other variables",
               "begin": "\\s*",
               "end": "\\s*((,)|(?=(\\;)|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
@@ -1743,53 +1732,7 @@
             "3": { "name": "keyword.operator.optional.parameter.flowtype" }
           }
         },
-        { "include": "#flowtype-destruct-lhs" },
         { "include": "#flowtype-vars-and-props" }
-      ]
-    },
-    "flowtype-destruct-lhs": {
-      "comment": "lhs destructs such as {a: z, [b,c] }",
-      "comment": "use this pattern to colour code the variable part correctly",
-      "patterns": [
-        {
-          "begin": "(?<=,|;|\\[|{|\\(|var|const|let)\\s*+({)",
-          "end": "\\s*(})",
-          "beginCaptures": {
-            "1": { "name": "meta.brace.curly.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "meta.brace.curly.js" }
-          },
-          "patterns": [
-            {
-              "comment": "string as destructor target",
-              "match": "\\s*+((['\\\"]).*?\\k<-1>(?<!\\\\.))\\s*+(:)\\s*+(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
-              "captures": {
-                "1": { "name": "string.quoted.js" },
-                "3": { "name": "punctuation" },
-                "4": { "name": "variable.other.property.js" }
-              }
-            },
-            {
-              "comment": "prop name : var name as destructor target",
-              "match": "\\s*+([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*+(:)\\s*+(([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+))",
-              "captures": {
-                "1": { "name": "string.unquoted.js" },
-                "2": { "name": "punctuation" },
-                "3": { "name": "variable.other.property.js" }
-              }
-            },
-            {
-              "comment": "var name as destructor target",
-              "match": "(?<!=)\\s*+((?<!\\.)\\.\\.\\.)?\\s*+([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
-              "captures": {
-                "1": { "name": "keyword.operator.spread.js" },
-                "2": { "name": "variable.other.property.js" }
-              }
-            },
-            { "include": "#flowtype-variable" }
-          ]
-        }
       ]
     },
     "flowtype-vars-and-props": {

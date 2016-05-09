@@ -48,13 +48,16 @@ export default React.createClass({
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
     var {email, question} = this.state;
+//  ^^^ ^^^^^^^ ^^^^^^^^^ ^ ^^^^^^^^^^^  meta.function-call.static.with-arguments.js
 //  ^^^                                  storage.type.js
 //      ^               ^                meta.brace.curly.js
-//       ^^^^^  ^^^^^^^^         ^^^^^   variable.other.property.js
+//       ^^^^^  ^^^^^^^^                 variable.other.readwrite.js
 //            ^                          meta.delimiter.comma.js
 //                        ^              keyword.operator.assignment.js
 //                          ^^^^         variable.language.this.js
 //                              ^        keyword.operator.accessor.js
+//                               ^^^^^   meta.property.object.js
+//                               ^^^^^   variable.other.property.js
 //                                    ^  punctuation.terminator.statement.js
     request
 //  ^^^^^^^  variable.other.readwrite.js
@@ -114,12 +117,15 @@ export default React.createClass({
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
     var {email} = this.state;
+//  ^^^ ^^^^^^^ ^ ^^^^^^^^^^^  meta.function-call.static.with-arguments.js
 //  ^^^                        storage.type.js
 //      ^     ^                meta.brace.curly.js
-//       ^^^^^         ^^^^^   variable.other.property.js
+//       ^^^^^                 variable.other.readwrite.js
 //              ^              keyword.operator.assignment.js
 //                ^^^^         variable.language.this.js
 //                    ^        keyword.operator.accessor.js
+//                     ^^^^^   meta.property.object.js
+//                     ^^^^^   variable.other.property.js
 //                          ^  punctuation.terminator.statement.js
     return (
 //  ^^^^^^    keyword.control.flow.js

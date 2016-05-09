@@ -1,3 +1,6 @@
+### 2.20.7
+  - Fix bad destructuring scopes in grammar.
+
 ### 2.20.6
   - Object literal prop:func-call mistakenly treated as prop:method-call.
 
