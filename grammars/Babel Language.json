@@ -1780,16 +1780,11 @@
             { "include": "#flowtype-parse-types" }
           ]
         },
-        { "include": "#literal-object" },
         {
           "comment": "assignement",
-          "begin": "\\s*+=(?!>|=|==)",
+          "begin": "\\s*+(?==(?!>|=|==))",
           "end": "\\s*(?=,|;|\\)|}|\\]|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
-          "beginCaptures": {
-            "0": { "name": "keyword.operator.assignment.js" }
-          },
           "patterns": [
-            { "include": "#literal-object" },
             { "include": "#literal-labels" },
             { "include": "#expression" }
           ]
