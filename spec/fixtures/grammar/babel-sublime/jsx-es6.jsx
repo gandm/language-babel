@@ -114,12 +114,12 @@ export default React.createClass({
 
   'key//1': function() {},
 //^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.function-call.static.with-arguments.js
-//^^^^^^^^                  constant.other.object.key.js
-//^^^^^^^^                  string.quoted.single.js
+//^^^^^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^^^^                  string.quoted.js
 //^                         punctuation.definition.string.begin.js
+// ^^^^^^                   entity.name.function.js
 //       ^                  punctuation.definition.string.end.js
 //        ^                 punctuation.separator.key-value.js
-//          ^^^^^^^^^^      meta.function.js
 //          ^^^^^^^^        storage.type.function.js
 //                  ^       punctuation.definition.parameters.begin.js
 //                   ^      punctuation.definition.parameters.end.js
@@ -127,12 +127,12 @@ export default React.createClass({
 //                       ^  meta.delimiter.comma.js
   'key/***/1': function() {},
 //^^^^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.function-call.static.with-arguments.js
-//^^^^^^^^^^^                  constant.other.object.key.js
-//^^^^^^^^^^^                  string.quoted.single.js
+//^^^^^^^^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^^^^^^^                  string.quoted.js
 //^                            punctuation.definition.string.begin.js
+// ^^^^^^^^^                   entity.name.function.js
 //          ^                  punctuation.definition.string.end.js
 //           ^                 punctuation.separator.key-value.js
-//             ^^^^^^^^^^      meta.function.js
 //             ^^^^^^^^        storage.type.function.js
 //                     ^       punctuation.definition.parameters.begin.js
 //                      ^      punctuation.definition.parameters.end.js

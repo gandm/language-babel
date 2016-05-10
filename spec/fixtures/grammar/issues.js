@@ -1,5 +1,30 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #184
+
+meth({
+  'first-prop'({arg1, arg2}) {
+//^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^      meta.function-call.with-arguments.js
+//^^^^^^^^^^^^^^^^^^^ ^^^^^^        meta.function.method.js
+//^^^^^^^^^^^^                      entity.name.function.method.js
+//            ^                     punctuation.definition.parameters.begin.js
+//             ^          ^  ^      meta.brace.curly.js
+//              ^^^^  ^^^^          variable.other.readwrite.js
+//                  ^               meta.delimiter.comma.js
+//                         ^        punctuation.definition.parameters.end.js
+  },
+  'second-prop'({arg1, arg2}) {
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^     meta.function-call.with-arguments.js
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^       meta.function.method.js
+//^^^^^^^^^^^^^                     entity.name.function.method.js
+//             ^                    punctuation.definition.parameters.begin.js
+//              ^          ^  ^     meta.brace.curly.js
+//               ^^^^  ^^^^         variable.other.readwrite.js
+//                   ^              meta.delimiter.comma.js
+//                          ^       punctuation.definition.parameters.end.js
+ }
+})
+
 // ISSUE #181
 
 const withStore  = store => Component => props =>
