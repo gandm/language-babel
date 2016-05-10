@@ -1,5 +1,31 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #181
+
+const withStore  = store => Component => props =>
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                              storage.type.js
+//    ^^^^^^^^^  ^ ^^^^^ ^^ ^^^^^^^^^ ^^ ^^^^^ ^^  meta.function.arrow.js
+//    ^^^^^^^^^                                    entity.name.function.js
+//               ^                                 keyword.operator.assignment.js
+//                 ^^^^^    ^^^^^^^^^    ^^^^^     variable.other.readwrite.js
+//                       ^^           ^^       ^^  storage.type.function.arrow.js
+  <Provider store={store}></Provider>
+//^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//^                      ^^^        ^  punctuation.definition.tag.jsx
+// ^^^^^^^^                            entity.name.tag.open.jsx
+// ^^^^^^^^                            support.class.component.open.jsx
+//          ^^^^^                      entity.other.attribute-name.jsx
+//               ^                     keyword.operator.assignment.jsx
+//                ^^^^^^^              meta.embedded.expression.js
+//                ^                    punctuation.section.embedded.begin.jsx
+//                 ^^^^^               variable.other.readwrite.js
+//                      ^              punctuation.section.embedded.end.jsx
+//                       ^             JSXStartTagEnd
+//                        ^^           JSXEndTagStart
+//                          ^^^^^^^^   entity.name.tag.close.jsx
+//                          ^^^^^^^^   support.class.component.close.jsx
 
 // ISSUE #179
 
