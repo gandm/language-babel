@@ -1,3 +1,7 @@
+### 2.20.9
+  - Fix class properties with flow keyword names - type, declare & interface being ignored.
+  - Fix class property issues when used with ASI and flow.
+  
 ### 2.20.8
   - Fix handling of let/var/const creation of arrow functions. [Fixes #181](https://github.com/gandm/language-babel/issues/181)
   - Fix function labels not allowing all possible characters. [Fixes #184](https://github.com/gandm/language-babel/issues/184)
