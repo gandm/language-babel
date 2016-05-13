@@ -966,6 +966,19 @@
         { "include": "#brackets" },
         { "include": "#es7-decorators" },
         { "include": "#comments" },
+        {
+          "comment": "attempt to find an assignment of a class field/property",
+          "comment": "with ASI we don't know quite where an expression ends so terminate when",
+          "comment": "a line starts with a static, [, name( or a semi-colon anywhere",
+          "begin": "\\s*+(?==[^=>])",
+          "end": "(^\\s*+(?=([$\\w]*\\s*+\\??\\s*+(:|=(?!^==|=>))|\\[|[$\\w]\\s*+\\(|\\bstatic\\b|\\s*++)))|\\s*(;)",
+          "endCaptures": {
+            "4": { "name": "punctuation.terminator.statement.js" }
+          },
+          "patterns": [
+            { "include": "#expression" }
+          ]
+        },
         { "include": "#flowtype-variable" },
         { "include": "#literal-semi-colon"}
       ]
