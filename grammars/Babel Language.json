@@ -1793,22 +1793,6 @@
         { "include": "#expression" }
       ]
     },
-    "flowtype-parse-operators": {
-      "patterns": [
-        {
-          "comment": "call back with a form  ) => type",
-          "begin": "(?<=\\))\\s*+(=>)",
-          "end": "(?=.)",
-          "applyEndPatternLast": 1,
-          "beginCaptures": {
-            "1": { "name": "storage.type.function.arrow.js" }
-          },
-          "patterns": [
-            { "include": "#flowtype-parse-types" }
-          ]
-        }
-      ]
-    },
     "flowtype-parse-types": {
         "patterns": [
           {
@@ -1869,11 +1853,17 @@
             "name": "punctuation.type.flowtype",
             "match": "\\s*+(:)"
           },
+          {
+            "comment": "call back with a form  ) => type",
+            "match": "(?<=\\))\\s*+(=>)",
+            "captures": {
+              "1": { "name": "storage.type.function.arrow.js" }
+            }
+          },
           { "include": "#literal-string" },
           { "include": "#literal-number" },
           { "include": "#flowtype-bracketed-parameters" },
           { "include": "#flowtype-parse-objects" },
-          { "include": "#flowtype-parse-operators" },
           { "include": "#flowtype-parse-array" },
           { "include": "#comments" }
         ]
