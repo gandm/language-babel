@@ -1724,6 +1724,15 @@
     "flowtype-variable": {
       "patterns": [
         {
+          "comment": "name of variable with a flowtype : of type Function or (aaa)=> or (",
+          "comment": "e.g. let a: ()=>null  =  function() {return null}",
+          "match": "(?<!\\.)\\s*+([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*+(\\??)\\s*+(?=:\\s*(\\bFunction\\b|(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*=>|\\(\\s*$))",
+          "captures": {
+            "1": { "name": "storage.type.function.js" },
+            "2": { "name": "keyword.operator.optional.parameter.flowtype" }
+          }
+        },
+        {
           "comment": "name of variable spread var with optional ? and optional flowtype :",
           "match": "\\s*+((?<!\\.)\\.\\.\\.)?([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)\\s*+(\\??)\\s*+(?=:|=>)",
           "captures": {
