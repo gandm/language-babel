@@ -1806,17 +1806,6 @@
           "patterns": [
             { "include": "#flowtype-parse-types" }
           ]
-        },
-        {
-          "comment": "assignment",
-          "begin": "\\s*+=(?!>|=|==)",
-          "end": "\\s*(?=,|;|\\)|}|\\]|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield)\\b|type\\s+[$\\w]+|declare\\s+[$\\w]+|interface\\s+[$\\w]+)",
-          "beginCaptures": {
-            "0": { "name": "keyword.operator.assignment.js" }
-          },
-          "patterns": [
-            { "include": "#expression" }
-          ]
         }
       ]
     },
