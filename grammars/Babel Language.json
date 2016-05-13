@@ -1785,7 +1785,6 @@
           "begin": "\\s*+(?=([$_\\p{L}](?:[$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)?\\s*=)(?!=>|==)",
           "end": "\\s*(?=,|;|\\)|}|\\]|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
           "patterns": [
-            { "include": "#literal-labels" },
             { "include": "#expression" }
           ]
         },
@@ -1816,7 +1815,6 @@
             "0": { "name": "keyword.operator.assignment.js" }
           },
           "patterns": [
-            { "include": "#literal-labels" },
             { "include": "#expression" }
           ]
         }
