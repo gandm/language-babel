@@ -958,9 +958,6 @@
     },
     "class-body": {
       "patterns": [
-        { "match": "\\s*+\\b(?<!\\.)static\\b(?!\\.)",
-          "name": "storage.modifier.js"
-        },
         { "include": "#flowtype-keywords" },
         { "include": "#literal-method" },
         { "include": "#brackets" },
@@ -978,6 +975,9 @@
           "patterns": [
             { "include": "#expression" }
           ]
+        },
+        { "match": "\\s*+\\b(?<!\\.)static\\b(?!\\.)",
+          "name": "storage.modifier.js"
         },
         { "include": "#flowtype-variable" },
         { "include": "#literal-semi-colon"}
@@ -1335,19 +1335,18 @@
         {
           "comment": "e.g. [var]<T,T>(arg1, arg2): Type<T> { } or 'var'<T,T>(arg1, arg2)",
           "name": "meta.function.method.js",
-          "begin": "(?<!:)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?=((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(((')((?:[^']|\\\\')*)('))|\\s*+((\")((?:[^\"]|\\\\\")*)(\"))))\\s*+(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\())",
+          "begin": "(?<!:)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?=((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\]))\\s*+(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\())",
           "end": "\\s*(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "storage.modifier.js" },
             "2": { "name": "storage.type.js" },
             "3": { "name": "keyword.generator.asterisk.js" },
-            "4": { "name": "entity.name.function.method.js" },
-            "6": { "name": "entity.name.function.method.js" }
+            "4": { "name": "entity.name.function.method.js" }
           },
           "patterns": [
-            { "include": "#square-brackets" },
-            { "include": "#flowtype" }
+            { "include": "#flowtype" },
+            { "include": "#square-brackets" }
           ]
         },
         {
@@ -1357,7 +1356,7 @@
           "end": "\\s*(?={)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "1": { "name": "storage.modifier.static.js" },
+            "1": { "name": "storage.modifier.js" },
             "2": { "name": "storage.type.accessor.js" },
             "3": { "name": "entity.name.accessor.js" }
           },
@@ -1372,7 +1371,7 @@
           "end": "\\s*(?={)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "1": { "name": "storage.modifier.static.js" },
+            "1": { "name": "storage.modifier.js" },
             "2": { "name": "storage.type.accessor.js" },
             "3": { "name": "entity.name.accessor.js" }
           },
@@ -2060,7 +2059,7 @@
             "1": { "name": "punctuation.section.class.end.js" }
           },
           "patterns": [
-            { "include": "#flowtype-parse-types" },
+            { "include": "#flowtype-literal-method" },
             { "include": "#class-body" }
           ]
         }
@@ -2100,12 +2099,26 @@
                 "1": { "name": "punctuation.section.class.end.js" }
               },
               "patterns": [
-                { "include": "#flowtype-parse-types" },
+                { "include": "#flowtype-literal-method" },
                 { "include": "#class-body" }
               ]
             }
           ]
         }
+      ]
+    },
+    "flowtype-literal-method": {
+      "comment": "trap methods without a name  e.g.   <Key, Value>(): Map<Key, Value>",
+      "begin": "(?<!:)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
+      "end": "\\s*(?=.)",
+      "applyEndPatternLast": 1,
+      "beginCaptures": {
+        "1": { "name": "storage.modifier.js" },
+        "2": { "name": "storage.type.js" },
+        "3": { "name": "keyword.generator.asterisk.js" }
+      },
+      "patterns": [
+        { "include": "#flowtype" }
       ]
     },
     "flowtype-keywords": {

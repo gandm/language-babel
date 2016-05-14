@@ -1,7 +1,11 @@
+### 2.20.10
+  - Fix flow declare class methods named static being parsed as storage modifiers.
+  - Fix flow declare class methods with no name being parsed incorrectly.
+  
 ### 2.20.9
   - Fix class properties with flow keyword names - type, declare & interface being ignored.
   - Fix class property issues when used with ASI and flow.
-  
+
 ### 2.20.8
   - Fix handling of let/var/const creation of arrow functions. [Fixes #181](https://github.com/gandm/language-babel/issues/181)
   - Fix function labels not allowing all possible characters. [Fixes #184](https://github.com/gandm/language-babel/issues/184)
