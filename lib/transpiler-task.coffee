@@ -1,5 +1,5 @@
 # language-babel transpiles run here.
-# This runs as a seperate task so that transpiles can have their own environment.
+# This runs as a separate task so that transpiles can have their own environment.
 module.exports = (projectPath) ->
   path = require 'path'
   callback = @async() #async task

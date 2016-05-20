@@ -30,12 +30,12 @@ module.exports =
     default: true
     order: 75
   createMap:
-    description: 'Create seperate map file.'
+    description: 'Create separate map file.'
     type: 'boolean'
     default: false
     order: 80
   babelMapsAddUrl:
-    description: 'Append map file name to transpiled output if "Create seperate map file" is set.'
+    description: 'Append map file name to transpiled output if "Create separate map file" is set.'
     type: 'boolean'
     default: true
     order: 90
