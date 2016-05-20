@@ -4,7 +4,8 @@
       "commentStart": "// ",
       "foldEndPattern": "^\\s*\\}|^\\s*\\]|^\\s*\\)",
       "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$",
-      "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]"
+      "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]",
+      "nonWordCharacters": "/\\()\"':,.;<>~!@#%^&*|+=[]{}`?-…"
     }
   },
   ".meta.tag.jsx": {
