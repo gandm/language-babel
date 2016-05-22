@@ -1,7 +1,10 @@
+### 2.21.1
+  - Allow flowtyped arrow function returns to have intersection (&) and array ([]) notation.
+
 ### 2.21.0
   - Allow $ chars to be treated as a word character by Atoms work skip keyboard shortcuts
   - Simplify Regex for trivial arrow functions with no argument parens.
-  
+
 ### 2.20.10
   - Fix flow declare class methods named static being parsed as storage modifiers.
   - Fix flow declare class methods with no name being parsed incorrectly.
