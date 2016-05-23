@@ -1,3 +1,10 @@
+### 2.22.0
+  - Flow declare support for:
+    - class extends and mixins keywords
+    - module.exports: type keywords
+    - declare type and declare interface
+    - module names that may be quoted.
+
 ### 2.21.1
   - Allow flowtyped arrow function returns to have intersection (&) and array ([]) notation.
 
