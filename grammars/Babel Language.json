@@ -2050,7 +2050,23 @@
           }
         },
         {
-          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b((class)|(module))\\s++",
+          "comment": "declare module.exports:",
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(module)(.)(exports)(:)",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "keyword.other.declare.flowtype" },
+            "2": { "name": "storage.type.module.flowtype" },
+            "3": { "name": "keyword.operator.accessor.flowtype" },
+            "4": { "name": "storage.type.module.flowtype" },
+            "5": { "name": "punctuation.type.flowtype" }
+          },
+          "patterns": [
+            { "include": "#flowtype-parse-types" }
+          ]
+        },
+        {
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b((class)|(module))\\b",
           "end": "\\s*(?<=})",
           "beginCaptures": {
             "1": { "name": "keyword.other.declare.flowtype" },
