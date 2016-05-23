@@ -2066,15 +2066,75 @@
           ]
         },
         {
-          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b((class)|(module))\\b",
+          "comment": "declare modules",
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(module)\\b",
           "end": "\\s*(?<=})",
           "beginCaptures": {
             "1": { "name": "keyword.other.declare.flowtype" },
-            "3": { "name": "storage.type.class.flowtype" },
-            "4": { "name": "storage.type.module.flowtype" }
+            "2": { "name": "storage.type.module.flowtype" }
           },
           "patterns": [
             { "include": "#flowtype-polymorphs" },
+            {
+              "comment": "look for module names but dont assume uppercase start char",
+              "match": "(?<!\\.)\\s*+([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+              "name": "entity.name.class.js"
+            },
+            {
+              "comment": "look for module names in quoted string forms",
+              "include": "#literal-string"
+            },
+            {
+              "begin": "\\s*+({)",
+              "end": "\\s*(})",
+              "contentName": "meta.class.body.js",
+              "beginCaptures": {
+                "1": { "name": "punctuation.section.class.begin.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "punctuation.section.class.end.js" }
+              },
+              "patterns": [
+                { "include": "#flowtype-literal-method" },
+                { "include": "#class-body" }
+              ]
+            }
+          ]
+        },
+        {
+          "comment": "declare classes",
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(class)\\b",
+          "end": "\\s*(?<=})",
+          "beginCaptures": {
+            "1": { "name": "keyword.other.declare.flowtype" },
+            "2": { "name": "storage.type.class.flowtype" }
+          },
+          "patterns": [
+            { "include": "#flowtype-polymorphs" },
+            {
+              "comment": "look for extends keyword",
+              "match": "\\s*+\\b((extends))\\b\\s*+",
+              "captures": {
+                "1": { "name": "meta.class.extends.js" },
+                "2": { "name": "storage.type.extends.js" }
+              }
+            },
+            { "comment": "look for mixins keyword",
+              "begin": "\\s*+\\b((mixins))\\b\\s*+",
+              "end": "\\s*(?={)",
+              "beginCaptures": {
+                "1": { "name": "meta.class.extends.js" },
+                "2": { "name": "storage.type.extends.js" }
+              },
+              "patterns": [
+                {
+                  "comment": "look for mixin names but dont assume uppercase start char",
+                  "match": "(?<!\\.)\\s*+([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
+                  "name": "entity.name.class.js"
+                },
+                { "include": "#literal-coma" }
+              ]
+            },
             {
               "comment": "look for class names but dont assume uppercase start char",
               "match": "(?<!\\.)\\s*+([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
