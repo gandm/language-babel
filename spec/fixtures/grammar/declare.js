@@ -1,5 +1,50 @@
 // SYNTAX TEST "source.js.jsx"
 
+declare module 'a-unique-module-name' {
+  declare interface Stack<T> {}
+//^^^^^^^ ^^^^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^^                        keyword.other.declare.flowtype
+//        ^^^^^^^^^              keyword.other.interface.flowtype
+//                  ^^^^^        support.type.class.interface.js
+//                       ^ ^     punctutation.flowtype
+//                        ^      support.type.class.flowtype
+//                           ^   punctuation.section.class.begin.js
+//                            ^  punctuation.section.class.end.js
+  declare class Response extends A mixins A,B {}
+//^^^^^^^ ^^^^^ ^^^^^^^^ ^^^^^^^ ^ ^^^^^^ ^^^ ^^  meta.class.body.js
+//^^^^^^^                                         keyword.other.declare.flowtype
+//        ^^^^^                                   storage.type.class.flowtype
+//              ^^^^^^^^         ^        ^ ^     entity.name.class.js
+//                       ^^^^^^^   ^^^^^^         meta.class.extends.js
+//                       ^^^^^^^   ^^^^^^         storage.type.extends.js
+//                                            ^   punctuation.section.class.begin.js
+//                                             ^  punctuation.section.class.end.js
+  declare module.exports: () => Function;
+//^^^^^^^ ^^^^^^^^^^^^^^^ ^^ ^^ ^^^^^^^^^    meta.class.body.js
+//^^^^^^^                                    keyword.other.declare.flowtype
+//        ^^^^^^ ^^^^^^^                     storage.type.module.flowtype
+//              ^                            keyword.operator.accessor.flowtype
+//                      ^                    punctuation.type.flowtype
+//                        ^                  punctuation.definition.parameters.begin.js
+//                         ^                 punctuation.definition.parameters.end.js
+//                           ^^              storage.type.function.arrow.js
+//                              ^^^^^^^^     support.type.builtin.class.flowtype
+//                                      ^    punctuation.terminator.statement.js
+  declare type NextFunction = (error?: Object) => void
+//^^^^^^^ ^^^^ ^^^^^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^ ^^ ^^^^    meta.class.body.js
+//^^^^^^^                                                 keyword.other.declare.flowtype
+//        ^^^^                                            keyword.other.typedef.flowtype
+//             ^^^^^^^^^^^^                               support.type.class.flowtype
+//                            ^                           punctuation.definition.parameters.begin.js
+//                             ^^^^^                      variable.other.readwrite.js
+//                                  ^                     keyword.operator.optional.parameter.flowtype
+//                                   ^                    punctuation.type.flowtype
+//                                     ^^^^^^             support.type.builtin.class.flowtype
+//                                           ^            punctuation.definition.parameters.end.js
+//                                                ^^^^    support.type.builtin.primitive.flowtype
+}
+// <- meta.class.body.js
+
 interface Iterator<T> {
 // <- keyword.other.interface.flowtype
  // <- keyword.other.interface.flowtype
