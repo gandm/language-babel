@@ -2044,7 +2044,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "match": "\\s*+(?<!\\.)\\b(declare)\\b\\s++(?=\\b(function|var)\\s++)",
+          "match": "\\s*+(?<!\\.)\\b(declare)\\b\\s++(?=\\b(function|var|type)\\s++)",
           "captures": {
             "1": { "name":  "keyword.other.declare.flowtype" }
           }
