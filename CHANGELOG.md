@@ -1,3 +1,7 @@
+### 2.23.0
+  - Improve grammar for ES import & export.
+  - Small readme changes.
+  
 ### 2.22.0
   - Flow declare support for:
     - class extends and mixins keywords
