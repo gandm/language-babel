@@ -48,7 +48,7 @@
         { "include": "#literal-string" },
         { "include": "#literal-language-constant" },
         { "include": "#literal-language-variable" },
-        { "include": "#literal-object"},
+        { "include": "#literal-object", "comment": "before literal-module as it traps default {"},
         { "include": "#literal-module" },
         { "include": "#literal-class" },
         { "include": "#literal-constructor" },
@@ -1418,13 +1418,115 @@
     },
     "literal-module": {
       "patterns": [
+        { "include": "#literal-module-import" },
+        { "include": "#literal-module-export" }
+      ]
+    },
+    "literal-module-import": {
+      "begin": "\\s*+(?<!\\.)\\b(import)(?!\\s*:)\\b",
+      "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\\\")([^\\\"']*)(\\k<-3>)))|(?=\\;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.module.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.module.js" },
+        "3": { "name": "punctuation.definition.string.begin.js" },
+        "4": { "name": "string.quoted.module.js" },
+        "5": { "name": "punctuation.definition.string.begin.js" }
+      },
+      "patterns": [
         {
-          "name": "keyword.control.module.js",
-          "match": "\\s*+(?<!\\.)\\b(import|export|default)\\b"
+          "match": "\\s*\\b(default)\\b",
+          "captures": {
+            "1": { "name": "keyword.control.module.js" }
+          }
         },
         {
-          "name": "keyword.control.module.reference.js",
-          "match": "\\s*+(?<!\\.)\\b(from|as)\\b"
+          "match": "\\s*\\b(typeof|type)\\b\\s*(?!\\b(instanceof|in|as)\\b|,)",
+          "captures": {
+            "1": { "name": "keyword.other.typedef.flowtype" }
+          }
+        },
+        {
+          "name": "keyword.operator.module.all.js",
+          "match": "\\*"
+        },
+        { "include": "#literal-module-as" },
+        { "include": "#literal-module-brackets" },
+        { "include": "#literal-variable" },
+        { "include": "#comments" },
+        { "include": "#literal-comma"}
+      ]
+    },
+    "literal-module-export": {
+      "patterns": [
+        {
+          "comment": "export {  or  export *",
+          "begin": "\\s*+(?<!\\.)\\b(export)\\b(?=\\s++({|\\*))",
+          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\\\")([^\\\"']*)(\\k<-3>)))|(?=\\;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.module.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "keyword.control.module.js" },
+            "3": { "name": "punctuation.definition.string.begin.js" },
+            "4": { "name": "string.quoted.module.js" },
+            "5": { "name": "punctuation.definition.string.begin.js" }
+          },
+          "patterns": [
+            {
+              "name": "keyword.operator.module.all.js",
+              "match": "\\*"
+            },
+            { "include": "#literal-module-as" },
+            { "include": "#literal-module-brackets" },
+            { "include": "#literal-variable" },
+            { "include": "#comments" },
+            { "include": "#literal-comma"}
+          ]
+        },
+        {
+          "match": "\\s*+(?<!\\.)\\b(export|default)(?!\\s*:)\\b",
+          "captures": {
+            "1": { "name": "keyword.control.module.js" }
+          }
+        }
+      ]
+    },
+    "literal-module-as": {
+      "match": "\\s*+(?:(\\*)|([$_a-zA-Z][$_\\w]*))\\s++(\\bas\\b)\\s++(?:(\\bdefault\\b)|([$_a-zA-Z][$_\\w]*))",
+      "captures": {
+        "1": { "name": "keyword.operator.module.all.js" },
+        "2": { "name": "variable.other.readwrite.js" },
+        "3": { "name": "keyword.control.module.reference.js" },
+        "4": { "name": "keyword.control.module.js" },
+        "5": { "name": "variable.other.readwrite.js" }
+      }
+    },
+    "literal-module-brackets":{
+      "patterns": [
+        {
+          "begin": "\\s*+(?:(\\{)|(\\[))",
+          "end": "\\s*(?:(\\})|(\\]))",
+          "beginCaptures": {
+            "1": { "name": "meta.brace.curly.js" },
+            "2": { "name": "meta.brace.square.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "meta.brace.curly.js" },
+            "2": { "name": "meta.brace.square.js" }
+          },
+          "patterns": [
+            {
+              "name": "keyword.operator.module.all.js",
+              "match": "\\*"
+            },
+            { "include": "#literal-module-as" },
+            { "include": "#literal-module-brackets" },
+            { "include": "#literal-variable" },
+            { "include": "#literal-string" },
+            { "include": "#literal-comma"}
+          ]
         }
       ]
     },
@@ -1975,11 +2077,10 @@
       "patterns": [
         {
           "comment": "type aliases for export but avoid type instaceof or type in operators",
-          "begin": "\\s*+(?:\\b(import|export))?\\b\\s*(type)\\b\\s*(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
+          "begin": "\\s*+\\b(type)\\b\\s*(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
           "end": "\\s*(\\;)|\\b(?=if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b",
           "beginCaptures": {
-            "1": { "name":  "keyword.control.module.js" },
-            "2": { "name": "keyword.other.typedef.flowtype" }
+            "1": { "name": "keyword.other.typedef.flowtype" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.object.end.flowtype" }
@@ -2132,7 +2233,7 @@
                   "match": "(?<!\\.)\\s*+([$_\\p{L}](?:[$\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])*+)",
                   "name": "entity.name.class.js"
                 },
-                { "include": "#literal-coma" }
+                { "include": "#literal-comma" }
               ]
             },
             {

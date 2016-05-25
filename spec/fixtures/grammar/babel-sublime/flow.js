@@ -1131,62 +1131,52 @@ function foo(a: ?string, b: any): Array<number> {}
 import type {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                                             keyword.control.module.js
+//^^^^                             ^^^^                            keyword.control.module.js
 //     ^^^^                                                        keyword.other.typedef.flowtype
 //          ^                    ^                                 meta.brace.curly.js
 //           ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                    ^                                            meta.delimiter.comma.js
-//                                 ^^^^                            support.type.primitive.flowtype
-//                                      ^^^^^^^^^^^^^^^^^^^^^^^^   string.quoted.double.js
-//                                      ^                          punctuation.definition.string.begin.js
-//                                                             ^   punctuation.definition.string.end.js
-//                                                              ^  punctuation.object.end.flowtype
+//                                      ^                      ^   punctuation.definition.string.begin.js
+//                                       ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
+//                                                              ^  punctuation.terminator.statement.js
 import typeof {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                                               keyword.control.module.js
-//     ^^^^^^                                                        keyword.operator.js
+//^^^^                               ^^^^                            keyword.control.module.js
+//     ^^^^^^                                                        keyword.other.typedef.flowtype
 //            ^                    ^                                 meta.brace.curly.js
 //             ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                      ^                                            meta.delimiter.comma.js
-//                                   ^^^^                            keyword.control.module.reference.js
-//                                        ^^^^^^^^^^^^^^^^^^^^^^^^   string.quoted.double.js
-//                                        ^                          punctuation.definition.string.begin.js
-//                                                               ^   punctuation.definition.string.end.js
+//                                        ^                      ^   punctuation.definition.string.begin.js
+//                                         ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
 //                                                                ^  punctuation.terminator.statement.js
 import {foo4Inst, foo5Inst} from "./ExportCJSNamed_Class";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                                      keyword.control.module.js
+//^^^^                      ^^^^                            keyword.control.module.js
 //     ^                  ^                                 meta.brace.curly.js
 //      ^^^^^^^^  ^^^^^^^^                                  variable.other.readwrite.js
 //              ^                                           meta.delimiter.comma.js
-//                          ^^^^                            keyword.control.module.reference.js
-//                               ^^^^^^^^^^^^^^^^^^^^^^^^   string.quoted.double.js
-//                               ^                          punctuation.definition.string.begin.js
-//                                                      ^   punctuation.definition.string.end.js
+//                               ^                      ^   punctuation.definition.string.begin.js
+//                                ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
 //                                                       ^  punctuation.terminator.statement.js
 import type ClassFoo6 from "./issue-359";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                     keyword.control.module.js
+//^^^^                ^^^^                 keyword.control.module.js
 //     ^^^^                                keyword.other.typedef.flowtype
-//          ^^^^^^^^^                      support.type.class.flowtype
-//                    ^^^^                 support.type.primitive.flowtype
-//                         ^^^^^^^^^^^^^   string.quoted.double.js
-//                         ^               punctuation.definition.string.begin.js
-//                                     ^   punctuation.definition.string.end.js
-//                                      ^  punctuation.object.end.flowtype
+//          ^^^^^^^^^                      variable.other.readwrite.js
+//                         ^           ^   punctuation.definition.string.begin.js
+//                          ^^^^^^^^^^^    string.quoted.module.js
+//                                      ^  punctuation.terminator.statement.js
 import typeof ClassFoo6 from "./issue-359";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                       keyword.control.module.js
-//     ^^^^^^                                keyword.operator.js
+//^^^^                  ^^^^                 keyword.control.module.js
+//     ^^^^^^                                keyword.other.typedef.flowtype
 //            ^^^^^^^^^                      variable.other.readwrite.js
-//                      ^^^^                 keyword.control.module.reference.js
-//                           ^^^^^^^^^^^^^   string.quoted.double.js
-//                           ^               punctuation.definition.string.begin.js
-//                                       ^   punctuation.definition.string.end.js
+//                           ^           ^   punctuation.definition.string.begin.js
+//                            ^^^^^^^^^^^    string.quoted.module.js
 //                                        ^  punctuation.terminator.statement.js
 
 export type AliasFoo3 = {

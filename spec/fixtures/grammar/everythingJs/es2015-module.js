@@ -14,125 +14,107 @@
 import i0 from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                    keyword.control.module.js
+//^^^^    ^^^^            keyword.control.module.js
 //     ^^                 variable.other.readwrite.js
-//        ^^^^            keyword.control.module.reference.js
-//             ^^^^^^^^   string.quoted.double.js
-//             ^          punctuation.definition.string.begin.js
-//                    ^   punctuation.definition.string.end.js
+//             ^      ^   punctuation.definition.string.begin.js
+//              ^^^^^^    string.quoted.module.js
 //                     ^  punctuation.terminator.statement.js
 import * as i1 from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                         keyword.control.module.js
-//     ^                       keyword.operator.arithmetic.js
-//       ^^    ^^^^            keyword.control.module.reference.js
+//^^^^         ^^^^            keyword.control.module.js
+//     ^                       keyword.operator.module.all.js
+//       ^^                    keyword.control.module.reference.js
 //          ^^                 variable.other.readwrite.js
-//                  ^^^^^^^^   string.quoted.double.js
-//                  ^          punctuation.definition.string.begin.js
-//                         ^   punctuation.definition.string.end.js
+//                  ^      ^   punctuation.definition.string.begin.js
+//                   ^^^^^^    string.quoted.module.js
 //                          ^  punctuation.terminator.statement.js
 import {} from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                    keyword.control.module.js
+//^^^^    ^^^^            keyword.control.module.js
 //     ^^                 meta.brace.curly.js
-//        ^^^^            keyword.control.module.reference.js
-//             ^^^^^^^^   string.quoted.double.js
-//             ^          punctuation.definition.string.begin.js
-//                    ^   punctuation.definition.string.end.js
+//             ^      ^   punctuation.definition.string.begin.js
+//              ^^^^^^    string.quoted.module.js
 //                     ^  punctuation.terminator.statement.js
 import { i2, a as i3, } from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                  keyword.control.module.js
+//^^^^                  ^^^^            keyword.control.module.js
 //     ^              ^                 meta.brace.curly.js
 //       ^^  ^    ^^                    variable.other.readwrite.js
 //         ^        ^                   meta.delimiter.comma.js
-//             ^^       ^^^^            keyword.control.module.reference.js
-//                           ^^^^^^^^   string.quoted.double.js
-//                           ^          punctuation.definition.string.begin.js
-//                                  ^   punctuation.definition.string.end.js
+//             ^^                       keyword.control.module.reference.js
+//                           ^      ^   punctuation.definition.string.begin.js
+//                            ^^^^^^    string.quoted.module.js
 //                                   ^  punctuation.terminator.statement.js
 import i4, * as i5 from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                             keyword.control.module.js
+//^^^^             ^^^^            keyword.control.module.js
 //     ^^       ^^                 variable.other.readwrite.js
 //       ^                         meta.delimiter.comma.js
-//         ^                       keyword.operator.arithmetic.js
-//           ^^    ^^^^            keyword.control.module.reference.js
-//                      ^^^^^^^^   string.quoted.double.js
-//                      ^          punctuation.definition.string.begin.js
-//                             ^   punctuation.definition.string.end.js
+//         ^                       keyword.operator.module.all.js
+//           ^^                    keyword.control.module.reference.js
+//                      ^      ^   punctuation.definition.string.begin.js
+//                       ^^^^^^    string.quoted.module.js
 //                              ^  punctuation.terminator.statement.js
 import i6, {} from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                        keyword.control.module.js
+//^^^^        ^^^^            keyword.control.module.js
 //     ^^                     variable.other.readwrite.js
 //       ^                    meta.delimiter.comma.js
 //         ^^                 meta.brace.curly.js
-//            ^^^^            keyword.control.module.reference.js
-//                 ^^^^^^^^   string.quoted.double.js
-//                 ^          punctuation.definition.string.begin.js
-//                        ^   punctuation.definition.string.end.js
+//                 ^      ^   punctuation.definition.string.begin.js
+//                  ^^^^^^    string.quoted.module.js
 //                         ^  punctuation.terminator.statement.js
 import i7, { i8, var as i9 } from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                       keyword.control.module.js
-//     ^^    ^^         ^^                   variable.other.readwrite.js
+//^^^^                       ^^^^            keyword.control.module.js
+//     ^^    ^^  ^^^    ^^                   variable.other.readwrite.js
 //       ^     ^                             meta.delimiter.comma.js
 //         ^               ^                 meta.brace.curly.js
-//               ^^^                         storage.type.js
-//                   ^^      ^^^^            keyword.control.module.reference.js
-//                                ^^^^^^^^   string.quoted.double.js
-//                                ^          punctuation.definition.string.begin.js
-//                                       ^   punctuation.definition.string.end.js
+//                   ^^                      keyword.control.module.reference.js
+//                                ^      ^   punctuation.definition.string.begin.js
+//                                 ^^^^^^    string.quoted.module.js
 //                                        ^  punctuation.terminator.statement.js
 import "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^            keyword.control.module.js
-//     ^^^^^^^^   string.quoted.double.js
-//     ^          punctuation.definition.string.begin.js
-//            ^   punctuation.definition.string.end.js
+//     ^      ^   punctuation.definition.string.begin.js
+//      ^^^^^^    string.quoted.module.js
 //             ^  punctuation.terminator.statement.js
 
 export * from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                   keyword.control.module.js
-//     ^                 keyword.operator.arithmetic.js
-//       ^^^^            keyword.control.module.reference.js
-//            ^^^^^^^^   string.quoted.double.js
-//            ^          punctuation.definition.string.begin.js
-//                   ^   punctuation.definition.string.end.js
+//^^^^   ^^^^            keyword.control.module.js
+//     ^                 keyword.operator.module.all.js
+//            ^      ^   punctuation.definition.string.begin.js
+//             ^^^^^^    string.quoted.module.js
 //                    ^  punctuation.terminator.statement.js
 export {} from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                    keyword.control.module.js
+//^^^^    ^^^^            keyword.control.module.js
 //     ^^                 meta.brace.curly.js
-//        ^^^^            keyword.control.module.reference.js
-//             ^^^^^^^^   string.quoted.double.js
-//             ^          punctuation.definition.string.begin.js
-//                    ^   punctuation.definition.string.end.js
+//             ^      ^   punctuation.definition.string.begin.js
+//              ^^^^^^    string.quoted.module.js
 //                     ^  punctuation.terminator.statement.js
 export { i0, i1 as a, i2 as var, } from "module";
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                             keyword.control.module.js
+//^^^^                             ^^^^            keyword.control.module.js
 //     ^                         ^                 meta.brace.curly.js
-//       ^^  ^^    ^  ^^                           variable.other.readwrite.js
-//         ^        ^                              meta.delimiter.comma.js
-//              ^^       ^^        ^^^^            keyword.control.module.reference.js
-//                          ^^^                    storage.type.js
-//                             ^                ^  punctuation.terminator.statement.js
-//                                      ^^^^^^^^   string.quoted.double.js
-//                                      ^          punctuation.definition.string.begin.js
-//                                             ^   punctuation.definition.string.end.js
+//       ^^  ^^    ^  ^^    ^^^                    variable.other.readwrite.js
+//         ^        ^          ^                   meta.delimiter.comma.js
+//              ^^       ^^                        keyword.control.module.reference.js
+//                                      ^      ^   punctuation.definition.string.begin.js
+//                                       ^^^^^^    string.quoted.module.js
+//                                              ^  punctuation.terminator.statement.js
 export {};
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -144,10 +126,9 @@ export { i3, i4 as in };
  // <- keyword.control.module.js
 //^^^^                    keyword.control.module.js
 //     ^              ^   meta.brace.curly.js
-//       ^^  ^^           variable.other.readwrite.js
+//       ^^  ^^    ^^     variable.other.readwrite.js
 //         ^              meta.delimiter.comma.js
 //              ^^        keyword.control.module.reference.js
-//                 ^^     keyword.operator.js
 //                     ^  punctuation.terminator.statement.js
 export var e5, e6 = 0;
 // <- keyword.control.module.js

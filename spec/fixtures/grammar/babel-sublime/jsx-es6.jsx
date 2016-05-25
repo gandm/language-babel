@@ -5,30 +5,26 @@
 import React from 'react';
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                      keyword.control.module.js
+//^^^^       ^^^^           keyword.control.module.js
 //     ^^^^^                variable.other.readwrite.js
-//           ^^^^           keyword.control.module.reference.js
-//                ^^^^^^^   string.quoted.single.js
-//                ^         punctuation.definition.string.begin.js
-//                      ^   punctuation.definition.string.end.js
+//                ^     ^   punctuation.definition.string.begin.js
+//                 ^^^^^    string.quoted.module.js
 //                       ^  punctuation.terminator.statement.js
 import { InputsMixin } from './Forms';
 // <- keyword.control.module.js
  // <- keyword.control.module.js
-//^^^^                                  keyword.control.module.js
+//^^^^                 ^^^^             keyword.control.module.js
 //     ^             ^                  meta.brace.curly.js
 //       ^^^^^^^^^^^                    variable.other.readwrite.js
-//                     ^^^^             keyword.control.module.reference.js
-//                          ^^^^^^^^^   string.quoted.single.js
-//                          ^           punctuation.definition.string.begin.js
-//                                  ^   punctuation.definition.string.end.js
+//                          ^       ^   punctuation.definition.string.begin.js
+//                           ^^^^^^^    string.quoted.module.js
 //                                   ^  punctuation.terminator.statement.js
 
 export default React.createClass({
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^ ^^^^^^^                      keyword.control.module.js
-//             ^^^^^^^^^^^^^^^^^    meta.function-call.static.with-arguments.js
+//             ^^^^^^^^^^^^^^^^^^^  meta.function-call.static.with-arguments.js
 //             ^^^^^                variable.other.class.js
 //                  ^               keyword.operator.accessor.js
 //                   ^^^^^^^^^^^    entity.name.function.js
