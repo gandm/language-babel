@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax used by as [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
 
 The package also provides
 
@@ -66,9 +66,9 @@ It is also possible to preview any source file as Babel would output it.
 
 #### Previewing
 
-Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled codes cursor. This feature requires the Atom package [source-preview](https://atom.io/packages/source-preview) in which `language-babel`becomes a provider of transpiled output which `source-preview` consumes.
+Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled code's cursor. This feature requires the Atom package [source-preview](https://atom.io/packages/source-preview) in which `language-babel`becomes a provider of transpiled output which `source-preview` consumes.
 
-**Please note** that following two packages should be disabled or uninstalled to stop multiple packages contending for the same transpile - [source-preview-babel](https://atom.io/packages/source-preview-babel) and [source-preview-react](https://atom.io/packages/source-preview-react).
+**Please note** that the following two packages should be disabled or uninstalled to stop multiple packages contending for the same transpile - [source-preview-babel](https://atom.io/packages/source-preview-babel) and [source-preview-react](https://atom.io/packages/source-preview-react).
 
 `source-preview` provides a keyboard toggle to view the current file. As with transpiling described below, a project must have the relevant `.babelrc`, `package.json` and `node_modules`
 
