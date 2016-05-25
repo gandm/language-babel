@@ -66,7 +66,11 @@ It is also possible to preview any source file as Babel would output it.
 
 #### Previewing
 
-Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled codes cursor. This feature requires the Atom package  [source-preview](https://atom.io/packages/source-preview) in which `language-babel` becomes a provider of transpiled output which `source-preview` as a consumes. `source-preview` provides a keyboard toggle to view the current file. As with transpiling described below, a project must have relevant `.babelrc`, `package.json` and `node_modules`
+Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled codes cursor. This feature requires the Atom package [source-preview](https://atom.io/packages/source-preview) in which `language-babel`becomes a provider of transpiled output which `source-preview` consumes.
+
+**Please note** that following two packages should be disabled or uninstalled to stop multiple packages contending for the same transpile - [source-preview-babel](https://atom.io/packages/source-preview-babel) and [source-preview-react](https://atom.io/packages/source-preview-react).
+
+`source-preview` provides a keyboard toggle to view the current file. As with transpiling described below, a project must have the relevant `.babelrc`, `package.json` and `node_modules`
 
 ![example](https://cloud.githubusercontent.com/assets/2313237/12490818/7535fc50-c06f-11e5-8752-ec0878c5205c.gif)
 
