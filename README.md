@@ -3,7 +3,16 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES2015/ES2016 JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto [indentation](https://github.com/gandm/language-babel#automatic-indenting-of-jsx), [completion](https://github.com/gandm/language-babel#auto-completion-of-jsx-tags-elements-and-attributes) , reformatting and [commenting](https://github.com/gandm/language-babel#commenting-out-jsx-elements) JSX tags based upon ESLint rules as well as optional Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5). As a convenience it also provides a transpiled code preview by linking to the package [source-preview](https://atom.io/packages/source-preview).
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax used by as [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
+
+The package also provides
+
+ - [automatic indentation](https://github.com/gandm/language-babel#automatic-indenting-of-jsx) of JSX (optional).
+ - [JSX tag closure and JSX html element completion suggestions](https://github.com/gandm/language-babel#auto-completion-of-jsx-tags-elements-and-attributes).
+ - Context aware [commenting out of JSX elements](https://github.com/gandm/language-babel#commenting-out-jsx-elements).
+ - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
+ - Babel transpile of all files in a directory.
+ - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -49,19 +58,21 @@ You may also turn off automatic indenting for all files by setting the package o
 
 ## Interface to Babel V6 & V5
 
+language-babel fully supports the Babel JavaScript transpiler versions 5 and 6.
+
 Options in the language-babel package settings and/or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves using `.babelrc` options. A file tree context menu - `Babel Transpile` - is also provided that allows whole directories to be transpiled obeying any `.babelrc` and `.languagebabel` settings. Even if using a workflow such as gulp, webpack, etc, this can be very useful. Additional options allow the output from Babel (transpiled code and maps ) to be output to other directories.
 
 It is also possible to preview any source file as Babel would output it.
 
 #### Previewing
 
-Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled codes cursor. This feature requires the Atom package  [source-preview](https://atom.io/packages/source-preview).
+Babel v5 and Babel v6 code can be previewed as shown bellow. Source mapping keeps the ES201x file's cursor in step with the transpiled codes cursor. This feature requires the Atom package  [source-preview](https://atom.io/packages/source-preview) in which `language-babel` becomes a provider of transpiled output which `source-preview` as a consumes. `source-preview` provides a keyboard toggle to view the current file. As with transpiling described below, a project must have relevant `.babelrc`, `package.json` and `node_modules`
 
 ![example](https://cloud.githubusercontent.com/assets/2313237/12490818/7535fc50-c06f-11e5-8752-ec0878c5205c.gif)
 
 #### Transpiling
 
-This package works by using the concept of a project folder which we assume contains a project or even nested projects any of which may contain a Babel project.  In a Babel project we expect to see one or more `.babelrc` files, a `node_modules` folder at the root of the project containing an optional `babel-core` and other babel plugins/presets as determined by the project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project. Projects are either implicit (an Atom project folder) or explicit (denoted by a `.languagebabel` property of `"projectRoot": true`). If no `babel-core` is found in the project then a version will be provided by the package but this will be a Babel Version 6 instance. Plugins and presets will not be provided by the package.
+This package works by using the concept of a project folder which we assume contains a project or even nested projects any of which may contain a Babel project.  In a Babel project we expect to see one or more `.babelrc` files,  `node_modules` folders at the root's of the project containing an optional `babel-core` (either v5 or v6)  and other babel plugins/presets as determined by the project's `package.json` file. In addition we may expect to see one or more `.languagebabel` files in the project. Projects are either implicit (an Atom project folder) or explicit (denoted by a `.languagebabel` property of `"projectRoot": true`). If no `babel-core` is found in the project then a version will be provided by the package but this will be a Babel Version 6 instance. Plugins and presets will not be provided by the package.
 
 A trivial example project that shows examples of using `.languagebabel` and `.babelrc` files may be found [here](https://github.com/gandm/example-language-babel).
 
