@@ -93,12 +93,19 @@ class AutoIndent
         return
     else cursorPosition = event.newBufferPosition
     return if not @jsxInScope bufferRow
-    endPointOfJsx = new Point bufferRow+1,0 # next row start
+    endPointOfJsx = new Point bufferRow,0 # next row start
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @editor.transact 300, =>
       @indentJSX new Range(startPointOfJsx, endPointOfJsx)
     columnToMoveTo = /^\s*$/.exec(@editor.lineTextForBufferRow(bufferRow))?[0].length
     if columnToMoveTo? then @editor.setCursorBufferPosition [bufferRow, columnToMoveTo]
+
+    # if previous row is greater than this row then clear any whitespace blank lines
+    previousRow = event.oldBufferPosition.row
+    if previousRow > bufferRow and @jsxInScope(previousRow)
+      blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(previousRow))?[0].length
+      if blankLineEndPos?
+        @editor.setTextInBufferRange([[previousRow,0],[previousRow,blankLineEndPos]],"",{'normalizeLineEndings': false})
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
@@ -443,8 +450,17 @@ class AutoIndent
             isFirstTagOfBlock = true
 
       # handle lines with no token on them
-      if idxOfToken and not tokenOnThisLine and row isnt range.end.row
-        @indentUntokenisedLine row, tokenStack, stackOfTokensStillOpen
+      if idxOfToken and not tokenOnThisLine
+        # indent lines but remove any blank lines with white space except the last row
+        if row isnt range.end.row
+          blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(row))?[0].length
+          if blankLineEndPos?
+            @editor.setTextInBufferRange([[row,0],[row,blankLineEndPos]],"",{'normalizeLineEndings': false})
+          else
+            @indentUntokenisedLine row, tokenStack, stackOfTokensStillOpen
+        else
+          @indentUntokenisedLine row, tokenStack, stackOfTokensStillOpen
+
 
   # indent any lines that haven't any interesting tokens
   indentUntokenisedLine: (row, tokenStack, stackOfTokensStillOpen ) ->
