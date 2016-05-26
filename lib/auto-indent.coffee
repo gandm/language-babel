@@ -107,8 +107,7 @@ class AutoIndent
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
     if highestRow isnt @highestSelectedRow
       @highestSelectedRow = highestRow
-      scope = @editor.scopeDescriptorForBufferPosition([highestRow,0]).getScopesArray()
-      if 'meta.tag.jsx' in scope
+      if @jsxInScope(highestRow)
         endPointOfJsx = new Point highestRow,0
         startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
         @editor.transact 300, =>
