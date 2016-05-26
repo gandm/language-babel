@@ -1,7 +1,10 @@
+### 2.23.1
+  - Fixes AutoIndentJSX which left blank lines with white space in JSX as an indentation. [Fixes #193](https://github.com/gandm/language-babel/issues/193)
+
 ### 2.23.0
   - Improve grammar for ES import & export.
   - Small readme changes.
-  
+
 ### 2.22.0
   - Flow declare support for:
     - class extends and mixins keywords
