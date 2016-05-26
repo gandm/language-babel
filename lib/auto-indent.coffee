@@ -50,8 +50,7 @@ class AutoIndent
     @multipleCursorTrigger = 1
 
     @disposables = new CompositeDisposable()
-    @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:auto-indent-react-jsx': (event) => @autoIndentJsxCommand()
+
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:toggle-auto-indent-jsx': (event) =>  @autoJsx = not @autoJsx
 
@@ -73,16 +72,6 @@ class AutoIndent
     @disposables.dispose()
     document.removeEventListener 'mousedown'
     document.removeEventListener 'mouseup'
-
-  # command option to format line from a cursor position upwards to JSX start
-  autoIndentJsxCommand: () ->
-    cursorPosition = @editor.getCursorBufferPosition()
-    bufferRow = cursorPosition.row
-    return if not @jsxInScope(bufferRow)
-    endPointOfJsx = new Point bufferRow,0 # next row start
-    startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
-    @editor.transact 300, =>
-      @indentJSX new Range(startPointOfJsx, endPointOfJsx)
 
   # changed cursor position
   changedCursorPosition: (event) =>

@@ -48,7 +48,7 @@ By default this feature is turned off in the package settings. If enabled, langu
   }
 }
 ```
-When moving around a JSX block  language-babel reformats the preceding JSX lines automatically. Lines following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. Optionally, a command `language-babel:auto-indent-react-jsx` allows text to be automatically indented on the current and preceding rows. This can be mapped as a keyboard shortcut if required. The user should correctly position the first JSX element as auto-indenting will not do this.
+When moving around a JSX block  language-babel reformats the preceding JSX lines automatically. Lines following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. The user should correctly position the first JSX element as auto-indenting will not do this.
 
 There is also a command - `language-babel:toggle-auto-indent-jsx` that toggles automatic JSX formatting on/off for individual files. This can be mapped to a keyboard shortcut if needed.
 
