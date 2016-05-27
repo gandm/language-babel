@@ -1,3 +1,6 @@
+### 2.24.0
+  - Remove 're' filetype from Regex Grammar.
+
 ### 2.23.2
   - Fixes AutoIndentJSX which left blank lines with white space in JSX as an indentation. [Fixes #193](https://github.com/gandm/language-babel/issues/193)
 
