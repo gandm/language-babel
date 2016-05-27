@@ -1,9 +1,7 @@
 {
   "name": "Regular Expressions (Babel)",
   "scopeName": "source.regexp.babel",
-  "fileTypes": [
-    "re"
-  ],
+  "fileTypes": [],
   "patterns": [
     { "include": "#anchor"},
     { "include": "#backref"},
