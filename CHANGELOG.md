@@ -1,3 +1,6 @@
+### 2.24.1
+  - Make JSX indent cursor move changes non-transactional.
+
 ### 2.24.0
   - Remove 're' filetype from Regex Grammar.
 

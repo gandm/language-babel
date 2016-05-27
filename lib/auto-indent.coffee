@@ -95,8 +95,7 @@ class AutoIndent
     return if not @jsxInScope bufferRow
     endPointOfJsx = new Point bufferRow,0 # next row start
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
-    @editor.transact 300, =>
-      @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+    @indentJSX new Range(startPointOfJsx, endPointOfJsx)
     columnToMoveTo = /^\s*$/.exec(@editor.lineTextForBufferRow(bufferRow))?[0].length
     if columnToMoveTo? then @editor.setCursorBufferPosition [bufferRow, columnToMoveTo]
 
