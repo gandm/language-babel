@@ -104,7 +104,7 @@ class AutoIndent
     if previousRow > bufferRow and @jsxInScope(previousRow)
       blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(previousRow))?[0].length
       if blankLineEndPos?
-        @editor.setTextInBufferRange([[previousRow,0],[previousRow,blankLineEndPos]],"",{'normalizeLineEndings': false})
+        @indentRow({row: previousRow , blockIndent: 0 })
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
@@ -455,7 +455,7 @@ class AutoIndent
         if row isnt range.end.row
           blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(row))?[0].length
           if blankLineEndPos?
-            @editor.setTextInBufferRange([[row,0],[row,blankLineEndPos]],"",{'normalizeLineEndings': false})
+            @indentRow({row: row , blockIndent: 0 })
           else
             @indentUntokenisedLine row, tokenStack, stackOfTokensStillOpen
         else
