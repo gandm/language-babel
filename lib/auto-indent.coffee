@@ -112,13 +112,10 @@ class AutoIndent
     return unless @autoJsx
     selectedRange = @editor.getSelectedBufferRange()
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
-    if highestRow isnt @highestSelectedRow
-      @highestSelectedRow = highestRow
-      if @jsxInScope(highestRow)
-        endPointOfJsx = new Point highestRow,0
-        startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
-        @editor.transact 300, =>
-          @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+    if @jsxInScope(highestRow)
+      endPointOfJsx = new Point highestRow,0
+      startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
+      @indentJSX new Range(startPointOfJsx, endPointOfJsx)
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
