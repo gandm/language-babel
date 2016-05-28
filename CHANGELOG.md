@@ -1,3 +1,6 @@
+### 2.24.4
+  - Remove white space from blank lines when moving out of JSX.
+  
 ### 2.24.3
   - Fix no suggestions for html JSX attributes when on separate lines. Again!
   - Remove possibility of repeated firing of onDidStopChanging.

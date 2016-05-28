@@ -92,19 +92,22 @@ class AutoIndent
         @multipleCursorTrigger++
         return
     else cursorPosition = event.newBufferPosition
+
+    # remove any blank lines from where cursor was previously
+    previousRow = event.oldBufferPosition.row
+    if @jsxInScope(previousRow)
+      blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(previousRow))?[0].length
+      if blankLineEndPos?
+        @indentRow({row: previousRow , blockIndent: 0 })
+
     return if not @jsxInScope bufferRow
+
     endPointOfJsx = new Point bufferRow,0 # next row start
     startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, cursorPosition
     @indentJSX new Range(startPointOfJsx, endPointOfJsx)
     columnToMoveTo = /^\s*$/.exec(@editor.lineTextForBufferRow(bufferRow))?[0].length
     if columnToMoveTo? then @editor.setCursorBufferPosition [bufferRow, columnToMoveTo]
 
-    # if previous row is greater than this row then clear any whitespace blank lines
-    previousRow = event.oldBufferPosition.row
-    if previousRow > bufferRow and @jsxInScope(previousRow)
-      blankLineEndPos = /^\s*$/.exec(@editor.lineTextForBufferRow(previousRow))?[0].length
-      if blankLineEndPos?
-        @indentRow({row: previousRow , blockIndent: 0 })
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
