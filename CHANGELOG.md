@@ -1,3 +1,7 @@
+### 2.24.3
+  - Fix no suggestions for html JSX attributes when on separate lines. Again!
+  - Remove possibility of repeated firing of onDidStopChanging.
+
 ### 2.24.2
   - Fix no suggestions for html JSX attributes when on separate lines.
 
