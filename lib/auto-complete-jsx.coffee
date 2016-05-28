@@ -93,7 +93,7 @@ module.exports =
         scopes = editor.scopeDescriptorForBufferPosition([row, match.index+1]).getScopesArray()
         if "entity.name.tag.open.jsx" in scopes then matches.push match[1]
       # return the tag that is the last one found
-      if matches
+      if matches.length
         return matches.pop()
       else row--
 

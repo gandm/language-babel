@@ -1,3 +1,6 @@
+### 2.24.2
+  - Fix no suggestions for html JSX attributes when on separate lines.
+
 ### 2.24.1
   - Make JSX indent cursor move changes non-transactional.
 
