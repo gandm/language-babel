@@ -8,7 +8,7 @@ JSXTAG = 2
 JSXATTRIBUTE = 3
 # regex to search for tag open/close tag and close tag
 JSXREGEXP = /(?:(<)|(<\/))([$_A-Za-z](?:[$._:\-a-zA-Z0-9])*)|(?:(\/>)|(>))/g
-TAGREGEXP =  /<([$_a-zA-Z][$._:\-a-zA-Z0-9]*)(\s|\/>|>)/g
+TAGREGEXP =  /<([$_a-zA-Z][$._:\-a-zA-Z0-9]*)($|\s|\/>|>)/g
 COMPLETIONS = require "./completions-jsx"
 REACTURL = "http://facebook.github.io/react/docs/tags-and-attributes.html"
 
