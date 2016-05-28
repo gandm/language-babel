@@ -114,6 +114,13 @@ class AutoIndent
     return unless @mouseUp
     return unless @autoJsx
     selectedRange = @editor.getSelectedBufferRange()
+    # if this is a tag start's end > then don't auto indent
+    # this ia fix to allow for the auto complete tag time to pop up
+    if selectedRange.start.row is selectedRange.end.row and
+      selectedRange.start.column is  selectedRange.end.column and
+      'JSXStartTagEnd' in @editor.scopeDescriptorForBufferPosition([selectedRange.start.row, selectedRange.start.column]).getScopesArray()
+        return
+
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
     if @jsxInScope(highestRow)
       endPointOfJsx = new Point highestRow,0

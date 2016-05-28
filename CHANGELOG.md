@@ -1,6 +1,7 @@
 ### 2.24.4
   - Remove white space from blank lines when moving out of JSX.
-  
+  - Supress auto-indent on a open tag's > to allow auto complete end tag to pop up.
+
 ### 2.24.3
   - Fix no suggestions for html JSX attributes when on separate lines. Again!
   - Remove possibility of repeated firing of onDidStopChanging.
