@@ -70,7 +70,9 @@ class AutoIndent
       @eslintrcFilename = new File(@eslintrcFilename)
       @getEslintrcOptions(@eslintrcFilename.getPath())
       # watch eslintrc for changes
-      @disposables.add @eslintrcFilename.onDidChange => @getEslintrcOptions(@eslintrcFilename.getPath())
+      @disposables.add @eslintrcFilename.onDidChange =>
+        return unless @autoJsx
+        @getEslintrcOptions(@eslintrcFilename.getPath())
 
   destroy: () ->
     @disposables.dispose()
