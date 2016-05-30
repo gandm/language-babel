@@ -45,12 +45,17 @@ class AutoIndent
 
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
-    @autoJsx = true
+
+    @autoJsx = atom.config.get('language-babel').autoIndentJSX
     @mouseUp = true
     @multipleCursorTrigger = 1
 
     @disposables = new CompositeDisposable()
 
+    @disposables.add atom.commands.add 'atom-text-editor',
+      'language-babel:auto-indent-jsx-on': (event) =>  @autoJsx = true
+    @disposables.add atom.commands.add 'atom-text-editor',
+      'language-babel:auto-indent-jsx-off': (event) =>  @autoJsx = false
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:toggle-auto-indent-jsx': (event) =>  @autoJsx = not @autoJsx
 
@@ -75,9 +80,9 @@ class AutoIndent
 
   # changed cursor position
   changedCursorPosition: (event) =>
+    return unless @autoJsx
     return unless @mouseUp
     return unless event.oldBufferPosition.row isnt event.newBufferPosition.row
-    return unless @autoJsx
     bufferRow = event.newBufferPosition.row
     # handle multiple cursors. only trigger indent on one change event
     # and then only at the highest row
@@ -111,8 +116,8 @@ class AutoIndent
 
   # Buffer has stopped changing. Indent as required
   didStopChanging: () ->
-    return unless @mouseUp
     return unless @autoJsx
+    return unless @mouseUp
     selectedRange = @editor.getSelectedBufferRange()
     # if this is a tag start's end > then don't auto indent
     # this ia fix to allow for the auto complete tag time to pop up
