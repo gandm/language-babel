@@ -41,7 +41,6 @@ class AutoIndent
       ]
       jsxIndent: [1,1]            # 1 = enabled, 1=#tabs
       jsxIndentProps: [1,1]       # 1 = enabled, 1=#tabs
-      indent: [1,1]               # 1 = enabled, 1=#tabs
 
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
@@ -486,11 +485,11 @@ class AutoIndent
       when JSXBRACE_OPEN
         @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
       when BRACE_OPEN
-        @indentRow({row: row, blockIndent: token.firstCharIndentation, jsIndent: 1 })
+        @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
       when JSXTAG_SELFCLOSE_END, JSXBRACE_CLOSE, JSXTAG_CLOSE_ATTRS
         @indentRow({row: row, blockIndent: tokenStack[token.parentTokenIdx].firstCharIndentation, jsxIndentProps: 1})
       when BRACE_CLOSE
-        @indentRow({row: row, blockIndent: tokenStack[token.parentTokenIdx].firstCharIndentation, jsIndent: 1 })
+        @indentRow({row: row, blockIndent: tokenStack[token.parentTokenIdx].firstCharIndentation, jsxIndent: 1 })
 
   # get the token at the given match position or return truthy false
   getToken: (bufferRow, match) ->
@@ -553,40 +552,45 @@ class AutoIndent
 
       return if not eslintRules?
 
+      ES_DEFAULT_INDENT = 4 # default eslint indent as spaces
+
+
+      # read indent if it exists and use it as the default indent for JSX
       rule = eslintRules['indent']
-      if typeof rule is 'number'
-        @eslintIndentOptions.indent[0] = rule
-        @eslintIndentOptions.indent[1] = 4 / @atomTabLength
+      if typeof rule is 'number' or typeof rule is 'string'
+        defaultIndent  = ES_DEFAULT_INDENT / @atomTabLength
       else if typeof rule is 'object'
-        @eslintIndentOptions.indent[0] = rule[0]
         if typeof rule[1] is 'number'
-          @eslintIndentOptions.indent[1] = rule[1] / @atomTabLength
-        else @eslintIndentOptions.indent[1] = 1
+          defaultIndent  = rule[1] / @atomTabLength
+        else defaultIndent  = 1
+      else defaultIndent  = 1
 
       rule = eslintRules['react/jsx-indent']
-      if typeof rule is 'number'
+      if typeof rule is 'number' or typeof rule is 'string'
         @eslintIndentOptions.jsxIndent[0] = rule
-        @eslintIndentOptions.jsxIndent[1] = 4 / @atomTabLength
+        @eslintIndentOptions.jsxIndent[1] = ES_DEFAULT_INDENT / @atomTabLength
       else if typeof rule is 'object'
         @eslintIndentOptions.jsxIndent[0] = rule[0]
         if typeof rule[1] is 'number'
           @eslintIndentOptions.jsxIndent[1] = rule[1] / @atomTabLength
         else @eslintIndentOptions.jsxIndent[1] = 1
+      else @eslintIndentOptions.jsxIndent[1] = defaultIndent
 
       rule = eslintRules['react/jsx-indent-props']
-      if typeof rule is 'number'
+      if typeof rule is 'number' or typeof rule is 'string'
         @eslintIndentOptions.jsxIndentProps[0] = rule
-        @eslintIndentOptions.jsxIndentProps[1] = 4 / @atomTabLength
+        @eslintIndentOptions.jsxIndentProps[1] = ES_DEFAULT_INDENT / @atomTabLength
       else if typeof rule is 'object'
         @eslintIndentOptions.jsxIndentProps[0] = rule[0]
         if typeof rule[1] is 'number'
           @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @atomTabLength
         else @eslintIndentOptions.jsxIndentProps[1] = 1
+      else @eslintIndentOptions.jsxIndentProps[1] = defaultIndent
 
       rule = eslintRules['react/jsx-closing-bracket-location']
       @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = TAGALIGNED
       @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = TAGALIGNED
-      if typeof rule is 'number'
+      if typeof rule is 'number' or typeof rule is 'string'
         @eslintIndentOptions.jsxClosingBracketLocation[0] = rule
       else if typeof rule is 'object' # array
         @eslintIndentOptions.jsxClosingBracketLocation[0] = rule[0]
@@ -602,9 +606,8 @@ class AutoIndent
 
   # get tab indents from eslint indent
   getEslintIndent: () ->
-    if @eslintIndentOptions.indent[0] then jsIndent = @eslintIndentOptions.indent[1]
-    else jsIndent = 0
-    jsIndent
+    if @eslintIndentOptions.jsxIndent[0] then return  @eslintIndentOptions.jsxIndent[1]
+    else return 0
 
   # allign nonEmpty and selfClosing tags based on eslint rules
   # row to be indented based upon a parentTags properties and a rule type
@@ -633,12 +636,8 @@ class AutoIndent
   # other indents are the required indent based on eslint conditions for React
   # option contains row to indent and allowAdditionalIndents flag
   indentRow: (options) ->
-    { row, allowAdditionalIndents, blockIndent, jsIndent, jsxIndent, jsxIndentProps } = options
+    { row, allowAdditionalIndents, blockIndent, jsxIndent, jsxIndentProps } = options
     # calc overall indent
-    if jsIndent
-      if @eslintIndentOptions.indent[0]
-        if @eslintIndentOptions.indent[1]
-          blockIndent += jsIndent * @eslintIndentOptions.indent[1]
     if jsxIndent
       if @eslintIndentOptions.jsxIndent[0]
         if @eslintIndentOptions.jsxIndent[1]
