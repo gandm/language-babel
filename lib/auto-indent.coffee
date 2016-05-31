@@ -45,11 +45,12 @@ class AutoIndent
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
 
-    @autoJsx = atom.config.get('language-babel').autoIndentJSX
     @mouseUp = true
     @multipleCursorTrigger = 1
 
     @disposables = new CompositeDisposable()
+
+    @autoJsx = atom.config.get('language-babel').autoIndentJSX
 
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:auto-indent-jsx-on': (event) =>  @autoJsx = true
@@ -66,11 +67,11 @@ class AutoIndent
 
     if @eslintrcFilename = @getEslintrcFilename()
       @eslintrcFilename = new File(@eslintrcFilename)
-      @getEslintrcOptions(@eslintrcFilename.getPath())
+      @readEslintrcOptions(@eslintrcFilename.getPath())
       # watch eslintrc for changes
       @disposables.add @eslintrcFilename.onDidChange =>
         return unless @autoJsx
-        @getEslintrcOptions(@eslintrcFilename.getPath())
+        @readEslintrcOptions(@eslintrcFilename.getPath())
 
   destroy: () ->
     @disposables.dispose()
@@ -538,7 +539,7 @@ class AutoIndent
   # use eslint react format described at http://tinyurl.com/p4mtatv
   # to create indents. We can read .eslintrc here but don't parse strictly
   # turn spaces into tab dimensions which can be decimal
-  getEslintrcOptions: (eslintrcFile) ->
+  readEslintrcOptions: (eslintrcFile) ->
     # get local path overides
     if fs.existsSync eslintrcFile
       fileContent = stripJsonComments(fs.readFileSync(eslintrcFile, 'utf8'))
