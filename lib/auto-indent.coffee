@@ -64,8 +64,6 @@ class AutoIndent
     @disposables.add @editor.onDidChangeCursorPosition (event) => @changedCursorPosition(event)
     @disposables.add @editor.onDidStopChanging () => @didStopChanging()
 
-    @atomTabLength = @editor.getTabLength()
-
     if @eslintrcFilename = @getEslintrcFilename()
       @eslintrcFilename = new File(@eslintrcFilename)
       @getEslintrcOptions(@eslintrcFilename.getPath())
@@ -172,7 +170,7 @@ class AutoIndent
         firstCharIndentation = (@editor.indentationForBufferRow row)
         # convert the matched column position into tab indents
         if @editor.getSoftTabs()
-          tagIndentation = (matchColumn / @atomTabLength)
+          tagIndentation = (matchColumn / @editor.getTabLength())
         else tagIndentation =
           do () ->
             hardTabsFound = 0
@@ -560,32 +558,32 @@ class AutoIndent
       # read indent if it exists and use it as the default indent for JSX
       rule = eslintRules['indent']
       if typeof rule is 'number' or typeof rule is 'string'
-        defaultIndent  = ES_DEFAULT_INDENT / @atomTabLength
+        defaultIndent  = ES_DEFAULT_INDENT / @editor.getTabLength()
       else if typeof rule is 'object'
         if typeof rule[1] is 'number'
-          defaultIndent  = rule[1] / @atomTabLength
+          defaultIndent  = rule[1] / @editor.getTabLength()
         else defaultIndent  = 1
       else defaultIndent  = 1
 
       rule = eslintRules['react/jsx-indent']
       if typeof rule is 'number' or typeof rule is 'string'
         @eslintIndentOptions.jsxIndent[0] = rule
-        @eslintIndentOptions.jsxIndent[1] = ES_DEFAULT_INDENT / @atomTabLength
+        @eslintIndentOptions.jsxIndent[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
       else if typeof rule is 'object'
         @eslintIndentOptions.jsxIndent[0] = rule[0]
         if typeof rule[1] is 'number'
-          @eslintIndentOptions.jsxIndent[1] = rule[1] / @atomTabLength
+          @eslintIndentOptions.jsxIndent[1] = rule[1] / @editor.getTabLength()
         else @eslintIndentOptions.jsxIndent[1] = 1
       else @eslintIndentOptions.jsxIndent[1] = defaultIndent
 
       rule = eslintRules['react/jsx-indent-props']
       if typeof rule is 'number' or typeof rule is 'string'
         @eslintIndentOptions.jsxIndentProps[0] = rule
-        @eslintIndentOptions.jsxIndentProps[1] = ES_DEFAULT_INDENT / @atomTabLength
+        @eslintIndentOptions.jsxIndentProps[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
       else if typeof rule is 'object'
         @eslintIndentOptions.jsxIndentProps[0] = rule[0]
         if typeof rule[1] is 'number'
-          @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @atomTabLength
+          @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @editor.getTabLength()
         else @eslintIndentOptions.jsxIndentProps[1] = 1
       else @eslintIndentOptions.jsxIndentProps[1] = defaultIndent
 
