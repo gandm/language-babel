@@ -28,50 +28,32 @@ PROPSALIGNED  = 'props-aligned'
 module.exports =
 class AutoIndent
   constructor: (@editor) ->
-    # Eslint rules to use as default overidden by .eslintrc
-    # N.B. that this is not the same as the eslint rules in that
-    # the tab-spaces and 'tab's in eslintrc are converted to tabs based upon
-    # the Atom editor tab spacing.
-    # e.g. eslint indent [1,4] with an Atom tab spacing of 2 becomes indent [1,2]
-    @eslintIndentOptions  =
-      jsxClosingBracketLocation: [
-        1,
-        selfClosing: TAGALIGNED
-        nonEmpty: TAGALIGNED
-      ]
-      jsxIndent: [1,1]            # 1 = enabled, 1=#tabs
-      jsxIndentProps: [1,1]       # 1 = enabled, 1=#tabs
-
+    @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
-
     @mouseUp = true
     @multipleCursorTrigger = 1
-
     @disposables = new CompositeDisposable()
-
-    @autoJsx = atom.config.get('language-babel').autoIndentJSX
+    @eslintIndentOptions = @getIndentOptions()
 
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:auto-indent-jsx-on': (event) =>  @autoJsx = true
+      'language-babel:auto-indent-jsx-on': (event) =>
+        @autoJsx = true
+        @eslintIndentOptions = @getIndentOptions()
+
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:auto-indent-jsx-off': (event) =>  @autoJsx = false
+
     @disposables.add atom.commands.add 'atom-text-editor',
-      'language-babel:toggle-auto-indent-jsx': (event) =>  @autoJsx = not @autoJsx
+      'language-babel:toggle-auto-indent-jsx': (event) =>
+        @autoJsx = not @autoJsx
+        if @autoJsx then @eslintIndentOptions = @getIndentOptions()
 
     document.addEventListener 'mousedown', => @mouseUp = false
     document.addEventListener 'mouseup', => @mouseUp = true
 
     @disposables.add @editor.onDidChangeCursorPosition (event) => @changedCursorPosition(event)
     @disposables.add @editor.onDidStopChanging () => @didStopChanging()
-
-    if @eslintrcFilename = @getEslintrcFilename()
-      @eslintrcFilename = new File(@eslintrcFilename)
-      @readEslintrcOptions(@eslintrcFilename.getPath())
-      # watch eslintrc for changes
-      @disposables.add @eslintrcFilename.onDidChange =>
-        return unless @autoJsx
-        @readEslintrcOptions(@eslintrcFilename.getPath())
 
   destroy: () ->
     @disposables.dispose()
@@ -208,10 +190,8 @@ class AutoIndent
                   parentTokenIdx? and
                   tokenStack[parentTokenIdx].type is BRACE_OPEN and
                   tokenStack[parentTokenIdx].row is ( row - 1)
-                    # previous line started with a brace so use different indent rule
-                    # based upon eslint indent not React/indent
                     tagIndentation = firstCharIndentation = firstTagInLineIndentation =
-                      @getEslintIndent() + @getIndentOfPreviousRow row
+                      @eslintIndentOptions.jsxIndent[1] + @getIndentOfPreviousRow row
                     indentRecalc = @indentRow({row: row , blockIndent: firstCharIndentation })
               else if isFirstTagOfBlock and parentTokenIdx?
                 indentRecalc = @indentRow({row: row , blockIndent: @getIndentOfPreviousRow(row), jsxIndent: 1})
@@ -400,10 +380,8 @@ class AutoIndent
                   parentTokenIdx? and
                   tokenStack[parentTokenIdx].type is BRACE_OPEN and
                   tokenStack[parentTokenIdx].row is ( row - 1)
-                    # previous line started with a brace so use different indent rule
-                    # based upon eslint indent not React/indent
                     tagIndentation = firstCharIndentation =
-                      @getEslintIndent() + @getIndentOfPreviousRow row
+                      @eslintIndentOptions.jsxIndent[1] + @getIndentOfPreviousRow row
                     indentRecalc = @indentRow({row: row, blockIndent: firstCharIndentation})
               else if parentTokenIdx?
                 indentRecalc = @indentRow({row: row, blockIndent: tokenStack[parentTokenIdx].firstCharIndentation, jsxIndent: 1 } )
@@ -529,6 +507,15 @@ class AutoIndent
       return @editor.indentationForBufferRow row if  /.*\S/.test line
     return 0
 
+  # get eslint translated indent options
+  getIndentOptions: () ->
+    if not @autoJsx then return @translateIndentOptions()
+    if eslintrcFilename = @getEslintrcFilename()
+      eslintrcFilename = new File(eslintrcFilename)
+      @translateIndentOptions(@readEslintrcOptions(eslintrcFilename.getPath()))
+    else
+      @translateIndentOptions({}) # get defaults
+
   # return text string of a project based .eslintrc file if one exists
   getEslintrcFilename: () ->
     projectContainingSource = atom.project.relativizePath @editor.getPath()
@@ -536,79 +523,92 @@ class AutoIndent
     if projectContainingSource[0]?
       path.join projectContainingSource[0], '.eslintrc'
 
-  # use eslint react format described at http://tinyurl.com/p4mtatv
-  # to create indents. We can read .eslintrc here but don't parse strictly
-  # turn spaces into tab dimensions which can be decimal
+  # to create indents. We can read and return the rules properties or undefined
   readEslintrcOptions: (eslintrcFile) ->
     # get local path overides
     if fs.existsSync eslintrcFile
       fileContent = stripJsonComments(fs.readFileSync(eslintrcFile, 'utf8'))
       try
         eslintRules = (YAML.safeLoad fileContent).rules
+        if eslintRules then return eslintRules
       catch err
         atom.notifications.addError "LB: Error reading .eslintrc at #{eslintrcFile}",
           dismissable: true
           detail: "#{err.message}"
-        return
+    return {}
 
-      return if not eslintRules?
+  # use eslint react format described at http://tinyurl.com/p4mtatv
+  # turn spaces into tab dimensions which can be decimal
+  # a empty object argument parses back the default settings
+  translateIndentOptions: (eslintRules) ->
+    # Eslint rules to use as default overidden by .eslintrc
+    # N.B. that this is not the same as the eslint rules in that
+    # the tab-spaces and 'tab's in eslintrc are converted to tabs based upon
+    # the Atom editor tab spacing.
+    # e.g. eslint indent [1,4] with an Atom tab spacing of 2 becomes indent [1,2]
+    eslintIndentOptions  =
+      jsxIndent: [1,1]            # 1 = enabled, 1=#tabs
+      jsxIndentProps: [1,1]       # 1 = enabled, 1=#tabs
+      jsxClosingBracketLocation: [
+        1,
+        selfClosing: TAGALIGNED
+        nonEmpty: TAGALIGNED
+      ]
 
-      ES_DEFAULT_INDENT = 4 # default eslint indent as spaces
+    return eslintIndentOptions unless typeof eslintRules is "object"
 
+    ES_DEFAULT_INDENT = 4 # default eslint indent as spaces
 
-      # read indent if it exists and use it as the default indent for JSX
-      rule = eslintRules['indent']
-      if typeof rule is 'number' or typeof rule is 'string'
-        defaultIndent  = ES_DEFAULT_INDENT / @editor.getTabLength()
-      else if typeof rule is 'object'
-        if typeof rule[1] is 'number'
-          defaultIndent  = rule[1] / @editor.getTabLength()
-        else defaultIndent  = 1
+    # read indent if it exists and use it as the default indent for JSX
+    rule = eslintRules['indent']
+    if typeof rule is 'number' or typeof rule is 'string'
+      defaultIndent  = ES_DEFAULT_INDENT / @editor.getTabLength()
+    else if typeof rule is 'object'
+      if typeof rule[1] is 'number'
+        defaultIndent  = rule[1] / @editor.getTabLength()
       else defaultIndent  = 1
+    else defaultIndent  = 1
 
-      rule = eslintRules['react/jsx-indent']
-      if typeof rule is 'number' or typeof rule is 'string'
-        @eslintIndentOptions.jsxIndent[0] = rule
-        @eslintIndentOptions.jsxIndent[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
-      else if typeof rule is 'object'
-        @eslintIndentOptions.jsxIndent[0] = rule[0]
-        if typeof rule[1] is 'number'
-          @eslintIndentOptions.jsxIndent[1] = rule[1] / @editor.getTabLength()
-        else @eslintIndentOptions.jsxIndent[1] = 1
-      else @eslintIndentOptions.jsxIndent[1] = defaultIndent
+    rule = eslintRules['react/jsx-indent']
+    if typeof rule is 'number' or typeof rule is 'string'
+      eslintIndentOptions.jsxIndent[0] = rule
+      eslintIndentOptions.jsxIndent[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
+    else if typeof rule is 'object'
+      eslintIndentOptions.jsxIndent[0] = rule[0]
+      if typeof rule[1] is 'number'
+        eslintIndentOptions.jsxIndent[1] = rule[1] / @editor.getTabLength()
+      else eslintIndentOptions.jsxIndent[1] = 1
+    else eslintIndentOptions.jsxIndent[1] = defaultIndent
 
-      rule = eslintRules['react/jsx-indent-props']
-      if typeof rule is 'number' or typeof rule is 'string'
-        @eslintIndentOptions.jsxIndentProps[0] = rule
-        @eslintIndentOptions.jsxIndentProps[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
-      else if typeof rule is 'object'
-        @eslintIndentOptions.jsxIndentProps[0] = rule[0]
-        if typeof rule[1] is 'number'
-          @eslintIndentOptions.jsxIndentProps[1] = rule[1] / @editor.getTabLength()
-        else @eslintIndentOptions.jsxIndentProps[1] = 1
-      else @eslintIndentOptions.jsxIndentProps[1] = defaultIndent
+    rule = eslintRules['react/jsx-indent-props']
+    if typeof rule is 'number' or typeof rule is 'string'
+      eslintIndentOptions.jsxIndentProps[0] = rule
+      eslintIndentOptions.jsxIndentProps[1] = ES_DEFAULT_INDENT / @editor.getTabLength()
+    else if typeof rule is 'object'
+      eslintIndentOptions.jsxIndentProps[0] = rule[0]
+      if typeof rule[1] is 'number'
+        eslintIndentOptions.jsxIndentProps[1] = rule[1] / @editor.getTabLength()
+      else eslintIndentOptions.jsxIndentProps[1] = 1
+    else eslintIndentOptions.jsxIndentProps[1] = defaultIndent
 
-      rule = eslintRules['react/jsx-closing-bracket-location']
-      @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = TAGALIGNED
-      @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = TAGALIGNED
-      if typeof rule is 'number' or typeof rule is 'string'
-        @eslintIndentOptions.jsxClosingBracketLocation[0] = rule
-      else if typeof rule is 'object' # array
-        @eslintIndentOptions.jsxClosingBracketLocation[0] = rule[0]
-        if typeof rule[1] is 'string'
-          @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing =
-            @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty =
-              rule[1]
-        else
-          if rule[1].selfClosing?
-            @eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = rule[1].selfClosing
-          if rule[1].nonEmpty?
-            @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = rule[1].nonEmpty
+    rule = eslintRules['react/jsx-closing-bracket-location']
+    eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = TAGALIGNED
+    eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = TAGALIGNED
+    if typeof rule is 'number' or typeof rule is 'string'
+      eslintIndentOptions.jsxClosingBracketLocation[0] = rule
+    else if typeof rule is 'object' # array
+      eslintIndentOptions.jsxClosingBracketLocation[0] = rule[0]
+      if typeof rule[1] is 'string'
+        eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing =
+          eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty =
+            rule[1]
+      else
+        if rule[1].selfClosing?
+          eslintIndentOptions.jsxClosingBracketLocation[1].selfClosing = rule[1].selfClosing
+        if rule[1].nonEmpty?
+          eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty = rule[1].nonEmpty
 
-  # get tab indents from eslint indent
-  getEslintIndent: () ->
-    if @eslintIndentOptions.jsxIndent[0] then return  @eslintIndentOptions.jsxIndent[1]
-    else return 0
+    return eslintIndentOptions
 
   # allign nonEmpty and selfClosing tags based on eslint rules
   # row to be indented based upon a parentTags properties and a rule type
