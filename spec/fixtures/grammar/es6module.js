@@ -243,6 +243,22 @@ export { import1 as name1, import2 as name2, nameN } from "module-name"
 //                       ^                 ^                             meta.delimiter.comma.js
 //                                                        ^           ^  punctuation.definition.string.begin.js
 //                                                         ^^^^^^^^^^^   string.quoted.module.js
+export someIdentifier from "someModule"
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                ^^^^               keyword.control.module.js
+//     ^^^^^^^^^^^^^^                    variable.other.readwrite.js
+//                         ^          ^  punctuation.definition.string.begin.js
+//                          ^^^^^^^^^^   string.quoted.module.js
+export someIdentifier, { namedIdentifier } from "someModule"
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                                     ^^^^               keyword.control.module.js
+//     ^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^                      variable.other.readwrite.js
+//                   ^                                        meta.delimiter.comma.js
+//                     ^                 ^                    meta.brace.curly.js
+//                                              ^          ^  punctuation.definition.string.begin.js
+//                                               ^^^^^^^^^^   string.quoted.module.js
 
 export type User = {
 // <- keyword.control.module.js

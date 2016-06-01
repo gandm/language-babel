@@ -1442,7 +1442,7 @@
           }
         },
         {
-          "match": "\\s*\\b(typeof|type)\\b\\s*(?!\\b(instanceof|in|as)\\b|,)",
+          "match": "\\s*\\b(typeof|type)\\b\\s++(?=\\{|[$_a-zA-Z])(?!\\b(instanceof|in|as)\\b|,)",
           "captures": {
             "1": { "name": "keyword.other.typedef.flowtype" }
           }
@@ -1461,8 +1461,15 @@
     "literal-module-export": {
       "patterns": [
         {
-          "comment": "export {  or  export *",
-          "begin": "\\s*+(?<!\\.)\\b(export)\\b(?=\\s++({|\\*))",
+          "comment": "e.g. export let variable =, export type a=",
+          "match": "\\s*+(?<!\\.)\\b(export)(?!\\s*:)\\b(?=\\s++(let|type|typeof)\\s++[$_a-zA-Z])",
+          "captures": {
+            "1": { "name": "keyword.control.module.js" }
+          }
+        },
+        {
+          "comment": "export {  or  export * or export var from module",
+          "begin": "\\s*+(?<!\\.)\\b(export)\\b(?=\\s++({|\\*|[$_a-zA-Z][$_\\w]*(\\s++from\\b|\\s*,)))",
           "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\\\")([^\\\"']*)(\\k<-3>)))|(?=\\;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
           "beginCaptures": {
             "1": { "name": "keyword.control.module.js" }
@@ -1486,6 +1493,7 @@
           ]
         },
         {
+          "comment": "trap expressions among - export function* () {}",
           "match": "\\s*+(?<!\\.)\\b(export|default)(?!\\s*:)\\b",
           "captures": {
             "1": { "name": "keyword.control.module.js" }
