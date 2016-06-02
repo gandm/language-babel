@@ -1,3 +1,6 @@
+### 2.25.1
+  - Fix Automatic insertion between JSX tags when auto-indent is turned off
+  
 ### 2.25.0
   - Automatic insertion of additional newline between JSX open/close tags.
   - Grammar support for TC39 proposal for  - export indentifier from "module"

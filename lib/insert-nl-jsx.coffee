@@ -15,8 +15,11 @@ class InsertNlJsx
     return true unless 'JSXEndTagStart' in @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray()
     cursorBufferPosition.column--
     return true unless 'JSXStartTagEnd' in @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray()
-    @editor.insertText('\n\n')
+    indentLength = /^\s*\S/.exec(@editor.lineTextForBufferRow(cursorBufferPosition.row))?[0].length
+    pad = new Array(indentLength).join(' ')
+    @editor.insertText("\n#{pad}#{@editor.getTabText()}\n#{pad}")
     @editor.moveUp()
+    @editor.moveToEndOfLine()
     false
 
   # from https://github.com/atom/underscore-plus/blob/master/src/underscore-plus.coffee
