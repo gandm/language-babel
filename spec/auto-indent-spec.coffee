@@ -245,3 +245,24 @@ describe 'auto-indent', ->
          autoIndent.autoJsx = true
          autoIndent.indentJSX(sourceCodeRange)
          expect(editor.getTextInBufferRange(sourceCodeRange)).toEqual(indentedCode)
+
+    # test insert newline between opening closing JSX tags
+    describe 'insert-nl-jsx', ->
+
+      it 'should insert two new lines and position cursor between JSX tags', ->
+        # remember this is tabs based on atom default
+        autoIndent.eslintIndentOptions =
+          jsxIndent: [1, 1]
+          jsxIndentProps: [1, 1]
+          jsxClosingBracketLocation: [ 1,
+            selfClosing: 'tabs-aligned'
+            nonEmpty: 'tabs-aligned' ]
+        autoIndent.autoJsx = true
+        editor.insertText('<div></div>')
+        editor.setCursorBufferPosition([0,5])
+        editor.insertText('\n')
+
+        expect(editor.getTextInBufferRange([[0,0],[0,5]])).toEqual("<div>")
+        expect(editor.getTextInBufferRange([[1,0],[1,2]])).toEqual("  ")
+        expect(editor.getTextInBufferRange([[2,0],[2,6]])).toEqual("</div>")
+        expect(editor.getCursorBufferPosition()).toEqual([1,2])

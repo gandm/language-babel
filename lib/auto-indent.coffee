@@ -2,6 +2,7 @@
 fs = require 'fs-plus'
 path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
+InsertNlJsx = require './insert-nl-jsx'
 stripJsonComments = require 'strip-json-comments'
 YAML = require 'js-yaml'
 
@@ -28,6 +29,7 @@ PROPSALIGNED  = 'props-aligned'
 module.exports =
 class AutoIndent
   constructor: (@editor) ->
+    @insertNlJsx = new InsertNlJsx(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
