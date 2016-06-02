@@ -10,6 +10,7 @@ The package also provides
  - [automatic indentation](https://github.com/gandm/language-babel#automatic-indenting-of-jsx) of JSX (optional).
  - [JSX tag closure and JSX html element completion suggestions](https://github.com/gandm/language-babel#auto-completion-of-jsx-tags-elements-and-attributes).
  - Context aware [commenting out of JSX elements](https://github.com/gandm/language-babel#commenting-out-jsx-elements).
+ - Additional [newline insertion between JSX tag pairs](https://github.com/gandm/language-babel#automatic-insertion-between-jsx-tags).
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
@@ -34,9 +35,19 @@ JSX elements cannot be commented out by using standard `//` or `/* */` commentin
 
 ![autoclose](https://cloud.githubusercontent.com/assets/2313237/12441752/4d672be6-bf42-11e5-8e20-33a96a81db66.gif)
 
+## Automatic insertion between JSX tags
+
+When a newline is inserted between a matched open/close pair of JSX tags, language-babel inserts an additional line and positions the cursor. If Auto Indent is also turned on then the cursor is correctly indented.
+
+![autoclose](https://cloud.githubusercontent.com/assets/2313237/15736961/1cbaa780-289b-11e6-9cd3-48f749a91f98.gif)
+
 ## Automatic Indenting of JSX
 
-By default this feature is turned off in the package setting - `Auto Indent JSX`. If enabled, language-babel will auto-indent any JSX code typed or moved across using suitable Atom defaults. If found, it will also read the `.eslintrc` file associated with an edited file's project for the presence of four properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
+By default this feature is turned off in the package setting - `Auto Indent JSX`. If enabled, language-babel will auto-indent any JSX code typed or moved across using suitable Atom defaults. There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that set the automatic JSX indenting to on/off for individual files. These can be mapped to a keyboard shortcuts if needed.
+
+Auto Indenting will also attempt to read the `.eslintrc` file associated with an edited file's project for the presence of four properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
+
+Please note that no attempt is currently made to read eslint settings in any other file. e.g. `package.json`, `eslint.js`, `extends...`, etc.
 
 ```json
 {
@@ -50,7 +61,7 @@ By default this feature is turned off in the package setting - `Auto Indent JSX`
 ```
 When moving around a JSX block  language-babel reformats the preceding JSX lines automatically. Lines following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. The user should correctly position the first JSX element as auto-indenting will not do this.
 
-There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that set the automatic JSX indenting to on/off for individual files. This can be mapped to a keyboard shortcut if needed.
+
 
 You may also turn off automatic indenting for all files by setting the package option `Auto Indent JSX`
 
