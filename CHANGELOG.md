@@ -1,3 +1,9 @@
+### 2.25.0
+  - Automatic insertion of additional newline between JSX open/close tags.
+  - Grammar support for TC39 proposal for  - export indentifier from "module"
+  - JSX Auto-indent uses eslint "indent" rule, if found, to set defaults for "react/jsx-indent" and "react/jsx-indent-props"
+  - Instantiates auto-indent for all language-babel text editor instances even if Auto Ident JSX is turned off in package settings. This allows the commands to turn on auto indent for individual files as required.
+
 ### 2.24.4
   - Remove white space from blank lines when moving out of JSX.
   - Supress auto-indent on a open tag's > to allow auto complete end tag to pop up.
