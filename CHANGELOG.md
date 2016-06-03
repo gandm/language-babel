@@ -1,3 +1,6 @@
+### 2.26.1
+  - Fix specs for 2.26.0
+  
 ### 2.26.0
   - Add option to allow recursive directories to be transpiled.
 

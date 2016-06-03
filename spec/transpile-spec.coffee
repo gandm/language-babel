@@ -337,7 +337,7 @@ describe 'language-babel', ->
 
         spyOn(lb, 'getConfig').andCallFake -> config
         sourceDir = path.resolve(__dirname, 'fixtures/projectRoot/src/')
-        lb.transpileDirectory(sourceDir)
+        lb.transpileDirectory({directory: sourceDir})
         waitsFor ->
           writeFileStub.callCount >= 5
         runs ->
