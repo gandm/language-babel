@@ -39,11 +39,18 @@ class Transpiler
     if @getConfig().transpileOnSave or @getConfig().allowLocalOverride
       @disposables.add atom.contextMenu.add {
         '.tree-view .directory > .header > .name': [
-          {label: 'Babel Transpile', command: 'language-babel:transpile-directory'}
-          {'type': 'separator'}
-        ]
-      }
+            {
+              label: 'Language-Babel'
+              submenu: [
+                {label: 'Transpile Directory ', command: 'language-babel:transpile-directory'}
+                {label: 'Transpile Directories', command: 'language-babel:transpile-directories'}
+              ]
+            }
+            {'type': 'separator' }
+          ]
+        }
       @disposables.add atom.commands.add '.tree-view .directory > .header > .name', 'language-babel:transpile-directory', @commandTranspileDirectory
+      @disposables.add atom.commands.add '.tree-view .directory > .header > .name', 'language-babel:transpile-directories', @commandTranspileDirectories
 
   # method used by source-preview to see transpiled code
   transform: (code, {filePath, sourceMap}) ->
@@ -82,16 +89,29 @@ class Transpiler
 
   # called by command
   commandTranspileDirectory: ({target}) =>
-    @transpileDirectory target.dataset.path
+    @transpileDirectory {directory: target.dataset.path }
 
-  # transpile all files in a directory
-  transpileDirectory: (directory) ->
+  # called by command
+  commandTranspileDirectories: ({target}) =>
+    @transpileDirectory {directory: target.dataset.path, recursive: true}
+
+  # transpile all files in a directory or recursive directories
+  # options are { directory: name, recursive: true|false}
+  transpileDirectory: (options) ->
+    directory = options.directory
+    recursive = options.recursive or false
     fs.readdir directory, (err,files) =>
       if not err?
         files.map (file) =>
-          return if /\.min\.[a-z]+$/.test file # no minimized files
-          if /\.(js|jsx|es|es6|babel)$/.test file # only js
-            @transpile file, null, @getConfigAndPathTo path.join(directory, file)
+          fqFileName = path.join(directory, file)
+          fs.stat fqFileName, (err, stats) =>
+            if not err?
+              if stats.isFile()
+                return if /\.min\.[a-z]+$/.test fqFileName # no minimized files
+                if /\.(js|jsx|es|es6|babel)$/.test fqFileName # only js
+                  @transpile file, null, @getConfigAndPathTo fqFileName
+              else if recursive and stats.isDirectory()
+                @transpileDirectory {directory: fqFileName, recursive: true}
 
   # transpile sourceFile edited by the optional textEditor
   transpile: (sourceFile, textEditor, configAndPathTo) ->
