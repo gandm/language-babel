@@ -1,6 +1,9 @@
+### 2.26.2
+  - Fix transpile on save ignored .babelrc sourceMaps option.
+
 ### 2.26.1
   - Fix specs for 2.26.0
-  
+
 ### 2.26.0
   - Add option to allow recursive directories to be transpiled.
 

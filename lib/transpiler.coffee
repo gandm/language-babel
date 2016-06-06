@@ -60,8 +60,8 @@ class Transpiler
     @createTask pathTo.projectPath
     babelOptions =
       filename: filePath
-      sourceMaps: sourceMap ? false
       ast: false
+    if sourceMap then babelOptions.sourceMaps = sourceMap
     # ok now transpile in the task and wait on the result
     if @babelTranspilerTasks[pathTo.projectPath]
       reqId = @reqId++
@@ -278,8 +278,9 @@ class Transpiler
   getBabelOptions: (config)->
     # set transpiler options from package configuration.
     babelOptions =
-      sourceMaps: config.createMap
       code: true
+    if config.createMap  then babelOptions.sourceMaps = config.createMap
+    babelOptions
 
   #get configuration and paths
   getConfigAndPathTo: (sourceFile) ->
