@@ -1,3 +1,6 @@
+### 2.26.3
+  - Fix for stack trace on missing argument on TextEditor close.
+  
 ### 2.26.2
   - Fix transpile on save ignored .babelrc sourceMaps option.
 

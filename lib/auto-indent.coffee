@@ -51,16 +51,16 @@ class AutoIndent
         @autoJsx = not @autoJsx
         if @autoJsx then @eslintIndentOptions = @getIndentOptions()
 
-    document.addEventListener 'mousedown', => @mouseUp = false
-    document.addEventListener 'mouseup', => @mouseUp = true
+    document.addEventListener 'mousedown', @onMouseDown
+    document.addEventListener 'mouseup', @onMouseUp
 
     @disposables.add @editor.onDidChangeCursorPosition (event) => @changedCursorPosition(event)
     @disposables.add @editor.onDidStopChanging () => @didStopChanging()
 
   destroy: () ->
     @disposables.dispose()
-    document.removeEventListener 'mousedown'
-    document.removeEventListener 'mouseup'
+    document.removeEventListener 'mousedown', @onMouseDown
+    document.removeEventListener 'mouseup', @onMouseUp
 
   # changed cursor position
   changedCursorPosition: (event) =>
@@ -524,6 +524,14 @@ class AutoIndent
     # Is the sourceFile located inside an Atom project folder?
     if projectContainingSource[0]?
       path.join projectContainingSource[0], '.eslintrc'
+
+  # mouse state
+  onMouseDown: () =>
+    @mouseUp = false
+
+  # mouse state
+  onMouseUp: () =>
+    @mouseUp = true
 
   # to create indents. We can read and return the rules properties or undefined
   readEslintrcOptions: (eslintrcFile) ->
