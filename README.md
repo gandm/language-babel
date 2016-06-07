@@ -97,6 +97,21 @@ Multiple projects may be open at any time inside Atom and `language-babel` must 
 
 It is very easy to ensure that language-babel does not transpile files that are not needed. Just turn off the global package setting `Transpile On Save` and turn on `Allow Local Override`. Apart form grammar highlighting only projects having a `.languagebabel` in the file path will then be affected by this package. Further granularity is easy too.
 
+If `.babelrc` and/or `package.json` files contain Babel properties that are environment specific these environments should be created before Atom is started. In particular, Babel assumes a `development` environment by default, whereas Atom assumes a `production` environment by default.
+
+e.g.
+
+Windows
+```
+set NODE_ENV="development"
+atom
+```
+OSX/Unix
+```
+NODE_ENV="development"
+atom
+```
+
 ## Package Settings
 
 For most projects it is better to configure `language-babel` via project based `.languagebabel` file properties which will override the package settings below. See *".langeuagebabel Configuration"* for more information on this behaviour.
