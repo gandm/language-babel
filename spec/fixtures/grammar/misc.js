@@ -2,7 +2,7 @@
 
 // class fields, statics and methods
 class SomeClass {
-  myProperty: string = 'some value'           
+  myProperty: string = 'some value'
 //^^^^^^^^^^^ ^^^^^^ ^ ^^^^^ ^^^^^^             meta.class.body.js
 //^^^^^^^^^^                                    variable.other.readwrite.js
 //          ^                                   punctuation.type.flowtype
@@ -158,3 +158,33 @@ type $JSXIntrinsics = {
 //^^^^  meta.tag.jsx
 //   ^  punctuation.definition.tag.jsx
 //^^^   entity.name.tag.close.jsx
+
+// Some snippets from function-bind syntax proposal
+
+getPlayers()
+//^^^^^^^^^^  meta.function-call.without-arguments.js
+//^^^^^^^^    entity.name.function.js
+//        ^^  meta.brace.round.js
+  ::map(x => x.character());
+//^^          ^               keyword.operator.accessor.js
+//  ^^^^^^^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//  ^^^        ^^^^^^^^^      entity.name.function.js
+//     ^                  ^   meta.brace.round.js
+//      ^^^^                  meta.function.arrow.js
+//      ^                     variable.other.readwrite.js
+//        ^^                  storage.type.function.arrow.js
+//           ^                variable.other.object.js
+//             ^^^^^^^^^^^    meta.function-call.method.without-arguments
+//                      ^^    meta.group.braces.round.function.arguments.js
+//                         ^  punctuation.terminator.statement.js
+
+Promise.resolve(123).then(::console.log);
+//^^^^^                                    support.class.builtin.js
+//     ^            ^     ^^               keyword.operator.accessor.js
+//      ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^   meta.function-call.method.with-arguments.js
+//      ^^^^^^^      ^^^^                  entity.name.function.js
+//             ^   ^     ^             ^   meta.brace.round.js
+//              ^^^                        constant.numeric.js
+//                          ^^^^^^^        support.type.object.console.js
+//                                  ^^^    support.function.console.js
+//                                      ^  punctuation.terminator.statement.js
