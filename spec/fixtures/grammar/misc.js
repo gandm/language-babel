@@ -162,25 +162,29 @@ type $JSXIntrinsics = {
 // Some snippets from function-bind syntax proposal
 
 getPlayers()
+// <- meta.function-call.without-arguments.js entity.name.function.js
+ // <- meta.function-call.without-arguments.js entity.name.function.js
 //^^^^^^^^^^  meta.function-call.without-arguments.js
 //^^^^^^^^    entity.name.function.js
 //        ^^  meta.brace.round.js
   ::map(x => x.character());
 //^^          ^               keyword.operator.accessor.js
-//  ^^^^^^^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//  ^^^^^ ^^ ^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
 //  ^^^        ^^^^^^^^^      entity.name.function.js
 //     ^                  ^   meta.brace.round.js
-//      ^^^^                  meta.function.arrow.js
+//      ^ ^^                  meta.function.arrow.js
 //      ^                     variable.other.readwrite.js
 //        ^^                  storage.type.function.arrow.js
 //           ^                variable.other.object.js
-//             ^^^^^^^^^^^    meta.function-call.method.without-arguments
+//             ^^^^^^^^^^^    meta.function-call.method.without-arguments.js
 //                      ^^    meta.group.braces.round.function.arguments.js
 //                         ^  punctuation.terminator.statement.js
 
 Promise.resolve(123).then(::console.log);
+// <- support.class.builtin.js
+ // <- support.class.builtin.js
 //^^^^^                                    support.class.builtin.js
-//     ^            ^     ^^               keyword.operator.accessor.js
+//     ^            ^     ^^       ^       keyword.operator.accessor.js
 //      ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^   meta.function-call.method.with-arguments.js
 //      ^^^^^^^      ^^^^                  entity.name.function.js
 //             ^   ^     ^             ^   meta.brace.round.js
