@@ -1,5 +1,38 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Calls language-mustache & language-html from a object template: backtick
+
+a.component('randomComponent', {
+// <- variable.other.object.js
+ // <- keyword.operator.accessor.js
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^  meta.function-call.method.with-arguments.js
+//^^^^^^^^^                       entity.name.function.js
+//         ^                      meta.brace.round.js
+//          ^^^^^^^^^^^^^^^^^     string.quoted.single.js
+//          ^                     punctuation.definition.string.begin.js
+//                          ^     punctuation.definition.string.end.js
+//                           ^    meta.delimiter.comma.js
+//                             ^  meta.brace.curly.js
+  template: `<div class="test">test</div>`,
+//^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.function-call.method.with-arguments.js
+//^^^^^^^^                                   constant.other.object.key.js
+//^^^^^^^^                                   string.unquoted.js
+//        ^                                  punctuation.separator.key-value.js
+//          ^                                punctuation.definition.quasi.begin.js
+//           ^^^^ ^^^^^^^^^^^^^    ^^^^^^    meta.tag.block.any.html
+//           ^                     ^^        punctuation.definition.tag.begin.html
+//            ^^^                    ^^^     entity.name.tag.block.any.html
+//                ^^^^^                      entity.other.attribute-name.html
+//                      ^^^^^^               string.quoted.double.html
+//                      ^                    punctuation.definition.string.begin.html
+//                           ^               punctuation.definition.string.end.html
+//                            ^         ^    punctuation.definition.tag.end.html
+//                                       ^   punctuation.definition.quasi.end.js
+//                                        ^  meta.delimiter.comma.js
+})
+// <- meta.function-call.method.with-arguments.js meta.brace.curly.js
+ // <- meta.function-call.method.with-arguments.js meta.brace.round.js
+
 // class fields, statics and methods
 class SomeClass {
   myProperty: string = 'some value'

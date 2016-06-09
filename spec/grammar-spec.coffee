@@ -9,6 +9,10 @@ describe 'Grammar', ->
       atom.packages.activatePackage('language-todo')
     waitsForPromise ->
       atom.packages.activatePackage('language-hyperlink')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-mustache')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-html')
 
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')

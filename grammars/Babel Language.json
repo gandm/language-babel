@@ -688,6 +688,7 @@
             "1": { "name": "meta.brace.curly.js" }
           },
           "patterns": [
+            { "include": "#html-template" },
             { "include": "#literal-function-labels" },
             { "include": "#literal-arrow-function-labels" },
             { "include": "#literal-arrow-function" },
@@ -2322,6 +2323,37 @@
             "1": { "name": "storage.type.function.arrow.js" }
           }
         }
+      ]
+    },
+    "html-template": {
+      "comment": "Assume object properties of template: `some html` contain html",
+      "begin": "(?:^\\s*\\b((template))\\b\\s*(:)\\s*(`))",
+      "end": "\\s*(`)",
+      "beginCaptures": {
+        "1": { "name": "constant.other.object.key.js" },
+        "2": { "name": "string.unquoted.js" },
+        "3": { "name": "punctuation.separator.key-value.js"},
+        "4": { "name": "punctuation.definition.quasi.begin.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.quasi.end.js" }
+      },
+      "patterns": [
+        {
+          "name": "entity.quasi.element.js",
+          "begin": "(?<!\\\\)\\${",
+          "end": "\\s*}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.quasi.element.begin.js" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.quasi.element.end.js" }
+          },
+          "patterns": [
+            { "include": "#expression" }
+          ]
+        },
+        { "include": "text.html.mustache" }
       ]
     }
   }
