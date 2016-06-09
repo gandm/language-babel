@@ -357,7 +357,9 @@ class Transpiler
     else if projectContainingSource[0] is null
       absProjectPath = path.parse(sourceFile).root
     else
-      absProjectPath = path.normalize(projectContainingSource[0])
+      # Atom 1.8 returning drive as project root on windows e.g. c: not c:\
+      # using path.join to '.' fixes it.
+      absProjectPath = path.normalize(path.join(projectContainingSource[0],'.'))
     relSourcePath = path.normalize(config.babelSourcePath)
     relTranspilePath = path.normalize(config.babelTranspilePath)
     relMapsPath = path.normalize(config.babelMapsPath)
