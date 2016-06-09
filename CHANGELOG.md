@@ -1,3 +1,6 @@
+### 2.27.1
+  - Tweak template regex
+  
 ### 2.27.0
   - Patch issue where Atom 1.8 now returns a root project folder on Windows as c: and not c:\
   - Add scope support for tc39 stage 0 function bind syntax `::`

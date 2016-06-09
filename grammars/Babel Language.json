@@ -2327,7 +2327,7 @@
     },
     "html-template": {
       "comment": "Assume object properties of template: `some html` contain html",
-      "begin": "(?:^\\s*\\b((template))\\b\\s*(:)\\s*(`))",
+      "begin": "(?:(?:^|(?<=,|{))\\s*\\b((template))\\b\\s*(:)\\s*(`))",
       "end": "\\s*(`)",
       "beginCaptures": {
         "1": { "name": "constant.other.object.key.js" },
