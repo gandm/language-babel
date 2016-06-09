@@ -3,7 +3,7 @@
   
 ### 2.27.0
   - Patch issue where Atom 1.8 now returns a root project folder on Windows as c: and not c:\
-  - Add scope support for tc39 stage 0 function bind syntax `::`
+  - Add scope support for tc39 stage 0 function bind syntax `::` Thanks @HyeonuPark
   - Treat object properties named `template` followed by a template literal as html.
 
   e.g. The template string below will be highlighted by Atom's `language-mustache` and `language-html`
