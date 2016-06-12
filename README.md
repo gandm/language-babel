@@ -31,7 +31,7 @@ JSX tag closures are provided as auto complete options. In addition common HTML 
 
 ## Commenting out JSX elements
 
-JSX elements cannot be commented out by using standard `//` or `/* */` commenting. Normally `{/* */}` is used instead. language-babel changes the Atom toggle comments behaviour when inside a JSX block to support this behaviour.
+JSX elements cannot be commented out by using standard `//` or `/* */` commenting. Normally `{/* */}` is used instead. language-babel changes the Atom toggle comments behaviour when inside a JSX block to support this behaviour. Nested elements within JSX that require a // form of commenting will be detected automatically.
 
 ![autoclose](https://cloud.githubusercontent.com/assets/2313237/12441752/4d672be6-bf42-11e5-8e20-33a96a81db66.gif)
 
@@ -43,7 +43,7 @@ When a newline is inserted between a matched open/close pair of JSX tags, langua
 
 ## Automatic Indenting of JSX
 
-By default this feature is turned off in the package setting - `Auto Indent JSX`. If enabled, language-babel will auto-indent any JSX code typed or moved across using suitable Atom defaults. There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that set the automatic JSX indenting to on/off for individual files. These can be mapped to a keyboard shortcuts if needed.
+By default this feature is turned off in the package setting - `Auto Indent JSX`. If enabled, language-babel will auto-indent any JSX code typed or moved across using suitable Atom defaults. There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that override the default behaviour. These can be mapped to a keyboard shortcuts if needed.
 
 Auto Indenting will also attempt to read the `.eslintrc` file associated with an edited file's project for the presence of four properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
 

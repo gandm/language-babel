@@ -13,5 +13,22 @@
       "commentStart": "{/*",
       "commentEnd": "*/}"
     }
+  },
+  ".JSXAttrs": {
+    "editor": {
+      "commentStart": "//"
+    }
+  },
+  ".meta.embedded.expression.commented-out.jsx": {
+    "editor": {
+      "commentStart": "{/*",
+      "commentEnd": "*/}"
+    }
+  },
+  ".JSXNested": {
+    "editor": {
+      "commentStart": "{/*",
+      "commentEnd": "*/}"
+    }
   }
 }

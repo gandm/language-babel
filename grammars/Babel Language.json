@@ -1657,6 +1657,7 @@
           "comment": "as well as terminating a <JSXElementName /> form",
           "comment": "Tags that end > are trapped in #jsx-tag-termination",
           "name": "meta.tag.jsx",
+          "contentName": "JSXAttrs",
           "begin": "\\s*+(<)((\\p{Ll}[\\p{Ll}0-9]*)|((?:[$_\\p{L}\\p{Nl}][$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}-]*?:)?+(?:[$_\\p{L}\\p{Nl}](?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\.-](?<!\\.\\.))*+)+))(?=[ />\\s])(?![:])(?<!\\.|:)",
           "end": "\\s*(?<=</)((\\4)|\\2)(>)|(/>)|((?<=</)[\\S ]*?)>",
           "beginCaptures": {
@@ -1683,6 +1684,7 @@
         {
           "comment": "this matches the end > of an opening tag when in the form <tag> </tag>",
           "comment": "uses non consuming search for </ in </tag>",
+          "contentName": "JSXNested",
           "begin": "(>)",
           "end": "(</)",
           "beginCaptures": {
@@ -1770,21 +1772,37 @@
       ]
     },
     "jsx-evaluated-code": {
-      "name": "meta.embedded.expression.js",
-      "begin": "{",
-      "end": "}",
-      "beginCaptures": {
-        "0": { "name": "punctuation.section.embedded.begin.jsx" }
-      },
-      "endCaptures": {
-        "0": { "name": "punctuation.section.embedded.end.jsx" }
-      },
-      "contentName": "source.js.jsx",
       "patterns": [
-        { "include": "#jsx-string-double-quoted" },
-        { "include": "#jsx-string-single-quoted" },
-        { "include": "#jsx-spread-attribute" },
-        { "include": "#expression" }
+        {
+          "name": "meta.embedded.expression.commented-out.jsx",
+          "contentName": "comment.embedded.jsx",
+          "begin": "^\\s*({/\\*)",
+          "end": "\\s*(\\*/})",
+          "beginCaptures": {
+            "1": { "name": "punctuation.section.embedded.begin.jsx" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.section.embedded.end.jsx" }
+          }
+        },
+        {
+          "name": "meta.embedded.expression.js",
+          "contentName": "source.js.jsx",
+          "begin": "{",
+          "end": "}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.section.embedded.begin.jsx" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.embedded.end.jsx" }
+          },
+          "patterns": [
+            { "include": "#jsx-string-double-quoted" },
+            { "include": "#jsx-string-single-quoted" },
+            { "include": "#jsx-spread-attribute" },
+            { "include": "#expression" }
+          ]
+        }
       ]
     },
     "jsx-entities": {
