@@ -67,7 +67,7 @@
       "comment": "so set at arbitary 1000 chars to avoid parsing minified files",
       "patterns": [
         {
-          "match": "^(?:).{1000,}"
+          "match": "^.{1000,}"
         }
       ]
     },
