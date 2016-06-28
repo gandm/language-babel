@@ -1,3 +1,7 @@
+### 2.29.0
+  - Warn when potential incompatible packages are activated.
+  - Additional check on textEditor is alive before positioning cursor on transpile failure.
+
 ### 2.28.0
   - Improve JSX commenting to allow nested objects that require // commenting. e.g. Attributes.
 
