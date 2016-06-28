@@ -15,6 +15,8 @@ module.exports =
     @textEditors = {}
     @fileSaveTimes = {}
 
+    @disposable.add atom.packages.onDidActivatePackage @isPackageCompatible
+
     @disposable.add atom.project.onDidChangePaths =>
       @transpiler.stopUnusedTasks()
 
@@ -45,7 +47,6 @@ module.exports =
         @textEditors[textEditor.id].dispose()
         delete @textEditors[textEditor.id]
 
-
   deactivate: ->
     @disposable.dispose()
     for id, disposeable of @textEditors
@@ -55,6 +56,17 @@ module.exports =
       disposeable.dispose()
     @transpiler.stopAllTranspilerTask()
     @transpiler.disposables.dispose()
+
+  # warns if an activated package is on the incompatible list
+  isPackageCompatible: (activedPackage) ->
+    incompatiblePackages = ['source-preview-babel', 'source-preview-react', 'react']
+    if activedPackage.name in incompatiblePackages
+      atom.notifications.addError 'Incompatible Package Detected',
+        dismissable: true
+        detail: "language-babel has detected the presence of an
+                incompatible package named '#{activedPackage.name}'.
+                \n \n'#{activedPackage.name}' may cause language-babel to missbehave.
+                It is recommended that you disable it."
 
   JSXCompleteProvider: ->
     autoCompleteJSX
