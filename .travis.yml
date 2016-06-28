@@ -15,8 +15,6 @@ os:
   - osx
 
 env:
-  global:
-    - APM_TEST_PACKAGES=""
 
   matrix:
     - ATOM_CHANNEL=stable
