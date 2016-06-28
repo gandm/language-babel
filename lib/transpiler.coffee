@@ -178,7 +178,7 @@ class Transpiler
                 dismissable: true
                 detail: "#{msgRet.err.message}\n \n#{msgRet.babelCoreUsed}\n \n#{msgRet.err.codeFrame}"
             # if we have a line/col syntax error jump to the position
-            if msgRet.err.loc?.line? and textEditor?
+            if msgRet.err.loc?.line? and textEditor?.alive
               textEditor.setCursorBufferPosition [msgRet.err.loc.line-1, msgRet.err.loc.column]
         else
           if not config.suppressTranspileOnSaveMessages
