@@ -61,12 +61,11 @@ module.exports =
   isPackageCompatible: (activedPackage) ->
     incompatiblePackages = ['source-preview-babel', 'source-preview-react', 'react']
     if activedPackage.name in incompatiblePackages
-      atom.notifications.addError 'Incompatible Package Detected',
+      atom.notifications.addInfo 'Incompatible Package Detected',
         dismissable: true
         detail: "language-babel has detected the presence of an
-                incompatible package named '#{activedPackage.name}'.
-                \n \n'#{activedPackage.name}' may cause language-babel to misbehave.
-                It is recommended that you disable it or language-babel"
+                incompatible Atom package named '#{activedPackage.name}'.
+                \n \nIt is recommended that you disable either '#{activedPackage.name}' or language-babel"
 
   JSXCompleteProvider: ->
     autoCompleteJSX

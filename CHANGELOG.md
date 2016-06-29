@@ -1,3 +1,6 @@
+### 2.29.1
+  - Rephrase incompatible notification message.
+
 ### 2.29.0
   - Warn when potential incompatible packages are activated.
   - Additional check on textEditor is alive before positioning cursor on transpile failure.
