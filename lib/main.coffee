@@ -65,8 +65,8 @@ module.exports =
         dismissable: true
         detail: "language-babel has detected the presence of an
                 incompatible package named '#{activedPackage.name}'.
-                \n \n'#{activedPackage.name}' may cause language-babel to missbehave.
-                It is recommended that you disable it."
+                \n \n'#{activedPackage.name}' may cause language-babel to misbehave.
+                It is recommended that you disable it or language-babel"
 
   JSXCompleteProvider: ->
     autoCompleteJSX
