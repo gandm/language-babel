@@ -2116,7 +2116,7 @@
       "patterns": [
         {
           "comment": "type aliases for export but avoid type instaceof or type in operators",
-          "begin": "\\s*+\\b(type)\\b\\s*(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
+          "begin": "(?:^|\\s)\\s*+(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
           "end": "\\s*(;)|\\b(?=if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b",
           "beginCaptures": {
             "1": { "name": "keyword.other.typedef.flowtype" }
@@ -2184,7 +2184,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "match": "\\s*+(?<!\\.)\\b(declare)\\b\\s++(?=\\b(function|var|type|interface)\\s++)",
+          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface)\\b)",
           "captures": {
             "1": { "name":  "keyword.other.declare.flowtype" }
           }

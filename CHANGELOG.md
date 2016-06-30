@@ -1,3 +1,6 @@
+### 2.29.2
+  - Fix type property detected as flow type alias. Fixes #211
+
 ### 2.29.1
   - Rephrase incompatible notification message.
 
