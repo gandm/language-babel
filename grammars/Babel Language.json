@@ -428,6 +428,35 @@
     },
     "comments": {
       "patterns": [
+        {
+          "begin": "\\s*+(/\\*)(::)",
+          "end": "\\s*(\\*/)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" },
+            "2": { "name": "punctuation.type.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" }
+          },
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "begin": "\\s*+(/\\*)(:)",
+          "end": "\\s*(\\*/)",
+          "beginCaptures": {
+            "1": { "name": "comment.block.js" },
+            "2": { "name": "punctuation.type.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-parse-types" },
+            { "include": "#flowtype-variable" }
+          ]
+        },
         { "include": "#special-comments-conditional-compilation" },
         {
           "name": "comment.block.documentation.js",
