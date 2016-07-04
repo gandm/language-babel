@@ -58,14 +58,14 @@ module.exports =
     @transpiler.disposables.dispose()
 
   # warns if an activated package is on the incompatible list
-  isPackageCompatible: (activedPackage) ->
+  isPackageCompatible: (activatedPackage) ->
     incompatiblePackages = ['source-preview-babel', 'source-preview-react', 'react']
-    if activedPackage.name in incompatiblePackages
+    if activatedPackage.name in incompatiblePackages
       atom.notifications.addInfo 'Incompatible Package Detected',
         dismissable: true
         detail: "language-babel has detected the presence of an
-                incompatible Atom package named '#{activedPackage.name}'.
-                \n \nIt is recommended that you disable either '#{activedPackage.name}' or language-babel"
+                incompatible Atom package named '#{activatedPackage.name}'.
+                \n \nIt is recommended that you disable either '#{activatedPackage.name}' or language-babel"
 
   JSXCompleteProvider: ->
     autoCompleteJSX
