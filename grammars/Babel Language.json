@@ -428,6 +428,7 @@
     },
     "comments": {
       "patterns": [
+        { "include": "#flowtype-comments" },
         { "include": "#special-comments-conditional-compilation" },
         {
           "name": "comment.block.documentation.js",
@@ -2325,6 +2326,54 @@
         {
           "begin": "\\s*+:",
           "end": "(?=\\s*+\\))",
+          "patterns": [
+            { "include": "#flowtype-parse-types" }
+          ]
+        }
+      ]
+    },
+    "flowtype-comments": {
+      "patterns": [
+        {
+          "begin": "\\s*+(/\\*)\\s*(::)",
+          "end": "\\s*(\\*/)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" },
+            "2": { "name": "punctuation.type.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" }
+          },
+          "patterns": [
+            { "include": "#literal-module" },
+            { "include": "#flowtype-declare" }
+          ]
+        },
+        {
+          "begin": "\\s*+(/\\*)\\s*(flow-include)\\b",
+          "end": "\\s*(\\*/)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" },
+            "2": { "name": "punctuation.definition.variable.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" }
+          },
+          "patterns": [
+            { "include": "#literal-module" },
+            { "include": "#flowtype-declare" }
+          ]
+        },
+        {
+          "begin": "\\s*+(/\\*)\\s*(:)",
+          "end": "\\s*(\\*/)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" },
+            "2": { "name": "punctuation.type.flowtype" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.comment.js" }
+          },
           "patterns": [
             { "include": "#flowtype-parse-types" }
           ]

@@ -1,5 +1,56 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Support flow typing in comments
+
+/* flow-include
+// <- punctuation.definition.comment.js
+ // <- punctuation.definition.comment.js
+// ^^^^^^^^^^^^   punctuation.definition.variable.flowtype
+import type {a} from "b"
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^          ^^^^      keyword.control.module.js
+//     ^^^^               keyword.other.typedef.flowtype
+//          ^ ^           meta.brace.curly.js
+//           ^            variable.other.readwrite.js
+//                   ^ ^  punctuation.definition.string.begin.js
+//                    ^   string.quoted.module.js
+*/
+/*::import type {a} from "b"*/
+// <- punctuation.definition.comment.js
+ // <- punctuation.definition.comment.js
+//                          ^^  punctuation.definition.comment.js
+//^^                            punctuation.type.flowtype
+//  ^^^^^^          ^^^^        keyword.control.module.js
+//         ^^^^                 keyword.other.typedef.flowtype
+//              ^ ^             meta.brace.curly.js
+//               ^              variable.other.readwrite.js
+//                       ^ ^    punctuation.definition.string.begin.js
+//                        ^     string.quoted.module.js
+
+function shellString(stdout/*: string | string[]*/ = "")/*: Promise<A$A>*/ {}
+// <- meta.function.js storage.type.function.js
+ // <- meta.function.js storage.type.function.js
+//^^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^ ^^^^^^^^^^ ^ ^^^^^^ ^^^^^^^^^^^^^^     meta.function.js
+//^^^^^^                                                                       storage.type.function.js
+//       ^^^^^^^^^^^                                                           entity.name.function.js
+//                  ^                                                          punctuation.definition.parameters.begin.js
+//                   ^^^^^^                                                    variable.other.readwrite.js
+//                         ^^                   ^^      ^^              ^^     punctuation.definition.comment.js
+//                           ^                            ^                    punctuation.type.flowtype
+//                             ^^^^^^   ^^^^^^                                 support.type.builtin.primitive.flowtype
+//                                    ^                                        kewyword.operator.union.flowtype
+//                                                 ^                           keyword.operator.assignment.js
+//                                                   ^^                        string.quoted.double.js
+//                                                   ^                         punctuation.definition.string.begin.js
+//                                                    ^                        punctuation.definition.string.end.js
+//                                                     ^                       punctuation.definition.parameters.end.js
+//                                                          ^^^^^^^            support.type.builtin.class.flowtype
+//                                                                 ^   ^       punctuation.flowtype
+//                                                                  ^^^        support.type.class.flowtype
+//                                                                         ^^  meta.brace.curly.js
+
+
 // Calls language-mustache & language-html from a object template: backtick
 
 a.component('randomComponent', {

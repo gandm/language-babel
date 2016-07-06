@@ -460,39 +460,3 @@ export default {
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 //^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
 //^                         punctuation.definition.comment.js
-
-// ISSUE: 164
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^  comment.line.double-slash.js
-const foo = function foo(a /* : string*/) /* {[key: string]: string} */ {
-// <- storage.type.js
- // <- storage.type.js
-//^^^                                                                      storage.type.js
-//    ^^^ ^ ^^^^^^^^ ^^^^^ ^^ ^ ^^^^^^^^^ ^^ ^^^^^^ ^^^^^^^^ ^^^^^^^ ^^    meta.function.js
-//    ^^^            ^^^                                                   entity.name.function.js
-//        ^                                                                keyword.operator.assignment.js
-//          ^^^^^^^^                                                       storage.type.function.js
-//                      ^                                                  punctuation.definition.parameters.begin.js
-//                       ^                                                 variable.other.readwrite.js
-//                         ^^ ^ ^^^^^^^^  ^^ ^^^^^^ ^^^^^^^^ ^^^^^^^ ^^    comment.block.js
-//                         ^^         ^^  ^^                         ^^    punctuation.definition.comment.js
-//                                      ^                                  punctuation.definition.parameters.end.js
-//                                                                      ^  meta.brace.curly.js
-  return {
-//^^^^^^    keyword.control.flow.js
-//       ^  meta.brace.curly.js
-    bar
-//  ^^^  variable.other.readwrite.js
-  }
-//^  meta.brace.curly.js
-}
-// <- meta.brace.curly.js
-
-module.exports = exports = foo
-// <- support.type.object.module.js keyword.operator.accessor.js
- // <- support.type.object.module.js keyword.operator.accessor.js
-//^^^^^^^^^^^^   ^^^^^^^        support.type.object.module.js
-//^^^^^^^^^^^^   ^^^^^^^        keyword.operator.accessor.js
-//             ^         ^      keyword.operator.assignment.js
-//                         ^^^  variable.other.readwrite.js
