@@ -1,3 +1,6 @@
+### 2.23.1
+  - Fix 2.23.0 not parsing flow keywords in flow comments.
+  
 ### 2.30.0
   - Add support for highlighting flow typing inside comments starting `/*:`, `/*::` and `/*flow-include`. Read the [Flow blog](https://flowtype.org/blog/2015/02/20/Flow-Comments.html) for further information.
 

@@ -2346,7 +2346,8 @@
           },
           "patterns": [
             { "include": "#literal-module" },
-            { "include": "#flowtype-declare" }
+            { "include": "#flowtype-keywords" },
+            { "include": "#flowtype-parse-types" }
           ]
         },
         {
@@ -2361,7 +2362,8 @@
           },
           "patterns": [
             { "include": "#literal-module" },
-            { "include": "#flowtype-declare" }
+            { "include": "#flowtype-keywords" },
+            { "include": "#flowtype-parse-types" }  
           ]
         },
         {
