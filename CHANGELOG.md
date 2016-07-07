@@ -1,3 +1,7 @@
+### 2.31.0
+  - Allow JSX to be indented when a whole file is indented using the Atom Edit->Lines->Auto Indent command.
+  - Modify arrow function grammar regex to allow for the Flow Comments style of typed notation.
+
 ### 2.30.1
   - Fix 2.23.0 not parsing flow keywords in flow comments.
 
