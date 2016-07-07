@@ -55,10 +55,11 @@ class AutoIndent
     document.addEventListener 'mouseup', @onMouseUp
 
     @disposables.add @editor.onDidChangeCursorPosition (event) => @changedCursorPosition(event)
-    @disposables.add @editor.onDidStopChanging () => @didStopChanging()
+    @handleOnDidStopChanging()
 
   destroy: () ->
     @disposables.dispose()
+    @onDidStopChangingHandler.dispose()
     document.removeEventListener 'mousedown', @onMouseDown
     document.removeEventListener 'mouseup', @onMouseUp
 
@@ -111,10 +112,27 @@ class AutoIndent
         return
 
     highestRow = Math.max selectedRange.start.row, selectedRange.end.row
-    if @jsxInScope(highestRow)
-      endPointOfJsx = new Point highestRow,0
-      startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
-      @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+    lowestRow = Math.min selectedRange.start.row, selectedRange.end.row
+
+    # remove the handler for didStopChanging to avoid this change causing a new event
+    @onDidStopChangingHandler.dispose()
+
+    # work backwards through buffer rows indenting JSX as needed
+    while ( highestRow >= lowestRow )
+      if @jsxInScope(highestRow)
+        endPointOfJsx = new Point highestRow,0
+        startPointOfJsx =  autoCompleteJSX.getStartOfJSX @editor, endPointOfJsx
+        @indentJSX new Range(startPointOfJsx, endPointOfJsx)
+        highestRow = startPointOfJsx.row - 1
+      else highestRow = highestRow - 1
+
+    # renable this event handler after 300ms as per the default timeout for change events
+    # to avoid this method being recalled!
+    setTimeout(@handleOnDidStopChanging, 300)
+    return
+
+  handleOnDidStopChanging: =>
+    @onDidStopChangingHandler = @editor.onDidStopChanging () => @didStopChanging()
 
   # is the jsx on this line in scope
   jsxInScope: (bufferRow) ->
