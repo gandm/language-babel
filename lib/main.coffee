@@ -59,13 +59,29 @@ module.exports =
 
   # warns if an activated package is on the incompatible list
   isPackageCompatible: (activatedPackage) ->
-    incompatiblePackages = ['source-preview-babel', 'source-preview-react', 'react']
-    if activatedPackage.name in incompatiblePackages
-      atom.notifications.addInfo 'Incompatible Package Detected',
-        dismissable: true
-        detail: "language-babel has detected the presence of an
-                incompatible Atom package named '#{activatedPackage.name}'.
-                \n \nIt is recommended that you disable either '#{activatedPackage.name}' or language-babel"
+    incompatiblePackages = {
+      'source-preview-babel':
+        "Both vie to preview the same file."
+      'source-preview-react':
+        "Both vie to preview the same file."
+      'react':
+        "The Atom community package 'react' (not to be confused
+        \nwith Facebook React) monkey patches the atom methods
+        \nthat provide autoindent features for JSX.
+        \nAs it detects JSX scopes without regard to the grammar being used,
+        \nit tries to auto indent JSX that is highlighted by language-babel.
+        \nAs language-babel also attempts to do auto indentation using
+        \nstandard atom API's, this creates a potential conflict."
+    }
+    
+    for incompatiblePackage, reason of incompatiblePackages
+      if activatedPackage.name is incompatiblePackage
+        atom.notifications.addInfo 'Incompatible Package Detected',
+          dismissable: true
+          detail: "language-babel has detected the presence of an
+                  incompatible Atom package named '#{activatedPackage.name}'.
+                  \n \nIt is recommended that you disable either '#{activatedPackage.name}' or language-babel
+                  \n \nReason:\n \n#{reason}"
 
   JSXCompleteProvider: ->
     autoCompleteJSX

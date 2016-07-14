@@ -1,3 +1,6 @@
+### 2.32.0
+  - Add reason to incompatible package notifications.
+
 ### 2.31.0
   - Allow JSX to be indented when a whole file is indented using the Atom Edit->Lines->Auto Indent command.
   - Modify arrow function grammar regex to allow for the Flow Comments style of typed notation.
