@@ -10,25 +10,25 @@
   },
   ".meta.tag.jsx": {
     "editor": {
-      "commentStart": "{/*",
-      "commentEnd": "*/}"
+      "commentStart": "{/* ",
+      "commentEnd": " */}"
     }
   },
   ".JSXAttrs": {
     "editor": {
-      "commentStart": "//"
+      "commentStart": "// "
     }
   },
   ".meta.embedded.expression.commented-out.jsx": {
     "editor": {
-      "commentStart": "{/*",
-      "commentEnd": "*/}"
+      "commentStart": "{/* ",
+      "commentEnd": " */}"
     }
   },
   ".JSXNested": {
     "editor": {
-      "commentStart": "{/*",
-      "commentEnd": "*/}"
+      "commentStart": "{/* ",
+      "commentEnd": " */}"
     }
   }
 }

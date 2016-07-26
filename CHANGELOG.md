@@ -1,3 +1,6 @@
+### 2.32.1
+  - Add white space to JSX comments.
+  
 ### 2.32.0
   - Add reason to incompatible package notifications.
 
