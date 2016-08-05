@@ -1536,6 +1536,7 @@
             { "include": "#literal-module-brackets" },
             { "include": "#literal-variable" },
             { "include": "#literal-string" },
+            { "include": "#comments" },
             { "include": "#literal-comma"}
           ]
         }

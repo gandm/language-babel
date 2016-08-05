@@ -281,4 +281,23 @@ export type User = {
 // <- meta.brace.curly.js
  // <- punctuation.object.end.flowtype
 
+ import {
+ // <- keyword.control.module.js
+//^^^^^     keyword.control.module.js
+//      ^   meta.brace.curly.js
+   amodule, // this is a comment
+// ^^^^^^^                        variable.other.readwrite.js
+//        ^                       meta.delimiter.comma.js
+//          ^^ ^^^^ ^^ ^ ^^^^^^^  comment.line.double-slash.js
+//          ^^                    punctuation.definition.comment.js
+   another module // this is a comment
+// ^^^^^^^ ^^^^^^                       variable.other.readwrite.js
+//                ^^ ^^^^ ^^ ^ ^^^^^^^  comment.line.double-slash.js
+//                ^^                    punctuation.definition.comment.js
+ } from "aaaa"
+ // <- meta.brace.curly.js
+// ^^^^         keyword.control.module.js
+//      ^    ^  punctuation.definition.string.begin.js
+//       ^^^^   string.quoted.module.js
+
 // >> only:(source.js.jsx)
