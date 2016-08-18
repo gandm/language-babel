@@ -2437,7 +2437,7 @@ yield genfunc;
 yield* genfunc;
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
-//^^^^           keyword.control.flow.js
+//^^^            keyword.control.flow.js
 //   ^           keyword.generator.asterisk.js
 //     ^^^^^^^   variable.other.readwrite.js
 //            ^  punctuation.terminator.statement.js

@@ -1515,7 +1515,7 @@ function*g0(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){
 //                                            ^            ^                 punctuation.separator.key-value.js
 //                                                                       ^   punctuation.definition.parameters.end.js
   return a = yield* b = yield c = yield yield;
-//^^^^^^     ^^^^^^     ^^^^^     ^^^^^ ^^^^^   keyword.control.flow.js
+//^^^^^^     ^^^^^      ^^^^^     ^^^^^ ^^^^^   keyword.control.flow.js
 //       ^          ^         ^                 variable.other.readwrite.js
 //         ^          ^         ^               keyword.operator.assignment.js
 //                ^                             keyword.generator.asterisk.js
@@ -1545,7 +1545,7 @@ function*g0(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){
 //                                               ^            ^                 punctuation.separator.key-value.js
 //                                                                          ^   punctuation.definition.parameters.end.js
   return a = yield* b = yield c = yield yield;
-//^^^^^^     ^^^^^^     ^^^^^     ^^^^^ ^^^^^   keyword.control.flow.js
+//^^^^^^     ^^^^^      ^^^^^     ^^^^^ ^^^^^   keyword.control.flow.js
 //       ^          ^         ^                 variable.other.readwrite.js
 //         ^          ^         ^               keyword.operator.assignment.js
 //                ^                             keyword.generator.asterisk.js
