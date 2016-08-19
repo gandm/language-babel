@@ -246,4 +246,28 @@ declare function require(id: string): any;
 //                                 ^        punctuation.definition.parameters.end.js
 //                                       ^  punctuation.terminator.statement.js
 
+declare var foo: (
+// <- meta.class.body.js keyword.other.declare.flowtype
+ // <- meta.class.body.js keyword.other.declare.flowtype
+//^^^^^ ^^^ ^^^^ ^  meta.class.body.js
+//^^^^^             keyword.other.declare.flowtype
+//      ^^^         storage.type.js
+//          ^^^     storage.type.function.js
+//             ^    punctuation.type.flowtype
+//               ^  punctuation.definition.parameters.begin.js
+  (<T>(x: T) => T) & (<T,U>(x: T, y: U) => U)
+//^^^^^^^ ^^ ^^ ^^ ^ ^^^^^^^^^ ^^ ^^ ^^ ^^ ^^  meta.class.body.js
+//^   ^              ^     ^                   punctuation.definition.parameters.begin.js
+// ^ ^                ^   ^                    punctutation.flowtype
+//  ^     ^     ^      ^ ^     ^     ^     ^   support.type.class.flowtype
+//     ^                    ^     ^            variable.other.readwrite.js
+//      ^                    ^     ^           punctuation.type.flowtype
+//         ^     ^                    ^     ^  punctuation.definition.parameters.end.js
+//           ^^                         ^^     storage.type.function.arrow.js
+//                 ^                           kewyword.operator.intersection.flowtype
+//                      ^       ^              meta.delimiter.comma.js
+)
+// <- meta.class.body.js punctuation.definition.parameters.end.js
+
+
 // >> only:(source.js.jsx)

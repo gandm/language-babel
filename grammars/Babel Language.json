@@ -2105,6 +2105,7 @@
             "1": { "name": "punctuation.definition.parameters.end.js" }
           },
           "patterns": [
+            { "include": "#flowtype-polymorphs" },
             { "include": "#flowtype-variable" }
           ]
         }
