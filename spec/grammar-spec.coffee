@@ -41,6 +41,9 @@ describe 'Grammar', ->
   # todo,jsdoc,...
   grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
 
+  # flow predicates...
+  grammarTest path.join(__dirname, 'fixtures/grammar/flow-predicates.js')
+  
   # issues raised
   grammarTest path.join(__dirname, 'fixtures/grammar/issues.js')
 
