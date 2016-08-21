@@ -172,10 +172,9 @@ export let name1: {a: string} = {a: "aaa"}
  // <- keyword.control.module.js
 //^^^^                                      keyword.control.module.js
 //     ^^^                                  storage.type.js
-//         ^^^^^                            variable.other.readwrite.js
+//         ^^^^^   ^                        variable.other.readwrite.js
 //              ^   ^                       punctuation.type.flowtype
 //                ^                         meta.brace.round.open.flowtype
-//                 ^                        variable.other.property.flowtype
 //                    ^^^^^^                support.type.builtin.primitive.flowtype
 //                          ^               meta.brace.round.close.flowtype
 //                            ^             keyword.operator.assignment.js

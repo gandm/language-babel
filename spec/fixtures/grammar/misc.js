@@ -207,13 +207,17 @@ const foo = {
 // $JSXIntrinsics is special and magic.
 // This declares the types a `span`
 type $JSXIntrinsics = {
+// <- keyword.other.typedef.flowtype
+ // <- keyword.other.typedef.flowtype
+//^^                     keyword.other.typedef.flowtype
+//   ^^^^^^^^^^^^^^      support.type.class.flowtype
+//                    ^  meta.brace.curly.js
   span: JSXHelper<{id: string, class: string}> };
-//^^^^                                             variable.other.readwrite.js
+//^^^^             ^^          ^^^^^               variable.other.readwrite.js
 //    ^              ^              ^              punctuation.type.flowtype
 //      ^^^^^^^^^                                  support.type.class.flowtype
 //               ^                           ^     punctutation.flowtype
 //                ^                                meta.brace.round.open.flowtype
-//                 ^^          ^^^^^               variable.other.property.flowtype
 //                     ^^^^^^         ^^^^^^       support.type.builtin.primitive.flowtype
 //                           ^                     meta.delimiter.comma.js
 //                                          ^      meta.brace.round.close.flowtype

@@ -1,6 +1,14 @@
 // SYNTAX TEST "source.js.jsx"
 
 declare module 'a-unique-module-name' {
+// <- keyword.other.declare.flowtype
+ // <- keyword.other.declare.flowtype
+//^^^^^                                  keyword.other.declare.flowtype
+//      ^^^^^^                           storage.type.module.flowtype
+//             ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.single.js
+//             ^                         punctuation.definition.string.begin.js
+//                                  ^    punctuation.definition.string.end.js
+//                                    ^  punctuation.section.class.begin.js
   declare interface Stack<T> {}
 //^^^^^^^ ^^^^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^                        keyword.other.declare.flowtype
@@ -17,37 +25,39 @@ declare module 'a-unique-module-name' {
 //              ^^^^^^^^         ^        ^ ^     entity.name.class.js
 //                       ^^^^^^^   ^^^^^^         meta.class.extends.js
 //                       ^^^^^^^   ^^^^^^         storage.type.extends.js
+//                                         ^      meta.delimiter.comma.js
 //                                            ^   punctuation.section.class.begin.js
 //                                             ^  punctuation.section.class.end.js
   declare module.exports: () => Function;
-//^^^^^^^ ^^^^^^^^^^^^^^^ ^^ ^^ ^^^^^^^^^    meta.class.body.js
-//^^^^^^^                                    keyword.other.declare.flowtype
-//        ^^^^^^ ^^^^^^^                     storage.type.module.flowtype
-//              ^                            keyword.operator.accessor.flowtype
-//                      ^                    punctuation.type.flowtype
-//                        ^                  punctuation.definition.parameters.begin.js
-//                         ^                 punctuation.definition.parameters.end.js
-//                           ^^              storage.type.function.arrow.js
-//                              ^^^^^^^^     support.type.builtin.class.flowtype
-//                                      ^    punctuation.terminator.statement.js
+//^^^^^^^ ^^^^^^^^^^^^^^^ ^^ ^^ ^^^^^^^^^  meta.class.body.js
+//^^^^^^^                                  keyword.other.declare.flowtype
+//        ^^^^^^ ^^^^^^^                   storage.type.module.flowtype
+//              ^                          keyword.operator.accessor.flowtype
+//                      ^                  punctuation.type.flowtype
+//                        ^                punctuation.definition.parameters.begin.js
+//                         ^               punctuation.definition.parameters.end.js
+//                           ^^            storage.type.function.arrow.js
+//                              ^^^^^^^^   support.type.builtin.class.flowtype
+//                                      ^  punctuation.terminator.statement.js
   declare type NextFunction = (error?: Object) => void
-//^^^^^^^ ^^^^ ^^^^^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^ ^^ ^^^^    meta.class.body.js
-//^^^^^^^                                                 keyword.other.declare.flowtype
-//        ^^^^                                            keyword.other.typedef.flowtype
-//             ^^^^^^^^^^^^                               support.type.class.flowtype
-//                            ^                           punctuation.definition.parameters.begin.js
-//                             ^^^^^                      variable.other.readwrite.js
-//                                  ^                     keyword.operator.optional.parameter.flowtype
-//                                   ^                    punctuation.type.flowtype
-//                                     ^^^^^^             support.type.builtin.class.flowtype
-//                                           ^            punctuation.definition.parameters.end.js
-//                                                ^^^^    support.type.builtin.primitive.flowtype
+//^^^^^^^ ^^^^ ^^^^^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^ ^^ ^^^^  meta.class.body.js
+//^^^^^^^                                               keyword.other.declare.flowtype
+//        ^^^^                                          keyword.other.typedef.flowtype
+//             ^^^^^^^^^^^^                             support.type.class.flowtype
+//                            ^                         punctuation.definition.parameters.begin.js
+//                             ^^^^^                    variable.other.readwrite.js
+//                                  ^                   keyword.operator.optional.parameter.flowtype
+//                                   ^                  punctuation.type.flowtype
+//                                     ^^^^^^           support.type.builtin.class.flowtype
+//                                           ^          punctuation.definition.parameters.end.js
+//                                                ^^^^  support.type.builtin.primitive.flowtype
 }
 // <- meta.class.body.js
 
 interface Iterator<T> {
-// <- keyword.other.interface.flowtype
- // <- keyword.other.interface.flowtype
+// <- meta.class.body.js keyword.other.interface.flowtype
+ // <- meta.class.body.js keyword.other.interface.flowtype
+//^^^^^^^ ^^^^^^^^^^^ ^  meta.class.body.js
 //^^^^^^^                keyword.other.interface.flowtype
 //        ^^^^^^^^       support.type.class.interface.js
 //                ^ ^    punctutation.flowtype
@@ -72,11 +82,12 @@ interface Iterator<T> {
 //              ^^^^^^^^ ^   support.type.class.flowtype
 //                      ^ ^  punctutation.flowtype
 }
-// <- punctuation.section.class.end.js
+// <- meta.class.body.js punctuation.section.class.end.js
 
 declare var NaN: number
-// <- keyword.other.declare.flowtype
- // <- keyword.other.declare.flowtype
+// <- meta.class.body.js keyword.other.declare.flowtype
+ // <- meta.class.body.js keyword.other.declare.flowtype
+//^^^^^ ^^^ ^^^^ ^^^^^^  meta.class.body.js
 //^^^^^                  keyword.other.declare.flowtype
 //      ^^^              storage.type.js
 //          ^^^          variable.other.readwrite.js
@@ -84,53 +95,63 @@ declare var NaN: number
 //               ^^^^^^  support.type.builtin.primitive.flowtype
 
 declare var module: {
-// <- keyword.other.declare.flowtype
- // <- keyword.other.declare.flowtype
+// <- meta.class.body.js keyword.other.declare.flowtype
+ // <- meta.class.body.js keyword.other.declare.flowtype
+//^^^^^ ^^^ ^^^^^^^ ^  meta.class.body.js
 //^^^^^                keyword.other.declare.flowtype
 //      ^^^            storage.type.js
 //          ^^^^^^     variable.other.readwrite.js
 //                ^    punctuation.type.flowtype
 //                  ^  meta.brace.round.open.flowtype
     exports: any;
-//  ^^^^^^^        variable.other.property.flowtype
+//  ^^^^^^^^ ^^^^  meta.class.body.js
+//  ^^^^^^^        variable.other.readwrite.js
 //         ^       punctuation.type.flowtype
 //           ^^^   support.type.builtin.primitive.flowtype
     require(id: string): any;
-//  ^^^^^^^^^^^ ^^^^^^^        meta.function-call.with-arguments.js
-//  ^^^^^^^                    entity.name.function.js
-//         ^          ^        meta.brace.round.js
-//          ^^  ^^^^^^         variable.other.readwrite.js
-//                     ^       punctuation.type.flowtype
-//                       ^^^   support.type.builtin.primitive.flowtype
+//  ^^^^^^^^^^^ ^^^^^^^^ ^^^^  meta.class.body.js
+//  ^^^^^^^^^^^ ^^^^^^^^ ^^^   meta.function.method.js
+//  ^^^^^^^                    entity.name.function.method.js
+//         ^                   punctuation.definition.parameters.begin.js
+//          ^^                 variable.other.readwrite.js
+//            ^        ^       punctuation.type.flowtype
+//              ^^^^^^   ^^^   support.type.builtin.primitive.flowtype
+//                    ^        punctuation.definition.parameters.end.js
     id: string;
-//  ^^           variable.other.property.flowtype
+//  ^^^ ^^^^^^^  meta.class.body.js
+//  ^^           variable.other.readwrite.js
 //    ^          punctuation.type.flowtype
 //      ^^^^^^   support.type.builtin.primitive.flowtype
     filename: string;
-//  ^^^^^^^^           variable.other.property.flowtype
+//  ^^^^^^^^^ ^^^^^^^  meta.class.body.js
+//  ^^^^^^^^           variable.other.readwrite.js
 //          ^          punctuation.type.flowtype
 //            ^^^^^^   support.type.builtin.primitive.flowtype
     loaded: boolean;
-//  ^^^^^^            variable.other.property.flowtype
+//  ^^^^^^^ ^^^^^^^^  meta.class.body.js
+//  ^^^^^^            variable.other.readwrite.js
 //        ^           punctuation.type.flowtype
 //          ^^^^^^^   support.type.builtin.primitive.flowtype
     parent: any;
-//  ^^^^^^        variable.other.property.flowtype
+//  ^^^^^^^ ^^^^  meta.class.body.js
+//  ^^^^^^        variable.other.readwrite.js
 //        ^       punctuation.type.flowtype
 //          ^^^   support.type.builtin.primitive.flowtype
     children: Array<any>;
-//  ^^^^^^^^               variable.other.property.flowtype
+//  ^^^^^^^^^ ^^^^^^^^^^^  meta.class.body.js
+//  ^^^^^^^^               variable.other.readwrite.js
 //          ^              punctuation.type.flowtype
 //            ^^^^^        support.type.builtin.class.flowtype
 //                 ^   ^   punctuation.flowtype
 //                  ^^^    support.type.builtin.primitive.flowtype
 };
-// <- meta.brace.round.close.flowtype
- // <- punctuation.terminator.statement.js
+// <- meta.class.body.js meta.brace.round.close.flowtype
+ // <- meta.class.body.js punctuation.terminator.statement.js
 
 declare class Blob {
-// <- keyword.other.declare.flowtype
- // <- keyword.other.declare.flowtype
+// <- meta.class.body.js keyword.other.declare.flowtype
+ // <- meta.class.body.js keyword.other.declare.flowtype
+//^^^^^ ^^^^^ ^^^^ ^  meta.class.body.js
 //^^^^^               keyword.other.declare.flowtype
 //      ^^^^^         storage.type.class.flowtype
 //            ^^^^    entity.name.class.js
@@ -151,14 +172,14 @@ declare class Blob {
         type?: string
 //      ^^^^^^ ^^^^^^  meta.class.body.js
 //      ^^^^^^ ^^^^^^  meta.function.method.js
-//      ^^^^           variable.other.property.flowtype
+//      ^^^^           variable.other.readwrite.js
 //          ^          keyword.operator.optional.parameter.flowtype
 //           ^         punctuation.type.flowtype
 //             ^^^^^^  support.type.builtin.primitive.flowtype
         endings?: string
 //      ^^^^^^^^^ ^^^^^^  meta.class.body.js
 //      ^^^^^^^^^ ^^^^^^  meta.function.method.js
-//      ^^^^^^^           variable.other.property.flowtype
+//      ^^^^^^^           variable.other.readwrite.js
 //             ^          keyword.operator.optional.parameter.flowtype
 //              ^         punctuation.type.flowtype
 //                ^^^^^^  support.type.builtin.primitive.flowtype
@@ -192,11 +213,12 @@ declare class Blob {
 //                                                          ^        punctuation.definition.parameters.end.js
 //                                                             ^^^^  support.type.class.flowtype
 }
-// <- punctuation.section.class.end.js
+// <- meta.class.body.js punctuation.section.class.end.js
 
 type CanvasImageSource = HTMLImageElement | number & string
-// <- keyword.other.typedef.flowtype
- // <- keyword.other.typedef.flowtype
+// <- meta.class.body.js keyword.other.typedef.flowtype
+ // <- meta.class.body.js keyword.other.typedef.flowtype
+//^^ ^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^^^ ^ ^^^^^^ ^ ^^^^^^  meta.class.body.js
 //^^                                                         keyword.other.typedef.flowtype
 //   ^^^^^^^^^^^^^^^^^   ^^^^^^^^^^^^^^^^                    support.type.class.flowtype
 //                                        ^                  kewyword.operator.union.flowtype
@@ -204,28 +226,32 @@ type CanvasImageSource = HTMLImageElement | number & string
 //                                                 ^         kewyword.operator.intersection.flowtype
 
 type child_process$execOpts = {
-// <- keyword.other.typedef.flowtype
- // <- keyword.other.typedef.flowtype
+// <- meta.class.body.js keyword.other.typedef.flowtype
+ // <- meta.class.body.js keyword.other.typedef.flowtype
+//^^ ^^^^^^^^^^^^^^^^^^^^^^ ^ ^  meta.class.body.js
 //^^                             keyword.other.typedef.flowtype
 //   ^^^^^^^^^^^^^^^^^^^^^^      support.type.primitive.flowtype
 //                            ^  meta.brace.curly.js
   cwd?: string
+//^^^^^ ^^^^^^  meta.class.body.js
 //^^^           variable.other.readwrite.js
 //   ^          keyword.operator.optional.parameter.flowtype
 //    ^         punctuation.type.flowtype
 //      ^^^^^^  support.type.builtin.primitive.flowtype
   env?: Object
+//^^^^^ ^^^^^^  meta.class.body.js
 //^^^           variable.other.readwrite.js
 //   ^          keyword.operator.optional.parameter.flowtype
 //    ^         punctuation.type.flowtype
 //      ^^^^^^  support.type.builtin.class.flowtype
 };
-// <- meta.brace.curly.js
- // <- punctuation.object.end.flowtype
+// <- meta.class.body.js meta.brace.curly.js
+ // <- meta.class.body.js punctuation.object.end.flowtype
 
 type ReactClass<D, P, S> = _ReactClass<D, P, S, *>
-// <- keyword.other.typedef.flowtype
- // <- keyword.other.typedef.flowtype
+// <- meta.class.body.js keyword.other.typedef.flowtype
+ // <- meta.class.body.js keyword.other.typedef.flowtype
+//^^ ^^^^^^^^^^^^^ ^^ ^^ ^ ^^^^^^^^^^^^^^ ^^ ^^ ^^  meta.class.body.js
 //^^                                                keyword.other.typedef.flowtype
 //   ^^^^^^^^^^ ^  ^  ^    ^^^^^^^^^^^ ^  ^  ^      support.type.class.flowtype
 //             ^       ^              ^          ^  punctutation.flowtype
@@ -233,8 +259,9 @@ type ReactClass<D, P, S> = _ReactClass<D, P, S, *>
 //                                              ^   kewyword.operator.existential.flowtype
 
 declare function require(id: string): any;
-// <- keyword.other.declare.flowtype
- // <- keyword.other.declare.flowtype
+// <- meta.class.body.js keyword.other.declare.flowtype
+ // <- meta.class.body.js keyword.other.declare.flowtype
+//^^^^^ ^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^^ ^^^^  meta.class.body.js
 //^^^^^                                     keyword.other.declare.flowtype
 //      ^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^^ ^^^   meta.function.js
 //      ^^^^^^^^                            storage.type.function.js
