@@ -1,5 +1,5 @@
 ### 2.33.0
-  - Add support for low predicates using checks keyword.
+  - Add support for flow predicates using checks keyword.
   - Improve handling of flow declarations
   
 ### 2.32.4
