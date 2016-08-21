@@ -1,6 +1,10 @@
+### 2.33.0
+  - Add support for low predicates using checks keyword.
+  - Improve handling of flow declarations
+  
 ### 2.32.4
   - Fix flow type vars holding functions that are defined with generics not parsing correctly in grammar.
-  
+
 ### 2.32.3
   - Changed some grammar regex's that scoped prefixed space as part of following token.
   - Fixed JSX auto newline insertion/indent when used with hard tabs and without autoIndentJSX.
