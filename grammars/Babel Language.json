@@ -1707,7 +1707,7 @@
       "comment": "Avoid < operator expressions as best we can using Zertosh's regex",
       "patterns": [
         {
-          "begin": "(?<=\\(|{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|\\Wdefault|^)\\s*+(?=<[$_\\p{L}])",
+          "begin": "(?<=\\(|{|\\[|,|&&|\\|\\||\\?|:|=|=>|\\Wreturn|^return|\\Wdefault|\\Wvoid|^void|^)\\s*+(?=<[$_\\p{L}])",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "patterns": [
