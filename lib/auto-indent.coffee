@@ -19,6 +19,8 @@ BRACE_OPEN              = 8       # Javascript brace
 BRACE_CLOSE             = 9       # Javascript brace
 TERNARY_IF              = 10      # Ternary ?
 TERNARY_ELSE            = 11      # Ternary :
+JS_IF                   = 12      # JS IF
+JS_ELSE                 = 13      # JS ELSE
 
 # eslint property values
 TAGALIGNED    = 'tag-aligned'
@@ -32,7 +34,7 @@ class AutoIndent
     @insertNlJsx = new InsertNlJsx(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
-    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)/g
+    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)/g
     @mouseUp = true
     @multipleCursorTrigger = 1
     @disposables = new CompositeDisposable()
@@ -455,8 +457,8 @@ class AutoIndent
               if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
               idxOfToken++
 
-          # Ternary operators
-          when TERNARY_IF , TERNARY_ELSE
+          # Ternary and conditional if/else operators
+          when TERNARY_IF , TERNARY_ELSE, JS_IF, JS_ELSE
             isFirstTagOfBlock = true
 
       # handle lines with no token on them
@@ -516,6 +518,12 @@ class AutoIndent
     else if match[11]?
       if 'keyword.operator.ternary.js' is scope
         return TERNARY_ELSE
+    else if match[12]?
+      if 'keyword.control.conditional.js' is scope
+        return JS_IF
+    else if match[13]?
+      if 'keyword.control.conditional.js' is scope
+        return JS_ELSE
     return NO_TOKEN
 
 
