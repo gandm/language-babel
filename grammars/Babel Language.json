@@ -1530,7 +1530,7 @@
       "patterns": [
         {
           "comment": "e.g. export let variable =, export type a=",
-          "match": "\\s*+(?<!\\.)\\b(export)(?!\\s*:)\\b(?=\\s++(let|type|typeof)\\s++[$_a-zA-Z])",
+          "match": "\\s*+(?<!\\.)\\b(export)(?!\\s*:)\\b(?=\\s++(const|let|var|type|typeof)\\s++[$_a-zA-Z])",
           "captures": {
             "1": { "name": "keyword.control.module.js" }
           }
