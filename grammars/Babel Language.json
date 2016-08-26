@@ -1041,6 +1041,17 @@
       "patterns": [
         {
           "name": "meta.function-call.static.without-arguments.js",
+          "comment": "e.g CONSTNAME.method()",
+          "match": "\\s*+(?:(?<=\\.)|\\b)([A-Z][$_A-Z]*)\\s*+(\\.)([_$a-zA-Z][$\\w]*)\\s*+(\\(\\s*+\\))",
+          "captures": {
+            "1": { "name": "variable.other.constant.js" },
+            "2": { "name": "keyword.operator.accessor.js" },
+            "3": { "name": "entity.name.function.js" },
+            "4": { "name": "meta.group.braces.round.function.arguments.js" }
+          }
+        },
+        {
+          "name": "meta.function-call.static.without-arguments.js",
           "comment": "e.g Abc.aaa()",
           "match": "\\s*+(?:(?<=\\.)|\\b)([A-Z][$\\w]*)\\s*+(\\.)([_$a-zA-Z][$\\w]*)\\s*+(\\(\\s*+\\))",
           "captures": {
@@ -1049,6 +1060,20 @@
             "3": { "name": "entity.name.function.js" },
             "4": { "name": "meta.group.braces.round.function.arguments.js" }
           }
+        },
+        {
+          "name": "meta.function-call.static.with-arguments.js",
+          "begin": "\\s*+(?:(?<=\\.)|\\b)\\s*+([A-Z][$_A-Z]*)\\s*+(\\.)([_$a-zA-Z][$\\w]*)\\s*+(?=\\()",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "variable.other.constant.js" },
+            "2": { "name": "keyword.operator.accessor.js" },
+            "3": { "name": "entity.name.function.js" }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
           "name": "meta.function-call.static.with-arguments.js",

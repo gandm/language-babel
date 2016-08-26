@@ -1,5 +1,21 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #229
+
+ACONSTNAME.method();ACONSTNAME.method(arg)
+// <- meta.function-call.static.without-arguments.js variable.other.constant.js
+ // <- meta.function-call.static.without-arguments.js variable.other.constant.js
+//^^^^^^^^^^^^^^^^^                         meta.function-call.static.without-arguments.js
+//^^^^^^^^          ^^^^^^^^^^              variable.other.constant.js
+//        ^                   ^             keyword.operator.accessor.js
+//         ^^^^^^              ^^^^^^       entity.name.function.js
+//               ^^                         meta.group.braces.round.function.arguments.js
+//                 ^                        punctuation.terminator.statement.js
+//                  ^^^^^^^^^^^^^^^^^^^^^^  meta.function-call.static.with-arguments.js
+//                                   ^   ^  meta.brace.round.js
+//                                    ^^^   variable.other.readwrite.js
+
+
 // ISSUE #184
 
 meth({
