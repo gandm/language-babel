@@ -1,7 +1,13 @@
+### 2.34.0
+  - Add autoIndentJSX support for inline IIFE that uses if/else. [Issue 230](https://github.com/gandm/language-babel/issues/230)
+  - Allow void keyword as possible code that precedes JSX
+  - Scope classname.methodcall() that use uppercase class as CONSTANT.methodcall(). [Issue 229](https://github.com/gandm/language-babel/issues/229)
+  - Add const & var as implicit options on export grammar.
+
 ### 2.33.0
   - Add support for flow predicates using checks keyword.
   - Improve handling of flow declarations
-  
+
 ### 2.32.4
   - Fix flow type vars holding functions that are defined with generics not parsing correctly in grammar.
 
