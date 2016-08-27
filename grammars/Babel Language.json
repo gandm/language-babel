@@ -466,12 +466,14 @@
           }
         },
         {
+          "comment": "leading whitespace on a new line comment is scoped so Atom reflow works",
           "contentName": "comment.line.double-slash.js",
-          "begin": "\\s*+((//))",
+          "begin": "((^\\s*)|\\s*)((//))",
           "end": "\\s*$",
           "beginCaptures": {
-            "1": { "name": "comment.line.double-slash.js" },
-            "2": { "name": "punctuation.definition.comment.js" }
+            "2": { "name": "punctuation.whitespace.comment.leading.js" },
+            "3": { "name": "comment.line.double-slash.js" },
+            "4": { "name": "punctuation.definition.comment.js" }
           },
           "endCaptures": {
             "0": { "name": "comment.line.double-slash.js" }

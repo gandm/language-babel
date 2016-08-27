@@ -1,3 +1,6 @@
+### 2.35.0
+  - Atom's reflow command expects whitespace prefixing a // comment to have a scopeName! [Issue 234](https://github.com/gandm/language-babel/issues/234)
+
 ### 2.34.0
   - Add autoIndentJSX support for inline IIFE that uses if/else. [Issue 230](https://github.com/gandm/language-babel/issues/230)
   - Allow void keyword as possible code that precedes JSX

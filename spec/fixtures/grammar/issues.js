@@ -1,5 +1,13 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #234
+
+ // Comment one a new line with some prefixed white space
+//  <- punctuation.whitespace.comment.leading.js
+ // <- comment.line.double-slash.js punctuation.definition.comment.js
+//^ ^^^^^^^ ^^^ ^ ^^^ ^^^^ ^^^^ ^^^^ ^^^^^^^^ ^^^^^ ^^^^^  comment.line.double-slash.js
+//^                                                        punctuation.definition.comment.js
+
 // ISSUE #229
 
 ACONSTNAME.method();ACONSTNAME.method(arg)
