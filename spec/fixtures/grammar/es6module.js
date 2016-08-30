@@ -278,7 +278,7 @@ export type User = {
 //            ^  meta.delimiter.comma.js
 };
 // <- meta.brace.curly.js
- // <- punctuation.object.end.flowtype
+ // <- punctuation.terminator.statement.js
 
  import {
  // <- keyword.control.module.js

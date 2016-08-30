@@ -55,7 +55,6 @@ function foo(x /*: number*/) /*: string*/ {}
 //      ^^^^^^   support.type.builtin.primitive.flowtype
 };*/
 // <- meta.brace.curly.js
- // <- punctuation.object.end.flowtype
 //^^  punctuation.definition.comment.js
 /*:: export type GraphQLFormattedError = number;*/
 // <- punctuation.definition.comment.js
@@ -66,7 +65,6 @@ function foo(x /*: number*/) /*: string*/ {}
 //          ^^^^                                    keyword.other.typedef.flowtype
 //               ^^^^^^^^^^^^^^^^^^^^^              support.type.class.flowtype
 //                                       ^^^^^^     support.type.builtin.primitive.flowtype
-//                                             ^    punctuation.object.end.flowtype
 /*:: import type A, { B, C } from './types';*/
 // <- punctuation.definition.comment.js
  // <- punctuation.definition.comment.js
@@ -222,65 +220,65 @@ type $JSXIntrinsics = {
 //                           ^                     meta.delimiter.comma.js
 //                                          ^      meta.brace.round.close.flowtype
 //                                             ^   meta.brace.curly.js
-//                                              ^  punctuation.object.end.flowtype
+//                                              ^  punctuation.terminator.statement.js
 
 
 // Some JSX
 
 <div>
-// <- meta.tag.jsx punctuation.definition.tag.jsx
- // <- meta.tag.jsx entity.name.tag.open.jsx
-//^^^  meta.tag.jsx
-//  ^  punctuation.definition.tag.jsx
-//^^   entity.name.tag.open.jsx
-//  ^  JSXStartTagEnd
+  // <- meta.tag.jsx punctuation.definition.tag.jsx
+  // <- meta.tag.jsx entity.name.tag.open.jsx
+  //^^^  meta.tag.jsx
+  //  ^  punctuation.definition.tag.jsx
+  //^^   entity.name.tag.open.jsx
+  //  ^  JSXStartTagEnd
   <div />
-//^^^^ ^^  meta.tag.jsx
-//^    ^^  punctuation.definition.tag.jsx
-// ^^^     entity.name.tag.open.jsx
+  //^^^^ ^^  meta.tag.jsx
+  //^    ^^  punctuation.definition.tag.jsx
+  // ^^^     entity.name.tag.open.jsx
   <h1></h1>
-//^^^^^^^^^  meta.tag.jsx
-//^  ^^^  ^  punctuation.definition.tag.jsx
-// ^^        entity.name.tag.open.jsx
-//   ^       JSXStartTagEnd
-//    ^^     JSXEndTagStart
-//      ^^   entity.name.tag.close.jsx
+  //^^^^^^^^^  meta.tag.jsx
+  //^  ^^^  ^  punctuation.definition.tag.jsx
+  // ^^        entity.name.tag.open.jsx
+  //   ^       JSXStartTagEnd
+  //    ^^     JSXEndTagStart
+  //      ^^   entity.name.tag.close.jsx
   <Component></Component>
-//^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
-//^         ^^^         ^  punctuation.definition.tag.jsx
-// ^^^^^^^^^               entity.name.tag.open.jsx
-// ^^^^^^^^^               support.class.component.open.jsx
-//          ^              JSXStartTagEnd
-//           ^^            JSXEndTagStart
-//             ^^^^^^^^^   entity.name.tag.close.jsx
-//             ^^^^^^^^^   support.class.component.close.jsx
+  //^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+  //^         ^^^         ^  punctuation.definition.tag.jsx
+  // ^^^^^^^^^               entity.name.tag.open.jsx
+  // ^^^^^^^^^               support.class.component.open.jsx
+  //          ^              JSXStartTagEnd
+  //           ^^            JSXEndTagStart
+  //             ^^^^^^^^^   entity.name.tag.close.jsx
+  //             ^^^^^^^^^   support.class.component.close.jsx
   <this.component></this.component>
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
-//^              ^^^              ^  punctuation.definition.tag.jsx
-// ^^^^^^^^^^^^^^                    entity.name.tag.open.jsx
-// ^^^^^^^^^^^^^^                    support.class.component.open.jsx
-//               ^                   JSXStartTagEnd
-//                ^^                 JSXEndTagStart
-//                  ^^^^^^^^^^^^^^   entity.name.tag.close.jsx
-//                  ^^^^^^^^^^^^^^   support.class.component.close.jsx
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+  //^              ^^^              ^  punctuation.definition.tag.jsx
+  // ^^^^^^^^^^^^^^                    entity.name.tag.open.jsx
+  // ^^^^^^^^^^^^^^                    support.class.component.open.jsx
+  //               ^                   JSXStartTagEnd
+  //                ^^                 JSXEndTagStart
+  //                  ^^^^^^^^^^^^^^   entity.name.tag.close.jsx
+  //                  ^^^^^^^^^^^^^^   support.class.component.close.jsx
   <namespace:component></namespace:component>
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
-//^                   ^^^                   ^  punctuation.definition.tag.jsx
-// ^^^^^^^^^^^^^^^^^^^                         entity.name.tag.open.jsx
-// ^^^^^^^^^^^^^^^^^^^                         support.class.component.open.jsx
-//                    ^                        JSXStartTagEnd
-//                     ^^                      JSXEndTagStart
-//                       ^^^^^^^^^^^^^^^^^^^   entity.name.tag.close.jsx
-//                       ^^^^^^^^^^^^^^^^^^^   support.class.component.close.jsx
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+  //^                   ^^^                   ^  punctuation.definition.tag.jsx
+  // ^^^^^^^^^^^^^^^^^^^                         entity.name.tag.open.jsx
+  // ^^^^^^^^^^^^^^^^^^^                         support.class.component.open.jsx
+  //                    ^                        JSXStartTagEnd
+  //                     ^^                      JSXEndTagStart
+  //                       ^^^^^^^^^^^^^^^^^^^   entity.name.tag.close.jsx
+  //                       ^^^^^^^^^^^^^^^^^^^   support.class.component.close.jsx
   <custom-element></custom-element>
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
-//^              ^^^              ^  punctuation.definition.tag.jsx
-// ^^^^^^^^^^^^^^                    entity.name.tag.open.jsx
-// ^^^^^^^^^^^^^^                    support.class.component.open.jsx
-//               ^                   JSXStartTagEnd
-//                ^^                 JSXEndTagStart
-//                  ^^^^^^^^^^^^^^   entity.name.tag.close.jsx
-//                  ^^^^^^^^^^^^^^   support.class.component.close.jsx
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+  //^              ^^^              ^  punctuation.definition.tag.jsx
+  // ^^^^^^^^^^^^^^                    entity.name.tag.open.jsx
+  // ^^^^^^^^^^^^^^                    support.class.component.open.jsx
+  //               ^                   JSXStartTagEnd
+  //                ^^                 JSXEndTagStart
+  //                  ^^^^^^^^^^^^^^   entity.name.tag.close.jsx
+  //                  ^^^^^^^^^^^^^^   support.class.component.close.jsx
 </div>
 // <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart
  // <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart
