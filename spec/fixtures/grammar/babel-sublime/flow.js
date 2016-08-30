@@ -429,7 +429,7 @@ var b: Array<number> = a.map(function(x) { return x + 1; });
 //                   ^                                        keyword.operator.assignment.js
 //                     ^                                      variable.other.object.js
 //                      ^                                     keyword.operator.accessor.js
-//                       ^^^^^^^^^^^^^^^ ^ ^^^^^^ ^ ^ ^^ ^^   meta.function-call.method.with-arguments.js
+//                       ^^^^^^^^^^^^^^^ ^ ^^^^^^ ^ ^ ^^ ^^   meta.method-call.with-arguments.js
 //                       ^^^                                  entity.name.function.js
 //                          ^                             ^   meta.brace.round.js
 //                           ^^^^^^^^^^^                      meta.function.js
@@ -673,9 +673,9 @@ class D extends C<number> {
 //       ^                     variable.other.property.js
 //         ^                   keyword.operator.assignment.js
 //           ^^^^^             variable.language.super.js
-//                 ^^^^^       meta.function-call.method.without-arguments.js
+//                 ^^^^^       meta.method-call.without-arguments.js
 //                 ^^^         entity.name.function.js
-//                    ^^       meta.group.braces.round.function.arguments.js
+//                    ^^       meta.brace.round.js
 //                       ^     keyword.operator.arithmetic.js
 //                         ^   constant.numeric.js
 //                          ^  punctuation.terminator.statement.js
@@ -941,7 +941,7 @@ function fooStillBad(obj: { x: number }): (str: string) => {a: string} {
 //        ^^^                    support.function.console.js
 //           ^        ^     ^^   meta.brace.round.js
 //            ^^^^               support.class.builtin.js
-//                 ^^^^^^^^^^    meta.function-call.method.with-arguments.js
+//                 ^^^^^^^^^^    meta.method-call.with-arguments.js
 //                 ^^^           entity.name.function.js
 //                     ^^^       variable.other.object.js
 //                         ^     meta.property.object.js

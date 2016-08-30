@@ -176,11 +176,11 @@ let Sound = {
   [Play.name()]() {},
 //^^^^^^^^^^^^^^^      meta.function.method.js
 //^           ^        meta.brace.square.js
-// ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
+// ^^^^^^^^^^^         meta.method-call.without-arguments.js
 // ^^^^                variable.other.class.js
 //     ^               keyword.operator.accessor.js
 //      ^^^^           entity.name.function.js
-//          ^^         meta.group.braces.round.function.arguments.js
+//          ^^         meta.brace.round.js
 //             ^       punctuation.definition.parameters.begin.js
 //              ^      punctuation.definition.parameters.end.js
 //                ^^   meta.brace.curly.js
@@ -188,11 +188,11 @@ let Sound = {
   [Play.name()[]](arg) {},
 //^^^^^^^^^^^^^^^^^^^^      meta.function.method.js
 //^           ^^^           meta.brace.square.js
-// ^^^^^^^^^^^              meta.function-call.static.without-arguments.js
+// ^^^^^^^^^^^^^            meta.method-call.without-arguments.js
 // ^^^^                     variable.other.class.js
 //     ^                    keyword.operator.accessor.js
 //      ^^^^                entity.name.function.js
-//          ^^              meta.group.braces.round.function.arguments.js
+//          ^^              meta.brace.round.js
 //               ^          punctuation.definition.parameters.begin.js
 //                ^^^       variable.other.readwrite.js
 //                   ^      punctuation.definition.parameters.end.js
@@ -202,11 +202,11 @@ let Sound = {
 //^^^^^^^^^^^^^^^^      meta.function.method.js
 //^                     keyword.generator.asterisk.js
 // ^           ^        meta.brace.square.js
-//  ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
+//  ^^^^^^^^^^^         meta.method-call.without-arguments.js
 //  ^^^^                variable.other.class.js
 //      ^               keyword.operator.accessor.js
 //       ^^^^           entity.name.function.js
-//           ^^         meta.group.braces.round.function.arguments.js
+//           ^^         meta.brace.round.js
 //              ^       punctuation.definition.parameters.begin.js
 //               ^      punctuation.definition.parameters.end.js
 //                 ^^   meta.brace.curly.js
@@ -215,11 +215,11 @@ let Sound = {
 //^^^^^^^^^^^^^^^^^^^      meta.function.method.js
 //^                        keyword.generator.asterisk.js
 // ^           ^           meta.brace.square.js
-//  ^^^^^^^^^^^            meta.function-call.static.without-arguments.js
+//  ^^^^^^^^^^^            meta.method-call.without-arguments.js
 //  ^^^^                   variable.other.class.js
 //      ^                  keyword.operator.accessor.js
 //       ^^^^              entity.name.function.js
-//           ^^            meta.group.braces.round.function.arguments.js
+//           ^^            meta.brace.round.js
 //              ^          punctuation.definition.parameters.begin.js
 //               ^^^       variable.other.readwrite.js
 //                  ^      punctuation.definition.parameters.end.js
@@ -229,11 +229,11 @@ let Sound = {
 //^^^^^ ^^^^^^^^^^^^^^^      meta.function.method.js
 //^^^^^                      storage.type.js
 //      ^           ^        meta.brace.square.js
-//       ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
+//       ^^^^^^^^^^^         meta.method-call.without-arguments.js
 //       ^^^^                variable.other.class.js
 //           ^               keyword.operator.accessor.js
 //            ^^^^           entity.name.function.js
-//                ^^         meta.group.braces.round.function.arguments.js
+//                ^^         meta.brace.round.js
 //                   ^       punctuation.definition.parameters.begin.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
@@ -242,11 +242,11 @@ let Sound = {
 //^^^^^ ^^^^^^^^^^^^^^^^^^      meta.function.method.js
 //^^^^^                         storage.type.js
 //      ^           ^           meta.brace.square.js
-//       ^^^^^^^^^^^            meta.function-call.static.without-arguments.js
+//       ^^^^^^^^^^^            meta.method-call.without-arguments.js
 //       ^^^^                   variable.other.class.js
 //           ^                  keyword.operator.accessor.js
 //            ^^^^              entity.name.function.js
-//                ^^            meta.group.braces.round.function.arguments.js
+//                ^^            meta.brace.round.js
 //                   ^          punctuation.definition.parameters.begin.js
 //                    ^^^       variable.other.readwrite.js
 //                       ^      punctuation.definition.parameters.end.js
@@ -256,11 +256,11 @@ let Sound = {
 //^^^ ^^^^^^^^^^^^^^^      meta.accessor.js
 //^^^                      storage.type.accessor.js
 //    ^                    meta.brace.square.open.flowtype
-//     ^^^^^^^^^^^         meta.function-call.static.without-arguments.js
+//     ^^^^^^^^^^^         meta.method-call.without-arguments.js
 //     ^^^^                variable.other.class.js
 //         ^               keyword.operator.accessor.js
 //          ^^^^           entity.name.function.js
-//              ^^         meta.group.braces.round.function.arguments.js
+//              ^^         meta.brace.round.js
 //                ^        meta.brace.square.end.flowtype
 //                 ^       punctuation.definition.parameters.begin.js
 //                  ^      punctuation.definition.parameters.end.js
@@ -270,11 +270,11 @@ let Sound = {
 //^^^ ^^^^^^^^^^^^^^^^^^      meta.accessor.js
 //^^^                         storage.type.accessor.js
 //    ^                       meta.brace.square.open.flowtype
-//     ^^^^^^^^^^^            meta.function-call.static.without-arguments.js
+//     ^^^^^^^^^^^            meta.method-call.without-arguments.js
 //     ^^^^                   variable.other.class.js
 //         ^                  keyword.operator.accessor.js
 //          ^^^^              entity.name.function.js
-//              ^^            meta.group.braces.round.function.arguments.js
+//              ^^            meta.brace.round.js
 //                ^           meta.brace.square.end.flowtype
 //                 ^          punctuation.definition.parameters.begin.js
 //                  ^^^       variable.other.readwrite.js
@@ -1488,18 +1488,18 @@ Sound[play]
 //   ^    ^  meta.brace.square.js
 //    ^^^^   variable.other.readwrite.js
 Sound.play()
-// <- meta.function-call.static.without-arguments.js variable.other.class.js
- // <- meta.function-call.static.without-arguments.js variable.other.class.js
-//^^^^^^^^^^  meta.function-call.static.without-arguments.js
+// <- meta.method-call.without-arguments.js variable.other.class.js
+ // <- meta.method-call.without-arguments.js variable.other.class.js
+//^^^^^^^^^^  meta.method-call.without-arguments.js
 //^^^         variable.other.class.js
 //   ^        keyword.operator.accessor.js
 //    ^^^^    entity.name.function.js
-//        ^^  meta.group.braces.round.function.arguments.js
+//        ^^  meta.brace.round.js
 Sound[play]()
-// <- variable.other.object.js
- // <- variable.other.object.js
+// <- meta.function-call.without-arguments.js variable.other.object.js
+ // <- meta.function-call.without-arguments.js variable.other.object.js
+//^^^^^^^^^^^  meta.function-call.without-arguments.js
 //^^^          variable.other.object.js
-//   ^^^^^^^^  meta.function-call.without-arguments.js
 //   ^    ^    meta.brace.square.js
 //    ^^^^     variable.other.readwrite.js
 //         ^^  meta.brace.round.js
@@ -1560,20 +1560,18 @@ Sound.prototype.play()
 //^^^                   entity.name.class.js
 //   ^         ^        keyword.operator.accessor.js
 //    ^^^^^^^^^         variable.language.prototype.js
-//              ^^^^^^  meta.function-call.method.without-arguments.js
+//              ^^^^^^  meta.method-call.without-arguments.js
 //              ^^^^    entity.name.function.js
-//                  ^^  meta.group.braces.round.function.arguments.js
-Sound.prototype[play]()
-// <- meta.prototype.access.js entity.name.class.js
+//                  ^^  meta.brace.round.js
+ Sound.prototype[play]()
  // <- meta.prototype.access.js entity.name.class.js
-//^^^^^^^^^^^^^          meta.prototype.access.js
-//^^^                    entity.name.class.js
-//   ^                   keyword.operator.accessor.js
-//    ^^^^^^^^^          variable.language.prototype.js
-//             ^^^^^^^^  meta.function-call.without-arguments.js
-//             ^    ^    meta.brace.square.js
-//              ^^^^     variable.other.readwrite.js
-//                   ^^  meta.brace.round.js
+//^^^^^^^^^^^^^^          meta.prototype.access.js
+//^^^^                    entity.name.class.js
+//    ^                   keyword.operator.accessor.js
+//     ^^^^^^^^^          variable.language.prototype.js
+//              ^    ^    meta.brace.square.js
+//               ^^^^     variable.other.readwrite.js
+//                    ^^  meta.brace.round.js
 Sound.prototype.play =
 // <- meta.prototype.access.js entity.name.class.js
  // <- meta.prototype.access.js entity.name.class.js
@@ -1619,9 +1617,9 @@ Sound.play.repeat()
 //^^^                variable.other.class.js
 //   ^    ^          keyword.operator.accessor.js
 //    ^^^^           variable.other.property.static.js
-//         ^^^^^^^^  meta.function-call.method.without-arguments.js
+//         ^^^^^^^^  meta.method-call.without-arguments.js
 //         ^^^^^^    entity.name.function.js
-//               ^^  meta.group.braces.round.function.arguments.js
+//               ^^  meta.brace.round.js
 Sound[play].repeat()
 // <- variable.other.object.js
  // <- variable.other.object.js
@@ -1629,9 +1627,9 @@ Sound[play].repeat()
 //   ^    ^           meta.brace.square.js
 //    ^^^^            variable.other.readwrite.js
 //         ^          keyword.operator.accessor.js
-//          ^^^^^^^^  meta.function-call.method.without-arguments.js
+//          ^^^^^^^^  meta.method-call.without-arguments.js
 //          ^^^^^^    entity.name.function.js
-//                ^^  meta.group.braces.round.function.arguments.js
+//                ^^  meta.brace.round.js
 Sound.play.repeat = {}
 // <- meta.property.class.js variable.other.class.js
  // <- meta.property.class.js variable.other.class.js

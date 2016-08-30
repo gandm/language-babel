@@ -11,43 +11,54 @@
 // ISSUE #229
 
 ACONSTNAME.method();ACONSTNAME.method(arg)
-// <- meta.function-call.static.without-arguments.js variable.other.constant.js
- // <- meta.function-call.static.without-arguments.js variable.other.constant.js
-//^^^^^^^^^^^^^^^^^                         meta.function-call.static.without-arguments.js
+// <- meta.method-call.without-arguments.js variable.other.constant.js
+ // <- meta.method-call.without-arguments.js variable.other.constant.js
+//^^^^^^^^^^^^^^^^^                         meta.method-call.without-arguments.js
 //^^^^^^^^          ^^^^^^^^^^              variable.other.constant.js
 //        ^                   ^             keyword.operator.accessor.js
 //         ^^^^^^              ^^^^^^       entity.name.function.js
-//               ^^                         meta.group.braces.round.function.arguments.js
+//               ^^                  ^   ^  meta.brace.round.js
 //                 ^                        punctuation.terminator.statement.js
-//                  ^^^^^^^^^^^^^^^^^^^^^^  meta.function-call.static.with-arguments.js
-//                                   ^   ^  meta.brace.round.js
+//                  ^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //                                    ^^^   variable.other.readwrite.js
 
 
 // ISSUE #184
 
 meth({
+// <- meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.function-call.with-arguments.js entity.name.function.js
+//^^^^  meta.function-call.with-arguments.js
+//^^    entity.name.function.js
+//  ^   meta.brace.round.js
+//   ^  meta.brace.curly.js
   'first-prop'({arg1, arg2}) {
-//^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^      meta.function-call.with-arguments.js
-//^^^^^^^^^^^^^^^^^^^ ^^^^^^        meta.function.method.js
-//^^^^^^^^^^^^                      entity.name.function.method.js
-//            ^                     punctuation.definition.parameters.begin.js
-//             ^          ^  ^      meta.brace.curly.js
-//              ^^^^  ^^^^          variable.other.readwrite.js
-//                  ^               meta.delimiter.comma.js
-//                         ^        punctuation.definition.parameters.end.js
+//^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^  meta.function-call.with-arguments.js
+//^^^^^^^^^^^^^^^^^^^ ^^^^^^    meta.function.method.js
+//^^^^^^^^^^^^                  entity.name.function.method.js
+//            ^                 punctuation.definition.parameters.begin.js
+//             ^          ^  ^  meta.brace.curly.js
+//              ^^^^  ^^^^      variable.other.readwrite.js
+//                  ^           meta.delimiter.comma.js
+//                         ^    punctuation.definition.parameters.end.js
   },
+//^^  meta.function-call.with-arguments.js
+//^   meta.brace.curly.js
+// ^  meta.delimiter.comma.js
   'second-prop'({arg1, arg2}) {
-//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^     meta.function-call.with-arguments.js
-//^^^^^^^^^^^^^^^^^^^^ ^^^^^^       meta.function.method.js
-//^^^^^^^^^^^^^                     entity.name.function.method.js
-//             ^                    punctuation.definition.parameters.begin.js
-//              ^          ^  ^     meta.brace.curly.js
-//               ^^^^  ^^^^         variable.other.readwrite.js
-//                   ^              meta.delimiter.comma.js
-//                          ^       punctuation.definition.parameters.end.js
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^  meta.function-call.with-arguments.js
+//^^^^^^^^^^^^^^^^^^^^ ^^^^^^    meta.function.method.js
+//^^^^^^^^^^^^^                  entity.name.function.method.js
+//             ^                 punctuation.definition.parameters.begin.js
+//              ^          ^  ^  meta.brace.curly.js
+//               ^^^^  ^^^^      variable.other.readwrite.js
+//                   ^           meta.delimiter.comma.js
+//                          ^    punctuation.definition.parameters.end.js
  }
+ // <- meta.function-call.with-arguments.js meta.brace.curly.js
 })
+// <- meta.function-call.with-arguments.js meta.brace.curly.js
+ // <- meta.function-call.with-arguments.js meta.brace.round.js
 
 // ISSUE #181
 
@@ -65,6 +76,7 @@ const withStore  = store => Component => props =>
 //^                      ^^^        ^  punctuation.definition.tag.jsx
 // ^^^^^^^^                            entity.name.tag.open.jsx
 // ^^^^^^^^                            support.class.component.open.jsx
+//          ^^^^^^^^^^^^^^^^           JSXAttrs
 //          ^^^^^                      entity.other.attribute-name.jsx
 //               ^                     keyword.operator.assignment.jsx
 //                ^^^^^^^              meta.embedded.expression.js
@@ -89,6 +101,7 @@ class A {
 //      ^^         ^^            ^^  meta.brace.curly.js
 //        ^          ^               punctuation.terminator.statement.js
 }
+// <- punctuation.section.class.end.js
 
 
 function a(state ) {
@@ -138,15 +151,15 @@ class A {
 //                          ^    keyword.operator.assignment.js
 //                            ^  constant.numeric.js
   if (a) {} // believe it or not this becomes a method
-//^^ ^^^ ^^ ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^   meta.class.body.js
-//^^ ^^^                                                 meta.function.method.js
-//^^                                                     entity.name.function.method.js
-//   ^                                                   punctuation.definition.parameters.begin.js
-//    ^                                                  variable.other.readwrite.js
-//     ^                                                 punctuation.definition.parameters.end.js
-//       ^^                                              meta.brace.curly.js
-//          ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^   comment.line.double-slash.js
-//          ^^                                           punctuation.definition.comment.js
+//^^ ^^^ ^^ ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^  meta.class.body.js
+//^^ ^^^                                                meta.function.method.js
+//^^                                                    entity.name.function.method.js
+//   ^                                                  punctuation.definition.parameters.begin.js
+//    ^                                                 variable.other.readwrite.js
+//     ^                                                punctuation.definition.parameters.end.js
+//       ^^                                             meta.brace.curly.js
+//          ^^ ^^^^^^^ ^^ ^^ ^^^ ^^^^ ^^^^^^^ ^ ^^^^^^  comment.line.double-slash.js
+//          ^^                                          punctuation.definition.comment.js
   method<T>(a: string): string { // This is a method
 //^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^ ^ ^^ ^^^^ ^^ ^ ^^^^^^  meta.class.body.js
 //^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^                        meta.function.method.js
@@ -183,6 +196,7 @@ class A {
 //^^^^^ ^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^ ^^^^^^^^ ^^ ^^^^^^^^^ ^^^^^^^^^^^^  meta.tag.jsx
 //                                                 ^         ^^      ^  punctuation.definition.tag.jsx
 //^^^^^                                                                 entity.name.tag.open.jsx
+//      ^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^ ^^^^^^^^ ^^ ^^^^^^^^^ ^^^^^         JSXAttrs
 //      ^^^^^^^                                                         entity.other.attribute-name.jsx
 //             ^                                                        keyword.operator.assignment.jsx
 //              ^^^^^^^^^ ^ ^^^^^ ^ ^^^^^^^^ ^^ ^^^                     meta.embedded.expression.js
@@ -197,6 +211,7 @@ class A {
 //                                              ^^                      meta.brace.curly.js
 //                                                ^                     punctuation.section.embedded.end.jsx
 //                                                 ^                    JSXStartTagEnd
+//                                                  ^^^^^ ^^^           JSXNested
 //                                                           ^^         JSXEndTagStart
 //                                                             ^^^^^^   entity.name.tag.close.jsx
 <button onClick={disabled ? () => null : () => onClick(val)}>Click me!</button>
@@ -205,6 +220,7 @@ class A {
 //^^^^^ ^^^^^^^^^^^^^^^^^ ^ ^^ ^^ ^^^^ ^ ^^ ^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^  meta.tag.jsx
 //                                                          ^         ^^      ^  punctuation.definition.tag.jsx
 //^^^^^                                                                          entity.name.tag.open.jsx
+//      ^^^^^^^^^^^^^^^^^ ^ ^^ ^^ ^^^^ ^ ^^ ^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^         JSXAttrs
 //      ^^^^^^^                                                                  entity.other.attribute-name.jsx
 //             ^                                                                 keyword.operator.assignment.jsx
 //              ^^^^^^^^^ ^ ^^ ^^ ^^^^ ^ ^^ ^^ ^^^^^^^^^^^^^                     meta.embedded.expression.js
@@ -221,13 +237,11 @@ class A {
 //                                                    ^   ^                      meta.brace.round.js
 //                                                         ^                     punctuation.section.embedded.end.jsx
 //                                                          ^                    JSXStartTagEnd
+//                                                           ^^^^^ ^^^           JSXNested
 //                                                                    ^^         JSXEndTagStart
 //                                                                      ^^^^^^   entity.name.tag.close.jsx
 
 // ISSUE: #171
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^^  comment.line.double-slash.js
 
 function getObject() {
 // <- meta.function.js storage.type.function.js
@@ -273,9 +287,6 @@ function getObject() {
 // <- meta.brace.curly.js
 
 // ISSUE: #170
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^^  comment.line.double-slash.js
 
 foo({ //
 // <- meta.function-call.with-arguments.js entity.name.function.js
@@ -300,9 +311,7 @@ foo({ //
  // <- meta.function-call.with-arguments.js meta.brace.round.js
 
 // ISSUE: 169
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^  comment.line.double-slash.js
+
 let a: number = td.function()
 // <- storage.type.js
  // <- storage.type.js
@@ -313,9 +322,9 @@ let a: number = td.function()
 //            ^                keyword.operator.assignment.js
 //              ^^             variable.other.object.js
 //                ^            keyword.operator.accessor.js
-//                 ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//                 ^^^^^^^^^^  meta.method-call.without-arguments.js
 //                 ^^^^^^^^    entity.name.function.js
-//                         ^^  meta.group.braces.round.function.arguments.js
+//                         ^^  meta.brace.round.js
 const double = td.function()
 // <- storage.type.js
  // <- storage.type.js
@@ -324,9 +333,9 @@ const double = td.function()
 //           ^                keyword.operator.assignment.js
 //             ^^             variable.other.object.js
 //               ^            keyword.operator.accessor.js
-//                ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//                ^^^^^^^^^^  meta.method-call.without-arguments.js
 //                ^^^^^^^^    entity.name.function.js
-//                        ^^  meta.group.braces.round.function.arguments.js
+//                        ^^  meta.brace.round.js
 let a = {
 // <- storage.type.js
  // <- storage.type.js
@@ -340,18 +349,18 @@ let a = {
 // ^                punctuation.separator.key-value.js
 //   ^^             variable.other.object.js
 //     ^            keyword.operator.accessor.js
-//      ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//      ^^^^^^^^^^  meta.method-call.without-arguments.js
 //      ^^^^^^^^    entity.name.function.js
-//              ^^  meta.group.braces.round.function.arguments.js
+//              ^^  meta.brace.round.js
   b: td.function()
 //^^                constant.other.object.key.js
 //^                 string.unquoted.js
 // ^                punctuation.separator.key-value.js
 //   ^^             variable.other.object.js
 //     ^            keyword.operator.accessor.js
-//      ^^^^^^^^^^  meta.function-call.method.without-arguments.js
+//      ^^^^^^^^^^  meta.method-call.without-arguments.js
 //      ^^^^^^^^    entity.name.function.js
-//              ^^  meta.group.braces.round.function.arguments.js
+//              ^^  meta.brace.round.js
 }
 // <- meta.brace.curly.js
 let a: number = td.function();
@@ -364,9 +373,9 @@ let a: number = td.function();
 //            ^                 keyword.operator.assignment.js
 //              ^^              variable.other.object.js
 //                ^             keyword.operator.accessor.js
-//                 ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//                 ^^^^^^^^^^   meta.method-call.without-arguments.js
 //                 ^^^^^^^^     entity.name.function.js
-//                         ^^   meta.group.braces.round.function.arguments.js
+//                         ^^   meta.brace.round.js
 //                           ^  punctuation.terminator.statement.js
 const double = td.function();
 // <- storage.type.js
@@ -376,9 +385,9 @@ const double = td.function();
 //           ^                 keyword.operator.assignment.js
 //             ^^              variable.other.object.js
 //               ^             keyword.operator.accessor.js
-//                ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//                ^^^^^^^^^^   meta.method-call.without-arguments.js
 //                ^^^^^^^^     entity.name.function.js
-//                        ^^   meta.group.braces.round.function.arguments.js
+//                        ^^   meta.brace.round.js
 //                          ^  punctuation.terminator.statement.js
 let a = {
 // <- storage.type.js
@@ -393,9 +402,9 @@ let a = {
 // ^                 punctuation.separator.key-value.js
 //   ^^              variable.other.object.js
 //     ^             keyword.operator.accessor.js
-//      ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//      ^^^^^^^^^^   meta.method-call.without-arguments.js
 //      ^^^^^^^^     entity.name.function.js
-//              ^^   meta.group.braces.round.function.arguments.js
+//              ^^   meta.brace.round.js
 //                ^  punctuation.terminator.statement.js
   b: td.function();
 //^^                 constant.other.object.key.js
@@ -403,9 +412,9 @@ let a = {
 // ^                 punctuation.separator.key-value.js
 //   ^^              variable.other.object.js
 //     ^             keyword.operator.accessor.js
-//      ^^^^^^^^^^   meta.function-call.method.without-arguments.js
+//      ^^^^^^^^^^   meta.method-call.without-arguments.js
 //      ^^^^^^^^     entity.name.function.js
-//              ^^   meta.group.braces.round.function.arguments.js
+//              ^^   meta.brace.round.js
 //                ^  punctuation.terminator.statement.js
 }// <- meta.brace.curly.js
 // <- meta.brace.curly.js
@@ -414,9 +423,7 @@ let a = {
 //^                         punctuation.definition.comment.js
 
 // ISSUE: 168
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^  comment.line.double-slash.js
+
 let obj = { a: () => async () => 1 }
 // <- storage.type.js
  // <- storage.type.js
@@ -434,9 +441,7 @@ let obj = { a: () => async () => 1 }
 //                               ^    constant.numeric.js
 
 // ISSUE: 166
-// <- comment.line.double-slash.js punctuation.definition.comment.js
- // <- comment.line.double-slash.js punctuation.definition.comment.js
-// ^^^^^^ ^^^  comment.line.double-slash.js
+
 export default {
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -484,3 +489,6 @@ export default {
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 //^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
 //^                         punctuation.definition.comment.js
+
+
+// >> only:(source.js.jsx)

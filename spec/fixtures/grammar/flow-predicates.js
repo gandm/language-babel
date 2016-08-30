@@ -52,4 +52,5 @@ var a1 = (x: mixed) checks => x !== null
 //                              ^^^       keyword.operator.comparison.js
 //                                  ^^^^  constant.language.null.js
 
+
 // >> only:(source.js.jsx)

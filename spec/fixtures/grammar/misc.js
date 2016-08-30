@@ -26,7 +26,7 @@ function foo2(bar /*:: ?: string*/) {}
 //                ^^            ^^      punctuation.definition.comment.js
 //                  ^^  ^               punctuation.type.flowtype
 //                     ^                keyword.operator.optional.parameter.flowtype
-//                        ^^^^^^        support.type.builtin.primitive.flowtype
+//                      ^ ^^^^^^        support.type.builtin.primitive.flowtype
 //                                ^     punctuation.definition.parameters.end.js
 //                                  ^^  meta.brace.curly.js
 function foo(x /*: number*/) /*: string*/ {}
@@ -95,7 +95,7 @@ function foo(x /*: number*/) /*: string*/ {}
 a.component('randomComponent', {
 // <- variable.other.object.js
  // <- keyword.operator.accessor.js
-//^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^  meta.function-call.method.with-arguments.js
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^  meta.method-call.with-arguments.js
 //^^^^^^^^^                       entity.name.function.js
 //         ^                      meta.brace.round.js
 //          ^^^^^^^^^^^^^^^^^     string.quoted.single.js
@@ -104,7 +104,7 @@ a.component('randomComponent', {
 //                           ^    meta.delimiter.comma.js
 //                             ^  meta.brace.curly.js
   template: `<div class="test">test</div>`,
-//^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.function-call.method.with-arguments.js
+//^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //^^^^^^^^                                   constant.other.object.key.js
 //^^^^^^^^                                   string.unquoted.js
 //        ^                                  punctuation.separator.key-value.js
@@ -120,8 +120,8 @@ a.component('randomComponent', {
 //                                       ^   punctuation.definition.quasi.end.js
 //                                        ^  meta.delimiter.comma.js
 })
-// <- meta.function-call.method.with-arguments.js meta.brace.curly.js
- // <- meta.function-call.method.with-arguments.js meta.brace.round.js
+// <- meta.method-call.with-arguments.js meta.brace.curly.js
+ // <- meta.method-call.with-arguments.js meta.brace.round.js
 
 // class fields, statics and methods
 class SomeClass {
@@ -311,13 +311,12 @@ getPlayers()
 //^^          ^               keyword.operator.accessor.js
 //  ^^^^^ ^^ ^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
 //  ^^^        ^^^^^^^^^      entity.name.function.js
-//     ^                  ^   meta.brace.round.js
+//     ^                ^^^   meta.brace.round.js
 //      ^ ^^                  meta.function.arrow.js
 //      ^                     variable.other.readwrite.js
 //        ^^                  storage.type.function.arrow.js
 //           ^                variable.other.object.js
-//             ^^^^^^^^^^^    meta.function-call.method.without-arguments.js
-//                      ^^    meta.group.braces.round.function.arguments.js
+//             ^^^^^^^^^^^    meta.method-call.without-arguments.js
 //                         ^  punctuation.terminator.statement.js
 
 Promise.resolve(123).then(::console.log);
@@ -325,10 +324,13 @@ Promise.resolve(123).then(::console.log);
  // <- support.class.builtin.js
 //^^^^^                                    support.class.builtin.js
 //     ^            ^     ^^       ^       keyword.operator.accessor.js
-//      ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^   meta.function-call.method.with-arguments.js
+//      ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^   meta.method-call.with-arguments.js
 //      ^^^^^^^      ^^^^                  entity.name.function.js
 //             ^   ^     ^             ^   meta.brace.round.js
 //              ^^^                        constant.numeric.js
 //                          ^^^^^^^        support.type.object.console.js
 //                                  ^^^    support.function.console.js
 //                                      ^  punctuation.terminator.statement.js
+
+
+// >> only:(source.js.jsx)

@@ -89,6 +89,7 @@ for (var i=1; i<table.rows.length; i++) {
 //^^ ^^ ^^^^^^^ ^^ ^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
 //                                       ^  punctuation.definition.tag.jsx
 //^^                                        entity.name.tag.open.jsx
+//   ^^ ^^^^^^^ ^^ ^^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
 //   ^^ ^^^^^^^ ^^                          comment.block.js
 //   ^^         ^^                          punctuation.definition.comment.js
 //                 ^^^^^^^                  entity.other.attribute-name.jsx
@@ -103,14 +104,22 @@ for (var i=1; i<table.rows.length; i++) {
 //                                       ^  JSXStartTagEnd
   <Emoji.stuck_out_tongue />
 //^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.tag.jsx
+//^^^^^^^^^^^^^^^^^^^^^^^ ^^  JSXAttrs
+//^^^^^^^^^^^^^^^^^^^^^^^ ^^  JSXNested
 //^                       ^^  punctuation.definition.tag.jsx
 // ^^^^^^^^^^^^^^^^^^^^^^     entity.name.tag.open.jsx
+// ^^^^^^^^^^^^^^^^^^^^^^     support.class.component.open.jsx
   <StyledForms.Input
 //^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//^^^^^^^^^^^^^^^^^^  JSXAttrs
+//^^^^^^^^^^^^^^^^^^  JSXNested
 //^                   punctuation.definition.tag.jsx
 // ^^^^^^^^^^^^^^^^^  entity.name.tag.open.jsx
+// ^^^^^^^^^^^^^^^^^  support.class.component.open.jsx
     $parent={this}
 //  ^^^^^^^^^^^^^^  meta.tag.jsx
+//  ^^^^^^^^^^^^^^  JSXAttrs
+//  ^^^^^^^^^^^^^^  JSXNested
 //  ^^^^^^^         entity.other.attribute-name.jsx
 //         ^        keyword.operator.assignment.jsx
 //          ^^^^^^  meta.embedded.expression.js
@@ -119,6 +128,8 @@ for (var i=1; i<table.rows.length; i++) {
 //               ^  punctuation.section.embedded.end.jsx
     has_emoji={true}
 //  ^^^^^^^^^^^^^^^^  meta.tag.jsx
+//  ^^^^^^^^^^^^^^^^  JSXAttrs
+//  ^^^^^^^^^^^^^^^^  JSXNested
 //  ^^^^^^^^^         entity.other.attribute-name.jsx
 //           ^        keyword.operator.assignment.jsx
 //            ^^^^^^  meta.embedded.expression.js
@@ -127,10 +138,14 @@ for (var i=1; i<table.rows.length; i++) {
 //                 ^  punctuation.section.embedded.end.jsx
     /* here's another comment */
 //  ^^ ^^^^^^ ^^^^^^^ ^^^^^^^ ^^  meta.tag.jsx
+//  ^^ ^^^^^^ ^^^^^^^ ^^^^^^^ ^^  JSXAttrs
+//  ^^ ^^^^^^ ^^^^^^^ ^^^^^^^ ^^  JSXNested
 //  ^^ ^^^^^^ ^^^^^^^ ^^^^^^^ ^^  comment.block.js
 //  ^^                        ^^  punctuation.definition.comment.js
     className='styled-input'>
 //  ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^  JSXNested
 //  ^^^^^^^^^                  entity.other.attribute-name.jsx
 //           ^                 keyword.operator.assignment.jsx
 //            ^^^^^^^^^^^^^^   string.quoted.single.js
@@ -140,14 +155,15 @@ for (var i=1; i<table.rows.length; i++) {
 //                          ^  JSXStartTagEnd
   </StyledForms.Input>
 //^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//^^^^^^^^^^^^^^^^^^^^  JSXAttrs
+//^^^^^^^^^^^^^^^^^^^^  JSXNested
 //^^                 ^  punctuation.definition.tag.jsx
 //^^                    JSXEndTagStart
 //  ^^^^^^^^^^^^^^^^^   entity.name.tag.close.jsx
+//  ^^^^^^^^^^^^^^^^^   support.class.component.close.jsx
 </div>
-// <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart
- // <- meta.tag.jsx punctuation.definition.tag.jsx JSXEndTagStart
+// <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXEndTagStart
+ // <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXEndTagStart
 //^^^^  meta.tag.jsx
 //   ^  punctuation.definition.tag.jsx
 //^^^   entity.name.tag.close.jsx
-
-// >> only:source.js.jsx

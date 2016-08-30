@@ -37,7 +37,7 @@ describe 'Grammar', ->
 
   # # es2015 check
   grammarTest path.join(__dirname, 'fixtures/grammar/everythingJs/es2015-module.js')
-  
+
   # todo,jsdoc,...
   grammarTest path.join(__dirname, 'fixtures/grammar/doc-keywords.js')
 

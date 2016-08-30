@@ -339,10 +339,7 @@ var $, _, \u0078, \u{2F9F9}, x$, x_, x\u0030, x\u{e01d5}, xa, x0, x0a,
 //^                                                                     storage.type.js
 //  ^                                                                   variable.other.dollar.js
 //   ^  ^       ^          ^   ^   ^        ^           ^   ^   ^    ^  punctuation.terminator.statement.js
-//     ^   ^^^^^   ^         ^^  ^^  ^ ^^^^^  ^ ^ ^^^^^   ^^  ^^  ^^^   variable.other.readwrite.js
-//                  ^     ^                      ^     ^                meta.brace.curly.js
-//                   ^                                                  constant.numeric.js
-//                    ^^^^                                              variable.other.constant.js
+//     ^  ^^^^^^  ^^^^^^^^^  ^^  ^^  ^^^^^^^  ^^^^^^^^^^  ^^  ^^  ^^^   variable.other.readwrite.js
   x0123456789, qwertyuiopasdfghjklzxcvbnm, QWERTYUIOPASDFGHJKLZXCVBNM;
 //^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^                               variable.other.readwrite.js
 //           ^                           ^                           ^  punctuation.terminator.statement.js
@@ -837,21 +834,18 @@ new x(); new new x()();
 //   ^^           ^^^^   meta.brace.round.js
 //     ^              ^  punctuation.terminator.statement.js
 new x[0](); new x.a(); new x[0].a(); new x.a[0]();
-// <- keyword.operator.js
- // <- keyword.operator.js
+// <- meta.function-call.without-arguments.js keyword.operator.js
+ // <- meta.function-call.without-arguments.js keyword.operator.js
+//^ ^^^^^^                                          meta.function-call.without-arguments.js
 //^         ^^^        ^^^           ^^^            keyword.operator.js
 //  ^           ^          ^             ^          variable.other.object.js
-//   ^^^^^                                  ^^^^^   meta.function-call.without-arguments.js
 //   ^ ^                    ^ ^             ^ ^     meta.brace.square.js
 //    ^                      ^               ^      constant.numeric.js
-//      ^^                                     ^^   meta.brace.round.js
+//      ^^         ^^            ^^            ^^   meta.brace.round.js
 //        ^          ^             ^             ^  punctuation.terminator.statement.js
 //               ^             ^          ^         keyword.operator.accessor.js
-//                ^^^           ^^^                 meta.function-call.method.without-arguments.js
-//                ^             ^                   entity.name.function.js
-//                 ^^            ^^                 meta.group.braces.round.function.arguments.js
-//                                         ^        meta.property.object.js
-//                                         ^        variable.other.property.js
+//                ^^^           ^^^        ^^^^^^   meta.method-call.without-arguments.js
+//                ^             ^          ^        entity.name.function.js
 new x; new new x; new new x();
 // <- keyword.operator.js
  // <- keyword.operator.js
@@ -890,16 +884,13 @@ x.a().a(); x[0]()[0](); x().a[0]();
  // <- keyword.operator.accessor.js
 //         ^                         variable.other.object.js
 //   ^                     ^         keyword.operator.accessor.js
-//^^^ ^^^                            meta.function-call.method.without-arguments.js
-//^   ^                 ^            entity.name.function.js
-// ^^  ^^                            meta.group.braces.round.function.arguments.js
+//^^^ ^^^                   ^^^^^^   meta.method-call.without-arguments.js
+//^   ^                 ^   ^        entity.name.function.js
+// ^^  ^^      ^^   ^^   ^^     ^^   meta.brace.round.js
 //       ^            ^           ^  punctuation.terminator.statement.js
-//          ^^^^^^^^^^  ^^^  ^^^^^   meta.function-call.without-arguments.js
+//         ^^^^^^^^^^^  ^^^          meta.function-call.without-arguments.js
 //          ^ ^  ^ ^         ^ ^     meta.brace.square.js
 //           ^    ^           ^      constant.numeric.js
-//             ^^   ^^   ^^     ^^   meta.brace.round.js
-//                          ^        meta.property.object.js
-//                          ^        variable.other.property.js
 x(...[0,1,], ...[], ...function* f(){ return yield 2; });
 // <- meta.function-call.with-arguments.js entity.name.function.js
  // <- meta.function-call.with-arguments.js meta.brace.round.js
@@ -1875,9 +1866,9 @@ class B extends new A {
 //  ^^^^^^^^^^  meta.class.body.js
 //  ^^^^^       variable.language.super.js
 //       ^      keyword.operator.accessor.js
-//        ^^^   meta.function-call.method.without-arguments.js
+//        ^^^   meta.method-call.without-arguments.js
 //        ^     entity.name.function.js
-//         ^^   meta.group.braces.round.function.arguments.js
+//         ^^   meta.brace.round.js
 //           ^  punctuation.terminator.statement.js
     super.m`template`;
 //  ^^^^^^^^^^^^^^^^^^  meta.class.body.js
@@ -1897,7 +1888,7 @@ class B extends new A {
 //     ^^                 storage.type.function.arrow.js
 //        ^^^^^           variable.language.super.js
 //             ^          keyword.operator.accessor.js
-//              ^^^^^^^   meta.function-call.method.with-arguments.js
+//              ^^^^^^^   meta.method-call.with-arguments.js
 //              ^         entity.name.function.js
 //               ^    ^   meta.brace.round.js
 //                ^^^^    variable.language.this.js
@@ -1912,8 +1903,8 @@ class B extends new A {
 
   static a(){} static 'b'(){} static 0(){} static [0](){}
 //^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^  meta.class.body.js
+//^^^^^^ ^^^   ^^^^^^ ^^^^^                ^^^^^^ ^^^^^    meta.function.method.js
 //^^^^^^       ^^^^^^         ^^^^^^       ^^^^^^          storage.modifier.js
-//       ^^^          ^^^^^                       ^^^^^    meta.function.method.js
 //       ^            ^^^                                  entity.name.function.method.js
 //        ^              ^                           ^     punctuation.definition.parameters.begin.js
 //         ^              ^                           ^    punctuation.definition.parameters.end.js
@@ -1923,8 +1914,8 @@ class B extends new A {
 //                                                ^ ^      meta.brace.square.js
   static *c(){ yield; } static *"d"() { yield; } static *1(){ yield; } static *[1](){ yield; }
 //^^^^^^ ^^^^^ ^^^^^^ ^ ^^^^^^ ^^^^^^ ^ ^^^^^^ ^ ^^^^^^ ^^^^^ ^^^^^^ ^ ^^^^^^ ^^^^^^^ ^^^^^^ ^  meta.class.body.js
+//^^^^^^ ^^^^           ^^^^^^ ^^^^^^                                  ^^^^^^ ^^^^^^            meta.function.method.js
 //^^^^^^                ^^^^^^                   ^^^^^^                ^^^^^^                   storage.modifier.js
-//       ^^^^                  ^^^^^^                                         ^^^^^^            meta.function.method.js
 //       ^                     ^                                              ^                 keyword.generator.asterisk.js
 //        ^                     ^^^                                                             entity.name.function.method.js
 //         ^                       ^                                              ^             punctuation.definition.parameters.begin.js
@@ -1938,8 +1929,8 @@ class B extends new A {
 //                                                                             ^ ^              meta.brace.square.js
   static var(){} static *in(){}
 //^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^^^  meta.class.body.js
+//^^^^^^ ^^^^^   ^^^^^^ ^^^^^    meta.function.method.js
 //^^^^^^         ^^^^^^          storage.modifier.js
-//       ^^^^^          ^^^^^    meta.function.method.js
 //       ^^^             ^^      entity.name.function.method.js
 //          ^              ^     punctuation.definition.parameters.begin.js
 //           ^              ^    punctuation.definition.parameters.end.js
@@ -1948,8 +1939,8 @@ class B extends new A {
 
   static get e(){} static get 'f'(){} static get 2(){} static get [2](){}
 //^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^^^ ^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^   ^^^^^^ ^^^ ^^^^^                    ^^^^^^ ^^^ ^^^^^    meta.accessor.js
 //^^^^^^           ^^^^^^             ^^^^^^           ^^^^^^              storage.modifier.js
-//       ^^^ ^^^          ^^^ ^^^^^                           ^^^ ^^^^^    meta.accessor.js
 //       ^^^              ^^^                                 ^^^          storage.type.accessor.js
 //           ^                                                             entity.name.accessor.js
 //            ^                  ^                                   ^     punctuation.definition.parameters.begin.js
@@ -1965,8 +1956,8 @@ class B extends new A {
 //                                                                  ^      meta.brace.square.end.flowtype
   static set g(a){} static set "h"(a){} static set 3(a){} static set [3](a){}
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^^ ^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^   ^^^^^^ ^^^ ^^^^^^                     ^^^^^^ ^^^ ^^^^^^    meta.accessor.js
 //^^^^^^            ^^^^^^              ^^^^^^            ^^^^^^               storage.modifier.js
-//       ^^^ ^^^^          ^^^ ^^^^^^                            ^^^ ^^^^^^    meta.accessor.js
 //       ^^^               ^^^                                   ^^^           storage.type.accessor.js
 //           ^                                                                 entity.name.accessor.js
 //            ^                   ^                                     ^      punctuation.definition.parameters.begin.js
@@ -1982,8 +1973,8 @@ class B extends new A {
 //                                                                     ^       meta.brace.square.end.flowtype
   static get if(){} static set if(a){}
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^   ^^^^^^ ^^^ ^^^^^    meta.accessor.js
 //^^^^^^            ^^^^^^              storage.modifier.js
-//       ^^^ ^^^^          ^^^ ^^^^^    meta.accessor.js
 //       ^^^               ^^^          storage.type.accessor.js
 //           ^^                ^^       entity.name.accessor.js
 //             ^                 ^      punctuation.definition.parameters.begin.js

@@ -24,7 +24,7 @@ export default React.createClass({
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^ ^^^^^^^                      keyword.control.module.js
-//             ^^^^^^^^^^^^^^^^^^^  meta.function-call.static.with-arguments.js
+//             ^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //             ^^^^^                variable.other.class.js
 //                  ^               keyword.operator.accessor.js
 //                   ^^^^^^^^^^^    entity.name.function.js
@@ -32,6 +32,7 @@ export default React.createClass({
 //                               ^  meta.brace.curly.js
 
   mixins: [InputsMixin],
+//^^^^^^^ ^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //^^^^^^^                 constant.other.object.key.js
 //^^^^^^                  string.unquoted.js
 //      ^                 punctuation.separator.key-value.js
@@ -40,13 +41,14 @@ export default React.createClass({
 //                     ^  meta.delimiter.comma.js
 
   submit() {
+//^^^^^^^^ ^  meta.method-call.with-arguments.js
 //^^^^^^^^    meta.function.method.js
 //^^^^^^      entity.name.function.method.js
 //      ^     punctuation.definition.parameters.begin.js
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
     var {email, question} = this.state;
-//  ^^^ ^^^^^^^ ^^^^^^^^^ ^ ^^^^^^^^^^^  meta.function-call.static.with-arguments.js
+//  ^^^ ^^^^^^^ ^^^^^^^^^ ^ ^^^^^^^^^^^  meta.method-call.with-arguments.js
 //  ^^^                                  storage.type.js
 //      ^               ^                meta.brace.curly.js
 //       ^^^^^  ^^^^^^^^                 variable.other.readwrite.js
@@ -58,10 +60,11 @@ export default React.createClass({
 //                               ^^^^^   variable.other.property.js
 //                                    ^  punctuation.terminator.statement.js
     request
+//  ^^^^^^^  meta.method-call.with-arguments.js
 //  ^^^^^^^  variable.other.readwrite.js
       .post(`${API_BASE}/askform`)
+//    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //    ^                             keyword.operator.accessor.js
-//     ^^^^                         meta.function-call.method.with-arguments.js
 //     ^^^^                         entity.name.function.js
 //         ^                     ^  meta.brace.round.js
 //          ^^^^^^^^^^^^^^^^^^^^^   string.quasi.js
@@ -73,16 +76,16 @@ export default React.createClass({
 //                     ^            punctuation.quasi.element.end.js
 //                              ^   punctuation.definition.quasi.end.js
       .send({email, question})
+//    ^^^^^^^^^^^^^ ^^^^^^^^^^  meta.method-call.with-arguments.js
 //    ^                         keyword.operator.accessor.js
-//     ^^^^                     meta.function-call.method.with-arguments.js
 //     ^^^^                     entity.name.function.js
 //         ^                 ^  meta.brace.round.js
 //          ^               ^   meta.brace.curly.js
 //           ^^^^^  ^^^^^^^^    variable.other.readwrite.js
 //                ^             meta.delimiter.comma.js
       .end((err, res) =>
+//    ^^^^^^^^^^ ^^^^ ^^  meta.method-call.with-arguments.js
 //    ^                   keyword.operator.accessor.js
-//     ^^^                meta.function-call.method.with-arguments.js
 //     ^^^                entity.name.function.js
 //        ^               meta.brace.round.js
 //         ^^^^^ ^^^^ ^^  meta.function.arrow.js
@@ -92,9 +95,9 @@ export default React.createClass({
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  storage.type.function.arrow.js
         this.setState({isValid: !err}));
+//      ^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^  meta.method-call.with-arguments.js
 //      ^^^^                              variable.language.this.js
 //          ^                             keyword.operator.accessor.js
-//           ^^^^^^^^                     meta.function-call.method.with-arguments.js
 //           ^^^^^^^^                     entity.name.function.js
 //                   ^               ^^   meta.brace.round.js
 //                    ^             ^     meta.brace.curly.js
@@ -105,11 +108,12 @@ export default React.createClass({
 //                               ^^^      variable.other.readwrite.js
 //                                     ^  punctuation.terminator.statement.js
   },
+//^^  meta.method-call.with-arguments.js
 //^   meta.brace.curly.js
 // ^  meta.delimiter.comma.js
 
   'key//1': function() {},
-//^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.function-call.static.with-arguments.js
+//^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.method-call.with-arguments.js
 //^^^^^^^^^ ^^^^^^^^^^      meta.function.json.js
 //^^^^^^^^                  string.quoted.js
 //^                         punctuation.definition.string.begin.js
@@ -122,7 +126,7 @@ export default React.createClass({
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   'key/***/1': function() {},
-//^^^^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.function-call.static.with-arguments.js
+//^^^^^^^^^^^^ ^^^^^^^^^^ ^^^  meta.method-call.with-arguments.js
 //^^^^^^^^^^^^ ^^^^^^^^^^      meta.function.json.js
 //^^^^^^^^^^^                  string.quoted.js
 //^                            punctuation.definition.string.begin.js
@@ -136,13 +140,14 @@ export default React.createClass({
 //                          ^  meta.delimiter.comma.js
 
   render() {
+//^^^^^^^^ ^  meta.method-call.with-arguments.js
 //^^^^^^^^    meta.function.method.js
 //^^^^^^      entity.name.function.method.js
 //      ^     punctuation.definition.parameters.begin.js
 //       ^    punctuation.definition.parameters.end.js
 //         ^  meta.brace.curly.js
     var {email} = this.state;
-//  ^^^ ^^^^^^^ ^ ^^^^^^^^^^^  meta.function-call.static.with-arguments.js
+//  ^^^ ^^^^^^^ ^ ^^^^^^^^^^^  meta.method-call.with-arguments.js
 //  ^^^                        storage.type.js
 //      ^     ^                meta.brace.curly.js
 //       ^^^^^                 variable.other.readwrite.js
@@ -153,6 +158,7 @@ export default React.createClass({
 //                     ^^^^^   variable.other.property.js
 //                          ^  punctuation.terminator.statement.js
     var list = this.props.secondary.map(pic => <img src={pic} />)
+//  ^^^ ^^^^ ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^ ^^^^ ^^^^^^^^^ ^^^  meta.method-call.with-arguments.js
 //  ^^^                                                            storage.type.js
 //      ^^^^                            ^^^              ^^^       variable.other.readwrite.js
 //           ^                                                     keyword.operator.assignment.js
@@ -160,7 +166,6 @@ export default React.createClass({
 //                 ^     ^         ^                               keyword.operator.accessor.js
 //                  ^^^^^ ^^^^^^^^^                                meta.property.object.js
 //                  ^^^^^ ^^^^^^^^^                                variable.other.property.js
-//                                  ^^^                            meta.function-call.method.with-arguments.js
 //                                  ^^^                            entity.name.function.js
 //                                     ^                        ^  meta.brace.round.js
 //                                      ^^^ ^^                     meta.function.arrow.js
@@ -168,24 +173,29 @@ export default React.createClass({
 //                                             ^^^^ ^^^^^^^^^ ^^   meta.tag.jsx
 //                                             ^              ^^   punctuation.definition.tag.jsx
 //                                              ^^^                entity.name.tag.open.jsx
+//                                                  ^^^^^^^^^      JSXAttrs
 //                                                  ^^^            entity.other.attribute-name.jsx
 //                                                     ^           keyword.operator.assignment.jsx
 //                                                      ^^^^^      meta.embedded.expression.js
 //                                                      ^          punctuation.section.embedded.begin.jsx
 //                                                          ^      punctuation.section.embedded.end.jsx
     var multilineAttr = <a desc="ab
+//  ^^^ ^^^^^^^^^^^^^ ^ ^^ ^^^^^^^^  meta.method-call.with-arguments.js
 //  ^^^                              storage.type.js
 //      ^^^^^^^^^^^^^                variable.other.readwrite.js
 //                    ^              keyword.operator.assignment.js
 //                      ^^ ^^^^^^^^  meta.tag.jsx
 //                      ^            punctuation.definition.tag.jsx
 //                       ^           entity.name.tag.open.jsx
+//                         ^^^^^^^^  JSXAttrs
 //                         ^^^^      entity.other.attribute-name.jsx
 //                             ^     keyword.operator.assignment.jsx
 //                              ^^^  string.quoted.double.js
 //                              ^    punctuation.definition.string.begin.jsx
       cdef"></a>
+//    ^^^^^^^^^^  meta.method-call.with-arguments.js
 //    ^^^^^^^^^^  meta.tag.jsx
+//    ^^^^^^^^    JSXAttrs
 //    ^^^^^       string.quoted.double.js
 //        ^       punctuation.definition.string.end.jsx
 //         ^^^ ^  punctuation.definition.tag.jsx
@@ -193,12 +203,15 @@ export default React.createClass({
 //          ^^    JSXEndTagStart
 //            ^   entity.name.tag.close.jsx
     return (
+//  ^^^^^^ ^  meta.method-call.with-arguments.js
 //  ^^^^^^    keyword.control.flow.js
 //         ^  meta.brace.round.js
       <div {...this.props} overlay={<div>test</div>}>
+//    ^^^^ ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //    ^^^^ ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
 //    ^                             ^   ^    ^^   ^ ^  punctuation.definition.tag.jsx
 //     ^^^                           ^^^               entity.name.tag.open.jsx
+//         ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
 //         ^^^^^^^^^^^^^^^         ^^^^^^^^^^^^^^^^^   meta.embedded.expression.js
 //         ^                       ^                   punctuation.section.embedded.begin.jsx
 //          ^^^                                        keyword.operator.spread.jsx
@@ -210,23 +223,35 @@ export default React.createClass({
 //                         ^^^^^^^                     entity.other.attribute-name.jsx
 //                                ^                    keyword.operator.assignment.jsx
 //                                      ^           ^  JSXStartTagEnd
+//                                       ^^^^          JSXNested
 //                                           ^^        JSXEndTagStart
 //                                             ^^^     entity.name.tag.close.jsx
         <ns:tag></ns:tag>
+//      ^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //      ^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//      ^^^^^^^^^^^^^^^^^  JSXAttrs
+//      ^^^^^^^^^^^^^^^^^  JSXNested
 //      ^      ^^^      ^  punctuation.definition.tag.jsx
 //       ^^^^^^            entity.name.tag.open.jsx
+//       ^^^^^^            support.class.component.open.jsx
 //             ^           JSXStartTagEnd
 //              ^^         JSXEndTagStart
 //                ^^^^^^   entity.name.tag.close.jsx
+//                ^^^^^^   support.class.component.close.jsx
         {list}
+//      ^^^^^^  meta.method-call.with-arguments.js
 //      ^^^^^^  meta.tag.jsx
+//      ^^^^^^  JSXAttrs
+//      ^^^^^^  JSXNested
 //      ^^^^^^  meta.embedded.expression.js
 //      ^       punctuation.section.embedded.begin.jsx
 //       ^^^^   variable.other.readwrite.js
 //           ^  punctuation.section.embedded.end.jsx
         {[<span>in an array</span>]}
+//      ^^^^^^^^^^ ^^ ^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //      ^^^^^^^^^^ ^^ ^^^^^^^^^^^^^^  meta.tag.jsx
+//      ^^^^^^^^^^ ^^ ^^^^^^^^^^^^^^  JSXAttrs
+//      ^^^^^^^^^^ ^^ ^^^^^^^^^^^^^^  JSXNested
 //      ^^^^^^^^^^ ^^ ^^^^^^^^^^^^^^  meta.embedded.expression.js
 //      ^                             punctuation.section.embedded.begin.jsx
 //       ^                        ^   meta.brace.square.js
@@ -237,13 +262,19 @@ export default React.createClass({
 //                           ^^^^     entity.name.tag.close.jsx
 //                                 ^  punctuation.section.embedded.end.jsx
         <input /*cmt*/
+//      ^^^^^^ ^^^^^^^  meta.method-call.with-arguments.js
 //      ^^^^^^ ^^^^^^^  meta.tag.jsx
+//      ^^^^^^ ^^^^^^^  JSXAttrs
+//      ^^^^^^ ^^^^^^^  JSXNested
 //      ^               punctuation.definition.tag.jsx
 //       ^^^^^          entity.name.tag.open.jsx
 //             ^^^^^^^  comment.block.js
 //             ^^   ^^  punctuation.definition.comment.js
           /*cmt*/value/*cmt*/=/*cmt*/{email}/*cmt*/
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  JSXNested
 //        ^^^^^^^     ^^^^^^^ ^^^^^^^       ^^^^^^^  comment.block.js
 //        ^^   ^^     ^^   ^^ ^^   ^^       ^^   ^^  punctuation.definition.comment.js
 //                           ^                       keyword.operator.assignment.jsx
@@ -252,7 +283,10 @@ export default React.createClass({
 //                                    ^^^^^          variable.other.readwrite.js
 //                                         ^         punctuation.section.embedded.end.jsx
           onChange={/*cmt*/this.onChange/*cmt*/}
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  JSXNested
 //        ^^^^^^^^                                entity.other.attribute-name.jsx
 //                ^                               keyword.operator.assignment.jsx
 //                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.embedded.expression.js
@@ -265,7 +299,10 @@ export default React.createClass({
 //                              ^^^^^^^^          variable.other.property.js
 //                                             ^  punctuation.section.embedded.end.jsx
           onClick={this.onClick}
+//        ^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //        ^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//        ^^^^^^^^^^^^^^^^^^^^^^  JSXAttrs
+//        ^^^^^^^^^^^^^^^^^^^^^^  JSXNested
 //        ^^^^^^^                 entity.other.attribute-name.jsx
 //               ^                keyword.operator.assignment.jsx
 //                ^^^^^^^^^^^^^^  meta.embedded.expression.js
@@ -276,24 +313,31 @@ export default React.createClass({
 //                      ^^^^^^^   variable.other.property.js
 //                             ^  punctuation.section.embedded.end.jsx
           required/*cmt*/ />
+//        ^^^^^^^^^^^^^^^ ^^  meta.method-call.with-arguments.js
 //        ^^^^^^^^^^^^^^^ ^^  meta.tag.jsx
+//        ^^^^^^^^^^^^^^^ ^^  JSXAttrs
+//        ^^^^^^^^^^^^^^^ ^^  JSXNested
 //        ^^^^^^^^            entity.other.attribute-name.jsx
 //                ^^^^^^^     comment.block.js
 //                ^^   ^^     punctuation.definition.comment.js
 //                        ^^  punctuation.definition.tag.jsx
       </div>
+//    ^^^^^^  meta.method-call.with-arguments.js
 //    ^^^^^^  meta.tag.jsx
+//    ^^      JSXAttrs
 //    ^^   ^  punctuation.definition.tag.jsx
 //    ^^      JSXEndTagStart
 //      ^^^   entity.name.tag.close.jsx
     );
+//  ^^  meta.method-call.with-arguments.js
 //  ^   meta.brace.round.js
 //   ^  punctuation.terminator.statement.js
   }
+//^  meta.method-call.with-arguments.js
 //^  meta.brace.curly.js
 });
-// <- meta.brace.curly.js
- // <- meta.brace.round.js
+// <- meta.method-call.with-arguments.js meta.brace.curly.js
+ // <- meta.method-call.with-arguments.js meta.brace.round.js
 //^  punctuation.terminator.statement.js
 
 class Sound extends Model {
@@ -349,11 +393,11 @@ class Sound extends Model {
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^     meta.function.method.js
 //^                        ^                   meta.brace.square.js
-// ^^^^^^^^^^^^^^^^^^^^^^^^                    meta.function-call.static.without-arguments.js
+// ^^^^^^^^^^^^^^^^^^^^^^^^                    meta.method-call.without-arguments.js
 // ^^^^^^^                                     variable.other.class.js
 //        ^                                    keyword.operator.accessor.js
 //         ^^^^^^^^^^^^^^                      entity.name.function.js
-//                       ^^                    meta.group.braces.round.function.arguments.js
+//                       ^^                    meta.brace.round.js
 //                          ^                  punctuation.definition.parameters.begin.js
 //                           ^^^^              variable.other.readwrite.js
 //                               ^             punctuation.type.flowtype
@@ -380,8 +424,8 @@ class Sound extends Model {
 //              ^^  meta.brace.curly.js
   static async fetch(id: number, retries: ?number): Promise {}
 //^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^     meta.function.method.js
 //^^^^^^                                                        storage.modifier.js
-//       ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^     meta.function.method.js
 //       ^^^^^                                                  storage.type.js
 //             ^^^^^                                            entity.name.function.method.js
 //                  ^                                           punctuation.definition.parameters.begin.js
@@ -395,5 +439,3 @@ class Sound extends Model {
 //                                                          ^^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js
-
-// >> only:source.js.jsx

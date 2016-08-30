@@ -600,3 +600,5 @@ JSDuck keywords ****************************************************************
 //^^^^  comment.block.documentation.js
 //^^^^  storage.type.class.jsduck
 */
+
+// >> only:(source.js.jsx)
