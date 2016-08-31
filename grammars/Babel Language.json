@@ -307,7 +307,7 @@
             "1": { "name": "keyword.control.switch.js" }
           },
           "endCaptures": {
-            "1": { "name": "meta.brace.curly.js" }
+            "1": { "name": "meta.brace.curly.switchEnd.js" }
           },
           "patterns": [
             { "include": "#round-brackets" },
@@ -315,7 +315,7 @@
               "begin": "\\s*+({)",
               "end": "\\s*(?=})",
               "beginCaptures": {
-                "1": { "name": "meta.brace.curly.js" }
+                "1": { "name": "meta.brace.curly.switchStart.js" }
               },
               "patterns": [
                 {
@@ -1878,7 +1878,7 @@
             { "include": "#jsx-string-double-quoted" },
             { "include": "#jsx-string-single-quoted" },
             { "include": "#jsx-spread-attribute" },
-            { "include": "#expression" }
+            { "include": "#core" }
           ]
         }
       ]

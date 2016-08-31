@@ -110,13 +110,20 @@ function a(state ) {
 //  ^^                                      keyword.control.conditional.js
 //     ^ ^         ^   ^            ^ ^     meta.brace.round.js
 //      ^           ^                ^      variable.other.readwrite.js
-//         ^^            ^^             ^^  meta.brace.curly.js
+//         ^^            ^^                 meta.brace.curly.js
 //           ^       ^^    ^                punctuation.terminator.statement.js
 //             ^^^ ^^^^^                    meta.for.js
 //             ^^^                          keyword.control.loop.js
 //                           ^^^^^^ ^^^ ^^  meta.switch.js
 //                           ^^^^^^         keyword.control.switch.js
+//                                      ^   meta.brace.curly.switchStart.js
+//                                       ^  meta.brace.curly.switchEnd.js
     switch (type) {
+//  ^^^^^^ ^^^^^^ ^  meta.switch.js
+//  ^^^^^^           keyword.control.switch.js
+//         ^    ^    meta.brace.round.js
+//          ^^^^     variable.other.readwrite.js
+//                ^  meta.brace.curly.switchStart.js
          case a: {
            for ( let item in payload )
 //         ^^^ ^ ^^^ ^^^^ ^^ ^^^^^^^ ^  meta.switch.js

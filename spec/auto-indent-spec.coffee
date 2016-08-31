@@ -172,11 +172,27 @@ describe 'auto-indent', ->
           p2
           />
           </div>
+          { // tests inline JSX
+          if (a) {
+          return (
+          <div></div>
+          )
+          }
+          else (b) {
+          switch (a) {
+          case 1:
+          return (
+          <div></div>
+          )
+          default:
+          }
+          }
+          }
           </div>
           </div>
           """
         editor.insertText(sourceCode)
-        sourceCodeRange = new Range(new Point(0,0), new Point(19,6))
+        sourceCodeRange = new Range(new Point(0,0), new Point(35,6))
 
       it 'should indent JSX according to eslint rules', ->
         indentedCode = """
@@ -198,6 +214,22 @@ describe 'auto-indent', ->
                           p2
                       />
                   </div>
+                  { // tests inline JSX
+                      if (a) {
+                          return (
+                              <div></div>
+                          )
+                      }
+                      else (b) {
+                          switch (a) {
+                              case 1:
+                                  return (
+                                      <div></div>
+                                  )
+                              default:
+                          }
+                      }
+                  }
               </div>
           </div>
           """
@@ -232,6 +264,22 @@ describe 'auto-indent', ->
                           p2
                           />
                   </div>
+                  { // tests inline JSX
+                      if (a) {
+                          return (
+                              <div></div>
+                          )
+                      }
+                      else (b) {
+                          switch (a) {
+                              case 1:
+                                  return (
+                                      <div></div>
+                                  )
+                              default:
+                          }
+                      }
+                  }
               </div>
           </div>
           """

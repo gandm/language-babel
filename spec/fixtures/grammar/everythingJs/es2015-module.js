@@ -1173,17 +1173,17 @@ for(;;)break; x:for(;;)break x;
 //            ^                  string.unquoted.js
 //             ^                 punctuation.separator.key-value.js
 //                           ^   variable.other.readwrite.js
-switch(0){case 0:break;}
+switch(0){case 0:break;default}
 // <- meta.switch.js keyword.control.switch.js
  // <- meta.switch.js keyword.control.switch.js
-//^^^^^^^^^^^^ ^^^^^^^^^  meta.switch.js
-//^^^^    ^^^^            keyword.control.switch.js
-//    ^ ^                 meta.brace.round.js
-//     ^       ^          constant.numeric.js
-//       ^             ^  meta.brace.curly.js
-//              ^         keyword.operator.js
-//               ^^^^^    keyword.control.loop.js
-//                    ^   punctuation.terminator.statement.js
+//^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.switch.js
+//^^^^    ^^^^         ^^^^^^^   keyword.control.switch.js
+//    ^ ^                        meta.brace.round.js
+//     ^       ^                 constant.numeric.js
+//       ^                       meta.brace.curly.switchStart.js
+//              ^                keyword.operator.js
+//               ^^^^^           keyword.control.loop.js
+//                    ^          punctuation.terminator.statement.js
 
 function f0(){ return; }
 // <- meta.function.js storage.type.function.js
@@ -1208,53 +1208,62 @@ function f1(){ return 0; }
 //             ^^^^^^       keyword.control.flow.js
 //                    ^     constant.numeric.js
 //                     ^    punctuation.terminator.statement.js
-
 switch(0){} switch(0){case 0:} switch(0){case 0:case 0:}
-// <- meta.switch.js keyword.control.switch.js
- // <- meta.switch.js keyword.control.switch.js
+// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
 //^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^ ^^^^^^^^^^^^^^ ^^^^^^ ^^^  meta.switch.js
-//^^^^      ^^^^^^    ^^^^     ^^^^^^    ^^^^   ^^^^      keyword.control.switch.js
+//^^^^^^^   ^^^^^^^^^          ^^^^^^^^^                  meta.function-call.with-arguments.js
+//^^^^      ^^^^^^             ^^^^^^                     entity.name.function.js
 //    ^ ^         ^ ^                ^ ^                  meta.brace.round.js
 //     ^           ^       ^          ^       ^      ^    constant.numeric.js
 //       ^^          ^       ^          ^              ^  meta.brace.curly.js
-//                          ^                  ^      ^   keyword.operator.js
+//                    ^^^^               ^^^^   ^^^^      variable.other.readwrite.js
 switch(0){default:} switch(0){case 0:default:case 0:}
-// <- meta.switch.js keyword.control.switch.js
- // <- meta.switch.js keyword.control.switch.js
+// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
 //^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^  meta.switch.js
-//^^^^    ^^^^^^^   ^^^^^^    ^^^^   ^^^^^^^ ^^^^      keyword.control.switch.js
+//^^^^^^^           ^^^^^^^^^                          meta.function-call.with-arguments.js
+//^^^^              ^^^^^^                             entity.name.function.js
 //    ^ ^                 ^ ^                          meta.brace.round.js
 //     ^                   ^       ^              ^    constant.numeric.js
 //       ^        ^          ^                      ^  meta.brace.curly.js
-//               ^                  ^       ^      ^   keyword.operator.js
+//        ^^^^^^^^                   ^^^^^^^^          constant.other.object.key.js
+//        ^^^^^^^                    ^^^^^^^           string.unquoted.js
+//               ^                          ^          punctuation.separator.key-value.js
+//                            ^^^^           ^^^^      variable.other.readwrite.js
 switch(0){case 0:;} switch(0){case 0:;;}
-// <- meta.switch.js keyword.control.switch.js
- // <- meta.switch.js keyword.control.switch.js
+// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
 //^^^^^^^^^^^^ ^^^^ ^^^^^^^^^^^^^^ ^^^^^  meta.switch.js
-//^^^^    ^^^^      ^^^^^^    ^^^^        keyword.control.switch.js
+//^^^^^^^           ^^^^^^^^^             meta.function-call.with-arguments.js
+//^^^^              ^^^^^^                entity.name.function.js
 //    ^ ^                 ^ ^             meta.brace.round.js
 //     ^       ^           ^       ^      constant.numeric.js
 //       ^        ^          ^         ^  meta.brace.curly.js
-//              ^                   ^     keyword.operator.js
+//        ^^^^                ^^^^        variable.other.readwrite.js
 //               ^                   ^^   punctuation.terminator.statement.js
 switch(0){default:;} switch(0){default:;;}
-// <- meta.switch.js keyword.control.switch.js
- // <- meta.switch.js keyword.control.switch.js
+// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
 //^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^  meta.switch.js
-//^^^^    ^^^^^^^    ^^^^^^    ^^^^^^^      keyword.control.switch.js
+//^^^^^^^            ^^^^^^^^^              meta.function-call.with-arguments.js
+//^^^^               ^^^^^^                 entity.name.function.js
 //    ^ ^                  ^ ^              meta.brace.round.js
 //     ^                    ^               constant.numeric.js
 //       ^         ^          ^          ^  meta.brace.curly.js
-//               ^                    ^     keyword.operator.js
+//        ^^^^^^^^             ^^^^^^^^     constant.other.object.key.js
+//        ^^^^^^^              ^^^^^^^      string.unquoted.js
+//               ^                    ^     punctuation.separator.key-value.js
 //                ^                    ^^   punctuation.terminator.statement.js
 
 x:; x:y:;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js punctuation.separator.key-value.js
+// <- meta.switch.js variable.other.readwrite.js
+ // <- meta.switch.js keyword.operator.js
+//^ ^^^^^  meta.switch.js
+//^     ^  punctuation.terminator.statement.js
 //  ^^^^   constant.other.object.key.js
 //  ^ ^    string.unquoted.js
 //   ^ ^   punctuation.separator.key-value.js
-//^     ^  punctuation.terminator.statement.js
 
 try { throw 0; }catch(x){}
 // <- keyword.control.trycatch.js
