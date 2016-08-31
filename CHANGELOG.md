@@ -1,3 +1,7 @@
+### 2.36.0
+  - Add autoIndentJSX support to inline switch/case/default and for/while loops.
+  - Refactor more grammar to use the more robust JS identifier regex.
+
 ### 2.35.0
   - Atom's reflow command expects whitespace prefixing a // comment to have a scopeName! [Issue 234](https://github.com/gandm/language-babel/issues/234)
 
