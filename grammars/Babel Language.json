@@ -2233,7 +2233,6 @@
             {
               "begin": "\\s*+({)",
               "end": "\\s*(})",
-              "applyEndPatternLast": 1,
               "captures": {
                 "1": { "name": "meta.brace.curly.js" }
               },
