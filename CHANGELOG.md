@@ -1,3 +1,8 @@
+### 2.36.1
+  - Change flow predicate syntax to use %checks rather than checks.
+  - Fix class field property assignments causing following async keyword to be incorrectly highlighted  [Issue 238](https://github.com/gandm/language-babel/issues/238)
+  - Fix certain keywords being interpreted as a tagname for template literals.  [Issue 240](https://github.com/gandm/language-babel/issues/240)
+
 ### 2.36.0
   - Add autoIndentJSX support to inline switch/case/default and for/while loops.
   - Refactor more grammar to use the more robust JS identifier regex.
