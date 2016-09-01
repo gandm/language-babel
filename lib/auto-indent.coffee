@@ -510,7 +510,7 @@ class AutoIndent
             idxOfToken++
 
           # Ternary and conditional if/else operators
-          when TERNARY_IF , TERNARY_ELSE, JS_IF, JS_ELSE
+          when TERNARY_IF, JS_IF, JS_ELSE
             isFirstTagOfBlock = true
 
       # handle lines with no token on them
