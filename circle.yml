@@ -11,7 +11,7 @@ dependencies:
           apm install
           ;;
        1)
-          curl -L https://atom.io/download/deb -o atom-amd64.deb?channel=beta
+          curl -L https://atom.io/download/deb?channel=beta -o atom-amd64.deb
           sudo dpkg --install atom-amd64.deb || true
           sudo apt-get update
           sudo apt-get -f install
