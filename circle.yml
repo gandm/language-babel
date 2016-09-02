@@ -3,16 +3,16 @@ dependencies:
     - >
       case $CIRCLE_NODE_INDEX in
        0)
-          curl -L https://atom.io/download/deb -o atom-amd64.deb
-          sudo dpkg --install atom-amd64.deb || true
+          curl -L https://atom.io/download/deb -o atom-amd64-stable.deb
+          sudo dpkg --install atom-amd64-stable.deb || true
           sudo apt-get update
           sudo apt-get -f install
           apm clean
           apm install
           ;;
        1)
-          curl -L https://atom.io/download/deb?channel=beta -o atom-amd64.deb
-          sudo dpkg --install atom-amd64.deb || true
+          curl -L https://atom.io/download/deb?channel=beta -o atom-amd64-beta.deb
+          sudo dpkg --install atom-amd64-beta.deb || true
           sudo apt-get update
           sudo apt-get -f install
           apm clean
