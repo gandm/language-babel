@@ -726,9 +726,9 @@ class AutoIndent
           @indentRow({row: row,  blockIndent: parentTag.tagIndentation})
       else if closingBracketRule is PROPSALIGNED
         if @eslintIndentOptions.jsxIndentProps[0]
-          @indentRow({row: row,  blockIndent: parentTag.firstTagInLineIndentation,jsxIndentProps: 1})
+          @indentRow({row: row,  blockIndent: parentTag.firstCharIndentation,jsxIndentProps: 1})
         else
-          @indentRow({row: row,  blockIndent: parentTag.firstTagInLineIndentation})
+          @indentRow({row: row,  blockIndent: parentTag.firstCharIndentation})
 
   # indent a row by the addition of one or more indents.
   # returns false if no indent required as it is already correct
