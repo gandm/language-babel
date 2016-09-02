@@ -720,10 +720,13 @@ class AutoIndent
       else if closingBracketRule is LINEALIGNED
         @indentRow({row: row, blockIndent: parentTag.firstCharIndentation })
       else if closingBracketRule is AFTERPROPS
+        # this really isn't valid as this tag shouldn't be on a line by itself
+        # but I don't reformat lines just indent!
+        # indent to make it look OK although it will fail eslint
         if @eslintIndentOptions.jsxIndentProps[0]
-          @indentRow({row: row,  blockIndent: parentTag.tagIndentation, jsxIndentProps: 1 })
+          @indentRow({row: row,  blockIndent: parentTag.firstCharIndentation, jsxIndentProps: 1 })
         else
-          @indentRow({row: row,  blockIndent: parentTag.tagIndentation})
+          @indentRow({row: row,  blockIndent: parentTag.firstCharIndentation})
       else if closingBracketRule is PROPSALIGNED
         if @eslintIndentOptions.jsxIndentProps[0]
           @indentRow({row: row,  blockIndent: parentTag.firstCharIndentation,jsxIndentProps: 1})
