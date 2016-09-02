@@ -4,6 +4,7 @@ dependencies:
       case $CIRCLE_NODE_INDEX in
        0)
           curl -L https://atom.io/download/deb -o atom-amd64-stable.deb
+          sudo apt-get install libnotify4  gvfs-bin
           sudo dpkg --install atom-amd64-stable.deb || true
           sudo apt-get update
           sudo apt-get -f install
@@ -12,6 +13,7 @@ dependencies:
           ;;
        1)
           curl -L https://atom.io/download/deb?channel=beta -o atom-amd64-beta.deb
+          sudo apt-get install libnotify4  gvfs-bin          
           sudo dpkg --install atom-amd64-beta.deb || true
           sudo apt-get update
           sudo apt-get -f install
