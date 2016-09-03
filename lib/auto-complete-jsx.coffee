@@ -136,6 +136,8 @@ module.exports =
     row = range.start.row
     while row <= range.end.row
       line = editor.lineTextForBufferRow row
+      if row is range.end.row
+        line = line.substr 0, range.end.column
       while (( match = JSXREGEXP.exec(line)) isnt null )
         matchColumn = match.index
         matchPointStart = new Point(row, matchColumn)
