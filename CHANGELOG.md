@@ -1,6 +1,10 @@
+### 2.36.3
+  - Fix auto indent JSX when using hard tabs and certain eslint rules
+  - Fix top most closing tag suggestions displaying wrong option when  multiple open tags were on line.
+  
 ### 2.36.2
   - Change Indent JSX behaviour of ternary else. [Issue 241](https://github.com/gandm/language-babel/issues/241)
-  
+
 ### 2.36.1
   - Change flow predicate syntax to use %checks rather than checks.
   - Fix class field property assignments causing following async keyword to be incorrectly highlighted  [Issue 238](https://github.com/gandm/language-babel/issues/238)
