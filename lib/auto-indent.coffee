@@ -179,16 +179,19 @@ class AutoIndent
         firstCharIndentation = (@editor.indentationForBufferRow row)
         # convert the matched column position into tab indents
         if @editor.getSoftTabs()
-          tagIndentation = (matchColumn / @editor.getTabLength())
-        else tagIndentation =
-          do () ->
-            hardTabsFound = 0
+          tokenIndentation = (matchColumn / @editor.getTabLength())
+        else tokenIndentation =
+          do (@editor) ->
+            hardTabsFound = charsFound = 0
             for i in [0...matchColumn]
-              hardTabsFound += ((line.substr i, 1) is '\t')
-            hardTabsFound
+              if ((line.substr i, 1) is '\t')
+                hardTabsFound++
+              else
+                charsFound++
+            return hardTabsFound + ( charsFound / @editor.getTabLength() )
 
         if isFirstTokenOfLine
-          firstTagInLineIndentation =  tagIndentation
+          firstTagInLineIndentation =  tokenIndentation
 
         # big switch statement follows for each token. If the line is reformated
         # then we recalculate the new position.
@@ -216,7 +219,7 @@ class AutoIndent
                   parentTokenIdx? and
                   tokenStack[parentTokenIdx].type is BRACE_OPEN and
                   tokenStack[parentTokenIdx].row is ( row - 1)
-                    tagIndentation = firstCharIndentation = firstTagInLineIndentation =
+                    tokenIndentation = firstCharIndentation = firstTagInLineIndentation =
                       @eslintIndentOptions.jsxIndent[1] + @getIndentOfPreviousRow row
                     indentRecalc = @indentRow({row: row , blockIndent: firstCharIndentation })
               else if isFirstTagOfBlock and parentTokenIdx?
@@ -239,7 +242,7 @@ class AutoIndent
               name: match[2]
               row: row
               firstTagInLineIndentation: firstTagInLineIndentation
-              tagIndentation: tagIndentation
+              tokenIndentation: tokenIndentation
               firstCharIndentation: firstCharIndentation
               parentTokenIdx: parentTokenIdx
               termsThisTagsAttributesIdx: null  # ptr to > tag
@@ -363,7 +366,7 @@ class AutoIndent
               name: ''
               row: row
               firstTagInLineIndentation: firstTagInLineIndentation
-              tagIndentation: tagIndentation
+              tokenIndentation: tokenIndentation
               firstCharIndentation: firstCharIndentation
               parentTokenIdx: parentTokenIdx
               termsThisTagsAttributesIdx: null  # ptr to > tag
@@ -406,7 +409,7 @@ class AutoIndent
                   parentTokenIdx? and
                   tokenStack[parentTokenIdx].type is token and
                   tokenStack[parentTokenIdx].row is ( row - 1)
-                    tagIndentation = firstCharIndentation =
+                    tokenIndentation = firstCharIndentation =
                       @eslintIndentOptions.jsxIndent[1] + @getIndentOfPreviousRow row
                     indentRecalc = @indentRow({row: row, blockIndent: firstCharIndentation})
               else if parentTokenIdx?
@@ -426,7 +429,7 @@ class AutoIndent
               name: ''
               row: row
               firstTagInLineIndentation: firstTagInLineIndentation
-              tagIndentation: tagIndentation
+              tokenIndentation: tokenIndentation
               firstCharIndentation: firstCharIndentation
               parentTokenIdx: parentTokenIdx
               termsThisTagsAttributesIdx: null  # ptr to > tag
@@ -500,7 +503,7 @@ class AutoIndent
               name: ''
               row: row
               firstTagInLineIndentation: firstTagInLineIndentation
-              tagIndentation: tagIndentation
+              tokenIndentation: tokenIndentation
               firstCharIndentation: firstCharIndentation
               parentTokenIdx: parentTokenIdx
               termsThisTagsAttributesIdx: null  # ptr to > tag
@@ -716,7 +719,7 @@ class AutoIndent
   indentForClosingBracket: ( row, parentTag, closingBracketRule ) ->
     if @eslintIndentOptions.jsxClosingBracketLocation[0]
       if closingBracketRule is TAGALIGNED
-        @indentRow({row: row, blockIndent: parentTag.tagIndentation})
+        @indentRow({row: row, blockIndent: parentTag.tokenIndentation})
       else if closingBracketRule is LINEALIGNED
         @indentRow({row: row, blockIndent: parentTag.firstCharIndentation })
       else if closingBracketRule is AFTERPROPS
