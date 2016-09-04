@@ -7,7 +7,8 @@ import React from 'react';
  // <- keyword.control.module.js
 //^^^^       ^^^^           keyword.control.module.js
 //     ^^^^^                variable.other.readwrite.js
-//                ^     ^   punctuation.definition.string.begin.js
+//                ^         punctuation.definition.string.begin.js
+//                      ^   punctuation.definition.string.end.js
 //                 ^^^^^    string.quoted.module.js
 //                       ^  punctuation.terminator.statement.js
 import { InputsMixin } from './Forms';
@@ -16,7 +17,8 @@ import { InputsMixin } from './Forms';
 //^^^^                 ^^^^             keyword.control.module.js
 //     ^             ^                  meta.brace.curly.js
 //       ^^^^^^^^^^^                    variable.other.readwrite.js
-//                          ^       ^   punctuation.definition.string.begin.js
+//                          ^           punctuation.definition.string.begin.js
+//                                  ^   punctuation.definition.string.end.js
 //                           ^^^^^^^    string.quoted.module.js
 //                                   ^  punctuation.terminator.statement.js
 
