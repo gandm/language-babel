@@ -13,7 +13,7 @@ Relay.QL`
 //      ^  string.quoted.template.js
 //      ^  punctuation.definition.quasi.begin.js
 `
-// <- string.quasi.js punctuation.definition.quasi.end.js string.quoted.template.js
+// <- string.quasi.js punctuation.definition.quasi.end.js string.quoted.template.graphql.js
 
 gql`
 // <- string.quasi.js entity.name.tag.grapahql.js
@@ -23,7 +23,7 @@ gql`
 // ^  string.quoted.template.js
 // ^  punctuation.definition.quasi.begin.js
 `
-// <- string.quasi.js punctuation.definition.quasi.end.js string.quoted.template.js
+// <- string.quasi.js punctuation.definition.quasi.end.js string.quoted.template.graphql.js
 
 return `another template ${aa}`
 // <- keyword.control.flow.js

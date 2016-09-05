@@ -910,10 +910,10 @@ x(...[0,1,], ...[], ...function* f(){ return yield 2; });
 //                                    ^^^^^^ ^^^^^         keyword.control.flow.js
 //                                                  ^   ^  punctuation.terminator.statement.js
 x`a`; x`0${1}2`;
-// <- string.quasi.js entity.quasi.tag.name.js
+// <- string.quasi.js entity.name.tag.js
  // <- string.quasi.js punctuation.definition.quasi.begin.js string.quoted.template.js
 //^^  ^^^^^^^^^   string.quasi.js
-//    ^           entity.quasi.tag.name.js
+//    ^           entity.name.tag.js
 //     ^          punctuation.definition.quasi.begin.js
 //^^   ^^^^^^^^   string.quoted.template.js
 // ^          ^   punctuation.definition.quasi.end.js
@@ -1879,7 +1879,7 @@ class B extends new A {
 //  ^^^^^               variable.language.super.js
 //       ^              keyword.operator.accessor.js
 //        ^^^^^^^^^^^   string.quasi.js
-//        ^             entity.quasi.tag.name.js
+//        ^             entity.name.tag.js
 //         ^            punctuation.definition.quasi.begin.js
 //         ^^^^^^^^^^   string.quoted.template.js
 //                  ^   punctuation.definition.quasi.end.js
