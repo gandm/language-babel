@@ -367,4 +367,4 @@
 //                      ^^      JSXEndTagStart
 //                        ^^^   entity.name.tag.close.jsx
 
-// >> only:source.js.jsx
+// >> only:(source.js.jsx)

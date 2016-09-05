@@ -38,7 +38,7 @@ meth({
 //^^^^^^^^^^^^                  entity.name.function.method.js
 //            ^                 punctuation.definition.parameters.begin.js
 //             ^          ^  ^  meta.brace.curly.js
-//              ^^^^  ^^^^      variable.other.readwrite.js
+//              ^^^^  ^^^^      variable.other.readwrite.shorthandpropertyname.js
 //                  ^           meta.delimiter.comma.js
 //                         ^    punctuation.definition.parameters.end.js
   },
@@ -51,7 +51,7 @@ meth({
 //^^^^^^^^^^^^^                  entity.name.function.method.js
 //             ^                 punctuation.definition.parameters.begin.js
 //              ^          ^  ^  meta.brace.curly.js
-//               ^^^^  ^^^^      variable.other.readwrite.js
+//               ^^^^  ^^^^      variable.other.readwrite.shorthandpropertyname.js
 //                   ^           meta.delimiter.comma.js
 //                          ^    punctuation.definition.parameters.end.js
  }

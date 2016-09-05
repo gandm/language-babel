@@ -24,16 +24,16 @@ class MyClass {
 //                   ^^  meta.brace.curly.js
   static staticRegularMethod() {}
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                           storage.modifier.js
-//       ^^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //       ^^^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                          ^      punctuation.definition.parameters.begin.js
 //                           ^     punctuation.definition.parameters.end.js
 //                             ^^  meta.brace.curly.js
   static get staticGetterMethod() {}
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^     meta.accessor.js
 //^^^^^^                              storage.modifier.js
-//       ^^^ ^^^^^^^^^^^^^^^^^^^^     meta.accessor.js
 //       ^^^                          storage.type.accessor.js
 //           ^^^^^^^^^^^^^^^^^^       entity.name.accessor.js
 //                             ^      punctuation.definition.parameters.begin.js
@@ -41,8 +41,8 @@ class MyClass {
 //                                ^^  meta.brace.curly.js
   static set staticSetterMethod(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^^^^     meta.accessor.js
 //^^^^^^                                 storage.modifier.js
-//       ^^^ ^^^^^^^^^^^^^^^^^^^^^^^     meta.accessor.js
 //       ^^^                             storage.type.accessor.js
 //           ^^^^^^^^^^^^^^^^^^          entity.name.accessor.js
 //                             ^         punctuation.definition.parameters.begin.js
@@ -51,8 +51,8 @@ class MyClass {
 //                                   ^^  meta.brace.curly.js
   static *staticGeneratorMethod() {}
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                              storage.modifier.js
-//       ^^^^^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //       ^                            keyword.generator.asterisk.js
 //        ^^^^^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                             ^      punctuation.definition.parameters.begin.js
@@ -60,8 +60,8 @@ class MyClass {
 //                                ^^  meta.brace.curly.js
   static async staticAsyncMethod() {}
 //^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                               storage.modifier.js
-//       ^^^^^ ^^^^^^^^^^^^^^^^^^^     meta.function.method.js
 //       ^^^^^                         storage.type.js
 //             ^^^^^^^^^^^^^^^^^       entity.name.function.method.js
 //                              ^      punctuation.definition.parameters.begin.js

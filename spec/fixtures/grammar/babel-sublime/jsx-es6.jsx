@@ -81,7 +81,7 @@ export default React.createClass({
 //     ^^^^                     entity.name.function.js
 //         ^                 ^  meta.brace.round.js
 //          ^               ^   meta.brace.curly.js
-//           ^^^^^  ^^^^^^^^    variable.other.readwrite.js
+//           ^^^^^  ^^^^^^^^    variable.other.readwrite.shorthandpropertyname.js
 //                ^             meta.delimiter.comma.js
       .end((err, res) =>
 //    ^^^^^^^^^^ ^^^^ ^^  meta.method-call.with-arguments.js

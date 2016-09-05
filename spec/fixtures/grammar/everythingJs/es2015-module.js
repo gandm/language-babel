@@ -354,13 +354,13 @@ var 䩶, x󠇕, œ一, ǻ둘, ɤ〩, φ, ﬁⅷ, ユニコード, x‌‍;
 // <- storage.type.js
  // <- storage.type.js
 //^                                         storage.type.js
+//  ^  ^^^  ^^  ^^  ^^  ^  ^^  ^^^^^  ^^^   variable.other.readwrite.js
 //   ^    ^   ^   ^   ^  ^   ^      ^    ^  punctuation.terminator.statement.js
-//     ^^^                            ^     variable.other.readwrite.js
 let letx; let[x\u0078] = 0; const constx = 0;
 // <- storage.type.js
  // <- storage.type.js
 //^       ^^^               ^^^^^              storage.type.js
-//  ^^^^      ^ ^^^^^             ^^^^^^       variable.other.readwrite.js
+//  ^^^^      ^^^^^^^             ^^^^^^       variable.other.readwrite.js
 //      ^                 ^                 ^  punctuation.terminator.statement.js
 //           ^       ^                         meta.brace.square.js
 //                     ^                 ^     keyword.operator.assignment.js
@@ -633,7 +633,7 @@ x;
  // <- meta.brace.curly.js
 // ^  ^   ^  ^     ^  ^         ^  ^      ^  ^                  ^   meta.brace.round.js
 //^    ^ ^    ^   ^    ^       ^    ^    ^    ^                ^    meta.brace.curly.js
-//      ^                                                           variable.other.readwrite.js
+//      ^                                                           variable.other.readwrite.shorthandpropertyname.js
 //             ^^       ^^  ^^       ^^        ^^^   ^^^   ^^^      constant.other.object.key.js
 //             ^        ^   ^        ^                     ^^       string.unquoted.js
 //              ^        ^   ^        ^           ^     ^    ^      punctuation.separator.key-value.js
@@ -1173,17 +1173,18 @@ for(;;)break; x:for(;;)break x;
 //            ^                  string.unquoted.js
 //             ^                 punctuation.separator.key-value.js
 //                           ^   variable.other.readwrite.js
-switch(0){case 0:break;default}
+switch(0){case 0:break;default:}
 // <- meta.switch.js keyword.control.switch.js
  // <- meta.switch.js keyword.control.switch.js
-//^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.switch.js
-//^^^^    ^^^^         ^^^^^^^   keyword.control.switch.js
-//    ^ ^                        meta.brace.round.js
-//     ^       ^                 constant.numeric.js
-//       ^                       meta.brace.curly.switchStart.js
-//              ^                keyword.operator.js
-//               ^^^^^           keyword.control.loop.js
-//                    ^          punctuation.terminator.statement.js
+//^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^  meta.switch.js
+//^^^^    ^^^^         ^^^^^^^    keyword.control.switch.js
+//    ^ ^                         meta.brace.round.js
+//     ^       ^                  constant.numeric.js
+//       ^                        meta.brace.curly.switchStart.js
+//              ^             ^   keyword.operator.js
+//               ^^^^^            keyword.control.loop.js
+//                    ^           punctuation.terminator.statement.js
+//                             ^  meta.brace.curly.switchEnd.js
 
 function f0(){ return; }
 // <- meta.function.js storage.type.function.js
@@ -1209,61 +1210,55 @@ function f1(){ return 0; }
 //                    ^     constant.numeric.js
 //                     ^    punctuation.terminator.statement.js
 switch(0){} switch(0){case 0:} switch(0){case 0:case 0:}
-// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
- // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+// <- meta.switch.js keyword.control.switch.js
+ // <- meta.switch.js keyword.control.switch.js
 //^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^ ^^^^^^^^^^^^^^ ^^^^^^ ^^^  meta.switch.js
-//^^^^^^^   ^^^^^^^^^          ^^^^^^^^^                  meta.function-call.with-arguments.js
-//^^^^      ^^^^^^             ^^^^^^                     entity.name.function.js
+//^^^^      ^^^^^^    ^^^^     ^^^^^^    ^^^^   ^^^^      keyword.control.switch.js
 //    ^ ^         ^ ^                ^ ^                  meta.brace.round.js
 //     ^           ^       ^          ^       ^      ^    constant.numeric.js
-//       ^^          ^       ^          ^              ^  meta.brace.curly.js
-//                    ^^^^               ^^^^   ^^^^      variable.other.readwrite.js
+//       ^           ^                  ^                 meta.brace.curly.switchStart.js
+//        ^                  ^                         ^  meta.brace.curly.switchEnd.js
+//                          ^                  ^      ^   keyword.operator.js
 switch(0){default:} switch(0){case 0:default:case 0:}
-// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
- // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+// <- meta.switch.js keyword.control.switch.js
+ // <- meta.switch.js keyword.control.switch.js
 //^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^  meta.switch.js
-//^^^^^^^           ^^^^^^^^^                          meta.function-call.with-arguments.js
-//^^^^              ^^^^^^                             entity.name.function.js
+//^^^^    ^^^^^^^   ^^^^^^    ^^^^   ^^^^^^^ ^^^^      keyword.control.switch.js
 //    ^ ^                 ^ ^                          meta.brace.round.js
 //     ^                   ^       ^              ^    constant.numeric.js
-//       ^        ^          ^                      ^  meta.brace.curly.js
-//        ^^^^^^^^                   ^^^^^^^^          constant.other.object.key.js
-//        ^^^^^^^                    ^^^^^^^           string.unquoted.js
-//               ^                          ^          punctuation.separator.key-value.js
-//                            ^^^^           ^^^^      variable.other.readwrite.js
+//       ^                   ^                         meta.brace.curly.switchStart.js
+//               ^                  ^       ^      ^   keyword.operator.js
+//                ^                                 ^  meta.brace.curly.switchEnd.js
 switch(0){case 0:;} switch(0){case 0:;;}
-// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
- // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+// <- meta.switch.js keyword.control.switch.js
+ // <- meta.switch.js keyword.control.switch.js
 //^^^^^^^^^^^^ ^^^^ ^^^^^^^^^^^^^^ ^^^^^  meta.switch.js
-//^^^^^^^           ^^^^^^^^^             meta.function-call.with-arguments.js
-//^^^^              ^^^^^^                entity.name.function.js
+//^^^^    ^^^^      ^^^^^^    ^^^^        keyword.control.switch.js
 //    ^ ^                 ^ ^             meta.brace.round.js
 //     ^       ^           ^       ^      constant.numeric.js
-//       ^        ^          ^         ^  meta.brace.curly.js
-//        ^^^^                ^^^^        variable.other.readwrite.js
+//       ^                   ^            meta.brace.curly.switchStart.js
+//              ^                   ^     keyword.operator.js
 //               ^                   ^^   punctuation.terminator.statement.js
+//                ^                    ^  meta.brace.curly.switchEnd.js
 switch(0){default:;} switch(0){default:;;}
-// <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
- // <- meta.switch.js meta.function-call.with-arguments.js entity.name.function.js
+// <- meta.switch.js keyword.control.switch.js
+ // <- meta.switch.js keyword.control.switch.js
 //^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^  meta.switch.js
-//^^^^^^^            ^^^^^^^^^              meta.function-call.with-arguments.js
-//^^^^               ^^^^^^                 entity.name.function.js
+//^^^^    ^^^^^^^    ^^^^^^    ^^^^^^^      keyword.control.switch.js
 //    ^ ^                  ^ ^              meta.brace.round.js
 //     ^                    ^               constant.numeric.js
-//       ^         ^          ^          ^  meta.brace.curly.js
-//        ^^^^^^^^             ^^^^^^^^     constant.other.object.key.js
-//        ^^^^^^^              ^^^^^^^      string.unquoted.js
-//               ^                    ^     punctuation.separator.key-value.js
+//       ^                    ^             meta.brace.curly.switchStart.js
+//               ^                    ^     keyword.operator.js
 //                ^                    ^^   punctuation.terminator.statement.js
+//                 ^                     ^  meta.brace.curly.switchEnd.js
 
 x:; x:y:;
-// <- meta.switch.js variable.other.readwrite.js
- // <- meta.switch.js keyword.operator.js
-//^ ^^^^^  meta.switch.js
-//^     ^  punctuation.terminator.statement.js
+// <- constant.other.object.key.js string.unquoted.js
+ // <- constant.other.object.key.js punctuation.separator.key-value.js
 //  ^^^^   constant.other.object.key.js
 //  ^ ^    string.unquoted.js
 //   ^ ^   punctuation.separator.key-value.js
+//^     ^  punctuation.terminator.statement.js
 
 try { throw 0; }catch(x){}
 // <- keyword.control.trycatch.js
@@ -1686,10 +1681,10 @@ x => {x}
 x => ({x});
 // <- meta.function.arrow.js variable.other.readwrite.js
 //^^         meta.function.arrow.js
-//     ^     variable.other.readwrite.js
 //^^         storage.type.function.arrow.js
 //   ^   ^   meta.brace.round.js
 //    ^ ^    meta.brace.curly.js
+//     ^     variable.other.readwrite.shorthandpropertyname.js
 //        ^  punctuation.terminator.statement.js
 (x) => x;
 // <- meta.function.arrow.js punctuation.definition.parameters.begin.js
@@ -1713,18 +1708,18 @@ x => ({x});
 // <- meta.function.arrow.js punctuation.definition.parameters.begin.js
  // <- meta.function.arrow.js variable.other.readwrite.js
 //^ ^^         meta.function.arrow.js
-//       ^     variable.other.readwrite.js
 //^            punctuation.definition.parameters.end.js
 //  ^^         storage.type.function.arrow.js
 //     ^   ^   meta.brace.round.js
 //      ^ ^    meta.brace.curly.js
+//       ^     variable.other.readwrite.shorthandpropertyname.js
 //          ^  punctuation.terminator.statement.js
 ({x}) => ({x});
 // <- meta.function.arrow.js punctuation.definition.parameters.begin.js
  // <- meta.function.arrow.js meta.brace.curly.js
 //^^^ ^^         meta.function.arrow.js
 // ^      ^ ^    meta.brace.curly.js
-//^        ^     variable.other.readwrite.js
+//^        ^     variable.other.readwrite.shorthandpropertyname.js
 //  ^            punctuation.definition.parameters.end.js
 //    ^^         storage.type.function.arrow.js
 //       ^   ^   meta.brace.round.js
@@ -1763,7 +1758,7 @@ x => ({x});
  // <- meta.brace.curly.js
 //       ^   meta.brace.round.js
 // ^   ^^    meta.brace.curly.js
-//^          variable.other.readwrite.js
+//^          variable.other.readwrite.shorthandpropertyname.js
 //   ^       keyword.operator.assignment.js
 //        ^  punctuation.terminator.statement.js
 try{}catch([e]){}
@@ -1780,7 +1775,7 @@ try{}catch({e}){}
 //^  ^^^^^         keyword.control.trycatch.js
 // ^^      ^ ^ ^^  meta.brace.curly.js
 //        ^   ^    meta.brace.round.js
-//          ^      variable.other.readwrite.js
+//          ^      variable.other.readwrite.shorthandpropertyname.js
 
 class A {}
 // <- meta.class.js storage.type.class.js
@@ -2089,3 +2084,5 @@ class C extends B { "constructor"(){ super(); } }
 //                                        ^^       meta.brace.round.js
 //                                          ^      punctuation.terminator.statement.js
 //                                              ^  punctuation.section.class.end.js
+
+// >> only:(source.js.jsx)

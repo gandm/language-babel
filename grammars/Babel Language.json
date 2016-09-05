@@ -712,10 +712,28 @@
             { "include": "#literal-arrow-function-labels" },
             { "include": "#literal-arrow-function" },
             { "include": "#literal-method" },
+            { "include": "#literal-object-prop-shorthand" },
             { "include": "#literal-labels" },
             { "include": "#expression" },
             { "include": "#literal-punctuation" }
           ]
+        }
+      ]
+    },
+    "literal-object-prop-shorthand": {
+      "patterns": [
+        {
+          "comment": "dont scope uppercase shorthand properties as these we treat as constants",
+          "name": "constant.other.object.key.js",
+          "match": "(?<=^|,|{)(?<!:|\\.)\\s*+((?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{Lu}\\p{Nl}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=$|,|})",
+          "captures": {
+            "1": { "name": "string.unquoted.js" }
+          }
+        },
+        {
+          "comment": "give an alternate scope name to shorthand object literals",
+          "name": "variable.other.readwrite.shorthandpropertyname.js",
+          "match": "(?<=^|,|{)(?<!:|\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=$|,|})"
         }
       ]
     },

@@ -914,16 +914,16 @@ class Sound<T, T> extends Model<T, T> {
 //               ^^  meta.brace.curly.js
   static get() {}
 //^^^^^^ ^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^     meta.function.method.js
 //^^^^^^           storage.modifier.js
-//       ^^^^^     meta.function.method.js
 //       ^^^       entity.name.function.method.js
 //          ^      punctuation.definition.parameters.begin.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   static get(arg) {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^              storage.modifier.js
-//       ^^^^^^^^     meta.function.method.js
 //       ^^^          entity.name.function.method.js
 //          ^         punctuation.definition.parameters.begin.js
 //           ^^^      variable.other.readwrite.js
@@ -931,16 +931,16 @@ class Sound<T, T> extends Model<T, T> {
 //                ^^  meta.brace.curly.js
   static set() {}
 //^^^^^^ ^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^     meta.function.method.js
 //^^^^^^           storage.modifier.js
-//       ^^^^^     meta.function.method.js
 //       ^^^       entity.name.function.method.js
 //          ^      punctuation.definition.parameters.begin.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   static set(arg) {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^              storage.modifier.js
-//       ^^^^^^^^     meta.function.method.js
 //       ^^^          entity.name.function.method.js
 //          ^         punctuation.definition.parameters.begin.js
 //           ^^^      variable.other.readwrite.js
@@ -948,8 +948,8 @@ class Sound<T, T> extends Model<T, T> {
 //                ^^  meta.brace.curly.js
   static *get() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^     meta.function.method.js
 //^^^^^^            storage.modifier.js
-//       ^^^^^^     meta.function.method.js
 //       ^          keyword.generator.asterisk.js
 //        ^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
@@ -957,8 +957,8 @@ class Sound<T, T> extends Model<T, T> {
 //              ^^  meta.brace.curly.js
   static *get(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^     meta.function.method.js
 //^^^^^^               storage.modifier.js
-//       ^^^^^^^^^     meta.function.method.js
 //       ^             keyword.generator.asterisk.js
 //        ^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
@@ -967,8 +967,8 @@ class Sound<T, T> extends Model<T, T> {
 //                 ^^  meta.brace.curly.js
   static *set() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^     meta.function.method.js
 //^^^^^^            storage.modifier.js
-//       ^^^^^^     meta.function.method.js
 //       ^          keyword.generator.asterisk.js
 //        ^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
@@ -976,8 +976,8 @@ class Sound<T, T> extends Model<T, T> {
 //              ^^  meta.brace.curly.js
   static *set(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^     meta.function.method.js
 //^^^^^^               storage.modifier.js
-//       ^^^^^^^^^     meta.function.method.js
 //       ^             keyword.generator.asterisk.js
 //        ^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
@@ -986,8 +986,8 @@ class Sound<T, T> extends Model<T, T> {
 //                 ^^  meta.brace.curly.js
   static async get() {}
 //^^^^^^ ^^^^^ ^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^     meta.function.method.js
 //^^^^^^                 storage.modifier.js
-//       ^^^^^ ^^^^^     meta.function.method.js
 //       ^^^^^           storage.type.js
 //             ^^^       entity.name.function.method.js
 //                ^      punctuation.definition.parameters.begin.js
@@ -995,8 +995,8 @@ class Sound<T, T> extends Model<T, T> {
 //                   ^^  meta.brace.curly.js
   static async get(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^                    storage.modifier.js
-//       ^^^^^ ^^^^^^^^     meta.function.method.js
 //       ^^^^^              storage.type.js
 //             ^^^          entity.name.function.method.js
 //                ^         punctuation.definition.parameters.begin.js
@@ -1005,8 +1005,8 @@ class Sound<T, T> extends Model<T, T> {
 //                      ^^  meta.brace.curly.js
   static async set() {}
 //^^^^^^ ^^^^^ ^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^     meta.function.method.js
 //^^^^^^                 storage.modifier.js
-//       ^^^^^ ^^^^^     meta.function.method.js
 //       ^^^^^           storage.type.js
 //             ^^^       entity.name.function.method.js
 //                ^      punctuation.definition.parameters.begin.js
@@ -1014,8 +1014,8 @@ class Sound<T, T> extends Model<T, T> {
 //                   ^^  meta.brace.curly.js
   static async set(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^                    storage.modifier.js
-//       ^^^^^ ^^^^^^^^     meta.function.method.js
 //       ^^^^^              storage.type.js
 //             ^^^          entity.name.function.method.js
 //                ^         punctuation.definition.parameters.begin.js
@@ -1024,8 +1024,8 @@ class Sound<T, T> extends Model<T, T> {
 //                      ^^  meta.brace.curly.js
   static get get() {}
 //^^^^^^ ^^^ ^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^     meta.accessor.js
 //^^^^^^               storage.modifier.js
-//       ^^^ ^^^^^     meta.accessor.js
 //       ^^^           storage.type.accessor.js
 //           ^^^       entity.name.accessor.js
 //              ^      punctuation.definition.parameters.begin.js
@@ -1033,8 +1033,8 @@ class Sound<T, T> extends Model<T, T> {
 //                 ^^  meta.brace.curly.js
   static set set(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^     meta.accessor.js
 //^^^^^^                  storage.modifier.js
-//       ^^^ ^^^^^^^^     meta.accessor.js
 //       ^^^              storage.type.accessor.js
 //           ^^^          entity.name.accessor.js
 //              ^         punctuation.definition.parameters.begin.js
@@ -1141,16 +1141,16 @@ class Sound<T, T> extends Model<T, T> {
 //              ^^  meta.brace.curly.js
   static play() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^     meta.function.method.js
 //^^^^^^            storage.modifier.js
-//       ^^^^^^     meta.function.method.js
 //       ^^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
 //            ^     punctuation.definition.parameters.end.js
 //              ^^  meta.brace.curly.js
   static play(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^     meta.function.method.js
 //^^^^^^               storage.modifier.js
-//       ^^^^^^^^^     meta.function.method.js
 //       ^^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
 //            ^^^      variable.other.readwrite.js
@@ -1158,8 +1158,8 @@ class Sound<T, T> extends Model<T, T> {
 //                 ^^  meta.brace.curly.js
   static *play() {}
 //^^^^^^ ^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^     meta.function.method.js
 //^^^^^^             storage.modifier.js
-//       ^^^^^^^     meta.function.method.js
 //       ^           keyword.generator.asterisk.js
 //        ^^^^       entity.name.function.method.js
 //            ^      punctuation.definition.parameters.begin.js
@@ -1167,8 +1167,8 @@ class Sound<T, T> extends Model<T, T> {
 //               ^^  meta.brace.curly.js
   static *play(arg) {}
 //^^^^^^ ^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^^     meta.function.method.js
 //^^^^^^                storage.modifier.js
-//       ^^^^^^^^^^     meta.function.method.js
 //       ^              keyword.generator.asterisk.js
 //        ^^^^          entity.name.function.method.js
 //            ^         punctuation.definition.parameters.begin.js
@@ -1177,8 +1177,8 @@ class Sound<T, T> extends Model<T, T> {
 //                  ^^  meta.brace.curly.js
   static async play() {}
 //^^^^^^ ^^^^^ ^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^     meta.function.method.js
 //^^^^^^                  storage.modifier.js
-//       ^^^^^ ^^^^^^     meta.function.method.js
 //       ^^^^^            storage.type.js
 //             ^^^^       entity.name.function.method.js
 //                 ^      punctuation.definition.parameters.begin.js
@@ -1186,8 +1186,8 @@ class Sound<T, T> extends Model<T, T> {
 //                    ^^  meta.brace.curly.js
   static async play(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^^     meta.function.method.js
 //^^^^^^                     storage.modifier.js
-//       ^^^^^ ^^^^^^^^^     meta.function.method.js
 //       ^^^^^               storage.type.js
 //             ^^^^          entity.name.function.method.js
 //                 ^         punctuation.definition.parameters.begin.js
@@ -1196,8 +1196,8 @@ class Sound<T, T> extends Model<T, T> {
 //                       ^^  meta.brace.curly.js
   static get play() {}
 //^^^^^^ ^^^ ^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^     meta.accessor.js
 //^^^^^^                storage.modifier.js
-//       ^^^ ^^^^^^     meta.accessor.js
 //       ^^^            storage.type.accessor.js
 //           ^^^^       entity.name.accessor.js
 //               ^      punctuation.definition.parameters.begin.js
@@ -1205,8 +1205,8 @@ class Sound<T, T> extends Model<T, T> {
 //                  ^^  meta.brace.curly.js
   static set play(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^^     meta.accessor.js
 //^^^^^^                   storage.modifier.js
-//       ^^^ ^^^^^^^^^     meta.accessor.js
 //       ^^^               storage.type.accessor.js
 //           ^^^^          entity.name.accessor.js
 //               ^         punctuation.definition.parameters.begin.js
@@ -1377,8 +1377,8 @@ class Sound<T, T> extends Model<T, T> {
 //                ^^  meta.brace.curly.js
   static [play]() {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^              storage.modifier.js
-//       ^^^^^^^^     meta.function.method.js
 //       ^    ^       meta.brace.square.js
 //        ^^^^        variable.other.readwrite.js
 //             ^      punctuation.definition.parameters.begin.js
@@ -1386,8 +1386,8 @@ class Sound<T, T> extends Model<T, T> {
 //                ^^  meta.brace.curly.js
   static [play](arg) {}
 //^^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                 storage.modifier.js
-//       ^^^^^^^^^^^     meta.function.method.js
 //       ^    ^          meta.brace.square.js
 //        ^^^^  ^^^      variable.other.readwrite.js
 //             ^         punctuation.definition.parameters.begin.js
@@ -1395,8 +1395,8 @@ class Sound<T, T> extends Model<T, T> {
 //                   ^^  meta.brace.curly.js
   static *[play]() {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^     meta.function.method.js
 //^^^^^^               storage.modifier.js
-//       ^^^^^^^^^     meta.function.method.js
 //       ^             keyword.generator.asterisk.js
 //        ^    ^       meta.brace.square.js
 //         ^^^^        variable.other.readwrite.js
@@ -1405,8 +1405,8 @@ class Sound<T, T> extends Model<T, T> {
 //                 ^^  meta.brace.curly.js
   static *[play](arg) {}
 //^^^^^^ ^^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                  storage.modifier.js
-//       ^^^^^^^^^^^^     meta.function.method.js
 //       ^                keyword.generator.asterisk.js
 //        ^    ^          meta.brace.square.js
 //         ^^^^  ^^^      variable.other.readwrite.js
@@ -1415,8 +1415,8 @@ class Sound<T, T> extends Model<T, T> {
 //                    ^^  meta.brace.curly.js
   static async [play]() {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
 //^^^^^^                    storage.modifier.js
-//       ^^^^^ ^^^^^^^^     meta.function.method.js
 //       ^^^^^              storage.type.js
 //             ^    ^       meta.brace.square.js
 //              ^^^^        variable.other.readwrite.js
@@ -1425,8 +1425,8 @@ class Sound<T, T> extends Model<T, T> {
 //                      ^^  meta.brace.curly.js
   static async [play](arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^^^ ^^^^^^^^^^^     meta.function.method.js
 //^^^^^^                       storage.modifier.js
-//       ^^^^^ ^^^^^^^^^^^     meta.function.method.js
 //       ^^^^^                 storage.type.js
 //             ^    ^          meta.brace.square.js
 //              ^^^^  ^^^      variable.other.readwrite.js
@@ -1435,8 +1435,8 @@ class Sound<T, T> extends Model<T, T> {
 //                         ^^  meta.brace.curly.js
   static get [play]() {}
 //^^^^^^ ^^^ ^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^     meta.accessor.js
 //^^^^^^                  storage.modifier.js
-//       ^^^ ^^^^^^^^     meta.accessor.js
 //       ^^^              storage.type.accessor.js
 //           ^            meta.brace.square.open.flowtype
 //            ^^^^        variable.other.readwrite.js
@@ -1446,8 +1446,8 @@ class Sound<T, T> extends Model<T, T> {
 //                    ^^  meta.brace.curly.js
   static set [play](arg) {}
 //^^^^^^ ^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^ ^^^ ^^^^^^^^^^^     meta.accessor.js
 //^^^^^^                     storage.modifier.js
-//       ^^^ ^^^^^^^^^^^     meta.accessor.js
 //       ^^^                 storage.type.accessor.js
 //           ^               meta.brace.square.open.flowtype
 //            ^^^^  ^^^      variable.other.readwrite.js
