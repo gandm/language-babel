@@ -25,6 +25,7 @@ SWITCH_BRACE_OPEN       = 14      # opening brace in swtich { }
 SWITCH_BRACE_CLOSE      = 15      # closing brace in swtich { }
 SWITCH_CASE             = 16      # switch case statement
 SWITCH_DEFAULT          = 17      # switch defauklt statement
+JS_RETURN               = 18      # JS return
 
 # eslint property values
 TAGALIGNED    = 'tag-aligned'
@@ -38,7 +39,7 @@ class AutoIndent
     @insertNlJsx = new InsertNlJsx(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
-    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)/g
+    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)/g
     @mouseUp = true
     @multipleCursorTrigger = 1
     @disposables = new CompositeDisposable()
@@ -513,7 +514,7 @@ class AutoIndent
             idxOfToken++
 
           # Ternary and conditional if/else operators
-          when TERNARY_IF, JS_IF, JS_ELSE
+          when TERNARY_IF, JS_IF, JS_ELSE, JS_RETURN
             isFirstTagOfBlock = true
 
       # handle lines with no token on them
@@ -591,6 +592,9 @@ class AutoIndent
     else if match[15]?
       if 'keyword.control.switch.js' is scope
         return SWITCH_DEFAULT
+    else if match[16]?
+      if 'keyword.control.flow.js' is scope
+        return JS_RETURN
     return NO_TOKEN
 
 
