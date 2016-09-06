@@ -75,7 +75,8 @@ function foo(x /*: number*/) /*: string*/ {}
 //               ^    ^  ^                      variable.other.constant.js
 //                ^    ^                        meta.delimiter.comma.js
 //                  ^      ^                    meta.brace.curly.js
-//                                ^       ^     punctuation.definition.string.begin.js
+//                                ^             punctuation.definition.string.begin.js
+//                                        ^     punctuation.definition.string.end.js
 //                                 ^^^^^^^      string.quoted.module.js
 /*:: import typeof D, { E, F } from './types';*/
 // <- punctuation.definition.comment.js
@@ -87,7 +88,8 @@ function foo(x /*: number*/) /*: string*/ {}
 //                 ^    ^  ^                      variable.other.constant.js
 //                  ^    ^                        meta.delimiter.comma.js
 //                    ^      ^                    meta.brace.curly.js
-//                                  ^       ^     punctuation.definition.string.begin.js
+//                                  ^             punctuation.definition.string.begin.js
+//                                          ^     punctuation.definition.string.end.js
 //                                   ^^^^^^^      string.quoted.module.js
 
 // Calls language-mustache & language-html from a object template: backtick

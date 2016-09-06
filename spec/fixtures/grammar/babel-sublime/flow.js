@@ -1130,7 +1130,8 @@ import type {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
 //          ^                    ^                                 meta.brace.curly.js
 //           ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                    ^                                            meta.delimiter.comma.js
-//                                      ^                      ^   punctuation.definition.string.begin.js
+//                                      ^                          punctuation.definition.string.begin.js
+//                                                             ^   punctuation.definition.string.end.js
 //                                       ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
 //                                                              ^  punctuation.terminator.statement.js
 import typeof {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
@@ -1141,7 +1142,8 @@ import typeof {ClassFoo4, ClassFoo5} from "./ExportCJSNamed_Class";
 //            ^                    ^                                 meta.brace.curly.js
 //             ^^^^^^^^^  ^^^^^^^^^                                  variable.other.readwrite.js
 //                      ^                                            meta.delimiter.comma.js
-//                                        ^                      ^   punctuation.definition.string.begin.js
+//                                        ^                          punctuation.definition.string.begin.js
+//                                                               ^   punctuation.definition.string.end.js
 //                                         ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
 //                                                                ^  punctuation.terminator.statement.js
 import {foo4Inst, foo5Inst} from "./ExportCJSNamed_Class";
@@ -1151,7 +1153,8 @@ import {foo4Inst, foo5Inst} from "./ExportCJSNamed_Class";
 //     ^                  ^                                 meta.brace.curly.js
 //      ^^^^^^^^  ^^^^^^^^                                  variable.other.readwrite.js
 //              ^                                           meta.delimiter.comma.js
-//                               ^                      ^   punctuation.definition.string.begin.js
+//                               ^                          punctuation.definition.string.begin.js
+//                                                      ^   punctuation.definition.string.end.js
 //                                ^^^^^^^^^^^^^^^^^^^^^^    string.quoted.module.js
 //                                                       ^  punctuation.terminator.statement.js
 import type ClassFoo6 from "./issue-359";
@@ -1160,7 +1163,8 @@ import type ClassFoo6 from "./issue-359";
 //^^^^                ^^^^                 keyword.control.module.js
 //     ^^^^                                keyword.other.typedef.flowtype
 //          ^^^^^^^^^                      variable.other.readwrite.js
-//                         ^           ^   punctuation.definition.string.begin.js
+//                         ^               punctuation.definition.string.begin.js
+//                                     ^   punctuation.definition.string.end.js
 //                          ^^^^^^^^^^^    string.quoted.module.js
 //                                      ^  punctuation.terminator.statement.js
 import typeof ClassFoo6 from "./issue-359";
@@ -1169,7 +1173,8 @@ import typeof ClassFoo6 from "./issue-359";
 //^^^^                  ^^^^                 keyword.control.module.js
 //     ^^^^^^                                keyword.other.typedef.flowtype
 //            ^^^^^^^^^                      variable.other.readwrite.js
-//                           ^           ^   punctuation.definition.string.begin.js
+//                           ^               punctuation.definition.string.begin.js
+//                                       ^   punctuation.definition.string.end.js
 //                            ^^^^^^^^^^^    string.quoted.module.js
 //                                        ^  punctuation.terminator.statement.js
 

@@ -5,7 +5,8 @@ import defaultMember from "module-name"
  // <- keyword.control.module.js
 //^^^^               ^^^^                keyword.control.module.js
 //     ^^^^^^^^^^^^^                     variable.other.readwrite.js
-//                        ^           ^  punctuation.definition.string.begin.js
+//                        ^              punctuation.definition.string.begin.js
+//                                    ^  punctuation.definition.string.end.js
 //                         ^^^^^^^^^^^   string.quoted.module.js
 import * as name from "module-name"
 // <- keyword.control.module.js
@@ -14,7 +15,8 @@ import * as name from "module-name"
 //     ^                             keyword.operator.module.all.js
 //       ^^                          keyword.control.module.reference.js
 //          ^^^^                     variable.other.readwrite.js
-//                    ^           ^  punctuation.definition.string.begin.js
+//                    ^              punctuation.definition.string.begin.js
+//                                ^  punctuation.definition.string.end.js
 //                     ^^^^^^^^^^^   string.quoted.module.js
 import { member } from "module-name"
 // <- keyword.control.module.js
@@ -22,7 +24,8 @@ import { member } from "module-name"
 //^^^^            ^^^^                keyword.control.module.js
 //     ^        ^                     meta.brace.curly.js
 //       ^^^^^^                       variable.other.readwrite.js
-//                     ^           ^  punctuation.definition.string.begin.js
+//                     ^              punctuation.definition.string.begin.js
+//                                 ^  punctuation.definition.string.end.js
 //                      ^^^^^^^^^^^   string.quoted.module.js
 import { member as alias } from "module-name"
 // <- keyword.control.module.js
@@ -31,7 +34,8 @@ import { member as alias } from "module-name"
 //     ^                 ^                     meta.brace.curly.js
 //       ^^^^^^    ^^^^^                       variable.other.readwrite.js
 //              ^^                             keyword.control.module.reference.js
-//                              ^           ^  punctuation.definition.string.begin.js
+//                              ^              punctuation.definition.string.begin.js
+//                                          ^  punctuation.definition.string.end.js
 //                               ^^^^^^^^^^^   string.quoted.module.js
 import { member1 , member2 } from "module-name"
 // <- keyword.control.module.js
@@ -40,7 +44,8 @@ import { member1 , member2 } from "module-name"
 //     ^                   ^                     meta.brace.curly.js
 //       ^^^^^^^   ^^^^^^^                       variable.other.readwrite.js
 //               ^                               meta.delimiter.comma.js
-//                                ^           ^  punctuation.definition.string.begin.js
+//                                ^              punctuation.definition.string.begin.js
+//                                            ^  punctuation.definition.string.end.js
 //                                 ^^^^^^^^^^^   string.quoted.module.js
 import { member1 , member2 as alias2 , [] } from "module-name"
 // <- keyword.control.module.js
@@ -51,7 +56,8 @@ import { member1 , member2 as alias2 , [] } from "module-name"
 //               ^                   ^                          meta.delimiter.comma.js
 //                         ^^                                   keyword.control.module.reference.js
 //                                     ^^                       meta.brace.square.js
-//                                               ^           ^  punctuation.definition.string.begin.js
+//                                               ^              punctuation.definition.string.begin.js
+//                                                           ^  punctuation.definition.string.end.js
 //                                                ^^^^^^^^^^^   string.quoted.module.js
 import defaultMember, { member [ , [] ] } from "module-name"
 // <- keyword.control.module.js
@@ -62,7 +68,8 @@ import defaultMember, { member [ , [] ] } from "module-name"
 //                    ^                 ^                     meta.brace.curly.js
 //                      ^^^^^^                                variable.other.object.js
 //                             ^   ^^ ^                       meta.brace.square.js
-//                                             ^           ^  punctuation.definition.string.begin.js
+//                                             ^              punctuation.definition.string.begin.js
+//                                                         ^  punctuation.definition.string.end.js
 //                                              ^^^^^^^^^^^   string.quoted.module.js
 import defaultMember, * as name from "module-name";
 // <- keyword.control.module.js
@@ -72,14 +79,16 @@ import defaultMember, * as name from "module-name";
 //                  ^                                meta.delimiter.comma.js
 //                    ^                              keyword.operator.module.all.js
 //                      ^^                           keyword.control.module.reference.js
-//                                   ^           ^   punctuation.definition.string.begin.js
+//                                   ^               punctuation.definition.string.begin.js
+//                                               ^   punctuation.definition.string.end.js
 //                                    ^^^^^^^^^^^    string.quoted.module.js
 //                                                ^  punctuation.terminator.statement.js
 import "module-name"
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^                keyword.control.module.js
-//     ^           ^  punctuation.definition.string.begin.js
+//     ^              punctuation.definition.string.begin.js
+//                 ^  punctuation.definition.string.end.js
 //      ^^^^^^^^^^^   string.quoted.module.js
 import type {UserID, User} , typeof something from "module-name"
 // <- keyword.control.module.js
@@ -89,7 +98,8 @@ import type {UserID, User} , typeof something from "module-name"
 //          ^            ^                                        meta.brace.curly.js
 //           ^^^^^^  ^^^^           ^^^^^^^^^                     variable.other.readwrite.js
 //                 ^       ^                                      meta.delimiter.comma.js
-//                                                 ^           ^  punctuation.definition.string.begin.js
+//                                                 ^              punctuation.definition.string.begin.js
+//                                                             ^  punctuation.definition.string.end.js
 //                                                  ^^^^^^^^^^^   string.quoted.module.js
 
 import defaultMember
@@ -141,7 +151,8 @@ import defaultMember
 // ^^^^                  keyword.other.typedef.flowtype
 //      ^^^              variable.other.readwrite.js
 //          ^^^^         keyword.control.module.js
-//               ^    ^  punctuation.definition.string.begin.js
+//               ^       punctuation.definition.string.begin.js
+//                    ^  punctuation.definition.string.end.js
 //                ^^^^   string.quoted.module.js
 
 
@@ -221,7 +232,8 @@ export * from "module-name"
  // <- keyword.control.module.js
 //^^^^   ^^^^                keyword.control.module.js
 //     ^                     keyword.operator.module.all.js
-//            ^           ^  punctuation.definition.string.begin.js
+//            ^              punctuation.definition.string.begin.js
+//                        ^  punctuation.definition.string.end.js
 //             ^^^^^^^^^^^   string.quoted.module.js
 export { name1, name2, nameN } from "module-name"
 // <- keyword.control.module.js
@@ -230,7 +242,8 @@ export { name1, name2, nameN } from "module-name"
 //     ^                     ^                     meta.brace.curly.js
 //       ^^^^^  ^^^^^  ^^^^^                       variable.other.readwrite.js
 //            ^      ^                             meta.delimiter.comma.js
-//                                  ^           ^  punctuation.definition.string.begin.js
+//                                  ^              punctuation.definition.string.begin.js
+//                                              ^  punctuation.definition.string.end.js
 //                                   ^^^^^^^^^^^   string.quoted.module.js
 export { import1 as name1, import2 as name2, nameN } from "module-name"
 // <- keyword.control.module.js
@@ -240,14 +253,16 @@ export { import1 as name1, import2 as name2, nameN } from "module-name"
 //       ^^^^^^^    ^^^^^  ^^^^^^^    ^^^^^  ^^^^^                       variable.other.readwrite.js
 //               ^^                ^^                                    keyword.control.module.reference.js
 //                       ^                 ^                             meta.delimiter.comma.js
-//                                                        ^           ^  punctuation.definition.string.begin.js
+//                                                        ^              punctuation.definition.string.begin.js
+//                                                                    ^  punctuation.definition.string.end.js
 //                                                         ^^^^^^^^^^^   string.quoted.module.js
 export someIdentifier from "someModule"
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^                ^^^^               keyword.control.module.js
 //     ^^^^^^^^^^^^^^                    variable.other.readwrite.js
-//                         ^          ^  punctuation.definition.string.begin.js
+//                         ^             punctuation.definition.string.begin.js
+//                                    ^  punctuation.definition.string.end.js
 //                          ^^^^^^^^^^   string.quoted.module.js
 export someIdentifier, { namedIdentifier } from "someModule"
 // <- keyword.control.module.js
@@ -256,7 +271,8 @@ export someIdentifier, { namedIdentifier } from "someModule"
 //     ^^^^^^^^^^^^^^    ^^^^^^^^^^^^^^^                      variable.other.readwrite.js
 //                   ^                                        meta.delimiter.comma.js
 //                     ^                 ^                    meta.brace.curly.js
-//                                              ^          ^  punctuation.definition.string.begin.js
+//                                              ^             punctuation.definition.string.begin.js
+//                                                         ^  punctuation.definition.string.end.js
 //                                               ^^^^^^^^^^   string.quoted.module.js
 
 export type User = {
@@ -296,7 +312,8 @@ export type User = {
  } from "aaaa"
  // <- meta.brace.curly.js
 // ^^^^         keyword.control.module.js
-//      ^    ^  punctuation.definition.string.begin.js
+//      ^       punctuation.definition.string.begin.js
+//           ^  punctuation.definition.string.end.js
 //       ^^^^   string.quoted.module.js
 
 
