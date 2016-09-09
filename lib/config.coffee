@@ -59,6 +59,13 @@ module.exports =
     type: 'boolean'
     default: true
     order: 140
+  templateTagHandlers:
+    title: 'JavaScript template tag grammar extensions'
+    description: 'Enter a template tagname:scope.name.of.grammar'
+    type: 'array'
+    default: ['Relay.QL:source.graphql','gql:source.graphql']
+    items:
+      type: 'string'
   autoIndentJSX:
     title: 'Auto Indent JSX'
     description: 'Auto Indent JSX using default or eslintrc rules'

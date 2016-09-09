@@ -14,3 +14,4 @@ module.exports =
   suppressTranspileOnSaveMessages: false
   transpileOnSave: true
   autoIndentJSX: true
+  templateTagHandlers:  ['Relay.QL:source.graphql','gql:source.graphql']
