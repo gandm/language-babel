@@ -49,5 +49,4 @@ describe 'Grammar', ->
 
   # misc Tests
   grammarTest path.join(__dirname, 'fixtures/grammar/misc.js')
-  describe 'ES6 modules', ->
-    grammarTest path.join(__dirname, 'fixtures/grammar/es6module.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/es6module.js')
