@@ -258,7 +258,24 @@ var d: (str: string) => {str: string} = foo();
 //                                      ^^^     entity.name.function.js
 //                                         ^^   meta.brace.round.js
 //                                           ^  punctuation.terminator.statement.js
-
+ var d: (str: string) => {|str: string|} = foo();
+ // <- storage.type.js
+//^^                                               storage.type.js
+//   ^                                             storage.type.function.js
+//    ^     ^                 ^                    punctuation.type.flowtype
+//      ^                                          punctuation.definition.parameters.begin.js
+//       ^^^               ^^^                     variable.other.readwrite.js
+//            ^^^^^^            ^^^^^^             support.type.builtin.primitive.flowtype
+//                  ^                              punctuation.definition.parameters.end.js
+//                    ^^                           storage.type.function.arrow.js
+//                       ^                         meta.brace.round.open.flowtype
+//                        ^           ^            kewyword.operator.only.flowtype
+//                                     ^           meta.brace.round.close.flowtype
+//                                       ^         keyword.operator.assignment.js
+//                                         ^^^^^   meta.function-call.without-arguments.js
+//                                         ^^^     entity.name.function.js
+//                                            ^^   meta.brace.round.js
+//                                              ^  punctuation.terminator.statement.js
 var f: (
 // <- storage.type.js
  // <- storage.type.js

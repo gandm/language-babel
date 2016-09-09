@@ -2017,7 +2017,7 @@
         },
         {
           "comment": "Type Unions |",
-          "match": "\\s*+(\\|)",
+          "match": "\\s*+(\\|)(?<!{\\|)(?!})",
           "captures": {
             "1": { "name": "kewyword.operator.union.flowtype" }
           }
@@ -2116,7 +2116,7 @@
           },
           {
             "comment": "Type Unions |",
-            "match": "\\s*+(\\|)",
+            "match": "\\s*+(\\|)(?<!{\\|)(?!})",
             "captures": {
               "1": { "name": "kewyword.operator.union.flowtype" }
             }
@@ -2240,6 +2240,14 @@
     },
     "flowtype-object-property": {
       "patterns": [
+        {
+          "comment": "Only these props syntax {| |}",
+          "match": "((\\|)(?={|))|(\\s*(\\|)(?=}))",
+          "captures": {
+            "1": { "name": "kewyword.operator.only.flowtype" },
+            "4": { "name": "kewyword.operator.only.flowtype" }
+          }
+        },
         { "include": "#literal-method" },
         { "include": "#comments" },
         { "include": "#flowtype-variable" }
