@@ -1,0 +1,29 @@
+{
+  "name": "Tag Extensions for Babel",
+  "scopeName": "source.language-babel.tag.extensions",
+  "fileTypes": [],
+  "patterns": [
+    {
+      "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
+      "name": "string.quasi.js",
+      "contentName": "string.quoted.template.graphql.js",
+      "begin": "\\s*+(?:((Relay)(.)(QL))|(gql))\\s*((`))",
+      "end": "\\s*(?<!\\\\)((`))",
+      "beginCaptures": {
+        "2": { "name": "variable.other.class.js" },
+        "3": { "name": "keyword.operator.accessor.js" },
+        "4": { "name": "entity.name.tag.grapahql.js" },
+        "5": { "name": "entity.name.tag.grapahql.js" },
+        "6": { "name": "string.quoted.template.js" },
+        "7": { "name": "punctuation.definition.quasi.begin.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.quasi.end.js" },
+        "2": { "name": "string.quoted.template.graphql.js" }
+      },
+      "patterns": [
+        { "include": "source.graphql" }
+      ]
+    }
+  ]
+}
