@@ -1060,13 +1060,20 @@
         { "include": "#es7-decorators" },
         { "include": "#comments" },
         {
+          "comment": "handle class fields with no flow types like var = ",
+          "match": "(?<!:)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(?==)(?!=>|==)",
+          "captures": {
+            "1": { "name": "variable.other.readwrite.js" }
+          }
+        },
+        {
           "comment": "attempt to find an assignment of a class field/property",
           "comment": "with ASI we don't know quite where an expression ends so terminate when",
-          "comment": "a line starts with a static, [, name( or a semi-colon anywhere",
+          "comment": "a line starts with a static, [, name(, name:, name= or a semi-colon anywhere",
           "begin": "\\s*+(?==[^=>])",
-          "end": "(^\\s*+(?=([$\\w]*\\s*+\\??\\s*+(:|=(?!^==|=>))|\\[|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+\\(|\\b(static|async)\\b|\\s*++)))|\\s*(;)",
+          "end": "(^\\s*+(?=(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+\\??\\s*+(:|=(?!^==|=>))|\\[|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+\\(|\\b(static|async)\\b)))|\\s*(;)",
           "endCaptures": {
-            "4": { "name": "punctuation.terminator.statement.js" }
+            "7": { "name": "punctuation.terminator.statement.js" }
           },
           "patterns": [
             { "include": "#expression" }
@@ -2059,7 +2066,7 @@
         },
         {
           "comment": "assignment var = or = ",
-          "begin": "\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*=)(?!=>|==)",
+          "begin": "(?<!:)\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*=)(?!=>|==)",
           "end": "\\s*(?=,|;|\\)|}|\\]|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|async)\\b|type\\s+[$\\w]+|declare\\s+[$\\w]+|interface\\s+[$\\w]+)",
           "patterns": [
             { "include": "#expression" }
