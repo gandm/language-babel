@@ -1,0 +1,50 @@
+# Tests for creating tag Grammar
+
+{Range, Point} = require 'atom'
+fs = require 'fs-plus'
+path = require 'path'
+CreateTagGrammar= require '../lib/create-tag-grammar'
+
+describe 'Create Tag Grammar', ->
+  tagGrammar = null
+
+  beforeEach ->
+    waitsForPromise ->
+      atom.packages.activatePackage('language-babel')
+
+    runs ->
+      console.log 'A'
+      tagGrammar = new CreateTagGrammar()
+      console.log 'B'
+
+  # ::getTabConfig
+  describe '::getTagConfig', ->
+    console.log tagGrammar
+    it 'should return an array containing the tag extensions configuration', ->
+      console.log tagGrammar
+      expect(tagGrammar.getTagConfig()).toEqual(['Relay.QL:source.graphql','gql:source.graphql'])
+
+  # ::generateTagSHA256
+  describe '::generateTagSHA256', ->
+    it 'should return SHA256 hash of the tag extensions in the atom config', ->
+      expect(tagGrammar.generateTagSHA256()).toEqual('2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3')
+
+  # ::generateTagGrammarFilename
+  describe '::generateTagGrammarFilename', ->
+    it 'should return SHA256 hash of the tag extensions in the atom config', ->
+      expect(tagGrammar.generateTagGrammarFilename()).toEqual('tags-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3')
+
+  # ::getGrammarPath
+  describe '::getGrammarPath', ->
+    it 'should return an absolute path where the language-babel grammar files are', ->
+      expect(path.isAbsolute tagGrammar.getGrammarPath()).toEqual(true)
+
+  # ::getGrammarFiles
+  describe '::getGrammarFiles', ->
+    it 'should return a list of language-babel grammar containing Babel Language.json', ->
+      expect(tagGrammar.getGrammarFiles()).toContain('Babel Language.json')
+
+  # ::getTagGrammarFiles
+  describe '::getTagGrammarFiles', ->
+    it 'should return a list of language-babel grammar containing Babel Language.json', ->
+      expect(tagGrammar.getTagGrammarFiles()).toContain('Babel Language.json')

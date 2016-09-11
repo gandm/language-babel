@@ -22,6 +22,20 @@
         "2": { "name": "string.quoted.template.graphql.js" }
       },
       "patterns": [
+        {
+          "name": "entity.quasi.element.js",
+          "begin": "(?<!\\\\)\\s*(\\${)",
+          "end": "\\s*}",
+          "beginCaptures": {
+            "1": { "name": "punctuation.quasi.element.begin.js" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.quasi.element.end.js" }
+          },
+          "patterns": [
+            { "include": "source.js.jsx" }
+          ]
+        },
         { "include": "source.graphql" }
       ]
     }
