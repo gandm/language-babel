@@ -40,6 +40,8 @@
   },
   "devDependencies": {
     "atom-grammar-test": "<1.0.0",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-preset-node5": "^11.1.0",
     "chai": "^3.0.0"
   }
