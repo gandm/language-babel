@@ -14,9 +14,7 @@ describe("Create Tag Grammar", function() {
     });
 
     return runs(function() {
-      console.log("A");
       tagGrammar = new CreateTagGrammar();
-      return console.log("B");
     });
   });
 
@@ -26,7 +24,6 @@ describe("Create Tag Grammar", function() {
     return it(
       "should return an array containing the tag extensions configuration",
       function() {
-        console.log(tagGrammar);
         return expect(tagGrammar.getTagConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
       }
     );

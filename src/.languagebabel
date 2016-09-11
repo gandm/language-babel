@@ -1,5 +1,6 @@
 {
   "babelSourcePath":                  "src",
+  "babelMapsAddUrl":                  false,
   "babelTranspilePath":               "lib",
   "createMap":                        false,
   "createTranspiledCode":             true,

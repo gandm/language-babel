@@ -1,11 +1,17 @@
-var crypto = require("crypto");
-var fs = require("fs-plus");
-var path = require("path");
+let  crypto  = require('crypto');
+let fs = require('fs-plus');
+let path = require('path');
+let CompositeDisposable = require('atom').CompositeDisposable;
 
-module.exports = class CreateTagGrammar {
+
+export default class CreateTagGrammar {
+
+  disposable = new CompositeDisposable();
+
   constructor() {
-    // this.observeTagConfig = this.observeTagConfig.bind(this);
-    // this.disposables = atom.config.observe("language-babel:templateTagHandlers", this.observeTagConfig);
+    // look for changes in tag handlers
+    this.disposable.add(atom.config.observe("language-babel:templateTagHandlers", this.observeTagConfig.bind(this)));
+    console.log(tagGrammarHeader);
   }
 
   // create a new tag grammar file
@@ -28,7 +34,6 @@ module.exports = class CreateTagGrammar {
 
   // read configurations for tags
   getTagConfig() {
-    debugger;
     return atom.config.get("language-babel").templateTagHandlers;
   }
 
@@ -55,6 +60,8 @@ module.exports = class CreateTagGrammar {
 
   // observe tag configuration and act
   observeTagConfig() {
+    console.log("observed");
+    return;
     var tagFilename = this.generateTagGrammarFilename();
 
     if (!this.grammarFileExists(tagFilename)) {
@@ -103,3 +110,49 @@ module.exports = class CreateTagGrammar {
     return path.resolve(this.getGrammarPath(), tagFilename);
   }
 };
+
+let tagGrammarHeader = `
+{
+  "name": "Tag Extensions for Babel",
+  "scopeName": "source.language-babel.tag.extensions",
+  "fileTypes": [],
+  "patterns": [
+    {
+      "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
+      "name": "string.quasi.js",
+      "contentName": "string.quoted.template.graphql.js",
+      "begin": "\\\\s*+(?:((Relay)(.)(QL))|(gql))\\\\s*((\`))",
+      "beginCaptures": {
+        "2": { "name": "variable.other.class.js" },
+        "3": { "name": "keyword.operator.accessor.js" },
+        "4": { "name": "entity.name.tag.grapahql.js" },
+        "5": { "name": "entity.name.tag.grapahql.js" },
+        "6": { "name": "string.quoted.template.js" },
+        "7": { "name": "punctuation.definition.quasi.begin.js" }
+      },
+      "end": "\\\\s*(?<!\\\\\\\\)((\`))",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.quasi.end.js" },
+        "2": { "name": "string.quoted.template.graphql.js" }
+      },
+      "patterns": [
+        {
+          "name": "entity.quasi.element.js",
+          "begin": "(?<!\\\\\\\\)\\s*(\\\\\${)",
+          "end": "\\\\s*}",
+          "beginCaptures": {
+            "1": { "name": "punctuation.quasi.element.begin.js" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.quasi.element.end.js" }
+          },
+          "patterns": [
+            { "include": "source.js.jsx" }
+          ]
+        },
+        { "include": "source.graphql" }
+      ]
+    }
+  ]
+}
+`
