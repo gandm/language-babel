@@ -15,7 +15,7 @@
   "repository": "https://github.com/gandm/language-babel",
   "license": "MIT",
   "engines": {
-    "atom": "^1.0.0"
+    "atom": "^1.9.0"
   },
   "providedServices": {
     "autocomplete.provider": {
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "atom-grammar-test": "<1.0.0",
+    "babel-preset-node5": "^11.1.0",
     "chai": "^3.0.0"
   }
 }
