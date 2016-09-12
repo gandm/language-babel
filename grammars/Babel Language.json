@@ -1742,14 +1742,37 @@
     },
     "es7-decorators": {
       "patterns": [
-        {
-          "comment": "https://github.com/wycats/javascript-decorators",
-          "name"  : "tag.decorator.js",
-          "match": "(?<!@)\\s*+(@)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*",
-          "captures": {
-            "1": { "name": "punctuation.definition.tag.js" },
-            "2": { "name": "entity.name.tag.js" }
-          }
+        { "comment": "http://tc39.github.io/proposal-decorators/",
+          "comment": "Look for a @identifier start If unicode start uppercase e.g. @A class it as a class ",
+          "name": "meta.tag.decorator",
+          "begin": "(?<!@)\\s*+(?:(@)(?:((?:[\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)))",
+          "end": "(?<=\\))|\\s*(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.decoration.js"},
+            "2": { "name": "entity.name.class.js" },
+            "3": { "name": "variable.other.readwrite.js" }
+          },
+          "patterns": [
+            { "include": "#round-brackets" },
+            { "include": "#comments" },
+            {
+              "commnent": "decorator .property or .method which may be on a different line",
+              "begin": "\\s*(\\.)",
+              "end": "\\s*(?:((?:[\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))",
+              "applyEndPatternLast": 1,
+              "beginCaptures": {
+                "1": { "name": "keyword.operator.accessor.js"}
+              },
+              "endCaptures": {
+                "1": { "name": "entity.name.class.js" },
+                "2": { "name": "variable.other.property.js" }
+              },
+              "patterns": [
+                { "include": "#comments" }
+              ]
+            }
+          ]
         }
       ]
     },
