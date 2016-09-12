@@ -1,5 +1,73 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Class and method decorator productions
+
+@Decorator
+// <- meta.tag.decorator keyword.operator.decoration.js
+ // <- meta.tag.decorator entity.name.class.js
+//^^^^^^^^  meta.tag.decorator
+//^^^^^^^^  entity.name.class.js
+  .decorator_property
+//^^^^^^^^^^^^^^^^^^^  meta.tag.decorator
+//^                    keyword.operator.accessor.js
+// ^^^^^^^^^^^^^^^^^^  variable.other.property.js
+  .decorator-function
+//^^^^^^^^^^           meta.tag.decorator
+//^                    keyword.operator.accessor.js
+// ^^^^^^^^^           variable.other.property.js
+//          ^          keyword.operator.arithmetic.js
+//           ^^^^^^^^  variable.other.readwrite.js
+class DecoratedClass {
+// <- meta.class.js storage.type.class.js
+ // <- meta.class.js storage.type.class.js
+//^^^                   meta.class.js
+//^^^                   storage.type.class.js
+//    ^^^^^^^^^^^^^^    entity.name.class.js
+//                   ^  punctuation.section.class.begin.js
+  @observable varToWatch: boolean = true
+//^^^^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^ ^ ^^^^  meta.class.body.js
+//^^^^^^^^^^^                             meta.tag.decorator
+//^                                       keyword.operator.decoration.js
+// ^^^^^^^^^^ ^^^^^^^^^^                  variable.other.readwrite.js
+//                      ^                 punctuation.type.flowtype
+//                        ^^^^^^^         support.type.builtin.primitive.flowtype
+//                                ^       keyword.operator.assignment.js
+//                                  ^^^^  constant.language.boolean.true.js
+  @SomeClassDecorartorLib.
+//^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
+//^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.decorator
+//^                         keyword.operator.decoration.js
+// ^^^^^^^^^^^^^^^^^^^^^^   entity.name.class.js
+//                       ^  keyword.operator.accessor.js
+    someproperty
+//  ^^^^^^^^^^^^  meta.class.body.js
+//  ^^^^^^^^^^^^  meta.tag.decorator
+//  ^^^^^^^^^^^^  variable.other.property.js
+    . someDecorator("Some String",andAVar)
+//  ^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.class.body.js
+//  ^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.tag.decorator
+//  ^                                       keyword.operator.accessor.js
+//    ^^^^^^^^^^^^^                         variable.other.property.js
+//                 ^                     ^  meta.brace.round.js
+//                  ^^^^^ ^^^^^^^           string.quoted.double.js
+//                  ^                       punctuation.definition.string.begin.js
+//                              ^           punctuation.definition.string.end.js
+//                               ^          meta.delimiter.comma.js
+//                                ^^^^^^^   variable.other.readwrite.js
+  aMethod() {
+//^^^^^^^^^ ^  meta.class.body.js
+//^^^^^^^^^    meta.function.method.js
+//^^^^^^^      entity.name.function.method.js
+//       ^     punctuation.definition.parameters.begin.js
+//        ^    punctuation.definition.parameters.end.js
+//          ^  meta.brace.curly.js
+
+  }
+//^  meta.class.body.js
+//^  meta.brace.curly.js
+}
+// <- punctuation.section.class.end.js
+
 // Support flow typing in comments
 
 function foo(bar /*:: ?*/) {}
