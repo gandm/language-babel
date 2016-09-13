@@ -83,12 +83,11 @@ module.exports = {
     order: 140
   },
 
-  templateTagHandlers: {
-    title: "JavaScript template tag grammar extensions",
-    description: "Enter a template tagname:scope.name.of.grammar",
+  taggedeTemplateLiteral: {
+    title: "JavaScript tag template literal grammar extensions",
+    description: "Enter a list of comma separated tagged template literals in the form tagname:scope.name.of.grammar",
     type: "array",
     default: ["Relay.QL:source.graphql", "gql:source.graphql"],
-
     items: {
       type: "string"
     }

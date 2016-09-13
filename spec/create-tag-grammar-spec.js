@@ -5,7 +5,7 @@ var fs = require("fs-plus");
 var path = require("path");
 var CreateTtlGrammar = require("../lib/create-ttl-grammar");
 
-describe("Create Tag Grammar", function() {
+describe("Create Ttl Grammar", function() {
   var ttlGrammar = null;
 
   beforeEach(function() {
@@ -23,31 +23,31 @@ describe("Create Tag Grammar", function() {
     delete ttlGrammar;
   });
 
-  describe("::getTagConfig", function() {
+  describe("::getTtlConfig", function() {
     console.log(ttlGrammar);
 
     return it(
       "should return an array containing the tagged template extensions configuration",
       function() {
-        return expect(ttlGrammar.getTagConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
+        return expect(ttlGrammar.getTtlConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
       }
     );
   });
 
-  describe("::generateTagSHA256", function() {
+  describe("::generateTtlSHA256", function() {
     return it(
       "should return SHA256 hash of the tagged template extensions in the atom config",
       function() {
-        return expect(ttlGrammar.generateTagSHA256()).toEqual("2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
+        return expect(ttlGrammar.generateTtlSHA256()).toEqual("2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
 
-  describe("::generateTagGrammarFilename", function() {
+  describe("::generateTtlGrammarFilename", function() {
     return it(
       "should return SHA256 hash of the tag extensions in the atom config",
       function() {
-        return expect(ttlGrammar.generateTagGrammarFilename()).toEqual("ttl-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
+        return expect(ttlGrammar.generateTtlGrammarFilename()).toEqual("ttl-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
@@ -63,19 +63,26 @@ describe("Create Tag Grammar", function() {
 
   describe("::getGrammarFiles", function() {
     return it(
-      "should return a list of language-babel grammar containing Babel Language.json",
+      "should return a list of all language-babel grammar files containing Babel Language.json",
       function() {
-        return expect(ttlGrammar.getGrammarFiles()).toContain("Babel Language.json");
+        waitsForPromise(function() {
+          ttlGrammar.getGrammarFiles().then(grammarFiles => {
+            expect(grammarFiles)..toContain("Babel Language.json");
+          })
+        });
       }
     );
   });
 
-  return describe("::getTagGrammarFiles", function() {
+  return describe("::getTtlGrammarFiles", function() {
     return it(
-      "should return a list of language-babel grammar containing Babel Language.json",
+      "should return a list of language-babel grammar with a ttl- prefix",
       function() {
-        return expect(ttlGrammar.getTagGrammarFiles()).toContain("Babel Language.json");
+        waitsForPromise(function() {
+          ttlGrammar.getGrammarFiles().then(grammarFiles => {
+            expect(grammarFiles)..toContain("Babel Language.json");
+          })
+        });
       }
     );
   });
-});

@@ -9,7 +9,7 @@ module.exports =
 class CreateTtlGrammar {
 
   disposable = new CompositeDisposable();
-  observeTagConfigCreated = false;
+  observeTtlConfigCreated = false;
 
   constructor() {
   }
@@ -19,14 +19,14 @@ class CreateTtlGrammar {
   }
 
   // create a new tagged template grammar file
-  createTagGrammarFile(ttlFileName) {
+  createTtlGrammarFile(ttlFileName) {
     var ttlFilenameAbsoulte;
     return ttlFilenameAbsoulte = this.grammarFileAbsolute()(ttlFileName);
   }
 
   // current tagged template filename based on a SHA256
-  generateTagGrammarFilename() {
-    return "ttl-" + this.generateTagSHA256();
+  generateTtlGrammarFilename() {
+    return "ttl-" + this.generateTtlSHA256();
   }
 
   // get full path to the language-babel grammar file dir
@@ -36,55 +36,61 @@ class CreateTtlGrammar {
     );
   }
 
-  // read configurations for tagged templates
-  getTagConfig() {
-    return atom.config.get("language-babel").taggedTemplateGrammar;
-  }
-
   // get an array of all language-babel grammar files
   getGrammarFiles() {
-    return fs.readdirSync(this.getGrammarPath());
-  }
-
-  // get an array of grammar tagged template extension files
-  getTagGrammarFiles() {
-    var regex = /ttl-/;
-
-    return this.getGrammarFiles().filter(function(grammarFilename) {
-      return regex.test(grammarFilename);
+    return new Promise((resolve,reject) => {
+      fs.readdir(this.getGrammarPath(),(err, data) => {
+        if (err) rejcet(err);
+        else {
+          resolve(data);
+        }
+      });
     });
   }
 
+  // read configurations for tagged templates
+  getTtlConfig() {
+    return atom.config.get("language-babel").taggedTemplateGrammar;
+  }
+
+  // get an array of grammar tagged template extension files
+  getTtlGrammarFiles() {
+    var regex = /ttl-/;
+    return this.getGrammarFiles().then(dirFiles => dirFiles.filter(function(filename) {
+      return regex.test(filename);
+    }));
+  }
+
   // generate a SHA256 for the tagged template grammar filenames based on the tagged template config
-  generateTagSHA256() {
+  generateTtlSHA256() {
     var hash = crypto.createHash("sha256");
-    hash.update(this.getTagConfig().toString());
+    hash.update(this.getTtlConfig().toString());
     return hash.digest("hex");
   }
 
   // observe tagged template configuration and act
-  observeTagConfig() {
-    if (observeTagConfigCreated) {
+  observeTtlConfig() {
+    if (observeTtlConfigCreated) {
       console.log("observed");
       return;
-      var ttlFilename = this.generateTagGrammarFilename();
+      var ttlFilename = this.generateTtlGrammarFilename();
 
       if (!this.grammarFileExists(ttlFilename)) {
         return;
       }
 
-      this.removeTagLanguageFiles(this.getTagGrammarFiles());
-      return this.createTagGrammarFile(ttlFilename);
+      this.removeTtlLanguageFiles(this.getTtlGrammarFiles());
+      return this.createTtlGrammarFile(ttlFilename);
     }
     else   {
       // look for changes in tagged template handlers
-      observeTagConfigCreated = true;
-      this.disposable.add(atom.config.observe("language-babel:templateTagHandlers", this.observeTagConfig.bind(this)));
+      observeTtlConfigCreated = true;
+      this.disposable.add(atom.config.observe("language-babel:taggedeTemplateLiteral", this.observeTtlConfig.bind(this)));
     }
   }
 
-  // remove all language files in tagged templateGrammarFiles array
-  removeTagLanguageFiles(ttlGrammarFiles) {
+  // remove all language files in tagged template GrammarFiles array
+  removeTtlLanguageFiles(ttlGrammarFiles) {
     return (() => {
       for (var ttlGrammarFile of ttlGrammarFiles) {
         var ttlGrammarFileAbsoulte = this.grammarFileAbsolute(ttlGrammarFile);
