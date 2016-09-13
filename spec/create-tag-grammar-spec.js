@@ -3,10 +3,10 @@ var Point = require("atom").Point;
 
 var fs = require("fs-plus");
 var path = require("path");
-var CreateTagGrammar = require("../lib/create-tag-grammar");
+var CreateTtlGrammar = require("../lib/create-ttl-grammar");
 
 describe("Create Tag Grammar", function() {
-  var tagGrammar = null;
+  var ttlGrammar = null;
 
   beforeEach(function() {
     waitsForPromise(function() {
@@ -14,26 +14,31 @@ describe("Create Tag Grammar", function() {
     });
 
     return runs(function() {
-      tagGrammar = new CreateTagGrammar();
+      ttlGrammar = new CreateTtlGrammar();
     });
   });
 
+  afterEach(function() {
+    ttlGrammar.destroy();
+    delete ttlGrammar;
+  });
+
   describe("::getTagConfig", function() {
-    console.log(tagGrammar);
+    console.log(ttlGrammar);
 
     return it(
-      "should return an array containing the tag extensions configuration",
+      "should return an array containing the tagged template extensions configuration",
       function() {
-        return expect(tagGrammar.getTagConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
+        return expect(ttlGrammar.getTagConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
       }
     );
   });
 
   describe("::generateTagSHA256", function() {
     return it(
-      "should return SHA256 hash of the tag extensions in the atom config",
+      "should return SHA256 hash of the tagged template extensions in the atom config",
       function() {
-        return expect(tagGrammar.generateTagSHA256()).toEqual("2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
+        return expect(ttlGrammar.generateTagSHA256()).toEqual("2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
@@ -42,7 +47,7 @@ describe("Create Tag Grammar", function() {
     return it(
       "should return SHA256 hash of the tag extensions in the atom config",
       function() {
-        return expect(tagGrammar.generateTagGrammarFilename()).toEqual("tags-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
+        return expect(ttlGrammar.generateTagGrammarFilename()).toEqual("ttl-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
@@ -51,7 +56,7 @@ describe("Create Tag Grammar", function() {
     return it(
       "should return an absolute path where the language-babel grammar files are",
       function() {
-        return expect(path.isAbsolute(tagGrammar.getGrammarPath())).toEqual(true);
+        return expect(path.isAbsolute(ttlGrammar.getGrammarPath())).toEqual(true);
       }
     );
   });
@@ -60,7 +65,7 @@ describe("Create Tag Grammar", function() {
     return it(
       "should return a list of language-babel grammar containing Babel Language.json",
       function() {
-        return expect(tagGrammar.getGrammarFiles()).toContain("Babel Language.json");
+        return expect(ttlGrammar.getGrammarFiles()).toContain("Babel Language.json");
       }
     );
   });
@@ -69,7 +74,7 @@ describe("Create Tag Grammar", function() {
     return it(
       "should return a list of language-babel grammar containing Babel Language.json",
       function() {
-        return expect(tagGrammar.getTagGrammarFiles()).toContain("Babel Language.json");
+        return expect(ttlGrammar.getTagGrammarFiles()).toContain("Babel Language.json");
       }
     );
   });

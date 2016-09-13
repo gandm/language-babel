@@ -4,7 +4,8 @@
   ],
   "plugins": [
     "transform-class-properties",
-    "syntax-class-properties"
+    "syntax-class-properties",
+    "transform-decorators-legacy"
   ],
   "sourceMaps": "inline"
 }
