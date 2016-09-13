@@ -78,8 +78,8 @@ class CreateTtlGrammar {
     }
     else   {
       // look for changes in tagged template handlers
-      this.disposable.add(atom.config.observe("language-babel:templateTagHandlers", this.observeTagConfig.bind(this)));
       observeTagConfigCreated = true;
+      this.disposable.add(atom.config.observe("language-babel:templateTagHandlers", this.observeTagConfig.bind(this)));
     }
   }
 
