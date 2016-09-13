@@ -5,84 +5,108 @@ var fs = require("fs-plus");
 var path = require("path");
 var CreateTtlGrammar = require("../lib/create-ttl-grammar");
 
-describe("Create Ttl Grammar", function() {
+describe("Create Ttl Grammar", () => {
   var ttlGrammar = null;
 
-  beforeEach(function() {
-    waitsForPromise(function() {
+  beforeEach(() => {
+    waitsForPromise(() => {
       return atom.packages.activatePackage("language-babel");
     });
 
-    return runs(function() {
+    return runs(() => {
       ttlGrammar = new CreateTtlGrammar();
     });
   });
 
-  afterEach(function() {
+  afterEach(() => {
     ttlGrammar.destroy();
     delete ttlGrammar;
   });
 
-  describe("::getTtlConfig", function() {
-    console.log(ttlGrammar);
-
+  describe("::getTtlConfig", () => {
     return it(
       "should return an array containing the tagged template extensions configuration",
-      function() {
+      () => {
         return expect(ttlGrammar.getTtlConfig()).toEqual(["Relay.QL:source.graphql", "gql:source.graphql"]);
       }
     );
   });
 
-  describe("::generateTtlSHA256", function() {
+  describe("::generateTtlSHA256", () => {
     return it(
       "should return SHA256 hash of the tagged template extensions in the atom config",
-      function() {
+      () => {
         return expect(ttlGrammar.generateTtlSHA256()).toEqual("2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
 
-  describe("::generateTtlGrammarFilename", function() {
+  describe("::generateTtlGrammarFilename", () => {
     return it(
       "should return SHA256 hash of the tag extensions in the atom config",
-      function() {
-        return expect(ttlGrammar.generateTtlGrammarFilename()).toEqual("ttl-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
+      () => {
+        expect(ttlGrammar.generateTtlGrammarFilename()).toEqual("ttl-2ecd223dafa053ad9e2fb3d386f6b889ff65d84f21fd4d091acc530ddad92ac3");
       }
     );
   });
 
-  describe("::getGrammarPath", function() {
+  describe("::getGrammarPath", () => {
     return it(
       "should return an absolute path where the language-babel grammar files are",
-      function() {
-        return expect(path.isAbsolute(ttlGrammar.getGrammarPath())).toEqual(true);
+      () => {
+        expect(path.isAbsolute(ttlGrammar.getGrammarPath())).toEqual(true);
       }
     );
   });
 
-  describe("::getGrammarFiles", function() {
+  describe("::grammarFileAbsolute", () => {
+    return it(
+      "should return an absolute path with a filename ",
+      () => {
+        filename = ttlGrammar.grammarFileAbsolute("someFile");
+        expect(path.parse(filename).name).toEqual("someFile");
+      }
+    );
+  });
+
+  describe("::getGrammarFiles", () => {
     return it(
       "should return a list of all language-babel grammar files containing Babel Language.json",
-      function() {
-        waitsForPromise(function() {
-          ttlGrammar.getGrammarFiles().then(grammarFiles => {
-            expect(grammarFiles)..toContain("Babel Language.json");
+      () => {
+        waitsForPromise(() => {
+          return ttlGrammar.getGrammarFiles().then( (grammarFiles) => {
+            expect(grammarFiles).toContain("Babel Language.json");
           })
         });
       }
     );
   });
 
-  return describe("::getTtlGrammarFiles", function() {
+  describe("::getTtlGrammarFiles", () => {
     return it(
       "should return a list of language-babel grammar with a ttl- prefix",
-      function() {
-        waitsForPromise(function() {
-          ttlGrammar.getGrammarFiles().then(grammarFiles => {
-            expect(grammarFiles)..toContain("Babel Language.json");
+      () => {
+        waitsForPromise(() => {
+          return ttlGrammar.getTtlGrammarFiles().then( (grammarFiles) => {
+            expect(grammarFiles).toContain("Babel Language.json");
           })
         });
       }
     );
   });
+
+  describe("::grammarFileExists", () => {
+    return it(
+      "checks if a grammar file exists and is writable",
+      () => {
+        waitsForPromise(() => {
+          return ttlGrammar.grammarFileExists("Babel Language.json").then( (grammarFile) => {
+            expect(grammarFile).toBe(true);
+          })
+        });
+      }
+    );
+  });
+
+
+});

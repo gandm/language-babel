@@ -40,7 +40,7 @@ class CreateTtlGrammar {
   getGrammarFiles() {
     return new Promise((resolve,reject) => {
       fs.readdir(this.getGrammarPath(),(err, data) => {
-        if (err) rejcet(err);
+        if (err) reject(err);
         else {
           resolve(data);
         }
@@ -68,6 +68,20 @@ class CreateTtlGrammar {
     return hash.digest("hex");
   }
 
+  // does a ttl filename exist and is writable
+  grammarFileExists(ttlFilename) {
+    return new Promise((resolve, reject) => {
+      fs.access(this.grammarFileAbsolute(ttlFilename), fs.F_OK, (err) => {
+          resolve(!!!err);
+      });
+    });
+  }
+
+  // get a fully qualified filename
+  grammarFileAbsolute(ttlFilename) {
+    return path.resolve(this.getGrammarPath(), ttlFilename);
+  }
+
   // observe tagged template configuration and act
   observeTtlConfig() {
     if (observeTtlConfigCreated) {
@@ -91,41 +105,15 @@ class CreateTtlGrammar {
 
   // remove all language files in tagged template GrammarFiles array
   removeTtlLanguageFiles(ttlGrammarFiles) {
-    return (() => {
-      for (var ttlGrammarFile of ttlGrammarFiles) {
-        var ttlGrammarFileAbsoulte = this.grammarFileAbsolute(ttlGrammarFile);
+    for (var ttlGrammarFile of ttlGrammarFiles) {
+      var ttlGrammarFileAbsoulte = this.grammarFileAbsolute(ttlGrammarFile);
 
-        if (this.grammarFileExists(ttlGrammarFileAbsoulte)) {
-          fs.unlinkSync(ttlGrammarFileAbsoulte);
-        }
+      if (this.grammarFileExists(ttlGrammarFileAbsoulte)) {
+        fs.unlinkSync(ttlGrammarFileAbsoulte);
       }
-    })();
-  }
-
-  // does a filename exist
-  grammarFileExists(ttlFilename) {
-    try {
-      fs.accessSync(this.grammarFileAbsolute(), fs.F_OK);
-      return true;
-    } catch (error) {
-      return false;
     }
   }
 
-  // is a filename read/write
-  isGrammarFileReadWrite(ttlFilename) {
-    try {
-      fs.accessSync(this.grammarFileAbsolute(), fs.R_OK | fs.W_OK);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  // get a fully qualified filename
-  grammarFileAbsolute(ttlFilename) {
-    return path.resolve(this.getGrammarPath(), ttlFilename);
-  }
 };
 
 let ttlGrammarHeader = `
