@@ -1,8 +1,11 @@
+### 2.38.0
+  - Change ES decorator support that conforms to the new spec and also better supports ASI syntax.
+
 ### 2.37.1
   - Add fixes for classes where public class fields mixed typed and non-typed implementations.
   - Add support for autoIndentJSX where a return statement becomes an implicit else statement.
   - Add scope for `|` in flow's object 'only' syntax `{| prop: string |}`
-  
+
 ### 2.37.0
   - Add support for GraphQL template strings with tags of Relay.QL and gql. Also support # type comments
   - Add Additional scope class id for literal object shorthand properties. `.shorthandpropertyname`
