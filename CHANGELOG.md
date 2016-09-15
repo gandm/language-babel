@@ -1,3 +1,6 @@
+### 2.39.0
+  - Add internal support for GraphQL templates so as to better support it.
+
 ### 2.38.0
   - Change ES decorator support that conforms to the new spec and also better supports ASI syntax.
 
