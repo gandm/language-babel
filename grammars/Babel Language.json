@@ -2669,7 +2669,7 @@
     },
     "graphql-type-interface": {
       "name": "meta.type.interface.graphql",
-      "begin": "\\s*\\b(?:(extends)?\\b\\s*\\b(type)|(interface)|(input))\\b\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "begin": "\\s*\\b(?:(extends)?\\b\\s*\\b(type)|(interface)|(input))\\b\\s*([_A-Za-z][_0-9A-Za-z]*)?",
       "end": "(?<=})",
       "captures": {
         "1": { "name": "keyword.type.graphql"},
