@@ -236,23 +236,24 @@ Relay.QL`
       $float: f = 123.011e-1, $float:  f = 123.00, $float: f = 123e+20
 ##    ^^^^^^^ ^ ^ ^^^^^^^^^^^ ^^^^^^^  ^ ^ ^^^^^^^ ^^^^^^^ ^ ^ ^^^^^^^  meta.variables.graphql
 ##    ^^^^^^                  ^^^^^^               ^^^^^^               variable.graphql
+##          ^                       ^                    ^              punctuation.colon.graphql
 ##            ^                        ^                   ^            support.type.graphql
 ##              ^                        ^                   ^          punctuation.assignment.graphql
 ##                ^^^^^^^^^^               ^^^^^^              ^^^^^^^  constant.float.graphql
 ##                          ^                    ^                      punctuation.comma.graphql
-##                                  ^                    ^              punctuation.colon.graphql
       $boolean: b ! = true, $boolean: b = false
 ##    ^^^^^^^^^ ^ ^ ^ ^^^^^ ^^^^^^^^^ ^ ^ ^^^^^  meta.variables.graphql
 ##    ^^^^^^^^              ^^^^^^^^             variable.graphql
+##            ^                     ^            punctuation.colon.graphql
 ##              ^                     ^          support.type.graphql
 ##                ^                              keyword.operator.nulltype.graphql
 ##                  ^                   ^        punctuation.assignment.graphql
 ##                    ^^^^                ^^^^^  constant.boolean.graphql
 ##                        ^                      punctuation.comma.graphql
-##                                  ^            punctuation.colon.graphql
       $String: s = "Some string \" \\ \/ \b \f \r \r and the rest"
 ##    ^^^^^^^^ ^ ^ ^^^^^ ^^^^^^ ^^ ^^ ^^ ^^ ^^ ^^ ^^ ^^^ ^^^ ^^^^^  meta.variables.graphql
 ##    ^^^^^^^                                                       variable.graphql
+##           ^                                                      punctuation.colon.graphql
 ##             ^                                                    support.type.graphql
 ##               ^                                                  punctuation.assignment.graphql
 ##                 ^^^^^ ^^^^^^ ^^ ^^ ^^ ^^ ^^ ^^ ^^ ^^^ ^^^ ^^^^^  string.quoted.double.graphql
@@ -262,14 +263,15 @@ Relay.QL`
       $enum: e = aaaa, $enum: e = AAAA_AA
 ##    ^^^^^^ ^ ^ ^^^^^ ^^^^^^ ^ ^ ^^^^^^^  meta.variables.graphql
 ##    ^^^^^            ^^^^^               variable.graphql
+##         ^                ^              punctuation.colon.graphql
 ##           ^                ^            support.type.graphql
 ##             ^                ^          punctuation.assignment.graphql
 ##               ^^^^             ^^^^^^^  constant.character.enum.graphql
 ##                   ^                     punctuation.comma.graphql
-##                          ^              punctuation.colon.graphql
       $list :  [ String!, Boolean!, ID, Int, Float ] ! = ["aaa", 1 , aFlag]
 ##    ^^^^^ ^  ^ ^^^^^^^^ ^^^^^^^^^ ^^^ ^^^^ ^^^^^ ^ ^ ^ ^^^^^^^ ^ ^ ^^^^^^  meta.variables.graphql
 ##    ^^^^^                                                                  variable.graphql
+##          ^                                                                punctuation.colon.graphql
 ##             ^ ^^^^^^^^ ^^^^^^^^^ ^^^ ^^^^ ^^^^^ ^ ^                       meta.type.list.graphql
 ##             ^                                   ^                         meta.brace.squart.graphql
 ##               ^^^^^^   ^^^^^^^   ^^  ^^^  ^^^^^                           support.type.builtin.graphql
@@ -286,6 +288,7 @@ Relay.QL`
       $object: o = {
 ##    ^^^^^^^^ ^ ^ ^  meta.variables.graphql
 ##    ^^^^^^^         variable.graphql
+##           ^        punctuation.colon.graphql
 ##             ^      support.type.graphql
 ##               ^    punctuation.assignment.graphql
 ##                 ^  meta.objectvalues.graphql
@@ -379,18 +382,18 @@ Relay.QL`
 ##  ^ ^^^^^^^^^ ^^^  comment.line.graphql.js
 ##  ^                punctuation.definition.comment.graphql
     me {
-##  ^^ ^  meta.selectionset.graphql
-##  ^^    variable.alias.graphql
-##     ^  punctuation.operation.graphql
+##  ^^ ^   meta.selectionset.graphql
+##  ^^     variable.graphql
+##     ^   punctuation.operation.graphql
       # nested Selection Set
 ##    ^ ^^^^^^ ^^^^^^^^^ ^^^  meta.selectionset.graphql
 ##    ^ ^^^^^^ ^^^^^^^^^ ^^^  comment.line.graphql.js
 ##    ^                       punctuation.definition.comment.graphql
-      id: idAlias(id: 1) @directive() # fields
-##    ^^^ ^^^^^^^^^^^ ^^ ^^^^^^^^^^^^ ^ ^^^^^^  meta.selectionset.graphql
-##    ^^^                                       string.unquoted.key.graphql
-##      ^           ^                           punctuation.colon.graphql
-##        ^^^^^^^                               variable.alias.graphql
+      idAlias: id(id: 1) @directive() # fields
+##    ^^^^^^^^ ^^^^^^ ^^ ^^^^^^^^^^^^ ^ ^^^^^^  meta.selectionset.graphql
+##    ^^^^^^^                                   variable.alias.graphql
+##           ^      ^                           punctuation.colon.graphql
+##             ^^                               variable.graphql
 ##               ^^^^ ^^           ^^           meta.arguments.graphql
 ##               ^     ^           ^^           meta.brace.round.directive.graphql
 ##                ^^                            variable.arguments.graphql
@@ -400,17 +403,16 @@ Relay.QL`
 ##                                    ^         punctuation.definition.comment.graphql
       name,
 ##    ^^^^^  meta.selectionset.graphql
-##    ^^^^   variable.alias.graphql
+##    ^^^^   variable.graphql
 ##        ^  punctuation.comma.graphql
       small: profilePic( size: $devicePicSize ) # field alias
 ##    ^^^^^^ ^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^ ^ ^ ^^^^^ ^^^^^  meta.selectionset.graphql
-##    ^^^^^^                                                   string.unquoted.key.graphql
+##    ^^^^^                                                    variable.alias.graphql
 ##         ^                 ^                                 punctuation.colon.graphql
-##           ^^^^^^^^^^                                        variable.alias.graphql
+##           ^^^^^^^^^^        ^^^^^^^^^^^^^^                  variable.graphql
 ##                     ^ ^^^^^ ^^^^^^^^^^^^^^ ^                meta.arguments.graphql
 ##                     ^                      ^                meta.brace.round.directive.graphql
 ##                       ^^^^                                  variable.arguments.graphql
-##                             ^^^^^^^^^^^^^^                  variable.graphql
 ##                                              ^ ^^^^^ ^^^^^  comment.line.graphql.js
 ##                                              ^              punctuation.definition.comment.graphql
       ...Ignored
