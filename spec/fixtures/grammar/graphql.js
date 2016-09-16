@@ -1,5 +1,13 @@
 ## SYNTAX TEST "source.js.jsx"
 
+var schema = buildSchema(/* GraphQL */`
+  type Query {
+    hello: String
+  }
+`);
+## <- meta.function-call.with-arguments.js punctuation.definition.quasi.end.js string.quoted.template.graphql.js
+ ## <- meta.function-call.with-arguments.js meta.brace.round.js
+##^  punctuation.terminator.statement.js
 
 Relay.QL`
       fragment on AnalysisImage @relay(plural: true) {

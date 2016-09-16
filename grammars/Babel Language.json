@@ -658,15 +658,16 @@
       "patterns": [
         {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
-          "begin": "\\s*+(?:((Relay)(.)(QL))|(gql))\\s*((`))",
+          "begin": "\\s*+(?:((Relay)(.)(QL))|(gql)|(/\\* GraphQL \\*/))\\s*((`))",
           "end": "\\s*(?<!\\\\)((`))",
           "beginCaptures": {
             "2": { "name": "variable.other.class.js" },
             "3": { "name": "keyword.operator.accessor.js" },
             "4": { "name": "entity.name.tag.grapahql.js" },
             "5": { "name": "entity.name.tag.grapahql.js" },
-            "6": { "name": "string.quoted.template.js" },
-            "7": { "name": "punctuation.definition.quasi.begin.js" }
+            "6": { "name": "entity.name.tag.grapahql.js" },
+            "7": { "name": "string.quoted.template.js" },
+            "8": { "name": "punctuation.definition.quasi.begin.js" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.definition.quasi.end.js" },
