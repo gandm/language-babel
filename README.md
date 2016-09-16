@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use.
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The package also supports highlighting of [GraphQL](http://graphql.org/) language constructs. The colour of syntax is determined by the theme in use.
 
 The package also provides
 
@@ -15,6 +15,7 @@ The package also provides
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
+ - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#grapahql-code-highlighting)
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -250,4 +251,26 @@ A `.languagebabel` file may contain one or more of the following properties.
   "suppressTranspileOnSaveMessages":  true|false,
   "transpileOnSave":                  true|false
 }
+```
+
+## GraphQL Code highlighting
+
+language-babel supports highlighting of GraphQL code. It does this by supporting GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings. Strings that have one of three prefixes/tags are parsed by the grammar to hightlight the code enclosed.
+
+```
+Relay.QL`This is how Relay.QL uses template strings`
+gql`This is how Apollo for GraphQL uses template strings`
+/* GraphQL */`For cases where no template tag function is available`
+```
+
+An example of using the third method for highlighting code using `/* GraphQL */`
+
+```
+var { graphql, buildSchema } = require('graphql');
+
+var schema = buildSchema(/* GraphQL */`
+  type Query {
+    hello: String
+  }
+`);
 ```

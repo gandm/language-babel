@@ -1,3 +1,6 @@
+### 2.40.0
+  - Add support for `/* GraphQL */` to be used as a prefix to templates literals enclosing GraphQL. See the README for more info.
+
 ### 2.39.0
   - Add internal support for GraphQL templates so as to better support it.
 
