@@ -15,7 +15,7 @@ The package also provides
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
- - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#grapahql-code-highlighting)
+ - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -253,7 +253,7 @@ A `.languagebabel` file may contain one or more of the following properties.
 }
 ```
 
-## GraphQL Code highlighting
+## GraphQL Code Highlighting
 
 language-babel supports highlighting of GraphQL code. It does this by supporting GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings. Strings that have one of three prefixes/tags are parsed by the grammar to hightlight the code enclosed.
 
