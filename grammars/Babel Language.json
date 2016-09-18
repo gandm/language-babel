@@ -2647,8 +2647,7 @@
     "graphql-fragment-definition": {
       "name": "meta.fragment.graphql",
       "begin": "\\s*(?:(\\bfragment\\b)\\s*(?!\\bon\\b)([_A-Za-z][_0-9A-Za-z]*)\\s*(?:(\\bon\\b)\\s*([_A-Za-z][_0-9A-Za-z]*)))",
-      "end": "(?=.)",
-      "applyEndPatternLast": 1,
+      "end": "(?<=})",
       "captures": {
         "1": { "name": "keyword.fragment.graphql" },
         "2": { "name": "entity.name.fragment.graphql" },
@@ -2659,6 +2658,7 @@
         { "include": "#graphql-comment" },
         { "include": "#graphql-selection-set" },
         { "include": "#graphql-directive" },
+        { "include": "#graphql-skip-newlines" },
         { "include": "#literal-quasi-embedded" }
       ]
     },
@@ -2780,8 +2780,7 @@
       "name": "comment.line.graphql.js",
       "match": "(\\s*)(#).*",
       "captures": {
-        "1": { "name": "punctuation.whitespace.comment.leading.graphql" },
-        "2": { "name": "punctuation.definition.comment.graphql" }
+        "1": { "name": "punctuation.whitespace.comment.leading.graphql" }
       }
     },
     "graphql-variable-definitions": {
@@ -2930,7 +2929,7 @@
         {
           "match": "\\s*([_A-Za-z][_0-9A-Za-z]*)\\s*(:)",
           "captures": {
-            "1": { "name": "variable.alias.graphql" },
+            "1": { "name": "string.unquoted.alias.graphql" },
             "2": { "name": "punctuation.colon.graphql" }
           }
         },
