@@ -5,12 +5,18 @@ var schema = buildSchema(/* GraphQL */`
     hello: String
   }
 `);
-## <- meta.function-call.with-arguments.js punctuation.definition.quasi.end.js string.quoted.template.graphql.js
- ## <- meta.function-call.with-arguments.js meta.brace.round.js
-##^  punctuation.terminator.statement.js
 
 Relay.QL`
       fragment on AnalysisImage @relay(plural: true) {
+##    ^^^^^^^^ ^^ ^^^^^^^^^^^^^                         entity.name.function.graphql
+##                              ^^^^^^                  entity.name.function.directive.graphql
+##                                    ^^^^^^^^ ^^^^^    meta.arguments.graphql
+##                                    ^            ^    meta.brace.round.directive.graphql
+##                                     ^^^^^^           variable.arguments.graphql
+##                                           ^          punctuation.colon.graphql
+##                                             ^^^^     constant.boolean.graphql
+##                                                   ^  meta.selectionset.graphql
+##                                                   ^  punctuation.operation.graphql
         ${AnalysisImagePlot.getFragment('image')}
 ##      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.selectionset.graphql
 ##      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  entity.quasi.element.js
@@ -25,21 +31,19 @@ Relay.QL`
 ##                                            ^    punctuation.definition.string.end.js
 ##                                              ^  punctuation.quasi.element.end.js
         extension
+##      ^^^^^^^^^  meta.selectionset.graphql
+##      ^^^^^^^^^  variable.graphql
         href
+##      ^^^^  meta.selectionset.graphql
+##      ^^^^  variable.graphql
       }
+##    ^  meta.selectionset.graphql
+##    ^  punctuation.operation.graphql
     `
 
 Relay.QL`
-## <- variable.other.class.js
- ## <- variable.other.class.js
-##^^^      variable.other.class.js
-##   ^     keyword.operator.accessor.js
-##    ^^   entity.name.tag.grapahql.js
-##      ^  string.quoted.template.js
-##      ^  punctuation.definition.quasi.begin.js
   # this is a comment
 ##^ ^^^^ ^^ ^ ^^^^^^^  comment.line.graphql.js
-##^                    punctuation.definition.comment.graphql
   interface Character {
 ##^^^^^^^^^ ^^^^^^^^^ ^  meta.type.interface.graphql
 ##^^^^^^^^^              keyword.interface.graphql
@@ -194,17 +198,14 @@ Relay.QL`
 ##      ^^^^^^^^^^^^   ^^^^^                support.type.graphql
 ##                   ^                      punctuation.assignment.graphql
 ##                           ^ ^^^^^ ^^^^^  comment.line.graphql.js
-##                           ^              punctuation.definition.comment.graphql
     | Droid # more
 ##  ^               punctuation.or.graphql
 ##    ^^^^^         support.type.graphql
 ##          ^ ^^^^  comment.line.graphql.js
-##          ^       punctuation.definition.comment.graphql
     | Starship #than one line
 ##  ^                          punctuation.or.graphql
 ##    ^^^^^^^^                 support.type.graphql
 ##             ^^^^^ ^^^ ^^^^  comment.line.graphql.js
-##             ^               punctuation.definition.comment.graphql
 
   mutation {}
 ##^^^^^^^^     keyword.operation.graphql
@@ -234,7 +235,6 @@ Relay.QL`
 ##           ^  meta.brace.round.graphql
       # comment
 ##    ^ ^^^^^^^  comment.line.graphql.js
-##    ^          punctuation.definition.comment.graphql
       $int: = 0
 ##    ^^^^^ ^ ^  meta.variables.graphql
 ##    ^^^^       variable.graphql
@@ -388,18 +388,16 @@ Relay.QL`
     # Selection Set
 ##  ^ ^^^^^^^^^ ^^^  meta.selectionset.graphql
 ##  ^ ^^^^^^^^^ ^^^  comment.line.graphql.js
-##  ^                punctuation.definition.comment.graphql
     me {
-##  ^^ ^   meta.selectionset.graphql
-##  ^^     variable.graphql
-##     ^   punctuation.operation.graphql
+##  ^^ ^  meta.selectionset.graphql
+##  ^^    variable.graphql
+##     ^  punctuation.operation.graphql
       # nested Selection Set
 ##    ^ ^^^^^^ ^^^^^^^^^ ^^^  meta.selectionset.graphql
 ##    ^ ^^^^^^ ^^^^^^^^^ ^^^  comment.line.graphql.js
-##    ^                       punctuation.definition.comment.graphql
       idAlias: id(id: 1) @directive() # fields
 ##    ^^^^^^^^ ^^^^^^ ^^ ^^^^^^^^^^^^ ^ ^^^^^^  meta.selectionset.graphql
-##    ^^^^^^^                                   variable.alias.graphql
+##    ^^^^^^^                                   string.unquoted.alias.graphql
 ##           ^      ^                           punctuation.colon.graphql
 ##             ^^                               variable.graphql
 ##               ^^^^ ^^           ^^           meta.arguments.graphql
@@ -408,21 +406,19 @@ Relay.QL`
 ##                    ^                         constant.float.graphql
 ##                       ^^^^^^^^^^             entity.name.function.directive.graphql
 ##                                    ^ ^^^^^^  comment.line.graphql.js
-##                                    ^         punctuation.definition.comment.graphql
       name,
 ##    ^^^^^  meta.selectionset.graphql
 ##    ^^^^   variable.graphql
 ##        ^  punctuation.comma.graphql
       small: profilePic( size: $devicePicSize ) # field alias
 ##    ^^^^^^ ^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^ ^ ^ ^^^^^ ^^^^^  meta.selectionset.graphql
-##    ^^^^^                                                    variable.alias.graphql
+##    ^^^^^                                                    string.unquoted.alias.graphql
 ##         ^                 ^                                 punctuation.colon.graphql
 ##           ^^^^^^^^^^        ^^^^^^^^^^^^^^                  variable.graphql
 ##                     ^ ^^^^^ ^^^^^^^^^^^^^^ ^                meta.arguments.graphql
 ##                     ^                      ^                meta.brace.round.directive.graphql
 ##                       ^^^^                                  variable.arguments.graphql
 ##                                              ^ ^^^^^ ^^^^^  comment.line.graphql.js
-##                                              ^              punctuation.definition.comment.graphql
       ...Ignored
 ##    ^^^^^^^^^^  meta.selectionset.graphql
 ##    ^^^         keyword.operator.spread.graphql
@@ -439,7 +435,6 @@ Relay.QL`
 ##                         ^^^^                      constant.boolean.graphql
 ##                              ^                    punctuation.comma.graphql
 ##                                ^ ^^^^^^^^ ^^^^^^  comment.line.graphql.js
-##                                ^                  punctuation.definition.comment.graphql
       ... on Type  @directives() { # inline fragment
 ##    ^^^ ^^ ^^^^  ^^^^^^^^^^^^^ ^ ^ ^^^^^^ ^^^^^^^^  meta.selectionset.graphql
 ##    ^^^                                             keyword.operator.spread.graphql
@@ -450,13 +445,11 @@ Relay.QL`
 ##                            ^^                      meta.brace.round.directive.graphql
 ##                               ^                    punctuation.operation.graphql
 ##                                 ^ ^^^^^^ ^^^^^^^^  comment.line.graphql.js
-##                                 ^                  punctuation.definition.comment.graphql
         ...{ # inline fragment
 ##      ^^^^ ^ ^^^^^^ ^^^^^^^^  meta.selectionset.graphql
 ##      ^^^                     keyword.operator.spread.graphql
 ##         ^                    punctuation.operation.graphql
 ##           ^ ^^^^^^ ^^^^^^^^  comment.line.graphql.js
-##           ^                  punctuation.definition.comment.graphql
         }
 ##      ^  meta.selectionset.graphql
 ##      ^  punctuation.operation.graphql
