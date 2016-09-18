@@ -1,3 +1,6 @@
+### 2.41.0
+  - Add references in README to `language-graphql-lb` that supports `.graphql` and `.gql` files.
+  
 ### 2.40.0
   - Add support for `/* GraphQL */` to be used as a prefix to templates literals enclosing GraphQL. See the README for more info.
 

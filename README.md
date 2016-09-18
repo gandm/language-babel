@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The package also supports highlighting of [GraphQL](http://graphql.org/) language constructs. The colour of syntax is determined by the theme in use.
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The package also supports highlighting of [GraphQL](https://github.com/gandm/language-babel#graphql-code-highlighting) language constructs. The colour of syntax is determined by the theme in use.
 
 The package also provides
 
@@ -255,7 +255,11 @@ A `.languagebabel` file may contain one or more of the following properties.
 
 ## GraphQL Code Highlighting
 
-language-babel supports highlighting of GraphQL code. It does this by supporting GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings. Strings that have one of three prefixes/tags are parsed by the grammar to hightlight the code enclosed.
+language-babel supports highlighting of GraphQL code within JavaScript files. For highlighting `.graphql` and `.gql` files see it's sister grammar - [language-graphql-lb](https://atom.io/packages/language-graphql-lb).
+
+ Inside JavaScript, GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings are highlighted. Other GraphQL structures, notably types, are supported by the Flow componenet of this package.
+
+ Strings that have one of three prefixes/tags are parsed by the grammar to hightlight the code enclosed.
 
 ```
 Relay.QL`This is how Relay.QL uses template strings`
