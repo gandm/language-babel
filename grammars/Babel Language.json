@@ -677,6 +677,7 @@
             { "include": "#graphql" }
           ]
         },
+        { "include": "languagebabel.ttlextension"},
         {
           "comment": "Use two forms of scopes! fixes some themes",
           "name": "string.quasi.js",

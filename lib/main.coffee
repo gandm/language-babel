@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 autoCompleteJSX = require './auto-complete-jsx'
 AutoIndent = require './auto-indent'
+ttlGrammar = require './create-ttl-grammar'
 
 INTERFILESAVETIME = 1000
 LB = 'language-babel'
@@ -10,6 +11,7 @@ module.exports =
 
   activate: (state) ->
     @transpiler ?= new (require './transpiler')
+    @ttlGrammar = new ttlGrammar(true)
     # track any file save events and transpile if babel
     @disposable = new CompositeDisposable
     @textEditors = {}
@@ -56,6 +58,7 @@ module.exports =
       disposeable.dispose()
     @transpiler.stopAllTranspilerTask()
     @transpiler.disposables.dispose()
+    @ttlGrammar.destroy()
 
   # warns if an activated package is on the incompatible list
   isPackageCompatible: (activatedPackage) ->
@@ -73,7 +76,7 @@ module.exports =
         \nAs language-babel also attempts to do auto indentation using
         \nstandard atom API's, this creates a potential conflict."
     }
-    
+
     for incompatiblePackage, reason of incompatiblePackages
       if activatedPackage.name is incompatiblePackage
         atom.notifications.addInfo 'Incompatible Package Detected',

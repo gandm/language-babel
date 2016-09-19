@@ -1,6 +1,9 @@
+### 2.42.0
+  - Add support for embedding other grammars to highlight template literals. Please refer to [the README](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions)
+
 ### 2.41.0
   - Add references in README to `language-graphql-lb` that supports `.graphql` and `.gql` files.
-  
+
 ### 2.40.0
   - Add support for `/* GraphQL */` to be used as a prefix to templates literals enclosing GraphQL. See the README for more info.
 

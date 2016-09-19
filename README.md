@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). The package also supports highlighting of [GraphQL](https://github.com/gandm/language-babel#graphql-code-highlighting) language constructs. The colour of syntax is determined by the theme in use.
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). This package also supports highlighting of [GraphQL](https://github.com/gandm/language-babel#graphql-code-highlighting) language constructs when inside certain JavaScript template strings. For `.graphql` and `.gql` file support please see [language-graphql-lb](https://atom.io/packages/language-graphql-lb) . The colour of syntax is determined by the theme in use.
 
 The package also provides
 
@@ -16,6 +16,7 @@ The package also provides
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
+ - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -228,6 +229,27 @@ For most projects it is better to configure `language-babel` via project based `
 
 * #### Auto Indent JSX
   Enables automatic indenting of JSX.
+
+* #### JavaScript Tagged Template Literal Grammar Extensions
+  This package setting allows language-babel to embed third party grammars so as to highlight code inside template literal strings. These may actual tagged template literals as defined [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), or where no function tag exists a comment string.
+
+  For example you may wish to highlight templates prefixed with ``/** @html */`<div></div>` `` as HTML, or maybe `` sql`select * from table foo` `` as SQL.
+  Firstly, you need to find a grammar that supports the highlighting of the template code. This language package should then be installed inside Atom. You then need to find the scope name for that grammar. This can be done in a number of ways, but if you look at the grammars JSON/CSON file and look for the `scopeName` property field, it is that which should be used.
+
+  If we use [language-html](https://atom.io/packages/language-html) and [language-sql](https://atom.io/packages/language-sql) for our example to highlight code, then this field would look like.
+
+  ```/* @html */:text.basic.html, sql:source.sql```
+
+  In other words, this field is an array of strings, with each string in the form of `template-prefix:grammar-scopename#optional-include`.
+
+  where:
+    - `template-prefix` is a literal string that comes immediately before the opening back-tick of a template.
+    - `:` is a separator before the next field and is not part of the prefix.
+    - `grammar-scopename` is the scopeName of the grammar used to highlight the template.
+    - `#optional-include` if present, will use that include block in the grammars repository.
+
+  Please note: As language-babel passes off highlighting of the template to another grammar, it cannot highlight any interpolated code.
+
 
 ## .languagebabel Configuration
 

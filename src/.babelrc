@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "node5"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "syntax-class-properties",
+    "transform-decorators-legacy"
+  ],
+  "sourceMaps": "inline"
+}
