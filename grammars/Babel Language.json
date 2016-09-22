@@ -1,6 +1,6 @@
 {
   "name": "Babel ES6 JavaScript",
-  "scopeName": "source.js.jsx",
+  "scopeName": "source.js.jsx.vue",
   "foldingStartMarker": "(/\\*|{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
@@ -10,6 +10,7 @@
     "es",
     "babel",
     "jsx",
+    "vue",
     "flow"
   ],
   "patterns": [
