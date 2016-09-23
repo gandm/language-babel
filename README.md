@@ -233,13 +233,13 @@ For most projects it is better to configure `language-babel` via project based `
 * #### JavaScript Tagged Template Literal Grammar Extensions
 	This package setting allows language-babel to include third party grammars to highlight code inside template literal strings. These may actual tagged template literals, [described here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), or where no appropriate function tag exists, another form of tag marking that signifies the templates nature. e.g. A comment string.
 
-  For example you may wish to highlight templates prefixed with ``/** @html */`<div></div>` `` as HTML, and  maybe `` sql`select * from table foo` `` as SQL. The latter assumes a tagged function named sql exists in the code.
+  For example you may wish to highlight templates prefixed with ``/* @html */`<div></div>` `` as HTML, and  maybe `` sql`select * from table foo` `` as SQL. The latter assumes a tagged function named sql exists in the code.
 
 	In order to do this you need to find a language package that supports the highlighting of the template code. This language package should then be installed into Atom. You then need to find the scope name for that grammar. This can be done in a number of ways, but if you view the grammars JSON/CSON file and look for the `scopeName` property field, this indicates the scope name for that grammar.
 
 	If we use the Atom provided languages [language-html](https://atom.io/packages/language-html) and [language-sql](https://atom.io/packages/language-sql) in our example above to highlight the template code, then this field would look like.
 
-  ```/* @html */:text.basic.html, sql:source.sql```
+  ```/* @html */:text.html.basic, sql:source.sql```
 
 	In other words, the pacakge settings for this field is an array of strings, with each string in the form of `template-prefix:grammar-scopename#optional-include`.
 
