@@ -1,7 +1,5 @@
-var Range = require('atom').Range;
-var Point = require('atom').Point;
+/*global atom*/
 var temp = require('temp');
-var fs = require('fs-plus');
 var path = require('path');
 var CreateTtlGrammar = require('../lib/create-ttl-grammar');
 
@@ -24,7 +22,7 @@ describe('Create Ttl Grammar', () => {
 
   afterEach(() => {
     ttlGrammar.destroy();
-    delete ttlGrammar;
+    ttlGrammar = null;
   });
 
   describe('::getTtlConfig', () => {
@@ -79,7 +77,7 @@ describe('Create Ttl Grammar', () => {
         waitsForPromise(() => {
           return ttlGrammar.getGrammarFiles().then( (grammarFiles) => {
             expect(grammarFiles).toContain('Babel Language.json');
-          })
+          });
         });
       }
     );
@@ -92,7 +90,7 @@ describe('Create Ttl Grammar', () => {
         waitsForPromise(() => {
           return ttlGrammar.getTtlGrammarFiles().then( (grammarFiles) => {
             expect(grammarFiles).toMatch(/^ttl-/);
-          })
+          });
         });
       }
     );
@@ -104,7 +102,7 @@ describe('Create Ttl Grammar', () => {
       () => {
         waitsForPromise(() => {
           return ttlGrammar.noGrammarFileExists('Babel Language.json').catch( (rejVal) => {
-            expect(rejVal).toEqual({err: false, module: 'noGrammarFileExists'})
+            expect(rejVal).toEqual({err: false, member: 'noGrammarFileExists'});
           });
         });
       }
@@ -116,9 +114,9 @@ describe('Create Ttl Grammar', () => {
     'should remove any files ttl-hashedvalue.json',
     () => {
       var tempGrammarDir = temp.mkdirSync();
-      var tempGrammarFile1 = temp.open('ttl-a.json');
-      var tempGrammarFile2 = temp.open('ttl-b.json');
-      var tempGrammarFile3 = temp.open('ttl-c.json');
+      temp.open('ttl-a.json');
+      temp.open('ttl-b.json');
+      temp.open('ttl-c.json');
 
       spyOn(ttlGrammar, 'getGrammarPath').andReturn(tempGrammarDir);
 
@@ -127,7 +125,7 @@ describe('Create Ttl Grammar', () => {
           // Previous fs.unlink's queue a delete in Node so delay check
           .then( () => setTimeout(()=>void(0) ,1000) )
           .then( () => ttlGrammar.getTtlGrammarFiles() )
-          .then( (ttlFiles) => expect(ttlFiles).toEqual([]) )
+          .then( (ttlFiles) => expect(ttlFiles).toEqual([]) );
         });
       }
     );

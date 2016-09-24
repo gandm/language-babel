@@ -47,12 +47,14 @@
   },
   "devDependencies": {
     "atom-grammar-test": "<1.0.0",
-    "chai": "^3.0.0",
-    "core-decorators": "^0.12.3",
+    "babel-eslint": "^6.1.2",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-node5": "^11.1.0",
+    "chai": "^3.0.0",
+    "core-decorators": "^0.12.3",
+    "eslint": "^3.6.0",
     "temp": "^0.8.3"
   }
 }

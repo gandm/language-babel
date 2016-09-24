@@ -1,4 +1,5 @@
-let  crypto  = require('crypto');
+/*global atom*/
+let crypto = require('crypto');
 let fs = require('fs-plus');
 let path = require('path');
 let CompositeDisposable = require('atom').CompositeDisposable;
@@ -26,9 +27,9 @@ class CreateTtlGrammar {
   // add new grammars to registry
   addGrammars(filename) {
     return new Promise((resolve, reject) => {
-      atom.grammars.loadGrammar(filename, (error, grammar) => {
-        if ( error) reject({err: err, module: 'addGrammars' })
-        else resolve()
+      atom.grammars.loadGrammar(filename, (err) => {
+        if ( err) reject({err: err, member: 'addGrammars' });
+        else resolve();
       });
     });
 
@@ -43,7 +44,7 @@ class CreateTtlGrammar {
 
       this.noGrammarFileExists(ttlFilename)
         .then( () => this.removeGrammars() )
-        .then( () => { this.removeTtlLanguageFiles() } )
+        .then( () => { this.removeTtlLanguageFiles(); } )
         .then( () => this.createGrammarFile(ttlFilenameAbsolute, grammarText) )
         .then( () => this.addGrammars(ttlFilenameAbsolute) )
         .then( () => resolve(ttlFilename) )
@@ -57,9 +58,9 @@ class CreateTtlGrammar {
   createGrammarFile(filename,text) {
     return new Promise((resolve, reject) => {
       fs.writeFile(filename, text, (err) => {
-        if (err) reject({err: err, module: 'createGrammarFile' });
+        if (err) reject({err: err, member: 'createGrammarFile' });
         else resolve('New Grammar Created');
-      })
+      });
     });
   }
 
@@ -73,7 +74,7 @@ class CreateTtlGrammar {
   "patterns": [
     ${this.getTtlConfig().map( (ttlString) => (this.createGrammarPatterns(ttlString))  ) }
   ]
-}`
+}`;
   }
 
   // Create a grammar's pattern derived from a the tagged template string
@@ -85,8 +86,7 @@ class CreateTtlGrammar {
     const isValidIncludeScope = /^([a-zA-Z]\w*\.?)*(\w#([a-zA-Z]\w*\.?)*)?\w$/;
 
     if ( matchString.length < 1 || !isValidIncludeScope.test(includeScope)) {
-      throw(`Error in the Tagged Template Grammar String ${ttlString}`);
-      return ``;
+      throw({err: `Error in the Tagged Template Grammar String ${ttlString}`, member: 'createGrammarPatterns'});
     }
 
     const escapeStringRegExp = /[|\\{}()[\]^$+*?.]/g;
@@ -106,7 +106,7 @@ class CreateTtlGrammar {
       "patterns": [
         { "include": "${includeScope}" }
       ]
-    }`
+    }`;
   }
 
   // get full path to the language-babel grammar file dir
@@ -120,7 +120,7 @@ class CreateTtlGrammar {
   getGrammarFiles() {
     return new Promise((resolve,reject) => {
       fs.readdir(this.getGrammarPath(),(err, data) => {
-        if (err) reject({err: err, module: 'getGrammarFiles' });
+        if (err) reject({err: err, member: 'getGrammarFiles' });
         else {
           resolve(data);
         }
@@ -150,7 +150,7 @@ class CreateTtlGrammar {
 
   // tagged template filename
   makeTtlGrammarFilename(hashString) {
-    return `ttl-${hashString}.json`
+    return `ttl-${hashString}.json`;
   }
 
   // get a fully qualified filename
@@ -163,7 +163,7 @@ class CreateTtlGrammar {
   noGrammarFileExists(ttlFilename) {
     return new Promise((resolve, reject) => {
       fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), fs.F_OK, (err) => {
-        !!!err ? reject({err: false, module: 'noGrammarFileExists' }): resolve(!!!err);
+        err ? resolve(!!err): reject({err: false, member: 'noGrammarFileExists' });
       });
     });
   }
@@ -173,24 +173,24 @@ class CreateTtlGrammar {
   // settings we need to delay processing the array strings, until last char
   // entered was setTimeout seconds ago. parse tagged template configuration
   // and then create grammar and generate a SHA256 hash from the grammar
-  observeTtlConfig(value) {
-    if (!!this.configChangedTimer) clearTimeout(this.configChangedTimer);
+  observeTtlConfig() {
+    if (this.configChangedTimer) clearTimeout(this.configChangedTimer);
     this.configChangedTimer = setTimeout( () => {
       try {
         const grammarText = this.createGrammarText();
         const hash = this.generateTtlSHA256(grammarText);
         const ttlFilename = this.makeTtlGrammarFilename(hash);
         const ttlFilenameAbsolute = this.makeTtlGrammarFilenameAbsoulute(ttlFilename);
-        let p = this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText })
+        this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText })
           .then( () => atom.notifications.addInfo('language-babel', {description: `Grammar created at \n${ttlFilenameAbsolute}`,dismissable: true}))
           .catch( (err) => {
               if (err.err) {
-                atom.notifications.addWarning('language-babel', {description: `Module: ${err.module} got an Error:${err.err}`,dismissable: true});
+                atom.notifications.addWarning('language-babel', {description: `member: ${err.member} got an Error:${err.err}`,dismissable: true});
               }
           });
       }
       catch(err) {
-        atom.notifications.addError(err, {dismissable: true});
+        atom.notifications.addWarning('language-babel', {description: `Error:${err.err}`,dismissable: true});
         return;
       }
     }, 10000);
