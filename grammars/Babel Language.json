@@ -715,32 +715,49 @@
       ]
     },
     "literal-object": {
+      "comment": "obj lteral ({ or ,{ or [{ or ={ or return { or default {",
+      "begin": "(?:(?<=\\(|\\[)|(?:\\s*(?:(=)|\\b(default)\\b|\\b(return)\\b|(,))))\\s*({)",
+      "end": "\\s*+(})",
+      "beginCaptures": {
+        "1": { "name": "keyword.operator.assignment.js" },
+        "2": { "name": "keyword.control.module.js" },
+        "3": { "name": "keyword.control.flow.js" },
+        "4": { "name": "meta.delimiter.comma.js" },
+        "5": { "name": "meta.brace.curly.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "meta.brace.curly.js" }
+      },
       "patterns": [
-        { "comment": "obj lteral ({ or ,{ or [{ or ={ or return { or default {",
-          "begin": "(?:(?<=\\(|\\[)|(?:\\s*(?:(=)|\\b(default)\\b|\\b(return)\\b|(,))))\\s*({)",
-          "end": "\\s*+(})",
-          "beginCaptures": {
-            "1": { "name": "keyword.operator.assignment.js" },
-            "2": { "name": "keyword.control.module.js" },
-            "3": { "name": "keyword.control.flow.js" },
-            "4": { "name": "meta.delimiter.comma.js" },
-            "5": { "name": "meta.brace.curly.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "meta.brace.curly.js" }
-          },
-          "patterns": [
-            { "include": "#html-template" },
-            { "include": "#literal-function-labels" },
-            { "include": "#literal-arrow-function-labels" },
-            { "include": "#literal-arrow-function" },
-            { "include": "#literal-method" },
-            { "include": "#literal-object-prop-shorthand" },
-            { "include": "#literal-labels" },
-            { "include": "#expression" },
-            { "include": "#literal-punctuation" }
-          ]
-        }
+        { "include": "#literal-object-body" }
+      ]
+    },
+    "literal-object-brace": {
+      "comment": "nested obj literal prop: {object} ",
+      "begin": "(?<=:)\\s*({)",
+      "end": "\\s*+(})",
+      "beginCaptures": {
+        "1": { "name": "meta.brace.curly.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "meta.brace.curly.js" }
+      },
+      "patterns": [
+        { "include": "#literal-object-body" }
+      ]
+    },
+    "literal-object-body": {
+      "patterns": [
+        { "include": "#html-template" },
+        { "include": "#literal-object-brace" },
+        { "include": "#literal-function-labels" },
+        { "include": "#literal-arrow-function-labels" },
+        { "include": "#literal-arrow-function" },
+        { "include": "#literal-method" },
+        { "include": "#literal-object-prop-shorthand" },
+        { "include": "#literal-labels" },
+        { "include": "#expression" },
+        { "include": "#literal-punctuation" }
       ]
     },
     "literal-object-prop-shorthand": {
