@@ -1,4 +1,4 @@
-### 2.42.1
+### 2.42.2
   - Fix grammar divide operator starting on a new line being treated as a RegExp. [Fixes #255](https://github.com/gandm/language-babel/issues/255)
   - Fix grammar nested object literals not being handled correctly. [Fixes #256](https://github.com/gandm/language-babel/issues/256)
 
