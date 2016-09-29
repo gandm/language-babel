@@ -1,5 +1,11 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE #255
+let a=1
+ / 2
+ // <- keyword.operator.arithmetic.js
+// ^  constant.numeric.js
+
 // ISSUE #234
 
  // Comment one a new line with some prefixed white space
