@@ -1,8 +1,8 @@
 /*global atom*/
-let crypto = require('crypto');
-let fs = require('fs-plus');
-let path = require('path');
-let CompositeDisposable = require('atom').CompositeDisposable;
+const crypto = require('crypto');
+const fs = require('fs-plus');
+const path = require('path');
+const CompositeDisposable = require('atom').CompositeDisposable;
 
 // This Class is repsonsible for creating a new Tagged Template grammar
 // on detection of a changed Tagged Template Configuration in the package settings
@@ -28,7 +28,9 @@ class CreateTtlGrammar {
   addGrammars(filename) {
     return new Promise((resolve, reject) => {
       atom.grammars.loadGrammar(filename, (err) => {
-        if ( err) reject({err: err, member: 'addGrammars' });
+        if (err) {
+          reject({err: err, member: 'addGrammars'});
+        }
         else resolve();
       });
     });
@@ -40,17 +42,14 @@ class CreateTtlGrammar {
   // This returns a Promise that resolves  with a filename
   // if a new grammar was created or rejects if a problem.
   createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText}) {
-    return new Promise( (resolve, reject) => {
-
+    return new Promise((resolve, reject) => {
       this.noGrammarFileExists(ttlFilename)
-        .then( () => this.removeGrammars() )
-        .then( () => { this.removeTtlLanguageFiles(); } )
-        .then( () => this.createGrammarFile(ttlFilenameAbsolute, grammarText) )
-        .then( () => this.addGrammars(ttlFilenameAbsolute) )
-        .then( () => resolve(ttlFilename) )
-        .catch( (err) => {
-          reject(err);
-        });
+        .then(() => this.removeGrammars())
+        .then(() => this.removeTtlLanguageFiles())
+        .then(() => this.createGrammarFile(ttlFilenameAbsolute, grammarText))
+        .then(() => this.addGrammars(ttlFilenameAbsolute))
+        .then(() => resolve(ttlFilename))
+        .catch((err) => reject(err));
     });
   }
 
@@ -58,7 +57,7 @@ class CreateTtlGrammar {
   createGrammarFile(filename,text) {
     return new Promise((resolve, reject) => {
       fs.writeFile(filename, text, (err) => {
-        if (err) reject({err: err, member: 'createGrammarFile' });
+        if (err) reject({err: err, member: 'createGrammarFile'});
         else resolve('New Grammar Created');
       });
     });
@@ -72,7 +71,7 @@ class CreateTtlGrammar {
   "scopeName": "${this.TTLSCOPENAME}",
   "fileTypes": [],
   "patterns": [
-    ${this.getTtlConfig().map( (ttlString) => (this.createGrammarPatterns(ttlString))  ) }
+    ${this.getTtlConfig().map((ttlString) => (this.createGrammarPatterns(ttlString)))}
   ]
 }`;
   }
@@ -85,7 +84,7 @@ class CreateTtlGrammar {
     let includeScope = ttlString.substring(lastColonIndex+1);
     const isValidIncludeScope = /^([a-zA-Z]\w*\.?)*(\w#([a-zA-Z]\w*\.?)*)?\w$/;
 
-    if ( matchString.length < 1 || !isValidIncludeScope.test(includeScope)) {
+    if (matchString.length < 1 || !isValidIncludeScope.test(includeScope)) {
       throw({err: `Error in the Tagged Template Grammar String ${ttlString}`, member: 'createGrammarPatterns'});
     }
 
@@ -120,7 +119,7 @@ class CreateTtlGrammar {
   getGrammarFiles() {
     return new Promise((resolve,reject) => {
       fs.readdir(this.getGrammarPath(),(err, data) => {
-        if (err) reject({err: err, member: 'getGrammarFiles' });
+        if (err) reject({err: err, member: 'getGrammarFiles'});
         else {
           resolve(data);
         }
@@ -135,15 +134,14 @@ class CreateTtlGrammar {
 
   // get an array of grammar tagged template extension filenames
   getTtlGrammarFiles() {
-    var regex = /ttl-/;
     return this.getGrammarFiles().then(dirFiles => dirFiles.filter(function(filename) {
-      return regex.test(filename);
+      return /^ttl-/.test(filename);
     }));
   }
 
   // generate a SHA256 for some text
   generateTtlSHA256(stringToHash) {
-    var hash = crypto.createHash('sha256');
+    let hash = crypto.createHash('sha256');
     hash.update(stringToHash);
     return hash.digest('hex');
   }
@@ -163,7 +161,7 @@ class CreateTtlGrammar {
   noGrammarFileExists(ttlFilename) {
     return new Promise((resolve, reject) => {
       fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), fs.F_OK, (err) => {
-        err ? resolve(!!err): reject({err: false, member: 'noGrammarFileExists' });
+        err ? resolve(!!err): reject({err: false, member: 'noGrammarFileExists'});
       });
     });
   }
@@ -175,15 +173,15 @@ class CreateTtlGrammar {
   // and then create grammar and generate a SHA256 hash from the grammar
   observeTtlConfig() {
     if (this.configChangedTimer) clearTimeout(this.configChangedTimer);
-    this.configChangedTimer = setTimeout( () => {
+    this.configChangedTimer = setTimeout(() => {
       try {
         const grammarText = this.createGrammarText();
         const hash = this.generateTtlSHA256(grammarText);
         const ttlFilename = this.makeTtlGrammarFilename(hash);
         const ttlFilenameAbsolute = this.makeTtlGrammarFilenameAbsoulute(ttlFilename);
-        this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText })
-          .then( () => atom.notifications.addInfo('language-babel', {description: `Grammar created at \n${ttlFilenameAbsolute}`,dismissable: true}))
-          .catch( (err) => {
+        this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText})
+          .then(() => atom.notifications.addInfo('language-babel', {description: `Grammar created at \n${ttlFilenameAbsolute}`,dismissable: true}))
+          .catch((err) => {
               if (err.err) {
                 atom.notifications.addWarning('language-babel', {description: `member: ${err.member} got an Error:${err.err}`,dismissable: true});
               }
@@ -203,7 +201,7 @@ class CreateTtlGrammar {
 
   // remove all language files in tagged template GrammarFiles array
   removeTtlLanguageFiles() {
-    return this.getTtlGrammarFiles().then( (ttlGrammarFiles) => {
+    return this.getTtlGrammarFiles().then((ttlGrammarFiles) => {
       for (let ttlGrammarFilename of ttlGrammarFiles) {
         let ttlGrammarFileAbsoulte = this.makeTtlGrammarFilenameAbsoulute(ttlGrammarFilename);
         fs.unlink(ttlGrammarFileAbsoulte);
