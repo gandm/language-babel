@@ -390,6 +390,7 @@
             "1": { "name": "meta.brace.square.js" }
           },
           "patterns": [
+            { "include": "#literal-object-brace" },
             { "include": "#expression" }
           ]
         }
@@ -733,7 +734,21 @@
       ]
     },
     "literal-object-brace": {
-      "comment": "nested obj literal prop: {object} ",
+      "comment": "nested obj literal found inside other objects like arrays",
+      "begin": "\\s*({)",
+      "end": "\\s*+(})",
+      "beginCaptures": {
+        "1": { "name": "meta.brace.curly.js" }
+      },
+      "endCaptures": {
+        "1": { "name": "meta.brace.curly.js" }
+      },
+      "patterns": [
+        { "include": "#literal-object-body" }
+      ]
+    },
+    "literal-object-brace-property": {
+      "comment": "nested obj literal key: {object} ",
       "begin": "(?<=:)\\s*({)",
       "end": "\\s*+(})",
       "beginCaptures": {
@@ -749,7 +764,7 @@
     "literal-object-body": {
       "patterns": [
         { "include": "#html-template" },
-        { "include": "#literal-object-brace" },
+        { "include": "#literal-object-brace-property" },
         { "include": "#literal-function-labels" },
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-arrow-function" },
