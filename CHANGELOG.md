@@ -1,3 +1,6 @@
+### 2.42.3
+  - Grammar object literals inside some arrays were incorrectly parsed as braced bodies [Fixes #257](https://github.com/gandm/language-babel/issues/257)
+  
 ### 2.42.2
   - Fix grammar divide operator starting on a new line being treated as a RegExp. [Fixes #255](https://github.com/gandm/language-babel/issues/255)
   - Fix grammar nested object literals not being handled correctly. [Fixes #256](https://github.com/gandm/language-babel/issues/256)
