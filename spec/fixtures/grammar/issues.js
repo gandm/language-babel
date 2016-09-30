@@ -1,5 +1,22 @@
 // SYNTAX TEST "source.js.jsx"
 
+// USSUE #257
+let obj = [
+  {
+    [
+      {
+        async bar() {}
+//      ^^^^^ ^^^^^     meta.function.method.js
+//      ^^^^^           storage.type.js
+//            ^^^       entity.name.function.method.js
+//               ^      punctuation.definition.parameters.begin.js
+//                ^     punctuation.definition.parameters.end.js
+//                  ^^  meta.brace.curly.js
+      }
+    ]
+  }
+]
+
 // ISSUE #256
 let obj = {
   nested: {
