@@ -96,13 +96,13 @@ describe('Create Ttl Grammar', () => {
     );
   });
 
-  describe('::noGrammarFileExists', () => {
+  describe('::doesGrammarFileExist', () => {
     return it(
-      'checks if no grammar file exists',
+      'checks if a grammar file exists',
       () => {
         waitsForPromise(() => {
-          return ttlGrammar.noGrammarFileExists('Babel Language.json').catch( (rejVal) => {
-            expect(rejVal).toEqual({err: false, member: 'noGrammarFileExists'});
+          return ttlGrammar.doesGrammarFileExist('Babel Language.json').catch( (rejVal) => {
+            expect(rejVal).toEqual(true);
           });
         });
       }
@@ -141,14 +141,14 @@ describe('Create Ttl Grammar', () => {
   });
 
   // Ensure we finish off by creating a valid ttl file
-  describe('::observeTtlConfig', () => {
+  describe('::createGrammar', () => {
     return it(
       'should create a valid ttl grammar file based upon some defined config',
       () => {
         var tempGrammarDir = temp.mkdirSync();
 
         spyOn(ttlGrammar, 'getGrammarPath').andReturn(tempGrammarDir);
-        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['/* html */:text.html.basic','sql:source.sql']);
+        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['"css\\\\.([abc])+":source.css','/* html */:text.html.basic','sql:source.sql']);
 
         const grammarText = ttlGrammar.createGrammarText();
         const hash = ttlGrammar.generateTtlSHA256(grammarText);
@@ -156,7 +156,7 @@ describe('Create Ttl Grammar', () => {
         const ttlFilenameAbsolute = ttlGrammar.makeTtlGrammarFilenameAbsoulute(ttlFilename);
         waitsForPromise(() => {
           return ttlGrammar.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText }).then( (val) => {
-            expect(val).toEqual('ttl-b6536e72fc27ff522b4a17c8bbbb178a5de193d8c3f5ec8aa772c7569eb28ecc.json');
+            expect(val).toEqual('ttl-51856b183cdd05c15608ffb44efac85af393da57f4ab446ee4ce3ed8d0b9f9ca.json');
           });
         });
       }

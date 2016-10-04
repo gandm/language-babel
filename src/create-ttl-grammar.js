@@ -1,6 +1,6 @@
 /*global atom*/
 const crypto = require('crypto');
-const fs = require('fs-plus');
+const fs = require('fs');
 const path = require('path');
 const CompositeDisposable = require('atom').CompositeDisposable;
 
@@ -16,7 +16,7 @@ class CreateTtlGrammar {
   constructor(observeConfig = false) {
     if (observeConfig)   {
       // look for changes in tagged template handlers
-      this.disposable.add(atom.config.observe('language-babel.taggedTemplateGrammar', this.observeTtlConfig.bind(this)));
+      this.disposable.add(atom.config.observe('language-babel.taggedTemplateGrammar', this.observeTtlConfig.bind(this, 10000)));
     }
   }
 
@@ -29,7 +29,7 @@ class CreateTtlGrammar {
     return new Promise((resolve, reject) => {
       atom.grammars.loadGrammar(filename, (err) => {
         if (err) {
-          reject({err: err, member: 'addGrammars'});
+          reject(new Error(`Unable to add Grammar to registry\n${filename}`));
         }
         else resolve();
       });
@@ -39,17 +39,30 @@ class CreateTtlGrammar {
 
   // Check if the grammar exists under this SHA256 file name
   // If not then remove all ttl grammars and create a new one
-  // This returns a Promise that resolves  with a filename
+  // This returns a Promise that resolves  with a ttl filename
   // if a new grammar was created or rejects if a problem.
   createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText}) {
     return new Promise((resolve, reject) => {
-      this.noGrammarFileExists(ttlFilename)
-        .then(() => this.removeGrammars())
-        .then(() => this.removeTtlLanguageFiles())
-        .then(() => this.createGrammarFile(ttlFilenameAbsolute, grammarText))
-        .then(() => this.addGrammars(ttlFilenameAbsolute))
-        .then(() => resolve(ttlFilename))
-        .catch((err) => reject(err));
+      this.doesGrammarFileExist(ttlFilename)
+        .then((ifFileExists) => {
+          if (ifFileExists) {
+            resolve();
+          }
+          else {
+            this.removeGrammars();
+            this.removeTtlLanguageFiles()
+            .then(() => this.createGrammarFile(ttlFilenameAbsolute, grammarText))
+            .then(() => this.addGrammars(ttlFilenameAbsolute))
+            .then(() => {
+              atom.notifications.addInfo('language-babel', {detail: `Grammar created at \n${ttlFilenameAbsolute}`,dismissable: true});
+              resolve(ttlFilename);
+            })
+            .catch((err) => {
+              atom.notifications.addWarning('language-babel', {detail: `${err.message}`,dismissable: true});
+              reject(err);
+            });
+          }
+        });
     });
   }
 
@@ -57,8 +70,8 @@ class CreateTtlGrammar {
   createGrammarFile(filename,text) {
     return new Promise((resolve, reject) => {
       fs.writeFile(filename, text, (err) => {
-        if (err) reject({err: err, member: 'createGrammarFile'});
-        else resolve('New Grammar Created');
+        if (err) reject(new Error(err));
+        else resolve();
       });
     });
   }
@@ -85,17 +98,30 @@ class CreateTtlGrammar {
     const isValidIncludeScope = /^([a-zA-Z]\w*\.?)*(\w#([a-zA-Z]\w*\.?)*)?\w$/;
 
     if (matchString.length < 1 || !isValidIncludeScope.test(includeScope)) {
-      throw({err: `Error in the Tagged Template Grammar String ${ttlString}`, member: 'createGrammarPatterns'});
+      throw new Error(`Error in the Tagged Template Grammar String ${ttlString}`);
     }
 
-    const escapeStringRegExp = /[|\\{}()[\]^$+*?.]/g;
-    // Get a valid regexp escaped string. e.g. '/** @html */' -> '\/\*\* @html \*\/'
-    matchString = matchString.replace(escapeStringRegExp, '\\\\$&');
+    const isRegExp = /^\".*\"$/;
+    if ( isRegExp.test(matchString) ) {
+      // Found a possible regexp in the form /regex/ so strip the /
+      // This is a oniguruma regex but we will do a simple JS regex test for
+      // validity as it is most likely close enough!
+      matchString = matchString.substring(1, matchString.length -1);
+      try {(new RegExp(matchString)).test("");}
+      catch (err) {
+        throw new Error(`You entered an badly formed RegExp in the Tagged Template Grammar settings.\n/${matchString}/`);
+      }
+    }
+    else {
+      const escapeStringRegExp = /[|\\{}()[\]^$+*?.]/g;
+      // Get a valid regexp escaped string. e.g. '/** @html */' -> '\/\*\* @html \*\/'
+      matchString = matchString.replace(escapeStringRegExp, '\\\\$&');
+    }
 
     return `{
       "begin": "\\\\s*+(${matchString})\\\\s*(\`)",
       "beginCaptures": {
-        "1": { "name": "entity.name.tag.grapahql.js" },
+        "1": { "name": "entity.name.tag.js" },
         "4": { "name": "punctuation.definition.quasi.begin.js" }
       },
       "end": "\\\\s*(?<!\\\\\\\\)(\`)",
@@ -103,9 +129,20 @@ class CreateTtlGrammar {
         "1": { "name": "punctuation.definition.quasi.end.js" }
       },
       "patterns": [
+        { "include": "source.js.jsx#literal-quasi-embedded" },
         { "include": "${includeScope}" }
       ]
     }`;
+  }
+
+  // checks a ttl grammar filename exists
+  // returns a Promise that resolves to true if ttlFileName exists
+  doesGrammarFileExist(ttlFilename) {
+    return new Promise((resolve) => {
+      fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), fs.F_OK, (err) => {
+        err ? resolve(false): resolve(true);
+      });
+    });
   }
 
   // get full path to the language-babel grammar file dir
@@ -119,7 +156,7 @@ class CreateTtlGrammar {
   getGrammarFiles() {
     return new Promise((resolve,reject) => {
       fs.readdir(this.getGrammarPath(),(err, data) => {
-        if (err) reject({err: err, member: 'getGrammarFiles'});
+        if (err) reject(new Error(err));
         else {
           resolve(data);
         }
@@ -156,22 +193,13 @@ class CreateTtlGrammar {
     return path.resolve(this.getGrammarPath(), ttlFilename);
   }
 
-  // checks a ttl grammar filename exist and is writable
-  // returns a Promise that rejects if file exists
-  noGrammarFileExists(ttlFilename) {
-    return new Promise((resolve, reject) => {
-      fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), fs.F_OK, (err) => {
-        err ? resolve(!!err): reject({err: false, member: 'noGrammarFileExists'});
-      });
-    });
-  }
 
   // observe changes in the taggedTemplateGrammar config which take place
   // because observed config changes are fired as a user types them inside
   // settings we need to delay processing the array strings, until last char
   // entered was setTimeout seconds ago. parse tagged template configuration
   // and then create grammar and generate a SHA256 hash from the grammar
-  observeTtlConfig() {
+  observeTtlConfig(timeout) {
     if (this.configChangedTimer) clearTimeout(this.configChangedTimer);
     this.configChangedTimer = setTimeout(() => {
       try {
@@ -179,19 +207,12 @@ class CreateTtlGrammar {
         const hash = this.generateTtlSHA256(grammarText);
         const ttlFilename = this.makeTtlGrammarFilename(hash);
         const ttlFilenameAbsolute = this.makeTtlGrammarFilenameAbsoulute(ttlFilename);
-        this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText})
-          .then(() => atom.notifications.addInfo('language-babel', {description: `Grammar created at \n${ttlFilenameAbsolute}`,dismissable: true}))
-          .catch((err) => {
-              if (err.err) {
-                atom.notifications.addWarning('language-babel', {description: `member: ${err.member} got an Error:${err.err}`,dismissable: true});
-              }
-          });
+        this.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText});
       }
       catch(err) {
-        atom.notifications.addWarning('language-babel', {description: `Error:${err.err}`,dismissable: true});
-        return;
+        atom.notifications.addWarning('language-babel', {detail: `${err.message}`,dismissable: true});
       }
-    }, 10000);
+    }, timeout);
   }
 
   // Remove grammars before upodating
