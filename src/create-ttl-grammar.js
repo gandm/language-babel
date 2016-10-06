@@ -101,16 +101,25 @@ class CreateTtlGrammar {
       throw new Error(`Error in the Tagged Template Grammar String ${ttlString}`);
     }
 
-    const isRegExp = /^\".*\"$/;
-    if ( isRegExp.test(matchString) ) {
-      // Found a possible regexp in the form /regex/ so strip the /
+    if ( /^\".*\"$/.test(matchString)) {
+      // Found a possible regexp in the form "regex" so strip the "
       // This is a oniguruma regex but we will do a simple JS regex test for
       // validity as it is most likely close enough!
       matchString = matchString.substring(1, matchString.length -1);
-      try {(new RegExp(matchString)).test("");}
-      catch (err) {
-        throw new Error(`You entered an badly formed RegExp in the Tagged Template Grammar settings.\n/${matchString}/`);
+      try {
+        // the regex shouldn't have a single slash except before a "
+        if ( /\\[^"]/g.test(matchString.replace(/\\\\/g,""))) {
+          throw true;
+        }
+        // convert \anychar to anychar;
+        new RegExp(matchString.replace(/\\([^\\])/g,"$1"));
       }
+      catch (err) {
+        throw new Error(`You entered an badly formed RegExp in the Tagged Template Grammar settings.\n${matchString}`);
+      }
+    }
+    else if ( /"/g.test(matchString)) {
+      throw new Error(`Bad literal string in the Tagged Template Grammar settings.\n${matchString}`);
     }
     else {
       const escapeStringRegExp = /[|\\{}()[\]^$+*?.]/g;

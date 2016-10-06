@@ -316,5 +316,26 @@ export type User = {
 //           ^  punctuation.definition.string.end.js
 //       ^^^^   string.quoted.module.js
 
+import FOO as CONSTANT from "foo";
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                 ^^^^         keyword.control.module.js
+//     ^^^    ^^^^^^^^              variable.other.constant.js
+//         ^^                       keyword.control.module.reference.js
+//                          ^       punctuation.definition.string.begin.js
+//                           ^^^    string.quoted.module.js
+//                              ^   punctuation.definition.string.end.js
+//                               ^  punctuation.terminator.statement.js
+import {FOO as CONSTANT} from "foo";
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                   ^^^^         keyword.control.module.js
+//     ^               ^              meta.brace.curly.js
+//      ^^^    ^^^^^^^^               variable.other.constant.js
+//          ^^                        keyword.control.module.reference.js
+//                            ^       punctuation.definition.string.begin.js
+//                             ^^^    string.quoted.module.js
+//                                ^   punctuation.definition.string.end.js
+//                                 ^  punctuation.terminator.statement.js
 
 // >> only:(source.js.jsx)

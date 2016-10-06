@@ -657,7 +657,7 @@
     },
     "literal-quasi": {
       "patterns": [
-        { "include": "languagebabel.ttlextension"},        
+        { "include": "languagebabel.ttlextension"},
         {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
           "begin": "\\s*+(?:((Relay)(.)(QL))|(gql)|(/\\* GraphQL \\*/))\\s*((`))",
@@ -1608,11 +1608,11 @@
             "1": { "name": "keyword.other.typedef.flowtype" }
           }
         },
+        { "include": "#literal-module-as" },
         {
           "name": "keyword.operator.module.all.js",
-          "match": "\\*"
+          "match": "\\s*\\*"
         },
-        { "include": "#literal-module-as" },
         { "include": "#literal-module-brackets" },
         { "include": "#literal-variable" },
         { "include": "#comments" },
@@ -1642,11 +1642,11 @@
             "5": { "name": "punctuation.definition.string.end.js" }
           },
           "patterns": [
+            { "include": "#literal-module-as" },
             {
               "name": "keyword.operator.module.all.js",
-              "match": "\\*"
+              "match": "\\s*\\*"
             },
-            { "include": "#literal-module-as" },
             { "include": "#literal-module-brackets" },
             { "include": "#literal-variable" },
             { "include": "#comments" },
@@ -1663,13 +1663,13 @@
       ]
     },
     "literal-module-as": {
-      "match": "\\s*+(?:(\\*)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s++(\\bas\\b)\\s++(?:(\\bdefault\\b)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))",
+      "match": "\\s*+(?:(\\*)|(\\bdefault\\b))?\\s*+(\\bas\\b)\\s*+(?:(\\*)|(\\bdefault\\b))?",
       "captures": {
         "1": { "name": "keyword.operator.module.all.js" },
-        "2": { "name": "variable.other.readwrite.js" },
+        "2": { "name": "keyword.control.module.js" },
         "3": { "name": "keyword.control.module.reference.js" },
-        "4": { "name": "keyword.control.module.js" },
-        "5": { "name": "variable.other.readwrite.js" }
+        "4": { "name": "keyword.operator.module.all.js" },
+        "5": { "name": "keyword.control.module.js" }
       }
     },
     "literal-module-brackets":{
