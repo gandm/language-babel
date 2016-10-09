@@ -1918,7 +1918,7 @@ class B extends new A {
 
   static a(){} static 'b'(){} static 0(){} static [0](){}
 //^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^   ^^^^^^ ^^^^^                ^^^^^^ ^^^^^    meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^ ^^^^^^^              ^^^^^^ ^^^^^^^  meta.function.method.js
 //^^^^^^       ^^^^^^         ^^^^^^       ^^^^^^          storage.modifier.js
 //       ^            ^^^                                  entity.name.function.method.js
 //        ^              ^                           ^     punctuation.definition.parameters.begin.js
@@ -1929,7 +1929,7 @@ class B extends new A {
 //                                                ^ ^      meta.brace.square.js
   static *c(){ yield; } static *"d"() { yield; } static *1(){ yield; } static *[1](){ yield; }
 //^^^^^^ ^^^^^ ^^^^^^ ^ ^^^^^^ ^^^^^^ ^ ^^^^^^ ^ ^^^^^^ ^^^^^ ^^^^^^ ^ ^^^^^^ ^^^^^^^ ^^^^^^ ^  meta.class.body.js
-//^^^^^^ ^^^^           ^^^^^^ ^^^^^^                                  ^^^^^^ ^^^^^^            meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^ ^ ^^^^^^ ^^^^^^ ^ ^^^^^^ ^                       ^^^^^^ ^^^^^^^ ^^^^^^ ^  meta.function.method.js
 //^^^^^^                ^^^^^^                   ^^^^^^                ^^^^^^                   storage.modifier.js
 //       ^                     ^                                              ^                 keyword.generator.asterisk.js
 //        ^                     ^^^                                                             entity.name.function.method.js
@@ -1944,7 +1944,7 @@ class B extends new A {
 //                                                                             ^ ^              meta.brace.square.js
   static var(){} static *in(){}
 //^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^^^   ^^^^^^ ^^^^^    meta.function.method.js
+//^^^^^^ ^^^^^^^ ^^^^^^ ^^^^^^^  meta.function.method.js
 //^^^^^^         ^^^^^^          storage.modifier.js
 //       ^^^             ^^      entity.name.function.method.js
 //          ^              ^     punctuation.definition.parameters.begin.js
@@ -1954,7 +1954,7 @@ class B extends new A {
 
   static get e(){} static get 'f'(){} static get 2(){} static get [2](){}
 //^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^^^ ^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^   ^^^^^^ ^^^ ^^^^^                    ^^^^^^ ^^^ ^^^^^    meta.accessor.js
+//^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^                    ^^^^^^ ^^^ ^^^^^    meta.accessor.js
 //^^^^^^           ^^^^^^             ^^^^^^           ^^^^^^              storage.modifier.js
 //       ^^^              ^^^                                 ^^^          storage.type.accessor.js
 //           ^                                                             entity.name.accessor.js
@@ -1971,7 +1971,7 @@ class B extends new A {
 //                                                                  ^      meta.brace.square.end.flowtype
   static set g(a){} static set "h"(a){} static set 3(a){} static set [3](a){}
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^^ ^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^   ^^^^^^ ^^^ ^^^^^^                     ^^^^^^ ^^^ ^^^^^^    meta.accessor.js
+//^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^                     ^^^^^^ ^^^ ^^^^^^    meta.accessor.js
 //^^^^^^            ^^^^^^              ^^^^^^            ^^^^^^               storage.modifier.js
 //       ^^^               ^^^                                   ^^^           storage.type.accessor.js
 //           ^                                                                 entity.name.accessor.js
@@ -1988,7 +1988,7 @@ class B extends new A {
 //                                                                     ^       meta.brace.square.end.flowtype
   static get if(){} static set if(a){}
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^   ^^^^^^ ^^^ ^^^^^    meta.accessor.js
+//^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.accessor.js
 //^^^^^^            ^^^^^^              storage.modifier.js
 //       ^^^               ^^^          storage.type.accessor.js
 //           ^^                ^^       entity.name.accessor.js
@@ -2009,7 +2009,7 @@ class B extends new A {
 //                    ^ ^      meta.brace.square.js
   *c(){ yield; } *"d"(){ yield; } *1(){ yield; } *[1](){ yield; }
 //^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^ ^ ^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^ ^  meta.class.body.js
-//^^^^           ^^^^^^                          ^^^^^^            meta.function.method.js
+//^^^^^ ^^^^^^ ^ ^^^^^^^ ^^^^^^ ^                ^^^^^^^ ^^^^^^ ^  meta.function.method.js
 //^              ^                               ^                 keyword.generator.asterisk.js
 // ^              ^^^                                              entity.name.function.method.js
 //  ^                ^                               ^             punctuation.definition.parameters.begin.js
@@ -2023,7 +2023,7 @@ class B extends new A {
 //                                                ^ ^              meta.brace.square.js
   var(){} *in(){ yield; }
 //^^^^^^^ ^^^^^^ ^^^^^^ ^  meta.class.body.js
-//^^^^^   ^^^^^            meta.function.method.js
+//^^^^^^^ ^^^^^^ ^^^^^^ ^  meta.function.method.js
 //^^^      ^^              entity.name.function.method.js
 //   ^       ^             punctuation.definition.parameters.begin.js
 //    ^       ^            punctuation.definition.parameters.end.js
@@ -2034,7 +2034,7 @@ class B extends new A {
 
   get e(){} get 'f'(){} get 2(){} get [2](){}
 //^^^ ^^^^^ ^^^ ^^^^^^^ ^^^ ^^^^^ ^^^ ^^^^^^^  meta.class.body.js
-//^^^ ^^^   ^^^ ^^^^^             ^^^ ^^^^^    meta.accessor.js
+//^^^ ^^^^^ ^^^ ^^^^^             ^^^ ^^^^^    meta.accessor.js
 //^^^       ^^^                   ^^^          storage.type.accessor.js
 //    ^                                        entity.name.accessor.js
 //     ^           ^                     ^     punctuation.definition.parameters.begin.js
@@ -2050,7 +2050,7 @@ class B extends new A {
 //                                      ^      meta.brace.square.end.flowtype
   set g(a){} set "h"(a){} set 3(a){} set [3](a){}
 //^^^ ^^^^^^ ^^^ ^^^^^^^^ ^^^ ^^^^^^ ^^^ ^^^^^^^^  meta.class.body.js
-//^^^ ^^^^   ^^^ ^^^^^^              ^^^ ^^^^^^    meta.accessor.js
+//^^^ ^^^^^^ ^^^ ^^^^^^              ^^^ ^^^^^^    meta.accessor.js
 //^^^        ^^^                     ^^^           storage.type.accessor.js
 //    ^                                            entity.name.accessor.js
 //     ^            ^                       ^      punctuation.definition.parameters.begin.js
@@ -2066,7 +2066,7 @@ class B extends new A {
 //                                         ^       meta.brace.square.end.flowtype
   get if() {} set if(f) {}
 //^^^ ^^^^ ^^ ^^^ ^^^^^ ^^  meta.class.body.js
-//^^^ ^^^^    ^^^ ^^^^^     meta.accessor.js
+//^^^ ^^^^ ^^ ^^^ ^^^^^ ^^  meta.accessor.js
 //^^^         ^^^           storage.type.accessor.js
 //    ^^          ^^        entity.name.accessor.js
 //      ^           ^       punctuation.definition.parameters.begin.js
@@ -2085,7 +2085,7 @@ class C extends B { "constructor"(){ super(); } }
 //      ^^^^^^^                                    storage.type.extends.js
 //                ^                                punctuation.section.class.begin.js
 //                  ^^^^^^^^^^^^^^^^ ^^^^^^^^ ^    meta.class.body.js
-//                  ^^^^^^^^^^^^^^^                meta.function.method.js
+//                  ^^^^^^^^^^^^^^^^ ^^^^^^^^ ^    meta.function.method.js
 //                  ^^^^^^^^^^^^^                  entity.name.function.method.js
 //                               ^                 punctuation.definition.parameters.begin.js
 //                                ^                punctuation.definition.parameters.end.js

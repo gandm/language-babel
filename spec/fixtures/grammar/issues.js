@@ -1,6 +1,68 @@
 // SYNTAX TEST "source.js.jsx"
 
-// USSUE #257
+// ISSUE 261
+
+var arrayOfFunctions = [
+  function (callback) {
+//^^^^^^^^ ^^^^^^^^^^ ^  meta.function.js
+//^^^^^^^^               storage.type.function.js
+//         ^             punctuation.definition.parameters.begin.js
+//          ^^^^^^^^     variable.other.readwrite.js
+//                  ^    punctuation.definition.parameters.end.js
+//                    ^  meta.brace.curly.js
+    var num = 0;
+//  ^^^ ^^^ ^ ^^  meta.function.js
+//  ^^^           storage.type.js
+//      ^^^       variable.other.readwrite.js
+//          ^     keyword.operator.assignment.js
+//            ^   constant.numeric.js
+//             ^  punctuation.terminator.statement.js
+    if (num <= 0) {
+//  ^^ ^^^^ ^^ ^^ ^  meta.function.js
+//  ^^               keyword.control.conditional.js
+//     ^        ^    meta.brace.round.js
+//      ^^^          variable.other.readwrite.js
+//          ^^       keyword.operator.relational.js
+//             ^     constant.numeric.js
+//                ^  meta.brace.curly.js
+      return callback(null);
+//    ^^^^^^ ^^^^^^^^^^^^^^^  meta.function.js
+//    ^^^^^^                  keyword.control.flow.js
+//           ^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//           ^^^^^^^^         entity.name.function.js
+//                   ^    ^   meta.brace.round.js
+//                    ^^^^    constant.language.null.js
+//                         ^  punctuation.terminator.statement.js
+    }
+//  ^  meta.function.js
+//  ^  meta.brace.curly.js
+    return callback(num);
+//  ^^^^^^ ^^^^^^^^^^^^^^  meta.function.js
+//  ^^^^^^                 keyword.control.flow.js
+//         ^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//         ^^^^^^^^        entity.name.function.js
+//                 ^   ^   meta.brace.round.js
+//                  ^^^    variable.other.readwrite.js
+//                      ^  punctuation.terminator.statement.js
+  },
+//^   meta.function.js
+//^   meta.brace.curly.js
+// ^  meta.delimiter.comma.js
+  function () { if (true) return 1;}
+//^^^^^^^^ ^^ ^ ^^ ^^^^^^ ^^^^^^ ^^^  meta.function.js
+//^^^^^^^^                            storage.type.function.js
+//         ^                          punctuation.definition.parameters.begin.js
+//          ^                         punctuation.definition.parameters.end.js
+//            ^                    ^  meta.brace.curly.js
+//              ^^                    keyword.control.conditional.js
+//                 ^    ^             meta.brace.round.js
+//                  ^^^^              constant.language.boolean.true.js
+//                        ^^^^^^      keyword.control.flow.js
+//                               ^    constant.numeric.js
+//                                ^   punctuation.terminator.statement.js
+];
+
+// ISSUE #257
 let obj = [
   {
     [
