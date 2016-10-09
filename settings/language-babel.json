@@ -35,5 +35,11 @@
     "editor": {
       "commentStart": "# "
     }
+  },
+  ".source.styledcss": {
+    "editor": {
+      "commentStart": "${/* ",
+      "commentEnd": "*/}"  
+    }
   }
 }

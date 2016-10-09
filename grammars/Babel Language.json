@@ -666,6 +666,59 @@
       "patterns": [
         { "include": "languagebabel.ttlextension"},
         {
+          "comment": "Styled CSS tags",
+          "contentName": "source.styledcss",
+          "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(\\.)\\s*(\\w+))))\\s*((`))",
+          "end": "\\s*(?<!\\\\)((`))",
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.styledcss.js" },
+            "2": { "name": "entity.name.tag.styledcss.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.tag.styledcss.js" },
+            "5": { "name": "punctuation.definition.quasi.begin.js" },
+            "6": { "name": "string.quoted.template.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.quasi.end.js" },
+            "2": { "name": "string.quoted.template.graphql.js" }
+          },
+          "patterns": [
+            { "include": "source.styledcss" }
+          ]
+        },
+        {
+          "comment": "Styled CSS tag functions",
+          "begin": "\\s*+(?:(\\bstyled))\\s*(?=(\\((?:(?>[^()]+)|\\g<-1>)*\\)\\s*(`)))",
+          "end": "(?<=`)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.styledcss.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.quasi.end.js" },
+            "2": { "name": "string.quoted.template.graphql.js" }
+          },
+          "patterns": [
+            { "include": "#round-brackets" },
+            {
+              "contentName": "source.styledcss",
+              "begin": "\\s*((`))",
+              "end": "\\s*(?<!\\\\)((`))",
+              "beginCaptures": {
+                "1": { "name": "punctuation.definition.quasi.begin.js" },
+                "2": { "name": "string.quoted.template.graphql.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "punctuation.definition.quasi.end.js" },
+                "2": { "name": "string.quoted.template.graphql.js" }
+              },
+              "patterns": [
+                { "include": "#round-brackets" },
+                { "include": "source.styledcss" }
+              ]
+            }
+          ]
+        },
+        {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
           "begin": "\\s*+(?:((Relay)(.)(QL))|(gql)|(/\\* GraphQL \\*/))\\s*((`))",
           "end": "\\s*(?<!\\\\)((`))",
