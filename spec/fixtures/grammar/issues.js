@@ -1,5 +1,32 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE 262
+
+const someComponent = (onClick) => <div onClick={onClick}>Blah</div>
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                 storage.type.js
+//    ^^^^^^^^^^^^^ ^ ^^^^^^^^^ ^^                                    meta.function.arrow.js
+//    ^^^^^^^^^^^^^                                                   entity.name.function.js
+//                  ^                                                 keyword.operator.assignment.js
+//                    ^                                               punctuation.definition.parameters.begin.js
+//                     ^^^^^^^                   ^^^^^^^              variable.other.readwrite.js
+//                            ^                                       punctuation.definition.parameters.end.js
+//                              ^^                                    storage.type.function.arrow.js
+//                                 ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.jsx
+//                                 ^                     ^    ^^   ^  punctuation.definition.tag.jsx
+//                                  ^^^                               entity.name.tag.open.jsx
+//                                      ^^^^^^^^^^^^^^^^^^^^^^^^      JSXAttrs
+//                                      ^^^^^^^                       entity.other.attribute-name.jsx
+//                                             ^                      keyword.operator.assignment.jsx
+//                                              ^^^^^^^^^             meta.embedded.expression.js
+//                                              ^                     punctuation.section.embedded.begin.jsx
+//                                                      ^             punctuation.section.embedded.end.jsx
+//                                                       ^            JSXStartTagEnd
+//                                                        ^^^^        JSXNested
+//                                                            ^^      JSXEndTagStart
+//                                                              ^^^   entity.name.tag.close.jsx
+
 // ISSUE 261
 
 var arrayOfFunctions = [

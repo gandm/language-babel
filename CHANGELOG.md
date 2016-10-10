@@ -1,7 +1,10 @@
+### 2.44.1
+  - Fix issues with arrow functions caused by lost commit in 2.44.0!
+
 ### 2.44.0
   - Add styled components support.
   - Fix Issue [#260](https://github.com/gandm/language-babel/issues/260)
-  - Fix Issue [#261](https://github.com/gandm/language-babel/issues/261) 
+  - Fix Issue [#261](https://github.com/gandm/language-babel/issues/261)
 
 ### 2.43.0
   - Add ability to use a RegExp as a tagged template grammar extension.
