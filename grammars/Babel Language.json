@@ -2301,6 +2301,7 @@
       "patterns": [
         {
           "comment": "Get parameters within a function/method call",
+          "contentName": "meta.function.parameters.js",
           "begin": "(?<!=|})\\s*+(\\()",
           "end": "\\s*(\\))",
           "beginCaptures": {
