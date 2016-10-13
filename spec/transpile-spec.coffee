@@ -4,6 +4,7 @@ fs = require 'fs-plus'
 path = require 'path'
 defaultConfig = require './default-config'
 grammarTest = require 'atom-grammar-test'
+temp = require('temp');
 
 LB = 'language-babel'
 # we use atom setPaths in this spec. setPaths checks if directories exist
@@ -12,13 +13,12 @@ LB = 'language-babel'
 # were no found, atom sets the directory to the full name.
 # We need some prefix directory faux names for posix and windows to ensure
 # we always get a project name we set
-PU = '/dir199a99231'  # unlikely directory name UNIX
-PW = 'C:\\dir199a99231' # unlikely directory name windows
 
 describe 'language-babel', ->
   lb = null
   config =  {}
   beforeEach ->
+    temp.cleanup()
     waitsForPromise ->
       atom.packages.activatePackage(LB)
     config = JSON.parse JSON.stringify defaultConfig
@@ -35,33 +35,39 @@ describe 'language-babel', ->
 
     if not process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
-        atom.project.setPaths([PU+'/Project1', PU+'/Project2'])
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1,tempProj2])
 
-        ret = lb.getPaths(PU+'/Project1/source/dira/fauxfile.js',config)
+        ret = lb.getPaths(tempProj1+'/source/dira/fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceFileDir).to.equal(PU+'/Project1/source/dira')
-        expect(ret.mapFile).to.equal(PU+'/Project1/source/dira/fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceRoot).to.equal(PU+'/Project1')
-        expect(ret.projectPath).to.equal(PU+'/Project1')
+        expect(ret.sourceFile).to.equal(tempProj1+'/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'/source/dira')
+        expect(ret.mapFile).to.equal(tempProj1+'/source/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'/source/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1)
+        expect(ret.projectPath).to.equal(tempProj1)
 
       it 'returns paths config with target & source paths set', ->
-        atom.project.setPaths([PU+'/Project1', PU+'/Project2'])
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1,tempProj2])
         config.babelSourcePath = '/source' # with dir prefix
         config.babelMapsPath ='mapspath' # and without
         config.babelTranspilePath = '/transpath'
 
-        ret = lb.getPaths(PU+'/Project1/source/dira/fauxfile.js',config)
+        ret = lb.getPaths(tempProj1+'/source/dira/fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal(PU+'/Project1/source/dira/fauxfile.js')
-        expect(ret.sourceFileDir).to.equal(PU+'/Project1/source/dira')
-        expect(ret.mapFile).to.equal(PU+'/Project1/mapspath/dira/fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal(PU+'/Project1/transpath/dira/fauxfile.js')
-        expect(ret.sourceRoot).to.equal(PU+'/Project1/source')
-        expect(ret.projectPath).to.equal(PU+'/Project1')
+        expect(ret.sourceFile).to.equal(tempProj1+'/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'/source/dira')
+        expect(ret.mapFile).to.equal(tempProj1+'/mapspath/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'/transpath/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1+'/source')
+        expect(ret.projectPath).to.equal(tempProj1)
 
       it 'returns correct paths with project in root directory', ->
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
         atom.project.setPaths(['/'])
         config.babelSourcePath = 'source'
         config.babelMapsPath ='mapspath'
@@ -78,31 +84,35 @@ describe 'language-babel', ->
 
     if process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
-        atom.project.setPaths([PW+'\\Project1', PW+'\\Project2'])
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1,tempProj2])
 
-        ret = lb.getPaths(PW+'\\Project1\\source\\dira\\fauxfile.js',config)
+        ret = lb.getPaths(tempProj1+'\\source\\dira\\fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceFileDir).to.equal(PW+'\\Project1\\source\\dira')
-        expect(ret.mapFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceRoot).to.equal(PW+'\\Project1')
-        expect(ret.projectPath).to.equal(PW+'\\Project1')
+        expect(ret.sourceFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'\\source\\dira')
+        expect(ret.mapFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1)
+        expect(ret.projectPath).to.equal(tempProj1)
 
       it 'returns paths config with target & source paths set', ->
-        atom.project.setPaths([PW+'\\Project1', PW+'\\Project2'])
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1, tempProj2])
         config.babelSourcePath = '\\source' # with dir prefix
         config.babelMapsPath ='mapspath' # and without
         config.babelTranspilePath = '\\transpath'
 
-        ret = lb.getPaths(PW+'\\Project1\\source\\dira\\fauxfile.js',config)
+        ret = lb.getPaths(tempProj1+'\\source\\dira\\fauxfile.js',config)
 
-        expect(ret.sourceFile).to.equal(PW+'\\Project1\\source\\dira\\fauxfile.js')
-        expect(ret.sourceFileDir).to.equal(PW+'\\Project1\\source\\dira')
-        expect(ret.mapFile).to.equal(PW+'\\Project1\\mapspath\\dira\\fauxfile.js.map')
-        expect(ret.transpiledFile).to.equal(PW+'\\Project1\\transpath\\dira\\fauxfile.js')
-        expect(ret.sourceRoot).to.equal(PW+'\\Project1\\source')
-        expect(ret.projectPath).to.equal(PW+'\\Project1')
+        expect(ret.sourceFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'\\source\\dira')
+        expect(ret.mapFile).to.equal(tempProj1+'\\mapspath\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'\\transpath\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1+'\\source')
+        expect(ret.projectPath).to.equal(tempProj1)
 
       it 'returns correct paths with project in root directory', ->
         atom.project.setPaths(['C:\\'])
