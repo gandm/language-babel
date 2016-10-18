@@ -1,5 +1,19 @@
 // SYNTAX TEST "source.js.jsx"
 
+
+// ISSUES 271 & 272
+
+ _.CONST;CONST.CONST;Class.method;_;__;___CONST___;
+ // <- variable.other.object.js
+//^           ^           ^                          keyword.operator.accessor.js
+// ^^^^^ ^^^^^ ^^^^^                   ^^^^^^^^^^^   variable.other.constant.js
+//      ^           ^            ^ ^  ^           ^  punctuation.terminator.statement.js
+//                   ^^^^^^^^^^^^                    meta.property.class.js
+//                   ^^^^^                           variable.other.class.js
+//                         ^^^^^^                    variable.other.property.static.js
+//                                ^ ^^               variable.other.readwrite.js
+
+
 // ISSUE 262
 
 const someComponent = (onClick) => <div onClick={onClick}>Blah</div>
