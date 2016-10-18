@@ -15,7 +15,7 @@ The package also provides
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
- - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside temmplate strings. 
+ - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings. 
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
  - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
