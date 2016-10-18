@@ -1774,7 +1774,7 @@
       "patterns": [
         {
           "comment": "e.g. CONSTANT",
-          "match": "\\s*+((?:[\\p{Lu}\\p{Nl}])(?:[_\\p{Lu}\\p{N}])*)\\b",
+          "match": "\\s*+(_++[_\\p{Lu}\\p{N}]+|[\\p{Lu}][_\\p{Lu}\\p{N}]*)\\b",
           "captures":{
             "1": { "name": "variable.other.constant.js" }
           }
