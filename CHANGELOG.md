@@ -1,3 +1,7 @@
+### 2.45.0
+  - Support [styled-components](https://github.com/styled-components/styled-components) with own grammar rather than hacked language-css.
+  - Allow const uppercase variables to start with _ chars.
+
 ### 2.44.1
   - Fix issues with arrow functions caused by lost commit in 2.44.0!
 
