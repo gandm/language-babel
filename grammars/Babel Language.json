@@ -667,7 +667,7 @@
         { "include": "languagebabel.ttlextension"},
         {
           "comment": "Styled CSS tags",
-          "contentName": "source.styledcss",
+          "contentName": "source.inside-js.css.styled",
           "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(\\.)\\s*(\\w+))))\\s*((`))",
           "end": "\\s*(?<!\\\\)((`))",
           "beginCaptures": {
@@ -683,11 +683,12 @@
             "2": { "name": "string.quoted.template.graphql.js" }
           },
           "patterns": [
-            { "include": "source.styledcss" }
+            { "include": "source.css.styled" }
           ]
         },
         {
           "comment": "Styled CSS tag functions",
+          "contentName": "source.inside-js.css.styled",
           "begin": "\\s*+(?:(\\bstyled))\\s*(?=(\\((?:(?>[^()]+)|\\g<-1>)*\\)\\s*(`)))",
           "end": "(?<=`)",
           "beginCaptures": {
@@ -700,7 +701,7 @@
           "patterns": [
             { "include": "#round-brackets" },
             {
-              "contentName": "source.styledcss",
+              "contentName": "source.css.styled",
               "begin": "\\s*((`))",
               "end": "\\s*(?<!\\\\)((`))",
               "beginCaptures": {
@@ -712,8 +713,7 @@
                 "2": { "name": "string.quoted.template.graphql.js" }
               },
               "patterns": [
-                { "include": "#round-brackets" },
-                { "include": "source.styledcss" }
+                { "include": "source.css.styled" }
               ]
             }
           ]
