@@ -1,5 +1,7 @@
 # language-babel
 
+[![Join the chat at https://gitter.im/language-babel/Lobby](https://badges.gitter.im/language-babel/Lobby.svg)](https://gitter.im/language-babel/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
