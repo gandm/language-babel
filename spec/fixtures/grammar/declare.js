@@ -70,7 +70,7 @@ interface Iterator<T> {
 //       ^                     punctuation.definition.parameters.end.js
 //        ^                    punctuation.type.flowtype
 //          ^^^^^^^^^^^^^^ ^   support.type.class.flowtype
-//                        ^ ^  punctutation.flowtype
+//                        ^ ^  punctuation.flowtype
     iterator(): Iterator<T>
 //  ^^^^^^^^^^^ ^^^^^^^^^^^  meta.class.body.js
 //  ^^^^^^^^^^^ ^^^^^^^^^^^  meta.function.method.js

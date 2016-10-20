@@ -403,7 +403,7 @@ class Bar {
 //^^ ^^^^^^^^  meta.class.body.js
 //^            variable.other.readwrite.js
 // ^           punctuation.type.flowtype
-//   ^^^^^^^   support.type.class.flowtype
+//   ^^^^^^^   support.type.builtin.class.flowtype
 //          ^  punctuation.terminator.statement.js
   z: MyObjact;
 //^^ ^^^^^^^^^  meta.class.body.js
@@ -1569,6 +1569,7 @@ interface $Iterator<Yield,Return,Next> {
 //  ^^^^^^^^^^^^ ^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^   meta.function.method.js
 //  ^^^^                                               entity.name.function.method.js
 //      ^                                              punctuation.definition.parameters.begin.js
+//       ^^^^^^^ ^^^^                                  meta.function.parameters.js
 //       ^^^^^                                         variable.other.readwrite.js
 //            ^                                        keyword.operator.optional.parameter.flowtype
 //             ^      ^                                punctuation.type.flowtype

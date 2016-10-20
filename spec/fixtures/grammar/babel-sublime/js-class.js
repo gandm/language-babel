@@ -108,13 +108,13 @@ class MyClass {
 //                          ^^  meta.brace.curly.js
   *[Symbol.iterator]() {}
 //^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^^^^^^^^^^^ ^^  meta.function.method.js
 //^                        keyword.generator.asterisk.js
 // ^               ^       meta.brace.square.js
-//  ^^^^^^^^^^^^^^^        meta.property.class.js
-//  ^^^^^^                 variable.other.class.js
+//  ^^^^^^                 support.class.builtin.js
 //        ^                keyword.operator.accessor.js
-//         ^^^^^^^^        variable.other.property.static.js
+//         ^^^^^^^^        meta.property.object.js
+//         ^^^^^^^^        variable.other.property.js
 //                  ^      punctuation.definition.parameters.begin.js
 //                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js

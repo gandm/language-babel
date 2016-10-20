@@ -426,18 +426,19 @@ class Sound extends Model {
 //              ^^  meta.brace.curly.js
   static async fetch(id: number, retries: ?number): Promise {}
 //^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                                                        storage.modifier.js
 //       ^^^^^                                                  storage.type.js
 //             ^^^^^                                            entity.name.function.method.js
 //                  ^                                           punctuation.definition.parameters.begin.js
+//                   ^^^ ^^^^^^^ ^^^^^^^^ ^^^^^^^               meta.function.parameters.js
 //                   ^^          ^^^^^^^                        variable.other.readwrite.js
 //                     ^                ^         ^             punctuation.type.flowtype
 //                       ^^^^^^            ^^^^^^               support.type.builtin.primitive.flowtype
 //                             ^                                meta.delimiter.comma.js
 //                                        ^                     keyword.operator.maybe.flowtype
 //                                               ^              punctuation.definition.parameters.end.js
-//                                                  ^^^^^^^     support.type.class.flowtype
+//                                                  ^^^^^^^     support.type.builtin.class.flowtype
 //                                                          ^^  meta.brace.curly.js
 }
 // <- punctuation.section.class.end.js

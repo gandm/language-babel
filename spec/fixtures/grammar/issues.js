@@ -310,11 +310,12 @@ class A {
 //          ^^                                          punctuation.definition.comment.js
   method<T>(a: string): string { // This is a method
 //^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^ ^ ^^ ^^^^ ^^ ^ ^^^^^^  meta.class.body.js
-//^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^                        meta.function.method.js
+//^^^^^^^^^^^^ ^^^^^^^^ ^^^^^^ ^ ^^ ^^^^ ^^ ^ ^^^^^^  meta.function.method.js
 //^^^^^^                                              entity.name.function.method.js
-//      ^ ^                                           punctutation.flowtype
+//      ^ ^                                           punctuation.flowtype
 //       ^                                            support.type.class.flowtype
 //         ^                                          punctuation.definition.parameters.begin.js
+//          ^^ ^^^^^^                                 meta.function.parameters.js
 //          ^                                         variable.other.readwrite.js
 //           ^        ^                               punctuation.type.flowtype
 //             ^^^^^^   ^^^^^^                        support.type.builtin.primitive.flowtype
