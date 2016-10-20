@@ -2638,6 +2638,7 @@
             { "include": "#flowtype-comments-optional-parameter" },
             { "include": "#literal-module" },
             { "include": "#flowtype-keywords" },
+            { "include": "#flowtype-predicate" },
             { "include": "#flowtype-parse-types" },
             { "include": "#literal-function" },
             { "include": "#literal-keyword-storage" }
@@ -2657,6 +2658,7 @@
             { "include": "#flowtype-comments-optional-parameter" },
             { "include": "#literal-module" },
             { "include": "#flowtype-keywords" },
+            { "include": "#flowtype-predicate" },
             { "include": "#flowtype-parse-types" },
             { "include": "#literal-function" },
             { "include": "#literal-keyword-storage" }
@@ -2673,6 +2675,7 @@
             "1": { "name": "punctuation.definition.comment.js" }
           },
           "patterns": [
+            { "include": "#flowtype-predicate" },
             { "include": "#flowtype-parse-types" }
           ]
         }
