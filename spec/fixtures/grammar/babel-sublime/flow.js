@@ -573,7 +573,7 @@ class CA {
 //^     ^                            meta.brace.square.js
 // ^ ^ ^     ^  ^                    variable.other.readwrite.js
 //  ^ ^                              keyword.operator.arithmetic.js
-//       ^ ^                         punctutation.flowtype
+//       ^ ^                         punctuation.flowtype
 //        ^                          support.type.class.flowtype
 //          ^                        punctuation.definition.parameters.begin.js
 //            ^                      meta.delimiter.comma.js
@@ -586,7 +586,7 @@ class CA {
 //^^^^^^^^^ ^^^ ^^ ^^ ^^^ ^^^^^^^ ^ ^  meta.class.body.js
 //^^^^^^^^^ ^^^ ^^ ^^ ^^^ ^^^^^^^      meta.function.method.js
 //^^^                                  entity.name.function.method.js
-//   ^ ^                      ^ ^      punctutation.flowtype
+//   ^ ^                      ^ ^      punctuation.flowtype
 //    ^         ^     ^   ^^^^ ^       support.type.class.flowtype
 //      ^   ^                          punctuation.definition.parameters.begin.js
 //       ^                             storage.type.function.js
@@ -604,7 +604,7 @@ class CB<X> {
 //^^^          meta.class.js
 //^^^          storage.type.class.js
 //    ^^       entity.name.class.js
-//      ^ ^    punctutation.flowtype
+//      ^ ^    punctuation.flowtype
 //       ^     support.type.class.flowtype
 //          ^  punctuation.section.class.begin.js
   x: X;
@@ -653,7 +653,7 @@ class A<T: void> extends B<T: void> {}
 //^^^                                   meta.class.js
 //^^^                                   storage.type.class.js
 //    ^                  ^              entity.name.class.js
-//     ^       ^          ^       ^     punctutation.flowtype
+//     ^       ^          ^       ^     punctuation.flowtype
 //      ^                  ^            support.type.class.flowtype
 //       ^                  ^           punctuation.type.flowtype
 //       ^ ^^^^             ^ ^^^^      support.type.builtin.primitive.flowtype
@@ -670,7 +670,7 @@ class D extends C<number> {
 //    ^         ^            entity.name.class.js
 //      ^^^^^^^              meta.class.extends.js
 //      ^^^^^^^              storage.type.extends.js
-//               ^      ^    punctutation.flowtype
+//               ^      ^    punctuation.flowtype
 //                ^^^^^^     support.type.builtin.primitive.flowtype
 //                        ^  punctuation.section.class.begin.js
   bar(): number {
@@ -817,7 +817,7 @@ function foo<X>(x: X): X { return x; }
 //^^^^^^ ^^^^^^^^^ ^^^ ^                meta.function.js
 //^^^^^^                                storage.type.function.js
 //       ^^^                            entity.name.function.js
-//          ^ ^                         punctutation.flowtype
+//          ^ ^                         punctuation.flowtype
 //           ^     ^   ^                support.type.class.flowtype
 //             ^                        punctuation.definition.parameters.begin.js
 //              ^                 ^     variable.other.readwrite.js
@@ -833,14 +833,14 @@ class List<T> {
 //^^^            meta.class.js
 //^^^            storage.type.class.js
 //    ^^^^       entity.name.class.js
-//        ^ ^    punctutation.flowtype
+//        ^ ^    punctuation.flowtype
 //         ^     support.type.class.flowtype
 //            ^  punctuation.section.class.begin.js
   map<U>(f: (x: T) => U): List<U> { }
 //^^^^^^^^^ ^^^ ^^ ^^ ^^^ ^^^^^^^ ^ ^  meta.class.body.js
 //^^^^^^^^^ ^^^ ^^ ^^ ^^^ ^^^^^^^      meta.function.method.js
 //^^^                                  entity.name.function.method.js
-//   ^ ^                      ^ ^      punctutation.flowtype
+//   ^ ^                      ^ ^      punctuation.flowtype
 //    ^         ^     ^   ^^^^ ^       support.type.class.flowtype
 //      ^   ^                          punctuation.definition.parameters.begin.js
 //       ^                             storage.type.function.js
@@ -1005,7 +1005,7 @@ function foo<X: ?number, Y:x>(f: F<X, Y>, x: X): Y { return f(x); }
 //^^^^^^ ^^^^^^ ^^^^^^^^ ^^^^^^^ ^^^^ ^^^ ^^ ^^^ ^                   meta.function.js
 //^^^^^^                                                             storage.type.function.js
 //       ^^^                                                ^        entity.name.function.js
-//          ^               ^     ^    ^                             punctutation.flowtype
+//          ^               ^     ^    ^                             punctuation.flowtype
 //           ^           ^       ^ ^  ^      ^   ^                   support.type.class.flowtype
 //            ^           ^    ^           ^   ^                     punctuation.type.flowtype
 //            ^  ^^^^^^   ^                                          support.type.builtin.primitive.flowtype
@@ -1251,7 +1251,7 @@ declare class Object {
 //^^^^^^ ^^^ ^^^^^^^^^^ ^^^ ^^  meta.class.body.js
 //^^^^^^ ^^^ ^^^^^^^^^^ ^^^ ^   meta.function.method.js
 //^^^^^^                        entity.name.function.method.js
-//       ^         ^            punctutation.flowtype
+//       ^         ^            punctuation.flowtype
 //        ^             ^   ^   support.type.class.flowtype
 //         ^          ^   ^     punctuation.type.flowtype
 //         ^                    support.type.builtin.primitive.flowtype
@@ -1367,7 +1367,7 @@ declare class Object {
 //           ^                punctuation.definition.parameters.end.js
 //            ^               punctuation.type.flowtype
 //              ^^^^^^^^ ^    support.type.class.flowtype
-//                      ^ ^   punctutation.flowtype
+//                      ^ ^   punctuation.flowtype
 //                         ^  punctuation.terminator.statement.js
   toLocaleString(): string;
 //^^^^^^^^^^^^^^^^^ ^^^^^^^  meta.class.body.js
@@ -1386,7 +1386,7 @@ declare class Object {
 //^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^ ^^^^ ^^^^^^^ ^ ^^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^ ^^^^ ^^^^^^^ ^ ^^   meta.function.method.js
 //^^^^^^                                                   entity.name.function.method.js
-//      ^ ^                                                punctutation.flowtype
+//      ^ ^                                                punctuation.flowtype
 //       ^                        ^    ^          ^   ^    support.type.class.flowtype
 //         ^                                               punctuation.definition.parameters.begin.js
 //          ^^^                                            keyword.operator.spread.js
@@ -1401,7 +1401,7 @@ declare class Object {
 //  ^^^^^^^^^^^^^^^  meta.class.body.js
 //  ^^^^^^^^^^^^^^^  meta.function.method.js
 //  ^^^^^^^^^^^      entity.name.function.method.js
-//             ^ ^   punctutation.flowtype
+//             ^ ^   punctuation.flowtype
 //              ^    support.type.class.flowtype
 //                ^  punctuation.definition.parameters.begin.js
     callbackfn: (previousValue: T|U, currentValue: T, currentIndex: number, array: Array<T>) => U
@@ -1462,7 +1462,7 @@ declare class Object {
 //^^^^^^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^ ^^^^^^^ ^^^^^^^ ^^ ^^^^^^ ^^^^^^^ ^^ ^^ ^^^^^^^^^ ^^^^^^ ^^^^^^^^   meta.function.method.js
 //^^^^^^                                                                                                storage.modifier.js
 //       ^^^^                                                                                           entity.name.function.method.js
-//           ^    ^                                                                                     punctutation.flowtype
+//           ^    ^                                                                                     punctuation.flowtype
 //            ^  ^                                  ^                    ^                         ^    support.type.class.flowtype
 //             ^                  ^                  ^                    ^                             meta.delimiter.comma.js
 //                 ^                         ^                                                          punctuation.definition.parameters.begin.js
@@ -1512,7 +1512,7 @@ type IteratorResult<Yield,Return> = {
  // <- keyword.other.typedef.flowtype
 //^^                                   keyword.other.typedef.flowtype
 //   ^^^^^^^^^^^^^^ ^^^^^ ^^^^^^       support.type.class.flowtype
-//                 ^            ^      punctutation.flowtype
+//                 ^            ^      punctuation.flowtype
 //                       ^             meta.delimiter.comma.js
 //                                  ^  meta.brace.curly.js
   done: true,
@@ -1549,7 +1549,7 @@ interface $Iterator<Yield,Return,Next> {
  // <- keyword.other.interface.flowtype
 //^^^^^^^                                 keyword.other.interface.flowtype
 //        ^^^^^^^^^                       support.type.class.interface.js
-//                 ^                 ^    punctutation.flowtype
+//                 ^                 ^    punctuation.flowtype
 //                  ^^^^^ ^^^^^^ ^^^^     support.type.class.flowtype
 //                       ^      ^         meta.delimiter.comma.js
 //                                     ^  punctuation.section.class.begin.js
@@ -1561,7 +1561,7 @@ interface $Iterator<Yield,Return,Next> {
 //             ^                                 punctuation.definition.parameters.end.js
 //              ^                                punctuation.type.flowtype
 //                ^^^^^^^^^ ^^^^^ ^^^^^^ ^^^^    support.type.class.flowtype
-//                         ^                 ^   punctutation.flowtype
+//                         ^                 ^   punctuation.flowtype
 //                               ^      ^        meta.delimiter.comma.js
 //                                            ^  punctuation.terminator.statement.js
     next(value?: Next): IteratorResult<Yield,Return>;
@@ -1574,7 +1574,7 @@ interface $Iterator<Yield,Return,Next> {
 //             ^      ^                                punctuation.type.flowtype
 //               ^^^^   ^^^^^^^^^^^^^^ ^^^^^ ^^^^^^    support.type.class.flowtype
 //                   ^                                 punctuation.definition.parameters.end.js
-//                                    ^            ^   punctutation.flowtype
+//                                    ^            ^   punctuation.flowtype
 //                                          ^          meta.delimiter.comma.js
 //                                                  ^  punctuation.terminator.statement.js
 }
@@ -1584,7 +1584,7 @@ type Iterator<T> = $Iterator<T,void,void>;
  // <- keyword.other.typedef.flowtype
 //^^                                        keyword.other.typedef.flowtype
 //   ^^^^^^^^ ^    ^^^^^^^^^ ^              support.type.class.flowtype
-//           ^ ^            ^           ^   punctutation.flowtype
+//           ^ ^            ^           ^   punctuation.flowtype
 //                            ^    ^        meta.delimiter.comma.js
 //                             ^^^^ ^^^^    support.type.builtin.primitive.flowtype
 //                                       ^  punctuation.terminator.statement.js
@@ -1594,7 +1594,7 @@ interface $Iterable<Yield,Return,Next> {
  // <- keyword.other.interface.flowtype
 //^^^^^^^                                 keyword.other.interface.flowtype
 //        ^^^^^^^^^                       support.type.class.interface.js
-//                 ^                 ^    punctutation.flowtype
+//                 ^                 ^    punctuation.flowtype
 //                  ^^^^^ ^^^^^^ ^^^^     support.type.class.flowtype
 //                       ^      ^         meta.delimiter.comma.js
 //                                     ^  punctuation.section.class.begin.js
@@ -1606,7 +1606,7 @@ interface $Iterable<Yield,Return,Next> {
 //             ^                                 punctuation.definition.parameters.end.js
 //              ^                                punctuation.type.flowtype
 //                ^^^^^^^^^ ^^^^^ ^^^^^^ ^^^^    support.type.class.flowtype
-//                         ^                 ^   punctutation.flowtype
+//                         ^                 ^   punctuation.flowtype
 //                               ^      ^        meta.delimiter.comma.js
 //                                            ^  punctuation.terminator.statement.js
 }
@@ -1616,7 +1616,7 @@ type Iterable<T> = $Iterable<T,void,void>;
  // <- keyword.other.typedef.flowtype
 //^^                                        keyword.other.typedef.flowtype
 //   ^^^^^^^^ ^    ^^^^^^^^^ ^              support.type.class.flowtype
-//           ^ ^            ^           ^   punctutation.flowtype
+//           ^ ^            ^           ^   punctuation.flowtype
 //                            ^    ^        meta.delimiter.comma.js
 //                             ^^^^ ^^^^    support.type.builtin.primitive.flowtype
 //                                       ^  punctuation.terminator.statement.js
@@ -1631,7 +1631,7 @@ interface Generator<Yield,Return,Next> {
  // <- keyword.other.interface.flowtype
 //^^^^^^^                                 keyword.other.interface.flowtype
 //        ^^^^^^^^^                       support.type.class.interface.js
-//                 ^                 ^    punctutation.flowtype
+//                 ^                 ^    punctuation.flowtype
 //                  ^^^^^ ^^^^^^ ^^^^     support.type.class.flowtype
 //                       ^      ^         meta.delimiter.comma.js
 //                                     ^  punctuation.section.class.begin.js
@@ -1643,7 +1643,7 @@ interface Generator<Yield,Return,Next> {
 //           ^                                 punctuation.definition.parameters.end.js
 //            ^                                punctuation.type.flowtype
 //              ^^^^^^^^^ ^^^^^ ^^^^^^ ^^^^    support.type.class.flowtype
-//                       ^                 ^   punctutation.flowtype
+//                       ^                 ^   punctuation.flowtype
 //                             ^      ^        meta.delimiter.comma.js
 //                                          ^  punctuation.terminator.statement.js
   next(value?: Next): IteratorResult<Yield,Return>;
@@ -1656,14 +1656,14 @@ interface Generator<Yield,Return,Next> {
 //           ^      ^                                punctuation.type.flowtype
 //             ^^^^   ^^^^^^^^^^^^^^ ^^^^^ ^^^^^^    support.type.class.flowtype
 //                 ^                                 punctuation.definition.parameters.end.js
-//                                  ^            ^   punctutation.flowtype
+//                                  ^            ^   punctuation.flowtype
 //                                        ^          meta.delimiter.comma.js
 //                                                ^  punctuation.terminator.statement.js
   return<R>(value: R): { done: true, value: R };
 //^^^^^^^^^^^^^^^^ ^^^ ^ ^^^^^ ^^^^^ ^^^^^^ ^ ^^  meta.class.body.js
 //^^^^^^^^^^^^^^^^ ^^^ ^ ^^^^^ ^^^^^ ^^^^^^ ^ ^   meta.function.method.js
 //^^^^^^                                          entity.name.function.method.js
-//      ^ ^                                       punctutation.flowtype
+//      ^ ^                                       punctuation.flowtype
 //       ^         ^                        ^     support.type.class.flowtype
 //         ^                                      punctuation.definition.parameters.begin.js
 //          ^^^^^        ^^^^        ^^^^^        variable.other.readwrite.js
@@ -1685,7 +1685,7 @@ interface Generator<Yield,Return,Next> {
 //              ^^^                                  support.type.builtin.primitive.flowtype
 //                 ^                                 punctuation.definition.parameters.end.js
 //                    ^^^^^^^^^^^^^^ ^^^^^ ^^^^^^    support.type.class.flowtype
-//                                  ^            ^   punctutation.flowtype
+//                                  ^            ^   punctuation.flowtype
 //                                        ^          meta.delimiter.comma.js
 //                                                ^  punctuation.terminator.statement.js
 }
@@ -1754,7 +1754,7 @@ declare class Map<K, V> {
 //           ^                     punctuation.definition.parameters.end.js
 //            ^                    punctuation.type.flowtype
 //              ^^^^^^^^           support.type.class.flowtype
-//                      ^      ^   punctutation.flowtype
+//                      ^      ^   punctuation.flowtype
 //                       ^         meta.brace.square.open.flowtype
 //                        ^  ^     variable.other.constant.js
 //                         ^       meta.delimiter.comma.js
@@ -1762,7 +1762,7 @@ declare class Map<K, V> {
 //                              ^  punctuation.terminator.statement.js
   <Key, Value>(): Map<Key, Value>;
 //^^^^^ ^^^^^^^^^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
-//^          ^                      punctutation.flowtype
+//^          ^                      punctuation.flowtype
 // ^^^  ^^^^^         ^^^  ^^^^^    support.type.class.flowtype
 //    ^                  ^          meta.delimiter.comma.js
 //            ^                     punctuation.definition.parameters.begin.js
@@ -1773,7 +1773,7 @@ declare class Map<K, V> {
 //                               ^  punctuation.terminator.statement.js
   <Key, Value>(iterable: Iterable<[Key, Value]>): Map<Key, Value>;
 //^^^^^ ^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^^^^^^^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
-//^          ^                   ^            ^                     punctutation.flowtype
+//^          ^                   ^            ^                     punctuation.flowtype
 // ^^^  ^^^^^            ^^^^^^^^                     ^^^  ^^^^^    support.type.class.flowtype
 //    ^                               ^                  ^          meta.delimiter.comma.js
 //            ^                                                     punctuation.definition.parameters.begin.js
@@ -1793,7 +1793,7 @@ declare class Map<K, V> {
 //        ^                     punctuation.definition.parameters.end.js
 //         ^                    punctuation.type.flowtype
 //           ^^^^^^^^           support.type.class.flowtype
-//                   ^      ^   punctutation.flowtype
+//                   ^      ^   punctuation.flowtype
 //                    ^         meta.brace.square.open.flowtype
 //                     ^  ^     variable.other.constant.js
 //                      ^       meta.delimiter.comma.js
@@ -1824,7 +1824,7 @@ declare class Map<K, V> {
 //     ^                punctuation.definition.parameters.end.js
 //      ^               punctuation.type.flowtype
 //        ^^^^^^^^ ^    support.type.class.flowtype
-//                ^ ^   punctutation.flowtype
+//                ^ ^   punctuation.flowtype
 //                   ^  punctuation.terminator.statement.js
   set(key: K, value?: V): Map<K, V>;
 //^^^^^^^^ ^^ ^^^^^^^ ^^^ ^^^^^^ ^^^  meta.class.body.js
@@ -1854,7 +1854,7 @@ declare class Map<K, V> {
 //       ^                punctuation.definition.parameters.end.js
 //        ^               punctuation.type.flowtype
 //          ^^^^^^^^ ^    support.type.class.flowtype
-//                  ^ ^   punctutation.flowtype
+//                  ^ ^   punctuation.flowtype
 //                     ^  punctuation.terminator.statement.js
 }
 // <- punctuation.section.class.end.js
@@ -1913,7 +1913,7 @@ declare class Promise<R> {
 //^^^^^^^^  meta.class.body.js
 //^^^^^^^^  meta.function.method.js
 //^^^^      entity.name.function.method.js
-//    ^ ^   punctutation.flowtype
+//    ^ ^   punctuation.flowtype
 //     ^    support.type.class.flowtype
 //       ^  punctuation.definition.parameters.begin.js
     onFulfill?: (value: R) => Promise<U> | U,
@@ -1960,7 +1960,7 @@ declare class Promise<R> {
 //^^^^^^^^^  meta.class.body.js
 //^^^^^^^^^  meta.function.method.js
 //^^^^^      entity.name.function.method.js
-//     ^ ^   punctutation.flowtype
+//     ^ ^   punctuation.flowtype
 //      ^    support.type.class.flowtype
 //        ^  punctuation.definition.parameters.begin.js
     onReject?: (error: any) => ?Promise<U> | U
@@ -1994,7 +1994,7 @@ declare class Promise<R> {
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^ ^ ^^^ ^^^^^^^^^^   meta.function.method.js
 //^^^^^^                                                   storage.modifier.js
 //       ^^^^^^^                                           entity.name.function.method.js
-//              ^ ^                                        punctutation.flowtype
+//              ^ ^                                        punctuation.flowtype
 //               ^                   ^    ^           ^    support.type.class.flowtype
 //                 ^                                       punctuation.definition.parameters.begin.js
 //                  ^^^^^^                                 variable.other.readwrite.js
@@ -2010,7 +2010,7 @@ declare class Promise<R> {
 //^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^   meta.function.method.js
 //^^^^^^                                      storage.modifier.js
 //       ^^^^^^                               entity.name.function.method.js
-//             ^ ^                            punctutation.flowtype
+//             ^ ^                            punctuation.flowtype
 //              ^                        ^    support.type.class.flowtype
 //                ^                           punctuation.definition.parameters.begin.js
 //                 ^^^^^                      variable.other.readwrite.js
@@ -2026,7 +2026,7 @@ declare class Promise<R> {
 //^^^^^^ ^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^   meta.function.method.js
 //^^^^^^                                                          storage.modifier.js
 //       ^^^                                                      entity.name.function.method.js
-//          ^ ^                                                   punctutation.flowtype
+//          ^ ^                                                   punctuation.flowtype
 //           ^                          ^                   ^     support.type.class.flowtype
 //             ^                                                  punctuation.definition.parameters.begin.js
 //              ^^^^^^^^                                          variable.other.readwrite.js
@@ -2040,7 +2040,7 @@ declare class Promise<R> {
 //^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^   meta.function.method.js
 //^^^^^^                                                    storage.modifier.js
 //       ^^^^                                               entity.name.function.method.js
-//           ^ ^                                            punctutation.flowtype
+//           ^ ^                                            punctuation.flowtype
 //            ^                          ^             ^    support.type.class.flowtype
 //              ^                                           punctuation.definition.parameters.begin.js
 //               ^^^^^^^^                                   variable.other.readwrite.js
@@ -2060,7 +2060,7 @@ declare class Promise<R> {
 //^^^^^^^^  meta.class.body.js
 //^^^^^^^^  meta.function.method.js
 //^^^^      entity.name.function.method.js
-//    ^ ^   punctutation.flowtype
+//    ^ ^   punctuation.flowtype
 //     ^    support.type.class.flowtype
 //       ^  punctuation.definition.parameters.begin.js
     onFulfill?: (value: R) => void,
@@ -2100,7 +2100,7 @@ declare class Promise<R> {
 //^^^^^^ ^^^^^^^^^^^^^^^^ ^^^ ^^^^^^^^^^   meta.function.method.js
 //^^^^^^                                   storage.modifier.js
 //       ^^^^                              entity.name.function.method.js
-//           ^ ^                           punctutation.flowtype
+//           ^ ^                           punctuation.flowtype
 //            ^           ^           ^    support.type.class.flowtype
 //              ^                          punctuation.definition.parameters.begin.js
 //               ^^^^^^                    variable.other.readwrite.js

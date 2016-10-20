@@ -2346,10 +2346,10 @@
           "begin": "\\s*+(<)(?!<)",
           "end": "\\s*(>)",
           "beginCaptures": {
-            "1": { "name": "punctutation.flowtype" }
+            "1": { "name": "punctuation.flowtype" }
           },
           "endCaptures": {
-            "1": { "name": "punctutation.flowtype" }
+            "1": { "name": "punctuation.flowtype" }
           },
           "patterns": [
             { "include": "#literal-comma" },

@@ -284,7 +284,7 @@ type $JSXIntrinsics = {
 //^^^^             ^^          ^^^^^               variable.other.readwrite.js
 //    ^              ^              ^              punctuation.type.flowtype
 //      ^^^^^^^^^                                  support.type.class.flowtype
-//               ^                           ^     punctutation.flowtype
+//               ^                           ^     punctuation.flowtype
 //                ^                                meta.brace.round.open.flowtype
 //                     ^^^^^^         ^^^^^^       support.type.builtin.primitive.flowtype
 //                           ^                     meta.delimiter.comma.js

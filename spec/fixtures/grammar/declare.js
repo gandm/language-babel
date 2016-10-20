@@ -14,7 +14,7 @@ declare module 'a-unique-module-name' {
 //^^^^^^^                        keyword.other.declare.flowtype
 //        ^^^^^^^^^              keyword.other.interface.flowtype
 //                  ^^^^^        support.type.class.interface.js
-//                       ^ ^     punctutation.flowtype
+//                       ^ ^     punctuation.flowtype
 //                        ^      support.type.class.flowtype
 //                           ^   punctuation.section.class.begin.js
 //                            ^  punctuation.section.class.end.js
@@ -59,7 +59,7 @@ interface Iterator<T> {
  // <- keyword.other.interface.flowtype
 //^^^^^^^                keyword.other.interface.flowtype
 //        ^^^^^^^^       support.type.class.interface.js
-//                ^ ^    punctutation.flowtype
+//                ^ ^    punctuation.flowtype
 //                 ^     support.type.class.flowtype
 //                    ^  punctuation.section.class.begin.js
     next(): IteratorResult<T>
@@ -79,7 +79,7 @@ interface Iterator<T> {
 //           ^               punctuation.definition.parameters.end.js
 //            ^              punctuation.type.flowtype
 //              ^^^^^^^^ ^   support.type.class.flowtype
-//                      ^ ^  punctutation.flowtype
+//                      ^ ^  punctuation.flowtype
 }
 // <- punctuation.section.class.end.js
 
@@ -238,7 +238,7 @@ type ReactClass<D, P, S> = _ReactClass<D, P, S, *>
  // <- keyword.other.typedef.flowtype
 //^^                                                keyword.other.typedef.flowtype
 //   ^^^^^^^^^^ ^  ^  ^    ^^^^^^^^^^^ ^  ^  ^      support.type.class.flowtype
-//             ^       ^              ^          ^  punctutation.flowtype
+//             ^       ^              ^          ^  punctuation.flowtype
 //               ^  ^                   ^  ^  ^     meta.delimiter.comma.js
 //                                              ^   kewyword.operator.existential.flowtype
 
@@ -266,7 +266,7 @@ declare var foo: (
 //               ^  punctuation.definition.parameters.begin.js
   (<T>(x: T) => T) & (<T,U>(x: T, y: U) => U)
 //^   ^              ^     ^                   punctuation.definition.parameters.begin.js
-// ^ ^                ^   ^                    punctutation.flowtype
+// ^ ^                ^   ^                    punctuation.flowtype
 //  ^     ^     ^      ^ ^     ^     ^     ^   support.type.class.flowtype
 //     ^                    ^     ^            variable.other.readwrite.js
 //      ^                    ^     ^           punctuation.type.flowtype

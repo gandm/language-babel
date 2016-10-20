@@ -808,7 +808,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^                                    meta.class.js
 //^^^                                    storage.type.class.js
 //    ^^^^^               ^^^^^          entity.name.class.js
-//         ^    ^              ^    ^    punctutation.flowtype
+//         ^    ^              ^    ^    punctuation.flowtype
 //          ^  ^                ^  ^     support.type.class.flowtype
 //           ^                   ^       meta.delimiter.comma.js
 //                ^^^^^^^                meta.class.extends.js
