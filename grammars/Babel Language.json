@@ -763,8 +763,8 @@
     },
     "literal-quasi-embedded": {
       "name": "entity.quasi.element.js",
-      "begin": "\\s*(?<!\\\\)(\\${)",
-      "end": "\\s*}",
+      "begin": "(?<!\\\\)(\\${)",
+      "end": "}",
       "beginCaptures": {
         "1": { "name": "punctuation.quasi.element.begin.js" }
       },
