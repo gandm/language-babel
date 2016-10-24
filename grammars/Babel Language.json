@@ -2215,7 +2215,7 @@
         {
           "comment": "assignment var = or = ",
           "begin": "(?<!:)\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*=)(?!=>|==)",
-          "end": "\\s*(?=,|;|\\)|}|\\]|\\*/|\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|async)\\b|type\\s+[$\\w]+|declare\\s+[$\\w]+|interface\\s+[$\\w]+)",
+          "end": "\\s*(?=,|;|\\)|}|\\]|\\*/|\\b(?:if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield)\\b|\\b(async|await)\\b\\s*+(?!=|:)|type\\s+[$\\w]+|declare\\s+[$\\w]+|interface\\s+[$\\w]+)",
           "patterns": [
             { "include": "#expression" }
           ]

@@ -1,5 +1,19 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE 275
+
+const async = require('aync')
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                          storage.type.js
+//    ^^^^^                    variable.other.readwrite.js
+//          ^                  keyword.operator.assignment.js
+//            ^^^^^^^^^^^^^^^  meta.function-call.with-arguments.js
+//            ^^^^^^^          entity.name.function.js
+//                   ^      ^  meta.brace.round.js
+//                    ^^^^^^   string.quoted.single.js
+//                    ^        punctuation.definition.string.begin.js
+//                         ^   punctuation.definition.string.end.js
 
 // ISSUES 271 & 272
 
