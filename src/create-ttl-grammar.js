@@ -128,6 +128,7 @@ class CreateTtlGrammar {
     }
 
     return `{
+      "contentName": "meta.ttl-grammar.js",
       "begin": "\\\\s*+(${matchString})\\\\s*(\`)",
       "beginCaptures": {
         "1": { "name": "entity.name.tag.js" },
