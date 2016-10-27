@@ -156,7 +156,7 @@ describe('Create Ttl Grammar', () => {
         const ttlFilenameAbsolute = ttlGrammar.makeTtlGrammarFilenameAbsoulute(ttlFilename);
         waitsForPromise(() => {
           return ttlGrammar.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText }).then( (val) => {
-            expect(val).toEqual('ttl-51856b183cdd05c15608ffb44efac85af393da57f4ab446ee4ce3ed8d0b9f9ca.json');
+            expect(val).toEqual('ttl-d91bc48a20b15ec34bd92175c90020f40f0686008f2e3fefbd1bedc1fbe9079c.json');
           });
         });
       }
