@@ -1,5 +1,102 @@
 // SYNTAX TEST "source.js.jsx"
 
+
+// ISSUE 278
+
+if (foo instanceof (Date)) return;
+// <- keyword.control.conditional.js
+ // <- keyword.control.conditional.js
+// ^               ^    ^^          meta.brace.round.js
+//  ^^^                             variable.other.readwrite.js
+//      ^^^^^^^^^^                  keyword.operator.js
+//                  ^^^^            support.class.builtin.js
+//                         ^^^^^^   keyword.control.flow.js
+//                               ^  punctuation.terminator.statement.js
+delete(x)
+// <- keyword.operator.js
+ // <- keyword.operator.js
+//^^^^      keyword.operator.js
+//    ^ ^   meta.brace.round.js
+//     ^    variable.other.readwrite.js
+void (0)
+// <- keyword.operator.js
+ // <- keyword.operator.js
+//^^      keyword.operator.js
+//   ^ ^  meta.brace.round.js
+//    ^   constant.numeric.js
+function test() {
+// <- meta.function.js storage.type.function.js
+ // <- meta.function.js storage.type.function.js
+//^^^^^^ ^^^^^^ ^  meta.function.js
+//^^^^^^           storage.type.function.js
+//       ^^^^      entity.name.function.js
+//           ^     punctuation.definition.parameters.begin.js
+//            ^    punctuation.definition.parameters.end.js
+//              ^  meta.brace.curly.js
+  if (foo instanceof (Date)) return;
+//^^ ^^^^ ^^^^^^^^^^ ^^^^^^^ ^^^^^^^  meta.function.js
+//^^                                  keyword.control.conditional.js
+//   ^               ^    ^^          meta.brace.round.js
+//    ^^^                             variable.other.readwrite.js
+//        ^^^^^^^^^^                  keyword.operator.js
+//                    ^^^^            support.class.builtin.js
+//                           ^^^^^^   keyword.control.flow.js
+//                                 ^  punctuation.terminator.statement.js
+  delete(x)
+//^^^^^^^^^   meta.function.js
+//^^^^^^      keyword.operator.js
+//      ^ ^   meta.brace.round.js
+//       ^    variable.other.readwrite.js
+  void (0)
+//^^^^ ^^^  meta.function.js
+//^^^^      keyword.operator.js
+//     ^ ^  meta.brace.round.js
+//      ^   constant.numeric.js
+}
+// <- meta.function.js meta.brace.curly.js
+class a {
+// <- meta.class.js storage.type.class.js
+ // <- meta.class.js storage.type.class.js
+//^^^      meta.class.js
+//^^^      storage.type.class.js
+//    ^    entity.name.class.js
+//      ^  punctuation.section.class.begin.js
+  if(a) {}
+//^^^^^ ^^  meta.class.body.js
+//^^^^^ ^^  meta.function.method.js
+//^^        entity.name.function.method.js
+//  ^       punctuation.definition.parameters.begin.js
+//   ^      meta.function.parameters.js
+//   ^      variable.other.readwrite.js
+//    ^     punctuation.definition.parameters.end.js
+//      ^^  meta.brace.curly.js
+  delete() {}
+//^^^^^^^^ ^^  meta.class.body.js
+//^^^^^^^^ ^^  meta.function.method.js
+//^^^^^^       entity.name.function.method.js
+//      ^      punctuation.definition.parameters.begin.js
+//       ^     punctuation.definition.parameters.end.js
+//         ^^  meta.brace.curly.js
+}
+// <- punctuation.section.class.end.js
+let a= {
+// <- storage.type.js
+ // <- storage.type.js
+//^       storage.type.js
+//  ^     variable.other.readwrite.js
+//   ^    keyword.operator.assignment.js
+//     ^  meta.brace.curly.js
+  if(a) {}
+//^^^^^ ^^  meta.function.method.js
+//^^        entity.name.function.method.js
+//  ^       punctuation.definition.parameters.begin.js
+//   ^      meta.function.parameters.js
+//   ^      variable.other.readwrite.js
+//    ^     punctuation.definition.parameters.end.js
+//      ^^  meta.brace.curly.js
+}
+// <- meta.brace.curly.js
+
 // ISSUE 275
 
 const async = require('aync')

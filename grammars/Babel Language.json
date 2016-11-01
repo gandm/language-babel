@@ -931,7 +931,9 @@
     },
     "literal-function-call": {
       "patterns": [
+        { "include": "#comments" },
         { "include": "#literal-keywords" },
+        { "include": "#literal-operators" },
         {
           "name": "meta.function-call.without-arguments.js",
           "match": "(?<!\\.)\\s*+((\\bnew\\b)*)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\()\\s*+(\\))",

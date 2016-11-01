@@ -837,18 +837,18 @@ x = function f(){ return f; }; x[0] = x; x.a = x;
 //                                         ^       variable.other.property.js
 
 new x(); new new x()();
-// <- meta.function-call.without-arguments.js keyword.operator.js
- // <- meta.function-call.without-arguments.js keyword.operator.js
-//^ ^^^      ^^^ ^^^     meta.function-call.without-arguments.js
+// <- keyword.operator.js
+ // <- keyword.operator.js
 //^      ^^^ ^^^         keyword.operator.js
+//  ^^^          ^^^     meta.function-call.without-arguments.js
 //  ^            ^       entity.name.function.js
 //   ^^           ^^^^   meta.brace.round.js
 //     ^              ^  punctuation.terminator.statement.js
 new x[0](); new x.a(); new x[0].a(); new x.a[0]();
-// <- meta.function-call.without-arguments.js keyword.operator.js
- // <- meta.function-call.without-arguments.js keyword.operator.js
-//^ ^^^^^^                                          meta.function-call.without-arguments.js
+// <- keyword.operator.js
+ // <- keyword.operator.js
 //^         ^^^        ^^^           ^^^            keyword.operator.js
+//  ^^^^^^                                          meta.function-call.without-arguments.js
 //  ^           ^          ^             ^          variable.other.object.js
 //   ^ ^                    ^ ^             ^ ^     meta.brace.square.js
 //    ^                      ^               ^      constant.numeric.js
@@ -863,14 +863,14 @@ new x; new new x; new new x();
 //^    ^^^ ^^^    ^^^ ^^^       keyword.operator.js
 //  ^          ^                variable.other.readwrite.js
 //   ^          ^            ^  punctuation.terminator.statement.js
-//                    ^^^ ^^^   meta.function-call.without-arguments.js
+//                        ^^^   meta.function-call.without-arguments.js
 //                        ^     entity.name.function.js
 //                         ^^   meta.brace.round.js
 new new x().a; new new x()[0];
 // <- keyword.operator.js
  // <- keyword.operator.js
 //^ ^^^        ^^^ ^^^          keyword.operator.js
-//  ^^^ ^^^        ^^^ ^^^      meta.function-call.without-arguments.js
+//      ^^^            ^^^      meta.function-call.without-arguments.js
 //      ^              ^        entity.name.function.js
 //       ^^             ^^      meta.brace.round.js
 //         ^                    keyword.operator.accessor.js
