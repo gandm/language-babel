@@ -1,7 +1,11 @@
+### 2.47.0
+  - Fix bad regression in arrow function detections that also impacted performance. [Fixes #281](https://github.com/gandm/language-babel/issues/281)
+  - Change default autoIndentJSX to be on. See [PR #283](https://github.com/gandm/language-babel/issues/283)
+  
 ### 2.46.0
   - Minor grammar improvements/fixes. Issues #272, #273, #274, #275, #276, #277 and #278
   - Change keyword shortcut commenting in styled-components to return empty string in interpolations.
-  
+
 ### 2.45.0
   - Support [styled-components](https://github.com/styled-components/styled-components) with own grammar rather than hacked language-css.
   - Allow const uppercase variables to start with _ chars.
