@@ -1,5 +1,23 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE 281
+
+const helloWorld = (): string => 'hello world';
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                            storage.type.js
+//    ^^^^^^^^^^ ^ ^^^ ^^^^^^ ^^                 meta.function.arrow.js
+//    ^^^^^^^^^^                                 entity.name.function.js
+//               ^                               keyword.operator.assignment.js
+//                 ^                             punctuation.definition.parameters.begin.js
+//                  ^                            punctuation.definition.parameters.end.js
+//                   ^                           punctuation.type.flowtype
+//                     ^^^^^^                    support.type.builtin.primitive.flowtype
+//                            ^^                 storage.type.function.arrow.js
+//                               ^^^^^^ ^^^^^^   string.quoted.single.js
+//                               ^               punctuation.definition.string.begin.js
+//                                           ^   punctuation.definition.string.end.js
+//                                            ^  punctuation.terminator.statement.js
 
 // ISSUE 278
 
