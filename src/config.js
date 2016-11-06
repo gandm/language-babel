@@ -90,14 +90,15 @@ module.exports = {
     default: [],
     items: {
       type: "string"
-    }
+    },
+    order: 150
   },
 
   autoIndentJSX: {
     title: "Auto Indent JSX",
     description: "Auto Indent JSX using default or eslintrc rules",
     type: "boolean",
-    default: false,
+    default: true,
     order: 160
   }
 };

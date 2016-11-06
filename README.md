@@ -8,14 +8,14 @@ Language grammar for all versions of JavaScript including  ES2016 and ESNext,  J
 
 The package also provides
 
- - [automatic indentation](https://github.com/gandm/language-babel#automatic-indenting-of-jsx) of JSX (optional).
+ - [automatic indentation](https://github.com/gandm/language-babel#automatic-indenting-of-jsx) of JSX.
  - [JSX tag closure and JSX html element completion suggestions](https://github.com/gandm/language-babel#auto-completion-of-jsx-tags-elements-and-attributes).
  - Context aware [commenting out of JSX elements](https://github.com/gandm/language-babel#commenting-out-jsx-elements).
  - Additional [newline insertion between JSX tag pairs](https://github.com/gandm/language-babel#automatic-insertion-between-jsx-tags).
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
- - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings. 
+ - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings.
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
  - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
@@ -47,7 +47,7 @@ When a newline is inserted between a matched open/close pair of JSX tags, langua
 
 ## Automatic Indenting of JSX
 
-By default this feature is turned off in the package setting - `Auto Indent JSX`. If enabled, language-babel will auto-indent any JSX code typed or moved across using suitable Atom defaults. There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that override the default behaviour. These can be mapped to keyboard shortcuts if needed.
+The package setting `Auto Indent JSX` if enabled will auto-indent any JSX code typed or moved across using suitable Atom defaults. There are also three commands - `language-babel:toggle-auto-indent-jsx`, `language-babel:auto-indent-jsx-on` and `language-babel:auto-indent-jsx-off` that override the default behaviour. These can be mapped to keyboard shortcuts if needed.
 
 Auto-Indenting will also attempt to read the `.eslintrc` file associated with an edited file's project for the presence of four properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
 
