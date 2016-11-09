@@ -1718,7 +1718,7 @@
         },
         {
           "comment": "export {  or  export * or export var or export type {} from module",
-          "begin": "(?<!\\.)\\s*+\\b(export)\\b\\s*\\b(type)?\\b(?=\\s++({|\\*|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\s++from\\b|\\s*,)))",
+          "begin": "(?<!\\.)\\s*+\\b(export)\\b\\s*(\\btype\\b)?(?=\\s++({|\\*|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\s++from\\b|\\s*,)))",
           "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
           "beginCaptures": {
             "1": { "name": "keyword.control.module.js" },
