@@ -98,7 +98,7 @@ module.exports = {
     title: "Auto Indent JSX",
     description: "Auto Indent JSX using default or eslintrc rules",
     type: "boolean",
-    default: fasle,
+    default: false,
     order: 160
   }
 };
