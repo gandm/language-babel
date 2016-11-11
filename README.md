@@ -1,6 +1,6 @@
 # language-babel
 
-Please note that this package is no longer supported. I recommend that people use the [react package](https://github.com/orktes/atom-react)
+Please note that this package is no longer supported.
 
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
