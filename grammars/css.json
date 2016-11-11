@@ -670,7 +670,7 @@
     		},
         {
           "comment": "unknown properties --*",
-          "begin": "(?<=^|[\\W])\\s*+(\\S+)\\s*+(:)",
+          "begin": "(?<=^|[\\W])\\s*+([-_a-zA-Z0-9]*)\\s*+(:)",
           "end": "(;)|(?=[})\\]])",
           "beginCaptures": {
             "1": {"name": "support.type.property-name.unknown.css"}
