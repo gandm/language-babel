@@ -2337,13 +2337,15 @@
         {
           "comment": "Get parameters within a function/method call",
           "contentName": "meta.function.parameters.js",
-          "begin": "(?<!=|})\\s*+(\\()",
-          "end": "\\s*(\\))",
+          "begin": "(?<!=|})\\s*+((\\())",
+          "end": "\\s*((\\)))",
           "beginCaptures": {
-            "1": { "name": "punctuation.definition.parameters.begin.js" }
+            "1": { "name": "punctuation.definition.parameters.begin.js" },
+            "2": { "name": "meta.brace.round.js" }
           },
           "endCaptures": {
-            "1": { "name": "punctuation.definition.parameters.end.js" }
+            "1": { "name": "punctuation.definition.parameters.end.js" },
+            "2": { "name": "meta.brace.round.js" }
           },
           "patterns": [
             { "include": "#flowtype-polymorphs" },
@@ -2404,10 +2406,10 @@
       "end": "\\s*(\\})",
       "applyEndPatternLast": 1,
       "beginCaptures": {
-        "1": { "name": "meta.brace.round.open.flowtype" }
+        "1": { "name": "meta.brace.curly.open.flowtype" }
       },
       "endCaptures": {
-        "1": { "name": "meta.brace.round.close.flowtype" }
+        "1": { "name": "meta.brace.curly.close.flowtype" }
       },
       "patterns": [
         { "include": "#flowtype-object-property" }
