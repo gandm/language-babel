@@ -1,5 +1,8 @@
+### 2.48.2
+  - Add support for indentation of paren blocks inside JSX as well as allowing addition indents on some contraints.
+
 ### 2.48.0
-  - Cease package support. I advise using the [React package](https://atom.io/packages/react).
+  - Cease package support.
   - Remove auto indent option as default.
   - Add indent/outdent for Atom jsx
   - Add option to export type {name} from 'module'
