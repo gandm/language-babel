@@ -8,146 +8,173 @@ let Sound = {
 //        ^    keyword.operator.assignment.js
 //          ^  meta.brace.curly.js
   get() {},
-//^^^^^      meta.function.method.js
+//^^^^^ ^^   meta.function.method.js
 //^^^        entity.name.function.method.js
 //   ^       punctuation.definition.parameters.begin.js
+//   ^^      meta.brace.round.js
 //    ^      punctuation.definition.parameters.end.js
 //      ^^   meta.brace.curly.js
 //        ^  meta.delimiter.comma.js
   get(arg) {},
-//^^^^^^^^      meta.function.method.js
+//^^^^^^^^ ^^   meta.function.method.js
 //^^^           entity.name.function.method.js
 //   ^          punctuation.definition.parameters.begin.js
+//   ^   ^      meta.brace.round.js
+//    ^^^       meta.function.parameters.js
 //    ^^^       variable.other.readwrite.js
 //       ^      punctuation.definition.parameters.end.js
 //         ^^   meta.brace.curly.js
 //           ^  meta.delimiter.comma.js
   set() {},
-//^^^^^      meta.function.method.js
+//^^^^^ ^^   meta.function.method.js
 //^^^        entity.name.function.method.js
 //   ^       punctuation.definition.parameters.begin.js
+//   ^^      meta.brace.round.js
 //    ^      punctuation.definition.parameters.end.js
 //      ^^   meta.brace.curly.js
 //        ^  meta.delimiter.comma.js
   set(arg) {},
-//^^^^^^^^      meta.function.method.js
+//^^^^^^^^ ^^   meta.function.method.js
 //^^^           entity.name.function.method.js
 //   ^          punctuation.definition.parameters.begin.js
+//   ^   ^      meta.brace.round.js
+//    ^^^       meta.function.parameters.js
 //    ^^^       variable.other.readwrite.js
 //       ^      punctuation.definition.parameters.end.js
 //         ^^   meta.brace.curly.js
 //           ^  meta.delimiter.comma.js
   play() {},
-//^^^^^^      meta.function.method.js
+//^^^^^^ ^^   meta.function.method.js
 //^^^^        entity.name.function.method.js
 //    ^       punctuation.definition.parameters.begin.js
+//    ^^      meta.brace.round.js
 //     ^      punctuation.definition.parameters.end.js
 //       ^^   meta.brace.curly.js
 //         ^  meta.delimiter.comma.js
   play(arg) {},
-//^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^ ^^   meta.function.method.js
 //^^^^           entity.name.function.method.js
 //    ^          punctuation.definition.parameters.begin.js
+//    ^   ^      meta.brace.round.js
+//     ^^^       meta.function.parameters.js
 //     ^^^       variable.other.readwrite.js
 //        ^      punctuation.definition.parameters.end.js
 //          ^^   meta.brace.curly.js
 //            ^  meta.delimiter.comma.js
   'play'() {},
-//^^^^^^^^      meta.function.method.js
+//^^^^^^^^ ^^   meta.function.method.js
 //^^^^^^        entity.name.function.method.js
 //      ^       punctuation.definition.parameters.begin.js
+//      ^^      meta.brace.round.js
 //       ^      punctuation.definition.parameters.end.js
 //         ^^   meta.brace.curly.js
 //           ^  meta.delimiter.comma.js
   'play'(arg) {},
-//^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^ ^^   meta.function.method.js
 //^^^^^^           entity.name.function.method.js
 //      ^          punctuation.definition.parameters.begin.js
+//      ^   ^      meta.brace.round.js
+//       ^^^       meta.function.parameters.js
 //       ^^^       variable.other.readwrite.js
 //          ^      punctuation.definition.parameters.end.js
 //            ^^   meta.brace.curly.js
 //              ^  meta.delimiter.comma.js
   *play() {},
-//^^^^^^^      meta.function.method.js
+//^^^^^^^ ^^   meta.function.method.js
 //^            keyword.generator.asterisk.js
 // ^^^^        entity.name.function.method.js
 //     ^       punctuation.definition.parameters.begin.js
+//     ^^      meta.brace.round.js
 //      ^      punctuation.definition.parameters.end.js
 //        ^^   meta.brace.curly.js
 //          ^  meta.delimiter.comma.js
   *play(arg) {},
-//^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^ ^^   meta.function.method.js
 //^               keyword.generator.asterisk.js
 // ^^^^           entity.name.function.method.js
 //     ^          punctuation.definition.parameters.begin.js
+//     ^   ^      meta.brace.round.js
+//      ^^^       meta.function.parameters.js
 //      ^^^       variable.other.readwrite.js
 //         ^      punctuation.definition.parameters.end.js
 //           ^^   meta.brace.curly.js
 //             ^  meta.delimiter.comma.js
   async play() {},
-//^^^^^ ^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^ ^^   meta.function.method.js
 //^^^^^             storage.type.js
 //      ^^^^        entity.name.function.method.js
 //          ^       punctuation.definition.parameters.begin.js
+//          ^^      meta.brace.round.js
 //           ^      punctuation.definition.parameters.end.js
 //             ^^   meta.brace.curly.js
 //               ^  meta.delimiter.comma.js
   async play(arg) {},
-//^^^^^ ^^^^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^^^^ ^^   meta.function.method.js
 //^^^^^                storage.type.js
 //      ^^^^           entity.name.function.method.js
 //          ^          punctuation.definition.parameters.begin.js
+//          ^   ^      meta.brace.round.js
+//           ^^^       meta.function.parameters.js
 //           ^^^       variable.other.readwrite.js
 //              ^      punctuation.definition.parameters.end.js
 //                ^^   meta.brace.curly.js
 //                  ^  meta.delimiter.comma.js
   get play() {},
-//^^^ ^^^^^^      meta.accessor.js
+//^^^ ^^^^^^ ^^   meta.accessor.js
 //^^^             storage.type.accessor.js
 //    ^^^^        entity.name.accessor.js
 //        ^       punctuation.definition.parameters.begin.js
+//        ^^      meta.brace.round.js
 //         ^      punctuation.definition.parameters.end.js
 //           ^^   meta.brace.curly.js
 //             ^  meta.delimiter.comma.js
   set play(arg) {},
-//^^^ ^^^^^^^^^      meta.accessor.js
+//^^^ ^^^^^^^^^ ^^   meta.accessor.js
 //^^^                storage.type.accessor.js
 //    ^^^^           entity.name.accessor.js
 //        ^          punctuation.definition.parameters.begin.js
+//        ^   ^      meta.brace.round.js
+//         ^^^       meta.function.parameters.js
 //         ^^^       variable.other.readwrite.js
 //            ^      punctuation.definition.parameters.end.js
 //              ^^   meta.brace.curly.js
 //                ^  meta.delimiter.comma.js
   *'play'() {},
-//^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^ ^^   meta.function.method.js
 //^              keyword.generator.asterisk.js
 // ^^^^^^        entity.name.function.method.js
 //       ^       punctuation.definition.parameters.begin.js
+//       ^^      meta.brace.round.js
 //        ^      punctuation.definition.parameters.end.js
 //          ^^   meta.brace.curly.js
 //            ^  meta.delimiter.comma.js
   *'play'(arg) {},
-//^^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^^ ^^   meta.function.method.js
 //^                 keyword.generator.asterisk.js
 // ^^^^^^           entity.name.function.method.js
 //       ^          punctuation.definition.parameters.begin.js
+//       ^   ^      meta.brace.round.js
+//        ^^^       meta.function.parameters.js
 //        ^^^       variable.other.readwrite.js
 //           ^      punctuation.definition.parameters.end.js
 //             ^^   meta.brace.curly.js
 //               ^  meta.delimiter.comma.js
   async 'play'() {},
-//^^^^^ ^^^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^^^ ^^   meta.function.method.js
 //^^^^^               storage.type.js
 //      ^^^^^^        entity.name.function.method.js
 //            ^       punctuation.definition.parameters.begin.js
+//            ^^      meta.brace.round.js
 //             ^      punctuation.definition.parameters.end.js
 //               ^^   meta.brace.curly.js
 //                 ^  meta.delimiter.comma.js
   async 'play'(arg) {},
-//^^^^^ ^^^^^^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^^^^^^ ^^   meta.function.method.js
 //^^^^^                  storage.type.js
 //      ^^^^^^           entity.name.function.method.js
 //            ^          punctuation.definition.parameters.begin.js
+//            ^   ^      meta.brace.round.js
+//             ^^^       meta.function.parameters.js
 //             ^^^       variable.other.readwrite.js
 //                ^      punctuation.definition.parameters.end.js
 //                  ^^   meta.brace.curly.js
@@ -159,6 +186,7 @@ let Sound = {
 //    ^             punctuation.definition.string.begin.js
 //         ^        punctuation.definition.string.end.js
 //          ^       punctuation.definition.parameters.begin.js
+//          ^^      meta.brace.round.js
 //           ^      punctuation.definition.parameters.end.js
 //             ^^   meta.brace.curly.js
 //               ^  meta.delimiter.comma.js
@@ -169,85 +197,90 @@ let Sound = {
 //    ^                punctuation.definition.string.begin.js
 //         ^           punctuation.definition.string.end.js
 //          ^          punctuation.definition.parameters.begin.js
+//          ^   ^      meta.brace.round.js
+//           ^^^       meta.function.parameters.js
 //           ^^^       variable.other.readwrite.js
 //              ^      punctuation.definition.parameters.end.js
 //                ^^   meta.brace.curly.js
 //                  ^  meta.delimiter.comma.js
   [Play.name()]() {},
-//^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^           ^        meta.brace.square.js
 // ^^^^^^^^^^^         meta.method-call.without-arguments.js
 // ^^^^                variable.other.class.js
 //     ^               keyword.operator.accessor.js
 //      ^^^^           entity.name.function.js
-//          ^^         meta.brace.round.js
+//          ^^ ^^      meta.brace.round.js
 //             ^       punctuation.definition.parameters.begin.js
 //              ^      punctuation.definition.parameters.end.js
 //                ^^   meta.brace.curly.js
 //                  ^  meta.delimiter.comma.js
   [Play.name()[]](arg) {},
-//^^^^^^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^           ^^^           meta.brace.square.js
 // ^^^^^^^^^^^^^            meta.method-call.without-arguments.js
 // ^^^^                     variable.other.class.js
 //     ^                    keyword.operator.accessor.js
 //      ^^^^                entity.name.function.js
-//          ^^              meta.brace.round.js
+//          ^^   ^   ^      meta.brace.round.js
 //               ^          punctuation.definition.parameters.begin.js
+//                ^^^       meta.function.parameters.js
 //                ^^^       variable.other.readwrite.js
 //                   ^      punctuation.definition.parameters.end.js
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   *[Play.name()]() {},
-//^^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^                     keyword.generator.asterisk.js
 // ^           ^        meta.brace.square.js
 //  ^^^^^^^^^^^         meta.method-call.without-arguments.js
 //  ^^^^                variable.other.class.js
 //      ^               keyword.operator.accessor.js
 //       ^^^^           entity.name.function.js
-//           ^^         meta.brace.round.js
+//           ^^ ^^      meta.brace.round.js
 //              ^       punctuation.definition.parameters.begin.js
 //               ^      punctuation.definition.parameters.end.js
 //                 ^^   meta.brace.curly.js
 //                   ^  meta.delimiter.comma.js
   *[Play.name()](arg) {},
-//^^^^^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^                        keyword.generator.asterisk.js
 // ^           ^           meta.brace.square.js
 //  ^^^^^^^^^^^            meta.method-call.without-arguments.js
 //  ^^^^                   variable.other.class.js
 //      ^                  keyword.operator.accessor.js
 //       ^^^^              entity.name.function.js
-//           ^^            meta.brace.round.js
+//           ^^ ^   ^      meta.brace.round.js
 //              ^          punctuation.definition.parameters.begin.js
+//               ^^^       meta.function.parameters.js
 //               ^^^       variable.other.readwrite.js
 //                  ^      punctuation.definition.parameters.end.js
 //                    ^^   meta.brace.curly.js
 //                      ^  meta.delimiter.comma.js
   async [Play.name()]() {},
-//^^^^^ ^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^^^^^                      storage.type.js
 //      ^           ^        meta.brace.square.js
 //       ^^^^^^^^^^^         meta.method-call.without-arguments.js
 //       ^^^^                variable.other.class.js
 //           ^               keyword.operator.accessor.js
 //            ^^^^           entity.name.function.js
-//                ^^         meta.brace.round.js
+//                ^^ ^^      meta.brace.round.js
 //                   ^       punctuation.definition.parameters.begin.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
 //                        ^  meta.delimiter.comma.js
   async [Play.name()](arg) {},
-//^^^^^ ^^^^^^^^^^^^^^^^^^      meta.function.method.js
+//^^^^^ ^^^^^^^^^^^^^^^^^^ ^^   meta.function.method.js
 //^^^^^                         storage.type.js
 //      ^           ^           meta.brace.square.js
 //       ^^^^^^^^^^^            meta.method-call.without-arguments.js
 //       ^^^^                   variable.other.class.js
 //           ^                  keyword.operator.accessor.js
 //            ^^^^              entity.name.function.js
-//                ^^            meta.brace.round.js
+//                ^^ ^   ^      meta.brace.round.js
 //                   ^          punctuation.definition.parameters.begin.js
+//                    ^^^       meta.function.parameters.js
 //                    ^^^       variable.other.readwrite.js
 //                       ^      punctuation.definition.parameters.end.js
 //                         ^^   meta.brace.curly.js
@@ -260,7 +293,7 @@ let Sound = {
 //     ^^^^                variable.other.class.js
 //         ^               keyword.operator.accessor.js
 //          ^^^^           entity.name.function.js
-//              ^^         meta.brace.round.js
+//              ^^ ^^      meta.brace.round.js
 //                ^        meta.brace.square.end.flowtype
 //                 ^       punctuation.definition.parameters.begin.js
 //                  ^      punctuation.definition.parameters.end.js
@@ -274,9 +307,10 @@ let Sound = {
 //     ^^^^                   variable.other.class.js
 //         ^                  keyword.operator.accessor.js
 //          ^^^^              entity.name.function.js
-//              ^^            meta.brace.round.js
+//              ^^ ^   ^      meta.brace.round.js
 //                ^           meta.brace.square.end.flowtype
 //                 ^          punctuation.definition.parameters.begin.js
+//                  ^^^       meta.function.parameters.js
 //                  ^^^       variable.other.readwrite.js
 //                     ^      punctuation.definition.parameters.end.js
 //                       ^^   meta.brace.curly.js
@@ -330,112 +364,127 @@ let Sound = {
 //           ^^   meta.brace.curly.js
 //             ^  meta.delimiter.comma.js
   play: function() {},
-//^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                  entity.name.function.js
 //    ^                 punctuation.separator.key-value.js
 //      ^^^^^^^^        storage.type.function.js
 //              ^       punctuation.definition.parameters.begin.js
+//              ^^      meta.brace.round.js
 //               ^      punctuation.definition.parameters.end.js
 //                 ^^   meta.brace.curly.js
 //                   ^  meta.delimiter.comma.js
   play: function(arg) {},
-//^^^^^ ^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                     entity.name.function.js
 //    ^                    punctuation.separator.key-value.js
 //      ^^^^^^^^           storage.type.function.js
 //              ^          punctuation.definition.parameters.begin.js
+//              ^   ^      meta.brace.round.js
+//               ^^^       meta.function.parameters.js
 //               ^^^       variable.other.readwrite.js
 //                  ^      punctuation.definition.parameters.end.js
 //                    ^^   meta.brace.curly.js
 //                      ^  meta.delimiter.comma.js
   play: function*() {},
-//^^^^^ ^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                   entity.name.function.js
 //    ^                  punctuation.separator.key-value.js
 //      ^^^^^^^^         storage.type.function.js
 //              ^        keyword.generator.asterisk.js
 //               ^       punctuation.definition.parameters.begin.js
+//               ^^      meta.brace.round.js
 //                ^      punctuation.definition.parameters.end.js
 //                  ^^   meta.brace.curly.js
 //                    ^  meta.delimiter.comma.js
   play: function*(arg) {},
-//^^^^^ ^^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                      entity.name.function.js
 //    ^                     punctuation.separator.key-value.js
 //      ^^^^^^^^            storage.type.function.js
 //              ^           keyword.generator.asterisk.js
 //               ^          punctuation.definition.parameters.begin.js
+//               ^   ^      meta.brace.round.js
+//                ^^^       meta.function.parameters.js
 //                ^^^       variable.other.readwrite.js
 //                   ^      punctuation.definition.parameters.end.js
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   play: async function() {},
-//^^^^^ ^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^ ^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                        entity.name.function.js
 //    ^                       punctuation.separator.key-value.js
 //      ^^^^^                 storage.type.js
 //            ^^^^^^^^        storage.type.function.js
 //                    ^       punctuation.definition.parameters.begin.js
+//                    ^^      meta.brace.round.js
 //                     ^      punctuation.definition.parameters.end.js
 //                       ^^   meta.brace.curly.js
 //                         ^  meta.delimiter.comma.js
   play: async function(arg) {},
-//^^^^^ ^^^^^ ^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^ ^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                           entity.name.function.js
 //    ^                          punctuation.separator.key-value.js
 //      ^^^^^                    storage.type.js
 //            ^^^^^^^^           storage.type.function.js
 //                    ^          punctuation.definition.parameters.begin.js
+//                    ^   ^      meta.brace.round.js
+//                     ^^^       meta.function.parameters.js
 //                     ^^^       variable.other.readwrite.js
 //                        ^      punctuation.definition.parameters.end.js
 //                          ^^   meta.brace.curly.js
 //                            ^  meta.delimiter.comma.js
   play: async function*() {},
-//^^^^^ ^^^^^ ^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^ ^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                         entity.name.function.js
 //    ^                        punctuation.separator.key-value.js
 //      ^^^^^                  storage.type.js
 //            ^^^^^^^^         storage.type.function.js
 //                    ^        keyword.generator.asterisk.js
 //                     ^       punctuation.definition.parameters.begin.js
+//                     ^^      meta.brace.round.js
 //                      ^      punctuation.definition.parameters.end.js
 //                        ^^   meta.brace.curly.js
 //                          ^  meta.delimiter.comma.js
   play: async function*(arg) {},
-//^^^^^ ^^^^^ ^^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^ ^^^^^ ^^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^                            entity.name.function.js
 //    ^                           punctuation.separator.key-value.js
 //      ^^^^^                     storage.type.js
 //            ^^^^^^^^            storage.type.function.js
 //                    ^           keyword.generator.asterisk.js
 //                     ^          punctuation.definition.parameters.begin.js
+//                     ^   ^      meta.brace.round.js
+//                      ^^^       meta.function.parameters.js
 //                      ^^^       variable.other.readwrite.js
 //                         ^      punctuation.definition.parameters.end.js
 //                           ^^   meta.brace.curly.js
 //                             ^  meta.delimiter.comma.js
   play: async () => {},
-//^^^^^ ^^^^^ ^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^^^^ ^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^                   entity.name.function.js
 //    ^                  punctuation.separator.key-value.js
 //      ^^^^^            storage.type.js
 //            ^          punctuation.definition.parameters.begin.js
+//            ^^         meta.brace.round.js
 //             ^         punctuation.definition.parameters.end.js
 //               ^^      storage.type.function.arrow.js
 //                  ^^   meta.brace.curly.js
 //                    ^  meta.delimiter.comma.js
   play: async (arg) => {},
-//^^^^^ ^^^^^ ^^^^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^^^^ ^^^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^                      entity.name.function.js
 //    ^                     punctuation.separator.key-value.js
 //      ^^^^^               storage.type.js
 //            ^             punctuation.definition.parameters.begin.js
+//            ^   ^         meta.brace.round.js
+//             ^^^          meta.function.parameters.js
 //             ^^^          variable.other.readwrite.js
 //                ^         punctuation.definition.parameters.end.js
 //                  ^^      storage.type.function.arrow.js
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   play: async arg => {},
-//^^^^^ ^^^^^ ^^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^                    entity.name.function.js
 //    ^                   punctuation.separator.key-value.js
 //      ^^^^^             storage.type.js
@@ -444,26 +493,29 @@ let Sound = {
 //                   ^^   meta.brace.curly.js
 //                     ^  meta.delimiter.comma.js
   play: () => {},
-//^^^^^ ^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^             entity.name.function.js
 //    ^            punctuation.separator.key-value.js
 //      ^          punctuation.definition.parameters.begin.js
+//      ^^         meta.brace.round.js
 //       ^         punctuation.definition.parameters.end.js
 //         ^^      storage.type.function.arrow.js
 //            ^^   meta.brace.curly.js
 //              ^  meta.delimiter.comma.js
   play: (arg) => {},
-//^^^^^ ^^^^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^                entity.name.function.js
 //    ^               punctuation.separator.key-value.js
 //      ^             punctuation.definition.parameters.begin.js
+//      ^   ^         meta.brace.round.js
+//       ^^^          meta.function.parameters.js
 //       ^^^          variable.other.readwrite.js
 //          ^         punctuation.definition.parameters.end.js
 //            ^^      storage.type.function.arrow.js
 //               ^^   meta.brace.curly.js
 //                 ^  meta.delimiter.comma.js
   play: arg => {},
-//^^^^^ ^^^ ^^      meta.function.json.arrow.js
+//^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^              entity.name.function.js
 //    ^             punctuation.separator.key-value.js
 //      ^^^         variable.other.readwrite.js
@@ -471,7 +523,7 @@ let Sound = {
 //             ^^   meta.brace.curly.js
 //               ^  meta.delimiter.comma.js
   "play": function() {},
-//^^^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                  string.quoted.js
 //^                       punctuation.definition.string.begin.js
 // ^^^^                   entity.name.function.js
@@ -479,11 +531,12 @@ let Sound = {
 //      ^                 punctuation.separator.key-value.js
 //        ^^^^^^^^        storage.type.function.js
 //                ^       punctuation.definition.parameters.begin.js
+//                ^^      meta.brace.round.js
 //                 ^      punctuation.definition.parameters.end.js
 //                   ^^   meta.brace.curly.js
 //                     ^  meta.delimiter.comma.js
   "play": function(arg) {},
-//^^^^^^^ ^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                     string.quoted.js
 //^                          punctuation.definition.string.begin.js
 // ^^^^                      entity.name.function.js
@@ -491,12 +544,14 @@ let Sound = {
 //      ^                    punctuation.separator.key-value.js
 //        ^^^^^^^^           storage.type.function.js
 //                ^          punctuation.definition.parameters.begin.js
+//                ^   ^      meta.brace.round.js
+//                 ^^^       meta.function.parameters.js
 //                 ^^^       variable.other.readwrite.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
 //                        ^  meta.delimiter.comma.js
   "play": function*() {},
-//^^^^^^^ ^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                   string.quoted.js
 //^                        punctuation.definition.string.begin.js
 // ^^^^                    entity.name.function.js
@@ -505,11 +560,12 @@ let Sound = {
 //        ^^^^^^^^         storage.type.function.js
 //                ^        keyword.generator.asterisk.js
 //                 ^       punctuation.definition.parameters.begin.js
+//                 ^^      meta.brace.round.js
 //                  ^      punctuation.definition.parameters.end.js
 //                    ^^   meta.brace.curly.js
 //                      ^  meta.delimiter.comma.js
   "play": function*(arg) {},
-//^^^^^^^ ^^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                      string.quoted.js
 //^                           punctuation.definition.string.begin.js
 // ^^^^                       entity.name.function.js
@@ -518,12 +574,14 @@ let Sound = {
 //        ^^^^^^^^            storage.type.function.js
 //                ^           keyword.generator.asterisk.js
 //                 ^          punctuation.definition.parameters.begin.js
+//                 ^   ^      meta.brace.round.js
+//                  ^^^       meta.function.parameters.js
 //                  ^^^       variable.other.readwrite.js
 //                     ^      punctuation.definition.parameters.end.js
 //                       ^^   meta.brace.curly.js
 //                         ^  meta.delimiter.comma.js
   "play": async function() {},
-//^^^^^^^ ^^^^^ ^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^ ^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                        string.quoted.js
 //^                             punctuation.definition.string.begin.js
 // ^^^^                         entity.name.function.js
@@ -532,11 +590,12 @@ let Sound = {
 //        ^^^^^                 storage.type.js
 //              ^^^^^^^^        storage.type.function.js
 //                      ^       punctuation.definition.parameters.begin.js
+//                      ^^      meta.brace.round.js
 //                       ^      punctuation.definition.parameters.end.js
 //                         ^^   meta.brace.curly.js
 //                           ^  meta.delimiter.comma.js
   "play": async function(arg) {},
-//^^^^^^^ ^^^^^ ^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^ ^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                           string.quoted.js
 //^                                punctuation.definition.string.begin.js
 // ^^^^                            entity.name.function.js
@@ -545,12 +604,14 @@ let Sound = {
 //        ^^^^^                    storage.type.js
 //              ^^^^^^^^           storage.type.function.js
 //                      ^          punctuation.definition.parameters.begin.js
+//                      ^   ^      meta.brace.round.js
+//                       ^^^       meta.function.parameters.js
 //                       ^^^       variable.other.readwrite.js
 //                          ^      punctuation.definition.parameters.end.js
 //                            ^^   meta.brace.curly.js
 //                              ^  meta.delimiter.comma.js
   "play": async function*() {},
-//^^^^^^^ ^^^^^ ^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^ ^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                         string.quoted.js
 //^                              punctuation.definition.string.begin.js
 // ^^^^                          entity.name.function.js
@@ -560,11 +621,12 @@ let Sound = {
 //              ^^^^^^^^         storage.type.function.js
 //                      ^        keyword.generator.asterisk.js
 //                       ^       punctuation.definition.parameters.begin.js
+//                       ^^      meta.brace.round.js
 //                        ^      punctuation.definition.parameters.end.js
 //                          ^^   meta.brace.curly.js
 //                            ^  meta.delimiter.comma.js
   "play": async function*(arg) {},
-//^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^      meta.function.json.js
+//^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^ ^^   meta.function.json.js
 //^^^^^^                            string.quoted.js
 //^                                 punctuation.definition.string.begin.js
 // ^^^^                             entity.name.function.js
@@ -574,12 +636,14 @@ let Sound = {
 //              ^^^^^^^^            storage.type.function.js
 //                      ^           keyword.generator.asterisk.js
 //                       ^          punctuation.definition.parameters.begin.js
+//                       ^   ^      meta.brace.round.js
+//                        ^^^       meta.function.parameters.js
 //                        ^^^       variable.other.readwrite.js
 //                           ^      punctuation.definition.parameters.end.js
 //                             ^^   meta.brace.curly.js
 //                               ^  meta.delimiter.comma.js
   "play": async () => {},
-//^^^^^^^ ^^^^^ ^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^^^^ ^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^                   string.quoted.js
 //^                        punctuation.definition.string.begin.js
 // ^^^^                    entity.name.function.js
@@ -587,12 +651,13 @@ let Sound = {
 //      ^                  punctuation.separator.key-value.js
 //        ^^^^^            storage.type.js
 //              ^          punctuation.definition.parameters.begin.js
+//              ^^         meta.brace.round.js
 //               ^         punctuation.definition.parameters.end.js
 //                 ^^      storage.type.function.arrow.js
 //                    ^^   meta.brace.curly.js
 //                      ^  meta.delimiter.comma.js
   "play": async (arg) => {},
-//^^^^^^^ ^^^^^ ^^^^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^^^^ ^^^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^                      string.quoted.js
 //^                           punctuation.definition.string.begin.js
 // ^^^^                       entity.name.function.js
@@ -600,13 +665,15 @@ let Sound = {
 //      ^                     punctuation.separator.key-value.js
 //        ^^^^^               storage.type.js
 //              ^             punctuation.definition.parameters.begin.js
+//              ^   ^         meta.brace.round.js
+//               ^^^          meta.function.parameters.js
 //               ^^^          variable.other.readwrite.js
 //                  ^         punctuation.definition.parameters.end.js
 //                    ^^      storage.type.function.arrow.js
 //                       ^^   meta.brace.curly.js
 //                         ^  meta.delimiter.comma.js
   "play": async arg => {},
-//^^^^^^^ ^^^^^ ^^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^                    string.quoted.js
 //^                         punctuation.definition.string.begin.js
 // ^^^^                     entity.name.function.js
@@ -618,32 +685,35 @@ let Sound = {
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   "play": () => {},
-//^^^^^^^ ^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^             string.quoted.js
 //^                  punctuation.definition.string.begin.js
 // ^^^^              entity.name.function.js
 //     ^             punctuation.definition.string.end.js
 //      ^            punctuation.separator.key-value.js
 //        ^          punctuation.definition.parameters.begin.js
+//        ^^         meta.brace.round.js
 //         ^         punctuation.definition.parameters.end.js
 //           ^^      storage.type.function.arrow.js
 //              ^^   meta.brace.curly.js
 //                ^  meta.delimiter.comma.js
   "play": (arg) => {},
-//^^^^^^^ ^^^^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^                string.quoted.js
 //^                     punctuation.definition.string.begin.js
 // ^^^^                 entity.name.function.js
 //     ^                punctuation.definition.string.end.js
 //      ^               punctuation.separator.key-value.js
 //        ^             punctuation.definition.parameters.begin.js
+//        ^   ^         meta.brace.round.js
+//         ^^^          meta.function.parameters.js
 //         ^^^          variable.other.readwrite.js
 //            ^         punctuation.definition.parameters.end.js
 //              ^^      storage.type.function.arrow.js
 //                 ^^   meta.brace.curly.js
 //                   ^  meta.delimiter.comma.js
   "play": arg => {},
-//^^^^^^^ ^^^ ^^      meta.function.json.arrow.js
+//^^^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
 //^^^^^^              string.quoted.js
 //^                   punctuation.definition.string.begin.js
 // ^^^^               entity.name.function.js
@@ -657,9 +727,10 @@ let Sound = {
 //^    ^                  meta.brace.square.js
 // ^^^^                   variable.other.readwrite.js
 //      ^                 punctuation.separator.key-value.js
-//        ^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^^^^        storage.type.function.js
 //                ^       punctuation.definition.parameters.begin.js
+//                ^^      meta.brace.round.js
 //                 ^      punctuation.definition.parameters.end.js
 //                   ^^   meta.brace.curly.js
 //                     ^  meta.delimiter.comma.js
@@ -667,9 +738,11 @@ let Sound = {
 //^    ^                     meta.brace.square.js
 // ^^^^            ^^^       variable.other.readwrite.js
 //      ^                    punctuation.separator.key-value.js
-//        ^^^^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^^^^           storage.type.function.js
 //                ^          punctuation.definition.parameters.begin.js
+//                ^   ^      meta.brace.round.js
+//                 ^^^       meta.function.parameters.js
 //                    ^      punctuation.definition.parameters.end.js
 //                      ^^   meta.brace.curly.js
 //                        ^  meta.delimiter.comma.js
@@ -677,10 +750,11 @@ let Sound = {
 //^    ^                   meta.brace.square.js
 // ^^^^                    variable.other.readwrite.js
 //      ^                  punctuation.separator.key-value.js
-//        ^^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^^^^         storage.type.function.js
 //                ^        keyword.generator.asterisk.js
 //                 ^       punctuation.definition.parameters.begin.js
+//                 ^^      meta.brace.round.js
 //                  ^      punctuation.definition.parameters.end.js
 //                    ^^   meta.brace.curly.js
 //                      ^  meta.delimiter.comma.js
@@ -688,10 +762,12 @@ let Sound = {
 //^    ^                      meta.brace.square.js
 // ^^^^             ^^^       variable.other.readwrite.js
 //      ^                     punctuation.separator.key-value.js
-//        ^^^^^^^^^^^^^^      meta.function.js
+//        ^^^^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^^^^            storage.type.function.js
 //                ^           keyword.generator.asterisk.js
 //                 ^          punctuation.definition.parameters.begin.js
+//                 ^   ^      meta.brace.round.js
+//                  ^^^       meta.function.parameters.js
 //                     ^      punctuation.definition.parameters.end.js
 //                       ^^   meta.brace.curly.js
 //                         ^  meta.delimiter.comma.js
@@ -699,10 +775,11 @@ let Sound = {
 //^    ^                        meta.brace.square.js
 // ^^^^                         variable.other.readwrite.js
 //      ^                       punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^      meta.function.js
+//        ^^^^^ ^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^                 storage.type.js
 //              ^^^^^^^^        storage.type.function.js
 //                      ^       punctuation.definition.parameters.begin.js
+//                      ^^      meta.brace.round.js
 //                       ^      punctuation.definition.parameters.end.js
 //                         ^^   meta.brace.curly.js
 //                           ^  meta.delimiter.comma.js
@@ -710,10 +787,12 @@ let Sound = {
 //^    ^                           meta.brace.square.js
 // ^^^^                  ^^^       variable.other.readwrite.js
 //      ^                          punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^^^^      meta.function.js
+//        ^^^^^ ^^^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^                    storage.type.js
 //              ^^^^^^^^           storage.type.function.js
 //                      ^          punctuation.definition.parameters.begin.js
+//                      ^   ^      meta.brace.round.js
+//                       ^^^       meta.function.parameters.js
 //                          ^      punctuation.definition.parameters.end.js
 //                            ^^   meta.brace.curly.js
 //                              ^  meta.delimiter.comma.js
@@ -721,11 +800,12 @@ let Sound = {
 //^    ^                         meta.brace.square.js
 // ^^^^                          variable.other.readwrite.js
 //      ^                        punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^^      meta.function.js
+//        ^^^^^ ^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^                  storage.type.js
 //              ^^^^^^^^         storage.type.function.js
 //                      ^        keyword.generator.asterisk.js
 //                       ^       punctuation.definition.parameters.begin.js
+//                       ^^      meta.brace.round.js
 //                        ^      punctuation.definition.parameters.end.js
 //                          ^^   meta.brace.curly.js
 //                            ^  meta.delimiter.comma.js
@@ -733,11 +813,13 @@ let Sound = {
 //^    ^                            meta.brace.square.js
 // ^^^^                   ^^^       variable.other.readwrite.js
 //      ^                           punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^^^^^^^^^^      meta.function.js
+//        ^^^^^ ^^^^^^^^^^^^^^ ^^   meta.function.js
 //        ^^^^^                     storage.type.js
 //              ^^^^^^^^            storage.type.function.js
 //                      ^           keyword.generator.asterisk.js
 //                       ^          punctuation.definition.parameters.begin.js
+//                       ^   ^      meta.brace.round.js
+//                        ^^^       meta.function.parameters.js
 //                           ^      punctuation.definition.parameters.end.js
 //                             ^^   meta.brace.curly.js
 //                               ^  meta.delimiter.comma.js
@@ -745,9 +827,10 @@ let Sound = {
 //^    ^                   meta.brace.square.js
 // ^^^^                    variable.other.readwrite.js
 //      ^                  punctuation.separator.key-value.js
-//        ^^^^^ ^^ ^^      meta.function.arrow.js
+//        ^^^^^ ^^ ^^ ^^   meta.function.arrow.js
 //        ^^^^^            storage.type.js
 //              ^          punctuation.definition.parameters.begin.js
+//              ^^         meta.brace.round.js
 //               ^         punctuation.definition.parameters.end.js
 //                 ^^      storage.type.function.arrow.js
 //                    ^^   meta.brace.curly.js
@@ -756,9 +839,11 @@ let Sound = {
 //^    ^                      meta.brace.square.js
 // ^^^^          ^^^          variable.other.readwrite.js
 //      ^                     punctuation.separator.key-value.js
-//        ^^^^^ ^^^^^ ^^      meta.function.arrow.js
+//        ^^^^^ ^^^^^ ^^ ^^   meta.function.arrow.js
 //        ^^^^^               storage.type.js
 //              ^             punctuation.definition.parameters.begin.js
+//              ^   ^         meta.brace.round.js
+//               ^^^          meta.function.parameters.js
 //                  ^         punctuation.definition.parameters.end.js
 //                    ^^      storage.type.function.arrow.js
 //                       ^^   meta.brace.curly.js
@@ -776,8 +861,9 @@ let Sound = {
 //^    ^             meta.brace.square.js
 // ^^^^              variable.other.readwrite.js
 //      ^            punctuation.separator.key-value.js
-//        ^^ ^^      meta.function.arrow.js
+//        ^^ ^^ ^^   meta.function.arrow.js
 //        ^          punctuation.definition.parameters.begin.js
+//        ^^         meta.brace.round.js
 //         ^         punctuation.definition.parameters.end.js
 //           ^^      storage.type.function.arrow.js
 //              ^^   meta.brace.curly.js
@@ -786,8 +872,10 @@ let Sound = {
 //^    ^                meta.brace.square.js
 // ^^^^    ^^^          variable.other.readwrite.js
 //      ^               punctuation.separator.key-value.js
-//        ^^^^^ ^^      meta.function.arrow.js
+//        ^^^^^ ^^ ^^   meta.function.arrow.js
 //        ^             punctuation.definition.parameters.begin.js
+//        ^   ^         meta.brace.round.js
+//         ^^^          meta.function.parameters.js
 //            ^         punctuation.definition.parameters.end.js
 //              ^^      storage.type.function.arrow.js
 //                 ^^   meta.brace.curly.js
@@ -816,400 +904,469 @@ class Sound<T, T> extends Model<T, T> {
 //                                    ^  punctuation.section.class.begin.js
   get() {}
 //^^^^^ ^^  meta.class.body.js
-//^^^^^     meta.function.method.js
+//^^^^^ ^^  meta.function.method.js
 //^^^       entity.name.function.method.js
 //   ^      punctuation.definition.parameters.begin.js
+//   ^^     meta.brace.round.js
 //    ^     punctuation.definition.parameters.end.js
 //      ^^  meta.brace.curly.js
   get(arg) {}
 //^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^     meta.function.method.js
+//^^^^^^^^ ^^  meta.function.method.js
 //^^^          entity.name.function.method.js
 //   ^         punctuation.definition.parameters.begin.js
+//   ^   ^     meta.brace.round.js
+//    ^^^      meta.function.parameters.js
 //    ^^^      variable.other.readwrite.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   set() {}
 //^^^^^ ^^  meta.class.body.js
-//^^^^^     meta.function.method.js
+//^^^^^ ^^  meta.function.method.js
 //^^^       entity.name.function.method.js
 //   ^      punctuation.definition.parameters.begin.js
+//   ^^     meta.brace.round.js
 //    ^     punctuation.definition.parameters.end.js
 //      ^^  meta.brace.curly.js
   set(arg) {}
 //^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^     meta.function.method.js
+//^^^^^^^^ ^^  meta.function.method.js
 //^^^          entity.name.function.method.js
 //   ^         punctuation.definition.parameters.begin.js
+//   ^   ^     meta.brace.round.js
+//    ^^^      meta.function.parameters.js
 //    ^^^      variable.other.readwrite.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   *get() {}
 //^^^^^^ ^^  meta.class.body.js
-//^^^^^^     meta.function.method.js
+//^^^^^^ ^^  meta.function.method.js
 //^          keyword.generator.asterisk.js
 // ^^^       entity.name.function.method.js
 //    ^      punctuation.definition.parameters.begin.js
+//    ^^     meta.brace.round.js
 //     ^     punctuation.definition.parameters.end.js
 //       ^^  meta.brace.curly.js
   *get(arg) {}
 //^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^ ^^  meta.function.method.js
 //^             keyword.generator.asterisk.js
 // ^^^          entity.name.function.method.js
 //    ^         punctuation.definition.parameters.begin.js
+//    ^   ^     meta.brace.round.js
+//     ^^^      meta.function.parameters.js
 //     ^^^      variable.other.readwrite.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
   *set() {}
 //^^^^^^ ^^  meta.class.body.js
-//^^^^^^     meta.function.method.js
+//^^^^^^ ^^  meta.function.method.js
 //^          keyword.generator.asterisk.js
 // ^^^       entity.name.function.method.js
 //    ^      punctuation.definition.parameters.begin.js
+//    ^^     meta.brace.round.js
 //     ^     punctuation.definition.parameters.end.js
 //       ^^  meta.brace.curly.js
   *set(arg) {}
 //^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^ ^^  meta.function.method.js
 //^             keyword.generator.asterisk.js
 // ^^^          entity.name.function.method.js
 //    ^         punctuation.definition.parameters.begin.js
+//    ^   ^     meta.brace.round.js
+//     ^^^      meta.function.parameters.js
 //     ^^^      variable.other.readwrite.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
   async get() {}
 //^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^     meta.function.method.js
+//^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^           storage.type.js
 //      ^^^       entity.name.function.method.js
 //         ^      punctuation.definition.parameters.begin.js
+//         ^^     meta.brace.round.js
 //          ^     punctuation.definition.parameters.end.js
 //            ^^  meta.brace.curly.js
   async get(arg) {}
 //^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^              storage.type.js
 //      ^^^          entity.name.function.method.js
 //         ^         punctuation.definition.parameters.begin.js
+//         ^   ^     meta.brace.round.js
+//          ^^^      meta.function.parameters.js
 //          ^^^      variable.other.readwrite.js
 //             ^     punctuation.definition.parameters.end.js
 //               ^^  meta.brace.curly.js
   async set() {}
 //^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^     meta.function.method.js
+//^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^           storage.type.js
 //      ^^^       entity.name.function.method.js
 //         ^      punctuation.definition.parameters.begin.js
+//         ^^     meta.brace.round.js
 //          ^     punctuation.definition.parameters.end.js
 //            ^^  meta.brace.curly.js
   async set(arg) {}
 //^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^              storage.type.js
 //      ^^^          entity.name.function.method.js
 //         ^         punctuation.definition.parameters.begin.js
+//         ^   ^     meta.brace.round.js
+//          ^^^      meta.function.parameters.js
 //          ^^^      variable.other.readwrite.js
 //             ^     punctuation.definition.parameters.end.js
 //               ^^  meta.brace.curly.js
   static get() {}
 //^^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^^           storage.modifier.js
 //       ^^^       entity.name.function.method.js
 //          ^      punctuation.definition.parameters.begin.js
+//          ^^     meta.brace.round.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   static get(arg) {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^              storage.modifier.js
 //       ^^^          entity.name.function.method.js
 //          ^         punctuation.definition.parameters.begin.js
+//          ^   ^     meta.brace.round.js
+//           ^^^      meta.function.parameters.js
 //           ^^^      variable.other.readwrite.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
   static set() {}
 //^^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^^           storage.modifier.js
 //       ^^^       entity.name.function.method.js
 //          ^      punctuation.definition.parameters.begin.js
+//          ^^     meta.brace.round.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   static set(arg) {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^              storage.modifier.js
 //       ^^^          entity.name.function.method.js
 //          ^         punctuation.definition.parameters.begin.js
+//          ^   ^     meta.brace.round.js
+//           ^^^      meta.function.parameters.js
 //           ^^^      variable.other.readwrite.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
   static *get() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^ ^^  meta.function.method.js
 //^^^^^^            storage.modifier.js
 //       ^          keyword.generator.asterisk.js
 //        ^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
+//           ^^     meta.brace.round.js
 //            ^     punctuation.definition.parameters.end.js
 //              ^^  meta.brace.curly.js
   static *get(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^               storage.modifier.js
 //       ^             keyword.generator.asterisk.js
 //        ^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^   ^     meta.brace.round.js
+//            ^^^      meta.function.parameters.js
 //            ^^^      variable.other.readwrite.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
   static *set() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^ ^^  meta.function.method.js
 //^^^^^^            storage.modifier.js
 //       ^          keyword.generator.asterisk.js
 //        ^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
+//           ^^     meta.brace.round.js
 //            ^     punctuation.definition.parameters.end.js
 //              ^^  meta.brace.curly.js
   static *set(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^               storage.modifier.js
 //       ^             keyword.generator.asterisk.js
 //        ^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^   ^     meta.brace.round.js
+//            ^^^      meta.function.parameters.js
 //            ^^^      variable.other.readwrite.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
   static async get() {}
 //^^^^^^ ^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^^                 storage.modifier.js
 //       ^^^^^           storage.type.js
 //             ^^^       entity.name.function.method.js
 //                ^      punctuation.definition.parameters.begin.js
+//                ^^     meta.brace.round.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
   static async get(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                    storage.modifier.js
 //       ^^^^^              storage.type.js
 //             ^^^          entity.name.function.method.js
 //                ^         punctuation.definition.parameters.begin.js
+//                ^   ^     meta.brace.round.js
+//                 ^^^      meta.function.parameters.js
 //                 ^^^      variable.other.readwrite.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
   static async set() {}
 //^^^^^^ ^^^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^ ^^  meta.function.method.js
 //^^^^^^                 storage.modifier.js
 //       ^^^^^           storage.type.js
 //             ^^^       entity.name.function.method.js
 //                ^      punctuation.definition.parameters.begin.js
+//                ^^     meta.brace.round.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
   static async set(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                    storage.modifier.js
 //       ^^^^^              storage.type.js
 //             ^^^          entity.name.function.method.js
 //                ^         punctuation.definition.parameters.begin.js
+//                ^   ^     meta.brace.round.js
+//                 ^^^      meta.function.parameters.js
 //                 ^^^      variable.other.readwrite.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
   static get get() {}
 //^^^^^^ ^^^ ^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^     meta.accessor.js
+//^^^^^^ ^^^ ^^^^^ ^^  meta.accessor.js
 //^^^^^^               storage.modifier.js
 //       ^^^           storage.type.accessor.js
 //           ^^^       entity.name.accessor.js
 //              ^      punctuation.definition.parameters.begin.js
+//              ^^     meta.brace.round.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
   static set set(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^^^     meta.accessor.js
+//^^^^^^ ^^^ ^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                  storage.modifier.js
 //       ^^^              storage.type.accessor.js
 //           ^^^          entity.name.accessor.js
 //              ^         punctuation.definition.parameters.begin.js
+//              ^   ^     meta.brace.round.js
+//               ^^^      meta.function.parameters.js
 //               ^^^      variable.other.readwrite.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
   play() {}
 //^^^^^^ ^^  meta.class.body.js
-//^^^^^^     meta.function.method.js
+//^^^^^^ ^^  meta.function.method.js
 //^^^^       entity.name.function.method.js
 //    ^      punctuation.definition.parameters.begin.js
+//    ^^     meta.brace.round.js
 //     ^     punctuation.definition.parameters.end.js
 //       ^^  meta.brace.curly.js
   play(arg) {}
 //^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^ ^^  meta.function.method.js
 //^^^^          entity.name.function.method.js
 //    ^         punctuation.definition.parameters.begin.js
+//    ^   ^     meta.brace.round.js
+//     ^^^      meta.function.parameters.js
 //     ^^^      variable.other.readwrite.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
   'play'() {}
 //^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^     meta.function.method.js
+//^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^       entity.name.function.method.js
 //      ^      punctuation.definition.parameters.begin.js
+//      ^^     meta.brace.round.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   'play'(arg) {}
 //^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^          entity.name.function.method.js
 //      ^         punctuation.definition.parameters.begin.js
+//      ^   ^     meta.brace.round.js
+//       ^^^      meta.function.parameters.js
 //       ^^^      variable.other.readwrite.js
 //          ^     punctuation.definition.parameters.end.js
 //            ^^  meta.brace.curly.js
   *play() {}
 //^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^     meta.function.method.js
+//^^^^^^^ ^^  meta.function.method.js
 //^           keyword.generator.asterisk.js
 // ^^^^       entity.name.function.method.js
 //     ^      punctuation.definition.parameters.begin.js
+//     ^^     meta.brace.round.js
 //      ^     punctuation.definition.parameters.end.js
 //        ^^  meta.brace.curly.js
   *play(arg) {}
 //^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^ ^^  meta.function.method.js
 //^              keyword.generator.asterisk.js
 // ^^^^          entity.name.function.method.js
 //     ^         punctuation.definition.parameters.begin.js
+//     ^   ^     meta.brace.round.js
+//      ^^^      meta.function.parameters.js
 //      ^^^      variable.other.readwrite.js
 //         ^     punctuation.definition.parameters.end.js
 //           ^^  meta.brace.curly.js
   *'play'() {}
 //^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^ ^^  meta.function.method.js
 //^             keyword.generator.asterisk.js
 // ^^^^^^       entity.name.function.method.js
 //       ^      punctuation.definition.parameters.begin.js
+//       ^^     meta.brace.round.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
   *'play'(arg) {}
 //^^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^^^ ^^  meta.function.method.js
 //^                keyword.generator.asterisk.js
 // ^^^^^^          entity.name.function.method.js
 //       ^         punctuation.definition.parameters.begin.js
+//       ^   ^     meta.brace.round.js
+//        ^^^      meta.function.parameters.js
 //        ^^^      variable.other.readwrite.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   async play() {}
 //^^^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^ ^^  meta.function.method.js
 //^^^^^            storage.type.js
 //      ^^^^       entity.name.function.method.js
 //          ^      punctuation.definition.parameters.begin.js
+//          ^^     meta.brace.round.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   async play(arg) {}
 //^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^               storage.type.js
 //      ^^^^          entity.name.function.method.js
 //          ^         punctuation.definition.parameters.begin.js
+//          ^   ^     meta.brace.round.js
+//           ^^^      meta.function.parameters.js
 //           ^^^      variable.other.readwrite.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
   get play() {}
 //^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^ ^^^^^^     meta.accessor.js
+//^^^ ^^^^^^ ^^  meta.accessor.js
 //^^^            storage.type.accessor.js
 //    ^^^^       entity.name.accessor.js
 //        ^      punctuation.definition.parameters.begin.js
+//        ^^     meta.brace.round.js
 //         ^     punctuation.definition.parameters.end.js
 //           ^^  meta.brace.curly.js
   set play(arg) {}
 //^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^ ^^^^^^^^^     meta.accessor.js
+//^^^ ^^^^^^^^^ ^^  meta.accessor.js
 //^^^               storage.type.accessor.js
 //    ^^^^          entity.name.accessor.js
 //        ^         punctuation.definition.parameters.begin.js
+//        ^   ^     meta.brace.round.js
+//         ^^^      meta.function.parameters.js
 //         ^^^      variable.other.readwrite.js
 //            ^     punctuation.definition.parameters.end.js
 //              ^^  meta.brace.curly.js
   static play() {}
 //^^^^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^ ^^  meta.function.method.js
 //^^^^^^            storage.modifier.js
 //       ^^^^       entity.name.function.method.js
 //           ^      punctuation.definition.parameters.begin.js
+//           ^^     meta.brace.round.js
 //            ^     punctuation.definition.parameters.end.js
 //              ^^  meta.brace.curly.js
   static play(arg) {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^               storage.modifier.js
 //       ^^^^          entity.name.function.method.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^   ^     meta.brace.round.js
+//            ^^^      meta.function.parameters.js
 //            ^^^      variable.other.readwrite.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
   static *play() {}
 //^^^^^^ ^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^ ^^  meta.function.method.js
 //^^^^^^             storage.modifier.js
 //       ^           keyword.generator.asterisk.js
 //        ^^^^       entity.name.function.method.js
 //            ^      punctuation.definition.parameters.begin.js
+//            ^^     meta.brace.round.js
 //             ^     punctuation.definition.parameters.end.js
 //               ^^  meta.brace.curly.js
   static *play(arg) {}
 //^^^^^^ ^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                storage.modifier.js
 //       ^              keyword.generator.asterisk.js
 //        ^^^^          entity.name.function.method.js
 //            ^         punctuation.definition.parameters.begin.js
+//            ^   ^     meta.brace.round.js
+//             ^^^      meta.function.parameters.js
 //             ^^^      variable.other.readwrite.js
 //                ^     punctuation.definition.parameters.end.js
 //                  ^^  meta.brace.curly.js
   static async play() {}
 //^^^^^^ ^^^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^ ^^  meta.function.method.js
 //^^^^^^                  storage.modifier.js
 //       ^^^^^            storage.type.js
 //             ^^^^       entity.name.function.method.js
 //                 ^      punctuation.definition.parameters.begin.js
+//                 ^^     meta.brace.round.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
   static async play(arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                     storage.modifier.js
 //       ^^^^^               storage.type.js
 //             ^^^^          entity.name.function.method.js
 //                 ^         punctuation.definition.parameters.begin.js
+//                 ^   ^     meta.brace.round.js
+//                  ^^^      meta.function.parameters.js
 //                  ^^^      variable.other.readwrite.js
 //                     ^     punctuation.definition.parameters.end.js
 //                       ^^  meta.brace.curly.js
   static get play() {}
 //^^^^^^ ^^^ ^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^     meta.accessor.js
+//^^^^^^ ^^^ ^^^^^^ ^^  meta.accessor.js
 //^^^^^^                storage.modifier.js
 //       ^^^            storage.type.accessor.js
 //           ^^^^       entity.name.accessor.js
 //               ^      punctuation.definition.parameters.begin.js
+//               ^^     meta.brace.round.js
 //                ^     punctuation.definition.parameters.end.js
 //                  ^^  meta.brace.curly.js
   static set play(arg) {}
 //^^^^^^ ^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^^^^     meta.accessor.js
+//^^^^^^ ^^^ ^^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                   storage.modifier.js
 //       ^^^               storage.type.accessor.js
 //           ^^^^          entity.name.accessor.js
 //               ^         punctuation.definition.parameters.begin.js
+//               ^   ^     meta.brace.round.js
+//                ^^^      meta.function.parameters.js
 //                ^^^      variable.other.readwrite.js
 //                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js
@@ -1305,54 +1462,63 @@ class Sound<T, T> extends Model<T, T> {
 //                    ^^  meta.brace.curly.js
   [play]() {}
 //^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^     meta.function.method.js
+//^^^^^^^^ ^^  meta.function.method.js
 //^    ^       meta.brace.square.js
 // ^^^^        variable.other.readwrite.js
 //      ^      punctuation.definition.parameters.begin.js
+//      ^^     meta.brace.round.js
 //       ^     punctuation.definition.parameters.end.js
 //         ^^  meta.brace.curly.js
   [play](arg) {}
 //^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^^ ^^  meta.function.method.js
 //^    ^          meta.brace.square.js
 // ^^^^  ^^^      variable.other.readwrite.js
 //      ^         punctuation.definition.parameters.begin.js
+//      ^   ^     meta.brace.round.js
+//       ^^^      meta.function.parameters.js
 //          ^     punctuation.definition.parameters.end.js
 //            ^^  meta.brace.curly.js
   *[play]() {}
 //^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^ ^^  meta.function.method.js
 //^             keyword.generator.asterisk.js
 // ^    ^       meta.brace.square.js
 //  ^^^^        variable.other.readwrite.js
 //       ^      punctuation.definition.parameters.begin.js
+//       ^^     meta.brace.round.js
 //        ^     punctuation.definition.parameters.end.js
 //          ^^  meta.brace.curly.js
   *[play](arg) {}
 //^^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^^^^^^^     meta.function.method.js
+//^^^^^^^^^^^^ ^^  meta.function.method.js
 //^                keyword.generator.asterisk.js
 // ^    ^          meta.brace.square.js
 //  ^^^^  ^^^      variable.other.readwrite.js
 //       ^         punctuation.definition.parameters.begin.js
+//       ^   ^     meta.brace.round.js
+//        ^^^      meta.function.parameters.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   async [play]() {}
 //^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^              storage.type.js
 //      ^    ^       meta.brace.square.js
 //       ^^^^        variable.other.readwrite.js
 //            ^      punctuation.definition.parameters.begin.js
+//            ^^     meta.brace.round.js
 //             ^     punctuation.definition.parameters.end.js
 //               ^^  meta.brace.curly.js
   async [play](arg) {}
 //^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^ ^^^^^^^^^^^     meta.function.method.js
+//^^^^^ ^^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^                 storage.type.js
 //      ^    ^          meta.brace.square.js
 //       ^^^^  ^^^      variable.other.readwrite.js
 //            ^         punctuation.definition.parameters.begin.js
+//            ^   ^     meta.brace.round.js
+//             ^^^      meta.function.parameters.js
 //                ^     punctuation.definition.parameters.end.js
 //                  ^^  meta.brace.curly.js
   get [play]() {}
@@ -1363,6 +1529,7 @@ class Sound<T, T> extends Model<T, T> {
 //     ^^^^        variable.other.readwrite.js
 //         ^       meta.brace.square.end.flowtype
 //          ^      punctuation.definition.parameters.begin.js
+//          ^^     meta.brace.round.js
 //           ^     punctuation.definition.parameters.end.js
 //             ^^  meta.brace.curly.js
   set [play](arg) {}
@@ -1373,64 +1540,75 @@ class Sound<T, T> extends Model<T, T> {
 //     ^^^^  ^^^      variable.other.readwrite.js
 //         ^          meta.brace.square.end.flowtype
 //          ^         punctuation.definition.parameters.begin.js
+//          ^   ^     meta.brace.round.js
+//           ^^^      meta.function.parameters.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
   static [play]() {}
 //^^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^              storage.modifier.js
 //       ^    ^       meta.brace.square.js
 //        ^^^^        variable.other.readwrite.js
 //             ^      punctuation.definition.parameters.begin.js
+//             ^^     meta.brace.round.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
   static [play](arg) {}
 //^^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                 storage.modifier.js
 //       ^    ^          meta.brace.square.js
 //        ^^^^  ^^^      variable.other.readwrite.js
 //             ^         punctuation.definition.parameters.begin.js
+//             ^   ^     meta.brace.round.js
+//              ^^^      meta.function.parameters.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
   static *[play]() {}
 //^^^^^^ ^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^               storage.modifier.js
 //       ^             keyword.generator.asterisk.js
 //        ^    ^       meta.brace.square.js
 //         ^^^^        variable.other.readwrite.js
 //              ^      punctuation.definition.parameters.begin.js
+//              ^^     meta.brace.round.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
   static *[play](arg) {}
 //^^^^^^ ^^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                  storage.modifier.js
 //       ^                keyword.generator.asterisk.js
 //        ^    ^          meta.brace.square.js
 //         ^^^^  ^^^      variable.other.readwrite.js
 //              ^         punctuation.definition.parameters.begin.js
+//              ^   ^     meta.brace.round.js
+//               ^^^      meta.function.parameters.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
   static async [play]() {}
 //^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                    storage.modifier.js
 //       ^^^^^              storage.type.js
 //             ^    ^       meta.brace.square.js
 //              ^^^^        variable.other.readwrite.js
 //                   ^      punctuation.definition.parameters.begin.js
+//                   ^^     meta.brace.round.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
   static async [play](arg) {}
 //^^^^^^ ^^^^^ ^^^^^^^^^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^^^ ^^^^^^^^^^^     meta.function.method.js
+//^^^^^^ ^^^^^ ^^^^^^^^^^^ ^^  meta.function.method.js
 //^^^^^^                       storage.modifier.js
 //       ^^^^^                 storage.type.js
 //             ^    ^          meta.brace.square.js
 //              ^^^^  ^^^      variable.other.readwrite.js
 //                   ^         punctuation.definition.parameters.begin.js
+//                   ^   ^     meta.brace.round.js
+//                    ^^^      meta.function.parameters.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
   static get [play]() {}
@@ -1442,6 +1620,7 @@ class Sound<T, T> extends Model<T, T> {
 //            ^^^^        variable.other.readwrite.js
 //                ^       meta.brace.square.end.flowtype
 //                 ^      punctuation.definition.parameters.begin.js
+//                 ^^     meta.brace.round.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
   static set [play](arg) {}
@@ -1453,6 +1632,8 @@ class Sound<T, T> extends Model<T, T> {
 //            ^^^^  ^^^      variable.other.readwrite.js
 //                ^          meta.brace.square.end.flowtype
 //                 ^         punctuation.definition.parameters.begin.js
+//                 ^   ^     meta.brace.round.js
+//                  ^^^      meta.function.parameters.js
 //                     ^     punctuation.definition.parameters.end.js
 //                       ^^  meta.brace.curly.js
 }
@@ -1656,7 +1837,7 @@ Sound[play].repeat = {}
 Sound.prototype.play = function() {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                 entity.name.class.js
 //   ^         ^                      keyword.operator.accessor.js
 //    ^^^^^^^^^                       variable.language.prototype.js
@@ -1664,12 +1845,13 @@ Sound.prototype.play = function() {}
 //                   ^                keyword.operator.assignment.js
 //                     ^^^^^^^^       storage.type.function.js
 //                             ^      punctuation.definition.parameters.begin.js
+//                             ^^     meta.brace.round.js
 //                              ^     punctuation.definition.parameters.end.js
 //                                ^^  meta.brace.curly.js
 Sound.prototype.play = function(arg) {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                    entity.name.class.js
 //   ^         ^                         keyword.operator.accessor.js
 //    ^^^^^^^^^                          variable.language.prototype.js
@@ -1677,13 +1859,15 @@ Sound.prototype.play = function(arg) {}
 //                   ^                   keyword.operator.assignment.js
 //                     ^^^^^^^^          storage.type.function.js
 //                             ^         punctuation.definition.parameters.begin.js
+//                             ^   ^     meta.brace.round.js
+//                              ^^^      meta.function.parameters.js
 //                              ^^^      variable.other.readwrite.js
 //                                 ^     punctuation.definition.parameters.end.js
 //                                   ^^  meta.brace.curly.js
 Sound.prototype.play = function*() {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                  entity.name.class.js
 //   ^         ^                       keyword.operator.accessor.js
 //    ^^^^^^^^^                        variable.language.prototype.js
@@ -1692,12 +1876,13 @@ Sound.prototype.play = function*() {}
 //                     ^^^^^^^^        storage.type.function.js
 //                             ^       keyword.generator.asterisk.js
 //                              ^      punctuation.definition.parameters.begin.js
+//                              ^^     meta.brace.round.js
 //                               ^     punctuation.definition.parameters.end.js
 //                                 ^^  meta.brace.curly.js
 Sound.prototype.play = function*(arg) {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                     entity.name.class.js
 //   ^         ^                          keyword.operator.accessor.js
 //    ^^^^^^^^^                           variable.language.prototype.js
@@ -1706,13 +1891,15 @@ Sound.prototype.play = function*(arg) {}
 //                     ^^^^^^^^           storage.type.function.js
 //                             ^          keyword.generator.asterisk.js
 //                              ^         punctuation.definition.parameters.begin.js
+//                              ^   ^     meta.brace.round.js
+//                               ^^^      meta.function.parameters.js
 //                               ^^^      variable.other.readwrite.js
 //                                  ^     punctuation.definition.parameters.end.js
 //                                    ^^  meta.brace.curly.js
 Sound.prototype.play = async function() {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                       entity.name.class.js
 //   ^         ^                            keyword.operator.accessor.js
 //    ^^^^^^^^^                             variable.language.prototype.js
@@ -1721,12 +1908,13 @@ Sound.prototype.play = async function() {}
 //                     ^^^^^                storage.type.js
 //                           ^^^^^^^^       storage.type.function.js
 //                                   ^      punctuation.definition.parameters.begin.js
+//                                   ^^     meta.brace.round.js
 //                                    ^     punctuation.definition.parameters.end.js
 //                                      ^^  meta.brace.curly.js
 Sound.prototype.play = async function(arg) {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                          entity.name.class.js
 //   ^         ^                               keyword.operator.accessor.js
 //    ^^^^^^^^^                                variable.language.prototype.js
@@ -1735,13 +1923,15 @@ Sound.prototype.play = async function(arg) {}
 //                     ^^^^^                   storage.type.js
 //                           ^^^^^^^^          storage.type.function.js
 //                                   ^         punctuation.definition.parameters.begin.js
+//                                   ^   ^     meta.brace.round.js
+//                                    ^^^      meta.function.parameters.js
 //                                    ^^^      variable.other.readwrite.js
 //                                       ^     punctuation.definition.parameters.end.js
 //                                         ^^  meta.brace.curly.js
 Sound.prototype.play = async function*() {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                        entity.name.class.js
 //   ^         ^                             keyword.operator.accessor.js
 //    ^^^^^^^^^                              variable.language.prototype.js
@@ -1751,12 +1941,13 @@ Sound.prototype.play = async function*() {}
 //                           ^^^^^^^^        storage.type.function.js
 //                                   ^       keyword.generator.asterisk.js
 //                                    ^      punctuation.definition.parameters.begin.js
+//                                    ^^     meta.brace.round.js
 //                                     ^     punctuation.definition.parameters.end.js
 //                                       ^^  meta.brace.curly.js
 Sound.prototype.play = async function*(arg) {}
 // <- meta.prototype.function.js entity.name.class.js
  // <- meta.prototype.function.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^^     meta.prototype.function.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^^ ^^  meta.prototype.function.js
 //^^^                                           entity.name.class.js
 //   ^         ^                                keyword.operator.accessor.js
 //    ^^^^^^^^^                                 variable.language.prototype.js
@@ -1766,13 +1957,15 @@ Sound.prototype.play = async function*(arg) {}
 //                           ^^^^^^^^           storage.type.function.js
 //                                   ^          keyword.generator.asterisk.js
 //                                    ^         punctuation.definition.parameters.begin.js
+//                                    ^   ^     meta.brace.round.js
+//                                     ^^^      meta.function.parameters.js
 //                                     ^^^      variable.other.readwrite.js
 //                                        ^     punctuation.definition.parameters.end.js
 //                                          ^^  meta.brace.curly.js
 Sound.prototype.play = async () => {}
 // <- meta.prototype.function.arrow.js entity.name.class.js
  // <- meta.prototype.function.arrow.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^ ^^     meta.prototype.function.arrow.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^ ^^ ^^  meta.prototype.function.arrow.js
 //^^^                                  entity.name.class.js
 //   ^         ^                       keyword.operator.accessor.js
 //    ^^^^^^^^^                        variable.language.prototype.js
@@ -1780,13 +1973,14 @@ Sound.prototype.play = async () => {}
 //                   ^                 keyword.operator.assignment.js
 //                     ^^^^^           storage.type.js
 //                           ^         punctuation.definition.parameters.begin.js
+//                           ^^        meta.brace.round.js
 //                            ^        punctuation.definition.parameters.end.js
 //                              ^^     storage.type.function.arrow.js
 //                                 ^^  meta.brace.curly.js
 Sound.prototype.play = async (arg) => {}
 // <- meta.prototype.function.arrow.js entity.name.class.js
  // <- meta.prototype.function.arrow.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^ ^^     meta.prototype.function.arrow.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^^^^ ^^ ^^  meta.prototype.function.arrow.js
 //^^^                                     entity.name.class.js
 //   ^         ^                          keyword.operator.accessor.js
 //    ^^^^^^^^^                           variable.language.prototype.js
@@ -1794,6 +1988,8 @@ Sound.prototype.play = async (arg) => {}
 //                   ^                    keyword.operator.assignment.js
 //                     ^^^^^              storage.type.js
 //                           ^            punctuation.definition.parameters.begin.js
+//                           ^   ^        meta.brace.round.js
+//                            ^^^         meta.function.parameters.js
 //                            ^^^         variable.other.readwrite.js
 //                               ^        punctuation.definition.parameters.end.js
 //                                 ^^     storage.type.function.arrow.js
@@ -1814,26 +2010,29 @@ Sound.prototype.play = async arg => {}
 Sound.prototype.play = () => {}
 // <- meta.prototype.function.arrow.js entity.name.class.js
  // <- meta.prototype.function.arrow.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^ ^^     meta.prototype.function.arrow.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^ ^^ ^^  meta.prototype.function.arrow.js
 //^^^                            entity.name.class.js
 //   ^         ^                 keyword.operator.accessor.js
 //    ^^^^^^^^^                  variable.language.prototype.js
 //              ^^^^             entity.name.function.js
 //                   ^           keyword.operator.assignment.js
 //                     ^         punctuation.definition.parameters.begin.js
+//                     ^^        meta.brace.round.js
 //                      ^        punctuation.definition.parameters.end.js
 //                        ^^     storage.type.function.arrow.js
 //                           ^^  meta.brace.curly.js
 Sound.prototype.play = (arg) => {}
 // <- meta.prototype.function.arrow.js entity.name.class.js
  // <- meta.prototype.function.arrow.js entity.name.class.js
-//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^     meta.prototype.function.arrow.js
+//^^^^^^^^^^^^^^^^^^ ^ ^^^^^ ^^ ^^  meta.prototype.function.arrow.js
 //^^^                               entity.name.class.js
 //   ^         ^                    keyword.operator.accessor.js
 //    ^^^^^^^^^                     variable.language.prototype.js
 //              ^^^^                entity.name.function.js
 //                   ^              keyword.operator.assignment.js
 //                     ^            punctuation.definition.parameters.begin.js
+//                     ^   ^        meta.brace.round.js
+//                      ^^^         meta.function.parameters.js
 //                      ^^^         variable.other.readwrite.js
 //                         ^        punctuation.definition.parameters.end.js
 //                           ^^     storage.type.function.arrow.js
@@ -1854,32 +2053,35 @@ Sound.prototype.play = arg => {}
 Sound.play = function() {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                       entity.name.class.js
 //   ^                      keyword.operator.accessor.js
 //    ^^^^                  entity.name.function.js
 //         ^                keyword.operator.assignment.js
 //           ^^^^^^^^       storage.type.function.js
 //                   ^      punctuation.definition.parameters.begin.js
+//                   ^^     meta.brace.round.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
 Sound.play = function(arg) {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                          entity.name.class.js
 //   ^                         keyword.operator.accessor.js
 //    ^^^^                     entity.name.function.js
 //         ^                   keyword.operator.assignment.js
 //           ^^^^^^^^          storage.type.function.js
 //                   ^         punctuation.definition.parameters.begin.js
+//                   ^   ^     meta.brace.round.js
+//                    ^^^      meta.function.parameters.js
 //                    ^^^      variable.other.readwrite.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
 Sound.play = function*() {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                        entity.name.class.js
 //   ^                       keyword.operator.accessor.js
 //    ^^^^                   entity.name.function.js
@@ -1887,12 +2089,13 @@ Sound.play = function*() {}
 //           ^^^^^^^^        storage.type.function.js
 //                   ^       keyword.generator.asterisk.js
 //                    ^      punctuation.definition.parameters.begin.js
+//                    ^^     meta.brace.round.js
 //                     ^     punctuation.definition.parameters.end.js
 //                       ^^  meta.brace.curly.js
 Sound.play = function*(arg) {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                           entity.name.class.js
 //   ^                          keyword.operator.accessor.js
 //    ^^^^                      entity.name.function.js
@@ -1900,13 +2103,15 @@ Sound.play = function*(arg) {}
 //           ^^^^^^^^           storage.type.function.js
 //                   ^          keyword.generator.asterisk.js
 //                    ^         punctuation.definition.parameters.begin.js
+//                    ^   ^     meta.brace.round.js
+//                     ^^^      meta.function.parameters.js
 //                     ^^^      variable.other.readwrite.js
 //                        ^     punctuation.definition.parameters.end.js
 //                          ^^  meta.brace.curly.js
 Sound.play = async function() {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                             entity.name.class.js
 //   ^                            keyword.operator.accessor.js
 //    ^^^^                        entity.name.function.js
@@ -1914,12 +2119,13 @@ Sound.play = async function() {}
 //           ^^^^^                storage.type.js
 //                 ^^^^^^^^       storage.type.function.js
 //                         ^      punctuation.definition.parameters.begin.js
+//                         ^^     meta.brace.round.js
 //                          ^     punctuation.definition.parameters.end.js
 //                            ^^  meta.brace.curly.js
 Sound.play = async function(arg) {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                                entity.name.class.js
 //   ^                               keyword.operator.accessor.js
 //    ^^^^                           entity.name.function.js
@@ -1927,13 +2133,15 @@ Sound.play = async function(arg) {}
 //           ^^^^^                   storage.type.js
 //                 ^^^^^^^^          storage.type.function.js
 //                         ^         punctuation.definition.parameters.begin.js
+//                         ^   ^     meta.brace.round.js
+//                          ^^^      meta.function.parameters.js
 //                          ^^^      variable.other.readwrite.js
 //                             ^     punctuation.definition.parameters.end.js
 //                               ^^  meta.brace.curly.js
 Sound.play = async function*() {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                              entity.name.class.js
 //   ^                             keyword.operator.accessor.js
 //    ^^^^                         entity.name.function.js
@@ -1942,12 +2150,13 @@ Sound.play = async function*() {}
 //                 ^^^^^^^^        storage.type.function.js
 //                         ^       keyword.generator.asterisk.js
 //                          ^      punctuation.definition.parameters.begin.js
+//                          ^^     meta.brace.round.js
 //                           ^     punctuation.definition.parameters.end.js
 //                             ^^  meta.brace.curly.js
 Sound.play = async function*(arg) {}
 // <- meta.function.static.js entity.name.class.js
  // <- meta.function.static.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^^     meta.function.static.js
+//^^^^^^^^ ^ ^^^^^ ^^^^^^^^^^^^^^ ^^  meta.function.static.js
 //^^^                                 entity.name.class.js
 //   ^                                keyword.operator.accessor.js
 //    ^^^^                            entity.name.function.js
@@ -1956,32 +2165,37 @@ Sound.play = async function*(arg) {}
 //                 ^^^^^^^^           storage.type.function.js
 //                         ^          keyword.generator.asterisk.js
 //                          ^         punctuation.definition.parameters.begin.js
+//                          ^   ^     meta.brace.round.js
+//                           ^^^      meta.function.parameters.js
 //                           ^^^      variable.other.readwrite.js
 //                              ^     punctuation.definition.parameters.end.js
 //                                ^^  meta.brace.curly.js
 Sound.play = async () => {}
 // <- meta.function.static.arrow.js entity.name.class.js
  // <- meta.function.static.arrow.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^ ^^     meta.function.static.arrow.js
+//^^^^^^^^ ^ ^^^^^ ^^ ^^ ^^  meta.function.static.arrow.js
 //^^^                        entity.name.class.js
 //   ^                       keyword.operator.accessor.js
 //    ^^^^                   entity.name.function.js
 //         ^                 keyword.operator.assignment.js
 //           ^^^^^           storage.type.js
 //                 ^         punctuation.definition.parameters.begin.js
+//                 ^^        meta.brace.round.js
 //                  ^        punctuation.definition.parameters.end.js
 //                    ^^     storage.type.function.arrow.js
 //                       ^^  meta.brace.curly.js
 Sound.play = async (arg) => {}
 // <- meta.function.static.arrow.js entity.name.class.js
  // <- meta.function.static.arrow.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^^^^ ^^     meta.function.static.arrow.js
+//^^^^^^^^ ^ ^^^^^ ^^^^^ ^^ ^^  meta.function.static.arrow.js
 //^^^                           entity.name.class.js
 //   ^                          keyword.operator.accessor.js
 //    ^^^^                      entity.name.function.js
 //         ^                    keyword.operator.assignment.js
 //           ^^^^^              storage.type.js
 //                 ^            punctuation.definition.parameters.begin.js
+//                 ^   ^        meta.brace.round.js
+//                  ^^^         meta.function.parameters.js
 //                  ^^^         variable.other.readwrite.js
 //                     ^        punctuation.definition.parameters.end.js
 //                       ^^     storage.type.function.arrow.js
@@ -2001,24 +2215,27 @@ Sound.play = async arg => {}
 Sound.play = () => {}
 // <- meta.function.static.arrow.js entity.name.class.js
  // <- meta.function.static.arrow.js entity.name.class.js
-//^^^^^^^^ ^ ^^ ^^     meta.function.static.arrow.js
+//^^^^^^^^ ^ ^^ ^^ ^^  meta.function.static.arrow.js
 //^^^                  entity.name.class.js
 //   ^                 keyword.operator.accessor.js
 //    ^^^^             entity.name.function.js
 //         ^           keyword.operator.assignment.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^^        meta.brace.round.js
 //            ^        punctuation.definition.parameters.end.js
 //              ^^     storage.type.function.arrow.js
 //                 ^^  meta.brace.curly.js
 Sound.play = (arg) => {}
 // <- meta.function.static.arrow.js entity.name.class.js
  // <- meta.function.static.arrow.js entity.name.class.js
-//^^^^^^^^ ^ ^^^^^ ^^     meta.function.static.arrow.js
+//^^^^^^^^ ^ ^^^^^ ^^ ^^  meta.function.static.arrow.js
 //^^^                     entity.name.class.js
 //   ^                    keyword.operator.accessor.js
 //    ^^^^                entity.name.function.js
 //         ^              keyword.operator.assignment.js
 //           ^            punctuation.definition.parameters.begin.js
+//           ^   ^        meta.brace.round.js
+//            ^^^         meta.function.parameters.js
 //            ^^^         variable.other.readwrite.js
 //               ^        punctuation.definition.parameters.end.js
 //                 ^^     storage.type.function.arrow.js
@@ -2038,114 +2255,129 @@ Sound.play = arg => {}
 play = function() {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^^^^^^ ^^  meta.function.js
 //^^                  entity.name.function.js
 //   ^                keyword.operator.assignment.js
 //     ^^^^^^^^       storage.type.function.js
 //             ^      punctuation.definition.parameters.begin.js
+//             ^^     meta.brace.round.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
 play = function(arg) {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^^^^^^^^^ ^^  meta.function.js
 //^^                     entity.name.function.js
 //   ^                   keyword.operator.assignment.js
 //     ^^^^^^^^          storage.type.function.js
 //             ^         punctuation.definition.parameters.begin.js
+//             ^   ^     meta.brace.round.js
+//              ^^^      meta.function.parameters.js
 //              ^^^      variable.other.readwrite.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
 play = function*() {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^^^^^^^ ^^  meta.function.js
 //^^                   entity.name.function.js
 //   ^                 keyword.operator.assignment.js
 //     ^^^^^^^^        storage.type.function.js
 //             ^       keyword.generator.asterisk.js
 //              ^      punctuation.definition.parameters.begin.js
+//              ^^     meta.brace.round.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
 play = function*(arg) {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^^^^^^^^^^ ^^  meta.function.js
 //^^                      entity.name.function.js
 //   ^                    keyword.operator.assignment.js
 //     ^^^^^^^^           storage.type.function.js
 //             ^          keyword.generator.asterisk.js
 //              ^         punctuation.definition.parameters.begin.js
+//              ^   ^     meta.brace.round.js
+//               ^^^      meta.function.parameters.js
 //               ^^^      variable.other.readwrite.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
 play = async function() {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^ ^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^ ^^^^^^^^^^ ^^  meta.function.js
 //^^                        entity.name.function.js
 //   ^                      keyword.operator.assignment.js
 //     ^^^^^                storage.type.js
 //           ^^^^^^^^       storage.type.function.js
 //                   ^      punctuation.definition.parameters.begin.js
+//                   ^^     meta.brace.round.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
 play = async function(arg) {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^ ^^^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^ ^^^^^^^^^^^^^ ^^  meta.function.js
 //^^                           entity.name.function.js
 //   ^                         keyword.operator.assignment.js
 //     ^^^^^                   storage.type.js
 //           ^^^^^^^^          storage.type.function.js
 //                   ^         punctuation.definition.parameters.begin.js
+//                   ^   ^     meta.brace.round.js
+//                    ^^^      meta.function.parameters.js
 //                    ^^^      variable.other.readwrite.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
 play = async function*() {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^ ^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^ ^^^^^^^^^^^ ^^  meta.function.js
 //^^                         entity.name.function.js
 //   ^                       keyword.operator.assignment.js
 //     ^^^^^                 storage.type.js
 //           ^^^^^^^^        storage.type.function.js
 //                   ^       keyword.generator.asterisk.js
 //                    ^      punctuation.definition.parameters.begin.js
+//                    ^^     meta.brace.round.js
 //                     ^     punctuation.definition.parameters.end.js
 //                       ^^  meta.brace.curly.js
 play = async function*(arg) {}
 // <- meta.function.js entity.name.function.js
  // <- meta.function.js entity.name.function.js
-//^^ ^ ^^^^^ ^^^^^^^^^^^^^^     meta.function.js
+//^^ ^ ^^^^^ ^^^^^^^^^^^^^^ ^^  meta.function.js
 //^^                            entity.name.function.js
 //   ^                          keyword.operator.assignment.js
 //     ^^^^^                    storage.type.js
 //           ^^^^^^^^           storage.type.function.js
 //                   ^          keyword.generator.asterisk.js
 //                    ^         punctuation.definition.parameters.begin.js
+//                    ^   ^     meta.brace.round.js
+//                     ^^^      meta.function.parameters.js
 //                     ^^^      variable.other.readwrite.js
 //                        ^     punctuation.definition.parameters.end.js
 //                          ^^  meta.brace.curly.js
 play = async () => {}
 // <- meta.function.arrow.js entity.name.function.js
  // <- meta.function.arrow.js entity.name.function.js
-//^^ ^ ^^^^^ ^^ ^^     meta.function.arrow.js
+//^^ ^ ^^^^^ ^^ ^^ ^^  meta.function.arrow.js
 //^^                   entity.name.function.js
 //   ^                 keyword.operator.assignment.js
 //     ^^^^^           storage.type.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^^        meta.brace.round.js
 //            ^        punctuation.definition.parameters.end.js
 //              ^^     storage.type.function.arrow.js
 //                 ^^  meta.brace.curly.js
 play = async (arg) => {}
 // <- meta.function.arrow.js entity.name.function.js
  // <- meta.function.arrow.js entity.name.function.js
-//^^ ^ ^^^^^ ^^^^^ ^^     meta.function.arrow.js
+//^^ ^ ^^^^^ ^^^^^ ^^ ^^  meta.function.arrow.js
 //^^                      entity.name.function.js
 //   ^                    keyword.operator.assignment.js
 //     ^^^^^              storage.type.js
 //           ^            punctuation.definition.parameters.begin.js
+//           ^   ^        meta.brace.round.js
+//            ^^^         meta.function.parameters.js
 //            ^^^         variable.other.readwrite.js
 //               ^        punctuation.definition.parameters.end.js
 //                 ^^     storage.type.function.arrow.js
@@ -2163,20 +2395,23 @@ play = async arg => {}
 play = () => {}
 // <- meta.function.arrow.js entity.name.function.js
  // <- meta.function.arrow.js entity.name.function.js
-//^^ ^ ^^ ^^     meta.function.arrow.js
+//^^ ^ ^^ ^^ ^^  meta.function.arrow.js
 //^^             entity.name.function.js
 //   ^           keyword.operator.assignment.js
 //     ^         punctuation.definition.parameters.begin.js
+//     ^^        meta.brace.round.js
 //      ^        punctuation.definition.parameters.end.js
 //        ^^     storage.type.function.arrow.js
 //           ^^  meta.brace.curly.js
 play = (arg) => {}
 // <- meta.function.arrow.js entity.name.function.js
  // <- meta.function.arrow.js entity.name.function.js
-//^^ ^ ^^^^^ ^^     meta.function.arrow.js
+//^^ ^ ^^^^^ ^^ ^^  meta.function.arrow.js
 //^^                entity.name.function.js
 //   ^              keyword.operator.assignment.js
 //     ^            punctuation.definition.parameters.begin.js
+//     ^   ^        meta.brace.round.js
+//      ^^^         meta.function.parameters.js
 //      ^^^         variable.other.readwrite.js
 //         ^        punctuation.definition.parameters.end.js
 //           ^^     storage.type.function.arrow.js
@@ -2195,18 +2430,21 @@ return function() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                keyword.control.flow.js
-//     ^^^^^^^^^^     meta.function.js
+//     ^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^       storage.type.function.js
 //             ^      punctuation.definition.parameters.begin.js
+//             ^^     meta.brace.round.js
 //              ^     punctuation.definition.parameters.end.js
 //                ^^  meta.brace.curly.js
 return function(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                   keyword.control.flow.js
-//     ^^^^^^^^^^^^^     meta.function.js
+//     ^^^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^          storage.type.function.js
 //             ^         punctuation.definition.parameters.begin.js
+//             ^   ^     meta.brace.round.js
+//              ^^^      meta.function.parameters.js
 //              ^^^      variable.other.readwrite.js
 //                 ^     punctuation.definition.parameters.end.js
 //                   ^^  meta.brace.curly.js
@@ -2214,20 +2452,23 @@ return function*() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                 keyword.control.flow.js
-//     ^^^^^^^^^^^     meta.function.js
+//     ^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^        storage.type.function.js
 //             ^       keyword.generator.asterisk.js
 //              ^      punctuation.definition.parameters.begin.js
+//              ^^     meta.brace.round.js
 //               ^     punctuation.definition.parameters.end.js
 //                 ^^  meta.brace.curly.js
 return function*(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                    keyword.control.flow.js
-//     ^^^^^^^^^^^^^^     meta.function.js
+//     ^^^^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^           storage.type.function.js
 //             ^          keyword.generator.asterisk.js
 //              ^         punctuation.definition.parameters.begin.js
+//              ^   ^     meta.brace.round.js
+//               ^^^      meta.function.parameters.js
 //               ^^^      variable.other.readwrite.js
 //                  ^     punctuation.definition.parameters.end.js
 //                    ^^  meta.brace.curly.js
@@ -2235,20 +2476,23 @@ return async function() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                      keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                storage.type.js
 //           ^^^^^^^^       storage.type.function.js
 //                   ^      punctuation.definition.parameters.begin.js
+//                   ^^     meta.brace.round.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
 return async function(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                         keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                   storage.type.js
 //           ^^^^^^^^          storage.type.function.js
 //                   ^         punctuation.definition.parameters.begin.js
+//                   ^   ^     meta.brace.round.js
+//                    ^^^      meta.function.parameters.js
 //                    ^^^      variable.other.readwrite.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
@@ -2256,22 +2500,25 @@ return async function*() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                       keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                 storage.type.js
 //           ^^^^^^^^        storage.type.function.js
 //                   ^       keyword.generator.asterisk.js
 //                    ^      punctuation.definition.parameters.begin.js
+//                    ^^     meta.brace.round.js
 //                     ^     punctuation.definition.parameters.end.js
 //                       ^^  meta.brace.curly.js
 return async function*(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                          keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                    storage.type.js
 //           ^^^^^^^^           storage.type.function.js
 //                   ^          keyword.generator.asterisk.js
 //                    ^         punctuation.definition.parameters.begin.js
+//                    ^   ^     meta.brace.round.js
+//                     ^^^      meta.function.parameters.js
 //                     ^^^      variable.other.readwrite.js
 //                        ^     punctuation.definition.parameters.end.js
 //                          ^^  meta.brace.curly.js
@@ -2279,9 +2526,10 @@ return async () => {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                 keyword.control.flow.js
-//     ^^^^^ ^^ ^^     meta.function.arrow.js
+//     ^^^^^ ^^ ^^ ^^  meta.function.arrow.js
 //     ^^^^^           storage.type.js
 //           ^         punctuation.definition.parameters.begin.js
+//           ^^        meta.brace.round.js
 //            ^        punctuation.definition.parameters.end.js
 //              ^^     storage.type.function.arrow.js
 //                 ^^  meta.brace.curly.js
@@ -2289,9 +2537,11 @@ return async (arg) => {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                    keyword.control.flow.js
-//     ^^^^^ ^^^^^ ^^     meta.function.arrow.js
+//     ^^^^^ ^^^^^ ^^ ^^  meta.function.arrow.js
 //     ^^^^^              storage.type.js
 //           ^            punctuation.definition.parameters.begin.js
+//           ^   ^        meta.brace.round.js
+//            ^^^         meta.function.parameters.js
 //            ^^^         variable.other.readwrite.js
 //               ^        punctuation.definition.parameters.end.js
 //                 ^^     storage.type.function.arrow.js
@@ -2309,8 +2559,9 @@ return () => {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^           keyword.control.flow.js
-//     ^^ ^^     meta.function.arrow.js
+//     ^^ ^^ ^^  meta.function.arrow.js
 //     ^         punctuation.definition.parameters.begin.js
+//     ^^        meta.brace.round.js
 //      ^        punctuation.definition.parameters.end.js
 //        ^^     storage.type.function.arrow.js
 //           ^^  meta.brace.curly.js
@@ -2318,8 +2569,10 @@ return (arg) => {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^              keyword.control.flow.js
-//     ^^^^^ ^^     meta.function.arrow.js
+//     ^^^^^ ^^ ^^  meta.function.arrow.js
 //     ^            punctuation.definition.parameters.begin.js
+//     ^   ^        meta.brace.round.js
+//      ^^^         meta.function.parameters.js
 //      ^^^         variable.other.readwrite.js
 //         ^        punctuation.definition.parameters.end.js
 //           ^^     storage.type.function.arrow.js
@@ -2337,20 +2590,23 @@ return function play() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                     keyword.control.flow.js
-//     ^^^^^^^^ ^^^^^^     meta.function.js
+//     ^^^^^^^^ ^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^            storage.type.function.js
 //              ^^^^       entity.name.function.js
 //                  ^      punctuation.definition.parameters.begin.js
+//                  ^^     meta.brace.round.js
 //                   ^     punctuation.definition.parameters.end.js
 //                     ^^  meta.brace.curly.js
 return function play(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                        keyword.control.flow.js
-//     ^^^^^^^^ ^^^^^^^^^     meta.function.js
+//     ^^^^^^^^ ^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^               storage.type.function.js
 //              ^^^^          entity.name.function.js
 //                  ^         punctuation.definition.parameters.begin.js
+//                  ^   ^     meta.brace.round.js
+//                   ^^^      meta.function.parameters.js
 //                   ^^^      variable.other.readwrite.js
 //                      ^     punctuation.definition.parameters.end.js
 //                        ^^  meta.brace.curly.js
@@ -2358,22 +2614,25 @@ return function* play() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                      keyword.control.flow.js
-//     ^^^^^^^^^ ^^^^^^     meta.function.js
+//     ^^^^^^^^^ ^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^             storage.type.function.js
 //             ^            keyword.generator.asterisk.js
 //               ^^^^       entity.name.function.js
 //                   ^      punctuation.definition.parameters.begin.js
+//                   ^^     meta.brace.round.js
 //                    ^     punctuation.definition.parameters.end.js
 //                      ^^  meta.brace.curly.js
 return function* play(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                         keyword.control.flow.js
-//     ^^^^^^^^^ ^^^^^^^^^     meta.function.js
+//     ^^^^^^^^^ ^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^^^^                storage.type.function.js
 //             ^               keyword.generator.asterisk.js
 //               ^^^^          entity.name.function.js
 //                   ^         punctuation.definition.parameters.begin.js
+//                   ^   ^     meta.brace.round.js
+//                    ^^^      meta.function.parameters.js
 //                    ^^^      variable.other.readwrite.js
 //                       ^     punctuation.definition.parameters.end.js
 //                         ^^  meta.brace.curly.js
@@ -2381,22 +2640,25 @@ return async function play() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                           keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^ ^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^ ^^^^^^ ^^  meta.function.js
 //     ^^^^^                     storage.type.js
 //           ^^^^^^^^            storage.type.function.js
 //                    ^^^^       entity.name.function.js
 //                        ^      punctuation.definition.parameters.begin.js
+//                        ^^     meta.brace.round.js
 //                         ^     punctuation.definition.parameters.end.js
 //                           ^^  meta.brace.curly.js
 return async function play(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                              keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^ ^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^ ^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                        storage.type.js
 //           ^^^^^^^^               storage.type.function.js
 //                    ^^^^          entity.name.function.js
 //                        ^         punctuation.definition.parameters.begin.js
+//                        ^   ^     meta.brace.round.js
+//                         ^^^      meta.function.parameters.js
 //                         ^^^      variable.other.readwrite.js
 //                            ^     punctuation.definition.parameters.end.js
 //                              ^^  meta.brace.curly.js
@@ -2404,24 +2666,27 @@ return async function* play() {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                            keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^ ^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^ ^^^^^^ ^^  meta.function.js
 //     ^^^^^                      storage.type.js
 //           ^^^^^^^^             storage.type.function.js
 //                   ^            keyword.generator.asterisk.js
 //                     ^^^^       entity.name.function.js
 //                         ^      punctuation.definition.parameters.begin.js
+//                         ^^     meta.brace.round.js
 //                          ^     punctuation.definition.parameters.end.js
 //                            ^^  meta.brace.curly.js
 return async function* play(arg) {}
 // <- keyword.control.flow.js
  // <- keyword.control.flow.js
 //^^^^                               keyword.control.flow.js
-//     ^^^^^ ^^^^^^^^^ ^^^^^^^^^     meta.function.js
+//     ^^^^^ ^^^^^^^^^ ^^^^^^^^^ ^^  meta.function.js
 //     ^^^^^                         storage.type.js
 //           ^^^^^^^^                storage.type.function.js
 //                   ^               keyword.generator.asterisk.js
 //                     ^^^^          entity.name.function.js
 //                         ^         punctuation.definition.parameters.begin.js
+//                         ^   ^     meta.brace.round.js
+//                          ^^^      meta.function.parameters.js
 //                          ^^^      variable.other.readwrite.js
 //                             ^     punctuation.definition.parameters.end.js
 //                               ^^  meta.brace.curly.js
@@ -2439,3 +2704,7 @@ yield* genfunc;
 //   ^           keyword.generator.asterisk.js
 //     ^^^^^^^   variable.other.readwrite.js
 //            ^  punctuation.terminator.statement.js
+
+
+
+// >> only:(source.js.jsx)

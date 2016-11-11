@@ -336,14 +336,15 @@
  // <- meta.tag.jsx entity.name.tag.open.jsx
 //^^  meta.tag.jsx
 //^^  entity.name.tag.open.jsx
-  >it's with text inside</div>
-//^^^^^ ^^^^ ^^^^ ^^^^^^^^^^^^  meta.tag.jsx
-//^^^^^ ^^^^ ^^^^ ^^^^^^^^      JSXAttrs
-//^                     ^^   ^  punctuation.definition.tag.jsx
-//^                             JSXStartTagEnd
-// ^^^^ ^^^^ ^^^^ ^^^^^^        JSXNested
-//                      ^^      JSXEndTagStart
-//                        ^^^   entity.name.tag.close.jsx
+>it's with text inside</div>
+// <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXStartTagEnd
+ // <- meta.tag.jsx JSXAttrs JSXNested
+//^^^ ^^^^ ^^^^ ^^^^^^^^^^^^  meta.tag.jsx
+//^^^ ^^^^ ^^^^ ^^^^^^^^      JSXAttrs
+//                    ^^   ^  punctuation.definition.tag.jsx
+//^^^ ^^^^ ^^^^ ^^^^^^        JSXNested
+//                    ^^      JSXEndTagStart
+//                      ^^^   entity.name.tag.close.jsx
 
 <div
 // <- meta.tag.jsx punctuation.definition.tag.jsx
@@ -358,13 +359,12 @@
 //     ^^  meta.embedded.expression.js
 //     ^   punctuation.section.embedded.begin.jsx
 //      ^  punctuation.section.embedded.end.jsx
-  >it's with text inside</div>
-//^^^^^ ^^^^ ^^^^ ^^^^^^^^^^^^  meta.tag.jsx
-//^^^^^ ^^^^ ^^^^ ^^^^^^^^      JSXAttrs
-//^                     ^^   ^  punctuation.definition.tag.jsx
-//^                             JSXStartTagEnd
-// ^^^^ ^^^^ ^^^^ ^^^^^^        JSXNested
-//                      ^^      JSXEndTagStart
-//                        ^^^   entity.name.tag.close.jsx
-
-// >> only:(source.js.jsx)
+>it's with text inside</div>
+// <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXStartTagEnd
+ // <- meta.tag.jsx JSXAttrs JSXNested
+//^^^ ^^^^ ^^^^ ^^^^^^^^^^^^  meta.tag.jsx
+//^^^ ^^^^ ^^^^ ^^^^^^^^      JSXAttrs
+//                    ^^   ^  punctuation.definition.tag.jsx
+//^^^ ^^^^ ^^^^ ^^^^^^        JSXNested
+//                    ^^      JSXEndTagStart
+//                      ^^^   entity.name.tag.close.jsx

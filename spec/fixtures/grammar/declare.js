@@ -35,6 +35,7 @@ declare module 'a-unique-module-name' {
 //              ^                          keyword.operator.accessor.flowtype
 //                      ^                  punctuation.type.flowtype
 //                        ^                punctuation.definition.parameters.begin.js
+//                        ^^               meta.brace.round.js
 //                         ^               punctuation.definition.parameters.end.js
 //                           ^^            storage.type.function.arrow.js
 //                              ^^^^^^^^   support.type.builtin.class.flowtype
@@ -45,6 +46,8 @@ declare module 'a-unique-module-name' {
 //        ^^^^                                          keyword.other.typedef.flowtype
 //             ^^^^^^^^^^^^                             support.type.class.flowtype
 //                            ^                         punctuation.definition.parameters.begin.js
+//                            ^              ^          meta.brace.round.js
+//                             ^^^^^^^ ^^^^^^           meta.function.parameters.js
 //                             ^^^^^                    variable.other.readwrite.js
 //                                  ^                   keyword.operator.optional.parameter.flowtype
 //                                   ^                  punctuation.type.flowtype
@@ -67,6 +70,7 @@ interface Iterator<T> {
 //  ^^^^^^^ ^^^^^^^^^^^^^^^^^  meta.function.method.js
 //  ^^^^                       entity.name.function.method.js
 //      ^                      punctuation.definition.parameters.begin.js
+//      ^^                     meta.brace.round.js
 //       ^                     punctuation.definition.parameters.end.js
 //        ^                    punctuation.type.flowtype
 //          ^^^^^^^^^^^^^^ ^   support.type.class.flowtype
@@ -76,6 +80,7 @@ interface Iterator<T> {
 //  ^^^^^^^^^^^ ^^^^^^^^^^^  meta.function.method.js
 //  ^^^^^^^^                 entity.name.function.method.js
 //          ^                punctuation.definition.parameters.begin.js
+//          ^^               meta.brace.round.js
 //           ^               punctuation.definition.parameters.end.js
 //            ^              punctuation.type.flowtype
 //              ^^^^^^^^ ^   support.type.class.flowtype
@@ -99,7 +104,7 @@ declare var module: {
 //      ^^^            storage.type.js
 //          ^^^^^^     variable.other.readwrite.js
 //                ^    punctuation.type.flowtype
-//                  ^  meta.brace.round.open.flowtype
+//                  ^  meta.brace.curly.open.flowtype
     exports: any;
 //  ^^^^^^^        variable.other.readwrite.js
 //         ^       punctuation.type.flowtype
@@ -108,6 +113,8 @@ declare var module: {
 //  ^^^^^^^^^^^ ^^^^^^^^ ^^^   meta.function.method.js
 //  ^^^^^^^                    entity.name.function.method.js
 //         ^                   punctuation.definition.parameters.begin.js
+//         ^          ^        meta.brace.round.js
+//          ^^^ ^^^^^^         meta.function.parameters.js
 //          ^^                 variable.other.readwrite.js
 //            ^        ^       punctuation.type.flowtype
 //              ^^^^^^   ^^^   support.type.builtin.primitive.flowtype
@@ -135,7 +142,7 @@ declare var module: {
 //                 ^   ^   punctuation.flowtype
 //                  ^^^    support.type.builtin.primitive.flowtype
 };
-// <- meta.brace.round.close.flowtype
+// <- meta.brace.curly.close.flowtype
  // <- punctuation.terminator.statement.js
 
 declare class Blob {
@@ -150,6 +157,8 @@ declare class Blob {
 //  ^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^^^ ^  meta.function.method.js
 //  ^^^^^^^^^^^                                      entity.name.function.method.js
 //             ^                                     punctuation.definition.parameters.begin.js
+//             ^                                     meta.brace.round.js
+//              ^^^^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^^^ ^  meta.function.parameters.js
 //              ^^^^^^^^^               ^^^^^^^      variable.other.readwrite.js
 //                       ^                     ^     keyword.operator.optional.parameter.flowtype
 //                        ^                     ^    punctuation.type.flowtype
@@ -157,10 +166,11 @@ declare class Blob {
 //                               ^   ^               punctuation.flowtype
 //                                ^^^                support.type.builtin.primitive.flowtype
 //                                    ^              meta.delimiter.comma.js
-//                                                ^  meta.brace.round.open.flowtype
+//                                                ^  meta.brace.curly.open.flowtype
         type?: string
 //      ^^^^^^ ^^^^^^  meta.class.body.js
 //      ^^^^^^ ^^^^^^  meta.function.method.js
+//      ^^^^^^ ^^^^^^  meta.function.parameters.js
 //      ^^^^           variable.other.readwrite.js
 //          ^          keyword.operator.optional.parameter.flowtype
 //           ^         punctuation.type.flowtype
@@ -168,6 +178,7 @@ declare class Blob {
         endings?: string
 //      ^^^^^^^^^ ^^^^^^  meta.class.body.js
 //      ^^^^^^^^^ ^^^^^^  meta.function.method.js
+//      ^^^^^^^^^ ^^^^^^  meta.function.parameters.js
 //      ^^^^^^^           variable.other.readwrite.js
 //             ^          keyword.operator.optional.parameter.flowtype
 //              ^         punctuation.type.flowtype
@@ -175,17 +186,21 @@ declare class Blob {
     }): void
 //  ^^^ ^^^^  meta.class.body.js
 //  ^^^ ^^^^  meta.function.method.js
-//  ^         meta.brace.round.close.flowtype
+//  ^         meta.function.parameters.js
+//  ^         meta.brace.curly.close.flowtype
 //   ^        punctuation.definition.parameters.end.js
+//   ^        meta.brace.round.js
 //    ^       punctuation.type.flowtype
 //      ^^^^  support.type.builtin.primitive.flowtype
     type: string
 //  ^^^^^ ^^^^^^  meta.class.body.js
+//  ^^^^^ ^^^^^^  meta.function.method.js
 //  ^^^^          variable.other.readwrite.js
 //      ^         punctuation.type.flowtype
 //        ^^^^^^  support.type.builtin.primitive.flowtype
     size: number
 //  ^^^^^ ^^^^^^  meta.class.body.js
+//  ^^^^^ ^^^^^^  meta.function.method.js
 //  ^^^^          variable.other.readwrite.js
 //      ^         punctuation.type.flowtype
 //        ^^^^^^  support.type.builtin.primitive.flowtype
@@ -194,6 +209,8 @@ declare class Blob {
 //  ^^^^^^^^^^^^^ ^^^^^^^ ^^^^^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^^^ ^^^^  meta.function.method.js
 //  ^^^^^                                                            entity.name.function.method.js
 //       ^                                                           punctuation.definition.parameters.begin.js
+//       ^                                                  ^        meta.brace.round.js
+//        ^^^^^^^ ^^^^^^^ ^^^^^ ^^^^^^^ ^^^^^^^^^^^^^ ^^^^^^         meta.function.parameters.js
 //        ^^^^^           ^^^           ^^^^^^^^^^^                  variable.other.readwrite.js
 //             ^             ^                     ^                 keyword.operator.optional.parameter.flowtype
 //              ^             ^                     ^        ^       punctuation.type.flowtype
@@ -250,6 +267,8 @@ declare function require(id: string): any;
 //      ^^^^^^^^                            storage.type.function.js
 //               ^^^^^^^                    entity.name.function.js
 //                      ^                   punctuation.definition.parameters.begin.js
+//                      ^          ^        meta.brace.round.js
+//                       ^^^ ^^^^^^         meta.function.parameters.js
 //                       ^^                 variable.other.readwrite.js
 //                         ^        ^       punctuation.type.flowtype
 //                           ^^^^^^   ^^^   support.type.builtin.primitive.flowtype
@@ -264,8 +283,11 @@ declare var foo: (
 //          ^^^     storage.type.function.js
 //             ^    punctuation.type.flowtype
 //               ^  punctuation.definition.parameters.begin.js
+//               ^  meta.brace.round.js
   (<T>(x: T) => T) & (<T,U>(x: T, y: U) => U)
+//^^^^^^^ ^^ ^^ ^^ ^ ^^^^^^^^^ ^^ ^^ ^^ ^^ ^^  meta.function.parameters.js
 //^   ^              ^     ^                   punctuation.definition.parameters.begin.js
+//^   ^    ^     ^   ^     ^          ^     ^  meta.brace.round.js
 // ^ ^                ^   ^                    punctuation.flowtype
 //  ^     ^     ^      ^ ^     ^     ^     ^   support.type.class.flowtype
 //     ^                    ^     ^            variable.other.readwrite.js
@@ -275,7 +297,7 @@ declare var foo: (
 //                 ^                           kewyword.operator.intersection.flowtype
 //                      ^       ^              meta.delimiter.comma.js
 )
-// <- punctuation.definition.parameters.end.js
+// <- punctuation.definition.parameters.end.js meta.brace.round.js
 
 
 // >> only:(source.js.jsx)
