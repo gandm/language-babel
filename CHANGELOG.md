@@ -1,6 +1,9 @@
+### 2.49.1
+  - Fix #290
+  
 ### 2.49.0
   - Add support for Atom 1.13
-  
+
 ### 2.48.2
   - Add support for indentation of paren blocks inside JSX as well as allowing addition indents on some contraints.
 
