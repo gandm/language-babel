@@ -1,3 +1,6 @@
+### 2.48.3
+  - Fix #290 styled components interpolation.
+  
 ### 2.48.2
   - Add support for indentation of paren blocks inside JSX as well as allowing addition indents on some contraints.
 
