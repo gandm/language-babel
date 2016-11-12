@@ -600,12 +600,12 @@ class AutoIndent
     else if match[17]?
       if 'meta.brace.round.js' is scope or
        'meta.brace.round.graphql' is scope or
-       'meta.brace.round.directive.geaphql' is scope
+       'meta.brace.round.directive.graphql' is scope
           return PAREN_OPEN
     else if match[18]?
       if 'meta.brace.round.js' is scope or
        'meta.brace.round.graphql' is scope or
-       'meta.brace.round.directive.geaphql' is scope
+       'meta.brace.round.directive.graphql' is scope
           return PAREN_CLOSE
     return NO_TOKEN
 
