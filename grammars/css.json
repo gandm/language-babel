@@ -728,7 +728,7 @@
     "literals": {
       "match": "\\s*+(,)",
       "captures": {
-        "1": { "name": "punctuation.literral.css"}
+        "1": { "name": "punctuation.comma.css"}
       }
     },
     "nth-child": {
@@ -1143,7 +1143,7 @@
           },
           "patterns": [
             { "include": "#css-comment-and-interpolate"},
-            { "include": "literals"},
+            { "include": "#literals"},
             { "include": "#css-property-values"}
           ]
         },
