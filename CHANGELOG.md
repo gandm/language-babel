@@ -1,6 +1,10 @@
+### 2.49.2
+  - Fix styled componenet nested wrappper function tags Fixes #294
+  - Fix handling unit types after interpolation closures. Fixes #295
+
 ### 2.49.1
   - Fix #290
-  
+
 ### 2.49.0
   - Add support for Atom 1.13
 
