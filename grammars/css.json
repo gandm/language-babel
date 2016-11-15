@@ -94,7 +94,7 @@
         },
         {
           "comment": "units such as px may appear right after a interpolation close }",
-          "begin": "\\s*+(?<=\\})",
+          "begin": "(?<=\\})(?=[a-zA-Z])",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "patterns": [
