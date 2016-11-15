@@ -1,6 +1,10 @@
+### 2.48.4
+  - Fix styled componenet nested wrappper function tags Fixes #294
+  - Fix handling unit types after interpolation closures. Fixes #295
+  
 ### 2.48.3
   - Fix #290 styled components interpolation.
-  
+
 ### 2.48.2
   - Add support for indentation of paren blocks inside JSX as well as allowing addition indents on some contraints.
 
