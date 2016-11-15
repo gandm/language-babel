@@ -676,11 +676,11 @@
             "3": { "name": "keyword.operator.accessor.js" },
             "4": { "name": "entity.name.tag.styledcss.js" },
             "5": { "name": "punctuation.definition.quasi.begin.js" },
-            "6": { "name": "string.quoted.template.js" }
+            "6": { "name": "string.quoted.template.styled.js" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.definition.quasi.end.js" },
-            "2": { "name": "string.quoted.template.graphql.js" }
+            "2": { "name": "string.quoted.template.styled.js" }
           },
           "patterns": [
             { "include": "source.css.styled" }
@@ -689,14 +689,10 @@
         {
           "comment": "Styled CSS tag functions",
           "contentName": "source.inside-js.css.styled",
-          "begin": "\\s*+(?:(\\bstyled))\\s*(?=(\\((?:(?>[^()]+)|\\g<-1>)*\\)\\s*(`)))",
+          "begin": "\\s*+(?:(\\bstyled))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*(`)))",
           "end": "(?<=`)",
           "beginCaptures": {
             "1": { "name": "entity.name.tag.styledcss.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "punctuation.definition.quasi.end.js" },
-            "2": { "name": "string.quoted.template.graphql.js" }
           },
           "patterns": [
             { "include": "#round-brackets" },
@@ -706,11 +702,11 @@
               "end": "\\s*(?<!\\\\)((`))",
               "beginCaptures": {
                 "1": { "name": "punctuation.definition.quasi.begin.js" },
-                "2": { "name": "string.quoted.template.graphql.js" }
+                "2": { "name": "string.quoted.template.styled.js" }
               },
               "endCaptures": {
                 "1": { "name": "punctuation.definition.quasi.end.js" },
-                "2": { "name": "string.quoted.template.graphql.js" }
+                "2": { "name": "string.quoted.template.styled.js" }
               },
               "patterns": [
                 { "include": "source.css.styled" }
