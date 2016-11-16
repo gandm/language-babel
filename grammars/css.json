@@ -226,7 +226,7 @@
     	"patterns": [
     		{
     			"begin": "(?i)(?<=^|[^a-z])\\s*+((-(webkit|moz|o|ms)-)?(align-(self|items|content)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -239,7 +239,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(animation(-(timing-function|play-state|name|iteration-count|fill-mode|duration|direction|delay))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -252,7 +252,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(background(-(size|repeat|position|origin|image|color|clip|blend-mode|attachment))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -265,7 +265,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(border(-(width|top-width|top-style|top-right-radius|top-left-radius|top-color|top|style|spacing|right-width|right-style|right-color|right|radius|left-width|left-style|left-color|left|inline-start-width|inline-start-style|inline-start-color|inline-start|inline-end-width|inline-end-style|inline-end-color|inline-end|image-width|image-source|image-slice|image-repeat|image-outset|image|color|collapse|bottom-width|bottom-style|bottom-right-radius|bottom-left-radius|bottom-color|bottom|block-start-width|block-start-style|block-start-color|block-start|block-end-width|block-end-style|block-end-color|block-end))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -278,7 +278,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(box-(sizing|shadow|decoration-break)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -291,7 +291,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(break-(inside|before|after)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -304,7 +304,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(column-(width|span|rule-width|rule-style|rule-color|rule|gap|fill|count)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -317,7 +317,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(counter-(reset|increment)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -330,7 +330,7 @@
     		},
     		{
     			"begin": "(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(flex(-(wrap|shrink|grow|flow|direction|basis))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -343,7 +343,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(font(-(weight|variant-position|variant-numeric|variant-ligatures||variant-east-asian||variant-caps||variant-alternates|variant|synthesis|style|stretch|size-adjust|size|language-override|kerning|feature-settings|family))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -356,7 +356,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(grid(-(template-rows|template-columns|template-areas|template|row-start|row-gap|row-end|row|gap|column-start|column-gap|column-end|column|auto-rows|auto-flow|auto-columns|area))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -369,7 +369,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(image(-(resolution|rendering|orientation))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -382,7 +382,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(list-(style-type|style-position|style-image|style)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -395,7 +395,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(margin(-(top|right|left|inline-start|inline-end|bottom|block-start|block-end))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -408,7 +408,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(mask(-(type|size|repeat|position|origin|mode|image|composite|clip))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -421,7 +421,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(max-|min-)?(zoom|width|inline-size|height|block-size))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -434,7 +434,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(nav-(up|right|left|index|down)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -447,7 +447,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(object-(position|fit)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -460,7 +460,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(offset-(inline-start|inline-end|block-start|block-end)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -473,7 +473,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(outline(-(width|style|offset|color))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -486,7 +486,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(overflow(-(y|x|wrap))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -499,7 +499,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(padding(-(top|right|left|inline-start|inline-end|bottom|block-start|block-end))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -512,7 +512,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(page-break-(inside|before|after)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -525,7 +525,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(perspective(-(origin))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -538,7 +538,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(ruby-(position|merge|align)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -551,7 +551,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(scroll-(snap-type|snap-destination|snap-coordinate|behavior)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -564,7 +564,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(shape-(outside|margin|image-threshold)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -577,7 +577,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(text-(underline-position|transform|shadow|size-adjust|rendering|overflow|orientation|justify|indent|emphasis-style|emphasis-position|emphasis-color|emphasis|decoration-style|decoration-line|decoration-color|decoration|combine-upright|align-last|align)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -590,7 +590,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(transform(-(style|origin|box))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -603,7 +603,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(transition(-(timing-function|property|duration|delay))?))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -616,7 +616,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(word-(wrap|spacing|break)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -629,7 +629,7 @@
     		},
     		{
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(unicode-(range|bidi)))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -643,7 +643,7 @@
     		{
           "comment": "individual words without any sub options",
     			"begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(z-index|writing-mode|will-change|width|widows|white-space|volume|visibility|vertical-align|user-zoom|user-select|touch-action|top|table-layout|tab-size|system|symbols|suffix|src|speak-as|size|right|revert|resize|range|prefix|quotes|position|pointer-events|pad|orphans|orientation|order|opacity|negative|mix-blend-mode|marks|line-height|line-break|letter-spacing|left|justify-content|isolation|inline-size|hyphens|height|float|filter|fallback|empty-cells|display|direction|cursor|content|columns|color|clip-path|clip|clear|caption-side|bottom|block-size|bleed|backface-visibility|appearance|all|additive-symbols))\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.css"}
     			},
@@ -657,7 +657,7 @@
     		{
           "comment": "custom properties --*",
     			"begin": "(?<=^|[\\W])\\s*+(--[-_a-zA-Z0-9]*)\\s*+(:)",
-    			"end": "(;)|(?=[})\\]])",
+    			"end": "(;)|(?=[`})\\]])",
     			"beginCaptures": {
     				"1": {"name": "support.type.property-name.custom.css"}
     			},
@@ -671,7 +671,7 @@
         {
           "comment": "unknown properties --*",
           "begin": "(?<=^|[\\W])\\s*+([-_a-zA-Z0-9]*)\\s*+(:)",
-          "end": "(;)|(?=[})\\]])",
+          "end": "(;)|(?=[`})\\]])",
           "beginCaptures": {
             "1": {"name": "support.type.property-name.unknown.css"}
           },
@@ -778,7 +778,7 @@
     "@charset-rule": {
       "contentName": "string.unquoted.css",
       "begin": "(?i)(?<=^|[\\W])\\s*+(@(-(webkit|moz|o|ms)-)?charset)\\b",
-      "end": "\\s*+(;)",
+      "end": "\\s*+(;)|(?=`)",
       "beginCaptures": {
         "1": { "name": "keyword.control.charset.css"}
       },
@@ -843,7 +843,7 @@
     },
     "@import-rule": {
       "begin": "(?i)(?<=^|[\\W])\\s*+(@(-(webkit|moz|o|ms)-)?import)\\b",
-      "end": "\\s*+(;)",
+      "end": "\\s*+(;)|(?=`)",
       "beginCaptures": {
         "1": { "name": "keyword.control.charset.css"}
       },
@@ -916,7 +916,7 @@
     },
     "@namespace-rule": {
       "begin": "(?i)(?<=^|[\\W])\\s*+(@(-(webkit|moz|o|ms)-)?namespace)\\b",
-      "end": "\\s*+(;)",
+      "end": "\\s*+(;)|(?=`)",
       "beginCaptures": {
         "1": { "name": "keyword.control.namespace.css"}
       },
