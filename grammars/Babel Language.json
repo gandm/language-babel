@@ -676,11 +676,11 @@
             "3": { "name": "keyword.operator.accessor.js" },
             "4": { "name": "entity.name.tag.styledcss.js" },
             "5": { "name": "punctuation.definition.quasi.begin.js" },
-            "6": { "name": "string.quoted.template.styled.js" }
+            "6": { "name": "string.quoted.template.styled.start.js" }
           },
           "endCaptures": {
             "1": { "name": "punctuation.definition.quasi.end.js" },
-            "2": { "name": "string.quoted.template.styled.js" }
+            "2": { "name": "string.quoted.template.styled.end.js" }
           },
           "patterns": [
             { "include": "source.css.styled" }
@@ -702,11 +702,11 @@
               "end": "\\s*(?<!\\\\)((`))",
               "beginCaptures": {
                 "1": { "name": "punctuation.definition.quasi.begin.js" },
-                "2": { "name": "string.quoted.template.styled.js" }
+                "2": { "name": "string.quoted.template.styled.start.js" }
               },
               "endCaptures": {
                 "1": { "name": "punctuation.definition.quasi.end.js" },
-                "2": { "name": "string.quoted.template.styled.js" }
+                "2": { "name": "string.quoted.template.styled.end.js" }
               },
               "patterns": [
                 { "include": "source.css.styled" }
