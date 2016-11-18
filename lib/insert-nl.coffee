@@ -1,5 +1,5 @@
 module.exports =
-class InsertNlJsx
+class InsertNl
   constructor: (@editor) ->
     @adviseBefore(@editor, 'insertText', @insertText)
 
