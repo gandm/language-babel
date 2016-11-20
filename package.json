@@ -1,7 +1,7 @@
 {
   "name": "language-babel",
   "main": "./lib/main",
-  "version": "2.48.4",
+  "version": "2.48.5",
   "description": "JavaScript ES201x, React JSX, Flow and GraphQL Grammar. Babel Transpiler",
   "keywords": [
     "react",
