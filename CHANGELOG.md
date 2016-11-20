@@ -5,13 +5,20 @@
 ### 2.49.1
   - Fix #290
 
-### 2.49.0
+### 2.49.0 (Atom >=1.13)
   - Add support for Atom 1.13
+
+### 2.48.4
+  - Fix styled componenet nested wrappper function tags Fixes #294
+  - Fix handling unit types after interpolation closures. Fixes #295
+
+### 2.48.3
+  - Fix #290 styled components interpolation.
 
 ### 2.48.2
   - Add support for indentation of paren blocks inside JSX as well as allowing addition indents on some contraints.
 
-### 2.48.0
+### 2.48.0 (Atom <=1.12)
   - Cease package support.
   - Remove auto indent option as default.
   - Add indent/outdent for Atom jsx
