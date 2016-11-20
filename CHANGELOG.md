@@ -1,3 +1,8 @@
+### 2.49.3
+  - Fix #296 Closing backtick terminates styled-component css property.
+  - Fix #297 for...of and for...in loops with let|const|var property grammar parsing.
+  - Fix #291 Add support for autoindenting and terminating styled-component backtick.
+
 ### 2.49.2
   - Fix styled componenet nested wrappper function tags Fixes #294
   - Fix handling unit types after interpolation closures. Fixes #295
@@ -7,6 +12,11 @@
 
 ### 2.49.0 (Atom >=1.13)
   - Add support for Atom 1.13
+
+### 2.48.5
+  - Fix #296 Closing backtick terminates styled-component css property.
+  - Fix #297 for...of and for...in loops with let|const|var property grammar parsing.
+  - Fix #291 Add support for autoindenting and terminating styled-component backtick.
 
 ### 2.48.4
   - Fix styled componenet nested wrappper function tags Fixes #294
