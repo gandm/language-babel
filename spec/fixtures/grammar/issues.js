@@ -1,5 +1,11 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE 297
+
+for (var prop:interator in obj) {}
+for (var prop:interator of (CONST1?CONST2:CONST3)) {}
+
+
 // ISSUE 281
 
 const helloWorld = (): string => 'hello world';
