@@ -773,7 +773,7 @@
     },
     "literal-object": {
       "comment": "obj lteral ({ or ,{ or [{ or ={ or return { or default {",
-      "begin": "(?:(?<=\\(|\\[)|(?:\\s*(?:(=)|\\b(default)\\b|\\b(return)\\b|(,))))\\s*({)",
+      "begin": "(?:(?<=\\(|\\[|,)|(?:\\s*(?:(=)|\\b(default)\\b|\\b(return)\\b|(,))))\\s*({)",
       "end": "\\s*+(})",
       "beginCaptures": {
         "1": { "name": "keyword.operator.assignment.js" },
