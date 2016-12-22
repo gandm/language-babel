@@ -11,7 +11,7 @@
   ".source.inside-js.css.styled": {
   "editor": {
     "commentStart": "${''/* ",
-    "commentEnd": "*/}"
+    "commentEnd": " */}"
   }
   },
   ".meta.tag.jsx": {
