@@ -33,7 +33,7 @@ for (var i=1; i<table.rows.length; i++) {
 //^^^            storage.type.js
 //    ^^^^       variable.other.readwrite.js
 //         ^     keyword.operator.assignment.js
-//           ^^  meta.brace.curly.js
+//           ^^  meta.brace.curly.litobj.js
   for (var j=0; j<row.cells.length; j++) {
 //^^^ ^^^^ ^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^    meta.for.js
 //^^^                                       keyword.control.loop.js

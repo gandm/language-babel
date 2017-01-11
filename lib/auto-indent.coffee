@@ -567,15 +567,17 @@ class AutoIndent
         return JSXBRACE_OPEN
       else if 'meta.brace.curly.switchStart.js' is scope
         return SWITCH_BRACE_OPEN
-      else if 'meta.brace.curly.js' is scope
-        return BRACE_OPEN
+      else if 'meta.brace.curly.js' is scope or
+        'meta.brace.curly.litobj.js' is scope
+          return BRACE_OPEN
     else if match[9]?
       if 'punctuation.section.embedded.end.jsx' is scope
         return JSXBRACE_CLOSE
       else if 'meta.brace.curly.switchEnd.js' is scope
         return SWITCH_BRACE_CLOSE
-      else if 'meta.brace.curly.js' is scope
-        return BRACE_CLOSE
+      else if 'meta.brace.curly.js' is scope or
+        'meta.brace.curly.litobj.js' is scope
+          return BRACE_CLOSE
     else if match[10]?
       if 'keyword.operator.ternary.js' is scope
         return TERNARY_IF

@@ -116,7 +116,7 @@ let a= {
 //^       storage.type.js
 //  ^     variable.other.readwrite.js
 //   ^    keyword.operator.assignment.js
-//     ^  meta.brace.curly.js
+//     ^  meta.brace.curly.litobj.js
   if(a) {}
 //^^^^^ ^^  meta.function.method.js
 //^^        entity.name.function.method.js
@@ -127,7 +127,7 @@ let a= {
 //    ^     punctuation.definition.parameters.end.js
 //      ^^  meta.brace.curly.js
 }
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
 
 // ISSUE 275
 // <- comment.line.double-slash.js punctuation.definition.comment.js
@@ -282,11 +282,11 @@ let obj = [
 //      ^    keyword.operator.assignment.js
 //        ^  meta.brace.square.js
   {
-//^  meta.brace.curly.js
+//^  meta.brace.curly.litobj.js
     [
 //  ^  meta.brace.square.js
       {
-//    ^  meta.brace.curly.js
+//    ^  meta.brace.curly.litobj.js
         async bar() {}
 //      ^^^^^ ^^^^^ ^^  meta.function.method.js
 //      ^^^^^           storage.type.js
@@ -296,11 +296,11 @@ let obj = [
 //                ^     punctuation.definition.parameters.end.js
 //                  ^^  meta.brace.curly.js
       }
-//    ^  meta.brace.curly.js
+//    ^  meta.brace.curly.litobj.js
     ]
 //  ^  meta.brace.square.js
   }
-//^  meta.brace.curly.js
+//^  meta.brace.curly.litobj.js
 ]
 // <- meta.brace.square.js
 
@@ -314,12 +314,12 @@ let obj = {
 //^          storage.type.js
 //  ^^^      variable.other.readwrite.js
 //      ^    keyword.operator.assignment.js
-//        ^  meta.brace.curly.js
+//        ^  meta.brace.curly.litobj.js
   nested: {
 //^^^^^^^    constant.other.object.key.js
 //^^^^^^     string.unquoted.js
 //      ^    punctuation.separator.key-value.js
-//        ^  meta.brace.curly.js
+//        ^  meta.brace.curly.litobj.js
     async bar() {
 //  ^^^^^ ^^^^^ ^  meta.function.method.js
 //  ^^^^^          storage.type.js
@@ -337,9 +337,9 @@ let obj = {
 //  ^  meta.function.method.js
 //  ^  meta.brace.curly.js
   }
-//^  meta.brace.curly.js
+//^  meta.brace.curly.litobj.js
 }
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
 
 // ISSUE #255
 // <- comment.line.double-slash.js punctuation.definition.comment.js
@@ -395,7 +395,7 @@ meth({
 //^^^^  meta.function-call.with-arguments.js
 //^^    entity.name.function.js
 //  ^   meta.brace.round.js
-//   ^  meta.brace.curly.js
+//   ^  meta.brace.curly.litobj.js
   'first-prop'({arg1, arg2}) {
 //^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^  meta.function-call.with-arguments.js
 //^^^^^^^^^^^^^^^^^^^ ^^^^^^ ^  meta.function.method.js
@@ -403,10 +403,11 @@ meth({
 //            ^                 punctuation.definition.parameters.begin.js
 //            ^            ^    meta.brace.round.js
 //             ^^^^^^ ^^^^^     meta.function.parameters.js
-//             ^          ^  ^  meta.brace.curly.js
+//             ^          ^     meta.brace.curly.litobj.js
 //              ^^^^  ^^^^      variable.other.readwrite.shorthandpropertyname.js
 //                  ^           meta.delimiter.comma.js
 //                         ^    punctuation.definition.parameters.end.js
+//                           ^  meta.brace.curly.js
   },
 //^^  meta.function-call.with-arguments.js
 //^   meta.function.method.js
@@ -419,14 +420,15 @@ meth({
 //             ^                 punctuation.definition.parameters.begin.js
 //             ^            ^    meta.brace.round.js
 //              ^^^^^^ ^^^^^     meta.function.parameters.js
-//              ^          ^  ^  meta.brace.curly.js
+//              ^          ^     meta.brace.curly.litobj.js
 //               ^^^^  ^^^^      variable.other.readwrite.shorthandpropertyname.js
 //                   ^           meta.delimiter.comma.js
 //                          ^    punctuation.definition.parameters.end.js
+//                            ^  meta.brace.curly.js
  }
  // <- meta.function-call.with-arguments.js meta.function.method.js meta.brace.curly.js
 })
-// <- meta.function-call.with-arguments.js meta.brace.curly.js
+// <- meta.function-call.with-arguments.js meta.brace.curly.litobj.js
  // <- meta.function-call.with-arguments.js meta.brace.round.js
 
 // ISSUE #181
@@ -553,7 +555,7 @@ function a(state ) {
 //                            ^^^^^^^               ^^^^^^^^^^^^^^^^                 entity.name.function.js
 //                                   ^                              ^           ^ ^  meta.brace.round.js
 //                                                ^                                  meta.delimiter.comma.js
-//                                                                   ^         ^     meta.brace.curly.js
+//                                                                   ^         ^     meta.brace.curly.litobj.js
 //                                                                     ^^^           keyword.operator.spread.js
             return state
 //          ^^^^^^ ^^^^^  meta.function.js
@@ -711,7 +713,7 @@ function getObject() {
   return {
 //^^^^^^ ^  meta.function.js
 //^^^^^^    keyword.control.flow.js
-//       ^  meta.brace.curly.js
+//       ^  meta.brace.curly.litobj.js
     async doStuff() {},
 //  ^^^^^ ^^^^^^^^^ ^^^  meta.function.js
 //  ^^^^^ ^^^^^^^^^ ^^   meta.function.method.js
@@ -746,7 +748,7 @@ function getObject() {
 //                      ^^  meta.brace.curly.js
   }
 //^  meta.function.js
-//^  meta.brace.curly.js
+//^  meta.brace.curly.litobj.js
 }
 // <- meta.function.js meta.brace.curly.js
 
@@ -761,7 +763,7 @@ foo({ //
 //^^^ ^^  meta.function-call.with-arguments.js
 //^       entity.name.function.js
 // ^      meta.brace.round.js
-//  ^     meta.brace.curly.js
+//  ^     meta.brace.curly.litobj.js
 //    ^^  comment.line.double-slash.js
 //    ^^  punctuation.definition.comment.js
   bar() {} //
@@ -775,7 +777,7 @@ foo({ //
 //         ^^  comment.line.double-slash.js
 //         ^^  punctuation.definition.comment.js
 })
-// <- meta.function-call.with-arguments.js meta.brace.curly.js
+// <- meta.function-call.with-arguments.js meta.brace.curly.litobj.js
  // <- meta.function-call.with-arguments.js meta.brace.round.js
 
 // ISSUE: 169
@@ -813,7 +815,7 @@ let a = {
 //^        storage.type.js
 //  ^      variable.other.readwrite.js
 //    ^    keyword.operator.assignment.js
-//      ^  meta.brace.curly.js
+//      ^  meta.brace.curly.litobj.js
   a: td.function()
 //^^                constant.other.object.key.js
 //^                 string.unquoted.js
@@ -833,7 +835,7 @@ let a = {
 //      ^^^^^^^^    entity.name.function.js
 //              ^^  meta.brace.round.js
 }
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
 let a: number = td.function();
 // <- storage.type.js
  // <- storage.type.js
@@ -866,7 +868,7 @@ let a = {
 //^        storage.type.js
 //  ^      variable.other.readwrite.js
 //    ^    keyword.operator.assignment.js
-//      ^  meta.brace.curly.js
+//      ^  meta.brace.curly.litobj.js
   a: td.function();
 //^^                 constant.other.object.key.js
 //^                  string.unquoted.js
@@ -888,7 +890,7 @@ let a = {
 //              ^^   meta.brace.round.js
 //                ^  punctuation.terminator.statement.js
 }// <- meta.brace.curly.js
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 //^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
 //^                         punctuation.definition.comment.js
@@ -904,7 +906,7 @@ let obj = { a: () => async () => 1 }
 //^                  ^^^^^            storage.type.js
 //  ^^^                               variable.other.readwrite.js
 //      ^                             keyword.operator.assignment.js
-//        ^                        ^  meta.brace.curly.js
+//        ^                        ^  meta.brace.curly.litobj.js
 //          ^^ ^^ ^^                  meta.function.json.arrow.js
 //          ^                         entity.name.function.js
 //           ^                        punctuation.separator.key-value.js
@@ -924,7 +926,7 @@ export default {
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^ ^^^^^^^    keyword.control.module.js
-//             ^  meta.brace.curly.js
+//             ^  meta.brace.curly.litobj.js
   async get() { return 1 },
 //^^^^^ ^^^^^ ^ ^^^^^^ ^ ^   meta.function.method.js
 //^^^^^                      storage.type.js
@@ -967,7 +969,7 @@ export default {
 //                   ^       keyword.operator.assignment.js
 //                        ^  meta.delimiter.comma.js
 }// <- meta.brace.curly.js
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 //^ ^^ ^^^^^^^^^^^^^^^^^^^  comment.line.double-slash.js
 //^                         punctuation.definition.comment.js

@@ -780,10 +780,10 @@
         "2": { "name": "keyword.control.module.js" },
         "3": { "name": "keyword.control.flow.js" },
         "4": { "name": "meta.delimiter.comma.js" },
-        "5": { "name": "meta.brace.curly.js" }
+        "5": { "name": "meta.brace.curly.litobj.js" }
       },
       "endCaptures": {
-        "1": { "name": "meta.brace.curly.js" }
+        "1": { "name": "meta.brace.curly.litobj.js" }
       },
       "patterns": [
         { "include": "#literal-object-body" }
@@ -794,10 +794,10 @@
       "begin": "\\s*({)",
       "end": "\\s*+(})",
       "beginCaptures": {
-        "1": { "name": "meta.brace.curly.js" }
+        "1": { "name": "meta.brace.curly.litobj.js" }
       },
       "endCaptures": {
-        "1": { "name": "meta.brace.curly.js" }
+        "1": { "name": "meta.brace.curly.litobj.js" }
       },
       "patterns": [
         { "include": "#literal-object-body" }
@@ -808,10 +808,10 @@
       "begin": "(?<=:)\\s*({)",
       "end": "\\s*+(})",
       "beginCaptures": {
-        "1": { "name": "meta.brace.curly.js" }
+        "1": { "name": "meta.brace.curly.litobj.js" }
       },
       "endCaptures": {
-        "1": { "name": "meta.brace.curly.js" }
+        "1": { "name": "meta.brace.curly.litobj.js" }
       },
       "patterns": [
         { "include": "#literal-object-body" }

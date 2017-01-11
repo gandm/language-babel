@@ -29,7 +29,7 @@ export default React.createClass({
 //                  ^               keyword.operator.accessor.js
 //                   ^^^^^^^^^^^    entity.name.function.js
 //                              ^   meta.brace.round.js
-//                               ^  meta.brace.curly.js
+//                               ^  meta.brace.curly.litobj.js
 
   mixins: [InputsMixin],
 //^^^^^^^ ^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
@@ -85,7 +85,7 @@ export default React.createClass({
 //    ^                         keyword.operator.accessor.js
 //     ^^^^                     entity.name.function.js
 //         ^                 ^  meta.brace.round.js
-//          ^               ^   meta.brace.curly.js
+//          ^               ^   meta.brace.curly.litobj.js
 //           ^^^^^  ^^^^^^^^    variable.other.readwrite.shorthandpropertyname.js
 //                ^             meta.delimiter.comma.js
       .end((err, res) =>
@@ -108,7 +108,7 @@ export default React.createClass({
 //          ^                             keyword.operator.accessor.js
 //           ^^^^^^^^                     entity.name.function.js
 //                   ^               ^^   meta.brace.round.js
-//                    ^             ^     meta.brace.curly.js
+//                    ^             ^     meta.brace.curly.litobj.js
 //                     ^^^^^^^^           constant.other.object.key.js
 //                     ^^^^^^^            string.unquoted.js
 //                            ^           punctuation.separator.key-value.js
@@ -238,7 +238,7 @@ export default React.createClass({
 //^  meta.function.method.js
 //^  meta.brace.curly.js
 });
-// <- meta.method-call.with-arguments.js meta.brace.curly.js
+// <- meta.method-call.with-arguments.js meta.brace.curly.litobj.js
  // <- meta.method-call.with-arguments.js meta.brace.round.js
 //^  punctuation.terminator.statement.js
 
@@ -265,7 +265,7 @@ export class Counter extends React.Component {
 //^^^^^^                                                        storage.modifier.js
 //       ^^^^^^^^^                                              variable.other.readwrite.js
 //                 ^                                            keyword.operator.assignment.js
-//                   ^                                      ^   meta.brace.curly.js
+//                   ^                                      ^   meta.brace.curly.litobj.js
 //                     ^^^^^^^^^^^^^                            constant.other.object.key.js
 //                     ^^^^^^^^^^^^                             string.unquoted.js
 //                                 ^                            punctuation.separator.key-value.js
@@ -281,7 +281,7 @@ export class Counter extends React.Component {
 //^^^^^^                                      storage.modifier.js
 //       ^^^^^^^^^^^^                         variable.other.readwrite.js
 //                    ^                       keyword.operator.assignment.js
-//                      ^                 ^   meta.brace.curly.js
+//                      ^                 ^   meta.brace.curly.litobj.js
 //                        ^^^^^^^^^^^^^       constant.other.object.key.js
 //                        ^^^^^^^^^^^^        string.unquoted.js
 //                                    ^       punctuation.separator.key-value.js
@@ -302,7 +302,7 @@ export class Counter extends React.Component {
 //  ^^^^^^ ^  meta.class.body.js
 //  ^^^^^^ ^  meta.function.arrow.js
 //  ^^^^^^    keyword.control.flow.js
-//         ^  meta.brace.curly.js
+//         ^  meta.brace.curly.litobj.js
       app: React.PropTypes.instanceOf(App).isRequired
 //    ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
 //    ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.function.arrow.js
@@ -322,7 +322,7 @@ export class Counter extends React.Component {
     }
 //  ^  meta.class.body.js
 //  ^  meta.function.arrow.js
-//  ^  meta.brace.curly.js
+//  ^  meta.brace.curly.litobj.js
   };
 //^^  meta.class.body.js
 //^   meta.function.arrow.js
@@ -340,7 +340,7 @@ export class Counter extends React.Component {
 //^^^^^ ^ ^ ^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
 //^^^^^                                        variable.other.readwrite.js
 //      ^                                      keyword.operator.assignment.js
-//        ^                                ^   meta.brace.curly.js
+//        ^                                ^   meta.brace.curly.litobj.js
 //          ^^^^^^                             constant.other.object.key.js
 //          ^^^^^                              string.unquoted.js
 //               ^                             punctuation.separator.key-value.js
@@ -365,7 +365,7 @@ export class Counter extends React.Component {
 //       ^^^^^^^^^^ ^^^^^^ ^^^^^^^^^^^^^^^^ ^ ^ ^^   meta.method-call.with-arguments.js
 //       ^^^^^^^^                                    entity.name.function.js
 //               ^                               ^   meta.brace.round.js
-//                ^                             ^    meta.brace.curly.js
+//                ^                             ^    meta.brace.curly.litobj.js
 //                  ^^^^^^                           constant.other.object.key.js
 //                  ^^^^^                            string.unquoted.js
 //                       ^                           punctuation.separator.key-value.js

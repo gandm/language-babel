@@ -187,7 +187,7 @@ a.component('randomComponent', {
 //          ^                     punctuation.definition.string.begin.js
 //                          ^     punctuation.definition.string.end.js
 //                           ^    meta.delimiter.comma.js
-//                             ^  meta.brace.curly.js
+//                             ^  meta.brace.curly.litobj.js
   template: `<div class="test">test</div>`,
 //^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
 //^^^^^^^^                                   constant.other.object.key.js
@@ -205,7 +205,7 @@ a.component('randomComponent', {
 //                                       ^   punctuation.definition.quasi.end.js
 //                                        ^  meta.delimiter.comma.js
 })
-// <- meta.method-call.with-arguments.js meta.brace.curly.js
+// <- meta.method-call.with-arguments.js meta.brace.curly.litobj.js
  // <- meta.method-call.with-arguments.js meta.brace.round.js
 
 // class fields, statics and methods
@@ -299,7 +299,7 @@ const foo = {
 //^^^          storage.type.js
 //    ^^^      variable.other.readwrite.js
 //        ^    keyword.operator.assignment.js
-//          ^  meta.brace.curly.js
+//          ^  meta.brace.curly.litobj.js
   bar: baz()
 //^^^^        constant.other.object.key.js
 //^^^         string.unquoted.js
@@ -308,7 +308,7 @@ const foo = {
 //     ^^^    entity.name.function.js
 //        ^^  meta.brace.round.js
 };
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
  // <- punctuation.terminator.statement.js
 
 // $JSXIntrinsics is special and magic.

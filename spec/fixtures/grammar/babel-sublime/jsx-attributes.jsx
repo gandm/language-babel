@@ -168,7 +168,7 @@
 //                                                  ^                  keyword.operator.accessor.js
 //                                                   ^^^^^^^^^^^^      meta.method-call.with-arguments.js
 //                                                   ^^^^^^^^          entity.name.function.js
-//                                                            ^^       meta.brace.curly.js
+//                                                            ^^       meta.brace.curly.litobj.js
 //                                                               ^     punctuation.section.embedded.end.jsx
           <div class-Name= 'MyClass' key />
 //        ^^^^ ^^^^^^^^^^^ ^^^^^^^^^ ^^^ ^^  meta.tag.jsx

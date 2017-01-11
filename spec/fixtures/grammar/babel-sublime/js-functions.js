@@ -6,7 +6,7 @@ let Sound = {
 //^            storage.type.js
 //  ^^^^^      variable.other.readwrite.js
 //        ^    keyword.operator.assignment.js
-//          ^  meta.brace.curly.js
+//          ^  meta.brace.curly.litobj.js
   get() {},
 //^^^^^ ^^   meta.function.method.js
 //^^^        entity.name.function.method.js
@@ -888,7 +888,7 @@ let Sound = {
 //            ^^     storage.type.function.arrow.js
 //               ^^  meta.brace.curly.js
 }
-// <- meta.brace.curly.js
+// <- meta.brace.curly.litobj.js
 
 class Sound<T, T> extends Model<T, T> {
 // <- meta.class.js storage.type.class.js
@@ -1654,7 +1654,7 @@ Sound = {}
  // <- variable.other.readwrite.js
 //^^^       variable.other.readwrite.js
 //    ^     keyword.operator.assignment.js
-//      ^^  meta.brace.curly.js
+//      ^^  meta.brace.curly.litobj.js
 Sound.play
 // <- meta.property.class.js variable.other.class.js
  // <- meta.property.class.js variable.other.class.js
@@ -1692,7 +1692,7 @@ Sound.play = {}
 //   ^           keyword.operator.accessor.js
 //    ^^^^       variable.other.property.static.js
 //         ^     keyword.operator.assignment.js
-//           ^^  meta.brace.curly.js
+//           ^^  meta.brace.curly.litobj.js
 Sound[play] = {}
 // <- variable.other.object.js
  // <- variable.other.object.js
@@ -1700,7 +1700,7 @@ Sound[play] = {}
 //   ^    ^       meta.brace.square.js
 //    ^^^^        variable.other.readwrite.js
 //          ^     keyword.operator.assignment.js
-//            ^^  meta.brace.curly.js
+//            ^^  meta.brace.curly.litobj.js
 Sound.prototype
 // <- meta.prototype.access.js entity.name.class.js
  // <- meta.prototype.access.js entity.name.class.js
@@ -1724,7 +1724,7 @@ Sound.prototype = {}
 //   ^                keyword.operator.accessor.js
 //    ^^^^^^^^^       variable.language.prototype.js
 //              ^     keyword.operator.assignment.js
-//                ^^  meta.brace.curly.js
+//                ^^  meta.brace.curly.litobj.js
 Sound.prototype.play
 // <- meta.prototype.access.js entity.name.class.js
  // <- meta.prototype.access.js entity.name.class.js
@@ -1821,7 +1821,7 @@ Sound.play.repeat = {}
 //         ^^^^^^       meta.property.object.js
 //         ^^^^^^       variable.other.property.js
 //                ^     keyword.operator.assignment.js
-//                  ^^  meta.brace.curly.js
+//                  ^^  meta.brace.curly.litobj.js
 Sound[play].repeat = {}
 // <- variable.other.object.js
  // <- variable.other.object.js
@@ -1832,7 +1832,7 @@ Sound[play].repeat = {}
 //          ^^^^^^       meta.property.object.js
 //          ^^^^^^       variable.other.property.js
 //                 ^     keyword.operator.assignment.js
-//                   ^^  meta.brace.curly.js
+//                   ^^  meta.brace.curly.litobj.js
 
 Sound.prototype.play = function() {}
 // <- meta.prototype.function.js entity.name.class.js
