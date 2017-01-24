@@ -1668,39 +1668,55 @@
       ]
     },
     "literal-module-import": {
-      "begin": "(?<!\\.)\\s*+\\b(import)(?!\\s*:)\\b",
-      "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
-      "beginCaptures": {
-        "1": { "name": "keyword.control.module.js" }
-      },
-      "endCaptures": {
-        "1": { "name": "keyword.control.module.js" },
-        "3": { "name": "punctuation.definition.string.begin.js" },
-        "4": { "name": "string.quoted.module.js" },
-        "5": { "name": "punctuation.definition.string.end.js" }
-      },
       "patterns": [
         {
-          "match": "\\s*\\b(default)\\b",
-          "captures": {
+          "name": "meta.function-call.with-arguments.js",
+          "begin": "(?<!\\.)\\s*+(import)(?=\\()",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "keyword.control.module.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "\\s*\\b(typeof|type)\\b\\s++(?={|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
-          "captures": {
-            "1": { "name": "keyword.other.typedef.flowtype" }
-          }
-        },
-        { "include": "#literal-module-as" },
-        {
-          "name": "keyword.operator.module.all.js",
-          "match": "\\s*\\*"
-        },
-        { "include": "#literal-module-brackets" },
-        { "include": "#literal-variable" },
-        { "include": "#comments" },
-        { "include": "#literal-comma"}
+          "begin": "(?<!\\.)\\s*+\\b(import)(?!\\s*:)\\b",
+          "end": "\\s*(?:(?:(\\bfrom\\b)?+\\s++(('|\")([^\"']*)(\\k<-3>)))|(?=;|^\\s*\\b(if|switch|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.module.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "keyword.control.module.js" },
+            "3": { "name": "punctuation.definition.string.begin.js" },
+            "4": { "name": "string.quoted.module.js" },
+            "5": { "name": "punctuation.definition.string.end.js" }
+          },
+          "patterns": [
+            {
+              "match": "\\s*\\b(default)\\b",
+              "captures": {
+                "1": { "name": "keyword.control.module.js" }
+              }
+            },
+            {
+              "match": "\\s*\\b(typeof|type)\\b\\s++(?={|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
+              "captures": {
+                "1": { "name": "keyword.other.typedef.flowtype" }
+              }
+            },
+            { "include": "#literal-module-as" },
+            {
+              "name": "keyword.operator.module.all.js",
+              "match": "\\s*\\*"
+            },
+            { "include": "#literal-module-brackets" },
+            { "include": "#literal-variable" },
+            { "include": "#comments" },
+            { "include": "#literal-comma"}
+          ]
+        }
       ]
     },
     "literal-module-export": {
