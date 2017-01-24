@@ -28,6 +28,8 @@ SWITCH_DEFAULT          = 17      # switch default statement
 JS_RETURN               = 18      # JS return
 PAREN_OPEN              = 19      # paren open (
 PAREN_CLOSE             = 20      # paren close )
+TEMPLATE_START          = 21      # ` back-tick start
+TEMPLATE_END            = 22      # ` back-tick end
 
 # eslint property values
 TAGALIGNED    = 'tag-aligned'
@@ -41,7 +43,7 @@ class AutoIndent
     @InsertNl = new InsertNl(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
-    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))/g
+    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))|(`)/g
     @mouseUp = true
     @multipleCursorTrigger = 1
     @disposables = new CompositeDisposable()
@@ -403,8 +405,8 @@ class AutoIndent
             if parentTokenIdx >=0 then tokenStack[parentTokenIdx].termsThisTagIdx = idxOfToken
             idxOfToken++
 
-          # Javascript brace Start { or switch brace start { or paren (
-          when BRACE_OPEN, SWITCH_BRACE_OPEN, PAREN_OPEN
+          # Javascript brace Start { or switch brace start { or paren ( or back-tick `start
+          when BRACE_OPEN, SWITCH_BRACE_OPEN, PAREN_OPEN, TEMPLATE_START
             tokenOnThisLine = true
             if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
@@ -441,8 +443,8 @@ class AutoIndent
             stackOfTokensStillOpen.push idxOfToken
             idxOfToken++
 
-          # Javascript brace End } or switch brace end } or paren close )
-          when BRACE_CLOSE, SWITCH_BRACE_CLOSE, PAREN_CLOSE
+          # Javascript brace End } or switch brace end } or paren close ) or back-tick ` end
+          when BRACE_CLOSE, SWITCH_BRACE_CLOSE, PAREN_CLOSE, TEMPLATE_END
 
             if token is SWITCH_BRACE_CLOSE
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
@@ -542,7 +544,7 @@ class AutoIndent
           @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndentProps: 1 })
         else @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
       when JSXBRACE_OPEN
-        @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
+        @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1, allowAdditionalIndents: true })
       when BRACE_OPEN, SWITCH_BRACE_OPEN, PAREN_OPEN
         @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1, allowAdditionalIndents: true })
       when JSXTAG_SELFCLOSE_END, JSXBRACE_CLOSE, JSXTAG_CLOSE_ATTRS
@@ -550,6 +552,10 @@ class AutoIndent
       when BRACE_CLOSE, SWITCH_BRACE_CLOSE, PAREN_CLOSE
         @indentRow({row: row, blockIndent: tokenStack[token.parentTokenIdx].firstCharIndentation, jsxIndent: 1, allowAdditionalIndents: true })
       when SWITCH_CASE, SWITCH_DEFAULT
+        @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
+      when TEMPLATE_START
+        return; # don't touch templates
+      when TEMPLATE_END
         @indentRow({row: row, blockIndent: token.firstCharIndentation, jsxIndent: 1 })
 
   # get the token at the given match position or return truthy false
@@ -609,6 +615,12 @@ class AutoIndent
        'meta.brace.round.graphql' is scope or
        'meta.brace.round.directive.graphql' is scope
           return PAREN_CLOSE
+    else if match[19]?
+      if 'punctuation.definition.quasi.begin.js' is scope
+        return TEMPLATE_START
+      if 'punctuation.definition.quasi.end.js' is scope
+        return TEMPLATE_END
+
     return NO_TOKEN
 
 
