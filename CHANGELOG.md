@@ -1,8 +1,13 @@
+### 2.50.0
+  - Add support for TC39 dynamic import 'function'.
+  - Add support for Relay to use graphql as a tagged template name.
+  - Stop any autoIndentJSX from working inside embedded template literals.
+
 ### 2.49.4
   - Add additional closing space after auto-commenting styled-components. Issue #303
   - Fix incorrect scope names for methods/functions called witrh more than one object arg. Issue #299
   - Add additional scope name for start/end braces of object literals. Issue #301
-  
+
 ### 2.49.3
   - Fix #296 Closing backtick terminates styled-component css property.
   - Fix #297 for...of and for...in loops with let|const|var property grammar parsing.
