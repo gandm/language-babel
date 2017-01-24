@@ -6,7 +6,7 @@ Please note that this package is no longer supported.
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). This package also supports highlighting of [GraphQL](https://github.com/gandm/language-babel#graphql-code-highlighting) language constructs when inside certain JavaScript template strings. For `.graphql` and `.gql` file support please see [language-graphql-lb](https://atom.io/packages/language-graphql-lb) . The colour of syntax is determined by the theme in use.
+Language grammar for all versions of JavaScript including  ES2016 and ESNext,  JSX syntax as used by [Facebook React](http://facebook.github.io/react/index.html),  [Atom's etch](https://github.com/atom/etch) and others, as well as optional typed JavaScript using [Facebook flow](http://flowtype.org/). This package also supports highlighting of [GraphQL](https://github.com/gandm/language-babel#graphql-code-highlighting) language constructs when inside certain JavaScript template strings. For `.graphql` and `.gql` file support please see [language-graphql](https://atom.io/packages/language-graphql) . The colour of syntax is determined by the theme in use.
 
 The package also provides
 
@@ -289,7 +289,9 @@ language-babel supports highlighting of GraphQL code within JavaScript files. Fo
  Strings that have one of three prefixes/tags are parsed by the grammar to highlight the code enclosed.
 
  ```
- Relay.QL`This is how Relay.QL uses template strings`
+ Relay.QL`This is how Relay uses template strings`
+
+ graphql`This is how Relay will use template strings`
 
  gql`This is how Apollo for GraphQL uses template strings`
 
