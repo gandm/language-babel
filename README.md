@@ -176,7 +176,7 @@ For most projects, it is better to configure `language-babel` via project-based 
   ```
 
 * #### Babel Maps Add Url
-  If a source map is created using the `Create Map` option this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated transpiled JavaScript file.  
+  If a source map is created using the `Create Map` option this allows a Url reference `//# sourceURL=originalBabelSourcefile` to be appended to the generated transpiled JavaScript file.
 
   ```json
   {"babelMapsAddUrl": true} or
@@ -205,7 +205,7 @@ For most projects, it is better to configure `language-babel` via project-based 
 
   ```json
   {
-    "projectRoot":  true,    
+    "projectRoot":  true,
     "babelSourcePath": "babelSource",
     "babelTranspilePath": "babelTranspile",
     "babelMapsPath": "babelMaps"
@@ -273,7 +273,7 @@ A `.languagebabel` file may contain one or more of the following properties.
   "createTargetDirectories":          true|false,
   "createTranspiledCode":             true|false,
   "disableWhenNoBabelrcFileInPath":   true|false,
-  "projectRoot":                      true|false,  
+  "projectRoot":                      true|false,
   "suppressSourcePathMessages":       true|false,
   "suppressTranspileOnSaveMessages":  true|false,
   "transpileOnSave":                  true|false
@@ -290,6 +290,8 @@ language-babel supports highlighting of GraphQL code within JavaScript files. Fo
 
  ```
  Relay.QL`This is how Relay.QL uses template strings`
+
+ graphql`This is how Relay will start using template strings`
 
  gql`This is how Apollo for GraphQL uses template strings`
 
