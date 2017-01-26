@@ -1,3 +1,6 @@
+### 2.50.1
+  - Change regex for detecting flow type casts. Fixes Issue #317 
+
 ### 2.50.0
   - Add support for TC39 dynamic import 'function'.
   - Add support for Relay to use graphql as a tagged template name.
