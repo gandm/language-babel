@@ -1700,12 +1700,7 @@
                 "1": { "name": "keyword.control.module.js" }
               }
             },
-            {
-              "match": "\\s*\\b(typeof|type)\\b\\s++(?={|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
-              "captures": {
-                "1": { "name": "keyword.other.typedef.flowtype" }
-              }
-            },
+            { "include": "#literal-module-typeof" },
             { "include": "#literal-module-as" },
             {
               "name": "keyword.operator.module.all.js",
@@ -1791,6 +1786,7 @@
               "name": "keyword.operator.module.all.js",
               "match": "\\*"
             },
+            { "include": "#literal-module-typeof" },
             { "include": "#literal-module-as" },
             { "include": "#literal-module-brackets" },
             { "include": "#literal-variable" },
@@ -1800,6 +1796,12 @@
           ]
         }
       ]
+    },
+    "literal-module-typeof": {
+        "match": "\\s*\\b(typeof|type)\\b\\s++(?={|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
+        "captures": {
+          "1": { "name": "keyword.other.typedef.flowtype" }
+        }
     },
     "literal-variable": {
       "patterns": [
