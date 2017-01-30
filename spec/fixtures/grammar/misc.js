@@ -2,20 +2,17 @@
 
 // Class and method decorator productions
 @Decorator
-// <- meta.tag.decorator keyword.operator.decoration.js
- // <- meta.tag.decorator entity.name.class.js
-//^^^^^^^^  meta.tag.decorator
-//^^^^^^^^  entity.name.class.js
+// <- keyword.operator.decorator.js
+ // <- entity.name.class.decorator.js
+//^^^^^^^^  entity.name.class.decorator.js
 .decorator_property
-// <- meta.tag.decorator keyword.operator.accessor.js
- // <- meta.tag.decorator variable.other.property.js
-//^^^^^^^^^^^^^^^^^  meta.tag.decorator
-//^^^^^^^^^^^^^^^^^  variable.other.property.js
+// <- keyword.operator.accessor.js
+ // <- variable.other.property.decorator.js
+//^^^^^^^^^^^^^^^^^  variable.other.property.decorator.js
 .decorator-function
-// <- meta.tag.decorator keyword.operator.accessor.js
- // <- meta.tag.decorator variable.other.property.js
-//^^^^^^^^           meta.tag.decorator
-//^^^^^^^^           variable.other.property.js
+// <- keyword.operator.accessor.js
+ // <- variable.other.property.decorator.js
+//^^^^^^^^           variable.other.property.decorator.js
 //        ^          keyword.operator.arithmetic.js
 //         ^^^^^^^^  variable.other.readwrite.js
 class DecoratedClass {
@@ -27,28 +24,25 @@ class DecoratedClass {
 //                   ^  punctuation.section.class.begin.js
   @observable varToWatch: boolean = true
 //^^^^^^^^^^^ ^^^^^^^^^^^ ^^^^^^^ ^ ^^^^  meta.class.body.js
-//^^^^^^^^^^^                             meta.tag.decorator
-//^                                       keyword.operator.decoration.js
-// ^^^^^^^^^^ ^^^^^^^^^^                  variable.other.readwrite.js
+//^                                       keyword.operator.decorator.js
+// ^^^^^^^^^^                             variable.other.readwrite.decorator.js
+//            ^^^^^^^^^^                  variable.other.readwrite.js
 //                      ^                 punctuation.type.flowtype
 //                        ^^^^^^^         support.type.builtin.primitive.flowtype
 //                                ^       keyword.operator.assignment.js
 //                                  ^^^^  constant.language.boolean.true.js
   @SomeClassDecorartorLib.
 //^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
-//^^^^^^^^^^^^^^^^^^^^^^^^  meta.tag.decorator
-//^                         keyword.operator.decoration.js
-// ^^^^^^^^^^^^^^^^^^^^^^   entity.name.class.js
+//^                         keyword.operator.decorator.js
+// ^^^^^^^^^^^^^^^^^^^^^^   entity.name.class.decorator.js
 //                       ^  keyword.operator.accessor.js
   someproperty
 //^^^^^^^^^^^^  meta.class.body.js
-//^^^^^^^^^^^^  meta.tag.decorator
-//^^^^^^^^^^^^  variable.other.property.js
+//^^^^^^^^^^^^  variable.other.property.decorator.js
   . someDecorator("Some String",andAVar)
 //^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.class.body.js
-//^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^  meta.tag.decorator
 //^                                       keyword.operator.accessor.js
-//  ^^^^^^^^^^^^^                         variable.other.property.js
+//  ^^^^^^^^^^^^^                         variable.other.property.decorator.js
 //               ^                     ^  meta.brace.round.js
 //                ^^^^^ ^^^^^^^           string.quoted.double.js
 //                ^                       punctuation.definition.string.begin.js
