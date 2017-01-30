@@ -1,5 +1,9 @@
+### 2.51.0
+  - Add support for the new flow shorthand for importing types in the same declaration that imports values: import {someValue, type someType, typeof someOtherValue} from 'foo'
+  - Remove and tidy decorator support in grammar - Issue #320
+
 ### 2.50.1
-  - Change regex for detecting flow type casts. Fixes Issue #317 
+  - Change regex for detecting flow type casts. Fixes Issue #317
 
 ### 2.50.0
   - Add support for TC39 dynamic import 'function'.
