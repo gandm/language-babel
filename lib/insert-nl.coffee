@@ -33,9 +33,9 @@ class InsertNl
   insertNewlineAfterStyledComponentsBackTick: () ->
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
-    return true unless 'string.quoted.template.styled.start.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
     cursorBufferPosition.column--
-    return true unless 'string.quoted.template.styled.start.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
     indentLength = @editor.indentationForBufferRow(cursorBufferPosition.row)
     @editor.insertText("\n\n`")
     @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
