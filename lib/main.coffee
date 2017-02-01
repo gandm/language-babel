@@ -1,5 +1,6 @@
 {CompositeDisposable} = require 'atom'
 autoCompleteJSX = require './auto-complete-jsx'
+autoCompleteStyledComponents = require './auto-complete-styled-components'
 AutoIndent = require './auto-indent'
 ttlGrammar = require './create-ttl-grammar'
 
@@ -10,6 +11,7 @@ module.exports =
   config: require './config'
 
   activate: (state) ->
+    autoCompleteStyledComponents.loadProperties()
     @transpiler ?= new (require './transpiler')
     @ttlGrammar = new ttlGrammar(true)
     # track any file save events and transpile if babel
@@ -86,8 +88,10 @@ module.exports =
                   \n \nIt is recommended that you disable either '#{activatedPackage.name}' or language-babel
                   \n \nReason:\n \n#{reason}"
 
-  JSXCompleteProvider: ->
-    autoCompleteJSX
+  # autocomplete-plus providers
+  autoCompleteProvider: ->
+    [autoCompleteJSX, autoCompleteStyledComponents]
 
+  # preview tranpile provider
   provide:->
     @transpiler

@@ -27,7 +27,7 @@
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
-        "2.0.0": "JSXCompleteProvider"
+        "2.0.0": "autoCompleteProvider"
       }
     },
     "preview.provider": {
