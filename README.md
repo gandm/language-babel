@@ -1,7 +1,5 @@
 # language-babel
 
-Please note that this package is no longer supported.
-
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build status](https://ci.appveyor.com/api/projects/status/ef32qrj8iplnbqm2/branch/master?svg=true)](https://ci.appveyor.com/project/gandm/language-babel/branch/master)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
@@ -282,7 +280,7 @@ A `.languagebabel` file may contain one or more of the following properties.
 
 ## GraphQL Code Highlighting
 
-language-babel supports highlighting of GraphQL code within JavaScript files. For highlighting `.graphql` and `.gql` files see it's sister grammar - [language-graphql-lb](https://atom.io/packages/language-graphql-lb).
+language-babel supports highlighting of GraphQL code within JavaScript files. For highlighting `.graphql` and `.gql` files see its sister grammar - [language-graphql](https://atom.io/packages/language-graphql).
 
  Inside JavaScript, GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings are highlighted. Other GraphQL structures, notably types, are supported by the Flow component of this package.
 
