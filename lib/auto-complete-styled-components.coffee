@@ -226,10 +226,8 @@ firstCharsEqual = (str1, str2) ->
 # It also adds a trailing $n at end of text
 # e.g translate() becomes translate($1)$2
 makeSnippet = (text)  ->
-  getNextSnippetNumber =  do () ->
-    snippetNumber = 0
-    return () ->  "$#{++snippetNumber}"
+  snippetNumber = 0
   while text.includes('()')
-    text = text.replace('()', "(#{getNextSnippetNumber()})")
-  text = text + getNextSnippetNumber()
+    text = text.replace('()', "($#{++snippetNumber})")
+  text = text + "$#{++snippetNumber}"
   return text
