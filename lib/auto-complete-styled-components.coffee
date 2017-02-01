@@ -1,7 +1,7 @@
 # This code was based upon https://github.com/atom/autocomplete-css but has been modified to allow it to be used
 # for styled-componenets. The completions.json file used to auto complete is a copy of the one used by the atom
-# package. That package, provided as an Atom base pacakge, has tools to update the completions.json file from the web.
-# See that package for more info and just copy the completions.json to this files directory whern a refresh is needed.
+# package. That package, provided as an Atom base package, has tools to update the completions.json file from the web.
+# See that package for more info and just copy the completions.json to this files directory when a refresh is needed.
 
 fs = require 'fs'
 path = require 'path'
@@ -16,7 +16,7 @@ importantPrefixPattern = /(![a-z]+)$/
 cssDocsURL = "https://developer.mozilla.org/en-US/docs/Web/CSS"
 
 module.exports =
-  selector: '.source.inside-js.css.styled, source.css.styled'
+  selector: '.source.inside-js.css.styled, .source.css.styled'
   disableForSelector: ".source.inside-js.css.styled .comment, .source.inside-js.css.styled .string, .source.inside-js .css.styled.entity.quasi.element.js, .source.css.styled .comment, .source.css.styled .string, .source.css.styled .css.styled.entity.quasi.element.js"
 
   filterSuggestions: true
