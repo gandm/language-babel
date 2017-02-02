@@ -1,4 +1,4 @@
-### 2.52.1
+### 2.52.2
   - Change styled-components auto-complete property values to position cursor after closing semi-colon.
   - Allow pseudo selectors to appear at top level of styled-components string without implicit parent. css`::pseudo-value`
 
