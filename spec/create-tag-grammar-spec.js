@@ -126,9 +126,8 @@ describe('Create Ttl Grammar', () => {
           .then( () => setTimeout(()=>void(0) ,1000) )
           .then( () => ttlGrammar.getTtlGrammarFiles() )
           .then( (ttlFiles) => expect(ttlFiles).toEqual([]) );
-        });
-      }
-    );
+      });
+    });
   });
 
   describe('::createGrammarPatterns', () => {
