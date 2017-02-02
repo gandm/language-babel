@@ -15,7 +15,7 @@ The package also provides
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
- - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings.
+ - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings including auto-completion.
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
  - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
@@ -246,7 +246,7 @@ For most projects, it is better to configure `language-babel` via project-based 
 	In other words, the package settings for this field is an array of strings, with each string in the form of `template-prefix:grammar-scopename#optional-include`.
 
   where:
-    - `template-prefix` is a literal string or an Oniguruma regular expression ( Oniguruma is the regular expression engine for TextMate grammars used by Atom) that comes before the opening back-tick of a template. It may contain any characters except a comma but including colons. A regular expression is denoted by being enclosed by double quote marks `"RegExp Here"`. Also, regular expressions must conform to being used inside a JSON object, so for example, `\s*`, which skips any number of white-space characters, should be entered as `\\s*`, whereas embedded double quotes must be escaped `\"`
+    - `template-prefix` is a literal string or an Oniguruma regular expression ( Oniguruma is the regular expression engine for TextMate grammars used by Atom) that comes before the opening back-tick of a template. A literal string may contain any characters except a comma but including colons. A regular expression is denoted by being enclosed by double quote marks `"RegExp Here"`. Also, regular expressions must conform to being used inside a JSON object, so for example, `\s*`, which skips any number of white-space characters, should be entered as `\\s*`, whereas embedded double quotes must be escaped `\"`
     - `:`The last colon in the string signifies the start of the embedded grammars scopeName.
     - `grammar-scopename` is the scopeName of the grammar used to highlight the template.
     - `#optional-include` if present, will use that include block in the grammars repository.
