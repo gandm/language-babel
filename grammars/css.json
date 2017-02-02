@@ -705,7 +705,7 @@
         {
           "contentName": "meta.property-values.css",
           "comment": "unknown properties --*",
-          "begin": "(?<=^|[\\W])\\s*+([-_a-zA-Z0-9]*)\\s*+(:)",
+          "begin": "(?<=^|[\\W])\\s*+([-_a-zA-Z0-9]+)\\s*+(:)",
           "end": "(;)|(?=[`})\\]])",
           "beginCaptures": {
             "1": {"name": "support.type.property-name.unknown.css"}
