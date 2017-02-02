@@ -134,8 +134,8 @@ module.exports =
 
   buildPropertyValueCompletion: (value, propertyName, addSemicolon) ->
     text = value
-    text = makeSnippet(text)
     text += ';' if addSemicolon
+    text = makeSnippet(text)
 
     {
       type: 'value'
