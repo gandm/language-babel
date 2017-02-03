@@ -6,11 +6,15 @@ ttlGrammar = require './create-ttl-grammar'
 
 INTERFILESAVETIME = 1000
 LB = 'language-babel'
+observeStatusBarGrammarNameTimer = null
+observeStatusBarGrammarNameTimerCalled = 0
 
 module.exports =
   config: require './config'
 
   activate: (state) ->
+    # run observeStatusBarGrammarName until Atom has created the Status Bar Grammar Name DOM node
+    observeStatusBarGrammarNameTimer = setInterval(@observeStatusBarGrammarName.bind(@), 1000)
     autoCompleteStyledComponents.loadProperties()
     @transpiler ?= new (require './transpiler')
     @ttlGrammar = new ttlGrammar(true)
@@ -61,6 +65,7 @@ module.exports =
     @transpiler.stopAllTranspilerTask()
     @transpiler.disposables.dispose()
     @ttlGrammar.destroy()
+    @mutateStatusGrammarNameObserver?.disconnet()
 
   # warns if an activated package is on the incompatible list
   isPackageCompatible: (activatedPackage) ->
@@ -95,3 +100,43 @@ module.exports =
   # preview tranpile provider
   provide:->
     @transpiler
+
+
+  # Kludge to change the grammar name in the status bar from Babel ES6 JavaScipt to Babel
+  # The grammar name still remains the same for compatibilty with other packages such as atom-beautify
+  # but is more meaningful and shorter on the status bar.
+  observeStatusBarGrammarName: ->
+    # select the target node
+    target = document.getElementsByTagName('grammar-selector-status');
+
+    # only run this for so many cycles without getting a valid dom node
+    if ++observeStatusBarGrammarNameTimerCalled > 60
+      clearInterval(observeStatusBarGrammarNameTimer)
+      observeStatusBarGrammarNameTimerCalled = 0
+
+    # only expect a single child (grammar name) for this DOM Node
+    if target.length is 1
+      target = target[0].childNodes?[0]
+
+      if target
+        # don't run again as we are now observing
+        clearInterval(observeStatusBarGrammarNameTimer)
+
+        @mutateStatusBarGrammarName(target)
+
+        # create an observer instance
+        mutateStatusGrammarNameObserver = new MutationObserver (mutations) =>
+          mutations.forEach  (mutation) =>
+              @mutateStatusBarGrammarName(mutation.target)
+
+        # configuration of the observer:
+        config = { attributes: true, childList: false, characterData: false }
+
+        # pass in the target node, as well as the observer options
+        mutateStatusGrammarNameObserver.observe(target, config);
+
+
+  # change name in status bar
+  mutateStatusBarGrammarName: (elem) ->
+    if elem?.innerHTML is 'Babel ES6 JavaScript'
+      elem.innerHTML = 'Babel'

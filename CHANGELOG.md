@@ -1,6 +1,9 @@
+### 2.53.0
+  - Changed the status bar indicator to use a name of `Babel` rather than `Babel ES6 JavaScript`. Now ES2016 and ES2017 are being released it seems more appropriate and succinct. `Babel ES6 JavaScript` is still the internal grammar name as shown on the list of grammars to ensure compatibility with packages that use this keyword. e.g. atom-beautify.
+
 ### 2.52.2
   - Change styled-components auto-complete property values to position cursor after closing semi-colon.
-  - Allow pseudo selectors to appear at top level of styled-components string without implicit parent. css`::pseudo-value`
+  - Allow pseudo selectors to appear at top level of styled-components string without implicit parent. css `::pseudo-value`
 
 ### 2.52.0
   - Add support for auto-completing styled-components CSS.
