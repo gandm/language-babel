@@ -1,3 +1,7 @@
+### 2.54.0
+  - Add scope of meta.conmments.flowtype to flowtype comment style.
+  - Use Oniguruma to parse taggedTemplateGrammar regex - allows use of backtracking.
+
 ### 2.53.0
   - Changed the status bar indicator to use a name of `Babel` rather than `Babel ES6 JavaScript`. Now ES2016 and ES2017 are being released it seems more appropriate and succinct. `Babel ES6 JavaScript` is still the internal grammar name as shown on the list of grammars to ensure compatibility with packages that use this keyword. e.g. atom-beautify.
 
