@@ -2710,6 +2710,7 @@
     "flowtype-comments": {
       "patterns": [
         {
+          "name": "meta.comments.flowtype",
           "begin": "\\s*+(/\\*)\\s*(::)",
           "end": "\\s*(\\*/)",
           "beginCaptures": {
@@ -2730,6 +2731,7 @@
           ]
         },
         {
+          "name": "meta.comments.flowtype",
           "begin": "\\s*+(/\\*)\\s*(flow-include)\\b",
           "end": "\\s*(\\*/)",
           "beginCaptures": {
@@ -2750,6 +2752,7 @@
           ]
         },
         {
+          "name": "meta.comments.flowtype",
           "begin": "\\s*+(/\\*)\\s*(:)",
           "end": "\\s*(\\*/)",
           "beginCaptures": {
