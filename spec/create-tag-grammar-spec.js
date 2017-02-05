@@ -147,7 +147,7 @@ describe('Create Ttl Grammar', () => {
         var tempGrammarDir = temp.mkdirSync();
 
         spyOn(ttlGrammar, 'getGrammarPath').andReturn(tempGrammarDir);
-        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['"css\\\\.([abc])+":source.css','/* html */:text.html.basic','sql:source.sql']);
+        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['"css\\\\\\\\.([abc])+":source.css','/* html */:text.html.basic','sql:source.sql']);
 
         const grammarText = ttlGrammar.createGrammarText();
         const hash = ttlGrammar.generateTtlSHA256(grammarText);
@@ -155,7 +155,7 @@ describe('Create Ttl Grammar', () => {
         const ttlFilenameAbsolute = ttlGrammar.makeTtlGrammarFilenameAbsoulute(ttlFilename);
         waitsForPromise(() => {
           return ttlGrammar.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText }).then( (val) => {
-            expect(val).toEqual('ttl-d91bc48a20b15ec34bd92175c90020f40f0686008f2e3fefbd1bedc1fbe9079c.json');
+            expect(val).toEqual('ttl-799b34efe31501879e6d8b1d35d24efdf290eebff7f3a34d3b2a428032998a8d.json');
           });
         });
       }
