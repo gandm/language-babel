@@ -106,8 +106,6 @@ class CreateTtlGrammar {
 
     if ( isQuotedMatchString ) {
       // Found a possible regexp in the form "regex" so strip the "
-      // This is a oniguruma regex but we will do a simple JS regex test for
-      // validity as it is most likely close enough!
       matchString = matchString.substring(1, matchString.length -1);
       try {
         // We need to call oniguruma's constructor via this convoluted method as I can't include
@@ -124,7 +122,8 @@ class CreateTtlGrammar {
                       // Change JSON/JS type string to a valid regex
                       let onigString = matchString.replace(/\\\\/g,"\\"); // double slashes to single
                       onigString = onigString.replace(/\\"/g,"\""); // escaped quote to quote
-                      //now call new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
+                      // now call new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
+                      // to validate the regex
                       new ref2.constructor([onigString]);
                     }
                   }
