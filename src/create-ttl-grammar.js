@@ -3,7 +3,6 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const CompositeDisposable = require('atom').CompositeDisposable;
-//atom.grammars.grammarsByScopeName["source.js.jsx"].firstLineRegex.scanner.__proto__
 
 // This Class is repsonsible for creating a new Tagged Template grammar
 // on detection of a changed Tagged Template Configuration in the package settings
@@ -98,40 +97,40 @@ class CreateTtlGrammar {
     let lastColonIndex = ttlString.lastIndexOf(':');
     let matchString = ttlString.substring(0, lastColonIndex);
     let includeScope = ttlString.substring(lastColonIndex+1);
-    const isValidIncludeScope = /^([a-zA-Z]\w*\.?)*(\w#([a-zA-Z]\w*\.?)*)?\w$/;
+    const isValidIncludeScope = /^([a-zA-Z]\w*\.?)*(\w#([a-zA-Z]\w*\.?)*)?\w$/.test(includeScope);
+    const isQuotedMatchString = /^\".*\"$/.test(matchString);
 
-    if (matchString.length < 1 || !isValidIncludeScope.test(includeScope)) {
+    if (matchString.length < 1 || !isValidIncludeScope) {
       throw new Error(`Error in the Tagged Template Grammar String ${ttlString}`);
     }
 
-    if ( /^\".*\"$/.test(matchString)) {
+    if ( isQuotedMatchString ) {
       // Found a possible regexp in the form "regex" so strip the "
       // This is a oniguruma regex but we will do a simple JS regex test for
       // validity as it is most likely close enough!
       matchString = matchString.substring(1, matchString.length -1);
       try {
-        // the regex shouldn't have a single slash except before a "
-        if ( /\\[^"]/g.test(matchString.replace(/\\\\/g,""))) {
-          throw 'Single slash escapes should only precede a " Use double slashes for RegEx escapes';
-        }
         // We need to call oniguruma's constructor via this convoluted method as I can't include
-        // the github/atom/node-oniguruma package as npm on Windows get node-gyp errors
-        // so I'll call the constructor this way
-        if (atom.grammars.grammars) {
+        // the github/atom/node-oniguruma package as npm on Windows get node-gyp errors unless a
+        // user has installed a compiler. Find Atom's Oniguruma and call the constructor.
+        if (typeof atom.grammars.grammars === "object") {
           atom.grammars.grammars.every((obj) => {
             if (obj.packageName === "language-babel") {
-              if ((obj.firstLineRegex) &&
-                (obj.firstLineRegex.scanner) &&
-                (obj.firstLineRegex.scanner.__proto__) &&
-                (obj.firstLineRegex.scanner.__proto__.constructor)) {
-                // Change JSON/JS type string to a valid regex
-                let onigString = matchString.replace(/\\\\/g,"\\"); // double slashes to single
-                onigString = onigString.replace(/\\"/g,"\""); // escaped quote to quote
-                new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
+              let ref, ref1, ref2;
+              if ((ref = obj.firstLineRegex) != null) {
+                if ((ref1 = ref.scanner) != null) {
+                  if ((ref2 = ref1.__proto__) != null) {
+                    if (typeof ref2.constructor === "function") {
+                      // Change JSON/JS type string to a valid regex
+                      let onigString = matchString.replace(/\\\\/g,"\\"); // double slashes to single
+                      onigString = onigString.replace(/\\"/g,"\""); // escaped quote to quote
+                      //now call new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
+                      new ref2.constructor([onigString]);
+                    }
+                  }
+                }
               }
-              else {
-                return false;
-              }
+              return false;
             }
             else return true;
           });
@@ -145,8 +144,12 @@ class CreateTtlGrammar {
       throw new Error(`Bad literal string in the Tagged Template Grammar settings.\n${matchString}`);
     }
     else {
-      const escapeStringRegExp = /[|\\{}()[\]^$+*?.]/g;
-      // Get a valid regexp escaped string. e.g. '/** @html */' -> '\/\*\* @html \*\/'
+      // User entered a literal string which may contain chars that a special inside a regex.
+      // Escape any special chars e.g. '/** @html */' -> '\/\*\* @html \*\/'
+      // The string stored by Atom in the config has the \\ already escaped.
+      const escapeStringRegExp = /[|{}()[\]^$+*?.]/g;
+      const preEscapedSlash = /\\/g;
+      matchString = matchString.replace(preEscapedSlash, '\\\\\\\\');
       matchString = matchString.replace(escapeStringRegExp, '\\\\$&');
     }
 
