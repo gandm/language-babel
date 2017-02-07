@@ -1,3 +1,6 @@
+### 2.54.1
+  - Fix incorrect generation of ttl grammars when using certain regex strings.
+  
 ### 2.54.0
   - Add scope of meta.conmments.flowtype to flowtype comment style.
   - Use Oniguruma to parse taggedTemplateGrammar regex - allows use of backtracking.
