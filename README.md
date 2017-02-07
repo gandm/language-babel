@@ -241,12 +241,12 @@ For most projects, it is better to configure `language-babel` via project-based 
 
 	If we use the Atom provided languages [language-css](https://atom.io/packages/language-css), [language-html](https://atom.io/packages/language-html) and [language-sql](https://atom.io/packages/language-sql) in our example above to highlight the template code, then this field would look like.
 
-  ```"css\\.([a-z])+":source.css, /* @html */:text.html.basic, sql:source.sql```
+  ```"(?:css\.(?:[a-z])+)":source.css, /* @html */:text.html.basic, sql:source.sql```
 
 	In other words, the package settings for this field is an array of strings, with each string in the form of `template-prefix:grammar-scopename#optional-include`.
 
   where:
-    - `template-prefix` is a literal string or an Oniguruma regular expression ( Oniguruma is the regular expression engine for TextMate grammars used by Atom) that comes before the opening back-tick of a template. A literal string may contain any characters except a comma but including colons. A regular expression is denoted by being enclosed by double quote marks `"RegExp Here"`. Also, regular expressions must conform to being used inside a JSON object, so for example, `\s*`, which skips any number of white-space characters, should be entered as `\\s*`, whereas embedded double quotes must be escaped `\"`. Also, importantly, a regular expression should create no capturing groups.
+    - `template-prefix` is a literal string or an Oniguruma regular expression ( Oniguruma is the regular expression engine for TextMate grammars used by Atom) that comes before the opening back-tick of a template. A literal string may contain any characters except a comma but including colons. A regular expression is denoted by being enclosed by double quote marks `"RegExp Here"`. **Most importantly, a regular expression should create no capturing groups.**
     - `:`The last colon in the string signifies the start of the embedded grammars scopeName.
     - `grammar-scopename` is the scopeName of the grammar used to highlight the template.
     - `#optional-include` if present, will use that include block in the grammars repository.

@@ -139,6 +139,25 @@ describe('Create Ttl Grammar', () => {
     );
   });
 
+  describe('::onigurumaCheck', () => {
+    return it(
+      'should return true on a valid regex',
+      () => {
+        let ret = ttlGrammar.onigurumaCheck('(?<=<tag>\\{)');
+        expect(ret).toBe(true);
+      }
+    );
+  });
+
+  describe('::onigurumaCheck', () => {
+    return it(
+      'should throw on a invalid regex',
+      () => {
+        expect(() => {ttlGrammar.onigurumaCheck('(?<=\\s*<tag>\\{)');}).toThrow();
+      }
+    );
+  });
+
   // Ensure we finish off by creating a valid ttl file
   describe('::createGrammar', () => {
     return it(
@@ -147,7 +166,7 @@ describe('Create Ttl Grammar', () => {
         var tempGrammarDir = temp.mkdirSync();
 
         spyOn(ttlGrammar, 'getGrammarPath').andReturn(tempGrammarDir);
-        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['"css\\\\\\\\.([abc])+":source.css','/* html */:text.html.basic','sql:source.sql']);
+        spyOn(ttlGrammar, 'getTtlConfig').andReturn(['"(?:css\\.(?:[a-z])+)":source.css','/* @html */:text.html.basic','sql:source.sql']);
 
         const grammarText = ttlGrammar.createGrammarText();
         const hash = ttlGrammar.generateTtlSHA256(grammarText);
@@ -155,7 +174,7 @@ describe('Create Ttl Grammar', () => {
         const ttlFilenameAbsolute = ttlGrammar.makeTtlGrammarFilenameAbsoulute(ttlFilename);
         waitsForPromise(() => {
           return ttlGrammar.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText }).then( (val) => {
-            expect(val).toEqual('ttl-799b34efe31501879e6d8b1d35d24efdf290eebff7f3a34d3b2a428032998a8d.json');
+            expect(val).toEqual('ttl-70e3a9c0bc02452d40273dd021557ff7f5ac8d9f44722020339efe1ac6a9f79e.json');
           });
         });
       }

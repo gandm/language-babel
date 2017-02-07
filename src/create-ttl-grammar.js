@@ -108,32 +108,9 @@ class CreateTtlGrammar {
       // Found a possible regexp in the form "regex" so strip the "
       matchString = matchString.substring(1, matchString.length -1);
       try {
-        // We need to call oniguruma's constructor via this convoluted method as I can't include
-        // the github/atom/node-oniguruma package as npm on Windows get node-gyp errors unless a
-        // user has installed a compiler. Find Atom's Oniguruma and call the constructor.
-        if (typeof atom.grammars.grammars === "object") {
-          atom.grammars.grammars.every((obj) => {
-            if (obj.packageName === "language-babel") {
-              let ref, ref1, ref2;
-              if ((ref = obj.firstLineRegex) != null) {
-                if ((ref1 = ref.scanner) != null) {
-                  if ((ref2 = ref1.__proto__) != null) {
-                    if (typeof ref2.constructor === "function") {
-                      // Change JSON/JS type string to a valid regex
-                      let onigString = matchString.replace(/\\\\/g,"\\"); // double slashes to single
-                      onigString = onigString.replace(/\\"/g,"\""); // escaped quote to quote
-                      // now call new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
-                      // to validate the regex
-                      new ref2.constructor([onigString]);
-                    }
-                  }
-                }
-              }
-              return false;
-            }
-            else return true;
-          });
-        }
+        this.onigurumaCheck(matchString);
+        matchString = matchString.replace(/\\/g,"\\\\"); // \ to \\
+        matchString = matchString.replace(/\\\\["]/g,"\\\\\\\""); // \\" to \\
       }
       catch (err) {
         throw new Error(`You entered an badly formed RegExp in the Tagged Template Grammar settings.\n${matchString}\n${err}`);
@@ -248,6 +225,37 @@ class CreateTtlGrammar {
         atom.notifications.addWarning('language-babel', {detail: `${err.message}`,dismissable: true});
       }
     }, timeout);
+  }
+
+  // validate a regex with a Oniguruma. This will throw if it fails the checks
+  // This will return true if the check passes or false if no oniguruma was found
+  onigurumaCheck(regex) {
+    let isRegexValid = false;
+    // We need to call oniguruma's constructor via this convoluted method as I can't include
+    // the github/atom/node-oniguruma package as npm on Windows get node-gyp errors unless a
+    // user has installed a compiler. Find Atom's Oniguruma and call the constructor.
+    if (typeof atom.grammars.grammars === "object") {
+      atom.grammars.grammars.every((obj) => {
+        if (obj.name === "Babel ES6 JavaScript") {
+          let ref, ref1, ref2;
+          if ((ref = obj.firstLineRegex) != null) {
+            if ((ref1 = ref.scanner) != null) {
+              if ((ref2 = ref1.__proto__) != null) {
+                if (typeof ref2.constructor === "function") {
+                  // now call new obj.firstLineRegex.scanner.__proto__.constructor([onigString]);
+                  // to validate the regex
+                  new ref2.constructor([regex]);
+                  isRegexValid = true;
+                }
+              }
+            }
+          }
+          return false;
+        }
+        else return true;
+      });
+    }
+    return isRegexValid;
   }
 
   // Remove grammars before upodating
