@@ -418,20 +418,211 @@
     },
     "jsdoc": {
       "patterns": [
-        {
-          "comment": "common doc @ keywords",
-          "match": "(?<!\\w)@(abstract|alias|author|class|constructor|deprecated|enum|event|example|extends|fires|ignore|inheritdoc|member|method|param|private|property|protected|readonly|requires|return|since|static|throws|type|var)\\b",
-          "name": "storage.type.class.doc"
-        },
-        {
-          "comment": "additional jsdoc keywords",
-          "match": "(?<!\\w)@(access|also|arg|arguments|augments|borrows|borrowsThis|callback|callbackDocument|classdesc|constant|const|constructs|copyright|default|defaultvalue|desc|description|emits|exception|exports|external|file|fileoverview|function|func|global|host|implements|inner|instance|interface|kind|lends|license|listens|link|linkcode|linkplain|memberof|mixes|mixin|module|name|namespace|overview|prop|public|returns|see|summary|this|todo|tutorial|typedef|undocumented|variation|version|virtual)\\b",
-          "name": "storage.type.class.jsdoc"
-        },
+        { "include": "#jsdoc-inline-tags" },
+        { "include": "#jsdoc-access" },
+        { "include": "#jsdoc-as-namepath" },
+        { "include": "#jsdoc-simple" },
+        { "include": "#jsdoc-simple-namepath" },
+        { "include": "#jsdoc-module" },
+        { "include": "#jsdoc-type-name" },
+        { "include": "#jsdoc-type-noname" },
         {
           "comment": "additional jsduck keywords",
           "match": "(?<!\\w)@(accessor|alternateClassName|aside|cfg|chainable|docauthor|evented|experimental|ftype|hide|inheritable|localdoc|markdown|mixins|new|override|preventable|ptype|removed|scss mixin|singleton|template|uses|xtype)\\b",
           "name": "storage.type.class.jsduck"
+        }
+      ]
+    },
+    "jsdoc-access": {
+      "comment": "@tag protected....",
+      "begin": "(?:^[\\s*]*)(@(access))\\s*(private|protected|public)?(?=\\s|$)",
+      "end": "^",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"},
+        "3": { "name": "storage.modifier.jsdoc"}
+      }
+    },
+    "jsdoc-module": {
+      "comment": "@tag {optional type} module:file",
+      "begin": "(?:^[\\s*]*)(@(exports|module|listens|requires)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*(\\S*)([\\S\\s]*)|([\\S*\\s]*))",
+      "end": "^|(?=(\\5|\\6)$)",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-scopes"},
+        {
+          "match": "(?:(module)(:))?(\\S*)",
+          "captures": {
+            "1": { "name": "keyword.module.jsdoc"},
+            "2": { "name": "punctuation.jsdoc"},
+            "3": { "name": "string.modulename.jsdoc"}
+          }
+        }
+      ]
+    },
+    "jsdoc-as-namepath": {
+      "comment": "look for @tag namespace as namespace",
+      "comment": "to terminate the block",
+      "begin": "(?:^[\\s*]*)(@(borrows|lends)\\b)\\s*(?=(?:(?:(?:[-\\.#~]?[$_A-Za-z][$\\w]*)++\\b(?:(?:\\s*\\bas\\b\\s*){1}(?:[-\\.#~]?[$_A-Za-z][$\\w]*)++\\b)?)([\\S\\s]*))|([\\S*\\s]*))",
+      "end": "^|(?=(\\3|\\4)$)",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-namepath-scopes"}
+      ]
+    },
+    "jsdoc-simple": {
+      "comment": "@tag",
+      "match": "(?:^[\\s*]*)(@(abstract|author|classdesc|copyright|default|defaultvalue|deprecated|description|desc|example|external|fileoverview|file|global|ignore|inheritdoc|inner|instance|license|override|prop|returns|readonly|see|since|static|summary|todo|tutorial|virtual|variation|version)\\b)(?=$|\\s)",
+      "captures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      }
+    },
+    "jsdoc-simple-namepath": {
+      "comment": "@tag {opt type} Class#xxx or Class#Event:aaaa etc",
+      "begin": "(?:^[\\s*]*)(@(alias|augments|callback|extends|emits|event|fires|interface|memberof|mixes|name|this|typedef)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*(?:(?:[-\\.#~:]?[$_A-Za-z][$\\w]*)++\\b)([\\S\\s]*)|([\\S*\\s]*))",
+      "end": "^|(?=(\\4|\\5)$)",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-scopes"},
+        { "include": "#jsdoc-namepath-scopes"}
+      ]
+    },
+    "jsdoc-type-name": {
+      "comment": "@tag {optional type} name",
+      "begin": "(?:^[\\s*]*)(@(class|constant|constructs|const|function|func|kind|member|method|namespace|param|var)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*(((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\S)+)([\\S\\s]*)|([\\S*\\s]*))",
+      "end": "^|(?=(\\7|\\8)$)",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-scopes"},
+        { "include": "#jsdoc-name-scopes"}
+      ]
+    },
+    "jsdoc-type-noname": {
+      "comment": "@tag {types}",
+      "begin": "(?:^[\\s*]*)(@(enum|implements|private|protected|public|throws|type)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*([\\S\\s]*)|([\\S*\\s]*))",
+      "end": "^|(?=(\\4|\\5)$)",
+      "beginCaptures": {
+        "1": { "name": "storage.type.class.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-scopes"}
+      ]
+    },
+    "jsdoc-inline-tags": {
+      "name": "meta.tag.inline.jsdoc",
+      "begin": "(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])?({)(?=@)",
+      "end": "(})",
+      "beginCaptures": {
+        "1": { "name": "string.linktext.jsdoc"},
+        "2": { "name": "meta.brace.curly.jsdoc"}
+      },
+      "endCaptures": {
+        "1": { "name": "meta.brace.curly.jsdoc"}
+      },
+      "patterns": [
+        {
+          "match": "(@(link|tutorial))\\b([^}]*)",
+          "captures": {
+            "1": { "name": "storage.type.class.jsdoc"},
+            "3": { "name": "string.jsdoc"}
+          }
+        }
+      ]
+    },
+    "jsdoc-typedef-scopes": {
+      "name": "entity.name.type.instance.jsdoc",
+      "begin": "{",
+      "end": "}",
+      "captures": {
+        "0": {"name": "meta.brace.curly.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-primitives"},
+        { "include": "#jsdoc-namepath-scopes"},
+        { "include": "#jsdoc-typedef-obj"}
+      ]
+    },
+    "jsdoc-typedef-primitives":   {
+      "match": "\\b(null|undefined|boolean|string|number)\\b",
+      "captures": {
+        "1": { "name": "support.type.builtin.primitive.jsdoc"}
+      }
+    },
+    "jsdoc-typedef-obj": {
+      "comment": "typedef object",
+      "begin": "{",
+      "end": "}",
+      "captures": {
+        "0": {"name": "meta.brace.curly.jsdoc"}
+      },
+      "patterns": [
+        { "include": "#jsdoc-typedef-primitives"},
+        {
+          "match": "\\b([$_A-Za-z][$_A-Za-z0-9]*)\\s*(:)",
+          "captures": {
+            "1": { "name": "variable.other.readwrite.jsdoc"}
+          }
+        },
+        { "include": "#jsdoc-namepath-scopes"},
+        { "include": "#jsdoc-typedef-obj"}
+      ]
+    },
+    "jsdoc-name-scopes": {
+      "match": "\\s*(((\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\S)+)",
+      "captures": {
+        "1": { "name": "variable.other.jsdoc"}
+      }
+    },
+    "jsdoc-namepath-scopes": {
+      "patterns": [
+        {
+          "match": "\\s*\\b(as)\\b\\s*(?=[$_A-Za-z])",
+          "captures": {
+            "1": { "name": "keyword.as.jsdoc"}
+          }
+        },
+        {
+          "match": "\\s*(?:([A-Z][$_A-Za-z0-9]*)|([$_A-Za-z][$_A-Za-z0-9]*))(?=[\\s\\-~.#]|$)",
+          "captures": {
+            "1": { "name": "entity.name.class.jsdoc"},
+            "2": { "name": "entity.name.function.jsdoc"}
+          }
+        },
+        {
+          "match": "(\\.)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "captures": {
+            "1": { "name": "keyword.operator.accessor.jsdoc"},
+            "2": { "name": "entity.name.function.method.static.jsdoc"}
+          }
+        },
+        {
+          "match": "(#)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "captures": {
+            "1": { "name": "keyword.operator.accessor.jsdoc"},
+            "2": { "name": "entity.name.function.method.instance.jsdoc"}
+          }
+        },
+        {
+          "match": "(~|-)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "captures": {
+            "1": { "name": "keyword.operator.accessor.jsdoc"},
+            "2": { "name": "entity.name.function.method.inner.jsdoc"}
+          }
+        },
+        {
+          "match": "(#)(event)(:)",
+          "captures": {
+            "1": { "name": "keyword.operator.accessor.jsdoc"},
+            "2": { "name": "keyword.event.jsdoc"},
+            "3": { "name": "punctuation.jsdoc"}
+          }
         }
       ]
     },
@@ -441,7 +632,7 @@
         { "include": "#special-comments-conditional-compilation" },
         {
           "contentName": "comment.block.documentation.js",
-          "begin": "\\s*+((/\\*\\*))(?!/)",
+          "begin": "\\s*+((/\\*\\*))(?!/|\\*)",
           "end": "(\\s*(\\*/))",
           "captures": {
             "1": { "name": "comment.block.documentation.js" },
