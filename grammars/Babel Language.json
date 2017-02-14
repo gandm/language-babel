@@ -435,9 +435,8 @@
     },
     "jsdoc-access": {
       "comment": "@tag protected....",
-      "begin": "(?:^[\\s*]*)(@(access))\\s*(private|protected|public)?(?=\\s|$)",
-      "end": "^",
-      "beginCaptures": {
+      "match": "(?:^[\\s*]*)(@(access))\\s*(private|protected|public)?(?=\\s|$)",
+      "captures": {
         "1": { "name": "storage.type.class.jsdoc"},
         "3": { "name": "storage.modifier.jsdoc"}
       }
