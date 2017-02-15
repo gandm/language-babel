@@ -69,14 +69,15 @@
  // <- comment.block.documentation.js
 // ^^^^^^^ ^^^^^^ ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^  comment.block.documentation.js
 // ^^^^^^^                                         storage.type.class.jsdoc
- * @borrows A as Aaa.aaa borrows as a namespace
+ * @borrows A.member as Aaa."#member" borrows as a namespace
  // <- comment.block.documentation.js
-// ^^^^^^^^ ^ ^^ ^^^^^^^ ^^^^^^^ ^^ ^ ^^^^^^^^^  comment.block.documentation.js
-// ^^^^^^^^                                      storage.type.class.jsdoc
-//          ^    ^^^                             entity.name.class.jsdoc
-//            ^^                                 keyword.as.jsdoc
-//                  ^                            keyword.operator.accessor.jsdoc
-//                   ^^^                         entity.name.function.method.static.jsdoc
+// ^^^^^^^^ ^^^^^^^^ ^^ ^^^^^^^^^^^^^ ^^^^^^^ ^^ ^ ^^^^^^^^^  comment.block.documentation.js
+// ^^^^^^^^                                                   storage.type.class.jsdoc
+//          ^           ^^^                                   entity.name.class.jsdoc
+//           ^                                                keyword.operator.accessor.jsdoc
+//            ^^^^^^                                          entity.name.function.method.static.jsdoc
+//                   ^^                                       keyword.as.jsdoc
+//                         ^^^^^^^^^^                         string.method.jsdoc
  * @callback Requester~requestCallback is a callback
  // <- comment.block.documentation.js
 // ^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^ ^ ^^^^^^^^  comment.block.documentation.js
@@ -156,15 +157,12 @@
 //        ^    entity.name.function.jsdoc
 //         ^   keyword.operator.accessor.jsdoc
 //          ^  entity.name.function.method.instance.jsdoc
- * @event Hurl#event:snowball an event
+ * @event chat."#channel"."op:announce-motd"
  // <- comment.block.documentation.js
-// ^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^ ^^^^^  comment.block.documentation.js
-// ^^^^^^                               storage.type.class.jsdoc
-//        ^^^^                          entity.name.class.jsdoc
-//            ^                         keyword.operator.accessor.jsdoc
-//             ^^^^^                    keyword.event.jsdoc
-//                  ^                   punctuation.jsdoc
-//                   ^^^^^^^^           entity.name.function.jsdoc
+// ^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  comment.block.documentation.js
+// ^^^^^^                                     storage.type.class.jsdoc
+//        ^^^^                                entity.name.function.jsdoc
+//            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  string.method.jsdoc
  * @exports module:aaaa/aa
  // <- comment.block.documentation.js
 // ^^^^^^^^ ^^^^^^^^^^^^^^  comment.block.documentation.js
@@ -469,5 +467,3 @@
 */
 // <- comment.block.documentation.js punctuation.definition.comment.js
  // <- comment.block.documentation.js punctuation.definition.comment.js
-
-// >> only:(source.js.jsx)

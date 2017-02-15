@@ -463,8 +463,8 @@
     "jsdoc-as-namepath": {
       "comment": "look for @tag namespace as namespace",
       "comment": "to terminate the block",
-      "begin": "(?:^[\\s*]*)(@(borrows|lends)\\b)\\s*(?=(?:(?:(?:[-\\.#~]?[$_A-Za-z][$\\w]*)++\\b(?:(?:\\s*\\bas\\b\\s*){1}(?:[-\\.#~]?[$_A-Za-z][$\\w]*)++\\b)?)([\\S\\s]*))|([\\S*\\s]*))",
-      "end": "^|(?=(\\3|\\4)$)",
+      "begin": "(?:^[\\s*]*)(@(borrows|lends)\\b)\\s*(?=\\S+(?:(?:\\s*\\bas\\b\\s*\\S+)?)([\\S\\s]*))",
+      "end": "^|(?=\\3$)",
       "beginCaptures": {
         "1": { "name": "storage.type.class.jsdoc"}
       },
@@ -481,8 +481,8 @@
     },
     "jsdoc-simple-namepath": {
       "comment": "@tag {opt type} Class#xxx or Class#Event:aaaa etc",
-      "begin": "(?:^[\\s*]*)(@(alias|augments|callback|extends|emits|event|fires|interface|memberof|mixes|name|this|typedef)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*(?:(?:[-\\.#~:]?[$_A-Za-z][$\\w]*)++\\b)([\\S\\s]*)|([\\S*\\s]*))",
-      "end": "^|(?=(\\4|\\5)$)",
+      "begin": "(?:^[\\s*]*)(@(alias|augments|callback|extends|emits|event|fires|interface|memberof|mixes|name|this|typedef)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*\\S+([\\S*\\s]*))",
+      "end": "^|(?=\\4$)",
       "beginCaptures": {
         "1": { "name": "storage.type.class.jsdoc"}
       },
@@ -595,21 +595,21 @@
           }
         },
         {
-          "match": "(\\.)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "match": "(\\.)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$|\\\")",
           "captures": {
             "1": { "name": "keyword.operator.accessor.jsdoc"},
             "2": { "name": "entity.name.function.method.static.jsdoc"}
           }
         },
         {
-          "match": "(#)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "match": "(#)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$|\\\")",
           "captures": {
             "1": { "name": "keyword.operator.accessor.jsdoc"},
             "2": { "name": "entity.name.function.method.instance.jsdoc"}
           }
         },
         {
-          "match": "(~|-)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$)",
+          "match": "(~|-)([$_A-Za-z][$_A-Za-z0-9]*)(?=\\s|$|\\\")",
           "captures": {
             "1": { "name": "keyword.operator.accessor.jsdoc"},
             "2": { "name": "entity.name.function.method.inner.jsdoc"}
@@ -620,8 +620,12 @@
           "captures": {
             "1": { "name": "keyword.operator.accessor.jsdoc"},
             "2": { "name": "keyword.event.jsdoc"},
-            "3": { "name": "punctuation.jsdoc"}
+            "3": { "name": "keyword.operator.jsdoc"}
           }
+        },
+        {
+          "name": "string.method.jsdoc",
+          "match": "\\.\\\".*?\\\"(?<!\\\\\")"
         }
       ]
     },
