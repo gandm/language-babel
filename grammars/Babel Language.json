@@ -481,7 +481,7 @@
     },
     "jsdoc-simple-namepath": {
       "comment": "@tag {opt type} Class#xxx or Class#Event:aaaa etc",
-      "begin": "(?:^[\\s*]*)(@(alias|augments|callback|extends|emits|event|fires|interface|memberof|mixes|name|this|typedef)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*\\S+([\\S*\\s]*))",
+      "begin": "(?:^[\\s*]*)(@(alias|augments|callback|extends|emits|event|fires|interface|memberof|mixes|name|this|typedef)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*\\S*([\\S*\\s]*))",
       "end": "^|(?=\\4$)",
       "beginCaptures": {
         "1": { "name": "storage.type.class.jsdoc"}
