@@ -474,7 +474,7 @@
     },
     "jsdoc-simple": {
       "comment": "@tag",
-      "match": "(?:^[\\s*]*)(@(abstract|author|classdesc|copyright|default|defaultvalue|deprecated|description|desc|example|external|fileoverview|file|global|ignore|inheritdoc|inner|instance|license|override|prop|returns|readonly|see|since|static|summary|todo|tutorial|virtual|variation|version)\\b)(?=$|\\s)",
+      "match": "(?:^[\\s*]*)(@(abstract|author|classdesc|copyright|default|defaultvalue|deprecated|description|desc|example|external|fileoverview|file|global|ignore|inheritdoc|inner|instance|license|override|prop|readonly|see|since|static|summary|todo|tutorial|virtual|variation|version)\\b)(?=$|\\s)",
       "captures": {
         "1": { "name": "storage.type.class.jsdoc"}
       }
@@ -505,7 +505,7 @@
     },
     "jsdoc-type-noname": {
       "comment": "@tag {types}",
-      "begin": "(?:^[\\s*]*)(@(enum|implements|private|protected|public|throws|type)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*([\\S\\s]*)|([\\S*\\s]*))",
+      "begin": "(?:^[\\s*]*)(@(enum|exception|implements|private|protected|public|returns|return|throws|type)\\b)\\s*(?=({(?:(?>[^{}]+)|\\g<-1>)*\\})?\\s*([\\S\\s]*)|([\\S*\\s]*))",
       "end": "^|(?=(\\4|\\5)$)",
       "beginCaptures": {
         "1": { "name": "storage.type.class.jsdoc"}

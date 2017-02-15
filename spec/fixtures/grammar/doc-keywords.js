@@ -392,10 +392,18 @@
 //           ^^^^^^                  keyword.module.jsdoc
 //                 ^                 punctuation.jsdoc
 //                  ^^^^^^^^^^^^^^^  string.modulename.jsdoc
- * @returns
+ * @returns {type} and nothing else
  // <- comment.block.documentation.js
-// ^^^^^^^^  comment.block.documentation.js
-// ^^^^^^^^  storage.type.class.jsdoc
+// ^^^^^^^^ ^^^^^^ ^^^ ^^^^^^^ ^^^^  comment.block.documentation.js
+// ^^^^^^^^                          storage.type.class.jsdoc
+//          ^^^^^^                   entity.name.type.instance.jsdoc
+//          ^    ^                   meta.brace.curly.jsdoc
+ * @return {type}
+ // <- comment.block.documentation.js
+// ^^^^^^^ ^^^^^^  comment.block.documentation.js
+// ^^^^^^^         storage.type.class.jsdoc
+//         ^^^^^^  entity.name.type.instance.jsdoc
+//         ^    ^  meta.brace.curly.jsdoc
  * @since
  // <- comment.block.documentation.js
 // ^^^^^^  comment.block.documentation.js
