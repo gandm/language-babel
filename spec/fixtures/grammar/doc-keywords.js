@@ -351,14 +351,15 @@
 // ^^^^^^  ^^^^^^^^^^ ^^^^^^^^^^^^ ^ ^^^ ^^^^^^^^^^ ^^^^^^^^^^  comment.block.documentation.js
 // ^^^^^^                                                       storage.type.class.jsdoc
 //         ^^^^^^^^^^ ^^^^^^^^^^^^                              variable.other.jsdoc
- * @param {(string|string[])} [somebody= John Doe] - Somebody's name, or an array of names
+ * @param {(string|string[])} [somebody= 'John Doe'] - Somebody's name, or an array of names
  // <- comment.block.documentation.js
-// ^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^ ^^^^ ^^^^ ^ ^^^^^^^^^^ ^^^^^ ^^ ^^ ^^^^^ ^^ ^^^^^  comment.block.documentation.js
-// ^^^^^^                                                                                   storage.type.class.jsdoc
-//        ^^^^^^^^^^^^^^^^^^^                                                               entity.name.type.instance.jsdoc
-//        ^                 ^                                                               meta.brace.curly.jsdoc
-//          ^^^^^^ ^^^^^^                                                                   support.type.builtin.primitive.jsdoc
-//                            ^^^^^^^^^^ ^^^^ ^^^^                                          variable.other.jsdoc
+// ^^^^^^ ^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^ ^^^^^ ^^^^^ ^ ^^^^^^^^^^ ^^^^^ ^^ ^^ ^^^^^ ^^ ^^^^^  comment.block.documentation.js
+// ^^^^^^                                                                                     storage.type.class.jsdoc
+//        ^^^^^^^^^^^^^^^^^^^                                                                 entity.name.type.instance.jsdoc
+//        ^                 ^                                                                 meta.brace.curly.jsdoc
+//          ^^^^^^ ^^^^^^                                                                     support.type.builtin.primitive.jsdoc
+//                            ^^^^^^^^^^ ^^^^^ ^^^^^                                          variable.other.jsdoc
+//                                       ^^^^^ ^^^^                                           string.jsdoc
  * @private {type}
  // <- comment.block.documentation.js
 // ^^^^^^^^ ^^^^^^  comment.block.documentation.js
