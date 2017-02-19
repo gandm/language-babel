@@ -10,8 +10,6 @@ observeStatusBarGrammarNameTimer = null
 observeStatusBarGrammarNameTimerCalled = 0
 
 module.exports =
-  config: require './config'
-
   activate: (state) ->
     # run observeStatusBarGrammarName until Atom has created the Status Bar Grammar Name DOM node
     observeStatusBarGrammarNameTimer = setInterval(@observeStatusBarGrammarName.bind(@), 1000)
