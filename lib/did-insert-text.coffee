@@ -1,15 +1,17 @@
 module.exports =
-class InsertNl
+class DidInsertText
   constructor: (@editor) ->
     @adviseBefore(@editor, 'insertText', @insertText)
 
   # patched TextEditor::insertText
   insertText: (text, options) =>
-    return true unless ( text is "\n" )
     return true if @editor.hasMultipleCursors() # for time being
 
-    if !@insertNewlineBetweenJSXTags() then return false
-    if !@insertNewlineAfterStyledComponentsBackTick() then return false
+    if ( text is "\n")
+      if !@insertNewlineBetweenJSXTags() then return false
+      if !@insertNewlineAfterBacktick() then return false
+    else if ( text is "`")
+      if !@insertBackTick() then return false
     true
 
   # if a newLine is entered between a JSX tag open and close marked_ <div>_</div>
@@ -17,9 +19,9 @@ class InsertNl
   insertNewlineBetweenJSXTags: () ->
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
-    return true unless 'JSXEndTagStart' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'JSXEndTagStart' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     cursorBufferPosition.column--
-    return true unless 'JSXStartTagEnd' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'JSXStartTagEnd' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     indentLength = @editor.indentationForBufferRow(cursorBufferPosition.row)
     @editor.insertText("\n\n")
     @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
@@ -28,20 +30,30 @@ class InsertNl
     @editor.moveToEndOfLine()
     false
 
-  # if a newline is entered after the opening styled component backtick
+  # if a newline is entered after the opening backtick
   # indent cursor and add a closing backtick
-  insertNewlineAfterStyledComponentsBackTick: () ->
+  insertNewlineAfterBacktick: () ->
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
-    return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'punctuation.definition.quasi.end.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     cursorBufferPosition.column--
-    return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().pop()
+    return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     indentLength = @editor.indentationForBufferRow(cursorBufferPosition.row)
-    @editor.insertText("\n\n`")
+    @editor.insertText("\n\n")
     @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
     @editor.setIndentationForBufferRow cursorBufferPosition.row+2, indentLength, { preserveLeadingWhitespace: false }
     @editor.moveUp()
     @editor.moveToEndOfLine()
+    false
+
+  # the atom bracket matcher doesn't currently ( v1.15) add a closing backtick when the opening
+  # backtick appears after a word character as is the case in a tagname`` sequence
+  # this remedies that
+  insertBackTick: () ->
+    cursorBufferPosition = @editor.getCursorBufferPosition()
+    return true if 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
+    @editor.insertText("``")
+    @editor.moveLeft()
     false
 
 

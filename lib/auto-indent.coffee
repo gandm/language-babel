@@ -2,7 +2,7 @@
 fs = require 'fs-plus'
 path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
-InsertNl = require './insert-nl'
+DidInsertText = require './did-insert-text'
 stripJsonComments = require 'strip-json-comments'
 YAML = require 'js-yaml'
 
@@ -40,7 +40,7 @@ PROPSALIGNED  = 'props-aligned'
 module.exports =
 class AutoIndent
   constructor: (@editor) ->
-    @InsertNl = new InsertNl(@editor)
+    @DidInsertText = new DidInsertText(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))|(`)/g
@@ -482,7 +482,7 @@ class AutoIndent
               idxOfToken++
 
             if token is TEMPLATE_END then @templateDepth--
-            
+
           # case, default statement of switch
           when SWITCH_CASE, SWITCH_DEFAULT
             tokenOnThisLine = true
