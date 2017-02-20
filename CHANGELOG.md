@@ -1,6 +1,11 @@
+### 2.55.0
+  - Improve support for JSDoc highlighting.
+  - The Atom bracket-matcher package doesn't auto-close back-ticks following a function tag. This package now provides that functionality. This allows a more sensitive use of auto-indent when a new line is placed between consecutive back-ticks.
+  - The package configuration schema is now inside package.json.
+
 ### 2.54.1
   - Fix incorrect generation of ttl grammars when using certain regex strings.
-  
+
 ### 2.54.0
   - Add scope of meta.conmments.flowtype to flowtype comment style.
   - Use Oniguruma to parse taggedTemplateGrammar regex - allows use of backtracking.
