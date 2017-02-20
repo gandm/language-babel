@@ -1,3 +1,6 @@
+### 2.55.1
+  - Fix insert newline/tab after starting back-tick. Issue #328
+
 ### 2.55.0
   - Improve support for JSDoc highlighting.
   - The Atom bracket-matcher package doesn't auto-close back-ticks following a function tag. This package now provides that functionality. This allows a more sensitive use of auto-indent when a new line is placed between consecutive back-ticks.

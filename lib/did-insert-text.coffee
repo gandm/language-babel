@@ -35,15 +35,19 @@ class DidInsertText
   insertNewlineAfterBacktick: () ->
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
-    return true unless 'punctuation.definition.quasi.end.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
+    betweenBackTicks = 'punctuation.definition.quasi.end.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     cursorBufferPosition.column--
     return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     indentLength = @editor.indentationForBufferRow(cursorBufferPosition.row)
-    @editor.insertText("\n\n")
-    @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
-    @editor.setIndentationForBufferRow cursorBufferPosition.row+2, indentLength, { preserveLeadingWhitespace: false }
-    @editor.moveUp()
-    @editor.moveToEndOfLine()
+    if (betweenBackTicks)
+      @editor.insertText("\n\n")
+      @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
+      @editor.setIndentationForBufferRow cursorBufferPosition.row+2, indentLength, { preserveLeadingWhitespace: false }
+      @editor.moveUp()
+      @editor.moveToEndOfLine()
+    else
+      @editor.insertText("\n\t")
+      @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
     false
 
   # the atom bracket matcher doesn't currently ( v1.15) add a closing backtick when the opening
