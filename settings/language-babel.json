@@ -3,7 +3,7 @@
     "editor": {
       "commentStart": "// ",
       "foldEndPattern": "^\\s*\\}|^\\s*\\]|^\\s*\\)",
-      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$|<[a-zA-Z][^/]*$|^\\s*>$",
+      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$|^\\s*<[a-zA-Z][^/]*$|^\\s*>$",
       "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]|^\\s*(</|/>)",
       "nonWordCharacters": "/\\()\"':,.;<>~!@#%^&*|+=[]{}`?-…"
     }
@@ -17,7 +17,9 @@
   ".meta.tag.jsx": {
     "editor": {
       "commentStart": "{/* ",
-      "commentEnd": " */}"
+      "commentEnd": " */}",
+      "increaseIndentPattern": "{[^}\"']*$|\\[[^\\]\"']*$|\\([^)\"']*$|<[a-zA-Z][^/]*$|^\\s*>$",
+      "decreaseIndentPattern": "^\\s*(\\s*/[*].*[*]/\\s*)*[}\\])]|^\\s*(</|/>)"
     }
   },
   ".JSXAttrs": {
