@@ -1,6 +1,9 @@
+### 2.55.4
+  - Wow! that was a bad release.
+
 ### 2.55.3
   - Read bracket-matcer config to determine how to complete backticks. Issue #330
-  
+
 ### 2.55.2
   - Fix cases where lines following a flow polymorph were incorrectly indented. Fixes Issue #329
 

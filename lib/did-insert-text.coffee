@@ -16,9 +16,9 @@ class DidInsertText
 
   # check bracket-matcher package config to determine backtick insertion
   bracketMatcherBackticks: () ->
-    return atom.packages.isPackageActive("bracket-matcher")
+    return atom.packages.isPackageActive("bracket-matcher") and
       atom.config.get("bracket-matcher.autocompleteBrackets") and
-      "``" in atom.config.get("bracket-matcher.autocompleteCharacters") and
+      "``" in atom.config.get("bracket-matcher.autocompleteCharacters")
 
   # if a newLine is entered between a JSX tag open and close marked_ <div>_</div>
   # then add another newLine and reposition cursor
@@ -62,7 +62,7 @@ class DidInsertText
   # this remedies that
   insertBackTick: () ->
     return true unless @bracketMatcherBackticks()
-    cursorBufferPositi= @editor.getCursorBufferPosition()
+    cursorBufferPosition = @editor.getCursorBufferPosition()
     return true if 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     @editor.insertText("``")
     @editor.moveLeft()
