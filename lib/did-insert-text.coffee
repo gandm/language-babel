@@ -14,6 +14,12 @@ class DidInsertText
       if !@insertBackTick() then return false
     true
 
+  # check bracket-matcher package config to determine backtick insertion
+  bracketMatcherBackticks: () ->
+    return atom.packages.isPackageActive("bracket-matcher")
+      atom.config.get("bracket-matcher.autocompleteBrackets") and
+      "``" in atom.config.get("bracket-matcher.autocompleteCharacters") and
+
   # if a newLine is entered between a JSX tag open and close marked_ <div>_</div>
   # then add another newLine and reposition cursor
   insertNewlineBetweenJSXTags: () ->
@@ -33,6 +39,7 @@ class DidInsertText
   # if a newline is entered after the opening backtick
   # indent cursor and add a closing backtick
   insertNewlineAfterBacktick: () ->
+    return true unless @bracketMatcherBackticks()
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
     betweenBackTicks = 'punctuation.definition.quasi.end.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
@@ -54,7 +61,8 @@ class DidInsertText
   # backtick appears after a word character as is the case in a tagname`` sequence
   # this remedies that
   insertBackTick: () ->
-    cursorBufferPosition = @editor.getCursorBufferPosition()
+    return true unless @bracketMatcherBackticks()
+    cursorBufferPositi= @editor.getCursorBufferPosition()
     return true if 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     @editor.insertText("``")
     @editor.moveLeft()
