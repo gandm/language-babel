@@ -39,13 +39,13 @@ class DidInsertText
   # if a newline is entered after the opening backtick
   # indent cursor and add a closing backtick
   insertNewlineAfterBacktick: () ->
-    return true unless @bracketMatcherBackticks()
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true unless cursorBufferPosition.column > 0
     betweenBackTicks = 'punctuation.definition.quasi.end.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     cursorBufferPosition.column--
     return true unless 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
     indentLength = @editor.indentationForBufferRow(cursorBufferPosition.row)
+    return true unless @bracketMatcherBackticks()
     if (betweenBackTicks)
       @editor.insertText("\n\n")
       @editor.setIndentationForBufferRow cursorBufferPosition.row+1, indentLength+1, { preserveLeadingWhitespace: false }
