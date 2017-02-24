@@ -1,3 +1,6 @@
+### 2.55.5
+  - Scope Obj literal shorthand property keys with all uppercase as constants.
+
 ### 2.55.4
   - Wow! that was a bad release.
 

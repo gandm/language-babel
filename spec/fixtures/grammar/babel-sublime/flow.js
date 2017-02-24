@@ -776,7 +776,7 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //                                     ^                                      meta.brace.curly.close.flowtype
 //                                       ^                                    keyword.operator.assignment.js
 //                                         ^                              ^   meta.brace.curly.litobj.js
-//                                          ^^       ^^       ^^              constant.other.object.key.js
+//                                          ^        ^        ^               constant.other.object.key.js
 //                                          ^        ^        ^               string.unquoted.js
 //                                           ^        ^        ^              punctuation.separator.key-value.js
 //                                             ^^^^                           constant.language.boolean.true.js
@@ -813,7 +813,7 @@ var obj: { a: string; b?: number } = { a: "hello" };
 //                               ^                    meta.brace.curly.close.flowtype
 //                                 ^                  keyword.operator.assignment.js
 //                                   ^            ^   meta.brace.curly.litobj.js
-//                                     ^^             constant.other.object.key.js
+//                                     ^              constant.other.object.key.js
 //                                     ^              string.unquoted.js
 //                                      ^             punctuation.separator.key-value.js
 //                                        ^^^^^^^     string.quoted.double.js
@@ -1090,7 +1090,7 @@ var b: { f: typeof Foo } = { f : Foo };
 //                     ^                 meta.brace.curly.close.flowtype
 //                       ^               keyword.operator.assignment.js
 //                         ^         ^   meta.brace.curly.litobj.js
-//                           ^ ^         constant.other.object.key.js
+//                           ^           constant.other.object.key.js
 //                           ^           string.unquoted.js
 //                             ^         punctuation.separator.key-value.js
 //                                    ^  punctuation.terminator.statement.js

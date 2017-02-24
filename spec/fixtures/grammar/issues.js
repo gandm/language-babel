@@ -1,5 +1,33 @@
 // SYNTAX TEST "source.js.jsx"
 
+// ISSUE 332
+const a={
+// <- storage.type.js
+ // <- storage.type.js
+//^^^      storage.type.js
+//    ^    variable.other.readwrite.js
+//     ^   keyword.operator.assignment.js
+//      ^  meta.brace.curly.litobj.js
+  ABC: ABC,
+//^^^        constant.other.object.key.js
+//^^^        string.unquoted.js
+//   ^       punctuation.separator.key-value.js
+//     ^^^   variable.other.constant.js
+//        ^  meta.delimiter.comma.js
+  ABC,
+//^^^   constant.other.object.key.js
+//^^^   variable.other.constant.shorthandpropertyname.js
+//   ^  meta.delimiter.comma.js
+  abc: abc
+//^^^       constant.other.object.key.js
+//^^^       string.unquoted.js
+//   ^      punctuation.separator.key-value.js
+//     ^^^  variable.other.readwrite.js
+  abc,
+//^^^   variable.other.readwrite.shorthandpropertyname.js
+//   ^  meta.delimiter.comma.js
+}
+
 // ISSUE 297
 
 for (var prop:interator in obj) {}
@@ -316,7 +344,7 @@ let obj = {
 //      ^    keyword.operator.assignment.js
 //        ^  meta.brace.curly.litobj.js
   nested: {
-//^^^^^^^    constant.other.object.key.js
+//^^^^^^     constant.other.object.key.js
 //^^^^^^     string.unquoted.js
 //      ^    punctuation.separator.key-value.js
 //        ^  meta.brace.curly.litobj.js
@@ -817,7 +845,7 @@ let a = {
 //    ^    keyword.operator.assignment.js
 //      ^  meta.brace.curly.litobj.js
   a: td.function()
-//^^                constant.other.object.key.js
+//^                 constant.other.object.key.js
 //^                 string.unquoted.js
 // ^                punctuation.separator.key-value.js
 //   ^^             variable.other.object.js
@@ -826,7 +854,7 @@ let a = {
 //      ^^^^^^^^    entity.name.function.js
 //              ^^  meta.brace.round.js
   b: td.function()
-//^^                constant.other.object.key.js
+//^                 constant.other.object.key.js
 //^                 string.unquoted.js
 // ^                punctuation.separator.key-value.js
 //   ^^             variable.other.object.js
@@ -870,7 +898,7 @@ let a = {
 //    ^    keyword.operator.assignment.js
 //      ^  meta.brace.curly.litobj.js
   a: td.function();
-//^^                 constant.other.object.key.js
+//^                  constant.other.object.key.js
 //^                  string.unquoted.js
 // ^                 punctuation.separator.key-value.js
 //   ^^              variable.other.object.js
@@ -880,7 +908,7 @@ let a = {
 //              ^^   meta.brace.round.js
 //                ^  punctuation.terminator.statement.js
   b: td.function();
-//^^                 constant.other.object.key.js
+//^                  constant.other.object.key.js
 //^                  string.unquoted.js
 // ^                 punctuation.separator.key-value.js
 //   ^^              variable.other.object.js

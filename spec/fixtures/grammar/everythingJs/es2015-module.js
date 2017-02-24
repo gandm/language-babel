@@ -230,7 +230,7 @@ export default function e16(){}
 tab:for(;;)break	tab;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^                   constant.other.object.key.js
+//^                    constant.other.object.key.js
 //^                    string.unquoted.js
 // ^                   punctuation.separator.key-value.js
 //  ^^^^^^^            meta.for.js
@@ -241,7 +241,7 @@ tab:for(;;)break	tab;
 verticalTab:for(;;)breakverticalTab;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^^                           constant.other.object.key.js
+//^^^^^^^^^                            constant.other.object.key.js
 //^^^^^^^^^                            string.unquoted.js
 //         ^                           punctuation.separator.key-value.js
 //          ^^^^^^^                    meta.for.js
@@ -252,7 +252,7 @@ verticalTab:for(;;)breakverticalTab;
 formFeed:for(;;)breakformFeed;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^                        constant.other.object.key.js
+//^^^^^^                         constant.other.object.key.js
 //^^^^^^                         string.unquoted.js
 //      ^                        punctuation.separator.key-value.js
 //       ^^^^^^^                 meta.for.js
@@ -263,7 +263,7 @@ formFeed:for(;;)breakformFeed;
 space:for(;;)break space;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^                     constant.other.object.key.js
+//^^^                      constant.other.object.key.js
 //^^^                      string.unquoted.js
 //   ^                     punctuation.separator.key-value.js
 //    ^^^^^^^              meta.for.js
@@ -274,7 +274,7 @@ space:for(;;)break space;
 nbsp:for(;;)break nbsp;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^                    constant.other.object.key.js
+//^^                     constant.other.object.key.js
 //^^                     string.unquoted.js
 //  ^                    punctuation.separator.key-value.js
 //   ^^^^^^^             meta.for.js
@@ -285,7 +285,7 @@ nbsp:for(;;)break nbsp;
 bom:for(;;)break﻿bom;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^                   constant.other.object.key.js
+//^                    constant.other.object.key.js
 //^                    string.unquoted.js
 // ^                   punctuation.separator.key-value.js
 //  ^^^^^^^            meta.for.js
@@ -301,14 +301,14 @@ bom:for(;;)break﻿bom;
 lineFeed:0
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^   constant.other.object.key.js
+//^^^^^^    constant.other.object.key.js
 //^^^^^^    string.unquoted.js
 //      ^   punctuation.separator.key-value.js
 //       ^  constant.numeric.js
 0;
 // <- constant.numeric.js // <- punctuation.terminator.statement.jscarriageReturn:0// <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^^^^^   constant.other.object.key.js
+//^^^^^^^^^^^^    constant.other.object.key.js
 //^^^^^^^^^^^^    string.unquoted.js
 //            ^   punctuation.separator.key-value.js
 //             ^  constant.numeric.js
@@ -318,7 +318,7 @@ lineFeed:0
 carriageReturnLineFeed:0
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^^^^^^^^^^^^^   constant.other.object.key.js
+//^^^^^^^^^^^^^^^^^^^^    constant.other.object.key.js
 //^^^^^^^^^^^^^^^^^^^^    string.unquoted.js
 //                    ^   punctuation.separator.key-value.js
 //                     ^  constant.numeric.js
@@ -328,7 +328,7 @@ carriageReturnLineFeed:0
 lineSeparator:0 0;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^^^^      constant.other.object.key.js
+//^^^^^^^^^^^       constant.other.object.key.js
 //^^^^^^^^^^^       string.unquoted.js
 //           ^      punctuation.separator.key-value.js
 //            ^ ^   constant.numeric.js
@@ -336,7 +336,7 @@ lineSeparator:0 0;
 paragraphSeparator:0 0;
 // <- constant.other.object.key.js string.unquoted.js
  // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^^^^^^^^^      constant.other.object.key.js
+//^^^^^^^^^^^^^^^^       constant.other.object.key.js
 //^^^^^^^^^^^^^^^^       string.unquoted.js
 //                ^      punctuation.separator.key-value.js
 //                 ^ ^   constant.numeric.js
@@ -648,7 +648,7 @@ x;
 // ^  ^   ^  ^     ^  ^         ^  ^      ^  ^                  ^   meta.brace.round.js
 //^    ^ ^    ^   ^    ^       ^    ^    ^    ^                ^    meta.brace.curly.litobj.js
 //      ^                                                           variable.other.readwrite.shorthandpropertyname.js
-//             ^^       ^^  ^^       ^^        ^^^   ^^^   ^^^      constant.other.object.key.js
+//             ^        ^   ^        ^         ^^^   ^^^   ^^       constant.other.object.key.js
 //             ^        ^   ^        ^                     ^^       string.unquoted.js
 //              ^        ^   ^        ^           ^     ^    ^      punctuation.separator.key-value.js
 //               ^        ^   ^        ^           ^     ^    ^     constant.numeric.js
@@ -734,7 +734,7 @@ x;
 //                              ^                                        meta.brace.square.end.flowtype
 //                                 ^                        ^            meta.brace.curly.litobj.js
 //                                  ^                                    variable.other.readwrite.shorthandpropertyname.js
-//                                     ^^           ^^                   constant.other.object.key.js
+//                                     ^            ^                    constant.other.object.key.js
 //                                     ^            ^                    string.unquoted.js
 //                                      ^            ^                   punctuation.separator.key-value.js
 //                                                                 ^     punctuation.definition.parameters.end.js
@@ -757,7 +757,7 @@ x;
 //                                  ^                                  ^      meta.brace.square.end.flowtype
 //                                     ^                        ^             meta.brace.curly.litobj.js
 //                                      ^                                     variable.other.readwrite.shorthandpropertyname.js
-//                                         ^^           ^^                    constant.other.object.key.js
+//                                         ^            ^                     constant.other.object.key.js
 //                                         ^            ^                     string.unquoted.js
 //                                          ^            ^                    punctuation.separator.key-value.js
 //                                                                      ^     punctuation.definition.parameters.end.js
@@ -782,7 +782,7 @@ x;
  // <- meta.brace.curly.litobj.js
 //                               ^^                 ^ ^     ^   meta.brace.round.js
 //                                                         ^    meta.brace.curly.litobj.js
-// ^^^^^^^^^^                                                   constant.other.object.key.js
+// ^^^^^^^^^                                                    constant.other.object.key.js
 // ^^^^^^^^^                                                    string.unquoted.js
 //          ^                                                   punctuation.separator.key-value.js
 //            ^^^^                                              constant.language.null.js
@@ -1189,7 +1189,7 @@ for(;0;)continue; x:for(;0;)continue x;
 // ^   ^               ^   ^             meta.brace.round.js
 //  ^ ^         ^       ^ ^           ^  punctuation.terminator.statement.js
 //   ^                   ^               constant.numeric.js
-//                ^^                     constant.other.object.key.js
+//                ^                      constant.other.object.key.js
 //                ^                      string.unquoted.js
 //                 ^                     punctuation.separator.key-value.js
 //                                   ^   variable.other.readwrite.js
@@ -1201,7 +1201,7 @@ for(;;)break; x:for(;;)break x;
 //^    ^^^^^    ^^^    ^^^^^     keyword.control.loop.js
 // ^  ^            ^  ^          meta.brace.round.js
 //  ^^      ^       ^^        ^  punctuation.terminator.statement.js
-//            ^^                 constant.other.object.key.js
+//            ^                  constant.other.object.key.js
 //            ^                  string.unquoted.js
 //             ^                 punctuation.separator.key-value.js
 //                           ^   variable.other.readwrite.js
@@ -1288,8 +1288,8 @@ switch(0){default:;} switch(0){default:;;}
 
 x:; x:y:;
 // <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js punctuation.separator.key-value.js
-//  ^^^^   constant.other.object.key.js
+ // <- punctuation.separator.key-value.js
+//  ^ ^    constant.other.object.key.js
 //  ^ ^    string.unquoted.js
 //   ^ ^   punctuation.separator.key-value.js
 //^     ^  punctuation.terminator.statement.js
@@ -1435,7 +1435,7 @@ function f10(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){}
 //                                     ^                                       meta.brace.square.end.flowtype
 //                                        ^                        ^           meta.brace.curly.litobj.js
 //                                         ^                                   variable.other.readwrite.shorthandpropertyname.js
-//                                            ^^           ^^                  constant.other.object.key.js
+//                                            ^            ^                   constant.other.object.key.js
 //                                            ^            ^                   string.unquoted.js
 //                                             ^            ^                  punctuation.separator.key-value.js
 //                                                                        ^    punctuation.definition.parameters.end.js
@@ -1560,7 +1560,7 @@ function*g0(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){
 //                                    ^                                      meta.brace.square.end.flowtype
 //                                       ^                        ^          meta.brace.curly.litobj.js
 //                                        ^                                  variable.other.readwrite.shorthandpropertyname.js
-//                                           ^^           ^^                 constant.other.object.key.js
+//                                           ^            ^                  constant.other.object.key.js
 //                                           ^            ^                  string.unquoted.js
 //                                            ^            ^                 punctuation.separator.key-value.js
 //                                                                       ^   punctuation.definition.parameters.end.js
@@ -1595,7 +1595,7 @@ function*g0(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k){
 //                                       ^                                      meta.brace.square.end.flowtype
 //                                          ^                        ^          meta.brace.curly.litobj.js
 //                                           ^                                  variable.other.readwrite.shorthandpropertyname.js
-//                                              ^^           ^^                 constant.other.object.key.js
+//                                              ^            ^                  constant.other.object.key.js
 //                                              ^            ^                  string.unquoted.js
 //                                               ^            ^                 punctuation.separator.key-value.js
 //                                                                          ^   punctuation.definition.parameters.end.js
@@ -1810,7 +1810,7 @@ x => ({x});
 //                         ^                                             meta.brace.square.end.flowtype
 //                            ^                        ^                 meta.brace.curly.litobj.js
 //                             ^                                         variable.other.readwrite.shorthandpropertyname.js
-//                                ^^           ^^                        constant.other.object.key.js
+//                                ^            ^                         constant.other.object.key.js
 //                                ^            ^                         string.unquoted.js
 //                                 ^            ^                        punctuation.separator.key-value.js
 //                                                            ^          punctuation.definition.parameters.end.js
@@ -1886,7 +1886,7 @@ class B extends new A {
 //                                      ^                                       meta.brace.square.end.flowtype
 //                                         ^                        ^           meta.brace.curly.litobj.js
 //                                          ^                                   variable.other.readwrite.shorthandpropertyname.js
-//                                             ^^           ^^                  constant.other.object.key.js
+//                                             ^            ^                   constant.other.object.key.js
 //                                             ^            ^                   string.unquoted.js
 //                                              ^            ^                  punctuation.separator.key-value.js
 //                                                                         ^    punctuation.definition.parameters.end.js
@@ -1947,7 +1947,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //                          ^                                       meta.brace.square.end.flowtype
 //                             ^                        ^           meta.brace.curly.litobj.js
 //                              ^                                   variable.other.readwrite.shorthandpropertyname.js
-//                                 ^^           ^^                  constant.other.object.key.js
+//                                 ^            ^                   constant.other.object.key.js
 //                                 ^            ^                   string.unquoted.js
 //                                  ^            ^                  punctuation.separator.key-value.js
 //                                                             ^    punctuation.definition.parameters.end.js

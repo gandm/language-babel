@@ -35,7 +35,7 @@ export default React.createClass({
 
   mixins: [InputsMixin],
 //^^^^^^^ ^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
-//^^^^^^^                 constant.other.object.key.js
+//^^^^^^                  constant.other.object.key.js
 //^^^^^^                  string.unquoted.js
 //      ^                 punctuation.separator.key-value.js
 //        ^           ^   meta.brace.square.js
@@ -111,7 +111,7 @@ export default React.createClass({
 //           ^^^^^^^^                     entity.name.function.js
 //                   ^               ^^   meta.brace.round.js
 //                    ^             ^     meta.brace.curly.litobj.js
-//                     ^^^^^^^^           constant.other.object.key.js
+//                     ^^^^^^^            constant.other.object.key.js
 //                     ^^^^^^^            string.unquoted.js
 //                            ^           punctuation.separator.key-value.js
 //                              ^         keyword.operator.logical.js

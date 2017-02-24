@@ -33,7 +33,7 @@ export default React.createClass({
 
   mixins: [InputsMixin],
 //^^^^^^^ ^^^^^^^^^^^^^^  meta.method-call.with-arguments.js
-//^^^^^^^                 constant.other.object.key.js
+//^^^^^^                  constant.other.object.key.js
 //^^^^^^                  string.unquoted.js
 //      ^                 punctuation.separator.key-value.js
 //        ^           ^   meta.brace.square.js
@@ -109,7 +109,7 @@ export default React.createClass({
 //           ^^^^^^^^                     entity.name.function.js
 //                   ^               ^^   meta.brace.round.js
 //                    ^             ^     meta.brace.curly.litobj.js
-//                     ^^^^^^^^           constant.other.object.key.js
+//                     ^^^^^^^            constant.other.object.key.js
 //                     ^^^^^^^            string.unquoted.js
 //                            ^           punctuation.separator.key-value.js
 //                              ^         keyword.operator.logical.js
@@ -266,7 +266,7 @@ export class Counter extends React.Component {
 //       ^^^^^^^^^                                              variable.other.readwrite.js
 //                 ^                                            keyword.operator.assignment.js
 //                   ^                                      ^   meta.brace.curly.litobj.js
-//                     ^^^^^^^^^^^^^                            constant.other.object.key.js
+//                     ^^^^^^^^^^^^                             constant.other.object.key.js
 //                     ^^^^^^^^^^^^                             string.unquoted.js
 //                                 ^                            punctuation.separator.key-value.js
 //                                   ^^^^^^^^^^^^^^^            meta.property.class.js
@@ -282,7 +282,7 @@ export class Counter extends React.Component {
 //       ^^^^^^^^^^^^                         variable.other.readwrite.js
 //                    ^                       keyword.operator.assignment.js
 //                      ^                 ^   meta.brace.curly.litobj.js
-//                        ^^^^^^^^^^^^^       constant.other.object.key.js
+//                        ^^^^^^^^^^^^        constant.other.object.key.js
 //                        ^^^^^^^^^^^^        string.unquoted.js
 //                                    ^       punctuation.separator.key-value.js
 //                                      ^     constant.numeric.js
@@ -306,7 +306,7 @@ export class Counter extends React.Component {
       app: React.PropTypes.instanceOf(App).isRequired
 //    ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
 //    ^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.function.arrow.js
-//    ^^^^                                             constant.other.object.key.js
+//    ^^^                                              constant.other.object.key.js
 //    ^^^                                              string.unquoted.js
 //       ^                                             punctuation.separator.key-value.js
 //         ^^^^^^^^^^^^^^^                             meta.property.class.js
@@ -341,7 +341,7 @@ export class Counter extends React.Component {
 //^^^^^                                        variable.other.readwrite.js
 //      ^                                      keyword.operator.assignment.js
 //        ^                                ^   meta.brace.curly.litobj.js
-//          ^^^^^^                             constant.other.object.key.js
+//          ^^^^^                              constant.other.object.key.js
 //          ^^^^^                              string.unquoted.js
 //               ^                             punctuation.separator.key-value.js
 //                 ^^^^                        variable.language.this.js
@@ -366,7 +366,7 @@ export class Counter extends React.Component {
 //       ^^^^^^^^                                    entity.name.function.js
 //               ^                               ^   meta.brace.round.js
 //                ^                             ^    meta.brace.curly.litobj.js
-//                  ^^^^^^                           constant.other.object.key.js
+//                  ^^^^^                            constant.other.object.key.js
 //                  ^^^^^                            string.unquoted.js
 //                       ^                           punctuation.separator.key-value.js
 //                              ^^^^^ ^^^^^          meta.property.object.js

@@ -218,7 +218,7 @@ export let name1: {a: string} = {a: "aaa"}
 //                          ^               meta.brace.curly.close.flowtype
 //                            ^             keyword.operator.assignment.js
 //                              ^        ^  meta.brace.curly.litobj.js
-//                               ^^         constant.other.object.key.js
+//                               ^          constant.other.object.key.js
 //                               ^          string.unquoted.js
 //                                ^         punctuation.separator.key-value.js
 //                                  ^^^^^   string.quoted.double.js

@@ -295,7 +295,7 @@ const foo = {
 //        ^    keyword.operator.assignment.js
 //          ^  meta.brace.curly.litobj.js
   bar: baz()
-//^^^^        constant.other.object.key.js
+//^^^         constant.other.object.key.js
 //^^^         string.unquoted.js
 //   ^        punctuation.separator.key-value.js
 //     ^^^^^  meta.function-call.without-arguments.js
