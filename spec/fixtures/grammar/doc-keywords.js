@@ -58,6 +58,22 @@
 //        ^       entity.name.class.jsdoc
 //         ^      keyword.operator.accessor.jsdoc
 //          ^^^^  entity.name.function.method.inner.jsdoc
+ * @arg {Array.<MyClass>} employee
+ // <- comment.block.documentation.js
+// ^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^  comment.block.documentation.js
+// ^^^^                             storage.type.class.jsdoc
+//      ^^^^^^^^^^^^^^^^^           entity.name.type.instance.jsdoc
+//      ^               ^           meta.brace.curly.jsdoc
+//       ^^^^^                      entity.name.class.jsdoc
+//                        ^^^^^^^^  variable.other.jsdoc
+ * @argument {Array.<MyClass>} employee
+ // <- comment.block.documentation.js
+// ^^^^^^^^^ ^^^^^^^^^^^^^^^^^ ^^^^^^^^  comment.block.documentation.js
+// ^^^^^^^^^                             storage.type.class.jsdoc
+//           ^^^^^^^^^^^^^^^^^           entity.name.type.instance.jsdoc
+//           ^               ^           meta.brace.curly.jsdoc
+//            ^^^^^                      entity.name.class.jsdoc
+//                             ^^^^^^^^  variable.other.jsdoc
  * @augments A~aaaa
  // <- comment.block.documentation.js
 // ^^^^^^^^^ ^^^^^^  comment.block.documentation.js
@@ -115,6 +131,13 @@
  // <- comment.block.documentation.js
 // ^^^^^^^^^^^  comment.block.documentation.js
 // ^^^^^^^^^^^  storage.type.class.jsdoc
+ * @constructor {A} name
+ // <- comment.block.documentation.js
+// ^^^^^^^^^^^^ ^^^ ^^^^   comment.block.documentation.js
+// ^^^^^^^^^^^^            storage.type.class.jsdoc
+//              ^^^        entity.name.type.instance.jsdoc
+//              ^ ^        meta.brace.curly.jsdoc
+//                  ^^^^   variable.other.jsdoc
  * @copyright a copyright sting
  // <- comment.block.documentation.js
 // ^^^^^^^^^^ ^ ^^^^^^^^^ ^^^^^  comment.block.documentation.js
@@ -209,6 +232,10 @@
  // <- comment.block.documentation.js
 // ^^^^^^^  comment.block.documentation.js
 // ^^^^^^^  storage.type.class.jsdoc
+ * @host
+ // <- comment.block.documentation.js
+// ^^^^^  comment.block.documentation.js
+// ^^^^^  storage.type.class.jsdoc
  * @method
  // <- comment.block.documentation.js
 // ^^^^^^^  comment.block.documentation.js
@@ -283,6 +310,11 @@
 // ^^^^^^ ^^^^^^^^  comment.block.documentation.js
 // ^^^^^^           storage.type.class.jsdoc
 //        ^^^^^^^^  entity.name.class.jsdoc
+ * @mixin name
+ // <- comment.block.documentation.js
+// ^^^^^^ ^^^^  comment.block.documentation.js
+// ^^^^^^       storage.type.class.jsdoc
+//        ^^^^  variable.other.jsdoc
  * @name Eventful#aaaa
  // <- comment.block.documentation.js
 // ^^^^^ ^^^^^^^^^^^^^  comment.block.documentation.js
@@ -310,6 +342,10 @@
 // ^^^^^^  comment.block.documentation.js
 // ^^^^^^  storage.type.class.jsdoc
  * @override
+ // <- comment.block.documentation.js
+// ^^^^^^^^^  comment.block.documentation.js
+// ^^^^^^^^^  storage.type.class.jsdoc
+ * @overview
  // <- comment.block.documentation.js
 // ^^^^^^^^^  comment.block.documentation.js
 // ^^^^^^^^^  storage.type.class.jsdoc
@@ -360,6 +396,26 @@
 //          ^^^^^^ ^^^^^^                                                                     support.type.builtin.primitive.jsdoc
 //                            ^^^^^^^^^^ ^^^^^ ^^^^^                                          variable.other.jsdoc
 //                                       ^^^^^ ^^^^                                           string.jsdoc
+ * @property {number}  defaults.treasure.gold - How much gold the party starts with
+ // <- comment.block.documentation.js
+// ^^^^^^^^^ ^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^ ^ ^^^ ^^^^ ^^^^ ^^^ ^^^^^ ^^^^^^ ^^^^  comment.block.documentation.js
+// ^^^^^^^^^                                                                         storage.type.class.jsdoc
+//           ^^^^^^^^                                                                entity.name.type.instance.jsdoc
+//           ^      ^                                                                meta.brace.curly.jsdoc
+//            ^^^^^^                                                                 support.type.builtin.primitive.jsdoc
+//                     ^^^^^^^^ ^^^^^^^^                                             entity.name.function.jsdoc
+//                                      ^                                            keyword.operator.accessor.jsdoc
+//                                       ^^^^                                        entity.name.function.method.static.jsdoc
+ * @prop {number}  defaults.treasure.gold - How much gold the party starts with
+ // <- comment.block.documentation.js
+// ^^^^^ ^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^ ^ ^^^ ^^^^ ^^^^ ^^^ ^^^^^ ^^^^^^ ^^^^  comment.block.documentation.js
+// ^^^^^                                                                         storage.type.class.jsdoc
+//       ^^^^^^^^                                                                entity.name.type.instance.jsdoc
+//       ^      ^                                                                meta.brace.curly.jsdoc
+//        ^^^^^^                                                                 support.type.builtin.primitive.jsdoc
+//                 ^^^^^^^^ ^^^^^^^^                                             entity.name.function.jsdoc
+//                                  ^                                            keyword.operator.accessor.jsdoc
+//                                   ^^^^                                        entity.name.function.method.static.jsdoc
  * @private {type}
  // <- comment.block.documentation.js
 // ^^^^^^^^ ^^^^^^  comment.block.documentation.js

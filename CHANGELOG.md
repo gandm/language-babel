@@ -1,3 +1,6 @@
+### 2.55.6
+  - Add some missing scopes from JSDdoc parsing.
+
 ### 2.55.5
   - Scope Obj literal shorthand property keys with all uppercase as constants.
 
