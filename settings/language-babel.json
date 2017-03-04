@@ -15,6 +15,9 @@
     }
   },
   ".entity.quasi.element.js": {
+    "editor": {
+      "commentStart": "// "
+    },
     "autocomplete": {
       "symbols": {
         "": {
