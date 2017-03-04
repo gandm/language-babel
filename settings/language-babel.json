@@ -9,10 +9,20 @@
     }
   },
   ".source.inside-js.css.styled": {
-  "editor": {
-    "commentStart": "${''/* ",
-    "commentEnd": " */}"
-  }
+    "editor": {
+      "commentStart": "${''/* ",
+      "commentEnd": " */}"
+    }
+  },
+  ".entity.quasi.element.js": {
+    "autocomplete": {
+      "symbols": {
+        "": {
+          "selector": ".source",
+          "typePriority": 1
+        }
+      }
+    }
   },
   ".meta.tag.jsx": {
     "editor": {
