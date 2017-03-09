@@ -1,6 +1,9 @@
+### 2.56.2
+  - Allow tagged template grammar extension grammars to override object properties named template which are currently handled by language-mustache as no default Atom grammar exists for Angular.
+
 ### 2.56.1
   - Fix issue #337 closing backtick was assumed to be a escaped backtick if preceded by a escaped backslash
-  
+
 ### 2.56.0
   - Allow autocomplete-plus to work inside styled-component css templates containing embedded JS. language-css stopped this from happening.
 

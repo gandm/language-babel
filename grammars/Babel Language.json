@@ -1040,6 +1040,7 @@
     },
     "literal-object-body": {
       "patterns": [
+        { "include": "languagebabel.ttlextension"},
         { "include": "#html-template" },
         { "include": "#literal-object-brace-property" },
         { "include": "#literal-function-labels" },
