@@ -890,7 +890,7 @@
           "comment": "Styled CSS tags",
           "contentName": "source.inside-js.css.styled",
           "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(\\.)\\s*(\\w+))))\\s*((`))",
-          "end": "\\s*(?<!\\\\)((`))",
+          "end": "\\s*((`))",
           "beginCaptures": {
             "1": { "name": "entity.name.tag.styledcss.js" },
             "2": { "name": "entity.name.tag.styledcss.js" },
@@ -920,7 +920,7 @@
             {
               "contentName": "source.css.styled",
               "begin": "\\s*((`))",
-              "end": "\\s*(?<!\\\\)((`))",
+              "end": "\\s*((`))",
               "beginCaptures": {
                 "1": { "name": "string.quoted.template.styled.start.js" },
                 "2": { "name": "punctuation.definition.quasi.begin.js" }
@@ -938,7 +938,7 @@
         {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
           "begin": "\\s*+(?:((Relay)(.)(QL))|(gql|graphql)|(/\\* GraphQL \\*/))\\s*((`))",
-          "end": "\\s*(?<!\\\\)((`))",
+          "end": "\\s*(?<=[^\\\\]\\\\\\\\|[^\\\\]|^\\\\\\\\|^)((`))",
           "beginCaptures": {
             "2": { "name": "variable.other.class.js" },
             "3": { "name": "keyword.operator.accessor.js" },
@@ -961,7 +961,7 @@
           "name": "string.quasi.js",
           "contentName": "string.quoted.template.js",
           "begin": "\\s*+(?!\\b(?:return|void)\\b)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*((`))",
-          "end": "\\s*(?<!\\\\)((`))",
+          "end": "\\s*((`))",
           "beginCaptures": {
             "1": { "name": "entity.name.tag.js" },
             "2": { "name": "string.quoted.template.js" },
@@ -1570,7 +1570,7 @@
           "match": "\\\\\n"
         },
         { "name": "constant.character.escape",
-          "match": "\\\\['\"\\\\nrtbfv0]"
+          "match": "\\\\['\"\\\\nrtbfv0`]"
         },
         { "name": "constant.character.escape",
           "match": "\\\\u(({[0-9a-fA-F]+\\})|[0-9a-fA-F]{4})"

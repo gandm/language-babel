@@ -136,7 +136,7 @@ class CreateTtlGrammar {
         "1": { "name": "entity.name.tag.js" },
         "2": { "name": "punctuation.definition.quasi.begin.js" }
       },
-      "end": "\\\\s*(?<!\\\\\\\\)(\`)",
+      "end": "\\\\s*(?<=[^\\\\\\\\]\\\\\\\\\\\\\\\\|[^\\\\\\\\]|^\\\\\\\\\\\\\\\\|^)((\`))",
       "endCaptures": {
         "1": { "name": "punctuation.definition.quasi.end.js" }
       },

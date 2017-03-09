@@ -174,7 +174,7 @@ describe('Create Ttl Grammar', () => {
         const ttlFilenameAbsolute = ttlGrammar.makeTtlGrammarFilenameAbsoulute(ttlFilename);
         waitsForPromise(() => {
           return ttlGrammar.createGrammar({ttlFilename, ttlFilenameAbsolute, grammarText }).then( (val) => {
-            expect(val).toEqual('ttl-70e3a9c0bc02452d40273dd021557ff7f5ac8d9f44722020339efe1ac6a9f79e.json');
+            expect(val).toEqual('ttl-21a776c6bf96514f8dd8ffa557f23132510ace330d988f695538558900eeebe9.json');
           });
         });
       }

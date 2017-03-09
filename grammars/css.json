@@ -105,6 +105,7 @@
     },
     "css-comment-and-interpolate": {
       "patterns": [
+        { "include": "source.js.jsx#string-content"},
         { "include": "#css-comment"},
         { "include": "#css-interpolate"}
       ]
@@ -238,7 +239,7 @@
             {"include": "#css-values"}
           ]
         },
-        { 
+        {
           "contentName": "meta.property-values.css",
           "begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(animation(-(timing-function|play-state|name|iteration-count|fill-mode|duration|direction|delay))?))\\s*+(:)",
           "end": "(;)|(?=[`})\\]])",
