@@ -938,7 +938,7 @@
         {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
           "begin": "\\s*+(?:((Relay)(.)(QL))|(gql|graphql)|(/\\* GraphQL \\*/))\\s*((`))",
-          "end": "\\s*(?<=[^\\\\]\\\\\\\\|[^\\\\]|^\\\\\\\\|^)((`))",
+          "end": "\\s*((`))",
           "beginCaptures": {
             "2": { "name": "variable.other.class.js" },
             "3": { "name": "keyword.operator.accessor.js" },
@@ -3215,12 +3215,17 @@
       ]
     },
     "graphql-comment": {
-      "comment": "need to prefix comment space with a scope else Atom's reflow cmd doesn't work",
-      "name": "comment.line.graphql.js",
-      "match": "(\\s*)(#).*",
-      "captures": {
-        "1": { "name": "punctuation.whitespace.comment.leading.graphql" }
-      }
+      "patterns": [
+        {
+          "comment": "need to prefix comment space with a scope else Atom's reflow cmd doesn't work",
+          "name": "comment.line.graphql.js",
+          "match": "(\\s*)(#).*",
+          "captures": {
+            "1": { "name": "punctuation.whitespace.comment.leading.graphql" }
+          }
+        },
+        { "include": "#string-content"}
+      ]
     },
     "graphql-variable-definitions": {
       "begin": "\\s*(\\()",

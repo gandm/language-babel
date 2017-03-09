@@ -1,6 +1,9 @@
+### 2.56.1
+  - Fix issue #337 closing backtick was assumed to be a escaped backtick if preceded by a escaped backslash
+  
 ### 2.56.0
   - Allow autocomplete-plus to work inside styled-component css templates containing embedded JS. language-css stopped this from happening.
-  
+
 ### 2.55.6
   - Add some missing scopes from JSDdoc parsing.
 
