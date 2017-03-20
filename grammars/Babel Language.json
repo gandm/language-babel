@@ -4,6 +4,7 @@
   "foldingStartMarker": "(/\\*|{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
+  "limitLineLength": false,
   "fileTypes": [
     "js",
     "es6",
