@@ -690,6 +690,21 @@
         },
         {
           "contentName": "meta.property-values.css",
+          "comment": "svg attributes which can be used as css properties",
+          "begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(writing-mode|word-spacing|visibility|unicode-bidi|text-rendering|text-decoration|text-anchor|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|stop-opacity|stop-color|shape-rendering|pointer-events|overflow|opacity|mask|marker-start|marker-mid|marker-end|marker|lighting-color|letter-spacing|kerning|image-rendering|glyph-orientation-vertical|glyph-orientation-horizontal|font-weight|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-family|font|flood-opacity|flood-color|filter|fill-rule|fill-opacity|fill|enable-background|dominant-baseline|display|direction|cursor|color-rendering|color-profile|color-interpolation-filters|color-interpolation|color|clip-rule|clip-path|clip|baseline-shift|alignment-baseline))\\s*+(:)",
+          "end": "(;)|(?=[`})\\]])",
+          "beginCaptures": {
+            "1": {"name": "support.type.property-name.css"}
+          },
+          "endCaptures": {
+            "1": {"name": "punctuation.semi-colon.css"}
+          },
+          "patterns": [
+            {"include": "#css-values"}
+          ]
+        },
+        {
+          "contentName": "meta.property-values.css",
           "comment": "custom properties --*",
           "begin": "(?<=^|[\\W])\\s*+(--[-_a-zA-Z0-9]*)\\s*+(:)",
           "end": "(;)|(?=[`})\\]])",
