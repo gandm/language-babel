@@ -1,3 +1,7 @@
+### 2.57.0
+  - Add support for SVG attributes used as CSS properties inside styled-components. Issue #339
+  - Remove grammar 1000 character/line parsing restriction introduced in Atom 1.15 for this grammar. Issue #340
+
 ### 2.56.2
   - Allow tagged template grammar extension grammars to override object properties named template which are currently handled by language-mustache as no default Atom grammar exists for Angular.
 
