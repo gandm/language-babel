@@ -55,6 +55,7 @@
         { "include": "#literal-function-call" },
         { "include": "#comments" },
         { "include": "#brackets" },
+        { "include": "#flowtype-trap"},
         { "include": "#literal-operators" },
         { "include": "#literal-variable" },
         { "include": "#literal-comma" },
@@ -2367,6 +2368,27 @@
         { "include": "#flowtype-return" }
       ]
     },
+    "flowtype-trap": {
+      "comment": "traps flowtype vars that aren't caught normally - e.g. multi-line arrow funcs",
+      "patterns": [
+        {
+          "begin": "(?<=\\))\\s*(?=:)",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "patterns": [
+            { "include": "#flowtype-return"}
+          ]
+        },
+        {
+          "begin": "\\s*:",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "patterns": [
+            { "include": "#flowtype-parse-types"}
+          ]
+        }
+      ]
+    },
     "flowtype-return": {
       "patterns": [
         {
@@ -3010,10 +3032,15 @@
       "patterns": [
         {
           "comment": "match arrow func symbol",
-          "match": "\\s*(=>)",
-          "captures": {
+          "begin": "\\s*(=>)",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "storage.type.function.arrow.js" }
-          }
+          },
+          "patterns": [
+            {"include": "$self" }
+          ]
         }
       ]
     },

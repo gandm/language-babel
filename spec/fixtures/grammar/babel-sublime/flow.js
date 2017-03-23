@@ -1370,9 +1370,9 @@ declare class Object {
   [key:any]: any;
 //^^^^^^^^^^ ^^^^  meta.class.body.js
 //^       ^        meta.brace.square.js
-// ^^^ ^^^         variable.other.readwrite.js
+// ^^^             variable.other.readwrite.js
+//     ^^^   ^^^   support.type.builtin.primitive.flowtype
 //         ^       punctuation.type.flowtype
-//           ^^^   support.type.builtin.primitive.flowtype
 //              ^  punctuation.terminator.statement.js
   apply(thisArg: any, argArray?: any): any;
 //^^^^^^^^^^^^^^ ^^^^ ^^^^^^^^^^ ^^^^^ ^^^^  meta.class.body.js
