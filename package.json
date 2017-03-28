@@ -22,7 +22,7 @@
   "repository": "https://github.com/gandm/language-babel",
   "license": "MIT",
   "engines": {
-    "atom": "^1.13.0"
+    "atom": "^1.15.0"
   },
   "providedServices": {
     "autocomplete.provider": {
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "babel-core": "^6.7.6",
-    "fs-plus": "^2.8.2",
+    "fs-plus": "^3.0.0",
     "fuzzaldrin": "^2.1.0",
     "jjv": "^1.0.2",
     "js-yaml": "^3.6.0",
