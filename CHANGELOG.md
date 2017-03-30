@@ -1,6 +1,11 @@
+### 2.57.2
+  - Bump depedency to Atom 1.15 to fix fs-plus now on v3 needing Node 6. (#343)
+  - PR #343 from AlexyRaspopov to support yield returning JSX expression.
+  - Remove grammar regex detecting certain comment types inside JSX. Fixes #345 .
+
 ### 2.57.1
   - Fix multiline arrow functions containing flow types. Issue #342
-  
+
 ### 2.57.0
   - Add support for SVG attributes used as CSS properties inside styled-components. Issue #339
   - Remove grammar 1000 character/line parsing restriction introduced in Atom 1.15 for this grammar. Issue #340
