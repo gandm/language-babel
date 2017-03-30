@@ -2310,18 +2310,6 @@
     "jsx-evaluated-code": {
       "patterns": [
         {
-          "name": "meta.embedded.expression.commented-out.jsx",
-          "contentName": "comment.embedded.jsx",
-          "begin": "^\\s*({/\\*)",
-          "end": "\\s*(\\*/})",
-          "beginCaptures": {
-            "1": { "name": "punctuation.section.embedded.begin.jsx" }
-          },
-          "endCaptures": {
-            "1": { "name": "punctuation.section.embedded.end.jsx" }
-          }
-        },
-        {
           "name": "meta.embedded.expression.js",
           "contentName": "source.js.jsx",
           "begin": "{",
