@@ -214,14 +214,10 @@
         },
         {
           "comment": "[some expression] : as  property name",
-          "begin": "(?<!\\.|\\?)\\s*+(\\[)(?=(?:[^\\[]+)*?\\]\\s*+(:)(?=\\s*+\\S))",
-          "end": "\\s*(\\])\\s*+(:)",
-          "beginCaptures": {
-            "1": { "name": "meta.brace.square.js" }
-          },
+          "begin": "(?<!\\.|\\?)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+:\\s*+\\S)",
+          "end": "\\s*(:)",
           "endCaptures": {
-            "1": { "name": "meta.brace.square.js" },
-            "2": { "name": "punctuation.separator.key-value.js" }
+            "1": { "name": "punctuation.separator.key-value.js" }
           },
           "patterns": [
             { "include": "#expression"}

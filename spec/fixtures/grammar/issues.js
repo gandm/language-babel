@@ -1,5 +1,21 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 349
+let obj= {
+  [a[1+2]]: { x: 'a' }
+//^ ^   ^^              meta.brace.square.js
+// ^                    variable.other.object.js
+//   ^ ^                constant.numeric.js
+//    ^                 keyword.operator.arithmetic.js
+//        ^    ^        punctuation.separator.key-value.js
+//          ^        ^  meta.brace.curly.litobj.js
+//            ^         constant.other.object.key.js
+//            ^         string.unquoted.js
+//               ^^^    string.quoted.single.js
+//               ^      punctuation.definition.string.begin.js
+//                 ^    punctuation.definition.string.end.js
+}
+
 // ISSUE 342
 const setShapeState = (
 // <- storage.type.js

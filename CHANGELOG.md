@@ -1,3 +1,6 @@
+### 2.57.3
+  - Grammar incorrectly parsed object key expression containing array. Fixes #349
+   
 ### 2.57.2
   - Bump depedency to Atom 1.15 to fix fs-plus now on v3 needing Node 6. (#343)
   - PR #343 from AlexyRaspopov to support yield returning JSX expression.
