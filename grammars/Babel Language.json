@@ -2735,7 +2735,6 @@
             "1": { "name": "keyword.other.typedef.flowtype" }
           },
           "patterns": [
-            { "match": "\\s*+=" },
             {
               "begin": "\\s*+({)",
               "end": "\\s*(})",
@@ -2749,7 +2748,13 @@
             { "include": "#flowtype" },
             { "include": "#flowtype-parse-types" },
             { "include": "#comments" },
-            { "include": "#flowtype-function-name" }
+            { "include": "#flowtype-function-name" },
+            {
+              "match": "\\s*+(=)(?!=|>)",
+              "captures": {
+                "1": { "name": "keyword.operator.assignment.js" }
+              }
+            }
           ]
         }
       ]
