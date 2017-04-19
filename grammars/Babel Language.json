@@ -1066,7 +1066,7 @@
           "match": "(?<=^|,|{)(?<!:|\\.)\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*+(?=$|,|})",
           "captures": {
             "1": { "name": "constant.other.object.key.js"},
-            "1": { "name": "variable.other.readwrite.shorthandpropertyname.js"}
+            "2": { "name": "variable.other.readwrite.shorthandpropertyname.js"}
           }
         }
       ]
