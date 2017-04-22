@@ -1,6 +1,9 @@
+### 2.57.6
+  - ASI grammar was missing terminators for break and case keywords. Issue #354
+  
 ### 2.57.5
   - Fixing grammar in 2.57.4 [commit](https://github.com/gandm/language-babel/commit/6db89e3c13415a17382962fe1aa5064a271725c7) caused some themes to highlight non-constant shorthand object keys as constants.
-  
+
 ### 2.57.4
   - Flow type definition not highlighting arrow operator. Fixes #351
 
