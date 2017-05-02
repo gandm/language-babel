@@ -935,7 +935,7 @@
         },
         {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
-          "begin": "\\s*+(?:((Relay)(\.)(QL))|(gql|graphql|graphql\.experimental)|(/\\* GraphQL \\*/))\\s*((`))",
+          "begin": "\\s*+(?:((Relay)(\\.)(QL))|(gql|graphql|graphql\\.experimental)|(/\\* GraphQL \\*/))\\s*((`))",
           "end": "\\s*((`))",
           "beginCaptures": {
             "2": { "name": "variable.other.class.js" },
