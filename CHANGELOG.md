@@ -1,3 +1,6 @@
+### 2.58.0
+  - Add new template syntax for Relay.
+  
 ### 2.57.7
   - ASI grammar also missing terminators for default.
 
