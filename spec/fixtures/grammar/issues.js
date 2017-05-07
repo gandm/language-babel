@@ -1,5 +1,17 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 360
+class Foo implements Serializable {}
+// <- meta.class.js storage.type.class.js
+ // <- meta.class.js storage.type.class.js
+//^^^                                 meta.class.js
+//^^^                                 storage.type.class.js
+//    ^^^            ^^^^^^^^^^^^     entity.name.class.js
+//        ^^^^^^^^^^                  meta.class.extends.js
+//        ^^^^^^^^^^                  storage.type.implements.js
+//                                ^   punctuation.section.class.begin.js
+//                                 ^  punctuation.section.class.end.js
+
 // Issue 349
 let obj= {
   [a[1+2]]: { x: 'a' }

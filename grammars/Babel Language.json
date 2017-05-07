@@ -1347,10 +1347,11 @@
           },
           "patterns": [
             {
-              "match": "\\s*+\\b((extends))\\b\\s*+",
+              "match": "\\s*+\\b((extends)|(implements))\\b\\s*+",
               "captures": {
                 "1": { "name": "meta.class.extends.js" },
-                "2": { "name": "storage.type.extends.js" }
+                "2": { "name": "storage.type.extends.js" },
+                "3": { "name": "storage.type.implements.js" }
               }
             },
             {
