@@ -1,5 +1,37 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 361
+const a = ( randomActors: (void) => A<number>, numbers: Array<NumberActor>,
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                        storage.type.js
+//    ^                               ^^^^^^   ^^^^^^^                       variable.other.readwrite.js
+//      ^                                                                    keyword.operator.assignment.js
+//        ^               ^    ^                                             meta.brace.round.js
+//          ^^^^^^^^^^^^^ ^^^^^^ ^^                                          meta.function.json.arrow.js
+//          ^^^^^^^^^^^^                                                     entity.name.function.js
+//                      ^                                                    punctuation.separator.key-value.js
+//                        ^                                                  punctuation.definition.parameters.begin.js
+//                         ^^^^                                              meta.function.parameters.js
+//                         ^^^^                                              keyword.operator.js
+//                             ^                                             punctuation.definition.parameters.end.js
+//                               ^^                                          storage.type.function.arrow.js
+//                                  ^                                        variable.other.constant.js
+//                                   ^      ^                                keyword.operator.relational.js
+//                                           ^                            ^  meta.delimiter.comma.js
+//                                                      ^^^^^                support.type.builtin.class.flowtype
+//                                                           ^           ^   punctuation.flowtype
+//                                                            ^^^^^^^^^^^    support.type.class.flowtype
+  maze: Maze ) => () => {}
+//^^^^                        variable.other.readwrite.js
+//      ^^^^                  support.type.class.flowtype
+//           ^    ^^          meta.brace.round.js
+//             ^^    ^^       storage.type.function.arrow.js
+//                ^^ ^^ ^^    meta.function.arrow.js
+//                ^           punctuation.definition.parameters.begin.js
+//                 ^          punctuation.definition.parameters.end.js
+//                      ^^    meta.brace.curly.js
+
 // Issue 360
 class Foo implements Serializable {}
 // <- meta.class.js storage.type.class.js

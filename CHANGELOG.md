@@ -1,3 +1,6 @@
+### 2.59.1
+  - Fix Flow function arrow parameters when on same line as declaration. Issue #361
+
 ### 2.59.0
   - Add class implements support for flow.
 
