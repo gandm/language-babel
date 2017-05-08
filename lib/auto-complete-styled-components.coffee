@@ -74,6 +74,7 @@ module.exports =
     return @isPropertyNamePrefix(prefix) and
      ((scope[0] is 'meta.property-list.css') or
       (scope[0] is 'source.css.styled') or
+      (scope[0] is 'entity.name.tag.css') or
       (scope[0] is 'source.inside-js.css.styled'))
 
   isCompletingPseudoSelector: ({editor, scopeDescriptor, bufferPosition}) ->
