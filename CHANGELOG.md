@@ -1,3 +1,6 @@
+### 2.60.0
+  - Allow non-css snippets inside styled-componenets tags.
+  
 ### 2.59.1
   - Fix Flow function arrow parameters when on same line as declaration. Issue #361
 
