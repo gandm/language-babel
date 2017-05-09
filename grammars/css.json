@@ -144,6 +144,16 @@
         { "include": "#string"}
       ]
     },
+    "css-line-names": {
+      "begin": "\\[",
+      "end": "\\]",
+      "captures": {
+        "0": { "name": "meta.brace.square.css" }
+      },
+      "patterns": [
+        { "include": "#identifier"}
+      ]
+    },
     "css-math": {
       "match": "\\s*+(\\+|-|(?<!\\*)/|\\*(?!/))",
       "captures": {
@@ -746,6 +756,7 @@
       "patterns": [
         { "include": "#css-comment-and-interpolate"},
         { "include": "#important"},
+        { "include": "#css-line-names"},
         { "include": "#css-functions"},
         { "include": "#css-property-values"},
         { "include": "#css-color"},
