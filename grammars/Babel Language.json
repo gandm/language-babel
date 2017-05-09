@@ -2625,7 +2625,7 @@
         {
           "comment": "Get parameters within a function/method call",
           "contentName": "meta.function.parameters.js",
-          "begin": "(?<!=|})\\s*+((\\())",
+          "begin": "(?<!})\\s*+((\\())",
           "end": "\\s*((\\)))",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.parameters.begin.js" },
