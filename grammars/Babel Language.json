@@ -196,6 +196,29 @@
         }
       ]
     },
+    "literal-probable-arrow-func": {
+      "patterns": [
+        {
+          "comment": "Trap possible args of an multiline arrow function starting arg:type, where the , ends the line",
+          "comment": "or a , followed by comment",
+          "contentName": "meta.function.parameters.js",
+          "begin": "(?<=[^=]=)\\s*((\\())(?=(?:(?:/\\*[^*]*\\*/|'[^']*'|\"[^\"]*\"|\\s+|[^,/'\"]*)*+,)++\\s*($|//))",
+          "end": "\\s*((\\)))",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.parameters.begin.js" },
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.parameters.end.js" },
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-polymorphs" },
+            { "include": "#flowtype-variable" }
+          ]
+        }
+      ]
+    },
     "literal-labels": {
       "patterns": [
         {
@@ -348,22 +371,7 @@
     },
     "round-brackets": {
       "patterns": [
-        {
-          "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
-          "comment": "try to avoid ternary operators which have a '? some chars :'",
-          "begin": "(^|:|;|=|(?<=:|;|=))\\s*+(\\((?=(?:((['\"])([^\\\"']*)(\\k<-3>))*+|[^?:\"'])*(\\s*:|\\?\\s*+:)))",
-          "end": "\\s*(\\))",
-          "beginCaptures": {
-            "2": { "name": "meta.brace.round.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "meta.brace.round.js" }
-          },
-          "patterns": [
-            { "include": "#flowtype-typecast" },
-            { "include": "#expression" }
-          ]
-        },
+        { "include": "#flowtype-typecast"},
         {
           "begin": "\\s*+(\\()",
           "end": "\\s*(\\))",
@@ -2935,11 +2943,27 @@
     },
     "flowtype-typecast": {
       "patterns": [
+        { "include": "#literal-probable-arrow-func"},
         {
-          "begin": "\\s*+(:)",
-          "end": "(?=\\s*+\\))",
+          "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
+          "comment": "try to avoid ternary operators which have a '? some chars :'",
+          "begin": "(^|:|;|=|(?<=:|;|=))\\s*+(\\((?=(?:((['\"])([^\\\"']*)(\\k<-3>))*+|[^?:\"'])*(\\s*:|\\?\\s*+:)))",
+          "end": "\\s*(\\))",
+          "beginCaptures": {
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "meta.brace.round.js" }
+          },
           "patterns": [
-            { "include": "#flowtype-parse-types" }
+            {
+              "begin": "\\s*+(?=:)",
+              "end": "(?=\\s*+\\))",
+              "patterns": [
+                { "include": "#flowtype-parse-types" }
+              ]
+            },
+            { "include": "#expression" }
           ]
         }
       ]
