@@ -188,7 +188,7 @@
       }
     },
     "css-<length>": {
-      "match": "(?i)(vw|vmin|vmax|vh|rem|q|px|pt|pc|mozmm|mm|in|ex|em|cm|ch)\\b",
+      "match": "(?i)(vw|vmin|vmax|vh|rem|q|px|pt|pc|mozmm|mm|in|fr|ex|em|cm|ch)\\b",
       "captures": {
         "1": { "name": "constant.length.units.css"}
       }
