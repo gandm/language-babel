@@ -1,6 +1,10 @@
+### 2.61.0
+  - Add support for CSS grid [linename] values.
+  - Fix 2.59.1
+  
 ### 2.60.0
   - Allow non-css snippets inside styled-componenets tags.
-  
+
 ### 2.59.1
   - Fix Flow function arrow parameters when on same line as declaration. Issue #361
 
