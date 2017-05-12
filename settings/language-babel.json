@@ -10,7 +10,7 @@
   },
   ".source.inside-js.css.styled": {
     "editor": {
-      "commentStart": "${''/* ",
+      "commentStart": "${'' /* ",
       "commentEnd": " */}"
     }
   },
