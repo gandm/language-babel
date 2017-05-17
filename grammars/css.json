@@ -141,6 +141,7 @@
         "1": { "name": "meta.brace.round.css"}
       },
       "patterns": [
+        { "include": "#css-comment-and-interpolate"},
         { "include": "#string"}
       ]
     },
