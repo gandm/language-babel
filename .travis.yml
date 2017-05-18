@@ -10,9 +10,11 @@ git:
 
 sudo: false
 
-os:
-  - osx
-  - linux
+matrix:
+  include:
+    - os: osx
+    - os: linux
+      dist: trusty
 
 env:
 
