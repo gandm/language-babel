@@ -64,8 +64,11 @@ class DidInsertText
     return true unless @bracketMatcherBackticks()
     cursorBufferPosition = @editor.getCursorBufferPosition()
     return true if 'punctuation.definition.quasi.begin.js' is @editor.scopeDescriptorForBufferPosition(cursorBufferPosition).getScopesArray().slice(-1).toString()
-    @editor.insertText("``")
-    @editor.moveLeft()
+    selectedText = @editor.getSelectedText()
+    cursorPosition = @editor.getCursorBufferPosition()
+    @editor.insertText("`" + selectedText + "`")
+    @editor.setCursorBufferPosition(cursorPosition)
+    @editor.moveRight()
     false
 
 
