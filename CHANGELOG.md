@@ -1,7 +1,11 @@
+### 2.62.0
+  - Support interpolations inside css url(). #368
+  - Allow backtick insertion to wrap selected text. #370
+
 ### 2.61.0
   - Add support for CSS grid [linename] values.
   - Fix 2.59.1
-  
+
 ### 2.60.0
   - Allow non-css snippets inside styled-componenets tags.
 
