@@ -196,29 +196,6 @@
         }
       ]
     },
-    "literal-probable-arrow-func": {
-      "patterns": [
-        {
-          "comment": "Trap possible args of an multiline arrow function starting arg:type, where the , ends the line",
-          "comment": "or a , followed by comment",
-          "contentName": "meta.function.parameters.js",
-          "begin": "(?<=[^=]=)\\s*((\\())(?=(?:(?:/\\*[^*]*\\*/|'[^']*'|\"[^\"]*\"|\\s+|[^,/'\"]*)*+,)++\\s*($|//))",
-          "end": "\\s*((\\)))",
-          "beginCaptures": {
-            "1": { "name": "punctuation.definition.parameters.begin.js" },
-            "2": { "name": "meta.brace.round.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "punctuation.definition.parameters.end.js" },
-            "2": { "name": "meta.brace.round.js" }
-          },
-          "patterns": [
-            { "include": "#flowtype-polymorphs" },
-            { "include": "#flowtype-variable" }
-          ]
-        }
-      ]
-    },
     "literal-labels": {
       "patterns": [
         {
@@ -2999,7 +2976,6 @@
     },
     "flowtype-typecast": {
       "patterns": [
-        { "include": "#literal-probable-arrow-func"},
         {
           "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
           "comment": "try to avoid ternary operators which have a '? some chars :'",
