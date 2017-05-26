@@ -360,8 +360,7 @@
             },
             {
               "comment": "Assume this is a flow typed var",
-              "name": "meta.function.parameters.js",
-              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*\\??\\s*(:|\\)|$))",
+              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*\\??\\s*:)",
               "end": "(?=.)",
               "applyEndPatternLast": 1,
               "patterns": [
@@ -370,7 +369,6 @@
             },
             {
               "comment": "Assume this is a var",
-              "name": "meta.function.parameters.js",
               "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(,|\\)|$))",
               "end": "(?=.)",
               "applyEndPatternLast": 1,
@@ -380,7 +378,6 @@
             },
             {
               "comment": "Assume this is a flow typed var",
-              "name": "meta.function.parameters.js",
               "begin": "(?<=^|,|\\()\\s*+(?=\"[^\"]\"\\s*:)",
               "end": "(?=.)",
               "applyEndPatternLast": 1,
@@ -390,7 +387,6 @@
             },
             {
               "comment": "Assume this is a flow typed var",
-              "name": "meta.function.parameters.js",
               "begin": "(?<=^|,|\\()\\s*+(?='[^']'\\s*:)",
               "end": "(?=.)",
               "applyEndPatternLast": 1,
