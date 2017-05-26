@@ -1,6 +1,9 @@
+### 2.65.0
+  - Add support for styled-components styled(Comp).attrs() form of template.
+  
 ### 2.64.0
  - Change parsing of possible multiline arrow functions.
- 
+
 ### 2.63.0
   - Changed format for shortcut commenting inside styled-components. Prettier used a template commenting format that was different to language-babel. We have agreed to use a common format that allows co-existence. i.e. \`{'' /&ast; color: red; &ast;/}\`. This will cause issues for already commented lines inside styled-component tags that need to be uncommented which is regrettable. Also prettier-atom has yet to be updated to have this new format.
   - Add support for styled-components V2.

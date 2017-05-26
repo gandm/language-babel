@@ -947,10 +947,10 @@
         },
         {
           "comment": "Styled CSS tag functions",
-          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\.)\\s*(withComponent))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*(`)))",
+          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\.)\\s*(withComponent))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*`))",
           "end": "(?<=`)",
           "beginCaptures": {
-            "1": { "name": "entity.name.tag.styledcss.js" },
+            "1": { "name": "entity.name.function.js" },
             "2": { "name": "variable.other.class.js" },
             "3": { "name": "keyword.operator.accessor.js" },
             "4": { "name": "entity.name.function.js" }
@@ -958,6 +958,44 @@
           },
           "patterns": [
             { "include": "#round-brackets" },
+            {
+              "contentName": "source.inside-js.css.styled",
+              "begin": "\\s*((`))",
+              "end": "\\s*((`))",
+              "beginCaptures": {
+                "1": { "name": "string.quoted.template.styled.start.js" },
+                "2": { "name": "punctuation.definition.quasi.begin.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "string.quoted.template.styled.end.js" },
+                "2": { "name": "punctuation.definition.quasi.end.js" }
+              },
+              "patterns": [
+                { "include": "source.css.styled" }
+              ]
+            }
+          ]
+        },
+        {
+          "comment": "Styled CSS tag functions",
+          "begin": "(?<!\\.)\\s*+(?:(\\bstyled))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*\\.\\s*attrs\\s*\\())",
+          "end": "(?<=`)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.js" },
+            "2": { "name": "variable.other.class.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" }
+
+          },
+          "patterns": [
+            { "include": "#round-brackets" },
+            {
+              "match": "\\s*(\\.)\\s*(attrs)",
+              "captures": {
+                "1": { "name": "keyword.operator.accessor.js" },
+                "2": { "name": "entity.name.function.js" }
+              }
+            },
             {
               "contentName": "source.inside-js.css.styled",
               "begin": "\\s*((`))",
