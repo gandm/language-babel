@@ -21,8 +21,6 @@
       "patterns": [
         { "include": "#ignore-long-lines" },
         { "include": "#flowtype-keywords" },
-        { "include": "#literal-function-labels" },
-        { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-labels" },
         { "include": "#literal-for" },
         { "include": "#literal-switch" },
@@ -37,8 +35,6 @@
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
         { "include": "#support" },
-        { "include": "#literal-function-labels" },
-        { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-function" },
         { "include": "#literal-arrow-function" },
         { "include": "#literal-prototype", "comment": "after literal-function, which includes some prototype strings" },
@@ -348,7 +344,6 @@
     },
     "round-brackets": {
       "patterns": [
-        { "include": "#flowtype-typecast"},
         {
           "begin": "\\s*+(\\()",
           "end": "\\s*(\\))",
@@ -359,6 +354,50 @@
             "1": { "name": "meta.brace.round.js" }
           },
           "patterns": [
+            {
+              "comment": "need to check for ternary's",
+              "include": "literal-operators"
+            },
+            {
+              "comment": "Assume this is a flow typed var",
+              "name": "meta.function.parameters.js",
+              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*\\??\\s*(:|\\)|$))",
+              "end": "(?=.)",
+              "applyEndPatternLast": 1,
+              "patterns": [
+                {"include": "#flowtype-variable"}
+              ]
+            },
+            {
+              "comment": "Assume this is a var",
+              "name": "meta.function.parameters.js",
+              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(,|\\)|$))",
+              "end": "(?=.)",
+              "applyEndPatternLast": 1,
+              "patterns": [
+                {"include": "#flowtype-variable"}
+              ]
+            },
+            {
+              "comment": "Assume this is a flow typed var",
+              "name": "meta.function.parameters.js",
+              "begin": "(?<=^|,|\\()\\s*+(?=\"[^\"]\"\\s*:)",
+              "end": "(?=.)",
+              "applyEndPatternLast": 1,
+              "patterns": [
+                {"include": "#flowtype-variable"}
+              ]
+            },
+            {
+              "comment": "Assume this is a flow typed var",
+              "name": "meta.function.parameters.js",
+              "begin": "(?<=^|,|\\()\\s*+(?='[^']'\\s*:)",
+              "end": "(?=.)",
+              "applyEndPatternLast": 1,
+              "patterns": [
+                {"include": "#flowtype-variable"}
+              ]
+            },
             { "include": "#expression" }
           ]
         }
@@ -2972,32 +3011,6 @@
         { "include": "#flowtype-declare" },
         { "include": "#flowtype-type-aliases" },
         { "include": "#flowtype-interface"}
-      ]
-    },
-    "flowtype-typecast": {
-      "patterns": [
-        {
-          "comment": "Assume flow typecasts start with a newline( or a :( or a =( or a ;(",
-          "comment": "try to avoid ternary operators which have a '? some chars :'",
-          "begin": "(^|:|;|=|(?<=:|;|=))\\s*+(\\((?=(?:((['\"])([^\\\"']*)(\\k<-3>))*+|[^?:\"'])*(\\s*:|\\?\\s*+:)))",
-          "end": "\\s*(\\))",
-          "beginCaptures": {
-            "2": { "name": "meta.brace.round.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "meta.brace.round.js" }
-          },
-          "patterns": [
-            {
-              "begin": "\\s*+(?=:)",
-              "end": "(?=\\s*+\\))",
-              "patterns": [
-                { "include": "#flowtype-parse-types" }
-              ]
-            },
-            { "include": "#expression" }
-          ]
-        }
       ]
     },
     "flowtype-comments": {
