@@ -1,6 +1,9 @@
+### 2.65.1
+  - Fix how we handle unexpected flowtypes that changed in 2.64.0 - Issue #376
+  
 ### 2.65.0
   - Add support for styled-components styled(Comp).attrs() form of template.
-  
+
 ### 2.64.0
  - Change parsing of possible multiline arrow functions.
 

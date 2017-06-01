@@ -53,6 +53,7 @@
         { "include": "#brackets" },
         { "include": "#flowtype-trap"},
         { "include": "#literal-operators" },
+        { "include": "#literal-variable-flowtype" },
         { "include": "#literal-variable" },
         { "include": "#literal-comma" },
         { "include": "#fat-arrow"}
@@ -354,46 +355,6 @@
             "1": { "name": "meta.brace.round.js" }
           },
           "patterns": [
-            {
-              "comment": "need to check for ternary's",
-              "include": "literal-operators"
-            },
-            {
-              "comment": "Assume this is a flow typed var",
-              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*\\??\\s*:)",
-              "end": "(?=.)",
-              "applyEndPatternLast": 1,
-              "patterns": [
-                {"include": "#flowtype-variable"}
-              ]
-            },
-            {
-              "comment": "Assume this is a var",
-              "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(,|\\)|$))",
-              "end": "(?=.)",
-              "applyEndPatternLast": 1,
-              "patterns": [
-                {"include": "#flowtype-variable"}
-              ]
-            },
-            {
-              "comment": "Assume this is a flow typed var",
-              "begin": "(?<=^|,|\\()\\s*+(?=\"[^\"]\"\\s*:)",
-              "end": "(?=.)",
-              "applyEndPatternLast": 1,
-              "patterns": [
-                {"include": "#flowtype-variable"}
-              ]
-            },
-            {
-              "comment": "Assume this is a flow typed var",
-              "begin": "(?<=^|,|\\()\\s*+(?='[^']'\\s*:)",
-              "end": "(?=.)",
-              "applyEndPatternLast": 1,
-              "patterns": [
-                {"include": "#flowtype-variable"}
-              ]
-            },
             { "include": "#expression" }
           ]
         }
@@ -1246,6 +1207,14 @@
             "1": { "name": "keyword.operator.ternary.js" }
           },
           "patterns": [
+            {
+              "begin": "\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*:)",
+              "end": "\\s*(?=:)",
+              "patterns": [
+                { "include": "#literal-language-constant" },
+                { "include": "#literal-variable"}
+              ]
+            },
             { "include": "#expression" }
           ]
         },
@@ -2185,6 +2154,34 @@
         {
           "name": "variable.other.readwrite.js",
           "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)"
+        }
+      ]
+    },
+    "literal-variable-flowtype": {
+      "patterns": [
+        {
+          "comment": "Assume this is a flow typed var",
+          "begin": "(?<=^|,|\\()\\s*+(?=((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*\\??\\s*:)",
+          "end": "\\s*(?=,|\\))",
+          "patterns": [
+            {"include": "#flowtype-variable"}
+          ]
+        },
+        {
+          "comment": "Assume this is a flow typed var",
+          "begin": "(?<=^|,|\\()\\s*+(?=\"[^\"]\"\\s*:)",
+          "end": "\\s*(?>=|\\))",
+          "patterns": [
+            {"include": "#flowtype-variable"}
+          ]
+        },
+        {
+          "comment": "Assume this is a flow typed var",
+          "begin": "(?<=^|,|\\()\\s*+(?='[^']'\\s*:)",
+          "end": "\\s*(?>=|\\))",
+          "patterns": [
+            {"include": "#flowtype-variable"}
+          ]
         }
       ]
     },

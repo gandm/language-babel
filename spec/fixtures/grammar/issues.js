@@ -1,5 +1,17 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 376
+f(arg, arg1 => a >= b)
+// <- meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.function-call.with-arguments.js meta.brace.round.js
+//^^^^ ^^^^ ^^ ^ ^^ ^^  meta.function-call.with-arguments.js
+//                   ^  meta.brace.round.js
+//^^^  ^^^^    ^    ^   variable.other.readwrite.js
+//   ^                  meta.delimiter.comma.js
+//     ^^^^ ^^          meta.function.arrow.js
+//          ^^          storage.type.function.arrow.js
+//               ^^     keyword.operator.relational.js
+
 // Issue 360
 class Foo implements Serializable {}
 // <- meta.class.js storage.type.class.js
