@@ -9,6 +9,7 @@ f(arg, arg1 => a >= b)
 //^^^  ^^^^    ^    ^   variable.other.readwrite.js
 //   ^                  meta.delimiter.comma.js
 //     ^^^^ ^^          meta.function.arrow.js
+//     ^^^^             meta.function.parameters.js
 //          ^^          storage.type.function.arrow.js
 //               ^^     keyword.operator.relational.js
 

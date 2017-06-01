@@ -1699,11 +1699,12 @@
         {
           "comment": "e.g. arg => { }",
           "name": "meta.function.arrow.js",
-          "match": "\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
+          "match": "\\s*+(\\basync\\b)?\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*(=>)",
           "captures": {
             "1": { "name": "storage.type.js" },
-            "2": { "name": "variable.other.readwrite.js" },
-            "3": { "name": "storage.type.function.arrow.js" }
+            "2": { "name": "meta.function.parameters.js" },
+            "3": { "name": "variable.other.readwrite.js" },
+            "4": { "name": "storage.type.function.arrow.js" }
           }
         },
         { "include": "#literal-arrow-function-simple-assignments" },
