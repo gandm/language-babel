@@ -282,7 +282,7 @@ A `.languagebabel` file may contain one or more of the following properties.
 
 language-babel supports highlighting of GraphQL code within JavaScript files. For highlighting `.graphql` and `.gql` files see its sister grammar - [language-graphql](https://atom.io/packages/language-graphql).
 
- Inside JavaScript, GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings are highlighted. Other GraphQL structures, notably types, are supported by the Flow component of this package.
+Inside JavaScript, GraphQL enclosed in back-ticks, a.k.a. Quasi or template strings are highlighted. Other GraphQL structures, notably types, are supported by the Flow component of this package.
 
  Strings that have one of three prefixes/tags are parsed by the grammar to highlight the code enclosed.
 
