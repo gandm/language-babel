@@ -6,7 +6,7 @@ path = require 'path'
 AutoIndent = require '../lib/auto-indent'
 
 describe 'auto-indent', ->
-  [autoIndent, editor, notifications, sourceCode, sourceCodeRange] = []
+  [autoIndent, editor, notifications, sourceCode, sourceCodeRange, indentJSXRange] = []
 
   beforeEach ->
     waitsForPromise ->
@@ -190,9 +190,11 @@ describe 'auto-indent', ->
           }
           </div>
           </div>
+
           """
         editor.insertText(sourceCode)
-        sourceCodeRange = new Range(new Point(0,0), new Point(35,6))
+        sourceCodeRange = new Range(new Point(0,0), new Point(36,0))
+        indentJSXRange = new Range(new Point(0,0), new Point(35,1))
 
       it 'should indent JSX according to eslint rules', ->
         indentedCode = """
@@ -232,6 +234,7 @@ describe 'auto-indent', ->
                   }
               </div>
           </div>
+
           """
         # remember this is tabs based on atom default
         autoIndent.eslintIndentOptions =
@@ -241,7 +244,7 @@ describe 'auto-indent', ->
            selfClosing: 'tag-aligned'
            nonEmpty: 'tag-aligned' ]
          autoIndent.autoJsx = true
-         autoIndent.indentJSX(sourceCodeRange)
+         autoIndent.indentJSX(indentJSXRange)
          expect(editor.getTextInBufferRange(sourceCodeRange)).toEqual(indentedCode)
 
       it 'should indent JSX according to eslint rules and tag closing alignment', ->
@@ -263,7 +266,7 @@ describe 'auto-indent', ->
                       <Component p1
                           p2
                           />
-                  </div>
+                      </div>
                   { // tests inline JSX
                       if (a) {
                           return (
@@ -280,8 +283,9 @@ describe 'auto-indent', ->
                           }
                       }
                   }
+                  </div>
               </div>
-          </div>
+
           """
         # remember this is tabs based on atom default
         autoIndent.eslintIndentOptions =
@@ -291,7 +295,7 @@ describe 'auto-indent', ->
             selfClosing: 'props-aligned'
             nonEmpty: 'props-aligned' ]
          autoIndent.autoJsx = true
-         autoIndent.indentJSX(sourceCodeRange)
+         autoIndent.indentJSX(indentJSXRange)
          expect(editor.getTextInBufferRange(sourceCodeRange)).toEqual(indentedCode)
 
     # test insert newline between opening closing JSX tags
