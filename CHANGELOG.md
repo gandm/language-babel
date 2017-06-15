@@ -1,6 +1,10 @@
+### 2.65.2
+  - Fix scope on import/export to allow Atom's toggle quotes to work.
+  - Fix way ternaries inside JSX were auto indented. Fixes [#369](https://github.com/gandm/language-babel/issues/369#issuecomment-308108180)
+
 ### 2.65.1
   - Fix how we handle unexpected flowtypes that changed in 2.64.0 - Issue #376
-  
+
 ### 2.65.0
   - Add support for styled-components styled(Comp).attrs() form of template.
 
