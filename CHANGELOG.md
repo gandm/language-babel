@@ -1,5 +1,9 @@
+### 2.66.0
+  - Add meta scope to flowtype objects to allow additional themeing - Issue #382
+  - Existing editors instantiated using autoIndentJSX should observe the config for changes.
+   
 ### 2.65.3
-  - Fix incorrect closing tag position autoIndentJSX
+  - Fix incorrect closing tag position autoIndentJSX  
   
 ### 2.65.2
   - Fix scope on import/export to allow Atom's toggle quotes to work.
