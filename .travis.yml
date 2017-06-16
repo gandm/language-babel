@@ -26,3 +26,8 @@ matrix:
 branches:
   only:
     - master
+
+addons:
+  apt:
+    packages:
+    - gcc-6
