@@ -30,4 +30,4 @@ branches:
 addons:
   apt:
     packages:
-    - gcc-6
+    - libstdc++6
