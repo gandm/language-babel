@@ -50,6 +50,9 @@ class AutoIndent
     @eslintIndentOptions = @getIndentOptions()
     @templateDepth = 0 # track depth of any embedded back-tick templates
 
+    # Observe autoIndentJSX for existing editors 
+    @disposables.add atom.config.observe 'language-babel.autoIndentJSX', 
+      (value) => @autoJsx = value 
 
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:auto-indent-jsx-on': (event) =>
