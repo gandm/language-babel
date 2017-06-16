@@ -2793,6 +2793,7 @@
       ]
     },
     "flowtype-parse-objects": {
+      "name": "meta.object.flowtype",
       "comment": "object literal flowtype  preceded by either => : | & ? symbols",
       "begin": "(?<=:|\\||&|\\?|=>|<)\\s*+({)",
       "end": "\\s*(\\})",
@@ -2848,6 +2849,7 @@
           },
           "patterns": [
             {
+              "name": "meta.object.flowtype",
               "begin": "\\s*+({)",
               "end": "\\s*(})",
               "captures": {
