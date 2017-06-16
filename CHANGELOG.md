@@ -1,3 +1,6 @@
+### 2.65.3
+  - Fix incorrect closing tag position autoIndentJSX
+  
 ### 2.65.2
   - Fix scope on import/export to allow Atom's toggle quotes to work.
   - Fix way ternaries inside JSX were auto indented. Fixes [#369](https://github.com/gandm/language-babel/issues/369#issuecomment-308108180)

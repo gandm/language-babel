@@ -267,9 +267,7 @@ class AutoIndent
             tokenOnThisLine = true
             if isFirstTokenOfLine
               stackOfTokensStillOpen.push parentTokenIdx = stackOfTokensStillOpen.pop()
-              indentRecalc = @indentForClosingBracket  row,
-                tokenStack[parentTokenIdx],
-                @eslintIndentOptions.jsxClosingBracketLocation[1].nonEmpty
+              indentRecalc = @indentRow({row: row, blockIndent: tokenStack[parentTokenIdx].firstCharIndentation } )
 
             # re-parse line if indent did something to it
             if indentRecalc
