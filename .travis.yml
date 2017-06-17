@@ -14,14 +14,14 @@ matrix:
   include:
     - os: osx
       env: ATOM_CHANNEL=stable
-    - os: linux
-      dist: trusty
-      env: ATOM_CHANNEL=stable
+ #   - os: linux
+ #     dist: trusty
+ #     env: ATOM_CHANNEL=stable
     - os: osx
       env: ATOM_CHANNEL=beta
-    - os: linux
-      dist: trusty
-      env: ATOM_CHANNEL=beta
+ #   - os: linux
+ #     dist: trusty
+ #     env: ATOM_CHANNEL=beta
 
 branches:
   only:
