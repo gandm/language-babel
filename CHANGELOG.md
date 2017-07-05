@@ -1,10 +1,13 @@
+### 2.66.1
+  - Stop autoIndentJSX tokenizing characters prior to actual JSX.
+  
 ### 2.66.0
   - Add meta scope to flowtype objects to allow additional themeing - Issue #382
   - Existing editors instantiated using autoIndentJSX should observe the config for changes.
-   
+
 ### 2.65.3
   - Fix incorrect closing tag position autoIndentJSX  
-  
+
 ### 2.65.2
   - Fix scope on import/export to allow Atom's toggle quotes to work.
   - Fix way ternaries inside JSX were auto indented. Fixes [#369](https://github.com/gandm/language-babel/issues/369#issuecomment-308108180)

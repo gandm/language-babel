@@ -50,9 +50,9 @@ class AutoIndent
     @eslintIndentOptions = @getIndentOptions()
     @templateDepth = 0 # track depth of any embedded back-tick templates
 
-    # Observe autoIndentJSX for existing editors 
-    @disposables.add atom.config.observe 'language-babel.autoIndentJSX', 
-      (value) => @autoJsx = value 
+    # Observe autoIndentJSX for existing editors
+    @disposables.add atom.config.observe 'language-babel.autoIndentJSX',
+      (value) => @autoJsx = value
 
     @disposables.add atom.commands.add 'atom-text-editor',
       'language-babel:auto-indent-jsx-on': (event) =>
@@ -123,7 +123,7 @@ class AutoIndent
     # if this is a tag start's end > or </ then don't auto indent
     # this ia fix to allow for the auto complete tag time to pop up
     if selectedRange.start.row is selectedRange.end.row and
-      selectedRange.start.column is selectedRange.end.column 
+      selectedRange.start.column is selectedRange.end.column
         return if 'JSXStartTagEnd' in @editor.scopeDescriptorForBufferPosition([selectedRange.start.row, selectedRange.start.column]).getScopesArray()
         return if 'JSXEndTagStart' in @editor.scopeDescriptorForBufferPosition([selectedRange.start.row, selectedRange.start.column]).getScopesArray()
 
@@ -186,6 +186,7 @@ class AutoIndent
         matchPointEnd = new Point(row, matchColumn + match[0].length - 1)
         matchRange = new Range(matchPointStart, matchPointEnd)
 
+        if row is range.start.row and matchColumn < range.start.column then continue
         if not token =  @getToken(row, match) then continue
 
         firstCharIndentation = (@editor.indentationForBufferRow row)
