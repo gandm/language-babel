@@ -32,6 +32,7 @@
     "expression": {
       "patterns": [
         { "include": "#ignore-long-lines" },
+        { "include": "#multiline-arrow-function-generics"},
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
         { "include": "#support" },
@@ -65,6 +66,28 @@
       "patterns": [
         {
           "match": "^.{1000,}"
+        }
+      ]
+    },
+    "multiline-arrow-function-generics": {
+      "patterns": [
+        {
+          "comment": "trap multiline generic arrow functions",
+          "comment": "which could be treated as JSX - in fact it still could be JSX but unlikely",
+          "comment": "e.g. let a = <T>(",
+          "name": "meta.function.arrow.js",
+          "begin": "\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)\\s*+\\(+\\s*$)",
+          "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
+          "beginCaptures": {
+            "1": { "name": "storage.type.js" }
+          },
+          "endCaptures": {
+            "2": { "name": "storage.type.function.arrow.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype" },
+            { "include": "#fat-arrow-braced-body" }
+          ]
         }
       ]
     },

@@ -1,5 +1,29 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 388
+let a = <T>(
+// <- storage.type.js
+ // <- storage.type.js
+//^           storage.type.js
+//  ^         variable.other.readwrite.js
+//    ^       keyword.operator.assignment.js
+//      ^^^^  meta.function.arrow.js
+//      ^ ^   punctuation.flowtype
+//       ^    support.type.class.flowtype
+//         ^  punctuation.definition.parameters.begin.js
+//         ^  meta.brace.round.js
+  somevar: T
+//^^^^^^^^ ^  meta.function.arrow.js
+//^^^^^^^^ ^  meta.function.parameters.js
+//^^^^^^^     variable.other.readwrite.js
+//       ^    punctuation.type.flowtype
+//         ^  support.type.class.flowtype
+) => {}
+// <- meta.function.arrow.js punctuation.definition.parameters.end.js meta.brace.round.js
+//^^ ^^  meta.function.arrow.js
+//^^     storage.type.function.arrow.js
+//   ^^  meta.brace.curly.js
+
 // Issue 376
 f(arg, arg1 => a >= b)
 // <- meta.function-call.with-arguments.js entity.name.function.js
