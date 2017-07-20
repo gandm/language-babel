@@ -1,5 +1,66 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 389
+function a(){
+  this::hid().p = false
+//^^^^^^^^^^^^^ ^ ^^^^^  meta.function.js
+//^^^^                   variable.language.this.js
+//    ^^     ^           keyword.operator.accessor.js
+//      ^^^^^            meta.function-call.without-arguments.js
+//      ^^^              entity.name.function.js
+//         ^^            meta.brace.round.js
+//            ^          meta.property.object.js
+//            ^          variable.other.property.js
+//              ^        keyword.operator.assignment.js
+//                ^^^^^  constant.language.boolean.false.js
+  this::hid().f = false
+//^^^^^^^^^^^^^ ^ ^^^^^  meta.function.js
+//^^^^                   variable.language.this.js
+//    ^^     ^           keyword.operator.accessor.js
+//      ^^^^^            meta.function-call.without-arguments.js
+//      ^^^              entity.name.function.js
+//         ^^            meta.brace.round.js
+//            ^          meta.property.object.js
+//            ^          variable.other.property.js
+//              ^        keyword.operator.assignment.js
+//                ^^^^^  constant.language.boolean.false.js
+  this::hid().c = options.config || {}
+//^^^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^ ^^ ^^  meta.function.js
+//^^^^                                  variable.language.this.js
+//    ^^     ^           ^              keyword.operator.accessor.js
+//      ^^^^^                           meta.function-call.without-arguments.js
+//      ^^^                             entity.name.function.js
+//         ^^                           meta.brace.round.js
+//            ^           ^^^^^^        meta.property.object.js
+//            ^           ^^^^^^        variable.other.property.js
+//              ^                       keyword.operator.assignment.js
+//                ^^^^^^^               variable.other.object.js
+//                               ^^     keyword.operator.logical.js
+//                                  ^^  meta.brace.curly.js
+  await this::dis('')
+//^^^^^ ^^^^^^^^^^^^^  meta.function.js
+//^^^^^                keyword.control.flow.js
+//      ^^^^           variable.language.this.js
+//          ^^         keyword.operator.accessor.js
+//            ^^^^^^^  meta.function-call.with-arguments.js
+//            ^^^      entity.name.function.js
+//               ^  ^  meta.brace.round.js
+//                ^^   string.quoted.single.js
+//                ^    punctuation.definition.string.begin.js
+//                 ^   punctuation.definition.string.end.js
+  await this::dis('')
+//^^^^^ ^^^^^^^^^^^^^  meta.function.js
+//^^^^^                keyword.control.flow.js
+//      ^^^^           variable.language.this.js
+//          ^^         keyword.operator.accessor.js
+//            ^^^^^^^  meta.function-call.with-arguments.js
+//            ^^^      entity.name.function.js
+//               ^  ^  meta.brace.round.js
+//                ^^   string.quoted.single.js
+//                ^    punctuation.definition.string.begin.js
+//                 ^   punctuation.definition.string.end.js
+}
+
 // Issue 388
 let a = <T>(
 // <- storage.type.js

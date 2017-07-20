@@ -1,3 +1,6 @@
+### 2.67.1
+  - Fix bind syntax :: not being parsed in certain cases - Issue #389
+
 ### 2.67.0
   - Add support for Styled Components internal API withConfig. PR #387
   - Assume some forms of <IDENT> are flow functions and not JSX. Issue #388
