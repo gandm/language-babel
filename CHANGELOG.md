@@ -1,3 +1,6 @@
+### 2.67.2
+  - Fix another bind :: parse error -Issue #390
+
 ### 2.67.1
   - Fix bind syntax :: not being parsed in certain cases - Issue #389
 

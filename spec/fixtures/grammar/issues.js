@@ -1,5 +1,26 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 390
+
+let a = await a()
+// <- storage.type.js
+ // <- storage.type.js
+//^                storage.type.js
+//  ^              variable.other.readwrite.js
+//    ^            keyword.operator.assignment.js
+//      ^^^^^      keyword.control.flow.js
+//            ^^^  meta.function-call.without-arguments.js
+//            ^    entity.name.function.js
+//             ^^  meta.brace.round.js
+this::a()
+// <- variable.language.this.js
+ // <- variable.language.this.js
+//^^       variable.language.this.js
+//  ^^     keyword.operator.accessor.js
+//    ^^^  meta.function-call.without-arguments.js
+//    ^    entity.name.function.js
+//     ^^  meta.brace.round.js
+
 // Issue 389
 function a(){
   this::hid().p = false
