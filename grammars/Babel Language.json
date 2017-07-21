@@ -842,20 +842,22 @@
         {
           "comment": "e.g. Sound.prototype.play = function(arg1, arg2) { }",
           "name": "meta.prototype.function.js",
-          "begin": "\\s*+((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\.)(prototype)(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\?)?(\\.)(prototype)(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*+(?=\\(|<)",
           "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.language.prototype.js" },
-            "4": { "name": "keyword.operator.accessor.js" },
-            "5": { "name": "entity.name.function.js" },
-            "6": { "name": "keyword.operator.assignment.js" },
-            "7": { "name": "storage.type.js" },
-            "8": { "name": "storage.type.function.js" },
-            "9": { "name": "keyword.generator.asterisk.js" },
-            "10": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js"},
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.language.prototype.js" },
+            "5": { "name": "keyword.operator.existential.js"},
+            "6": { "name": "keyword.operator.accessor.js" },
+            "7": { "name": "entity.name.function.js" },
+            "8": { "name": "keyword.operator.assignment.js" },
+            "9": { "name": "storage.type.js" },
+            "10": { "name": "storage.type.function.js" },
+            "11": { "name": "keyword.generator.asterisk.js" },
+            "12": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#flowtype" },
@@ -865,18 +867,19 @@
         {
           "comment": "e.g. Sound.play = function(arg1, arg2) { }",
           "name": "meta.function.static.js",
-          "begin": "\\s*+((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*+(?=\\(|<)",
+          "begin": "\\s*+((?:[_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(?:(async)\\s+)?\\s*+((?<!\\.)\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*+(?=\\(|<)",
           "end": "(?<=})|\\s*(?=,|;|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" },
-            "4": { "name": "keyword.operator.assignment.js" },
-            "5": { "name": "storage.type.js" },
-            "6": { "name": "storage.type.function.js" },
-            "7": { "name": "keyword.generator.asterisk.js" },
-            "8": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js"},
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" },
+            "5": { "name": "keyword.operator.assignment.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "storage.type.function.js" },
+            "8": { "name": "keyword.generator.asterisk.js" },
+            "9": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#flowtype" },
@@ -891,11 +894,33 @@
         {
           "comment": "Styled CSS tags",
           "contentName": "source.inside-js.css.styled",
-          "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(\\.)\\s*(\\w+))))\\s*((`))",
+          "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(\\?)?(\\.)\\s*(\\w+))))\\s*((`))",
           "end": "\\s*((`))",
           "beginCaptures": {
             "1": { "name": "entity.name.tag.styledcss.js" },
             "2": { "name": "entity.name.tag.styledcss.js" },
+            "3": { "name": "keyword.operator.existential.js" },
+            "4": { "name": "keyword.operator.accessor.js" },
+            "5": { "name": "entity.name.tag.styledcss.js" },
+            "6": { "name": "string.quoted.template.styled.start.js" },
+            "7": { "name": "punctuation.definition.quasi.begin.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "string.quoted.template.styled.end.js" },
+            "2": { "name": "punctuation.definition.quasi.end.js" }
+          },
+          "patterns": [
+            { "include": "source.css.styled" }
+          ]
+        },
+        {
+          "comment": "Styled CSS tags",
+          "contentName": "source.inside-js.css.styled",
+          "begin": "(?<!\\.)\\s*+(?:((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\?)?(\\.)\\s*(extend))\\s*((`))",
+          "end": "\\s*((`))",
+          "beginCaptures": {
+            "1": { "name": "variable.other.class.js" },
+            "2": { "name": "keyword.operator.existential.js" },
             "3": { "name": "keyword.operator.accessor.js" },
             "4": { "name": "entity.name.tag.styledcss.js" },
             "5": { "name": "string.quoted.template.styled.start.js" },
@@ -910,103 +935,13 @@
           ]
         },
         {
-          "comment": "Styled CSS tags",
-          "contentName": "source.inside-js.css.styled",
-          "begin": "(?<!\\.)\\s*+(?:((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\.)\\s*(extend))\\s*((`))",
-          "end": "\\s*((`))",
-          "beginCaptures": {
-            "1": { "name": "variable.other.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.tag.styledcss.js" },
-            "4": { "name": "string.quoted.template.styled.start.js" },
-            "5": { "name": "punctuation.definition.quasi.begin.js" }
-          },
-          "endCaptures": {
-            "1": { "name": "string.quoted.template.styled.end.js" },
-            "2": { "name": "punctuation.definition.quasi.end.js" }
-          },
-          "patterns": [
-            { "include": "source.css.styled" }
-          ]
-        },
-        {
           "comment": "Styled CSS tag functions",
-          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\.)\\s*(withComponent))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*`))",
+          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\?)?(\\.)\\s*(withComponent))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*`))",
           "end": "(?<=`)",
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" },
             "2": { "name": "variable.other.class.js" },
-            "3": { "name": "keyword.operator.accessor.js" },
-            "4": { "name": "entity.name.function.js" }
-
-          },
-          "patterns": [
-            { "include": "#round-brackets" },
-            {
-              "contentName": "source.inside-js.css.styled",
-              "begin": "\\s*((`))",
-              "end": "\\s*((`))",
-              "beginCaptures": {
-                "1": { "name": "string.quoted.template.styled.start.js" },
-                "2": { "name": "punctuation.definition.quasi.begin.js" }
-              },
-              "endCaptures": {
-                "1": { "name": "string.quoted.template.styled.end.js" },
-                "2": { "name": "punctuation.definition.quasi.end.js" }
-              },
-              "patterns": [
-                { "include": "source.css.styled" }
-              ]
-            }
-          ]
-        },
-        {
-          "comment": "Styled CSS tag functions",
-          "begin": "(?<!\\.)\\s*+(?:(\\bstyled))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*\\.\\s*attrs\\s*\\())",
-          "end": "(?<=`)",
-          "beginCaptures": {
-            "1": { "name": "entity.name.function.js" },
-            "2": { "name": "variable.other.class.js" },
-            "3": { "name": "keyword.operator.accessor.js" },
-            "4": { "name": "entity.name.function.js" }
-
-          },
-          "patterns": [
-            { "include": "#round-brackets" },
-            {
-              "match": "\\s*(\\.)\\s*(attrs)",
-              "captures": {
-                "1": { "name": "keyword.operator.accessor.js" },
-                "2": { "name": "entity.name.function.js" }
-              }
-            },
-            {
-              "contentName": "source.inside-js.css.styled",
-              "begin": "\\s*((`))",
-              "end": "\\s*((`))",
-              "beginCaptures": {
-                "1": { "name": "string.quoted.template.styled.start.js" },
-                "2": { "name": "punctuation.definition.quasi.begin.js" }
-              },
-              "endCaptures": {
-                "1": { "name": "string.quoted.template.styled.end.js" },
-                "2": { "name": "punctuation.definition.quasi.end.js" }
-              },
-              "patterns": [
-                { "include": "source.css.styled" }
-              ]
-            }
-          ]
-        },
-        {
-          "comment": "Styled CSS tag functions",
-          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)\\s*(\\.)\\s*((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\.)\\s*(attrs|withConfig))\\s*(?=\\()",
-          "end": "(?=.|\\n)",
-          "applyEndPatternLast": 1,
-          "beginCaptures": {
-            "1": { "name": "entity.name.tag.styledcss.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.tag.styledcss.js" },
+            "3": { "name": "keyword.operator.existential.js" },
             "4": { "name": "keyword.operator.accessor.js" },
             "5": { "name": "entity.name.function.js" }
 
@@ -1032,17 +967,88 @@
           ]
         },
         {
+          "comment": "Styled CSS tag functions",
+          "begin": "(?<!\\.)\\s*+(?:(\\bstyled))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*\\??\\.\\s*attrs\\s*\\())",
+          "end": "(?<=`)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.js" }
+          },
+          "patterns": [
+            { "include": "#round-brackets" },
+            {
+              "match": "\\s*(\\?)?(\\.)\\s*(attrs)",
+              "captures": {
+                "1": { "name": "keyword.operator.existential.js" },
+                "2": { "name": "keyword.operator.accessor.js" },
+                "3": { "name": "entity.name.function.js" }
+              }
+            },
+            {
+              "contentName": "source.inside-js.css.styled",
+              "begin": "\\s*((`))",
+              "end": "\\s*((`))",
+              "beginCaptures": {
+                "1": { "name": "string.quoted.template.styled.start.js" },
+                "2": { "name": "punctuation.definition.quasi.begin.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "string.quoted.template.styled.end.js" },
+                "2": { "name": "punctuation.definition.quasi.end.js" }
+              },
+              "patterns": [
+                { "include": "source.css.styled" }
+              ]
+            }
+          ]
+        },
+        {
+          "comment": "Styled CSS tag functions",
+          "begin": "(?<!\\.)\\s*+(?:(\\bstyled)\\s*(\\?)?(\\.)\\s*((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(\\?)?(\\.)\\s*(attrs|withConfig))\\s*(?=\\()",
+          "end": "(?=.|\\n)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "entity.name.tag.styledcss.js" },
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.tag.styledcss.js" },
+            "5": { "name": "keyword.operator.existential.js" },
+            "6": { "name": "keyword.operator.accessor.js" },
+            "7": { "name": "entity.name.function.js" }
+
+          },
+          "patterns": [
+            { "include": "#round-brackets" },
+            {
+              "contentName": "source.inside-js.css.styled",
+              "begin": "\\s*((`))",
+              "end": "\\s*((`))",
+              "beginCaptures": {
+                "1": { "name": "string.quoted.template.styled.start.js" },
+                "2": { "name": "punctuation.definition.quasi.begin.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "string.quoted.template.styled.end.js" },
+                "2": { "name": "punctuation.definition.quasi.end.js" }
+              },
+              "patterns": [
+                { "include": "source.css.styled" }
+              ]
+            }
+          ]
+        },
+        {
           "comment": "GraphQL ( Relay.QL ) supprt. Use two forms of scopes! fixes some themes",
-          "begin": "\\s*+(?:((Relay)(\\.)(QL))|(gql|graphql|graphql\\.experimental)|(/\\* GraphQL \\*/))\\s*((`))",
+          "begin": "\\s*+(?:((Relay)(\\?)?(\\.)(QL))|(gql|graphql|graphql\\.experimental)|(/\\* GraphQL \\*/))\\s*((`))",
           "end": "\\s*((`))",
           "beginCaptures": {
             "2": { "name": "variable.other.class.js" },
-            "3": { "name": "keyword.operator.accessor.js" },
-            "4": { "name": "entity.name.tag.grapahql.js" },
+            "3": { "name": "keyword.operator.existential.js" },
+            "4": { "name": "keyword.operator.accessor.js" },
             "5": { "name": "entity.name.tag.grapahql.js" },
             "6": { "name": "entity.name.tag.grapahql.js" },
-            "7": { "name": "string.quoted.template.js" },
-            "8": { "name": "punctuation.definition.quasi.begin.js" }
+            "7": { "name": "entity.name.tag.grapahql.js" },
+            "8": { "name": "string.quoted.template.js" },
+            "9": { "name": "punctuation.definition.quasi.begin.js" }
           },
           "endCaptures": {
             "1": { "name": "string.quoted.template.graphql.js" },
@@ -1221,7 +1227,7 @@
         },
         {
           "comment": "ternary operator - make sure end : is consumed to avoid mistake as flow type",
-          "begin": "\\s*+(\\?)",
+          "begin": "\\s*+(\\?)(?!\\.[^\\d])",
           "end": "\\s*(:)((?=::)|(?!:))",
           "beginCaptures": {
             "1": { "name": "keyword.operator.ternary.js" }
@@ -1248,8 +1254,12 @@
           }
         },
         {
-          "name": "keyword.operator.accessor.js",
-          "match": "\\."
+          "match": "(\\?)?(\\.)",
+          "captures": {
+            "1": {"name": "keyword.operator.existential.js" },
+            "2": {"name": "keyword.operator.accessor.js" }
+
+          }
         }
       ]
     },
@@ -1531,13 +1541,14 @@
         {
           "name": "meta.method-call.without-arguments.js",
           "comment": "e.g CONSTNAME.method() or CONST.method[p]()",
-          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{Lu}\\p{Nd}])*+)\\s*+(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+(\\(\\s*+\\)))",
+          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{Lu}\\p{Nd}])*+)\\s*+(\\?)?(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+(\\(\\s*+\\)))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "variable.other.constant.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#square-brackets" },
@@ -1547,13 +1558,14 @@
         {
           "name": "meta.method-call.without-arguments.js",
           "comment": "e.g Abc.aaa()",
-          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+(\\(\\s*+\\)))",
+          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?)?(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+(\\(\\s*+\\)))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "variable.other.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#square-brackets" },
@@ -1563,13 +1575,14 @@
         {
           "name": "meta.method-call.with-arguments.js",
           "comment": "e.g CONSTNAME.method()",
-          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{Lu}\\p{Nd}])*+)\\s*+(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+\\()",
+          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{Lu}\\p{Nd}])*+)\\s*+(\\?)?(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+\\()",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "variable.other.constant.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#square-brackets" },
@@ -1579,13 +1592,14 @@
         {
           "name": "meta.method-call.with-arguments.js",
           "comment": "e.g Abc.aaa()",
-          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+\\()",
+          "begin": "\\s*+((?:[\\p{Lu}])(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?)?(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\\\g<-1>)*\\])?+\\s*+\\()",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "variable.other.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" }
           },
           "patterns": [
             { "include": "#round-brackets" }
@@ -1734,16 +1748,18 @@
         {
           "comment": "Sound.prototype.play = (args) => { }",
           "name": "meta.prototype.function.arrow.js",
-          "begin": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\.)(prototype)(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
+          "begin": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\?)?(\\.)(prototype)(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
           "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
           "beginCaptures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.language.prototype.js" },
-            "4": { "name": "keyword.operator.accessor.js" },
-            "5": { "name": "entity.name.function.js" },
-            "6": { "name": "keyword.operator.assignment.js" },
-            "7": { "name": "storage.type.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.language.prototype.js" },
+            "5": { "name": "keyword.operator.existential.js" },
+            "6": { "name": "keyword.operator.accessor.js" },
+            "7": { "name": "entity.name.function.js" },
+            "8": { "name": "keyword.operator.assignment.js" },
+            "9": { "name": "storage.type.js" }
           },
           "endCaptures": {
             "2": { "name": "storage.type.function.arrow.js" }
@@ -1756,30 +1772,33 @@
         {
           "comment": "e.g. Sound.prototype.play = arg => { }",
           "name": "meta.prototype.function.arrow.js",
-          "match": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*(\\.)(prototype)(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
+          "match": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?\\s*(\\?)?(\\.)(prototype)(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
           "captures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.language.prototype.js" },
-            "4": { "name": "keyword.operator.accessor.js" },
-            "5": { "name": "entity.name.function.js" },
-            "6": { "name": "keyword.operator.assignment.js" },
-            "7": { "name": "storage.type.js" },
-            "8": { "name": "variable.other.readwrite.js" },
-            "9": { "name": "storage.type.function.arrow.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.language.prototype.js" },
+            "5": { "name": "keyword.operator.existential.js" },
+            "6": { "name": "keyword.operator.accessor.js" },
+            "7": { "name": "entity.name.function.js" },
+            "8": { "name": "keyword.operator.assignment.js" },
+            "9": { "name": "storage.type.js" },
+            "10": { "name": "variable.other.readwrite.js" },
+            "11": { "name": "storage.type.function.arrow.js" }
           }
         },
         {
           "comment": "e.g. Sound.play = (args) => { }",
           "name": "meta.function.static.arrow.js",
-          "begin": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
+          "begin": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
           "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
           "beginCaptures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" },
-            "4": { "name": "keyword.operator.assignment.js" },
-            "5": { "name": "storage.type.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" },
+            "5": { "name": "keyword.operator.assignment.js" },
+            "6": { "name": "storage.type.js" }
           },
           "endCaptures": {
             "2": { "name": "storage.type.function.arrow.js" }
@@ -1792,15 +1811,16 @@
         {
           "comment": "e.g. Sound.play = arg => { }",
           "name": "meta.function.static.arrow.js",
-          "match": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
+          "match": "\\s*+(\\b(?:[$_\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(\\?)?(\\.)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
           "captures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "entity.name.function.js" },
-            "4": { "name": "keyword.operator.assignment.js" },
-            "5": { "name": "storage.type.js" },
-            "6": { "name": "variable.other.readwrite.js" },
-            "7": { "name": "storage.type.function.arrow.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "entity.name.function.js" },
+            "5": { "name": "keyword.operator.assignment.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "variable.other.readwrite.js" },
+            "8": { "name": "storage.type.function.arrow.js" }
           }
         }
       ]
@@ -2152,11 +2172,12 @@
         {
           "comment": "e.g. Class.property",
           "name": "meta.property.class.js",
-          "match": "\\s*+\\b((?:[$\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
+          "match": "\\s*+\\b((?:[$\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?)?(\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
           "captures": {
             "1": { "name": "variable.other.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.other.property.static.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.other.property.static.js" }
           }
         },
         {
@@ -2214,21 +2235,23 @@
         {
           "comment": "e.g. Sound.prototype",
           "name": "meta.prototype.access.js",
-          "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\.)(prototype)\\b",
+          "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\?)?(\\.)(prototype)\\b",
           "captures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.language.prototype.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.language.prototype.js" }
           }
         },
         {
           "comment": "e.g. Sound.prototype = { }",
           "name": "meta.prototype.declaration.js",
-          "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\.)(prototype)\\s*+=\\s*+",
+          "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\?)?(\\.)(prototype)\\s*+=\\s*+",
           "captures": {
             "1": { "name": "entity.name.class.js" },
-            "2": { "name": "keyword.operator.accessor.js" },
-            "3": { "name": "variable.language.prototype.js" }
+            "2": { "name": "keyword.operator.existential.js" },
+            "3": { "name": "keyword.operator.accessor.js" },
+            "4": { "name": "variable.language.prototype.js" }
           }
         }
       ]
@@ -2248,10 +2271,11 @@
           "patterns": [
             {
               "commnent": "decorator .property or .method which may be on a different line",
-              "begin": "\\s*(\\.)",
+              "begin": "\\s*(\\?)?(\\.)",
               "end": "\\s*(?:((?:[\\p{Lu}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))",
               "beginCaptures": {
-                "1": { "name": "keyword.operator.accessor.js"}
+                "1": { "name": "keyword.operator.existential.js"},
+                "2": { "name": "keyword.operator.accessor.js"}
               },
               "endCaptures": {
                 "1": { "name": "entity.name.class.decorator.js" },
