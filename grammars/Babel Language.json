@@ -220,7 +220,7 @@
       "patterns": [
         {
           "comment": "string as a property name",
-          "match": "(?<!\\.|\\?)\\s*+(((\")(\\\\.|[^\\\\\"])*(\"))|((')(\\\\.|[^\\\\'])*(')))\\s*+(:)(?!:)",
+          "match": "(?<!\\.|\\?)\\s*+(((\")(\\\\.|[^\\\\\"])*(\"))|((')(\\\\.|[^\\\\'])*(')))\\s*+(:)((?=::)|(?!:))",
           "captures": {
             "1": { "name": "constant.other.object.key.js" },
             "2": { "name": "string.quoted.double.js" },
@@ -235,7 +235,7 @@
         {
           "comment": "[some expression] : as  property name",
           "begin": "(?<!\\.|\\?)\\s*+(?=(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])\\s*+:\\s*+[\\S&&[^:]])",
-          "end": "\\s*(:)(?!:)",
+          "end": "\\s*(:)((?=::)|(?!:))",
           "endCaptures": {
             "1": { "name": "punctuation.separator.key-value.js" }
           },
@@ -244,7 +244,7 @@
           ]
         },
         {
-          "match": "(?<!\\.|\\?)\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*+(:)(?!:)",
+          "match": "(?<!\\.|\\?)\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*+(:)((?=::)|(?!:))",
           "captures": {
             "1": { "name": "constant.other.object.key.js" },
             "2": { "name": "string.unquoted.js" },
@@ -341,7 +341,7 @@
               "patterns": [
                 {
                   "begin": "(?<!\\.)\\s*+\\b(case|default)\\b",
-                  "end": "\\s*(:)(?!:)",
+                  "end": "\\s*(:)((?=::)|(?!:))",
                   "beginCaptures": {
                     "1": { "name": "keyword.control.switch.js" }
                   },
@@ -1222,7 +1222,7 @@
         {
           "comment": "ternary operator - make sure end : is consumed to avoid mistake as flow type",
           "begin": "\\s*+(\\?)",
-          "end": "\\s*(:)(?!:)",
+          "end": "\\s*(:)((?=::)|(?!:))",
           "beginCaptures": {
             "1": { "name": "keyword.operator.ternary.js" }
           },
@@ -2514,7 +2514,7 @@
           "comment": "non named flowtype returning a type T e.g. function x(arg, arg): T {} :",
           "comment": "handled thus to avoid a function body brace being treated as an object literal type",
           "comment": "maybe an issue if a object literal is returned and the start of func block isn't on same line!",
-          "begin": "(?<=\\))\\s*+(:)(?!:)",
+          "begin": "(?<=\\))\\s*+(:)((?=::)|(?!:))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -2588,7 +2588,7 @@
         },
         {
           "comment": "typed entity :",
-          "begin": "\\s*+(:)(?!:)",
+          "begin": "\\s*+(:)((?=::)|(?!:))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -2727,7 +2727,7 @@
           {
             "comment": "types of type marker e.g. <T: number | string>",
             "name": "punctuation.type.flowtype",
-            "match": "\\s*+(:)(?!:)",
+            "match": "\\s*+(:)((?=::)|(?!:))",
             "captures": {
               "1": { "name": "support.type.builtin.primitive.flowtype" }
             }
@@ -2936,7 +2936,7 @@
         },
         {
           "comment": "declare module.exports:",
-          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(module)(.)(exports)(:)(?!:)",
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(module)(.)(exports)(:)((?=::)|(?!:))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
@@ -3116,7 +3116,7 @@
         },
         {
           "name": "meta.comments.flowtype",
-          "begin": "\\s*+(/\\*)\\s*(:)(?!:)",
+          "begin": "\\s*+(/\\*)\\s*(:)((?=::)|(?!:))",
           "end": "\\s*(\\*/)",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.comment.js" },
