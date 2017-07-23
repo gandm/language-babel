@@ -191,6 +191,17 @@ Sound?.play = args => {}
 //            ^^^^        variable.other.readwrite.js
 //                 ^^     storage.type.function.arrow.js
 //                    ^^  meta.brace.curly.js
+func?.(...args)
+// <- meta.function-call.with-arguments.js entity.name.function.js
+ // <- meta.function-call.with-arguments.js entity.name.function.js
+//^^^^^^^^^^^^^  meta.function-call.with-arguments.js
+//^^             entity.name.function.js
+//  ^            keyword.operator.existential.js
+//   ^           keyword.operator.accessor.js
+//    ^       ^  meta.brace.round.js
+//     ^^^       keyword.operator.spread.js
+//        ^^^^   meta.property.object.js
+//        ^^^^   variable.other.property.js
 
 // Class and method decorator productions
 @Decorator
