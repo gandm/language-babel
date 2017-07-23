@@ -1,3 +1,6 @@
+### 2.68.0
+  - Add syntax support for null/existential/elvis `?` operator as defined at [tc39 chaining](https://github.com/tc39/proposal-optional-chaining)
+
 ### 2.67.2
   - Fix another bind :: parse error -Issue #390
 
