@@ -1,5 +1,34 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 392
+type a={}
+// <- keyword.other.typedef.flowtype
+ // <- keyword.other.typedef.flowtype
+//^^       keyword.other.typedef.flowtype
+//   ^     support.type.primitive.flowtype
+//    ^    keyword.operator.assignment.js
+//     ^^  meta.object.flowtype
+//     ^^  meta.brace.curly.js
+f()
+// <- meta.function-call.without-arguments.js entity.name.function.js
+ // <- meta.function-call.without-arguments.js meta.brace.round.js
+//^  meta.function-call.without-arguments.js
+//^  meta.brace.round.js
+export type a={}
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^            keyword.control.module.js
+//     ^^^^       keyword.other.typedef.flowtype
+//          ^     support.type.primitive.flowtype
+//           ^    keyword.operator.assignment.js
+//            ^^  meta.object.flowtype
+//            ^^  meta.brace.curly.js
+f()
+// <- meta.function-call.without-arguments.js entity.name.function.js
+ // <- meta.function-call.without-arguments.js meta.brace.round.js
+//^  meta.function-call.without-arguments.js
+//^  meta.brace.round.js
+
 // Issue 390
 
 let a = await a()
