@@ -2072,7 +2072,7 @@
       "patterns": [
         {
           "comment": "e.g. export let variable =, export type a=",
-          "match": "(?<!\\.)\\s*+\\b(export)(?!\\s*:)\\b(?=\\s++(const|let|var|type|typeof)\\s++(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))",
+          "match": "(?<!\\.)\\s*+\\b(export)(?!\\s*:)\\b(?=\\s++(const|let|opaque|var|type|typeof)\\s++(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))",
           "captures": {
             "1": { "name": "keyword.control.module.js" }
           }
@@ -2892,11 +2892,12 @@
       "patterns": [
         {
           "comment": "type aliases for export but avoid type instaceof or type in operators",
-          "begin": "(?<=^|;|\\S)\\s*+\\b(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
-          "end": "(?<=})|(?:\\s*(?=}|;|\\*/)|\\b(?=if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
+          "begin": "(?<=^|;|\\S)\\s*+\\b(opaque)?\\s*+\\b(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
+          "end": "(?<=})|(?:\\s*(?=}|;|\\*/)|\\b(?=if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|opaque)\\b)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "1": { "name": "keyword.other.typedef.flowtype" }
+            "1": { "name": "keyword.other.typedef.flowtype" },
+            "2": { "name": "keyword.other.typedef.flowtype" }
           },
           "patterns": [
             {
@@ -2957,7 +2958,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface)\\b)",
+          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface|opaque)\\b)",
           "captures": {
             "1": { "name":  "keyword.other.declare.flowtype" }
           }
