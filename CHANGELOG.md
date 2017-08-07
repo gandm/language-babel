@@ -1,3 +1,8 @@
+### 2.69.0
+  - Add support for Flow's [opaque](https://flow.org/en/docs/types/opaque-types/#opaque-type-alias-syntax-a-classtoc-idtoc-opaque-type-alias-syntax-hreftoc-opaque-type-alias-syntaxa) keyword.
+  - Fix Flow type objects in grammar - Issue #392
+  - Fix highlighting/scopes for null arguments in the form `func?.()`
+
 ### 2.68.0
   - Add syntax support for null/existential/elvis `?` operator as defined at [tc39 chaining](https://github.com/tc39/proposal-optional-chaining)
 
