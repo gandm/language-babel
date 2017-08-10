@@ -1,5 +1,166 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #397
+let result = "hello"
+// <- storage.type.js
+ // <- storage.type.js
+//^                   storage.type.js
+//  ^^^^^^            variable.other.readwrite.js
+//         ^          keyword.operator.assignment.js
+//           ^^^^^^^  string.quoted.double.js
+//           ^        punctuation.definition.string.begin.js
+//                 ^  punctuation.definition.string.end.js
+  |> someptr?.#doubleSay
+//^^                      keyword.operator.pipeline.js
+//   ^^^^^^^              variable.other.object.js
+//          ^             keyword.operator.existential.js
+//           ^            keyword.operator.accessor.js
+//            ^           keyword.operator.private.js
+//             ^^^^^^^^^  meta.method-call.without-arguments.js
+//             ^^^^^^^^^  entity.name.function.js
+  |> capitalize
+//^^             keyword.operator.pipeline.js
+//   ^^^^^^^^^^  meta.function-call.without-arguments.js
+//   ^^^^^^^^^^  entity.name.function.js
+  |> exclaim;
+//^^           keyword.operator.pipeline.js
+//   ^^^^^^^   meta.function-call.without-arguments.js
+//   ^^^^^^^   entity.name.function.js
+//          ^  punctuation.terminator.statement.js
+
+let newScore = person.score
+// <- storage.type.js
+ // <- storage.type.js
+//^                          storage.type.js
+//  ^^^^^^^^                 variable.other.readwrite.js
+//           ^               keyword.operator.assignment.js
+//             ^^^^^^        variable.other.object.js
+//                   ^       keyword.operator.accessor.js
+//                    ^^^^^  meta.property.object.js
+//                    ^^^^^  variable.other.property.js
+  |> double
+//^^         keyword.operator.pipeline.js
+//   ^^^^^^  meta.function-call.without-arguments.js
+//   ^^^^^^  entity.name.function.js
+  |> _ => add(7, _)
+//^^                 keyword.operator.pipeline.js
+//   ^               meta.function-call.without-arguments.js
+//   ^    ^^^        entity.name.function.js
+//     ^^            storage.type.function.arrow.js
+//        ^^^^^^ ^^  meta.function-call.with-arguments.js
+//           ^    ^  meta.brace.round.js
+//            ^      constant.numeric.js
+//             ^     meta.delimiter.comma.js
+//               ^   variable.other.readwrite.js
+  |> _ => boundScore(0, 100, _);
+//^^                              keyword.operator.pipeline.js
+//   ^                            meta.function-call.without-arguments.js
+//   ^    ^^^^^^^^^^              entity.name.function.js
+//     ^^                         storage.type.function.arrow.js
+//        ^^^^^^^^^^^^^ ^^^^ ^^   meta.function-call.with-arguments.js
+//                  ^         ^   meta.brace.round.js
+//                   ^  ^^^       constant.numeric.js
+//                    ^    ^      meta.delimiter.comma.js
+//                           ^    variable.other.readwrite.js
+//                             ^  punctuation.terminator.statement.js
+
+let newScore = person.score
+// <- storage.type.js
+ // <- storage.type.js
+//^                          storage.type.js
+//  ^^^^^^^^                 variable.other.readwrite.js
+//           ^               keyword.operator.assignment.js
+//             ^^^^^^        variable.other.object.js
+//                   ^       keyword.operator.accessor.js
+//                    ^^^^^  meta.property.object.js
+//                    ^^^^^  variable.other.property.js
+  |> double
+//^^         keyword.operator.pipeline.js
+//   ^^^^^^  meta.function-call.without-arguments.js
+//   ^^^^^^  entity.name.function.js
+  |> add.papp(7)
+//^^              keyword.operator.pipeline.js
+//   ^^^          variable.other.object.js
+//      ^         keyword.operator.accessor.js
+//       ^^^^^^^  meta.method-call.with-arguments.js
+//       ^^^^     entity.name.function.js
+//           ^ ^  meta.brace.round.js
+//            ^   constant.numeric.js
+  |> boundScore.papp(0, 100);
+//^^                           keyword.operator.pipeline.js
+//   ^^^^^^^^^^                variable.other.object.js
+//             ^               keyword.operator.accessor.js
+//              ^^^^^^^ ^^^^   meta.method-call.with-arguments.js
+//              ^^^^           entity.name.function.js
+//                  ^      ^   meta.brace.round.js
+//                   ^  ^^^    constant.numeric.js
+//                    ^        meta.delimiter.comma.js
+//                          ^  punctuation.terminator.statement.js
+
+getAllPlayers()
+// <- meta.function-call.without-arguments.js entity.name.function.js
+ // <- meta.function-call.without-arguments.js entity.name.function.js
+//^^^^^^^^^^^^^  meta.function-call.without-arguments.js
+//^^^^^^^^^^^    entity.name.function.js
+//           ^^  meta.brace.round.js
+  .filter( p => p.score > 100 )
+//^              ^               keyword.operator.accessor.js
+// ^^^^^^^ ^ ^^ ^^^^^^^ ^ ^^^ ^  meta.method-call.with-arguments.js
+// ^^^^^^                        entity.name.function.js
+//       ^                    ^  meta.brace.round.js
+//         ^ ^^                  meta.function.arrow.js
+//         ^                     meta.function.parameters.js
+//         ^                     variable.other.readwrite.js
+//           ^^                  storage.type.function.arrow.js
+//              ^                variable.other.object.js
+//                ^^^^^          meta.property.object.js
+//                ^^^^^          variable.other.property.js
+//                      ^        keyword.operator.relational.js
+//                        ^^^    constant.numeric.js
+  .sort()
+//^        keyword.operator.accessor.js
+// ^^^^    support.function.mutator.js
+//     ^^  meta.brace.round.js
+  |> _ => Lazy(_)
+//^^               keyword.operator.pipeline.js
+//   ^             meta.function-call.without-arguments.js
+//   ^    ^^^^     entity.name.function.js
+//     ^^          storage.type.function.arrow.js
+//        ^^^^^^^  meta.function-call.with-arguments.js
+//            ^ ^  meta.brace.round.js
+//             ^   variable.other.readwrite.js
+  .map( p => p.name )
+//^           ^        keyword.operator.accessor.js
+// ^^^^ ^ ^^ ^^^^^^ ^  meta.method-call.with-arguments.js
+// ^^^                 entity.name.function.js
+//    ^             ^  meta.brace.round.js
+//      ^ ^^           meta.function.arrow.js
+//      ^              meta.function.parameters.js
+//      ^              variable.other.readwrite.js
+//        ^^           storage.type.function.arrow.js
+//           ^         variable.other.object.js
+//             ^^^^    meta.property.object.js
+//             ^^^^    variable.other.property.js
+  .take(5)
+//^         keyword.operator.accessor.js
+// ^^^^^^^  meta.method-call.with-arguments.js
+// ^^^^     entity.name.function.js
+//     ^ ^  meta.brace.round.js
+//      ^   constant.numeric.js
+  |> _ => renderLeaderboard('#my-div', _);
+//^^                                        keyword.operator.pipeline.js
+//   ^                                      meta.function-call.without-arguments.js
+//   ^    ^^^^^^^^^^^^^^^^^                 entity.name.function.js
+//     ^^                                   storage.type.function.arrow.js
+//        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^   meta.function-call.with-arguments.js
+//                         ^            ^   meta.brace.round.js
+//                          ^^^^^^^^^       string.quoted.single.js
+//                          ^               punctuation.definition.string.begin.js
+//                                  ^       punctuation.definition.string.end.js
+//                                   ^      meta.delimiter.comma.js
+//                                     ^    variable.other.readwrite.js
+//                                       ^  punctuation.terminator.statement.js
+
 // Issue 392
 type a={}
 // <- keyword.other.typedef.flowtype

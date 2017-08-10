@@ -1176,6 +1176,7 @@
     },
     "literal-operators": {
       "patterns": [
+        { "include": "#esnext-pipeline" },
         { "include": "#es7-function-bind" },
         {
           "match": "(?<!\\.)\\s*+\\b(delete|in|instanceof|new|of|typeof|void|with)\\b",
@@ -2327,6 +2328,49 @@
         }
       ]
     },
+    "esnext-pipeline": {
+      "patterns": [
+        {
+          "begin": "\\s*(\\|>)(?=\\s*(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\??\\.?\\#?)++\\s*([^(]|$))",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.pipeline.js"}
+          },
+          "patterns": [
+            {
+              "match": "(?<=\\|>)\\s*(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))(?!\\?|\\.|\\#)",
+              "captures": {
+                "1": { "name": "meta.function-call.without-arguments.js"},
+                "2": { "name": "entity.name.function.js"}
+              }
+            },
+            {
+              "match": "\\s*(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))(?!\\?|\\.|\\#)",
+              "captures": {
+                "1": { "name": "meta.method-call.without-arguments.js"},
+                "2": { "name": "entity.name.function.js"}
+              }
+            },
+            {
+              "match": "\\s*(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\??)(\\.?)(\\#?))",
+              "captures": {
+                "2": { "name": "variable.other.object.js"},
+                "3": { "name": "keyword.operator.existential.js"},
+                "4": { "name": "keyword.operator.accessor.js"},
+                "5": { "name": "keyword.operator.private.js"}
+              }
+            }
+          ]
+        },
+        {
+          "match": "\\s*(\\|>)",
+          "captures": {
+            "1": {"name": "keyword.operator.pipeline.js"}
+          }
+        }
+      ]
+    },
     "jsx": {
       "comment": "Uses the JSX syntax as decribed at http://facebook.github.io/jsx/",
       "comment": "and the ECMA6 draft here http://people.mozilla.org/~jorendorff/es6-draft.html",
@@ -2602,7 +2646,7 @@
         },
         {
           "comment": "Type Unions |",
-          "match": "\\s*+(\\|)(?<!{\\|)(?!})",
+          "match": "\\s*+(\\|)(?<!{\\|)(?!}|>)",
           "captures": {
             "1": { "name": "kewyword.operator.union.flowtype" }
           }
@@ -2733,7 +2777,7 @@
           },
           {
             "comment": "Type Unions |",
-            "match": "\\s*+(\\|)(?<!{\\|)(?!})",
+            "match": "\\s*+(\\|)(?<!{\\|)(?!}|>)",
             "captures": {
               "1": { "name": "kewyword.operator.union.flowtype" }
             }
@@ -2893,7 +2937,7 @@
         {
           "comment": "type aliases for export but avoid type instaceof or type in operators",
           "begin": "(?<=^|;|\\S)\\s*+\\b(opaque)?\\s*+\\b(type)\\b\\s+(?!(instanceof|in)\\b)(?=[$_A-Za-z{\\[])",
-          "end": "(?<=})|(?:\\s*(?=}|;|\\*/)|\\b(?=if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface|opaque)\\b)",
+          "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "keyword.other.typedef.flowtype" },

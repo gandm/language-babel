@@ -1,3 +1,6 @@
+### 2.70.0
+  - Add support for |> [pipeline operator](https://github.com/tc39/proposal-pipeline-operator)
+
 ### 2.69.0
   - Add support for Flow's [opaque](https://flow.org/en/docs/types/opaque-types/#opaque-type-alias-syntax-a-classtoc-idtoc-opaque-type-alias-syntax-hreftoc-opaque-type-alias-syntaxa) keyword.
   - Fix Flow type objects in grammar - Issue #392
