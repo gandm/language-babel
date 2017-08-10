@@ -1,3 +1,6 @@
+### 2.71.1
+  - Fix JS keywords being parsed as pipeline functions.
+  
 ### 2.70.0
   - Add support for |> [pipeline operator](https://github.com/tc39/proposal-pipeline-operator)
 
