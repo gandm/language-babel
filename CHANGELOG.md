@@ -1,8 +1,8 @@
-### 2.71.2
+### 2.70.2
   - Add commenting option to pipelined operators
   - Fix bad captures in 2.71.1
    
-### 2.71.1
+### 2.70.1
   - Fix JS keywords being parsed as pipeline functions.
 
 ### 2.70.0
