@@ -669,7 +669,7 @@ x;
    get x(){}, set x(a){}, get 'y'(){}, set "y"(a){},
 // ^^^ ^^^^^  ^^^ ^^^^^^  ^^^ ^^^^^    ^^^ ^^^^^^     meta.accessor.js
 // ^^^        ^^^         ^^^          ^^^            storage.type.accessor.js
-//     ^          ^                                   entity.name.accessor.js
+//     ^          ^                                   entity.name.function.accessor.js
 //      ^          ^             ^            ^       punctuation.definition.parameters.begin.js
 //      ^^         ^ ^           ^^           ^ ^     meta.brace.round.js
 //       ^           ^            ^             ^     punctuation.definition.parameters.end.js
@@ -689,7 +689,7 @@ x;
 //         ^           ^            ^             ^  meta.delimiter.comma.js
 //                       ^^^ ^^^^^^^  ^^^ ^^^^^^^^   meta.accessor.js
 //                       ^^^          ^^^            storage.type.accessor.js
-//                           ^^^          ^^^        entity.name.accessor.js
+//                           ^^^          ^^^        entity.name.function.accessor.js
 //                              ^            ^       punctuation.definition.parameters.begin.js
 //                               ^             ^     punctuation.definition.parameters.end.js
 //                                            ^      meta.function.parameters.js
@@ -742,7 +742,7 @@ x;
   set in([a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k]){},
 //^^^ ^^^^^^ ^ ^ ^^ ^^^^ ^ ^ ^^ ^^^^^^ ^^^ ^^ ^^ ^ ^ ^^ ^^ ^ ^ ^^^ ^^^^^^^^   meta.accessor.js
 //^^^                                                                         storage.type.accessor.js
-//    ^^                                                                      entity.name.accessor.js
+//    ^^                                                                      entity.name.function.accessor.js
 //      ^                                                                     punctuation.definition.parameters.begin.js
 //      ^                                                               ^     meta.brace.round.js
 //       ^^^ ^ ^ ^^ ^^^^ ^ ^ ^^ ^^^^^^ ^^^ ^^ ^^ ^ ^ ^^ ^^ ^ ^ ^^^ ^^^^^      meta.function.parameters.js
@@ -789,7 +789,7 @@ x;
 //                ^                  ^                   ^      meta.delimiter.comma.js
 //                  ^^^ ^^^^^^^^^^^^^  ^^^ ^^^^^^^^^^^^^^       meta.accessor.js
 //                  ^^^                ^^^                      storage.type.accessor.js
-//                      ^^^^^^^^^          ^^^^^^^^^            entity.name.accessor.js
+//                      ^^^^^^^^^          ^^^^^^^^^            entity.name.function.accessor.js
 //                               ^                  ^           punctuation.definition.parameters.begin.js
 //                                ^                   ^         punctuation.definition.parameters.end.js
 //                                 ^^                  ^^       meta.brace.curly.js
@@ -2038,7 +2038,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^^^^ ^^^ ^^^^^ ^^^^^^ ^^^ ^^^^^                    ^^^^^^ ^^^ ^^^^^    meta.accessor.js
 //^^^^^^           ^^^^^^             ^^^^^^           ^^^^^^              storage.modifier.js
 //       ^^^              ^^^                                 ^^^          storage.type.accessor.js
-//           ^                                                             entity.name.accessor.js
+//           ^                                                             entity.name.function.accessor.js
 //            ^                  ^                                   ^     punctuation.definition.parameters.begin.js
 //            ^^                 ^^               ^^                 ^^    meta.brace.round.js
 //             ^                  ^                                   ^    punctuation.definition.parameters.end.js
@@ -2055,7 +2055,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^                     ^^^^^^ ^^^ ^^^^^^    meta.accessor.js
 //^^^^^^            ^^^^^^              ^^^^^^            ^^^^^^               storage.modifier.js
 //       ^^^               ^^^                                   ^^^           storage.type.accessor.js
-//           ^                                                                 entity.name.accessor.js
+//           ^                                                                 entity.name.function.accessor.js
 //            ^                   ^                                     ^      punctuation.definition.parameters.begin.js
 //            ^ ^                 ^ ^               ^ ^                 ^ ^    meta.brace.round.js
 //             ^                   ^                                     ^     meta.function.parameters.js
@@ -2073,7 +2073,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^^^^ ^^^ ^^^^^^ ^^^^^^ ^^^ ^^^^^^^  meta.accessor.js
 //^^^^^^            ^^^^^^              storage.modifier.js
 //       ^^^               ^^^          storage.type.accessor.js
-//           ^^                ^^       entity.name.accessor.js
+//           ^^                ^^       entity.name.function.accessor.js
 //             ^                 ^      punctuation.definition.parameters.begin.js
 //             ^^                ^ ^    meta.brace.round.js
 //              ^                  ^    punctuation.definition.parameters.end.js
@@ -2121,7 +2121,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^ ^^^^^ ^^^ ^^^^^^^ ^^^ ^^^^^ ^^^ ^^^^^^^  meta.class.body.js
 //^^^ ^^^^^ ^^^ ^^^^^             ^^^ ^^^^^    meta.accessor.js
 //^^^       ^^^                   ^^^          storage.type.accessor.js
-//    ^                                        entity.name.accessor.js
+//    ^                                        entity.name.function.accessor.js
 //     ^           ^                     ^     punctuation.definition.parameters.begin.js
 //     ^^          ^^        ^^          ^^    meta.brace.round.js
 //      ^           ^                     ^    punctuation.definition.parameters.end.js
@@ -2137,7 +2137,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^ ^^^^^^ ^^^ ^^^^^^^^ ^^^ ^^^^^^ ^^^ ^^^^^^^^  meta.class.body.js
 //^^^ ^^^^^^ ^^^ ^^^^^^              ^^^ ^^^^^^    meta.accessor.js
 //^^^        ^^^                     ^^^           storage.type.accessor.js
-//    ^                                            entity.name.accessor.js
+//    ^                                            entity.name.function.accessor.js
 //     ^            ^                       ^      punctuation.definition.parameters.begin.js
 //     ^ ^          ^ ^        ^ ^          ^ ^    meta.brace.round.js
 //      ^            ^                       ^     meta.function.parameters.js
@@ -2154,7 +2154,7 @@ m(a, b = 0, [c,, d = 0, ...e], {f, g: h, i = 0, i: j = 0}, ...k) {
 //^^^ ^^^^ ^^ ^^^ ^^^^^ ^^  meta.class.body.js
 //^^^ ^^^^ ^^ ^^^ ^^^^^ ^^  meta.accessor.js
 //^^^         ^^^           storage.type.accessor.js
-//    ^^          ^^        entity.name.accessor.js
+//    ^^          ^^        entity.name.function.accessor.js
 //      ^           ^       punctuation.definition.parameters.begin.js
 //      ^^          ^ ^     meta.brace.round.js
 //       ^            ^     punctuation.definition.parameters.end.js

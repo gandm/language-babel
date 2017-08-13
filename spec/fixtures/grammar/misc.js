@@ -643,4 +643,4 @@ type $JSXIntrinsics = {
 //                                        ^  punctuation.terminator.statement.js
 
 
-  // >> only:(source.js.jsx)
+// >> only:(source.js.jsx)

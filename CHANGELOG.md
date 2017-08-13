@@ -1,7 +1,10 @@
+### 2.71.0
+  - Add support to grammar for private class fields and methods defined at [TC39 ](https://github.com/tc39/proposal-class-fields)
+
 ### 2.70.2
   - Add commenting option to pipelined operators
   - Fix bad captures in 2.71.1
-   
+
 ### 2.70.1
   - Fix JS keywords being parsed as pipeline functions.
 

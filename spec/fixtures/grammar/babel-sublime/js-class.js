@@ -38,7 +38,7 @@ class MyClass {
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                              storage.modifier.js
 //       ^^^                          storage.type.accessor.js
-//           ^^^^^^^^^^^^^^^^^^       entity.name.accessor.js
+//           ^^^^^^^^^^^^^^^^^^       entity.name.function.accessor.js
 //                             ^      punctuation.definition.parameters.begin.js
 //                             ^^     meta.brace.round.js
 //                              ^     punctuation.definition.parameters.end.js
@@ -48,7 +48,7 @@ class MyClass {
 //^^^^^^ ^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                                 storage.modifier.js
 //       ^^^                             storage.type.accessor.js
-//           ^^^^^^^^^^^^^^^^^^          entity.name.accessor.js
+//           ^^^^^^^^^^^^^^^^^^          entity.name.function.accessor.js
 //                             ^         punctuation.definition.parameters.begin.js
 //                             ^   ^     meta.brace.round.js
 //                              ^^^      meta.function.parameters.js

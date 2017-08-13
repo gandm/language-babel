@@ -122,7 +122,7 @@ let Sound = {
   get play() {},
 //^^^ ^^^^^^ ^^   meta.accessor.js
 //^^^             storage.type.accessor.js
-//    ^^^^        entity.name.accessor.js
+//    ^^^^        entity.name.function.accessor.js
 //        ^       punctuation.definition.parameters.begin.js
 //        ^^      meta.brace.round.js
 //         ^      punctuation.definition.parameters.end.js
@@ -131,7 +131,7 @@ let Sound = {
   set play(arg) {},
 //^^^ ^^^^^^^^^ ^^   meta.accessor.js
 //^^^                storage.type.accessor.js
-//    ^^^^           entity.name.accessor.js
+//    ^^^^           entity.name.function.accessor.js
 //        ^          punctuation.definition.parameters.begin.js
 //        ^   ^      meta.brace.round.js
 //         ^^^       meta.function.parameters.js
@@ -1151,7 +1151,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^ ^^^^^ ^^  meta.accessor.js
 //^^^^^^               storage.modifier.js
 //       ^^^           storage.type.accessor.js
-//           ^^^       entity.name.accessor.js
+//           ^^^       entity.name.function.accessor.js
 //              ^      punctuation.definition.parameters.begin.js
 //              ^^     meta.brace.round.js
 //               ^     punctuation.definition.parameters.end.js
@@ -1161,7 +1161,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^ ^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                  storage.modifier.js
 //       ^^^              storage.type.accessor.js
-//           ^^^          entity.name.accessor.js
+//           ^^^          entity.name.function.accessor.js
 //              ^         punctuation.definition.parameters.begin.js
 //              ^   ^     meta.brace.round.js
 //               ^^^      meta.function.parameters.js
@@ -1268,7 +1268,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^ ^^^^^^ ^^  meta.class.body.js
 //^^^ ^^^^^^ ^^  meta.accessor.js
 //^^^            storage.type.accessor.js
-//    ^^^^       entity.name.accessor.js
+//    ^^^^       entity.name.function.accessor.js
 //        ^      punctuation.definition.parameters.begin.js
 //        ^^     meta.brace.round.js
 //         ^     punctuation.definition.parameters.end.js
@@ -1277,7 +1277,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^ ^^^^^^^^^ ^^  meta.class.body.js
 //^^^ ^^^^^^^^^ ^^  meta.accessor.js
 //^^^               storage.type.accessor.js
-//    ^^^^          entity.name.accessor.js
+//    ^^^^          entity.name.function.accessor.js
 //        ^         punctuation.definition.parameters.begin.js
 //        ^   ^     meta.brace.round.js
 //         ^^^      meta.function.parameters.js
@@ -1353,7 +1353,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^ ^^^^^^ ^^  meta.accessor.js
 //^^^^^^                storage.modifier.js
 //       ^^^            storage.type.accessor.js
-//           ^^^^       entity.name.accessor.js
+//           ^^^^       entity.name.function.accessor.js
 //               ^      punctuation.definition.parameters.begin.js
 //               ^^     meta.brace.round.js
 //                ^     punctuation.definition.parameters.end.js
@@ -1363,7 +1363,7 @@ class Sound<T, T> extends Model<T, T> {
 //^^^^^^ ^^^ ^^^^^^^^^ ^^  meta.accessor.js
 //^^^^^^                   storage.modifier.js
 //       ^^^               storage.type.accessor.js
-//           ^^^^          entity.name.accessor.js
+//           ^^^^          entity.name.function.accessor.js
 //               ^         punctuation.definition.parameters.begin.js
 //               ^   ^     meta.brace.round.js
 //                ^^^      meta.function.parameters.js

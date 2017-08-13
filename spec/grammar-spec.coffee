@@ -14,6 +14,9 @@ describe 'Grammar', ->
     waitsForPromise ->
       atom.packages.activatePackage('language-html')
 
+  # test private class fields and methods
+  grammarTest path.join(__dirname, 'fixtures/grammar/private-fields.js')
+
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-class.js')

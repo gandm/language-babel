@@ -1355,7 +1355,7 @@ export default {
   get a() { return this._a },
 //^^^ ^^^ ^ ^^^^^^ ^^^^^^^ ^   meta.accessor.js
 //^^^                          storage.type.accessor.js
-//    ^                        entity.name.accessor.js
+//    ^                        entity.name.function.accessor.js
 //     ^                       punctuation.definition.parameters.begin.js
 //     ^^                      meta.brace.round.js
 //      ^                      punctuation.definition.parameters.end.js
@@ -1369,7 +1369,7 @@ export default {
   set a(v) { this._a = v },
 //^^^ ^^^^ ^ ^^^^^^^ ^ ^ ^   meta.accessor.js
 //^^^                        storage.type.accessor.js
-//    ^                      entity.name.accessor.js
+//    ^                      entity.name.function.accessor.js
 //     ^                     punctuation.definition.parameters.begin.js
 //     ^ ^                   meta.brace.round.js
 //      ^                    meta.function.parameters.js
