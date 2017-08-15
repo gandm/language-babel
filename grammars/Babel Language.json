@@ -11,7 +11,8 @@
     "es",
     "babel",
     "jsx",
-    "flow"
+    "flow",
+    "mjs"
   ],
   "patterns": [
     { "include": "#core" }
