@@ -1741,12 +1741,6 @@
           "captures": {
             "1": { "name": "constant.numeric.js" }
           }
-        },
-        {
-          "match": "\\s*+((?:\\B[-+]|\\b)(Infinity)\\b)",
-          "captures": {
-            "1": { "name": "constant.language.infinity.js" }
-          }
         }
       ]
     },
