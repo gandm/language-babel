@@ -2766,7 +2766,7 @@
         "patterns": [
           {
             "comment": "sometypename of|in ",
-            "begin": "(?<=[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])\\s+(?=\\b(?:of|in)\\b)",
+            "begin": "(?<=[>$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}])\\s+(?=\\b(?:of|in)\\b)",
             "end": "\\s*(?=,|;|\\)|}|\\]|\\*/|\\b(?:if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield)\\b|\\b(async|await)\\b\\s*+(?!=|:)|type\\s+[$\\w]+|declare\\s+[$\\w]+|interface\\s+[$\\w]+)",
             "patterns": [
               { "include": "#expression" }

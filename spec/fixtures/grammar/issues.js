@@ -1,5 +1,34 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #404
+for (const x:a<T> of a) {}
+// <- meta.for.js keyword.control.loop.js
+ // <- meta.for.js keyword.control.loop.js
+//^ ^^^^^^ ^^^^^^ ^^ ^^     meta.for.js
+//^                         keyword.control.loop.js
+//  ^                 ^     meta.brace.round.js
+//   ^^^^^                  storage.type.js
+//         ^         ^      variable.other.readwrite.js
+//          ^               punctuation.type.flowtype
+//           ^              support.type.primitive.flowtype
+//            ^ ^           punctuation.flowtype
+//             ^            support.type.class.flowtype
+//                ^^        keyword.operator.js
+//                      ^^  meta.brace.curly.js
+for (const x:a<T> in a) {}
+// <- meta.for.js keyword.control.loop.js
+ // <- meta.for.js keyword.control.loop.js
+//^ ^^^^^^ ^^^^^^ ^^ ^^     meta.for.js
+//^                         keyword.control.loop.js
+//  ^                 ^     meta.brace.round.js
+//   ^^^^^                  storage.type.js
+//         ^         ^      variable.other.readwrite.js
+//          ^               punctuation.type.flowtype
+//           ^              support.type.primitive.flowtype
+//            ^ ^           punctuation.flowtype
+//             ^            support.type.class.flowtype
+//                ^^        keyword.operator.js
+//                      ^^  meta.brace.curly.js
 // Issue #397
 let result = "hello"
 // <- storage.type.js
