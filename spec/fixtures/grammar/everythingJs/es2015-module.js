@@ -857,17 +857,17 @@ x = function f(){ return f; }; x[0] = x; x.a = x;
 //                                         ^       variable.other.property.js
 
 new x(); new new x()();
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^      ^^^ ^^^         keyword.operator.js
+// <- keyword.operator.new.js
+ // <- keyword.operator.new.js
+//^      ^^^ ^^^         keyword.operator.new.js
 //  ^^^          ^^^     meta.function-call.without-arguments.js
 //  ^            ^       entity.name.function.js
 //   ^^           ^^^^   meta.brace.round.js
 //     ^              ^  punctuation.terminator.statement.js
 new x[0](); new x.a(); new x[0].a(); new x.a[0]();
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^         ^^^        ^^^           ^^^            keyword.operator.js
+// <- keyword.operator.new.js
+ // <- keyword.operator.new.js
+//^         ^^^        ^^^           ^^^            keyword.operator.new.js
 //  ^^^^^^                                          meta.function-call.without-arguments.js
 //  ^           ^          ^             ^          variable.other.object.js
 //   ^ ^                    ^ ^             ^ ^     meta.brace.square.js
@@ -878,18 +878,18 @@ new x[0](); new x.a(); new x[0].a(); new x.a[0]();
 //                ^^^           ^^^        ^^^^^^   meta.method-call.without-arguments.js
 //                ^             ^          ^        entity.name.function.js
 new x; new new x; new new x();
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^    ^^^ ^^^    ^^^ ^^^       keyword.operator.js
+// <- keyword.operator.new.js
+ // <- keyword.operator.new.js
+//^    ^^^ ^^^    ^^^ ^^^       keyword.operator.new.js
 //  ^          ^                variable.other.readwrite.js
 //   ^          ^            ^  punctuation.terminator.statement.js
 //                        ^^^   meta.function-call.without-arguments.js
 //                        ^     entity.name.function.js
 //                         ^^   meta.brace.round.js
 new new x().a; new new x()[0];
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^ ^^^        ^^^ ^^^          keyword.operator.js
+// <- keyword.operator.new.js
+ // <- keyword.operator.new.js
+//^ ^^^        ^^^ ^^^          keyword.operator.new.js
 //      ^^^            ^^^      meta.function-call.without-arguments.js
 //      ^              ^        entity.name.function.js
 //       ^^             ^^      meta.brace.round.js
@@ -962,9 +962,11 @@ x++; x--;
 // ^    ^  punctuation.terminator.statement.js
 
 delete void typeof+-~!x; ++x; --x;
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^^^^ ^^^^ ^^^^^^                  keyword.operator.js
+// <- keyword.operator.delete.js
+ // <- keyword.operator.delete.js
+//^^^^                              keyword.operator.delete.js
+//     ^^^^                         keyword.operator.void.js
+//          ^^^^^^                  keyword.operator.typeof.js
 //                ^^     ^^   ^^    keyword.operator.arithmetic.js
 //                  ^               keyword.operator.bitwise.js
 //                   ^              keyword.operator.logical.js
@@ -1000,7 +1002,7 @@ delete void typeof+-~!x; ++x; --x;
 // ^    ^     ^     ^  punctuation.terminator.statement.js
 0 instanceof function(){};
 // <- constant.numeric.js
-//^^^^^^^^^^                keyword.operator.js
+//^^^^^^^^^^                keyword.operator.instanceof.js
 //           ^^^^^^^^^^^^   meta.function.js
 //           ^^^^^^^^       storage.type.function.js
 //                   ^      punctuation.definition.parameters.begin.js
@@ -1010,7 +1012,7 @@ delete void typeof+-~!x; ++x; --x;
 //                       ^  punctuation.terminator.statement.js
 0 in{};
 // <- constant.numeric.js
-//^^     keyword.operator.js
+//^^     keyword.operator.in.js
 //  ^^   meta.brace.curly.js
 //    ^  punctuation.terminator.statement.js
 
@@ -1133,7 +1135,7 @@ for(;;)break; for(0;0;0); for((0 in[]);0;);
 // ^  ^          ^     ^     ^^      ^   ^   meta.brace.round.js
 //  ^^      ^      ^ ^  ^             ^ ^ ^  punctuation.terminator.statement.js
 //                ^ ^ ^        ^       ^     constant.numeric.js
-//                               ^^          keyword.operator.js
+//                               ^^          keyword.operator.in.js
 //                                 ^^        meta.brace.square.js
 for(var a0;;)break; for(var a1,b2;0;0);
 // <- meta.for.js keyword.control.loop.js
@@ -1156,7 +1158,7 @@ for(var a3=0;;)break; for(var a4=(0 in[]);0;);
 //        ^                     ^               keyword.operator.assignment.js
 //         ^                      ^       ^     constant.numeric.js
 //          ^^      ^                    ^ ^ ^  punctuation.terminator.statement.js
-//                                  ^^          keyword.operator.js
+//                                  ^^          keyword.operator.in.js
 //                                    ^^        meta.brace.square.js
 for(x in{}); for(var x12 in{});
 // <- meta.for.js keyword.control.loop.js
@@ -1165,7 +1167,7 @@ for(x in{}); for(var x12 in{});
 //^          ^^^                 keyword.control.loop.js
 // ^      ^     ^            ^   meta.brace.round.js
 //  ^                ^^^         variable.other.readwrite.js
-//    ^^                 ^^      keyword.operator.js
+//    ^^                 ^^      keyword.operator.in.js
 //      ^^                 ^^    meta.brace.curly.js
 //         ^                  ^  punctuation.terminator.statement.js
 //               ^^^             storage.type.js
@@ -1176,7 +1178,7 @@ for(x of[]); for(var x13 of[]);
 //^          ^^^                 keyword.control.loop.js
 // ^      ^     ^            ^   meta.brace.round.js
 //  ^                ^^^         variable.other.readwrite.js
-//    ^^                 ^^      keyword.operator.js
+//    ^^                 ^^      keyword.operator.of.js
 //      ^^                 ^^    meta.brace.square.js
 //         ^                  ^  punctuation.terminator.statement.js
 //               ^^^             storage.type.js
@@ -1898,7 +1900,7 @@ class B extends new A {
 //  ^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
 //  ^^^^^               entity.name.function.js
 //       ^          ^   meta.brace.round.js
-//        ^^^           keyword.operator.js
+//        ^^^           keyword.operator.new.js
 //           ^          keyword.operator.accessor.js
 //            ^^^^^^    meta.property.object.js
 //            ^^^^^^    variable.other.property.js

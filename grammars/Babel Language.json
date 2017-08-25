@@ -1196,7 +1196,7 @@
         {
           "match": "(?<!\\.)\\s*+\\b(delete|in|instanceof|new|of|typeof|void|with)\\b",
           "captures": {
-            "1": { "name": "keyword.operator.js" }
+            "1": { "name": "keyword.operator.$1.js" }
           }
         },
         {
@@ -1288,7 +1288,7 @@
           "name": "meta.function-call.without-arguments.js",
           "match": "(?<!\\.)\\s*+((\\bnew\\b)*)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(?:(\\?)(\\.))?(\\()\\s*+(\\))",
           "captures": {
-            "2": { "name": "keyword.operator.js" },
+            "2": { "name": "keyword.operator.new.js" },
             "3": { "name": "keyword.operator.private.js" },
             "4": { "name": "entity.name.function.js" },
             "5": { "name": "keyword.operator.existential.js"},
@@ -1304,7 +1304,7 @@
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "2": { "name": "keyword.operator.js" },
+            "2": { "name": "keyword.operator.new.js" },
             "3": { "name": "keyword.operator.private.js" },
             "4": { "name": "variable.other.object.js" }
           },
@@ -1319,7 +1319,7 @@
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "2": { "name": "keyword.operator.js"},
+            "2": { "name": "keyword.operator.new.js"},
             "3": { "name": "keyword.operator.private.js" },
             "4": { "name": "entity.name.function.js"},
             "5": { "name": "keyword.operator.existential.js"},
@@ -1336,7 +1336,7 @@
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "2": { "name": "keyword.operator.js" },
+            "2": { "name": "keyword.operator.new.js" },
             "3": { "name": "keyword.operator.private.js" },
             "4": { "name": "variable.other.object.js" }
           },

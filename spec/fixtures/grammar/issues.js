@@ -13,7 +13,7 @@ for (const x:a<T> of a) {}
 //           ^              support.type.primitive.flowtype
 //            ^ ^           punctuation.flowtype
 //             ^            support.type.class.flowtype
-//                ^^        keyword.operator.js
+//                ^^        keyword.operator.of.js
 //                      ^^  meta.brace.curly.js
 for (const x:a<T> in a) {}
 // <- meta.for.js keyword.control.loop.js
@@ -27,7 +27,7 @@ for (const x:a<T> in a) {}
 //           ^              support.type.primitive.flowtype
 //            ^ ^           punctuation.flowtype
 //             ^            support.type.class.flowtype
-//                ^^        keyword.operator.js
+//                ^^        keyword.operator.in.js
 //                      ^^  meta.brace.curly.js
 // Issue #397
 let result = "hello"
@@ -479,20 +479,20 @@ if (foo instanceof (Date)) return;
  // <- keyword.control.conditional.js
 // ^               ^    ^^          meta.brace.round.js
 //  ^^^                             variable.other.readwrite.js
-//      ^^^^^^^^^^                  keyword.operator.js
+//      ^^^^^^^^^^                  keyword.operator.instanceof.js
 //                  ^^^^            support.class.builtin.js
 //                         ^^^^^^   keyword.control.flow.js
 //                               ^  punctuation.terminator.statement.js
 delete(x)
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^^^^     keyword.operator.js
+// <- keyword.operator.delete.js
+ // <- keyword.operator.delete.js
+//^^^^     keyword.operator.delete.js
 //    ^ ^  meta.brace.round.js
 //     ^   variable.other.readwrite.js
 void (0)
-// <- keyword.operator.js
- // <- keyword.operator.js
-//^^      keyword.operator.js
+// <- keyword.operator.void.js
+ // <- keyword.operator.void.js
+//^^      keyword.operator.void.js
 //   ^ ^  meta.brace.round.js
 //    ^   constant.numeric.js
 function test() {
@@ -510,18 +510,18 @@ function test() {
 //^^                                  keyword.control.conditional.js
 //   ^               ^    ^^          meta.brace.round.js
 //    ^^^                             variable.other.readwrite.js
-//        ^^^^^^^^^^                  keyword.operator.js
+//        ^^^^^^^^^^                  keyword.operator.instanceof.js
 //                    ^^^^            support.class.builtin.js
 //                           ^^^^^^   keyword.control.flow.js
 //                                 ^  punctuation.terminator.statement.js
   delete(x)
 //^^^^^^^^^  meta.function.js
-//^^^^^^     keyword.operator.js
+//^^^^^^     keyword.operator.delete.js
 //      ^ ^  meta.brace.round.js
 //       ^   variable.other.readwrite.js
   void (0)
 //^^^^ ^^^  meta.function.js
-//^^^^      keyword.operator.js
+//^^^^      keyword.operator.void.js
 //     ^ ^  meta.brace.round.js
 //      ^   constant.numeric.js
 }
@@ -985,7 +985,7 @@ function a(state ) {
 //             ^                     ^  meta.brace.round.js
 //               ^^^                    storage.type.js
 //                   ^^^^    ^^^^^^^    variable.other.readwrite.js
-//                        ^^            keyword.operator.js
+//                        ^^            keyword.operator.in.js
                 state.items = setItem( state.items, resolveRelations({ ...item }) )
 //              ^^^^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^ ^  meta.function.js
 //              ^^^^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^ ^^^^^^^ ^^ ^  meta.switch.js

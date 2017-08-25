@@ -720,7 +720,7 @@ class CA {
 //              ^                      support.type.class.flowtype
 //                ^                 ^  meta.brace.curly.js
 //                  ^^^^^^             keyword.control.flow.js
-//                         ^^^         keyword.operator.js
+//                         ^^^         keyword.operator.new.js
 //                             ^^^     meta.function-call.without-arguments.js
 //                             ^       entity.name.function.js
 //                                ^    punctuation.terminator.statement.js
@@ -887,7 +887,7 @@ class D extends C<number> {
 //              ^                      support.type.class.flowtype
 //                ^                 ^  meta.brace.curly.js
 //                  ^^^^^^             keyword.control.flow.js
-//                         ^^^         keyword.operator.js
+//                         ^^^         keyword.operator.new.js
 //                             ^^^     meta.function-call.without-arguments.js
 //                             ^       entity.name.function.js
 //                                ^    punctuation.terminator.statement.js
@@ -915,7 +915,7 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //                                                      ^^^^                  string.quoted.double.js
 //                                                      ^                     punctuation.definition.string.begin.js
 //                                                         ^                  punctuation.definition.string.end.js
-//                                                               ^^^          keyword.operator.js
+//                                                               ^^^          keyword.operator.new.js
 //                                                                   ^^^^^    meta.function-call.without-arguments.js
 //                                                                   ^^^      entity.name.function.js
 //                                                                      ^^    meta.brace.round.js
@@ -1081,7 +1081,7 @@ var x: A | B | number | C = new C();
 //       ^   ^        ^               kewyword.operator.union.flowtype
 //             ^^^^^^                 support.type.builtin.primitive.flowtype
 //                        ^           keyword.operator.assignment.js
-//                          ^^^       keyword.operator.js
+//                          ^^^       keyword.operator.new.js
 //                              ^^^   meta.function-call.without-arguments.js
 //                              ^     entity.name.function.js
 //                               ^^   meta.brace.round.js
