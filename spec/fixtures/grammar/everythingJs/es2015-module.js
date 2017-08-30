@@ -961,6 +961,14 @@ x++; x--;
 //^   ^^   keyword.operator.arithmetic.js
 // ^    ^  punctuation.terminator.statement.js
 
+2**4===16; 2*4===8;
+// <- constant.numeric.js
+ // <- keyword.operator.arithmetic.js
+//^         ^        keyword.operator.arithmetic.js
+// ^   ^^  ^ ^   ^   constant.numeric.js
+//  ^^^       ^^^    keyword.operator.comparison.js
+//       ^        ^  punctuation.terminator.statement.js
+
 delete void typeof+-~!x; ++x; --x;
 // <- keyword.operator.delete.js
  // <- keyword.operator.delete.js
