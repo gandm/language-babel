@@ -36,6 +36,7 @@
         { "include": "#multiline-arrow-function-generics"},
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
+        { "include": "#literal-js-label" },
         { "include": "#support" },
         { "include": "#literal-function" },
         { "include": "#literal-arrow-function" },
@@ -244,6 +245,7 @@
             { "include": "#expression"}
           ]
         },
+        { "include": "#literal-js-label" },
         {
           "match": "(?<!\\.|\\?)\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*+(:)((?=::)|(?!:))",
           "captures": {
@@ -283,10 +285,25 @@
           }
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(break|continue|do|goto|while)\\b",
+          "match": "(?<!\\.)\\s*+\\b(do|goto|while)\\b",
           "captures": {
               "1": { "name": "keyword.control.loop.js" }
           }
+        },
+        {
+          "begin": "(?<!\\.)\\s*+\\b(break|continue)\\b",
+          "end": "\\s*(?=;|$|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.loop.js" }
+          },
+          "patterns": [
+            {
+              "match": "\\s*([$_[:alpha:]][$_[:alnum:]]*)(?=\\s|$|;|/\\*)",
+              "captures": {
+                "1": { "name": "constant.other.label.js"}
+              }
+            }
+          ]
         }
       ]
     },
@@ -782,22 +799,12 @@
       "patterns": [
         {
           "begin": "(?<!\\.)\\s*+\\b(const|let|var)\\b",
-          "end": "\\s*(?=;|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?=^\\s*[$_[:alpha:]][$_[:alnum:]]*:\\s*($|\\b(do|for|while)\\b))|\\s*(?=;|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
           },
           "patterns": [
-            {
-              "comment": "other variables",
-              "begin": "\\s*",
-              "end": "\\s*((,)|(?=(;)|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|}))",
-              "endCaptures": {
-                "2": { "name": "punctuation.terminator.statement.js" }
-              },
-              "patterns": [
-                { "include": "#flowtype-variable" }
-              ]
-            }
+            { "include": "#flowtype-variable" }
           ]
         }
       ]
@@ -1108,6 +1115,14 @@
       "patterns": [
         { "include": "#expression" }
       ]
+    },
+    "literal-js-label": {
+      "comment": "jslabel: $|for|while|do",
+      "match": "(?:^|;]|(?<=;))\\s*([$_[:alpha:]][$_[:alnum:]]*)(:)\\s*(?=($|;|\\b(for|while|do)\\b))",
+      "captures": {
+        "1": { "name": "constant.other.label.js"},
+        "2": { "name": "punctuation.separator.label.js"}
+      }
     },
     "literal-object": {
       "comment": "obj lteral ({ or ,{ or [{ or ={ or return { or default {",

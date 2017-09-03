@@ -1965,7 +1965,7 @@ var a: number = 123,
 //     ^^^^^^         support.type.builtin.primitive.flowtype
 //            ^       keyword.operator.assignment.js
 //              ^^^   constant.numeric.js
-//                 ^  punctuation.terminator.statement.js
+//                 ^  meta.delimiter.comma.js
     b: void = (x,y,z) => {};
 //  ^          ^ ^ ^          variable.other.readwrite.js
 //   ^                        punctuation.type.flowtype

@@ -205,7 +205,7 @@ export let name1, name2, nameN
 //^^^^                          keyword.control.module.js
 //     ^^^                      storage.type.js
 //         ^^^^^  ^^^^^  ^^^^^  variable.other.readwrite.js
-//              ^      ^        punctuation.terminator.statement.js
+//              ^      ^        meta.delimiter.comma.js
 export let name1: {a: string} = {a: "aaa"}
 // <- keyword.control.module.js
  // <- keyword.control.module.js

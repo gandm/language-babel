@@ -147,18 +147,20 @@ export var e5, e6 = 0;
 //^^^^                  keyword.control.module.js
 //     ^^^              storage.type.js
 //         ^^  ^^       variable.other.readwrite.js
-//           ^       ^  punctuation.terminator.statement.js
+//           ^          meta.delimiter.comma.js
 //                ^     keyword.operator.assignment.js
 //                  ^   constant.numeric.js
+//                   ^  punctuation.terminator.statement.js
 export let e7, e8 = 0;
 // <- keyword.control.module.js
  // <- keyword.control.module.js
 //^^^^                  keyword.control.module.js
 //     ^^^              storage.type.js
 //         ^^  ^^       variable.other.readwrite.js
-//           ^       ^  punctuation.terminator.statement.js
+//           ^          meta.delimiter.comma.js
 //                ^     keyword.operator.assignment.js
 //                  ^   constant.numeric.js
+//                   ^  punctuation.terminator.statement.js
 export const e9 = 0, e10 = 0;
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -167,7 +169,8 @@ export const e9 = 0, e10 = 0;
 //           ^^      ^^^       variable.other.readwrite.js
 //              ^        ^     keyword.operator.assignment.js
 //                ^        ^   constant.numeric.js
-//                 ^        ^  punctuation.terminator.statement.js
+//                 ^           meta.delimiter.comma.js
+//                          ^  punctuation.terminator.statement.js
 export function e11(){}
 // <- keyword.control.module.js
  // <- keyword.control.module.js
@@ -228,71 +231,59 @@ export default function e16(){}
  // <- comment.line.double-slash.js punctuation.definition.comment.js
 // ^^^^^^^^^^  comment.line.double-slash.js
 tab:for(;;)break	tab;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^                    constant.other.object.key.js
-//^                    string.unquoted.js
-// ^                   punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^              ^^^   constant.other.label.js
+// ^                   punctuation.separator.label.js
 //  ^^^^^^^            meta.for.js
 //  ^^^    ^^^^^       keyword.control.loop.js
 //     ^  ^            meta.brace.round.js
 //      ^^          ^  punctuation.terminator.statement.js
-//               ^^^   variable.other.readwrite.js
 verticalTab:for(;;)breakverticalTab;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^^^^                            constant.other.object.key.js
-//^^^^^^^^^                            string.unquoted.js
-//         ^                           punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^^^^^^^^^              ^^^^^^^^^^^   constant.other.label.js
+//         ^                           punctuation.separator.label.js
 //          ^^^^^^^                    meta.for.js
 //          ^^^    ^^^^^               keyword.control.loop.js
 //             ^  ^                    meta.brace.round.js
 //              ^^                  ^  punctuation.terminator.statement.js
-//                       ^^^^^^^^^^^   variable.other.readwrite.js
 formFeed:for(;;)breakformFeed;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^^^^^^                         constant.other.object.key.js
-//^^^^^^                         string.unquoted.js
-//      ^                        punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^^^^^^              ^^^^^^^^   constant.other.label.js
+//      ^                        punctuation.separator.label.js
 //       ^^^^^^^                 meta.for.js
 //       ^^^    ^^^^^            keyword.control.loop.js
 //          ^  ^                 meta.brace.round.js
 //           ^^               ^  punctuation.terminator.statement.js
-//                    ^^^^^^^^   variable.other.readwrite.js
 space:for(;;)break space;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^^^                      constant.other.object.key.js
-//^^^                      string.unquoted.js
-//   ^                     punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^^^              ^^^^^   constant.other.label.js
+//   ^                     punctuation.separator.label.js
 //    ^^^^^^^              meta.for.js
 //    ^^^    ^^^^^         keyword.control.loop.js
 //       ^  ^              meta.brace.round.js
 //        ^^            ^  punctuation.terminator.statement.js
-//                 ^^^^^   variable.other.readwrite.js
 nbsp:for(;;)break nbsp;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^^                     constant.other.object.key.js
-//^^                     string.unquoted.js
-//  ^                    punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^^              ^^^^   constant.other.label.js
+//  ^                    punctuation.separator.label.js
 //   ^^^^^^^             meta.for.js
 //   ^^^    ^^^^^        keyword.control.loop.js
 //      ^  ^             meta.brace.round.js
 //       ^^           ^  punctuation.terminator.statement.js
-//                ^^^^   variable.other.readwrite.js
 bom:for(;;)break﻿bom;
-// <- constant.other.object.key.js string.unquoted.js
- // <- constant.other.object.key.js string.unquoted.js
-//^                    constant.other.object.key.js
-//^                    string.unquoted.js
-// ^                   punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- constant.other.label.js
+//^              ^^^   constant.other.label.js
+// ^                   punctuation.separator.label.js
 //  ^^^^^^^            meta.for.js
 //  ^^^    ^^^^^       keyword.control.loop.js
 //     ^  ^            meta.brace.round.js
 //      ^^          ^  punctuation.terminator.statement.js
-//               ^^^   variable.other.readwrite.js
 
 // line terminators
 // <- comment.line.double-slash.js punctuation.definition.comment.js
@@ -352,12 +343,13 @@ var $, _, \u0078, \u{2F9F9}, x$, x_, x\u0030, x\u{e01d5}, xa, x0, x0a,
  // <- storage.type.js
 //^                                                                     storage.type.js
 //  ^                                                                   variable.other.dollar.js
-//   ^  ^       ^          ^   ^   ^        ^           ^   ^   ^    ^  punctuation.terminator.statement.js
+//   ^  ^       ^          ^   ^   ^        ^           ^   ^   ^    ^  meta.delimiter.comma.js
 //     ^  ^^^^^^  ^^^^^^^^^  ^^  ^^  ^^^^^^^  ^^^^^^^^^^  ^^  ^^  ^^^   variable.other.readwrite.js
   x0123456789, qwertyuiopasdfghjklzxcvbnm, QWERTYUIOPASDFGHJKLZXCVBNM;
 //^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^                               variable.other.readwrite.js
-//           ^                           ^                           ^  punctuation.terminator.statement.js
+//           ^                           ^                              meta.delimiter.comma.js
 //                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^   variable.other.constant.js
+//                                                                   ^  punctuation.terminator.statement.js
 
 // a representative sample of ID_Start and ID_Continue
 // <- comment.line.double-slash.js punctuation.definition.comment.js
@@ -369,7 +361,8 @@ var 䩶, x󠇕, œ一, ǻ둘, ɤ〩, φ, ﬁⅷ, ユニコード, x‌‍;
  // <- storage.type.js
 //^                                         storage.type.js
 //  ^  ^^^  ^^  ^^  ^^  ^  ^^  ^^^^^  ^^^   variable.other.readwrite.js
-//   ^    ^   ^   ^   ^  ^   ^      ^    ^  punctuation.terminator.statement.js
+//   ^    ^   ^   ^   ^  ^   ^      ^       meta.delimiter.comma.js
+//                                       ^  punctuation.terminator.statement.js
 let letx; let[x\u0078] = 0; const constx = 0;
 // <- storage.type.js
  // <- storage.type.js
@@ -1086,7 +1079,8 @@ var x0; var x1,y2; var x3,y4,z5;
  // <- storage.type.js
 //^     ^^^        ^^^            storage.type.js
 //  ^^      ^^ ^^      ^^ ^^ ^^   variable.other.readwrite.js
-//    ^       ^  ^       ^  ^  ^  punctuation.terminator.statement.js
+//    ^          ^             ^  punctuation.terminator.statement.js
+//            ^          ^  ^     meta.delimiter.comma.js
 var x6=0; var x7=0,y8; var x9,y10=0; var x11=0,y12=0;
 // <- storage.type.js
  // <- storage.type.js
@@ -1094,7 +1088,8 @@ var x6=0; var x7=0,y8; var x9,y10=0; var x11=0,y12=0;
 //  ^^        ^^   ^^      ^^ ^^^        ^^^   ^^^     variable.other.readwrite.js
 //    ^         ^                ^          ^     ^    keyword.operator.assignment.js
 //     ^         ^                ^          ^     ^   constant.numeric.js
-//      ^         ^  ^       ^     ^          ^     ^  punctuation.terminator.statement.js
+//      ^            ^             ^                ^  punctuation.terminator.statement.js
+//                ^          ^                ^        meta.delimiter.comma.js
 
 ;
 // <- punctuation.terminator.statement.js
@@ -1153,7 +1148,8 @@ for(var a0;;)break; for(var a1,b2;0;0);
 // ^        ^          ^             ^   meta.brace.round.js
 //  ^^^                 ^^^              storage.type.js
 //      ^^                  ^^ ^^        variable.other.readwrite.js
-//        ^^      ^           ^  ^ ^  ^  punctuation.terminator.statement.js
+//        ^^      ^              ^ ^  ^  punctuation.terminator.statement.js
+//                            ^          meta.delimiter.comma.js
 //                                ^ ^    constant.numeric.js
 for(var a3=0;;)break; for(var a4=(0 in[]);0;);
 // <- meta.for.js keyword.control.loop.js
@@ -1199,10 +1195,8 @@ for(;0;)continue; x:for(;0;)continue x;
 // ^   ^               ^   ^             meta.brace.round.js
 //  ^ ^         ^       ^ ^           ^  punctuation.terminator.statement.js
 //   ^                   ^               constant.numeric.js
-//                ^                      constant.other.object.key.js
-//                ^                      string.unquoted.js
-//                 ^                     punctuation.separator.key-value.js
-//                                   ^   variable.other.readwrite.js
+//                ^                  ^   constant.other.label.js
+//                 ^                     punctuation.separator.label.js
 
 for(;;)break; x:for(;;)break x;
 // <- meta.for.js keyword.control.loop.js
@@ -1211,10 +1205,8 @@ for(;;)break; x:for(;;)break x;
 //^    ^^^^^    ^^^    ^^^^^     keyword.control.loop.js
 // ^  ^            ^  ^          meta.brace.round.js
 //  ^^      ^       ^^        ^  punctuation.terminator.statement.js
-//            ^                  constant.other.object.key.js
-//            ^                  string.unquoted.js
-//             ^                 punctuation.separator.key-value.js
-//                           ^   variable.other.readwrite.js
+//            ^              ^   constant.other.label.js
+//             ^                 punctuation.separator.label.js
 switch(0){case 0:break;default:}
 // <- meta.switch.js keyword.control.switch.js
  // <- meta.switch.js keyword.control.switch.js
@@ -1297,12 +1289,12 @@ switch(0){default:;} switch(0){default:;;}
 //                 ^                     ^  meta.brace.curly.switchEnd.js
 
 x:; x:y:;
-// <- constant.other.object.key.js string.unquoted.js
- // <- punctuation.separator.key-value.js
+// <- constant.other.label.js
+ // <- punctuation.separator.label.js
+//^     ^  punctuation.terminator.statement.js
 //  ^ ^    constant.other.object.key.js
 //  ^ ^    string.unquoted.js
 //   ^ ^   punctuation.separator.key-value.js
-//^     ^  punctuation.terminator.statement.js
 
 try { throw 0; }catch(x){}
 // <- keyword.control.trycatch.js
