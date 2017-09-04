@@ -26,8 +26,7 @@
         { "include": "#literal-for" },
         { "include": "#literal-switch" },
         { "include": "#expression" },
-        { "include": "#literal-keywords" },
-        { "include": "#literal-punctuation" }
+        { "include": "#literal-keywords" }
       ]
     },
     "expression": {
@@ -58,7 +57,7 @@
         { "include": "#literal-operators" },
         { "include": "#literal-variable-flowtype" },
         { "include": "#literal-variable" },
-        { "include": "#literal-comma" },
+        { "include": "#literal-punctuation" },
         { "include": "#fat-arrow"}
       ]
     },
@@ -299,7 +298,7 @@
           "patterns": [
             { "include": "#comments"},
             {
-              "match": "\\s*([$_[:alpha:]][$_[:alnum:]]*)(?=\\s|$|;|/\\*)",
+              "match": "\\s*([$_[:alpha:]][$_[:alnum:]]*)\\s*(?=$|;|//|/\\*)",
               "captures": {
                 "1": { "name": "constant.other.label.js"}
               }
@@ -1119,7 +1118,7 @@
     },
     "literal-js-label": {
       "comment": "jslabel: $|for|while|do",
-      "match": "(?:^|;|(?<=;))\\s*([$_[:alpha:]][$_[:alnum:]]*)(:)\\s*(?=(/\\*.*?\\*/\\s*$|//|$|;|\\b(for|while|do)\\b))",
+      "match": "(?:^|(?<=;))\\s*([$_[:alpha:]][$_[:alnum:]]*)(:)\\s*(?=(/\\*.*?\\*/\\s*$|//|$|;|\\b(for|while|do)\\b))",
       "captures": {
         "1": { "name": "constant.other.label.js"},
         "2": { "name": "punctuation.separator.label.js"}
