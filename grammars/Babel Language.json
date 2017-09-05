@@ -291,7 +291,7 @@
         },
         {
           "begin": "(?<!\\.)\\s*+\\b(break|continue)\\b",
-          "end": "\\s*(?=;|//|$|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
+          "end": "^\\s*|\\s*(?=;|//|$|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)",
           "beginCaptures": {
             "1": { "name": "keyword.control.loop.js" }
           },

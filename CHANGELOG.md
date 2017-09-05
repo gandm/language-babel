@@ -1,3 +1,6 @@
+### 2.74.1
+  - Fix issue when break|continue labelname followed by newline stopped parsing following line
+  
 ### 2.74.0
   - Change grammar scopes to improve ligature support for null chaining and exponent operators.
   - Add support for JavaScript label syntax. [Issue #409](https://github.com/gandm/language-babel/issues/409)
