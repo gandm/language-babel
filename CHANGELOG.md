@@ -1,3 +1,7 @@
+### 2.74.0
+  - Change grammar scopes to improve ligature support for null chaining and exponent operators.
+  - Add support for JavaScript label syntax. [Issue #409](https://github.com/gandm/language-babel/issues/409)
+
 ### 2.73.0
   - Add some operator scopes to align with language-javascript's usage. [Issue #405](https://github.com/gandm/language-babel/issues/405)
   - Fix incorrect handling of for..of|in loops following flow generic var definition. [Issue #404](https://github.com/gandm/language-babel/issues/404)
