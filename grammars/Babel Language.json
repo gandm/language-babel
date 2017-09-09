@@ -2831,7 +2831,7 @@
           { "include": "#flowtype-polymorphs" },
           {
             "comment": "custom Class Types e.g. Abc avoid Abc(",
-            "match": "(?!^)\\s*+([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
+            "match": "\\s*+([$_[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}]][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
             "captures": {
               "1": { "name": "support.type.class.flowtype" }
             }
