@@ -77,6 +77,18 @@ globalAttributes: [
 	{ name: 'data-'}
 	{ name: 'aria-'}
 	{ name: 'style'}
+        { name: 'accesskey'}
+        { name: 'contenteditable'}
+        { name: 'contextmenu'}
+        { name: 'dir'}
+        { name: 'draggable'}
+        { name: 'dropzone'}
+        { name: 'hidden'}
+        { name: 'lang'}
+        { name: 'spellcheck'}
+        { name: 'tabindex'}
+        { name: 'title'}
+        { name: 'translate'}
 ]
 
 htmlElements: [
