@@ -76,6 +76,7 @@ globalAttributes: [
 	{ name: 'dangerouslySetInnerHTML'}
 	{ name: 'data-'}
 	{ name: 'aria-'}
+	{ name: 'style'}
 ]
 
 htmlElements: [
