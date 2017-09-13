@@ -1,6 +1,11 @@
+### 2.74.2
+  - Flowtype type assignments were sometimes parsed as variables.
+  - Add some global attributes to JSX auto-complete. Thanks @rgbkrk and @mpacer [PR 411](https://github.com/gandm/language-babel/pull/411).
+  - Fix certain JSX being parsed as flow. [Issue 412](https://github.com/gandm/language-babel/issues/412)
+
 ### 2.74.1
   - Fix issue when break|continue labelname followed by newline stopped parsing following line
-  
+
 ### 2.74.0
   - Change grammar scopes to improve ligature support for null chaining and exponent operators.
   - Add support for JavaScript label syntax. [Issue #409](https://github.com/gandm/language-babel/issues/409)
