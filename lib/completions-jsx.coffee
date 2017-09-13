@@ -77,16 +77,15 @@ globalAttributes: [
 	{ name: 'data-'}
 	{ name: 'aria-'}
 	{ name: 'style'}
-        { name: 'accesskey'}
-        { name: 'contenteditable'}
-        { name: 'contextmenu'}
+        { name: 'accessKey'}
+        { name: 'contentEditable'}
+        { name: 'contextMenu'}
         { name: 'dir'}
         { name: 'draggable'}
-        { name: 'dropzone'}
         { name: 'hidden'}
         { name: 'lang'}
-        { name: 'spellcheck'}
-        { name: 'tabindex'}
+        { name: 'spellCheck'}
+        { name: 'tabIndex'}
         { name: 'title'}
         { name: 'translate'}
 ]
