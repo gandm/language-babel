@@ -87,7 +87,6 @@ globalAttributes: [
         { name: 'spellCheck'}
         { name: 'tabIndex'}
         { name: 'title'}
-        { name: 'translate'}
 ]
 
 htmlElements: [
