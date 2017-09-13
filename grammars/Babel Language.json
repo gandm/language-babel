@@ -77,7 +77,7 @@
           "comment": "which could be treated as JSX - in fact it still could be JSX but unlikely",
           "comment": "e.g. let a = <T>(",
           "name": "meta.function.arrow.js",
-          "begin": "\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)\\s*+\\(+\\s*$)",
+          "begin": "\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)(?<!=>)\\s*+\\(+\\s*$)",
           "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
           "beginCaptures": {
             "1": { "name": "storage.type.js" }
