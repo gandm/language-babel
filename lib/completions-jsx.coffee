@@ -76,6 +76,17 @@ globalAttributes: [
 	{ name: 'dangerouslySetInnerHTML'}
 	{ name: 'data-'}
 	{ name: 'aria-'}
+	{ name: 'style'}
+        { name: 'accessKey'}
+        { name: 'contentEditable'}
+        { name: 'contextMenu'}
+        { name: 'dir'}
+        { name: 'draggable'}
+        { name: 'hidden'}
+        { name: 'lang'}
+        { name: 'spellCheck'}
+        { name: 'tabIndex'}
+        { name: 'title'}
 ]
 
 htmlElements: [
