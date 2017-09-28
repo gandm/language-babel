@@ -1,11 +1,12 @@
 // SYNTAX TEST "source.js.jsx"
 
 // Issue #421
-class A
+class A {
   func = (a1, a2) => (a1) => {
-//^^^^                          entity.name.class.js
+//^^^^ ^ ^^^^ ^^^ ^^ ^^^^ ^^ ^  meta.class.body.js
+//^^^^ ^ ^^^^ ^^^ ^^ ^^^^ ^^ ^  meta.function.arrow.js
+//^^^^                          entity.name.function.js
 //     ^                        keyword.operator.assignment.js
-//       ^^^^ ^^^ ^^ ^^^^ ^^ ^  meta.function.arrow.js
 //       ^           ^          punctuation.definition.parameters.begin.js
 //       ^      ^    ^  ^       meta.brace.round.js
 //        ^^^ ^^      ^^        meta.function.parameters.js
@@ -15,6 +16,7 @@ class A
 //                ^^      ^^    storage.type.function.arrow.js
 //                           ^  meta.brace.curly.js
     if (variable < 2) {}
+//  ^^ ^^^^^^^^^ ^ ^^ ^^  meta.class.body.js
 //  ^^ ^^^^^^^^^ ^ ^^ ^^  meta.function.arrow.js
 //  ^^                    keyword.control.conditional.js
 //     ^            ^     meta.brace.round.js
