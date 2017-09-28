@@ -1,5 +1,29 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #421
+class A
+  func = (a1, a2) => (a1) => {
+//^^^^                          entity.name.class.js
+//     ^                        keyword.operator.assignment.js
+//       ^^^^ ^^^ ^^ ^^^^ ^^ ^  meta.function.arrow.js
+//       ^           ^          punctuation.definition.parameters.begin.js
+//       ^      ^    ^  ^       meta.brace.round.js
+//        ^^^ ^^      ^^        meta.function.parameters.js
+//        ^^  ^^      ^^        variable.other.readwrite.js
+//          ^                   meta.delimiter.comma.js
+//              ^       ^       punctuation.definition.parameters.end.js
+//                ^^      ^^    storage.type.function.arrow.js
+//                           ^  meta.brace.curly.js
+    if (variable < 2) {}
+//  ^^ ^^^^^^^^^ ^ ^^ ^^  meta.function.arrow.js
+//  ^^                    keyword.control.conditional.js
+//     ^            ^     meta.brace.round.js
+//      ^^^^^^^^          variable.other.readwrite.js
+//               ^        keyword.operator.relational.js
+//                 ^      constant.numeric.js
+//                    ^^  meta.brace.curly.js
+  }
+}
 // Issue #404
 for (const x:a<T> of a) {}
 // <- meta.for.js keyword.control.loop.js

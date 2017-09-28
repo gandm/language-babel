@@ -1,3 +1,6 @@
+### 2.74.4
+  - Fix grammar: class field property returning arrow func which returns arrow func. [Issue 421](https://github.com/gandm/language-babel/issues/421)
+
 ### 2.74.3
   - Await keyword following spread was incorrectly scoped. [Issue 417](https://github.com/gandm/language-babel/issues/417)
 

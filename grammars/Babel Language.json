@@ -1539,6 +1539,7 @@
         { "include": "#flowtype-keywords" },
         { "include": "#literal-method" },
         { "include": "#literal-arrow-function-simple-assignments" },
+        { "include": "#literal-arrow-function" },
         { "include": "#brackets" },
         { "include": "#es7-decorators" },
         { "include": "#comments" },
