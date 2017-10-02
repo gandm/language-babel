@@ -48,6 +48,21 @@ describe 'language-babel', ->
         expect(ret.sourceRoot).to.equal(tempProj1)
         expect(ret.projectPath).to.equal(tempProj1)
 
+      it 'returns paths for a named sourcefile with default + keepFileExtentions', ->
+        config.keepFileExtension = true
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1,tempProj2])
+
+        ret = lb.getPaths(tempProj1+'/source/dira/fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal(tempProj1+'/source/dira/fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'/source/dira')
+        expect(ret.mapFile).to.equal(tempProj1+'/source/dira/fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'/source/dira/fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1)
+        expect(ret.projectPath).to.equal(tempProj1)
+
       it 'returns paths config with target & source paths set', ->
         tempProj1 = temp.mkdirSync()
         tempProj2 = temp.mkdirSync()
@@ -84,6 +99,21 @@ describe 'language-babel', ->
 
     if process.platform.match /^win/
       it 'returns paths for a named sourcefile with default config', ->
+        tempProj1 = temp.mkdirSync()
+        tempProj2 = temp.mkdirSync()
+        atom.project.setPaths([tempProj1,tempProj2])
+
+        ret = lb.getPaths(tempProj1+'\\source\\dira\\fauxfile.js',config)
+
+        expect(ret.sourceFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js')
+        expect(ret.sourceFileDir).to.equal(tempProj1+'\\source\\dira')
+        expect(ret.mapFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js.map')
+        expect(ret.transpiledFile).to.equal(tempProj1+'\\source\\dira\\fauxfile.js')
+        expect(ret.sourceRoot).to.equal(tempProj1)
+        expect(ret.projectPath).to.equal(tempProj1)
+
+      it 'returns paths for a named sourcefile with default config + keepFileExtentions', ->
+        config.keepFileExtension = true;
         tempProj1 = temp.mkdirSync()
         tempProj2 = temp.mkdirSync()
         atom.project.setPaths([tempProj1,tempProj2])

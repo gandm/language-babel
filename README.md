@@ -19,7 +19,7 @@ The package also provides
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
  - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
-By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as either `Babel` or `Babel ES6 JavaScript`. Clicking the name will allow the grammar for a file to be changed.
+By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `es`, `es6` `mjs` and `.flow`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as either `Babel` or `Babel ES6 JavaScript`. Clicking the name will allow the grammar for a file to be changed.
 
 language-babel provides [Babel](http://babeljs.io/) V6 & V5 transpiler support. If you only require grammar/syntax highlighting ensure that the package settings `Transpile On Save` and `Allow Local Override` are both off.
 
@@ -228,6 +228,9 @@ For most projects, it is better to configure `language-babel` via project-based 
   {"createTargetDirectories": false}
   ```
 
+* #### Keep File Extension
+  Keeps the source filename extension as the target filename extension
+
 * #### Auto Indent JSX
   Enables automatic indenting of JSX.
 
@@ -271,6 +274,7 @@ A `.languagebabel` file may contain one or more of the following properties.
   "createTargetDirectories":          true|false,
   "createTranspiledCode":             true|false,
   "disableWhenNoBabelrcFileInPath":   true|false,
+  "keepFileExtension":                true|false,
   "projectRoot":                      true|false,  
   "suppressSourcePathMessages":       true|false,
   "suppressTranspileOnSaveMessages":  true|false,

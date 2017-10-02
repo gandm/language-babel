@@ -146,6 +146,12 @@
       "type": "boolean",
       "default": true,
       "order": 140
+    },
+    "keepFileExtension": {
+      "description": "Source filename extension becomes target filename extension.",
+      "type": "boolean",
+      "default": false,
+      "order": 150
     }
   }
 }

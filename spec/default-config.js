@@ -8,6 +8,7 @@ module.exports = {
   createTargetDirectories: false,
   createTranspiledCode: true,
   disableWhenNoBabelrcFileInPath: false,
+  keepFileExtension: false,
   suppressSourcePathMessages: false,
   suppressTranspileOnSaveMessages: false,
   transpileOnSave: true,
