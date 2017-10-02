@@ -15,7 +15,7 @@ languagebabelSchema = {
     createTargetDirectories:          { type: 'boolean' },
     createTranspiledCode:             { type: 'boolean' },
     disableWhenNoBabelrcFileInPath:   { type: 'boolean' },
-    keepFileExtension:               { type: 'boolean' },
+    keepFileExtension:                { type: 'boolean' },
     projectRoot:                      { type: 'boolean' },
     suppressSourcePathMessages:       { type: 'boolean' },
     suppressTranspileOnSaveMessages:  { type: 'boolean' },
