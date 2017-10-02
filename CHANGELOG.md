@@ -1,3 +1,6 @@
+### 2.75.0
+ - Add new `.languagebabel` option `keepFileExtension`.
+ 
 ### 2.74.4
   - Fix grammar: class field property returning arrow func which returns arrow func. [Issue 421](https://github.com/gandm/language-babel/issues/421)
 
