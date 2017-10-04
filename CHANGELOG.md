@@ -1,6 +1,9 @@
+### 2.75.1
+  - Change styled.attrs parsing to allow for no template string.[Issue 424](https://github.com/gandm/language-babel/issues/424)
+
 ### 2.75.0
  - Add new `.languagebabel` option `keepFileExtension`.
- 
+
 ### 2.74.4
   - Fix grammar: class field property returning arrow func which returns arrow func. [Issue 421](https://github.com/gandm/language-babel/issues/421)
 

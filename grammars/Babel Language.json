@@ -991,7 +991,8 @@
         {
           "comment": "Styled CSS tag functions",
           "begin": "(?<!\\.)\\s*+(?:(\\bstyled))\\s*(?=((\\((?:(?>[^()]+)|\\g<-1>)*\\))*\\s*\\??\\.\\s*attrs\\s*\\())",
-          "end": "(?<=`)",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "entity.name.function.js" }
           },
