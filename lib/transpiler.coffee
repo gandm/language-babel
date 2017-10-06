@@ -391,9 +391,13 @@ class Transpiler
 # check for prescence of a .babelrc file path fromDir to root
   isBabelrcInPath: (fromDir) ->
     # enviromnents used in babelrc
-    babelrc = '.babelrc'
-    babelrcFile = path.join fromDir, babelrc
-    if fs.existsSync babelrcFile
+    babelrc = [
+      '.babelrc'
+      '.babelrc.js' # Babel 7.0 and newer
+    ]
+    babelrcFiles = babelrc.map (file) -> path.join(fromDir, file)
+
+    if babelrcFiles.some fs.existsSync
       return true
     if fromDir != path.dirname(fromDir)
       return @isBabelrcInPath path.dirname(fromDir)
