@@ -20,7 +20,6 @@ module.exports =
 
   getSuggestions: (opts) ->
     {editor, bufferPosition, scopeDescriptor, prefix} = opts
-    return if editor.getGrammar().packageName isnt "language-babel"
 
     jsxTag = @getTriggerTag editor, bufferPosition
     return if not jsxTag?
