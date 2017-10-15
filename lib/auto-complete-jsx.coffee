@@ -63,9 +63,9 @@ module.exports =
       return if not tagName?
       for elementObj in COMPLETIONS.htmlElements
         if elementObj.name is tagName then break
-      elementObj.attributes = elementObj.attributes.concat COMPLETIONS.globalAttributes
-      elementObj.attributes = elementObj.attributes.concat COMPLETIONS.events
-      filteredAttributes = filter(elementObj.attributes, prefix, {key: "name"})
+      attributes = elementObj.attributes.concat COMPLETIONS.globalAttributes
+      attributes = attributes.concat COMPLETIONS.events
+      filteredAttributes = filter(attributes, prefix, {key: "name"})
       for attribute in filteredAttributes
         if score(attribute.name, prefix) < 0.07 then continue
         suggestions.push
