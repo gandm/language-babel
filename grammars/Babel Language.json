@@ -2459,6 +2459,22 @@
     "jsx-tag-element-name": {
       "patterns": [
         {
+          "comment": "JSX Fragment",
+          "name": "meta.tag.jsx",
+          "contentName": "JSXAttrs",
+          "begin": "\\s*+(<)\\s*(?=>)",
+          "end": "(?<=</)(>)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.jsx" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.jsx" }
+          },
+          "patterns": [
+            { "include": "#jsx-tag-termination" }
+          ]
+        },
+        {
           "comment": "Trap tag <JSXElementName Where JSXElement Name = aaa.bbb",
           "comment": "We use the tag name to form a completion for </JSXElementName>",
           "comment": "as well as terminating a <JSXElementName /> form",

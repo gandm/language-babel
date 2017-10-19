@@ -43,7 +43,7 @@ class AutoIndent
     @DidInsertText = new DidInsertText(@editor)
     @autoJsx = atom.config.get('language-babel').autoIndentJSX
     # regex to search for tag open/close tag and close tag
-    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))|(`)/g
+    @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))|(`)|(?:(<)\s*(>))|(<\/)(>)/g
     @mouseUp = true
     @multipleCursorTrigger = 1
     @disposables = new CompositeDisposable()
@@ -614,12 +614,12 @@ class AutoIndent
   getToken: (bufferRow, match) ->
     scope = @editor.scopeDescriptorForBufferPosition([bufferRow, match.index]).getScopesArray().pop()
     if 'punctuation.definition.tag.jsx' is scope
-      if      match[1]? then return JSXTAG_OPEN
+      if      match[1]? or match[20]? then return JSXTAG_OPEN
       else if match[3]? then return JSXTAG_SELFCLOSE_END
     else if 'JSXEndTagStart' is scope
-      if match[4]? then return JSXTAG_CLOSE
+      if match[4]? or match[22]? then return JSXTAG_CLOSE
     else if 'JSXStartTagEnd' is scope
-      if match[7]? then return JSXTAG_CLOSE_ATTRS
+      if match[7]? or match[21]? then return JSXTAG_CLOSE_ATTRS
     else if match[8]?
       if 'punctuation.section.embedded.begin.jsx' is scope
         return JSXBRACE_OPEN

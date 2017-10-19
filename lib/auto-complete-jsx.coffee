@@ -7,7 +7,7 @@ JSXENDTAGSTART = 1
 JSXTAG = 2
 JSXATTRIBUTE = 3
 # regex to search for tag open/close tag and close tag
-JSXREGEXP = /(?:(<)|(<\/))([$_A-Za-z](?:[$._:\-a-zA-Z0-9])*)|(?:(\/>)|(>))/g
+JSXREGEXP = /(?:(<)|(<\/))([$_A-Za-z](?:[$._:\-a-zA-Z0-9])*)|(?:(\/>)|(>))|(<\s*>)/g
 TAGREGEXP =  /<([$_a-zA-Z][$._:\-a-zA-Z0-9]*)($|\s|\/>|>)/g
 COMPLETIONS = require "./completions-jsx"
 REACTURL = "http://facebook.github.io/react/docs/tags-and-attributes.html"
@@ -152,7 +152,10 @@ module.exports =
             closedtag = tagNameStack.pop()
             if closedtag isnt match[3]
               tagNameStack.push closedtag
-          else if match[4]? # tags ending />
+          else if match[4]? # tags and fragments ending />
             tagNameStack.pop()
+          else if match[6]? # tag fragment stating <>
+            tagNameStack.push ""
+
       row++
     tagNameStack
