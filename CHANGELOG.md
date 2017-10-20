@@ -1,3 +1,6 @@
+### 2.76.0
+  - Add support for JSX fragments.
+  
 ### 2.75.2
   - Allow Babel V7 to use .babelrc.js files. Thanks to Robert Rossmann for [PR](https://github.com/gandm/language-babel/pull/427)
   - Fix duplicates appearing in auto-complete for JSX. [Issue 430](https://github.com/gandm/language-babel/issues/430)
