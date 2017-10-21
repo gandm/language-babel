@@ -1,5 +1,29 @@
 // SYNTAX TEST "source.js.jsx"
 
+// JSX Fragements
+
+<>
+// <- meta.tag.jsx punctuation.definition.tag.jsx
+ // <- meta.tag.jsx punctuation.definition.tag.jsx JSXAttrs JSXStartTagEnd
+  Some fragment
+//^^^^ ^^^^^^^^  meta.tag.jsx
+//^^^^ ^^^^^^^^  JSXAttrs
+//^^^^ ^^^^^^^^  JSXNested
+  <div><>Some frag</></div>
+//^^^^^^^^^^^ ^^^^^^^^^^^^^  meta.tag.jsx
+//^^^^^^^^^^^ ^^^^^^^^^^^^^  JSXAttrs
+//^^^^^^^^^^^ ^^^^^^^^^^^^^  JSXNested
+//^   ^^^         ^^^^^   ^  punctuation.definition.tag.jsx
+// ^^^                       entity.name.tag.open.jsx
+//    ^ ^                    JSXStartTagEnd
+//                ^^ ^^      JSXEndTagStart
+//                     ^^^   entity.name.tag.close.jsx
+</>
+// <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXEndTagStart
+ // <- meta.tag.jsx JSXAttrs punctuation.definition.tag.jsx JSXEndTagStart
+//^  meta.tag.jsx
+//^  punctuation.definition.tag.jsx
+
 // tight greater-/less-than operations.
 
 for (var i=1; i<table.rows.length; i++) {
