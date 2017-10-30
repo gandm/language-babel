@@ -1,5 +1,129 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 434
+let a = async (
+// <- storage.type.js
+ // <- storage.type.js
+//^     ^^^^^    storage.type.js
+//  ^ ^ ^^^^^ ^  meta.function.arrow.js
+//  ^            entity.name.function.js
+//    ^          keyword.operator.assignment.js
+//            ^  punctuation.definition.parameters.begin.js
+//            ^  meta.brace.round.js
+  arg
+//^^^  meta.function.arrow.js
+//^^^  meta.function.parameters.js
+//^^^  variable.other.readwrite.js
+) => {}
+// <- meta.function.arrow.js punctuation.definition.parameters.end.js meta.brace.round.js
+//^^ ^^  meta.function.arrow.js
+//^^     storage.type.function.arrow.js
+//   ^^  meta.brace.curly.js
+a = async (
+// <- meta.function.arrow.js entity.name.function.js
+//^ ^^^^^ ^  meta.function.arrow.js
+//^          keyword.operator.assignment.js
+//  ^^^^^    storage.type.js
+//        ^  punctuation.definition.parameters.begin.js
+//        ^  meta.brace.round.js
+  arg
+//^^^   meta.function.arrow.js
+//^^^   meta.function.parameters.js
+//^^^   variable.other.readwrite.js
+) => {}
+// <- meta.function.arrow.js punctuation.definition.parameters.end.js meta.brace.round.js
+//^^ ^^  meta.function.arrow.js
+//^^     storage.type.function.arrow.js
+//   ^^  meta.brace.curly.js
+let a = {
+// <- storage.type.js
+ // <- storage.type.js
+//^        storage.type.js
+//  ^      variable.other.readwrite.js
+//    ^    keyword.operator.assignment.js
+//      ^  meta.brace.curly.litobj.js
+  a: async arg => {
+//^^ ^^^^^ ^^^ ^^    meta.function.json.arrow.js
+//^                  entity.name.function.js
+// ^                 keyword.operator.assignment.js
+//   ^^^^^           storage.type.js
+//         ^^^       meta.function.parameters.js
+//         ^^^       variable.other.readwrite.js
+//             ^^    storage.type.function.arrow.js
+//                ^  meta.brace.curly.js
+  },
+//^   meta.brace.curly.js
+// ^  meta.delimiter.comma.js
+  a: async (arg
+//^^ ^^^^^ ^^^^  meta.function.json.arrow.js
+//^              entity.name.function.js
+// ^             punctuation.separator.key-value.js
+//   ^^^^^       storage.type.js
+//         ^     punctuation.definition.parameters.begin.js
+//         ^     meta.brace.round.js
+//          ^^^  meta.function.parameters.js
+//          ^^^  variable.other.readwrite.js
+  ) {},
+//^ ^^   meta.function.json.arrow.js
+//^      punctuation.definition.parameters.end.js
+//^      meta.brace.round.js
+//    ^  meta.delimiter.comma.js
+  'aaa': async <A>(arg: A
+//^^^^^^ ^^^^^ ^^^^^^^^ ^  meta.function.json.arrow.js
+//^^^^^                    string.quoted.js
+//^                        punctuation.definition.string.begin.js
+// ^^^                     entity.name.function.js
+//    ^                    punctuation.definition.string.end.js
+//     ^                   punctuation.separator.key-value.js
+//       ^^^^^             storage.type.js
+//             ^ ^         punctuation.flowtype
+//              ^       ^  support.type.class.flowtype
+//                ^        punctuation.definition.parameters.begin.js
+//                ^        meta.brace.round.js
+//                 ^^^^ ^  meta.function.parameters.js
+//                 ^^^     variable.other.readwrite.js
+//                    ^    punctuation.type.flowtype
+  ): A => {},
+//^^ ^ ^^ ^^   meta.function.json.arrow.js
+//^            punctuation.definition.parameters.end.js
+//^            meta.brace.round.js
+// ^           punctuation.type.flowtype
+//   ^         support.type.class.flowtype
+//     ^^      storage.type.function.arrow.js
+//        ^^   meta.brace.curly.js
+//          ^  meta.delimiter.comma.js
+  "aaaa": async (
+//^^^^^^^ ^^^^^ ^  meta.function.json.arrow.js
+//^^^^^^           string.quoted.js
+//^                punctuation.definition.string.begin.js
+// ^^^^            entity.name.function.js
+//     ^           punctuation.definition.string.end.js
+//      ^          punctuation.separator.key-value.js
+//        ^^^^^    storage.type.js
+//              ^  punctuation.definition.parameters.begin.js
+//              ^  meta.brace.round.js
+    arg1,
+//  ^^^^^  meta.function.json.arrow.js
+//  ^^^^^  meta.function.parameters.js
+//  ^^^^   variable.other.readwrite.js
+//      ^  meta.delimiter.comma.js
+    arg2: number
+//  ^^^^^ ^^^^^^  meta.function.json.arrow.js
+//  ^^^^^ ^^^^^^  meta.function.parameters.js
+//  ^^^^          variable.other.readwrite.js
+//      ^         punctuation.type.flowtype
+//        ^^^^^^  support.type.builtin.primitive.flowtype
+  ): number => {}
+//^^ ^^^^^^ ^^ ^^  meta.function.json.arrow.js
+//^                punctuation.definition.parameters.end.js
+//^                meta.brace.round.js
+// ^               punctuation.type.flowtype
+//   ^^^^^^        support.type.builtin.primitive.flowtype
+//          ^^     storage.type.function.arrow.js
+//             ^^  meta.brace.curly.js
+}
+// <- meta.brace.curly.litobj.js
+
 // Issue #421
 class A {
   func = (a1, a2) => (a1) => {

@@ -135,6 +135,7 @@
     },
     "literal-arrow-function-labels": {
       "patterns": [
+        { "include": "#literal-async-arrow-function-labels" },
         {
           "comment": "e.g. play: async <T>(args) => { }",
           "name": "meta.function.json.arrow.js",
@@ -156,21 +157,15 @@
         {
           "comment": "e.g. play: arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<=^|{|,)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(:)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
-          "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
-          "beginCaptures": {
+          "match": "(?<=^|{|,)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(:)\\s*+(\\basync\\b)?\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*(=>)",
+          "captures": {
             "1": { "name": "entity.name.function.js" },
-            "2": { "name": "punctuation.separator.key-value.js" },
-            "3": { "name": "storage.type.js" }
-          },
-          "endCaptures": {
-            "2": { "name": "storage.type.function.arrow.js" }
-          },
-          "patterns": [
-            { "include": "#fat-arrow-braced-body" },
-            { "include": "#flowtype-polymorphs" },
-            { "include": "#flowtype-variable" }
-          ]
+            "2": { "name": "keyword.operator.assignment.js" },
+            "3": { "name": "storage.type.js" },
+            "4": { "name": "meta.function.parameters.js" },
+            "5": { "name": "variable.other.readwrite.js" },
+            "6": { "name": "storage.type.function.arrow.js" }
+          }
         },
         {
           "comment": "e.g. 'play': (args) => { }",
@@ -196,7 +191,45 @@
         {
           "comment": "e.g. 'play': arg => { }",
           "name": "meta.function.json.arrow.js",
-          "begin": "(?<=^|{|,)\\s*+(('|\")([^\"']*)(\\k<-3>))\\s*+(:)\\s*+(\\basync\\b)?\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(((?::(?:(\\s*+(&|\\|)?(\\s*%checks\\b|\\s*(\\((?:(?>[^()]+)|\\g<-1>)*\\))+|\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)|(<(?:(?>[^<>]+)|\\g<-1>)*>)+|\\s*+({(?:(?>[^{}]+)|\\g<-1>)*\\})|\\s*+(\\[(?:(?>[^\\[\\]]+)|\\g<-1>)*\\])|\\s*+(\\s*([\"']).*?\\k<-1>(?<!\\\\.))|\\s*[x0-9A-Fa-f]+))|(?:\\s*+/\\*.*?\\*/))*+)*)|(?:/\\*.*?\\*/))\\s*=>)",
+          "match": "(?<=^|{|,)\\s*+(('|\")([^\"']*)(\\k<-3>))\\s*+(:)\\s*+(\\basync\\b)?\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*(=>)",
+          "captures": {
+            "1": { "name": "string.quoted.js" },
+            "2": { "name": "punctuation.definition.string.begin.js" },
+            "3": { "name": "entity.name.function.js" },
+            "4": { "name": "punctuation.definition.string.end.js" },
+            "5": { "name": "keyword.operator.assignment.js" },
+            "6": { "name": "storage.type.js" },
+            "7": { "name": "meta.function.parameters.js" },
+            "8": { "name": "variable.other.readwrite.js" },
+            "9": { "name": "storage.type.function.arrow.js" }
+          }
+        }
+      ]
+    },
+    "literal-async-arrow-function-labels": {
+      "patterns": [
+        {
+          "comment": "e.g. play: async <T>(",
+          "name": "meta.function.json.arrow.js",
+          "begin": "(?<=^|{|,)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(:)\\s*+(\\basync\\b)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+\\()",
+          "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.js" },
+            "2": { "name": "punctuation.separator.key-value.js" },
+            "3": { "name": "storage.type.js" }
+          },
+          "endCaptures": {
+            "2": { "name": "storage.type.function.arrow.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype" },
+            { "include": "#fat-arrow-braced-body" }
+          ]
+        },
+        {
+          "comment": "e.g. 'play': async <T>(",
+          "name": "meta.function.json.arrow.js",
+          "begin": "(?<=^|{|,)\\s*+(('|\")([^\"']*)(\\k<-3>))\\s*(:)\\s*+(\\basync\\b)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+\\()",
           "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
           "beginCaptures": {
             "1": { "name": "string.quoted.js" },
@@ -210,9 +243,8 @@
             "2": { "name": "storage.type.function.arrow.js" }
           },
           "patterns": [
-            { "include": "#fat-arrow-braced-body" },
-            { "include": "#flowtype-polymorphs" },
-            { "include": "#flowtype-variable" }
+            { "include": "#flowtype" },
+            { "include": "#fat-arrow-braced-body" }
           ]
         }
       ]
@@ -1879,6 +1911,7 @@
     },
     "literal-arrow-function-simple-assignments": {
       "patterns": [
+        { "include": "#literal-async-arrow-function-simple-assignments" },
         {
           "comment": "e.g. play = (args) => { }",
           "name": "meta.function.arrow.js",
@@ -1901,15 +1934,39 @@
         {
           "comment": "e.g. play = arg => { }",
           "name": "meta.function.arrow.js",
-          "match": "\\s*+(\\#?)(\\b(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+\\s*+(\\basync\\b)?\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*(=>)",
+          "match": "\\s*+(\\#?)(\\b(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+\\s*+(\\basync\\b)?\\s*+(((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+))\\s*(=>)",
           "captures": {
             "1": { "name": "keyword.operator.private.js"},
             "2": { "name": "entity.name.function.js" },
             "3": { "name": "keyword.operator.assignment.js" },
             "4": { "name": "storage.type.js" },
-            "5": { "name": "variable.other.readwrite.js" },
-            "6": { "name": "storage.type.function.arrow.js" }
+            "5": { "name": "meta.function.parameters.js" },
+            "6": { "name": "variable.other.readwrite.js" },
+            "7": { "name": "storage.type.function.arrow.js" }
           }
+        }
+      ]
+    },
+    "literal-async-arrow-function-simple-assignments": {
+      "patterns": [
+        {
+          "comment": "e.g. play = (args) => { }",
+          "name": "meta.function.arrow.js",
+          "begin": "\\s*+(\\#?)(\\b(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(=)\\s*+(\\basync\\b)\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?\\s*+\\()",
+          "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.private.js"},
+            "2": { "name": "entity.name.function.js" },
+            "3": { "name": "keyword.operator.assignment.js" },
+            "4": { "name": "storage.type.js" }
+          },
+          "endCaptures": {
+            "2": { "name": "storage.type.function.arrow.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype" },
+            { "include": "#fat-arrow-braced-body" }
+          ]
         }
       ]
     },

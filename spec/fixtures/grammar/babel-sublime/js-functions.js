@@ -484,10 +484,11 @@ let Sound = {
 //                     ^^   meta.brace.curly.js
 //                       ^  meta.delimiter.comma.js
   play: async arg => {},
-//^^^^^ ^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
+//^^^^^ ^^^^^ ^^^ ^^      meta.function.json.arrow.js
 //^^^^                    entity.name.function.js
-//    ^                   punctuation.separator.key-value.js
+//    ^                   keyword.operator.assignment.js
 //      ^^^^^             storage.type.js
+//            ^^^         meta.function.parameters.js
 //            ^^^         variable.other.readwrite.js
 //                ^^      storage.type.function.arrow.js
 //                   ^^   meta.brace.curly.js
@@ -515,9 +516,10 @@ let Sound = {
 //               ^^   meta.brace.curly.js
 //                 ^  meta.delimiter.comma.js
   play: arg => {},
-//^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
+//^^^^^ ^^^ ^^      meta.function.json.arrow.js
 //^^^^              entity.name.function.js
-//    ^             punctuation.separator.key-value.js
+//    ^             keyword.operator.assignment.js
+//      ^^^         meta.function.parameters.js
 //      ^^^         variable.other.readwrite.js
 //          ^^      storage.type.function.arrow.js
 //             ^^   meta.brace.curly.js
@@ -673,13 +675,14 @@ let Sound = {
 //                       ^^   meta.brace.curly.js
 //                         ^  meta.delimiter.comma.js
   "play": async arg => {},
-//^^^^^^^ ^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
+//^^^^^^^ ^^^^^ ^^^ ^^      meta.function.json.arrow.js
 //^^^^^^                    string.quoted.js
 //^                         punctuation.definition.string.begin.js
 // ^^^^                     entity.name.function.js
 //     ^                    punctuation.definition.string.end.js
-//      ^                   punctuation.separator.key-value.js
+//      ^                   keyword.operator.assignment.js
 //        ^^^^^             storage.type.js
+//              ^^^         meta.function.parameters.js
 //              ^^^         variable.other.readwrite.js
 //                  ^^      storage.type.function.arrow.js
 //                     ^^   meta.brace.curly.js
@@ -713,12 +716,13 @@ let Sound = {
 //                 ^^   meta.brace.curly.js
 //                   ^  meta.delimiter.comma.js
   "play": arg => {},
-//^^^^^^^ ^^^ ^^ ^^   meta.function.json.arrow.js
+//^^^^^^^ ^^^ ^^      meta.function.json.arrow.js
 //^^^^^^              string.quoted.js
 //^                   punctuation.definition.string.begin.js
 // ^^^^               entity.name.function.js
 //     ^              punctuation.definition.string.end.js
-//      ^             punctuation.separator.key-value.js
+//      ^             keyword.operator.assignment.js
+//        ^^^         meta.function.parameters.js
 //        ^^^         variable.other.readwrite.js
 //            ^^      storage.type.function.arrow.js
 //               ^^   meta.brace.curly.js
