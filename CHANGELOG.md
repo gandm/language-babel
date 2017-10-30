@@ -1,6 +1,10 @@
+### 2.76.2
+  - Fix some issues with flowtype declare statements. Issue #435
+  - Handle async arrow functions earlier to allow for multiline arguments. Issue #434
+
 ### 2.76.1
   - Fix lack of support with JSX fragment as outer wrapper!!
-  
+
 ### 2.76.0
   - Add support for JSX fragments.
 
