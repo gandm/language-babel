@@ -1,3 +1,6 @@
+### 2.76.3
+  - Constant var regex not failing on lowercase chars; allow intervening $ chars. Issue #437
+
 ### 2.76.2
   - Fix some issues with flowtype declare statements. Issue #435
   - Handle async arrow functions earlier to allow for multiline arguments. Issue #434

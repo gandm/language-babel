@@ -2270,7 +2270,7 @@
       "patterns": [
         {
           "comment": "e.g. CONSTANT",
-          "match": "\\s*+(\\#?)(_++[_\\p{Lu}\\p{N}]+|[\\p{Lu}][_\\p{Lu}\\p{N}]*)\\b",
+          "match": "\\s*+(\\#?)(_++[$_\\p{Lu}\\p{N}]++|[\\p{Lu}][$_\\p{Lu}\\p{N}]*+)(?!\\p{Ll})",
           "captures":{
             "1": { "name": "keyword.operator.private.js"},
             "2": { "name": "variable.other.constant.js" }
