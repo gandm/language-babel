@@ -1541,8 +1541,8 @@
               }
             },
             {
-              "comment": "look for classes names but dont assume uppercase start char",
-              "match": "(?<!\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
+              "comment": "look for class names but dont assume uppercase start char",
+              "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
               "captures": {
                 "1": { "name": "entity.name.class.js" }
               }
@@ -3120,6 +3120,13 @@
       },
       "patterns": [
         {
+          "match": "\\s*+\\b((extends))\\b\\s*+",
+          "captures": {
+            "1": { "name": "meta.class.extends.js" },
+            "2": { "name": "storage.type.extends.js" }
+          }
+        },
+        {
           "comment": "look for interface names but dont assume uppercase start char",
           "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
           "name": "support.type.class.interface.js"
@@ -3139,6 +3146,12 @@
             { "include": "#flowtype-literal-method" },
             { "include": "#class-body" }
           ]
+        },
+        {
+          "match": "\\s*(\\.)",
+          "captures": {
+            "1": {"name": "keyword.operator.accessor.js" }
+          }
         }
       ]
     },
@@ -3199,6 +3212,7 @@
                 "1": { "name": "punctuation.section.class.end.js" }
               },
               "patterns": [
+                { "include": "#flowtype-keywords" },
                 { "include": "#flowtype-literal-method" },
                 { "include": "#class-body" }
               ]
@@ -3207,11 +3221,12 @@
         },
         {
           "comment": "declare classes",
-          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+\\b(class)\\b",
+          "begin": "\\s*+(?<!\\.)\\b(declare)\\b\\s*+(\\bexport\\b)?\\s*+\\b(class)\\b",
           "end": "\\s*(?<=})",
           "beginCaptures": {
             "1": { "name": "keyword.other.declare.flowtype" },
-            "2": { "name": "storage.type.class.flowtype" }
+            "2": { "name": "keyword.constrol.module.flowtype" },
+            "3": { "name": "storage.type.class.flowtype" }
           },
           "patterns": [
             { "include": "#flowtype-polymorphs" },
@@ -3224,24 +3239,15 @@
               }
             },
             { "comment": "look for mixins keyword",
-              "begin": "\\s*+\\b((mixins))\\b\\s*+",
-              "end": "\\s*(?={)",
-              "beginCaptures": {
+              "match": "\\s*+\\b((mixins))\\b\\s*+",
+              "captures": {
                 "1": { "name": "meta.class.extends.js" },
                 "2": { "name": "storage.type.extends.js" }
-              },
-              "patterns": [
-                {
-                  "comment": "look for mixin names but dont assume uppercase start char",
-                  "match": "(?<!\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
-                  "name": "entity.name.class.js"
-                },
-                { "include": "#literal-comma" }
-              ]
+              }
             },
             {
               "comment": "look for class names but dont assume uppercase start char",
-              "match": "(?<!\\.)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)(\\s|$)",
+              "match": "\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)",
               "captures": {
                 "1": { "name": "entity.name.class.js" }
               }
@@ -3260,6 +3266,13 @@
                 { "include": "#flowtype-literal-method" },
                 { "include": "#class-body" }
               ]
+            },
+            { "include": "#literal-comma" },
+            {
+              "match": "\\s*(\\.)",
+              "captures": {
+                "1": {"name": "keyword.operator.accessor.js" }
+              }
             }
           ]
         }

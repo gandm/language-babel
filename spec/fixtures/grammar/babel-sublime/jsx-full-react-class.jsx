@@ -253,12 +253,10 @@ export class Counter extends React.Component {
 //^^^^                                          keyword.control.module.js
 //     ^^^^^                                    meta.class.js
 //     ^^^^^                                    storage.type.class.js
-//           ^^^^^^^         ^^^^^              entity.name.class.js
+//           ^^^^^^^         ^^^^^ ^^^^^^^^^    entity.name.class.js
 //                   ^^^^^^^                    meta.class.extends.js
 //                   ^^^^^^^                    storage.type.extends.js
 //                                ^             keyword.operator.accessor.js
-//                                 ^^^^^^^^^    meta.property.object.js
-//                                 ^^^^^^^^^    variable.other.property.js
 //                                           ^  punctuation.section.class.begin.js
   static propTypes = { initialCount: React.PropTypes.number };
 //^^^^^^ ^^^^^^^^^ ^ ^ ^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^ ^^  meta.class.body.js
