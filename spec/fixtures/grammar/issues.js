@@ -1,5 +1,29 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #440
+type test = {
+// <- keyword.other.typedef.flowtype
+ // <- keyword.other.typedef.flowtype
+//^^           keyword.other.typedef.flowtype
+//   ^^^^      support.type.primitive.flowtype
+//        ^    keyword.operator.assignment.js
+//          ^  meta.object.flowtype
+//          ^  meta.brace.curly.js
+  foo: Array<<U>(data: T) => U>
+//^^^^ ^^^^^^^^^^^^^^^ ^^ ^^ ^^  meta.object.flowtype
+//^^^            ^^^^            variable.other.readwrite.js
+//   ^               ^           punctuation.type.flowtype
+//     ^^^^^                     support.type.builtin.class.flowtype
+//          ^^ ^              ^  punctuation.flowtype
+//            ^        ^     ^   support.type.class.flowtype
+//              ^                punctuation.definition.parameters.begin.js
+//              ^       ^        meta.brace.round.js
+//               ^^^^^ ^         meta.function.parameters.js
+//                      ^        punctuation.definition.parameters.end.js
+//                        ^^     storage.type.function.arrow.js
+}
+// <- meta.object.flowtype meta.brace.curly.js
+
 // Issue #439
 declare module 'axios' {
 // <- keyword.other.declare.flowtype

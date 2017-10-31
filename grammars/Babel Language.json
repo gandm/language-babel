@@ -3024,7 +3024,7 @@
         },
         {
           "comment": "just the polymorph bit like this <K,V>(arg,arg)",
-          "begin": "\\s*+(<)(?!<)",
+          "begin": "\\s*+(<)",
           "end": "\\s*(>)",
           "beginCaptures": {
             "1": { "name": "punctuation.flowtype" }
