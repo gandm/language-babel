@@ -1,3 +1,6 @@
+### 2.76.4
+  - Fix flowtype parsing issues #438, #439, #440
+
 ### 2.76.3
   - Constant var regex not failing on lowercase chars; allow intervening $ chars. Issue #437
 
