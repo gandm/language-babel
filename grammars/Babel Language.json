@@ -88,6 +88,21 @@
             { "include": "#flowtype" },
             { "include": "#fat-arrow-braced-body" }
           ]
+        },
+        {
+          "comment": "trap multiline generic arrow functions",
+          "comment": "which could be treated as JSX - in fact it still could be JSX but unlikely",
+          "comment": "e.g. export default <T>(",
+          "name": "meta.function.arrow.js",
+          "begin": "\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)\\s*+\\(\\s*$)",
+          "end": "((?<=})|(?:\\s*(=>)(?!\\s*{)))",
+          "endCaptures": {
+            "2": { "name": "storage.type.function.arrow.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype" },
+            { "include": "#fat-arrow-braced-body" }
+          ]
         }
       ]
     },
