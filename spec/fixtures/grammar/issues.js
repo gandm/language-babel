@@ -1,5 +1,27 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #439
+declare module 'axios' {
+// <- keyword.other.declare.flowtype
+ // <- keyword.other.declare.flowtype
+//^^^^^                   keyword.other.declare.flowtype
+//      ^^^^^^            storage.type.module.flowtype
+//             ^^^^^^^    string.quoted.single.js
+//             ^          punctuation.definition.string.begin.js
+//                   ^    punctuation.definition.string.end.js
+//                     ^  punctuation.section.class.begin.js
+  declare export type AxiosConfig = AxiosXHRConfig<*>
+//^^^^^^^ ^^^^^^ ^^^^ ^^^^^^^^^^^ ^ ^^^^^^^^^^^^^^^^^  meta.class.body.js
+//^^^^^^^                                              keyword.other.declare.flowtype
+//        ^^^^^^                                       keyword.control.module.js
+//               ^^^^                                  keyword.other.typedef.flowtype
+//                    ^^^^^^^^^^^   ^^^^^^^^^^^^^^     support.type.class.flowtype
+//                                ^                    keyword.operator.assignment.js
+//                                                ^ ^  punctuation.flowtype
+//                                                 ^   kewyword.operator.existential.flowtype
+}
+// <- punctuation.section.class.end.js
+
 // Issue 434
 let a = async (
 // <- storage.type.js

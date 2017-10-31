@@ -3172,7 +3172,7 @@
     "flowtype-declare": {
       "patterns": [
         {
-          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface|opaque)\\b)",
+          "match": "\\s*+(?<!\\.)\\b(declare)(?=\\s+(function|var|type|interface|opaque|export)\\b)",
           "captures": {
             "1": { "name":  "keyword.other.declare.flowtype" }
           }
