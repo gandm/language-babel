@@ -1,5 +1,21 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #441
+async function f() { for await () {} }
+// <- meta.function.js storage.type.js
+ // <- meta.function.js storage.type.js
+//^^^ ^^^^^^^^ ^^^ ^ ^^^ ^^^^^ ^^ ^^ ^  meta.function.js
+//^^^                                   storage.type.js
+//    ^^^^^^^^                          storage.type.function.js
+//             ^                        entity.name.function.js
+//              ^                       punctuation.definition.parameters.begin.js
+//              ^^             ^^       meta.brace.round.js
+//               ^                      punctuation.definition.parameters.end.js
+//                 ^              ^^ ^  meta.brace.curly.js
+//                   ^^^ ^^^^^ ^^       meta.for.js
+//                   ^^^                keyword.control.loop.js
+//                       ^^^^^          keyword.control.flow.js
+
 // Issue #440
 type test = {
 // <- keyword.other.typedef.flowtype

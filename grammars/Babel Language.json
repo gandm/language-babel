@@ -357,13 +357,14 @@
       "patterns": [
         {
           "name": "meta.for.js",
-          "begin": "(?<!\\.)\\s*+\\b(for)\\b",
+          "begin": "(?<!\\.)\\s*+\\b(for)\\b\\s*(await)?\\b",
           "end": "\\s*(\\))",
           "endCaptures": {
             "1": { "name": "meta.brace.round.js" }
           },
           "beginCaptures": {
-            "1": { "name": "keyword.control.loop.js" }
+            "1": { "name": "keyword.control.loop.js" },
+            "2": { "name": "keyword.control.flow.js" }
           },
           "patterns": [
             {
