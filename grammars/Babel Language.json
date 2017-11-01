@@ -3244,7 +3244,6 @@
             "3": { "name": "storage.type.class.flowtype" }
           },
           "patterns": [
-            { "include": "#flowtype-polymorphs" },
             {
               "comment": "look for extends keyword",
               "match": "\\s*+\\b((extends))\\b\\s*+",
@@ -3282,6 +3281,7 @@
                 { "include": "#class-body" }
               ]
             },
+            { "include": "#flowtype-polymorphs" },
             { "include": "#literal-comma" },
             {
               "match": "\\s*(\\.)",

@@ -2008,7 +2008,7 @@ declare class Map<K, V> {
  // <- keyword.other.declare.flowtype
 //^^^^^                    keyword.other.declare.flowtype
 //      ^^^^^              storage.type.class.flowtype
-//            ^^^          support.type.builtin.class.flowtype
+//            ^^^          entity.name.class.js
 //               ^    ^    punctuation.flowtype
 //                ^  ^     support.type.class.flowtype
 //                 ^       meta.delimiter.comma.js
@@ -2140,7 +2140,7 @@ declare class Promise<R> {
  // <- keyword.other.declare.flowtype
 //^^^^^                     keyword.other.declare.flowtype
 //      ^^^^^               storage.type.class.flowtype
-//            ^^^^^^^       support.type.builtin.class.flowtype
+//            ^^^^^^^       entity.name.class.js
 //                   ^ ^    punctuation.flowtype
 //                    ^     support.type.class.flowtype
 //                       ^  punctuation.section.class.begin.js
