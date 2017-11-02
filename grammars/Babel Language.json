@@ -2928,7 +2928,7 @@
           },
           {
             "comment": "custom primitive/var Types e.g. abc avoid abc(",
-            "match": "(?!\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)(?!^)\\s*(?<=\\s|:|&|\\|)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
+            "match": "(?!\\s*\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b)(?!^)\\s*(?<=\\s|:|&|\\||<)([$_\\p{L}][$.\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}]*+)(?!\\s*+\\()",
             "captures": {
               "2": { "name": "support.type.primitive.flowtype" }
             }
