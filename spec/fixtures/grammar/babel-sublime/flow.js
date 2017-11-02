@@ -1432,8 +1432,7 @@ declare class Object {
 //                   ^  punctuation.section.class.begin.js
   static (o: string): String;
 //^^^^^^ ^^^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^^^ ^^^^^^   meta.function.method.js
-//^^^^^^                       entity.name.function.method.js
+//^^^^^^                       storage.modifier.js
 //       ^                     punctuation.definition.parameters.begin.js
 //       ^         ^           meta.brace.round.js
 //        ^^ ^^^^^^            meta.function.parameters.js
@@ -1445,8 +1444,7 @@ declare class Object {
 //                          ^  punctuation.terminator.statement.js
   static (o: ?void): {[key: any]: any};
 //^^^^^^ ^^^ ^^^^^^^ ^^^^^^ ^^^^^ ^^^^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^^ ^^^^^^ ^^^^^ ^^^^   meta.function.method.js
-//^^^^^^                                 entity.name.function.method.js
+//^^^^^^                                 storage.modifier.js
 //       ^                               punctuation.definition.parameters.begin.js
 //       ^        ^                      meta.brace.round.js
 //        ^^ ^^^^^                       meta.function.parameters.js
@@ -1463,8 +1461,7 @@ declare class Object {
 //                                    ^  punctuation.terminator.statement.js
   static <T: Object>(o: T): T;
 //^^^^^^ ^^^ ^^^^^^^^^^ ^^^ ^^  meta.class.body.js
-//^^^^^^ ^^^ ^^^^^^^^^^ ^^^ ^   meta.function.method.js
-//^^^^^^                        entity.name.function.method.js
+//^^^^^^                        storage.modifier.js
 //       ^         ^            punctuation.flowtype
 //        ^             ^   ^   support.type.class.flowtype
 //         ^          ^   ^     punctuation.type.flowtype
@@ -1669,8 +1666,7 @@ declare class Object {
 //              ^  punctuation.terminator.statement.js
   static (...values:Array<any>): Array<any>;
 //^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^^  meta.class.body.js
-//^^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^ ^^^^^^^^^^   meta.function.method.js
-//^^^^^^                                      entity.name.function.method.js
+//^^^^^^                                      storage.modifier.js
 //       ^                                    punctuation.definition.parameters.begin.js
 //       ^                    ^               meta.brace.round.js
 //        ^^^^^^^^^^^^^^^^^^^^                meta.function.parameters.js
