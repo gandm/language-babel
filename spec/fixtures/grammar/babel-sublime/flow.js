@@ -2021,10 +2021,9 @@ declare class Map<K, V> {
 //          ^^                     meta.brace.round.js
 //           ^                     punctuation.definition.parameters.end.js
 //            ^                    punctuation.type.flowtype
-//              ^^^^^^^^           support.type.class.flowtype
+//              ^^^^^^^^  ^  ^     support.type.class.flowtype
 //                      ^      ^   punctuation.flowtype
 //                       ^         meta.brace.square.open.flowtype
-//                        ^  ^     variable.other.constant.js
 //                         ^       meta.delimiter.comma.js
 //                            ^    meta.brace.square.end.flowtype
 //                              ^  punctuation.terminator.statement.js
@@ -2042,12 +2041,12 @@ declare class Map<K, V> {
   <Key, Value>(iterable: Iterable<[Key, Value]>): Map<Key, Value>;
 //^^^^^ ^^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^^^^^^^ ^^^^^^^^ ^^^^^^^  meta.class.body.js
 //^          ^                   ^            ^      ^          ^   punctuation.flowtype
-// ^^^  ^^^^^            ^^^^^^^^                     ^^^  ^^^^^    support.type.class.flowtype
+// ^^^  ^^^^^            ^^^^^^^^  ^^^  ^^^^^         ^^^  ^^^^^    support.type.class.flowtype
 //    ^                               ^                  ^          meta.delimiter.comma.js
 //            ^                                                     punctuation.definition.parameters.begin.js
 //            ^                                ^                    meta.brace.round.js
 //             ^^^^^^^^^ ^^^^^^^^^^^^^^ ^^^^^^^                     meta.function.parameters.js
-//             ^^^^^^^^            ^^^  ^^^^^                       variable.other.readwrite.js
+//             ^^^^^^^^                                             variable.other.readwrite.js
 //                     ^                        ^                   punctuation.type.flowtype
 //                                ^                                 meta.brace.square.open.flowtype
 //                                           ^                      meta.brace.square.end.flowtype
@@ -2062,10 +2061,9 @@ declare class Map<K, V> {
 //       ^^                     meta.brace.round.js
 //        ^                     punctuation.definition.parameters.end.js
 //         ^                    punctuation.type.flowtype
-//           ^^^^^^^^           support.type.class.flowtype
+//           ^^^^^^^^  ^  ^     support.type.class.flowtype
 //                   ^      ^   punctuation.flowtype
 //                    ^         meta.brace.square.open.flowtype
-//                     ^  ^     variable.other.constant.js
 //                      ^       meta.delimiter.comma.js
 //                         ^    meta.brace.square.end.flowtype
 //                           ^  punctuation.terminator.statement.js

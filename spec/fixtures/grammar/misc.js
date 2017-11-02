@@ -282,6 +282,7 @@ function foo2(bar /*:: ?: string*/) {}
 //           ^                    ^     meta.brace.round.js
 //            ^^^ ^^^^ ^^ ^^^^^^^^      meta.function.parameters.js
 //            ^^^                       variable.other.readwrite.js
+//                ^^^^ ^^ ^^^^^^^^      meta.comments.flowtype
 //                ^^            ^^      punctuation.definition.comment.js
 //                  ^^  ^               punctuation.type.flowtype
 //                     ^                keyword.operator.optional.parameter.flowtype
@@ -298,6 +299,7 @@ function foo(x /*: number*/) /*: string*/ {}
 //          ^              ^                  meta.brace.round.js
 //           ^ ^^^ ^^^^^^^^                   meta.function.parameters.js
 //           ^                                variable.other.readwrite.js
+//             ^^^ ^^^^^^^^  ^^^ ^^^^^^^^     meta.comments.flowtype
 //             ^^        ^^  ^^        ^^     punctuation.definition.comment.js
 //               ^             ^              punctuation.type.flowtype
 //                 ^^^^^^        ^^^^^^       support.type.builtin.primitive.flowtype

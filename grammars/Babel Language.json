@@ -3110,6 +3110,17 @@
         "1": { "name": "meta.brace.square.end.flowtype" }
       },
       "patterns": [
+        {
+          "comment": "destructring in arrays requires vars parse before types",
+          "begin": "\\s*(?=[_$[:alpha:]][_$[:alnum:]]*\\s*[=:])",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "patterns": [
+            { "include": "#flowtype-variable" },
+            { "include": "#flowtype-parse-types" }
+          ]
+        },
+        { "include": "#flowtype-parse-types" },
         { "include": "#flowtype-variable" }
       ]
     },
