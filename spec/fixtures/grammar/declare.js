@@ -286,13 +286,13 @@ declare var foo: (
 //               ^  meta.brace.round.js
   (<T>(x: T) => T) & (<T,U>(x: T, y: U) => U)
 //^^^^^^^ ^^ ^^ ^^ ^ ^^^^^^^^^ ^^ ^^ ^^ ^^ ^^  meta.function.parameters.js
-//^   ^              ^     ^                   punctuation.definition.parameters.begin.js
 //^   ^    ^     ^   ^     ^          ^     ^  meta.brace.round.js
 // ^ ^                ^   ^                    punctuation.flowtype
 //  ^     ^     ^      ^ ^     ^     ^     ^   support.type.class.flowtype
+//    ^                    ^                   punctuation.definition.parameters.begin.js
 //     ^                    ^     ^            variable.other.readwrite.js
 //      ^                    ^     ^           punctuation.type.flowtype
-//         ^     ^                    ^     ^  punctuation.definition.parameters.end.js
+//         ^                          ^        punctuation.definition.parameters.end.js
 //           ^^                         ^^     storage.type.function.arrow.js
 //                 ^                           kewyword.operator.intersection.flowtype
 //                      ^       ^              meta.delimiter.comma.js

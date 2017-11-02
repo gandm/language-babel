@@ -1,5 +1,148 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #444
+
+export const formatResponseWrapper: $Transform<
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                                           keyword.control.module.js
+//     ^^^^^                                     storage.type.js
+//           ^^^^^^^^^^^^^^^^^^^^^               variable.other.readwrite.js
+//                                ^              punctuation.type.flowtype
+//                                  ^^^^^^^^^^   support.type.class.flowtype
+//                                            ^  punctuation.flowtype
+  // we accept the shape of either wrapper -- but require result is provided in minimum
+//^^ ^^ ^^^^^^ ^^^ ^^^^^ ^^ ^^^^^^ ^^^^^^^ ^^ ^^^ ^^^^^^^ ^^^^^^ ^^ ^^^^^^^^ ^^ ^^^^^^^  comment.line.double-slash.js
+//^^                                                                                     punctuation.definition.comment.js
+  | $Shape<Dash$SuccessWrapper & {| result: 'success' |}>
+//^                                                        kewyword.operator.union.flowtype
+//  ^^^^^^ ^^^^^^^^^^^^^^^^^^^                             support.type.class.flowtype
+//        ^                                             ^  punctuation.flowtype
+//                             ^                           kewyword.operator.intersection.flowtype
+//                               ^^ ^^^^^^^ ^^^^^^^^^ ^^   meta.object.flowtype
+//                               ^                         meta.brace.curly.open.flowtype
+//                                ^                   ^    kewyword.operator.only.flowtype
+//                                  ^^^^^^                 variable.other.readwrite.js
+//                                        ^                punctuation.type.flowtype
+//                                          ^^^^^^^^^      string.quoted.single.js
+//                                          ^              punctuation.definition.string.begin.js
+//                                                  ^      punctuation.definition.string.end.js
+//                                                     ^   meta.brace.curly.close.flowtype
+  | ({| result: 'error' |} & $Shape<Dash$ErrorWrapper>),
+//^                                                       kewyword.operator.union.flowtype
+//  ^                                                 ^   meta.brace.round.js
+//   ^^ ^^^^^^^ ^^^^^^^ ^^                                meta.object.flowtype
+//   ^                                                    meta.brace.curly.open.flowtype
+//    ^                 ^                                 kewyword.operator.only.flowtype
+//      ^^^^^^                                            variable.other.readwrite.js
+//            ^                                           punctuation.type.flowtype
+//              ^^^^^^^                                   string.quoted.single.js
+//              ^                                         punctuation.definition.string.begin.js
+//                    ^                                   punctuation.definition.string.end.js
+//                       ^                                meta.brace.curly.close.flowtype
+//                         ^                              kewyword.operator.intersection.flowtype
+//                           ^^^^^^ ^^^^^^^^^^^^^^^^^     support.type.class.flowtype
+//                                 ^                 ^    punctuation.flowtype
+//                                                     ^  meta.delimiter.comma.js
+  Dash$ResponseWrapper,
+//^^^^^^^^^^^^^^^^^^^^   support.type.class.flowtype
+//                    ^  meta.delimiter.comma.js
+> = createTransformer(transformResponseWrapper);
+// <- punctuation.flowtype
+//^                                               keyword.operator.assignment.js
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//  ^^^^^^^^^^^^^^^^^                             entity.name.function.js
+//                   ^                        ^   meta.brace.round.js
+//                    ^^^^^^^^^^^^^^^^^^^^^^^^    variable.other.readwrite.js
+//                                             ^  punctuation.terminator.statement.js
+export const formatErrorResponse: $Transform<
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                                         keyword.control.module.js
+//     ^^^^^                                   storage.type.js
+//           ^^^^^^^^^^^^^^^^^^^               variable.other.readwrite.js
+//                              ^              punctuation.type.flowtype
+//                                ^^^^^^^^^^   support.type.class.flowtype
+//                                          ^  punctuation.flowtype
+  {| errorMessage?: string |} & $Shape<Dash$ErrorResponse> & {| errorMessage: string |},
+//   ^^^^^^^^^^^^                                                                         support.type.primitive.flowtype
+//               ^                                                                        keyword.operator.maybe.flowtype
+//                ^                                                         ^             punctuation.type.flowtype
+//                ^ ^^^^^^                                                    ^^^^^^      support.type.builtin.primitive.flowtype
+//                            ^                            ^                              kewyword.operator.intersection.flowtype
+//                              ^^^^^^ ^^^^^^^^^^^^^^^^^^                                 support.type.class.flowtype
+//                                    ^                  ^                                punctuation.flowtype
+//                                                           ^^ ^^^^^^^^^^^^^ ^^^^^^ ^^   meta.object.flowtype
+//                                                           ^                            meta.brace.curly.open.flowtype
+//                                                            ^                      ^    kewyword.operator.only.flowtype
+//                                                              ^^^^^^^^^^^^              variable.other.readwrite.js
+//                                                                                    ^   meta.brace.curly.close.flowtype
+//                                                                                     ^  meta.delimiter.comma.js
+  Dash$ErrorResponse,
+//^^^^^^^^^^^^^^^^^^   support.type.class.flowtype
+//                  ^  meta.delimiter.comma.js
+> = createTransformer(transformErrorResponse);
+// <- punctuation.flowtype
+//^                                             keyword.operator.assignment.js
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//  ^^^^^^^^^^^^^^^^^                           entity.name.function.js
+//                   ^                      ^   meta.brace.round.js
+//                    ^^^^^^^^^^^^^^^^^^^^^^    variable.other.readwrite.js
+//                                           ^  punctuation.terminator.statement.js
+export const formatResponseWrapper: $Transform<
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^                                           keyword.control.module.js
+//     ^^^^^                                     storage.type.js
+//           ^^^^^^^^^^^^^^^^^^^^^               variable.other.readwrite.js
+//                                ^              punctuation.type.flowtype
+//                                  ^^^^^^^^^^   support.type.class.flowtype
+//                                            ^  punctuation.flowtype
+  // we accept the shape of either wrapper -- but require result is provided in minimum
+//^^ ^^ ^^^^^^ ^^^ ^^^^^ ^^ ^^^^^^ ^^^^^^^ ^^ ^^^ ^^^^^^^ ^^^^^^ ^^ ^^^^^^^^ ^^ ^^^^^^^  comment.line.double-slash.js
+//^^                                                                                     punctuation.definition.comment.js
+  | $Shape<Dash$SuccessWrapper & {| result: 'success' |}>
+//^                                                        kewyword.operator.union.flowtype
+//  ^^^^^^ ^^^^^^^^^^^^^^^^^^^                             support.type.class.flowtype
+//        ^                                             ^  punctuation.flowtype
+//                             ^                           kewyword.operator.intersection.flowtype
+//                               ^^ ^^^^^^^ ^^^^^^^^^ ^^   meta.object.flowtype
+//                               ^                         meta.brace.curly.open.flowtype
+//                                ^                   ^    kewyword.operator.only.flowtype
+//                                  ^^^^^^                 variable.other.readwrite.js
+//                                        ^                punctuation.type.flowtype
+//                                          ^^^^^^^^^      string.quoted.single.js
+//                                          ^              punctuation.definition.string.begin.js
+//                                                  ^      punctuation.definition.string.end.js
+//                                                     ^   meta.brace.curly.close.flowtype
+  | ($Shape<Dash$ErrorWrapper>) & ({| result: 'error' |}),
+//^                                                         kewyword.operator.union.flowtype
+//  ^                         ^   ^                     ^   meta.brace.round.js
+//   ^^^^^^ ^^^^^^^^^^^^^^^^^                               support.type.class.flowtype
+//         ^                 ^                              punctuation.flowtype
+//                              ^                           kewyword.operator.intersection.flowtype
+//                                 ^^ ^^^^^^^ ^^^^^^^ ^^    meta.object.flowtype
+//                                 ^                        meta.brace.curly.open.flowtype
+//                                  ^                 ^     kewyword.operator.only.flowtype
+//                                    ^^^^^^                variable.other.readwrite.js
+//                                          ^               punctuation.type.flowtype
+//                                            ^^^^^^^       string.quoted.single.js
+//                                            ^             punctuation.definition.string.begin.js
+//                                                  ^       punctuation.definition.string.end.js
+//                                                     ^    meta.brace.curly.close.flowtype
+//                                                       ^  meta.delimiter.comma.js
+  Dash$ResponseWrapper,
+//^^^^^^^^^^^^^^^^^^^^   support.type.class.flowtype
+//                    ^  meta.delimiter.comma.js
+> = createTransformer(transformResponseWrapper);
+// <- punctuation.flowtype
+//^                                               keyword.operator.assignment.js
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   meta.function-call.with-arguments.js
+//  ^^^^^^^^^^^^^^^^^                             entity.name.function.js
+//                   ^                        ^   meta.brace.round.js
+//                    ^^^^^^^^^^^^^^^^^^^^^^^^    variable.other.readwrite.js
+//                                             ^  punctuation.terminator.statement.js
+
 // Issue #441
 async function f() { for await () {} }
 // <- meta.function.js storage.type.js

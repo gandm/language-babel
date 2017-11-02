@@ -2980,9 +2980,32 @@
     "flowtype-bracketed-parameters": {
       "patterns": [
         {
+          "comment": "Bracketed elements which are not likely functions/methods",
+          "comment": "trap balanced parens which are NOT followed by : => { or /*: ",
+          "begin": "\\s*+(?=(\\((?:(?>[^()]+)|\\g<-1>)*\\))\\s*+(?!:|=>|{|/\\*\\s*:))",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "patterns": [
+            {
+              "begin": "\\s*(\\()",
+              "end": "\\s*(\\))",
+
+              "beginCaptures": {
+                "1": { "name": "meta.brace.round.js" }
+              },
+              "endCaptures": {
+                "1": { "name": "meta.brace.round.js" }
+              },
+              "patterns": [
+                { "include": "#flowtype-parse-types" }
+              ]
+            }
+          ]
+        },
+        {
           "comment": "Get parameters within a function/method call",
           "contentName": "meta.function.parameters.js",
-          "begin": "(?<!})\\s*+((\\())",
+          "begin": "(?<!})\\s*((\\())",
           "end": "\\s*((\\)))",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.parameters.begin.js" },
@@ -3048,7 +3071,7 @@
     "flowtype-parse-objects": {
       "name": "meta.object.flowtype",
       "comment": "object literal flowtype  preceded by either => : | & ? symbols",
-      "begin": "(?<=:|\\||&|\\?|=>|<)\\s*+({)",
+      "begin": "(?<=:|\\||&|\\?|=>|<|\\()\\s*+({)",
       "end": "\\s*(\\})",
       "applyEndPatternLast": 1,
       "beginCaptures": {

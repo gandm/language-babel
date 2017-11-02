@@ -424,23 +424,23 @@ var f: (
 //     ^  meta.brace.round.js
   ((x: Foo) => void) &
 //^^^^ ^^^^ ^^ ^^^^^ ^  meta.function.parameters.js
-//^^                    punctuation.definition.parameters.begin.js
 //^^      ^        ^    meta.brace.round.js
+// ^                    punctuation.definition.parameters.begin.js
 //  ^                   variable.other.readwrite.js
 //   ^                  punctuation.type.flowtype
 //     ^^^              support.type.class.flowtype
-//        ^        ^    punctuation.definition.parameters.end.js
+//        ^             punctuation.definition.parameters.end.js
 //          ^^          storage.type.function.arrow.js
 //             ^^^^     support.type.builtin.primitive.flowtype
 //                   ^  kewyword.operator.intersection.flowtype
   ((x: Bar) => void)
 //^^^^ ^^^^ ^^ ^^^^^  meta.function.parameters.js
-//^^                  punctuation.definition.parameters.begin.js
 //^^      ^        ^  meta.brace.round.js
+// ^                  punctuation.definition.parameters.begin.js
 //  ^                 variable.other.readwrite.js
 //   ^                punctuation.type.flowtype
 //     ^^^            support.type.class.flowtype
-//        ^        ^  punctuation.definition.parameters.end.js
+//        ^           punctuation.definition.parameters.end.js
 //          ^^        storage.type.function.arrow.js
 //             ^^^^   support.type.builtin.primitive.flowtype
 );
@@ -1062,11 +1062,11 @@ declare var f: ((x: number) => void) & ((x: string) => void);
 //      ^^^                                                    storage.type.js
 //          ^    ^                       ^                     variable.other.readwrite.js
 //           ^    ^                       ^                    punctuation.type.flowtype
-//             ^^                      ^^                      punctuation.definition.parameters.begin.js
 //             ^^         ^        ^   ^^         ^        ^   meta.brace.round.js
-//              ^^^ ^^^^^^^ ^^ ^^^^     ^^^ ^^^^^^^ ^^ ^^^^    meta.function.parameters.js
+//              ^                       ^                      punctuation.definition.parameters.begin.js
+//               ^^ ^^^^^^               ^^ ^^^^^^             meta.function.parameters.js
 //                  ^^^^^^     ^^^^         ^^^^^^     ^^^^    support.type.builtin.primitive.flowtype
-//                        ^        ^              ^        ^   punctuation.definition.parameters.end.js
+//                        ^                       ^            punctuation.definition.parameters.end.js
 //                          ^^                      ^^         storage.type.function.arrow.js
 //                                   ^                         kewyword.operator.intersection.flowtype
 //                                                          ^  punctuation.terminator.statement.js
@@ -1094,11 +1094,11 @@ declare var f: ((x: Foo) => void) & ((x: Bar) => void);
 //      ^^^                                              storage.type.js
 //          ^    ^                    ^                  variable.other.readwrite.js
 //           ^    ^                    ^                 punctuation.type.flowtype
-//             ^^                   ^^                   punctuation.definition.parameters.begin.js
 //             ^^      ^        ^   ^^      ^        ^   meta.brace.round.js
-//              ^^^ ^^^^ ^^ ^^^^     ^^^ ^^^^ ^^ ^^^^    meta.function.parameters.js
+//              ^                    ^                   punctuation.definition.parameters.begin.js
+//               ^^ ^^^               ^^ ^^^             meta.function.parameters.js
 //                  ^^^                  ^^^             support.type.class.flowtype
-//                     ^        ^           ^        ^   punctuation.definition.parameters.end.js
+//                     ^                    ^            punctuation.definition.parameters.end.js
 //                       ^^                   ^^         storage.type.function.arrow.js
 //                          ^^^^                 ^^^^    support.type.builtin.primitive.flowtype
 //                                ^                      kewyword.operator.intersection.flowtype
