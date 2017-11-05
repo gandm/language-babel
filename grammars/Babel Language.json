@@ -1425,44 +1425,74 @@
     "support": {
       "patterns": [
         {
-          "match": "\\s*+\\b(WeakSet|WeakMap|URIError|Uint8ClampedArray|Uint8Array|Uint32Array|Uint16Array|TypeError|TypedArray|SyntaxError|Symbol|String|SharedArrayBuffer|Set|RegExp|Reflect|ReferenceError|RangeError|Proxy|Promise|Object|Number|NaN|Math|Map|JSON|InternalError|Int8Array|Int32Array|Int16Array|Infinity|GeneratorFunction|Generator|Function|Float64Array|Float32Array|EvalError|Error|Date|DataView|Boolean|Atomics|ArrayBuffer|Array)\\b",
-          "captures": {
+          "begin": "\\s*+\\b(WeakSet|WeakMap|URIError|Uint8ClampedArray|Uint8Array|Uint32Array|Uint16Array|TypeError|TypedArray|SyntaxError|Symbol|String|SharedArrayBuffer|Set|RegExp|Reflect|ReferenceError|RangeError|Proxy|Promise|Object|Number|NaN|Math|Map|JSON|InternalError|Int8Array|Int32Array|Int16Array|Infinity|GeneratorFunction|Generator|Function|Float64Array|Float32Array|EvalError|Error|Date|DataView|Boolean|Atomics|ArrayBuffer|Array)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.class.builtin.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "\\s*+\\b((SIMD)((\\.)(Uint8x16|Uint32x4|Uint16x8|Int8x16|Int32x4|Int16x8|Float64x2|Float32x4|Bool8x16|Bool64x2|Bool32x4|Bool16x8))?)\\b",
-          "captures": {
+          "begin": "\\s*+\\b((SIMD)((\\.)(Uint8x16|Uint32x4|Uint16x8|Int8x16|Int32x4|Int16x8|Float64x2|Float32x4|Bool8x16|Bool64x2|Bool32x4|Bool16x8))?)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "2": { "name": "support.class.builtin.js" },
             "4": { "name": "keyword.operator.accessor.js"},
             "5": { "name": "support.class.builtin.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "\\s*+\\b((Intl)((\\.)(NumberFormat|DateTimeFormat|Collator))?)\\b",
-          "captures": {
+          "begin": "\\s*+\\b((Intl)((\\.)(NumberFormat|DateTimeFormat|Collator))?)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "2": { "name": "support.class.builtin.js" },
             "4": { "name": "keyword.operator.accessor.js"},
             "5": { "name": "support.class.builtin.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|isFinite|isNaN|parseFloat|parseInt|unescape)\\b",
-          "captures": {
+          "begin": "(?<!\\.)\\s*+\\b(decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|escape|eval|isFinite|isNaN|parseFloat|parseInt|unescape)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.function.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "(?<=\\.)\\s*+(shift|sort|splice|unshift|pop|push|reverse)\\b",
-          "captures": {
+          "begin": "(?<=\\.)\\s*+(shift|sort|splice|unshift|pop|push|reverse)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.function.mutator.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
-          "match": "(?<!\\.)\\s*+\\b((Eval|Range|Reference|Syntax|Type|URI)?Error)\\b",
-          "captures": {
+          "begin": "(?<!\\.)\\s*+\\b((Eval|Range|Reference|Syntax|Type|URI)?Error)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.class.error.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
           "match": "(?<!\\.)\\s*+\\b(debugger)\\b",
@@ -1483,12 +1513,17 @@
           }
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(console)(?:(\\.)(warn|info|log|error|time|timeEnd|assert))?\\b",
-          "captures": {
+          "begin": "(?<!\\.)\\s*+\\b(console)(?:(\\.)(warn|info|log|error|time|timeEnd|assert))?\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.type.object.console.js" },
             "2": { "name": "keyword.operator.accessor.js" },
             "3": { "name": "support.function.console.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
           "match": "(?<!\\.)\\s*+\\b(process)(?:(\\.)(stdout|stderr|stdin|argv|execPath|execArgv|env|exitCode|version|versions|config|pid|title|arch|platform|mainModule))?\\b",
@@ -1499,12 +1534,17 @@
           }
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(process)(?:(\\.)(abort|chdir|cwd|exit|getgid|setgid|getuid|setuid|setgroups|getgroups|initgroups|kill|memoryUsage|nextTick|umask|uptime|hrtime))?\\b",
-          "captures": {
+          "begin": "(?<!\\.)\\s*+\\b(process)(?:(\\.)(abort|chdir|cwd|exit|getgid|setgid|getuid|setuid|setgroups|getgroups|initgroups|kill|memoryUsage|nextTick|umask|uptime|hrtime))?\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.type.object.process.js" },
             "2": { "name": "keyword.operator.accessor.js" },
             "3": { "name": "support.function.process.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
           "match": "(((?<!\\.)\\s*+\\bmodule\\.((?<!\\,)exports|id|require|parent|filename|loaded|children)|exports))\\b",
@@ -1521,10 +1561,15 @@
           }
         },
         {
-          "match": "\\s*+\\b(Buffer|EventEmitter|Server|Pipe|Socket|REPLServer|ReadStream|WriteStream|Stream|Inflate|Deflate|InflateRaw|DeflateRaw|GZip|GUnzip|Unzip|Zip)\\b",
-          "captures": {
+          "begin": "\\s*+\\b(Buffer|EventEmitter|Server|Pipe|Socket|REPLServer|ReadStream|WriteStream|Stream|Inflate|Deflate|InflateRaw|DeflateRaw|GZip|GUnzip|Unzip|Zip)\\b",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
             "1": { "name": "support.class.node.js" }
-          }
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
         },
         {
           "contentName": "meta.tag.mustache.js",
