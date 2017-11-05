@@ -1937,14 +1937,11 @@ interface Generator<Yield,Return,Next> {
 //^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  meta.class.body.js
 //^^^^^^^^^^^^^ ^^^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^   meta.function.method.js
 //^^^^^                                              entity.name.function.method.js
-//     ^                                             punctuation.definition.parameters.begin.js
 //     ^           ^                                 meta.brace.round.js
-//      ^^^^^^^ ^^^                                  meta.function.parameters.js
 //      ^^^^^                                        variable.other.readwrite.js
 //           ^                                       keyword.operator.optional.parameter.flowtype
 //            ^     ^                                punctuation.type.flowtype
 //              ^^^                                  support.type.builtin.primitive.flowtype
-//                 ^                                 punctuation.definition.parameters.end.js
 //                    ^^^^^^^^^^^^^^ ^^^^^ ^^^^^^    support.type.class.flowtype
 //                                  ^            ^   punctuation.flowtype
 //                                        ^          meta.delimiter.comma.js
