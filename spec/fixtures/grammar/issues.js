@@ -1280,9 +1280,9 @@ class A {
 //^^ ^^ ^^^ ^^^ ^^ ^^^ ^^^^^^ ^^ ^^  meta.class.body.js
 //^^ ^^ ^^  ^^^ ^^ ^^  ^^^^^^ ^^ ^^  meta.function.method.js
 //^^        ^^^        ^^^^^^        entity.name.function.method.js
-//   ^          ^             ^      punctuation.definition.parameters.begin.js
+//   ^                               punctuation.definition.parameters.begin.js
 //   ^^         ^^            ^^     meta.brace.round.js
-//    ^          ^             ^     punctuation.definition.parameters.end.js
+//    ^                              punctuation.definition.parameters.end.js
 //      ^^         ^^            ^^  meta.brace.curly.js
 //        ^          ^               punctuation.terminator.statement.js
 }
