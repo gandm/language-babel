@@ -1,6 +1,12 @@
+### 2.77.3
+  - Fix balanced generic regex from terminating on =>. Fixes #449
+  
+### 2.77.2
+  - Small regex change.
+
 ### 2.77.1
   - 2.77.0 introduced some bug/regressions in the grammar. This attempts to fix those.
-  
+
 ### 2.77.0
   - Support TC39 stage 3 [async iteration using `for await`](https://github.com/tc39/proposal-async-iteration). [Issue #441](https://github.com/gandm/language-babel/issues/441)
   - Change scopename for Flow declare class names that use generics - e.g. `class Array<T>`. [Issue #443](https://github.com/gandm/language-babel/issues/443)

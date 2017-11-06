@@ -1,5 +1,22 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #449
+<A render = {() => (
+// <- meta.tag.jsx punctuation.definition.tag.jsx
+ // <- meta.tag.jsx entity.name.tag.open.jsx support.class.component.open.jsx
+// ^^^^^^ ^ ^^^ ^^ ^  meta.tag.jsx
+// ^^^^^^ ^ ^^^ ^^ ^  JSXAttrs
+// ^^^^^^             entity.other.attribute-name.jsx
+//        ^           keyword.operator.assignment.jsx
+//          ^^^ ^^ ^  meta.embedded.expression.js
+//          ^         punctuation.section.embedded.begin.jsx
+//           ^^ ^^    meta.function.arrow.js
+//           ^        punctuation.definition.parameters.begin.js
+//           ^^    ^  meta.brace.round.js
+//            ^       punctuation.definition.parameters.end.js
+//              ^^    storage.type.function.arrow.js
+)}/>
+
 // Issue #444
 
 export const formatResponseWrapper: $Transform<
