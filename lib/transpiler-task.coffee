@@ -1,18 +1,48 @@
+fs = require 'fs-plus'
+path = require 'path'
+stripJsonComments = require 'strip-json-comments'
+YAML = require 'js-yaml'
+
+isYarnWorkspace = (projectPath) ->
+  try
+    parentDir = path.normalize( path.join( projectPath, '..'))
+    parentDirPackageJSON = path.normalize( path.join(parentDir, '/package.json'))
+    parentDirYarnLock = path.normalize( path.join(parentDir, '/yarn.lock'))
+
+    if fs.existsSync(parentDirYarnLock) and fs.existsSync(parentDirPackageJSON)
+      fileContent = stripJsonComments(fs.readFileSync(parentDirPackageJSON, 'utf8'))
+      workspaces = (YAML.safeLoad fileContent).workspaces
+  catch
+    return false
+  return !!workspaces
+
+# try and find a babel core
+tryBabelCore = (projectPath, nodeModulePath) ->
+  try
+    projectBabelCore = path.normalize( path.join( projectPath, nodeModulePath))
+    babel = require projectBabelCore
+  catch
+    return false
+  'babel': babel
+  'projectBabelCore': projectBabelCore
+
+# return the location of babel-core or @babel/core and also test for project part of workspace
+requireBabelCore = (projectPath) ->
+  if !!( babelCore = tryBabelCore( projectPath, '/node_modules/babel-core') ) then return babelCore
+  else if !!( babelCore = tryBabelCore( projectPath, '/node_modules/@babel/core') ) then return babelCore
+  else if isYarnWorkspace(projectPath)
+    if !!( babelCore = tryBabelCore( projectPath, '../node_modules/babel-core') ) then return babelCore
+    else if !!( babelCore = tryBabelCore( projectPath, '../node_modules/@babel/core') ) then return babelCore
+
+  return tryBabelCore( '', '../node_modules/babel-core')
+
 # language-babel transpiles run here.
 # This runs as a separate task so that transpiles can have their own environment.
 module.exports = (projectPath) ->
-  path = require 'path'
   callback = @async() #async task
   process.chdir(projectPath)
-  # require babel-core package for this project
-  projectBabelCore = path.normalize( path.join( projectPath, '/node_modules/babel-core'))
-  try
-    babel = require projectBabelCore
-  catch
-    # babel core version not found revert to the global
-    projectBabelCore = '../node_modules/babel-core'
-    babel = require projectBabelCore
 
+  { babel, projectBabelCore } = requireBabelCore(projectPath)
   babelCoreUsed = "Using babel-core at\n#{require.resolve projectBabelCore}"
 
   process.on 'message', (mObj) ->
