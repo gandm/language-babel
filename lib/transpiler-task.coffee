@@ -31,8 +31,8 @@ requireBabelCore = (projectPath) ->
   if !!( babelCore = tryBabelCore( projectPath, '/node_modules/babel-core') ) then return babelCore
   else if !!( babelCore = tryBabelCore( projectPath, '/node_modules/@babel/core') ) then return babelCore
   else if isYarnWorkspace(projectPath)
-    if !!( babelCore = tryBabelCore( projectPath, '../node_modules/babel-core') ) then return babelCore
-    else if !!( babelCore = tryBabelCore( projectPath, '../node_modules/@babel/core') ) then return babelCore
+    if !!( babelCore = tryBabelCore( projectPath, '../node_modules/@babel/core') ) then return babelCore
+    else if !!( babelCore = tryBabelCore( projectPath, '../node_modules/babel-core') ) then return babelCore
 
   return tryBabelCore( '', '../node_modules/babel-core')
 
