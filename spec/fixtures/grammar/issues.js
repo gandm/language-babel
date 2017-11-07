@@ -1,5 +1,48 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 450
+let a = {
+// <- storage.type.js
+ // <- storage.type.js
+//^        storage.type.js
+//  ^      variable.other.readwrite.js
+//    ^    keyword.operator.assignment.js
+//      ^  meta.brace.curly.litobj.js
+ b: (a) =>
+ // <- meta.function.json.arrow.js entity.name.function.js
+//^ ^^^ ^^   meta.function.json.arrow.js
+//^          punctuation.separator.key-value.js
+//  ^        punctuation.definition.parameters.begin.js
+//  ^ ^      meta.brace.round.js
+//   ^       meta.function.parameters.js
+//   ^       variable.other.readwrite.js
+//    ^      punctuation.definition.parameters.end.js
+//      ^^   storage.type.function.arrow.js
+  a(aNNN),
+//^^^^^^^   meta.function-call.with-arguments.js
+//^         entity.name.function.js
+// ^    ^   meta.brace.round.js
+//  ^^^^    variable.other.readwrite.js
+//       ^  meta.delimiter.comma.js
+c: (a) =>
+// <- meta.function.json.arrow.js entity.name.function.js
+ // <- meta.function.json.arrow.js punctuation.separator.key-value.js
+// ^^^ ^^   meta.function.json.arrow.js
+// ^        punctuation.definition.parameters.begin.js
+// ^ ^      meta.brace.round.js
+//  ^       meta.function.parameters.js
+//  ^       variable.other.readwrite.js
+//   ^      punctuation.definition.parameters.end.js
+//     ^^   storage.type.function.arrow.js
+  a(aNNN),
+//^^^^^^^     meta.function-call.with-arguments.js
+//^           entity.name.function.js
+// ^    ^     meta.brace.round.js
+//  ^^^^      variable.other.readwrite.js
+//       ^    meta.delimiter.comma.js
+}
+// <- meta.brace.curly.litobj.js
+
 // Issue #449
 <A render = {() => (
 // <- meta.tag.jsx punctuation.definition.tag.jsx
