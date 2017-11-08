@@ -2330,7 +2330,7 @@
       ]
     },
     "literal-module-typeof": {
-        "match": "\\s*\\b(typeof|type)\\b\\s++(?={|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
+        "match": "\\s*\\b(typeof|type)\\b\\s++(?={|\\*|(?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+}))(?!\\b(instanceof|in|as)\\b|,)",
         "captures": {
           "1": { "name": "keyword.other.typedef.flowtype" }
         }

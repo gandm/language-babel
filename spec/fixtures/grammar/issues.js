@@ -1,5 +1,16 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 453
+import typeof * from ''
+// <- keyword.control.module.js
+ // <- keyword.control.module.js
+//^^^^          ^^^^     keyword.control.module.js
+//     ^^^^^^            keyword.other.typedef.flowtype
+//            ^          keyword.operator.module.all.js
+//                   ^^  string.quoted.module.js
+//                   ^   punctuation.definition.string.begin.js
+//                    ^  punctuation.definition.string.end.js
+
 // Issue 450
 let a = {
 // <- storage.type.js
