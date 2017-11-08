@@ -1,5 +1,26 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue 428 
+let x = ( '\'(', "\")", ("",'') ) => {}
+// <- storage.type.js
+ // <- storage.type.js
+//^                                      storage.type.js
+//  ^ ^ ^ ^^^^^^ ^^^^^^ ^^^^^^^ ^ ^^ ^^  meta.function.arrow.js
+//  ^                                    entity.name.function.js
+//    ^                                  keyword.operator.assignment.js
+//      ^                                punctuation.definition.parameters.begin.js
+//      ^               ^     ^ ^        meta.brace.round.js
+//        ^^^^^^ ^^^^^^ ^^^^^^^          meta.function.parameters.js
+//        ^^^^^             ^^           string.quoted.single.js
+//        ^      ^       ^  ^            punctuation.definition.string.begin.js
+//         ^^     ^^                     constant.character.escape
+//            ^      ^    ^  ^           punctuation.definition.string.end.js
+//             ^      ^                  meta.delimiter.comma.js
+//               ^^^^^   ^^              string.quoted.double.js
+//                              ^        punctuation.definition.parameters.end.js
+//                                ^^     storage.type.function.arrow.js
+//                                   ^^  meta.brace.curly.js
+
 // Issue 453
 import typeof * from ''
 // <- keyword.control.module.js
