@@ -1,6 +1,11 @@
+### 2.78.0
+  - Support for Babel tranpiler when project is inside a Yarn workspace.
+  - Detect @babel/core and babel-core module types.
+  - Fixes [#450](https://github.com/gandm/language-babel/issues/450), [#453](https://github.com/gandm/language-babel/issues/453).
+
 ### 2.77.3
   - Fix balanced generic regex from terminating on =>. Fixes #449
-  
+
 ### 2.77.2
   - Small regex change.
 
