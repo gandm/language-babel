@@ -862,7 +862,7 @@
           "comment": "e.g. function play<T>(arg1, arg2) { }",
           "name": "meta.function.js",
           "begin": "\\s*+(?:\\b(async)\\b\\s+)?\\s*+(?:(?<=\\.\\.\\.)|(?<!\\.))(\\bfunction\\b)\\s*+(\\*?)\\s*+((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)?(?=\\s*+(\\(|<))",
-          "end": "(?<=})|\\s*(?=,|;|:|{|\\*/|\\b(if|switch|case|break|default|try|var|let|c(onst|)static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
+          "end": "(?<=})|\\s*(?=,|;|:|{|\\*/|\\b(if|switch|case|break|default|try|var|let|const|static|function|return|class|do|for|while|debugger|export|import|yield|type|declare|interface)\\b|\\)|})",
           "applyEndPatternLast": 1,
           "beginCaptures": {
             "1": { "name": "storage.type.js" },
