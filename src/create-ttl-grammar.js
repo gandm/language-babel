@@ -151,7 +151,7 @@ class CreateTtlGrammar {
   // returns a Promise that resolves to true if ttlFileName exists
   doesGrammarFileExist(ttlFilename) {
     return new Promise((resolve) => {
-      fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), fs.F_OK, (err) => {
+      fs.access(this.makeTtlGrammarFilenameAbsoulute(ttlFilename), (fs.constants || fs).R_OK, (err) => {
         err ? resolve(false): resolve(true);
       });
     });
