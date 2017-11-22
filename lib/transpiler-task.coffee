@@ -1,40 +1,27 @@
 fs = require 'fs-plus'
 path = require 'path'
-stripJsonComments = require 'strip-json-comments'
-YAML = require 'js-yaml'
 
-isYarnWorkspace = (projectPath) ->
+# recurse directories to root looking for babel core
+# or provide our own
+requireBabelCore = (dir) ->
+  if dir != path.dirname(dir)
+    if babelCore = resolveBabelCore(dir) then return babelCore
+    else return requireBabelCore(path.dirname(dir))
+  return resolveBabelCore('..') # return language-babel's copy of babel-core
+
+# resolve a babel core in the dir
+resolveBabelCore = (dir) ->
   try
-    parentDir = path.normalize( path.join( projectPath, '..'))
-    parentDirPackageJSON = path.normalize( path.join(parentDir, '/package.json'))
-    parentDirYarnLock = path.normalize( path.join(parentDir, '/yarn.lock'))
-
-    if fs.existsSync(parentDirYarnLock) and fs.existsSync(parentDirPackageJSON)
-      fileContent = stripJsonComments(fs.readFileSync(parentDirPackageJSON, 'utf8'))
-      workspaces = (YAML.safeLoad fileContent).workspaces
-  catch
-    return false
-  return !!workspaces
-
-# try and find a babel core
-tryBabelCore = (projectPath, nodeModulePath) ->
-  try
-    projectBabelCore = path.normalize( path.join( projectPath, nodeModulePath))
+    projectBabelCore = path.normalize( path.join( dir, '/node_modules/@babel/core'))
     babel = require projectBabelCore
   catch
-    return false
+    try
+      projectBabelCore = path.normalize( path.join( dir, '/node_modules/babel-core'))
+      babel = require projectBabelCore
+    catch
+      return false
   'babel': babel
   'projectBabelCore': projectBabelCore
-
-# return the location of babel-core or @babel/core and also test for project part of workspace
-requireBabelCore = (projectPath) ->
-  if !!( babelCore = tryBabelCore( projectPath, '/node_modules/@babel/core') ) then return babelCore
-  else if !!( babelCore = tryBabelCore( projectPath, '/node_modules/babel-core') ) then return babelCore
-  else if isYarnWorkspace(projectPath)
-    if !!( babelCore = tryBabelCore( projectPath, '../node_modules/@babel/core') ) then return babelCore
-    else if !!( babelCore = tryBabelCore( projectPath, '../node_modules/babel-core') ) then return babelCore
-
-  return tryBabelCore( '', '../node_modules/babel-core')
 
 # language-babel transpiles run here.
 # This runs as a separate task so that transpiles can have their own environment.
