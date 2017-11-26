@@ -37,11 +37,12 @@
     }
   },
   "dependencies": {
-    "babel-core": "^6.7.6",
+    "@emmetio/expand-abbreviation": "^0.5.8",
+    "babel-core": "^6.26.0",
     "fs-plus": "^3.0.0",
     "fuzzaldrin": "^2.1.0",
     "jjv": "^1.0.2",
-    "js-yaml": "^3.6.0",
+    "js-yaml": "^3.10.0",
     "path-is-inside": "^1.0.1",
     "strip-json-comments": "^2.0.1"
   },
@@ -74,6 +75,13 @@
         "type": "string"
       },
       "order": 20
+    },
+    "emmetCSSAutocomplete": {
+      "title": "Styled-Components Auto-Complete method",
+      "description": "Use Emmet to auto-complete instead of default CSS completion",
+      "type": "boolean",
+      "default": false,
+      "order": 25
     },
     "allowLocalOverride": {
       "description": "Allow .languagebabel files to overide the settings below. Useful for project based configurations.",

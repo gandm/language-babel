@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 autoCompleteJSX = require './auto-complete-jsx'
 autoCompleteStyledComponents = require './auto-complete-styled-components'
+autoCompeteEmmetCSS = require './auto-complete-emmet-css'
 AutoIndent = require './auto-indent'
 ttlGrammar = require './create-ttl-grammar'
 
@@ -93,7 +94,7 @@ module.exports =
 
   # autocomplete-plus providers
   autoCompleteProvider: ->
-    [autoCompleteJSX, autoCompleteStyledComponents]
+    [autoCompleteJSX, autoCompleteStyledComponents, autoCompeteEmmetCSS]
 
   # preview tranpile provider
   provide:->

@@ -5,3 +5,4 @@ babel-source
 babel-target
 thumbs.db
 /testJs/
+package-lock.json
