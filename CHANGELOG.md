@@ -1,7 +1,11 @@
+### 2.80.0
+  - Modify path search for babel transpiler.
+  - Add support for emmet to complete styled-components under option setting.
+
 ### 2.79.0
   - Add scope for BigInt number notation - 1n
   - Support strings inside balanced paren regex - [#428](https://github.com/gandm/language-babel/issues/428)
-  
+
 ### 2.78.0
   - Support for Babel tranpiler when project is inside a Yarn workspace.
   - Detect @babel/core and babel-core module types.
