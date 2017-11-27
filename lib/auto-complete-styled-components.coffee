@@ -22,10 +22,9 @@ module.exports =
   filterSuggestions: true
   inclusionPriority: 10000
   excludeLowerPriority: false
+  suggestionPriority: 90
 
   getSuggestions: (request) ->
-    if atom.config.get("language-babel.emmetCSSAutocomplete")
-      return null;
     completions = null
     scopes = request.scopeDescriptor.getScopesArray()
 

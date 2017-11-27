@@ -78,7 +78,7 @@
     },
     "emmetCSSAutocomplete": {
       "title": "Styled-Components Auto-Complete method",
-      "description": "Use Emmet to auto-complete instead of default CSS completion",
+      "description": "Use Emmet to auto-complete in addition to the default CSS completion",
       "type": "boolean",
       "default": false,
       "order": 25
