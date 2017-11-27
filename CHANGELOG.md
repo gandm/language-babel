@@ -1,3 +1,7 @@
+### 2.80.1
+  - Fix for [#456](https://github.com/gandm/language-babel/issues/456)
+  - Allow normal CSS auto-completions to coexist with Emmet CSS completions. 
+
 ### 2.80.0
   - Modify path search for babel transpiler.
   - Add support for emmet to complete styled-components under option setting.
