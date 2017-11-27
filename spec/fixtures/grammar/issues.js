@@ -1,6 +1,22 @@
 // SYNTAX TEST "source.js.jsx"
+// Issue 456
+const file = await (new File({file})).save(aa)
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                           storage.type.js
+//    ^^^^                                 ^^   variable.other.readwrite.js
+//         ^                                    keyword.operator.assignment.js
+//           ^^^^^                              keyword.control.flow.js
+//                 ^        ^      ^^     ^  ^  meta.brace.round.js
+//                  ^^^                         keyword.operator.new.js
+//                      ^^^^^^^^^^^^            meta.function-call.with-arguments.js
+//                      ^^^^          ^^^^      entity.name.function.js
+//                           ^    ^             meta.brace.curly.litobj.js
+//                            ^^^^              variable.other.readwrite.shorthandpropertyname.js
+//                                   ^          keyword.operator.accessor.js
+//                                    ^^^^^^^^  meta.method-call.with-arguments.js
 
-// Issue 428 
+// Issue 428
 let x = ( '\'(', "\")", ("",'') ) => {}
 // <- storage.type.js
  // <- storage.type.js

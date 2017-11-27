@@ -3036,8 +3036,8 @@
       "patterns": [
         {
           "comment": "Bracketed elements which are not likely functions/methods",
-          "comment": "trap balanced parens which are NOT followed by : => { or /*: ",
-          "begin": "\\s*+(?=(\\((?>[^()\"']|(\"(\\\\.|[^\"])*+\")++|('(\\\\.|[^'])*+')++|\\g<-5>)*+\\))\\s*+(?!:|=>|{|/\\*\\s*:))",
+          "comment": "trap balanced parens which are NOT followed by . : => { or /*: ",
+          "begin": "\\s*+(?=(\\((?>[^()\"']|(\"(\\\\.|[^\"])*+\")++|('(\\\\.|[^'])*+')++|\\g<-5>)*+\\))\\s*+(?!\\.|:|=>|{|/\\*\\s*:))",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "patterns": [
