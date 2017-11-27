@@ -15,7 +15,7 @@ The package also provides
  - Babel [transpilation on file saves](https://github.com/gandm/language-babel#interface-to-babel-v6--v5) (optional).
  - Babel transpile of all files in a directory or directories.
  - Babel transpiled [code preview](https://github.com/gandm/language-babel#interface-to-babel-v6--v5).
- - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings including auto-completion.
+ - Support for [styled-components](https://github.com/styled-components/styled-components) CSS inside tagged template strings including CSS auto-completion and optionally [Emmet](https://docs.emmet.io/cheat-sheet/) CSS completion under a package setting. Please note that emmet completion is just for snippets. Additional features such as vendor prefix and gradient support is not supported as these require a full distribution of emmet which I feel is too large for this package.
  - Support for [GraphQL code highlighting](https://github.com/gandm/language-babel#graphql-code-highlighting)
  - [Support for adding other language grammars to highlight code inside template literal strings](https://github.com/gandm/language-babel#javascript-tagged-template-literal-grammar-extensions).
 
@@ -256,6 +256,9 @@ For most projects, it is better to configure `language-babel` via project-based 
 
   **Please note:** As language-babel passes off highlighting of the template to another grammar, it cannot highlight any interpolated code. Actually, that's not strictly correct, as it does highlight interpolated JavaScript code but only at the top most rule stack of the embedded grammar, but this is unlikely to be useful with most grammars. Also note that there is a delay of 10 seconds between the last character being entered into this field and a new extension grammar being generated.
 
+* #### Styled-Components Auto-Complete Method
+
+  This flag if set will enable Emmet snippets to be used inside CSS templates. If a valid emmet abbreviation is entered then the expanded snippet will appear at the top of a auto-complete list. Pressing the appropriate auto-complete key (normally tab) will expand the snippet.  
 
 ## .languagebabel Configuration
 
