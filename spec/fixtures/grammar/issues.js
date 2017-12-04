@@ -1,4 +1,25 @@
 // SYNTAX TEST "source.js.jsx"
+
+// Issue #458
+class A {
+a= () =>
+// <- meta.class.body.js meta.function.arrow.js entity.name.function.js
+ // <- meta.class.body.js meta.function.arrow.js keyword.operator.assignment.js
+// ^^ ^^   meta.class.body.js
+// ^^ ^^   meta.function.arrow.js
+// ^       punctuation.definition.parameters.begin.js
+// ^^      meta.brace.round.js
+//  ^      punctuation.definition.parameters.end.js
+//    ^^   storage.type.function.arrow.js
+  a(aA)
+//^^^^^  meta.class.body.js
+//^^^^^  meta.function-call.with-arguments.js
+//^      entity.name.function.js
+// ^  ^  meta.brace.round.js
+//  ^^   variable.other.readwrite.js
+}
+// <- punctuation.section.class.end.js
+
 // Issue 456
 const file = await (new File({file})).save(aa)
 // <- storage.type.js

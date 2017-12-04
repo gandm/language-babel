@@ -1227,15 +1227,7 @@
         { "include": "#literal-arrow-function-labels" },
         { "include": "#literal-arrow-function" },
         { "include": "#literal-method" },
-        {
-          "comment": "arrow function returns some form of expression",
-          "comment": "ends on a object property , serparator or the object terminator }",
-          "begin": "(?<==>)",
-          "end": "(?=\\s*(,|}))",
-          "patterns": [
-            { "include": "#expression"}
-          ]
-        },
+        { "include": "#arrow-expression"},
         { "include": "#literal-object-prop-shorthand" },
         { "include": "#literal-labels" },
         { "include": "#expression" },
@@ -1259,6 +1251,15 @@
             "1": { "name": "variable.other.readwrite.shorthandpropertyname.js"}
           }
         }
+      ]
+    },
+    "arrow-expression": {
+      "comment": "arrow function returns some form of expression",
+      "comment": "ends on a object property , serparator or the object terminator }",
+      "begin": "(?<==>)",
+      "end": "(?=\\s*(,|}))",
+      "patterns": [
+        { "include": "#expression"}
       ]
     },
     "literal-operators": {
@@ -1640,6 +1641,7 @@
       "patterns": [
         { "include": "#flowtype-keywords" },
         { "include": "#literal-method" },
+        { "include": "#arrow-expression" },
         { "include": "#literal-arrow-function-simple-assignments" },
         { "include": "#literal-arrow-function" },
         { "include": "#brackets" },
