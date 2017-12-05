@@ -1,5 +1,8 @@
+### 2.80.3
+  - Fix regression introduced in 2.80.2
+  
 ### 2.80.2
-- Fix [#458](https://github.com/gandm/language-babel/issues/458)
+  - Fix [#458](https://github.com/gandm/language-babel/issues/458)
 
 ### 2.80.1
   - Fix for [#456](https://github.com/gandm/language-babel/issues/456)
