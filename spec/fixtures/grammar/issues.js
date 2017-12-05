@@ -9,7 +9,7 @@ a= () =>
 //^      entity.name.function.js
 // ^  ^  meta.brace.round.js
 //  ^^   variable.other.readwrite.js
-
+ 
 method() {}
 // <- meta.class.body.js meta.function.method.js entity.name.function.method.js
  // <- meta.class.body.js meta.function.method.js entity.name.function.method.js
