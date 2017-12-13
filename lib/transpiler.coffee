@@ -1,7 +1,13 @@
 {Task, CompositeDisposable } = require 'atom'
-fs = require 'fs-plus'
 path = require 'path'
 pathIsInside = require '../node_modules/path-is-inside'
+
+# Lazily require fs-plus to avoid blocking startup.
+fs = new Proxy({}, {
+  get: (target, key) ->
+    target.fs ?= require 'fs-plus'
+    target.fs[key]
+})
 
 # setup JSON Schema to parse .languagebabel configs
 languagebabelSchema = {
