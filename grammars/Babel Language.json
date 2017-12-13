@@ -93,7 +93,7 @@
         {
           "comment": "e.g. 'play': function(arg1, arg2) { }",
           "name": "meta.function.json.js",
-          "begin": "(?<=^|{|,)\\s*+(('|\\\")([^\"']*)(\\k<-3>))\\s*+(:)\\s*+(async)?\\s*+((?<!\\.)\\bfunction\\b)\\s*(\\*\\s*)?\\s*(?=\\(|<)",
+          "begin": "(?<=^|{|,)\\s*+((?P<quote>'|\\\")([^\"']*)(?P=quote))\\s*+(:)\\s*+(async)?\\s*+((?<!\\.)\\bfunction\\b)\\s*(\\*\\s*)?\\s*(?=\\(|<)",
           "end": "(?=\\{)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
