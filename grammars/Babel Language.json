@@ -968,7 +968,7 @@
           "comment": "with ASI we don't know quite where an expression ends so terminate when",
           "comment": "a line starts with a static, [, name( or a semi-colon anywhere",
           "begin": "\\s*+(?==[^=>])",
-          "end": "(^\\s*+(?=([$\\w]*\\s*+\\??\\s*+(:|=(?!^==|=>))|\\[|[$\\w]\\s*+\\(|\\bstatic\\b|\\s*++)))|\\s*(;)",
+          "end": "(^\\s*+(?=([$\\w]*\\s*+\\??\\s*+(:|=(?!^==|=>))|\\[|[$\\w]\\s*+\\(|\\bstatic\\b|\\s*+)))|\\s*(;)",
           "endCaptures": {
             "4": { "name": "punctuation.terminator.statement.js" }
           },
