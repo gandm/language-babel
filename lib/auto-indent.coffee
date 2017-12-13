@@ -1,10 +1,8 @@
 {CompositeDisposable, File, Range, Point} = require 'atom'
-fs = require 'fs-plus'
 path = require 'path'
 autoCompleteJSX = require './auto-complete-jsx'
 DidInsertText = require './did-insert-text'
 stripJsonComments = require 'strip-json-comments'
-YAML = require 'js-yaml'
 
 
 NO_TOKEN                = 0
@@ -710,10 +708,14 @@ class AutoIndent
 
   # to create indents. We can read and return the rules properties or undefined
   readEslintrcOptions: (eslintrcFile) ->
+    # Expensive dependency: use a lazy require.
+    fs = require 'fs-plus'
     # get local path overides
     if fs.existsSync eslintrcFile
       fileContent = stripJsonComments(fs.readFileSync(eslintrcFile, 'utf8'))
       try
+        # Expensive dependency: use a lazy require.
+        YAML = require 'js-yaml'
         eslintRules = (YAML.safeLoad fileContent).rules
         if eslintRules then return eslintRules
       catch err
