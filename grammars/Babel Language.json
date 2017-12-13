@@ -1295,7 +1295,7 @@
         {
           "comment": "e.g. 'play'<T,T>(arg1, arg2): Type<T> { }",
           "name": "meta.function.method.js",
-          "begin": "(?<!:)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?<!\\.)(('|\\\")([^\"']*)(\\k<-3>))\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
+          "begin": "(?<!:)\\s*+(\\bstatic\\b)?\\s*+(\\basync\\b)?\\s*+(\\*?)\\s*+(?<!\\.)((?P<quote>'|\\\")([^\"']*)(?P=quote))\\s*+(?=(<(?:(?>[^<>]+)|\\g<-1>)*>)?(\\())",
           "end": "\\s*(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
