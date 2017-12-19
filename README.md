@@ -164,7 +164,7 @@ For most projects, it is better to configure `language-babel` via project-based 
   ```
 
 * #### Create Map
-  If transpiled output is being saved a separate source map can be also be saved. The source file name will be used with a new suffix of `.js.map` and sent to a directory specified in `Babel Maps Path`. To avoid any possible XSSI issues the map file is prefixed with `)]}`
+  If transpiled output is being saved a separate source map can be also be saved. The source file name will be used with a new suffix of `.js.map` and sent to a directory specified in `Babel Maps Path`.
 
   If `.babelrc` files use the `sourceMaps: inline` or `sourceMaps both` option, turn this `createMap` option off as the map data is stored as part of the source file.
 

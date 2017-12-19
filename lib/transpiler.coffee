@@ -228,9 +228,8 @@ class Transpiler
               file: f
               names: msgRet.result.map.names
               mappings: msgRet.result.map.mappings
-            xssiProtection = ')]}\n'
-            fs.writeFileSync pathTo.mapFile,
-              xssiProtection + JSON.stringify mapJson, null, ' '
+            #xssiProtection = ')]}\n'    # removed this line as Firefox doesn't support removal of xssi prefix!
+            fs.writeFileSync pathTo.mapFile, JSON.stringify mapJson, null, ' '
 
   # clean notification messages
   cleanNotifications: (pathTo) ->
@@ -391,7 +390,7 @@ class Transpiler
 
     sourceFileName = parsedSourceFile.name  + fnExt
     mapFileName = parsedSourceFile.name  + fnExt + '.map'
-    
+
     absTranspiledFile = path.normalize(path.join(absTranspileRoot, relSourceRootToSourceFile , sourceFileName ))
     absMapFile = path.normalize(path.join(absMapsRoot, relSourceRootToSourceFile, mapFileName ))
 
