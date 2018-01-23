@@ -43,16 +43,25 @@ describe 'auto-indent', ->
     it 'returns an empty object on a missing .eslintrc', ->
       expect(autoIndent.readEslintrcOptions('.missing')).toEqual({})
 
-    it 'returns and empty Object and a notification message on bad eslint', ->
-      spyOn(fs, 'existsSync').andReturn(true)
+    it 'returns an empty Object and a notification message on bad eslint', ->
+      spyOn(fs, 'isFileSync').andReturn(true)
       spyOn(fs, 'readFileSync').andReturn('{')
       spyOn(notifications, 'addError').andCallThrough()
       obj = autoIndent.readEslintrcOptions()
       expect(notifications.addError).toHaveBeenCalled()
       expect(obj).toEqual({})
 
+    it 'returns an empty Object when attempting to read something other than a file', ->
+      spyOn(fs, 'isFileSync').andReturn(false)
+      spyOn(fs, 'readFileSync')
+      spyOn(notifications, 'addError').andCallThrough()
+      obj = autoIndent.readEslintrcOptions()
+      expect(fs.readFileSync).not.toHaveBeenCalled()
+      expect(notifications.addError).not.toHaveBeenCalled()
+      expect(obj).toEqual({})
+
     it 'returns an empty Object when eslint with no rules is read', ->
-      spyOn(fs, 'existsSync').andReturn(true)
+      spyOn(fs, 'isFileSync').andReturn(true)
       spyOn(fs, 'readFileSync').andReturn('{}')
       spyOn(notifications, 'addError').andCallThrough()
       obj = autoIndent.readEslintrcOptions()

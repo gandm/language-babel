@@ -711,7 +711,7 @@ class AutoIndent
     # Expensive dependency: use a lazy require.
     fs = require 'fs-plus'
     # get local path overides
-    if fs.existsSync eslintrcFile
+    if fs.isFileSync eslintrcFile
       fileContent = stripJsonComments(fs.readFileSync(eslintrcFile, 'utf8'))
       try
         # Expensive dependency: use a lazy require.
