@@ -3589,9 +3589,10 @@
     },
     "graphql-type-interface": {
       "name": "meta.type.interface.graphql",
-      "begin": "\\s*\\b(?:(extends)?\\b\\s*\\b(type)|(interface)|(input))\\b\\s*([_A-Za-z][_0-9A-Za-z]*)?",
-      "end": "(?<=})",
-      "captures": {
+      "begin": "\\s*\\b(?:(extends?)?\\b\\s*\\b(type)|(interface)|(input))\\b\\s*([_A-Za-z][_0-9A-Za-z]*)?",
+      "end": "(?=.)",
+      "applyEndPatternLast": 1,
+      "beginCaptures": {
         "1": { "name": "keyword.type.graphql"},
         "2": { "name": "keyword.type.graphql"},
         "3": { "name": "keyword.interface.graphql"},
@@ -3608,8 +3609,12 @@
         },
         { "include": "#graphql-comment" },
         { "include": "#graphql-type-object" },
-        { "include": "#literal-quasi-embedded" }
+        { "include": "#literal-quasi-embedded" },
+        { "include": "#graphql-ignore-spaces" }
       ]
+    },
+    "graphql-ignore-spaces": {
+      "match": "\\s*"
     },
     "graphql-type-object": {
       "name": "meta.type.object.graphql",

@@ -1,6 +1,20 @@
 ## SYNTAX TEST "source.js.jsx"
 
 var schema = buildSchema(/* GraphQL */`
+  type Query
+##^^^^ ^^^^^  meta.function-call.with-arguments.js
+##^^^^ ^^^^^  meta.type.interface.graphql
+##^^^^        keyword.type.graphql
+##     ^^^^^  support.type.graphql
+  extend type Query {
+##^^^^^^ ^^^^ ^^^^^ ^  meta.function-call.with-arguments.js
+##^^^^^^ ^^^^ ^^^^^ ^  meta.type.interface.graphql
+##^^^^^^ ^^^^          keyword.type.graphql
+##            ^^^^^    support.type.graphql
+##                  ^  meta.type.object.graphql
+##                  ^  punctuation.operation.graphql
+  myField: String!
+  }
   type Query {
     hello: String
   }
