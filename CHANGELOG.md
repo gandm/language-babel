@@ -1,3 +1,9 @@
+### 2.82.0
+  - Add support for GraphQL empty types - [#471](https://github.com/gandm/language-babel/issues/471)
+  - Add support for Apollo GraphQL `extend type` - [#472](https://github.com/gandm/language-babel/issues/472)
+  - Check for .eslintrc as a file - Thanks @SpainTrain for the [PR#470](https://github.com/gandm/language-babel/issues/470)
+  - Add guard check for Atom not passing back a valid TextEditor id - [#468](https://github.com/gandm/language-babel/issues/468)
+
 ### 2.81.1
   - Fix names of source file and map file relative URL's when transpiling separate Babel map files. Issue [#462](https://github.com/gandm/language-babel/issues/462)
 
