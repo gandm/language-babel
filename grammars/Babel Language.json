@@ -1,10 +1,11 @@
 {
   "name": "Babel ES6 JavaScript",
   "scopeName": "source.js.jsx",
+  "injectionSelector": "source.embedded.jsx",
   "foldingStartMarker": "(/\\*|{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
-  "limitLineLength": false,
+  "maxLineLength": 1000,
   "fileTypes": [
     "js",
     "es6",
@@ -20,7 +21,6 @@
   "repository": {
     "core": {
       "patterns": [
-        { "include": "#ignore-long-lines" },
         { "include": "#flowtype-keywords" },
         { "include": "#literal-labels" },
         { "include": "#literal-for" },
@@ -31,7 +31,6 @@
     },
     "expression": {
       "patterns": [
-        { "include": "#ignore-long-lines" },
         { "include": "#multiline-arrow-function-generics"},
         { "include": "#jsx" },
         { "include": "#es7-decorators" },
@@ -59,15 +58,6 @@
         { "include": "#literal-variable" },
         { "include": "#literal-punctuation" },
         { "include": "#fat-arrow"}
-      ]
-    },
-    "ignore-long-lines": {
-      "comment": "long lines shouldn't be parsed for performance reasons as regex's are per line",
-      "comment": "so set at arbitary 1000 chars to avoid parsing minified files",
-      "patterns": [
-        {
-          "match": "^.{1000,}"
-        }
       ]
     },
     "multiline-arrow-function-generics": {
