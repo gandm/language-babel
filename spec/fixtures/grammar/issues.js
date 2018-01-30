@@ -1,5 +1,24 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #474
+let sortFn = (a :number, b :number) :-1|0|1 => {
+// <- storage.type.js
+ // <- storage.type.js
+//^                                               storage.type.js
+//  ^^^^^^    ^          ^                        variable.other.readwrite.js
+//         ^                                      keyword.operator.assignment.js
+//           ^                    ^               meta.brace.round.js
+//              ^          ^                      punctuation.type.flowtype
+//               ^^^^^^     ^^^^^^                support.type.builtin.primitive.flowtype
+//                     ^                          meta.delimiter.comma.js
+//                                   ^^ ^ ^       constant.numeric.js
+//                                     ^ ^        kewyword.operator.union.flowtype
+//                                          ^^    storage.type.function.arrow.js
+//                                             ^  meta.brace.curly.js
+  if (a === b) return 0
+  return a < b ? 1 : -1
+}
+
 // Issue #458
 class A {
 a= () =>
@@ -9,7 +28,7 @@ a= () =>
 //^      entity.name.function.js
 // ^  ^  meta.brace.round.js
 //  ^^   variable.other.readwrite.js
- 
+
 method() {}
 // <- meta.class.body.js meta.function.method.js entity.name.function.method.js
  // <- meta.class.body.js meta.function.method.js entity.name.function.method.js
