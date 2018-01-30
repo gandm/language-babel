@@ -5,12 +5,17 @@ let sortFn = (a :number, b :number) :-1|0|1 => {
 // <- storage.type.js
  // <- storage.type.js
 //^                                               storage.type.js
-//  ^^^^^^    ^          ^                        variable.other.readwrite.js
+//  ^^^^^^ ^ ^^ ^^^^^^^^ ^ ^^^^^^^^ ^^^^^^^ ^^ ^  meta.function.arrow.js
+//  ^^^^^^                                        entity.name.function.js
 //         ^                                      keyword.operator.assignment.js
+//           ^                                    punctuation.definition.parameters.begin.js
 //           ^                    ^               meta.brace.round.js
-//              ^          ^                      punctuation.type.flowtype
+//            ^ ^^^^^^^^ ^ ^^^^^^^                meta.function.parameters.js
+//            ^          ^                        variable.other.readwrite.js
+//              ^          ^        ^             punctuation.type.flowtype
 //               ^^^^^^     ^^^^^^                support.type.builtin.primitive.flowtype
 //                     ^                          meta.delimiter.comma.js
+//                                ^               punctuation.definition.parameters.end.js
 //                                   ^^ ^ ^       constant.numeric.js
 //                                     ^ ^        kewyword.operator.union.flowtype
 //                                          ^^    storage.type.function.arrow.js
