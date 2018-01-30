@@ -1,3 +1,6 @@
+### 2.83.1
+  - Mistakenly removed the line added by the PR in 2.83.0!
+
 ### 2.83.0
   - PR from @Aerijo that adds an injection selector allowing this grammar to be used within language-gfm.
   - Fix arrow functions with a flow return type having a negative integer being parsed correctly. [#473](https://github.com/gandm/language-babel/issues/473)
