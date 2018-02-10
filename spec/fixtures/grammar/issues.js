@@ -1,5 +1,26 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #478
+function a(aaa: number) : number | Array<T>
+// <- meta.function.js storage.type.function.js
+ // <- meta.function.js storage.type.function.js
+//^^^^^^ ^^^^^^ ^^^^^^^ ^ ^^^^^^ ^ ^^^^^^^^  meta.function.js
+//^^^^^^                                     storage.type.function.js
+//       ^                                   entity.name.function.js
+//        ^                                  punctuation.definition.parameters.begin.js
+//        ^           ^                      meta.brace.round.js
+//         ^^^^ ^^^^^^                       meta.function.parameters.js
+//         ^^^                               variable.other.readwrite.js
+//            ^         ^                    punctuation.type.flowtype
+//              ^^^^^^    ^^^^^^             support.type.builtin.primitive.flowtype
+//                    ^                      punctuation.definition.parameters.end.js
+//                               ^           kewyword.operator.union.flowtype
+//                                 ^^^^^     support.type.builtin.class.flowtype
+//                                      ^ ^  punctuation.flowtype
+//                                       ^   support.type.class.flowtype
+{
+}
+
 // Issue #474
 let sortFn = (a :number, b :number) :-1|0|1 => {
 // <- storage.type.js
@@ -33,7 +54,7 @@ a= () =>
 //^      entity.name.function.js
 // ^  ^  meta.brace.round.js
 //  ^^   variable.other.readwrite.js
- 
+
 method() {}
 // <- meta.class.body.js meta.function.method.js entity.name.function.method.js
  // <- meta.class.body.js meta.function.method.js entity.name.function.method.js

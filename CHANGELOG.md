@@ -1,3 +1,6 @@
+### 2.83.2
+  - Change grammar to correctly support function braces in the Allman style. [#478](https://github.com/gandm/language-babel/issues/478)
+
 ### 2.83.1
   - Mistakenly removed the line added by the PR in 2.83.0!
 

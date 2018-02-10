@@ -1,7 +1,7 @@
 {
   "name": "Babel ES6 JavaScript",
   "scopeName": "source.js.jsx",
-  "injectionSelector": "source.embedded.jsx", 
+  "injectionSelector": "source.embedded.jsx",
   "foldingStartMarker": "(/\\*|{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
@@ -2770,7 +2770,7 @@
       "patterns": [
         { "include": "#comments" },
         { "include": "#flowtype-polymorphs" },
-        { "include": "#flowtype-bracketed-parameters" },
+        { "include": "#flowtype-bracketed-args" },
         { "include": "#flowtype-return" }
       ]
     },
@@ -3035,6 +3035,28 @@
           { "include": "#flowtype-parse-array" },
           { "include": "#comments" }
         ]
+    },
+    "flowtype-bracketed-args": {
+      "patterns": [
+        {
+          "comment": "Get parameters within a function/method call",
+          "contentName": "meta.function.parameters.js",
+          "begin": "(?<!}|return|await|switch|case|while|for|throw)\\s*((\\())",
+          "end": "\\s*((\\)))",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.parameters.begin.js" },
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.parameters.end.js" },
+            "2": { "name": "meta.brace.round.js" }
+          },
+          "patterns": [
+            { "include": "#flowtype-polymorphs" },
+            { "include": "#flowtype-variable" }
+          ]
+        }
+      ]
     },
     "flowtype-bracketed-parameters": {
       "patterns": [
