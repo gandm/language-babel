@@ -1,5 +1,54 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #480
+const thing :THING =<S>() => {}
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                            storage.type.js
+//    ^^^^^                      variable.other.readwrite.js
+//          ^                    punctuation.type.flowtype
+//           ^^^^^   ^           support.type.class.flowtype
+//                 ^             keyword.operator.assignment.js
+//                  ^^^^^ ^^ ^^  meta.function.arrow.js
+//                  ^ ^          punctuation.flowtype
+//                     ^         punctuation.definition.parameters.begin.js
+//                     ^^        meta.brace.round.js
+//                      ^        punctuation.definition.parameters.end.js
+//                        ^^     storage.type.function.arrow.js
+//                           ^^  meta.brace.curly.js
+const thing :THING =<S:Stuff>() => {}
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                  storage.type.js
+//    ^^^^^                            variable.other.readwrite.js
+//          ^         ^                punctuation.type.flowtype
+//           ^^^^^   ^ ^^^^^           support.type.class.flowtype
+//                 ^                   keyword.operator.assignment.js
+//                  ^^^^^^^^^^^ ^^ ^^  meta.function.arrow.js
+//                  ^       ^          punctuation.flowtype
+//                    ^                support.type.builtin.primitive.flowtype
+//                           ^         punctuation.definition.parameters.begin.js
+//                           ^^        meta.brace.round.js
+//                            ^        punctuation.definition.parameters.end.js
+//                              ^^     storage.type.function.arrow.js
+//                                 ^^  meta.brace.curly.js
+const thing :THING =<S :Stuff>() => {}
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                   storage.type.js
+//    ^^^^^                             variable.other.readwrite.js
+//          ^          ^                punctuation.type.flowtype
+//           ^^^^^   ^  ^^^^^           support.type.class.flowtype
+//                 ^                    keyword.operator.assignment.js
+//                  ^^ ^^^^^^^^^ ^^ ^^  meta.function.arrow.js
+//                  ^        ^          punctuation.flowtype
+//                     ^                support.type.builtin.primitive.flowtype
+//                            ^         punctuation.definition.parameters.begin.js
+//                            ^^        meta.brace.round.js
+//                             ^        punctuation.definition.parameters.end.js
+//                               ^^     storage.type.function.arrow.js
+//                                  ^^  meta.brace.curly.js
+
 // Issue #478
 function a(aaa: number) : number | Array<T>
 // <- meta.function.js storage.type.function.js
