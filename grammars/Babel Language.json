@@ -1,7 +1,6 @@
 {
   "name": "Babel ES6 JavaScript",
   "scopeName": "source.js.jsx",
-  "injectionSelector": "source.embedded.jsx",
   "foldingStartMarker": "(/\\*|{|\\()",
   "foldingEndMarker": "(\\*/|\\}|\\))",
   "firstLineMatch": "^#!\\s*/.*\\b(node|js)$\\n?",
