@@ -1,3 +1,6 @@
+### 2.84.0
+  - Add PR #481
+  
 ### 2.83.4
   - Remove PR #473 which causes Atom to ignore the grammar at startup.
   
