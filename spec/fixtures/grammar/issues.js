@@ -1,5 +1,93 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #495
+const undefinedValue = response.settings?.undefinedValue ?? 'some other default'; // result: 'some other default'
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                                                              storage.type.js
+//    ^^^^^^^^^^^^^^                                                                                               variable.other.readwrite.js
+//                   ^                                                                                             keyword.operator.assignment.js
+//                     ^^^^^^^^                                                                                    variable.other.object.js
+//                             ^                                                                                   keyword.operator.accessor.js
+//                              ^^^^^^^^  ^^^^^^^^^^^^^^                                                           meta.property.object.js
+//                              ^^^^^^^^  ^^^^^^^^^^^^^^                                                           variable.other.property.js
+//                                      ^^                                                                         keyword.operator.existential.js
+//                                                       ^^                                                        keyword.operator.nullcoalesce.js
+//                                                          ^^^^^ ^^^^^ ^^^^^^^^                                   string.quoted.single.js
+//                                                          ^                                                      punctuation.definition.string.begin.js
+//                                                                             ^                                   punctuation.definition.string.end.js
+//                                                                              ^                                  punctuation.terminator.statement.js
+//                                                                                ^^ ^^^^^^^ ^^^^^ ^^^^^ ^^^^^^^^  comment.line.double-slash.js
+//                                                                                ^^                               punctuation.definition.comment.js
+const nullValue = response.settings?.nullValue ?? 'some other default'; // result: 'some other default'
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                                                    storage.type.js
+//    ^^^^^^^^^                                                                                          variable.other.readwrite.js
+//              ^                                                                                        keyword.operator.assignment.js
+//                ^^^^^^^^                                                                               variable.other.object.js
+//                        ^                                                                              keyword.operator.accessor.js
+//                         ^^^^^^^^  ^^^^^^^^^                                                           meta.property.object.js
+//                         ^^^^^^^^  ^^^^^^^^^                                                           variable.other.property.js
+//                                 ^^                                                                    keyword.operator.existential.js
+//                                             ^^                                                        keyword.operator.nullcoalesce.js
+//                                                ^^^^^ ^^^^^ ^^^^^^^^                                   string.quoted.single.js
+//                                                ^                                                      punctuation.definition.string.begin.js
+//                                                                   ^                                   punctuation.definition.string.end.js
+//                                                                    ^                                  punctuation.terminator.statement.js
+//                                                                      ^^ ^^^^^^^ ^^^^^ ^^^^^ ^^^^^^^^  comment.line.double-slash.js
+//                                                                      ^^                               punctuation.definition.comment.js
+const headerText = response.settings?.headerText ?? 'Hello, world!'; // result: ''
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                               storage.type.js
+//    ^^^^^^^^^^                                                                    variable.other.readwrite.js
+//               ^                                                                  keyword.operator.assignment.js
+//                 ^^^^^^^^                                                         variable.other.object.js
+//                         ^                                                        keyword.operator.accessor.js
+//                          ^^^^^^^^  ^^^^^^^^^^                                    meta.property.object.js
+//                          ^^^^^^^^  ^^^^^^^^^^                                    variable.other.property.js
+//                                  ^^                                              keyword.operator.existential.js
+//                                               ^^                                 keyword.operator.nullcoalesce.js
+//                                                  ^^^^^^^ ^^^^^^^                 string.quoted.single.js
+//                                                  ^                               punctuation.definition.string.begin.js
+//                                                                ^                 punctuation.definition.string.end.js
+//                                                                 ^                punctuation.terminator.statement.js
+//                                                                   ^^ ^^^^^^^ ^^  comment.line.double-slash.js
+//                                                                   ^^             punctuation.definition.comment.js
+const animationDuration = response.settings?.animationDuration ?? 300; // result: 0
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                                storage.type.js
+//    ^^^^^^^^^^^^^^^^^                                                              variable.other.readwrite.js
+//                      ^                                                            keyword.operator.assignment.js
+//                        ^^^^^^^^                                                   variable.other.object.js
+//                                ^                                                  keyword.operator.accessor.js
+//                                 ^^^^^^^^  ^^^^^^^^^^^^^^^^^                       meta.property.object.js
+//                                 ^^^^^^^^  ^^^^^^^^^^^^^^^^^                       variable.other.property.js
+//                                         ^^                                        keyword.operator.existential.js
+//                                                             ^^                    keyword.operator.nullcoalesce.js
+//                                                                ^^^                constant.numeric.js
+//                                                                   ^               punctuation.terminator.statement.js
+//                                                                     ^^ ^^^^^^^ ^  comment.line.double-slash.js
+//                                                                     ^^            punctuation.definition.comment.js
+const showSplashScreen = response.settings?.showSplashScreen ?? true; // result: false
+// <- storage.type.js
+ // <- storage.type.js
+//^^^                                                                                   storage.type.js
+//    ^^^^^^^^^^^^^^^^                                                                  variable.other.readwrite.js
+//                     ^                                                                keyword.operator.assignment.js
+//                       ^^^^^^^^                                                       variable.other.object.js
+//                               ^                                                      keyword.operator.accessor.js
+//                                ^^^^^^^^  ^^^^^^^^^^^^^^^^                            meta.property.object.js
+//                                ^^^^^^^^  ^^^^^^^^^^^^^^^^                            variable.other.property.js
+//                                        ^^                                            keyword.operator.existential.js
+//                                                           ^^                         keyword.operator.nullcoalesce.js
+//                                                              ^^^^                    constant.language.boolean.true.js
+//                                                                  ^                   punctuation.terminator.statement.js
+//                                                                    ^^ ^^^^^^^ ^^^^^  comment.line.double-slash.js
+//                                                                    ^^                punctuation.definition.comment.js
+
 // Issue #480
 const thing :THING =<S>() => {}
 // <- storage.type.js

@@ -1274,6 +1274,12 @@
           }
         },
         {
+          "match": "\\s*+(\\?\\?)",
+          "captures": {
+            "1": { "name": "keyword.operator.nullcoalesce.js" }
+          }
+        },
+        {
           "match": "\\s*+(!(?!=)|&&|\\|\\|)",
           "captures": {
             "1": { "name": "keyword.operator.logical.js" }
