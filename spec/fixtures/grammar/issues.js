@@ -1,5 +1,32 @@
 // SYNTAX TEST "source.js.jsx"
 
+// Issue #485
+let budget = 1_000_000_000_000;
+// <- storage.type.js
+ // <- storage.type.js
+//^                              storage.type.js
+//  ^^^^^^                       variable.other.readwrite.js
+//         ^                     keyword.operator.assignment.js
+//           ^                   constant.numeric.js
+//            ^^^^^^^^^^^^^^^^   variable.other.constant.js
+//                            ^  punctuation.terminator.statement.js
+let nibbles = 0b1010_0001_1000_0101;
+// <- storage.type.js
+ // <- storage.type.js
+//^                                   storage.type.js
+//  ^^^^^^^                           variable.other.readwrite.js
+//          ^                         keyword.operator.assignment.js
+//            ^^^^^^^^^^^^^^^^^^^^^   constant.numeric.js
+//                                 ^  punctuation.terminator.statement.js
+let message = 0xA0_B0_C0;
+// <- storage.type.js
+ // <- storage.type.js
+//^                        storage.type.js
+//  ^^^^^^^                variable.other.readwrite.js
+//          ^              keyword.operator.assignment.js
+//            ^^^^^^^^^^   constant.numeric.js
+//                      ^  punctuation.terminator.statement.js
+
 // Issue #495
 const undefinedValue = response.settings?.undefinedValue ?? 'some other default'; // result: 'some other default'
 // <- storage.type.js
