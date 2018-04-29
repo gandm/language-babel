@@ -854,7 +854,7 @@ new x(); new new x()();
  // <- keyword.operator.new.js
 //^      ^^^ ^^^         keyword.operator.new.js
 //  ^^^          ^^^     meta.function-call.without-arguments.js
-//  ^            ^       entity.name.function.js
+//  ^            ^       entity.name.type.instance.js
 //   ^^           ^^^^   meta.brace.round.js
 //     ^              ^  punctuation.terminator.statement.js
 new x[0](); new x.a(); new x[0].a(); new x.a[0]();
@@ -877,14 +877,14 @@ new x; new new x; new new x();
 //  ^          ^                variable.other.readwrite.js
 //   ^          ^            ^  punctuation.terminator.statement.js
 //                        ^^^   meta.function-call.without-arguments.js
-//                        ^     entity.name.function.js
+//                        ^     entity.name.type.instance.js
 //                         ^^   meta.brace.round.js
 new new x().a; new new x()[0];
 // <- keyword.operator.new.js
  // <- keyword.operator.new.js
 //^ ^^^        ^^^ ^^^          keyword.operator.new.js
 //      ^^^            ^^^      meta.function-call.without-arguments.js
-//      ^              ^        entity.name.function.js
+//      ^              ^        entity.name.type.instance.js
 //       ^^             ^^      meta.brace.round.js
 //         ^                    keyword.operator.accessor.js
 //          ^                   meta.property.object.js

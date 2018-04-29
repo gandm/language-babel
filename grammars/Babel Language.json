@@ -1363,17 +1363,43 @@
       "patterns": [
         { "include": "#comments" },
         { "include": "#literal-keywords" },
-        { "include": "#literal-operators" },
         {
-          "name": "meta.function-call.without-arguments.js",
-          "match": "(?<!\\.)\\s*+((\\bnew\\b)*)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(\\()\\s*+(\\))",
+          "match": "(?<!\\.)\\s*+(\\bnew\\b)\\s*+((\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(\\()\\s*+(\\)))",
           "captures": {
-            "2": { "name": "keyword.operator.new.js" },
+            "1": { "name": "keyword.operator.new.js" },
+            "2": { "name": "meta.function-call.without-arguments.js" },
             "3": { "name": "keyword.operator.private.js" },
-            "4": { "name": "entity.name.function.js" },
+            "4": { "name": "entity.name.type.instance.js" },
             "5": { "name": "keyword.operator.existential.js"},
             "6": { "name": "meta.brace.round.js" },
             "7": { "name": "meta.brace.round.js" }
+          }
+        },
+        {
+          "begin": "(?<!\\.)\\s*+(\\bnew\\b)\\s*+((\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(?=\\())",
+          "end": "(?=.)",
+          "applyEndPatternLast": 1,
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.new.js" },
+            "2": { "name": "meta.function-call.with-arguments.js" },
+            "3": { "name": "keyword.operator.private.js" },
+            "4": { "name": "entity.name.type.instance.js"},
+            "5": { "name": "keyword.operator.existential.js"}
+          },
+          "patterns": [
+            { "include": "#round-brackets" }
+          ]
+        },
+        { "include": "#literal-operators" },        
+        {
+          "name": "meta.function-call.without-arguments.js",
+          "match": "(?<!\\.)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(\\()\\s*+(\\))",
+          "captures": {
+            "1": { "name": "keyword.operator.private.js" },
+            "2": { "name": "entity.name.function.js" },
+            "3": { "name": "keyword.operator.existential.js"},
+            "4": { "name": "meta.brace.round.js" },
+            "5": { "name": "meta.brace.round.js" }
           }
         },
         {
@@ -1394,14 +1420,13 @@
         },
         {
           "name": "meta.function-call.with-arguments.js",
-          "begin": "(?<!\\.)\\s*+((\\bnew\\b)*)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(?=\\()",
+          "begin": "(?<!\\.)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(?=\\()",
           "end": "(?=.)",
           "applyEndPatternLast": 1,
           "beginCaptures": {
-            "2": { "name": "keyword.operator.new.js"},
-            "3": { "name": "keyword.operator.private.js" },
-            "4": { "name": "entity.name.function.js"},
-            "5": { "name": "keyword.operator.existential.js"}
+            "1": { "name": "keyword.operator.private.js" },
+            "2": { "name": "entity.name.function.js"},
+            "3": { "name": "keyword.operator.existential.js"}
           },
           "patterns": [
             { "include": "#round-brackets" }

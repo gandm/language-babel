@@ -722,7 +722,7 @@ class CA {
 //                  ^^^^^^             keyword.control.flow.js
 //                         ^^^         keyword.operator.new.js
 //                             ^^^     meta.function-call.without-arguments.js
-//                             ^       entity.name.function.js
+//                             ^       entity.name.type.instance.js
 //                                ^    punctuation.terminator.statement.js
   [x+y+z]<U>(a, b) { return null; }
 //^^^^^^^^^^^^^ ^^ ^ ^^^^^^ ^^^^^ ^  meta.class.body.js
@@ -889,7 +889,7 @@ class D extends C<number> {
 //                  ^^^^^^             keyword.control.flow.js
 //                         ^^^         keyword.operator.new.js
 //                             ^^^     meta.function-call.without-arguments.js
-//                             ^       entity.name.function.js
+//                             ^       entity.name.type.instance.js
 //                                ^    punctuation.terminator.statement.js
 }
 // <- punctuation.section.class.end.js
@@ -903,6 +903,7 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //       ^^^ ^^^^^^^^ ^^ ^^^^^^^ ^^ ^^^^                                      meta.object.flowtype
 //       ^                                                                    meta.brace.curly.open.flowtype
 //           ^^^^^^^     ^^^^^^                                               support.type.builtin.primitive.flowtype
+//                  ^          ^                                           ^  punctuation.terminator.statement.js
 //                                  ^^^                                       support.type.class.flowtype
 //                                     ^                                      meta.brace.curly.close.flowtype
 //                                       ^                                    keyword.operator.assignment.js
@@ -917,9 +918,8 @@ var obj: {a: boolean; b: string; c: Foo} = {a: true, b: "Hi", c: new Foo()};
 //                                                         ^                  punctuation.definition.string.end.js
 //                                                               ^^^          keyword.operator.new.js
 //                                                                   ^^^^^    meta.function-call.without-arguments.js
-//                                                                   ^^^      entity.name.function.js
+//                                                                   ^^^      entity.name.type.instance.js
 //                                                                      ^^    meta.brace.round.js
-//                                                                         ^  punctuation.terminator.statement.js
 
 type MyType = {message: string; isAwesome: boolean};
 // <- keyword.other.typedef.flowtype
@@ -1083,7 +1083,7 @@ var x: A | B | number | C = new C();
 //                        ^           keyword.operator.assignment.js
 //                          ^^^       keyword.operator.new.js
 //                              ^^^   meta.function-call.without-arguments.js
-//                              ^     entity.name.function.js
+//                              ^     entity.name.type.instance.js
 //                               ^^   meta.brace.round.js
 //                                 ^  punctuation.terminator.statement.js
 

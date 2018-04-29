@@ -215,12 +215,13 @@ const file = await (new File({file})).save(aa)
 //           ^^^^^                              keyword.control.flow.js
 //                 ^        ^      ^^     ^  ^  meta.brace.round.js
 //                  ^^^                         keyword.operator.new.js
-//                      ^^^^^^^^^^^^            meta.function-call.with-arguments.js
-//                      ^^^^          ^^^^      entity.name.function.js
+//                      ^^^^                    meta.function-call.with-arguments.js
+//                      ^^^^                    entity.name.type.instance.js
 //                           ^    ^             meta.brace.curly.litobj.js
 //                            ^^^^              variable.other.readwrite.shorthandpropertyname.js
 //                                   ^          keyword.operator.accessor.js
 //                                    ^^^^^^^^  meta.method-call.with-arguments.js
+//                                    ^^^^      entity.name.function.js
 
 // Issue 428
 let x = ( '\'(', "\")", ("",'') ) => {}
