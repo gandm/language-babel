@@ -1114,9 +1114,9 @@
             "2": { "name": "variable.other.class.js" },
             "3": { "name": "keyword.operator.existential.js" },
             "4": { "name": "keyword.operator.accessor.js" },
-            "5": { "name": "entity.name.tag.grapahql.js" },
-            "6": { "name": "entity.name.tag.grapahql.js" },
-            "7": { "name": "entity.name.tag.grapahql.js" },
+            "5": { "name": "entity.name.tag.graphql.js" },
+            "6": { "name": "entity.name.tag.graphql.js" },
+            "7": { "name": "entity.name.tag.graphql.js" },
             "8": { "name": "string.quoted.template.js" },
             "9": { "name": "punctuation.definition.quasi.begin.js" }
           },
@@ -3656,7 +3656,7 @@
         {
           "match": "\\s*\\b(implements)\\b\\s*([_A-Za-z][_0-9A-Za-z]*)",
           "captures": {
-            "1": { "name": "keyword.implements.grapahql" },
+            "1": { "name": "keyword.implements.graphql" },
             "2": { "name": "support.type.graphql" }
           }
         },
