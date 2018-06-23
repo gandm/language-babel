@@ -1543,7 +1543,7 @@
           }
         },
         {
-          "match": "(?<!\\.)\\s*+\\b(document|window)\\b",
+          "match": "(?<!\\.)\\s*+\\b(document|window|navigator|performance|location|localStorage|history)\\b",
           "captures": {
             "1": { "name": "support.type.object.dom.js" }
           }
