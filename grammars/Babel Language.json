@@ -954,7 +954,7 @@
         {
           "comment": "Styled CSS tags",
           "contentName": "source.inside-js.css.styled",
-          "begin": "\\s*+(?:(?:\\b(css|injectGlobal|keyframes)\\b)|(?:(\\bstyled)(?:(?:(\\?\\.)|(\\.))\\s*(\\w+))))\\s*((`))",
+          "begin": "\\s*+(?:(?:\\b(css|injectGlobal|createGlobalStyle|keyframes)\\b)|(?:(\\bstyled)(?:(?:(\\?\\.)|(\\.))\\s*(\\w+))))\\s*((`))",
           "end": "\\s*((`))",
           "beginCaptures": {
             "1": { "name": "entity.name.tag.styledcss.js" },
@@ -1390,7 +1390,7 @@
             { "include": "#round-brackets" }
           ]
         },
-        { "include": "#literal-operators" },        
+        { "include": "#literal-operators" },
         {
           "name": "meta.function-call.without-arguments.js",
           "match": "(?<!\\.)\\s*+(\\#?)((?:[$_\\p{L}\\p{Nl}]|\\\\u\\h{4}|\\\\u{\\h+})(?:[$_\\p{L}\\p{Mn}\\p{Mc}\\p{Nd}\\p{Nl}\\p{Pc}\\x{200C}\\x{200D}]|\\\\u\\h{4}|\\\\u{\\h+})*+)\\s*+(\\?\\.)?(\\()\\s*+(\\))",
