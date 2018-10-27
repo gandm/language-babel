@@ -186,6 +186,8 @@
   inline-size:;
   isolation:;
   justify-content:;
+  justify-items:;
+	justify-self:;
   left:;
   letter-spacing:;
   line-break:;

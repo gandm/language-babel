@@ -1192,6 +1192,24 @@
       ],
       "description": "Defines how the browser distributes space between and around flex items"
     },
+		"justify-items": {
+      "values": [
+        "start",
+        "end",
+        "center",
+        "stretch",
+      ],
+      "description": "Defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis"
+    },
+		"justify-self": {
+      "values": [
+        "start",
+        "end",
+        "center",
+        "stretch",
+      ],
+      "description": "Defines the way a box is justified inside its alignment container along the appropriate axis"
+    },
     "transition-property": {
       "values": [
         "all",

@@ -687,7 +687,7 @@
         {
           "contentName": "meta.property-values.css",
           "comment": "individual words without any sub options",
-          "begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(z-index|writing-mode|will-change|width|widows|white-space|volume|visibility|vertical-align|user-zoom|user-select|touch-action|top|table-layout|tab-size|system|symbols|suffix|src|speak-as|size|right|revert|resize|range|prefix|quotes|position|pointer-events|pad|orphans|orientation|order|opacity|negative|mix-blend-mode|marks|line-height|line-break|letter-spacing|left|justify-content|isolation|inline-size|hyphens|height|float|filter|fallback|empty-cells|display|direction|cursor|content|columns|color|clip-path|clip|clear|caption-side|bottom|block-size|bleed|backface-visibility|appearance|all|additive-symbols))\\s*+(:)",
+          "begin": "(?i)(?<=^|[\\W])\\s*+((-(webkit|moz|o|ms)-)?(z-index|writing-mode|will-change|width|widows|white-space|volume|visibility|vertical-align|user-zoom|user-select|touch-action|top|table-layout|tab-size|system|symbols|suffix|src|speak-as|size|right|revert|resize|range|prefix|quotes|position|pointer-events|pad|orphans|orientation|order|opacity|negative|mix-blend-mode|marks|line-height|line-break|letter-spacing|left|justify-content|justify-items|justify-self|isolation|inline-size|hyphens|height|float|filter|fallback|empty-cells|display|direction|cursor|content|columns|color|clip-path|clip|clear|caption-side|bottom|block-size|bleed|backface-visibility|appearance|all|additive-symbols))\\s*+(:)",
           "end": "(;)|(?=[`})\\]])",
           "beginCaptures": {
             "1": {"name": "support.type.property-name.css"}
