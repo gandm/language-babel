@@ -19,6 +19,7 @@ describe 'Grammar', ->
 
   # babel-sublime test files
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow.js')
+  grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/flow-function-call-with-type-arguments.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-class.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-functions.js')
   grammarTest path.join(__dirname, 'fixtures/grammar/babel-sublime/js-symbols.js')
