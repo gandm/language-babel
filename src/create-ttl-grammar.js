@@ -265,12 +265,16 @@ class CreateTtlGrammar {
 
   // remove all language files in tagged template GrammarFiles array
   removeTtlLanguageFiles() {
-    return this.getTtlGrammarFiles().then((ttlGrammarFiles) => {
-      for (let ttlGrammarFilename of ttlGrammarFiles) {
-        let ttlGrammarFileAbsoulte = this.makeTtlGrammarFilenameAbsoulute(ttlGrammarFilename);
-        fs.unlink(ttlGrammarFileAbsoulte);
-      }
+    return this.getTtlGrammarFiles().then(ttlGrammarFiles => {
+      return Promise.all(ttlGrammarFiles.map((ttlGrammarFilename) => {
+        return new Promise ((resolve, reject) => {
+          let ttlGrammarFileAbsoulte = this.makeTtlGrammarFilenameAbsoulute(ttlGrammarFilename);
+          fs.unlink(ttlGrammarFileAbsoulte, (err) => {
+            if (err) return reject(err);
+            resolve();
+          });
+        });
+      }))
     });
-
   }
 };
