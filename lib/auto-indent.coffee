@@ -39,7 +39,7 @@ module.exports =
 class AutoIndent
   constructor: (@editor) ->
     @DidInsertText = new DidInsertText(@editor)
-    @autoJsx = atom.config.get('language-babel').autoIndentJSX
+    @autoJsx = atom.config.get('language-babel.autoIndentJSX')
     # regex to search for tag open/close tag and close tag
     @JSXREGEXP = /(<)([$_A-Za-z](?:[$_.:\-A-Za-z0-9])*)|(\/>)|(<\/)([$_A-Za-z](?:[$._:\-A-Za-z0-9])*)(>)|(>)|({)|(})|(\?)|(:)|(if)|(else)|(case)|(default)|(return)|(\()|(\))|(`)|(?:(<)\s*(>))|(<\/)(>)/g
     @mouseUp = true

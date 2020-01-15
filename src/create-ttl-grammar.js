@@ -178,7 +178,7 @@ class CreateTtlGrammar {
 
   // read configurations for tagged templates
   getTtlConfig() {
-    return atom.config.get('language-babel').taggedTemplateGrammar;
+    return atom.config.get('language-babel.taggedTemplateGrammar');
   }
 
   // get an array of grammar tagged template extension filenames
